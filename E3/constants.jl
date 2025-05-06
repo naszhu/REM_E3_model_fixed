@@ -47,11 +47,13 @@ w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fi
 const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
+#!! adv for content? NO
 u_star = vcat(0.06, ones(n_lists-1) * 0.06)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
 u_star_context=vcat(0.08, ones(n_lists-1)*0.05)
+u_adv_firstpos=0.05 #adv of first position in eeach list
 
 const c = 0.75 #coying parameter - 0.8 for context copying 
 const c_storeintest = c

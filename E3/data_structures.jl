@@ -22,7 +22,7 @@
 struct Word
     item::String
     word_features::Vector{Int64}
-    type_general::Symbol
+    type_general::Symbol #modified from general
     initial_studypos::Int64 #change this to make it constant 
     initial_testpos::Int64
 end
