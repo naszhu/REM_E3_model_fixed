@@ -10,6 +10,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
     unique_list_numbers = unique([image.list_number for image in image_pool])
     n_listimagepool = length(unique_list_numbers)
+    
     results = Array{Any}(undef, n_probes * n_listimagepool)
     currentlist = probes[1].image.list_number
     image_pool_currentlist = image_pool

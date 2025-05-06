@@ -22,15 +22,10 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     #is_onlyaddtrace is false
     # println("nothere")
 
-    if decision_isold==0
+    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold))) #just get a new empty EI
 
         iimage = EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
-
-    elseif ((decision_isold == 1) & (odds <= recall_odds_threshold))
-
-        # println("not passed",i probe_img.list_number)
-        #give new 
-        iimage = EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img) #here is the new image, not the one in the pool
+        
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         #recall; restore old
@@ -43,7 +38,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
     # if new, context and content change, be added to the pool
 
-    if (decision_isold == 0)
+    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
         for _ in 1:n_units_time_restore
             for i in eachindex(iprobe_img.word.word_features)
@@ -67,72 +62,35 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
             end
         end
-    end
+    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-    
-
-    #if old, pass threshold, context and contet change, recall land strenghten
-
-    if (decision_isold == 1) & (odds > recall_odds_threshold) #single parameter for missing or replacing
-
-
-            for i in eachindex(iprobe_img.word.word_features)
-                j = iimage.word.word_features[i]
-                # if j!=0
-                    if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                        # println("success")
-                        # println("now",j,iprobe_img.word.word_features[i])
-                        iimage.word.word_features[i] = rand() < p_recallFeatureStore ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore
-
-                    end
-                # end
-            end
-
-            for ic in eachindex(iprobe_img.context_features)
-                j = iimage.context_features[ic]
-
-                if (j == 0)|((j!=0) & (j!= iprobe_img.context_features[ic]) ) 
-                    iimage.context_features[ic] = rand() < p_recallFeatureStore ? iprobe_img.context_features[ic] : j 
-                    # iimage.context_features[ic] = rand() < 1 ? (rand() < 1 ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j;
-                end
-
-            end
-
-            # println("Likelihood After ",calculate_likelihood_ratio(iprobe_img.word.word_features, iimage.word.word_features, g_word, c))
-
-
-
-            is_restore_context ? error("context restored in initial is not well written this part") : nothing
-        # end
-
-    # if old, dind't pass threshold, add new trace
-    elseif (decision_isold == 1) & (odds <= recall_odds_threshold) 
-        
-        #didn't pass threshold, ADD new trace
-
-        for _ in 1:n_units_time_restore
-            for i in eachindex(iprobe_img.word.word_features)
-                j = iimage.word.word_features[i]
+        for i in eachindex(iprobe_img.word.word_features)
+            j = iimage.word.word_features[i]
+            # if j!=0
                 if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                    iimage.word.word_features[i] = rand() < u_star[end] ? (rand() < c_storeintest ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j # 0.04 to u_star_context[2]
+                    # println("success")
+                    # println("now",j,iprobe_img.word.word_features[i])
+                    iimage.word.word_features[i] = rand() < p_recallFeatureStore ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore
+
                 end
-            end
-
-
-            for ic in eachindex(iprobe_img.context_features)
-                j = iimage.context_features[ic]
-
-                if j == 0
-                    # println(j,!is_onlyaddtrace)
-                    #u_star_context to 0.04
-
-                        iimage.context_features[ic] = rand() < u_star_context[end] ? (rand() < c_context ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j
-
-                    # iimage.context_features[ic] = rand() < 1 ? (rand() < 1 ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j;
-                end
-
-            end
+            # end
         end
+
+        for ic in eachindex(iprobe_img.context_features)
+            j = iimage.context_features[ic]
+
+            if (j == 0)|((j!=0) & (j!= iprobe_img.context_features[ic]) ) 
+                iimage.context_features[ic] = rand() < p_recallFeatureStore ? iprobe_img.context_features[ic] : j 
+                # iimage.context_features[ic] = rand() < 1 ? (rand() < 1 ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j;
+            end
+
+        end
+
+        # println("Likelihood After ",calculate_likelihood_ratio(iprobe_img.word.word_features, iimage.word.word_features, g_word, c))
+
+
+
+        is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
     end
 

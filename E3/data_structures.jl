@@ -1,11 +1,30 @@
 #===============================================
 ===============================================#
-# Data Structures                         
+# Data Structures    
+# word types: T_target; T_nontarget, but now add multiple kinds   
+
+#general: 
+# Fb_SO; Fb_T; Fb_F; T; F; SO
+
+# :Fb_SO_l
+# :Fb_SO
+# :Fb_T_l
+# :Fb_T
+# :Fb_F_l
+# :Fb_F
+# :T
+# :F
+# :SO
+
+
+
+
 struct Word
     item::String
     word_features::Vector{Int64}
-    type::Symbol
-    studypos::Int64
+    type_general::Symbol
+    initial_studypos::Int64 #change this to make it constant 
+    initial_testpos::Int64
 end
 
 
@@ -13,19 +32,18 @@ mutable struct EpisodicImage
     word::Word
     context_features::Vector{Int64}
     list_number::Int64
-    initial_testpos_img::Int64
-    # function EpisodicImage(word::Word,context_features::Vector{Int64},list_number::Int64, initial_testpos_img::Int64=0)
-    #     return EpisodicImage(word, context_features, list_number, initial_testpos_img)
-    # end
+    type_current::Symbol
 end
 
-ceil(Int, 43 / 42)
-ceil(Int, (43 - 1) / 42)
 
+"""
+Classification:
+discard classfication in this version later; all store in word, using word structure
+"""
 struct Probe
     image::EpisodicImage
-    classification::Symbol  # :target or :test
-    initial_testpos::Int64
+    classification::Symbol #simply :target or :foil
+    # initial_testpos::Int64
     # initial_studypos::Int64
     
 end

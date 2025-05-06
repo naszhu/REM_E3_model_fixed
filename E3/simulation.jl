@@ -23,7 +23,7 @@ function simulate_rem()
             position_code_all = [fill(0, w_positioncode) for _ in 1:n_words]
 
 
-            word_list = generate_study_list(list_num) #::Vector{Word}
+            word_list = generate_study_list(list_num, g_word, w_word) #::Vector{Word}
             # word_change_context_features = rand(Geometric(g_context),div(w_context, 2)) .+ 1;
 
             for j in eachindex(word_list)
@@ -42,6 +42,8 @@ function simulate_rem()
 
                 position_code_all[j] = position_code_features_study
                 current_context_features = fast_concat([deepcopy(general_context_features), deepcopy(list_change_context_features), position_code_features_study])
+
+                
                 episodic_image = EpisodicImage(word_list[j], current_context_features, list_num, 0)
 
                 # study in here

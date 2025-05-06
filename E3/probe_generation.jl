@@ -7,11 +7,14 @@ Return: probe
 
 list_change_features: list feature, same as studied one
 test_list_context: changed RI after study, continuous reinstate in test
+
+add probe type now.. 
 """
 function generate_probes(studied_words::Vector{Word}, list_change_features::Vector{Int64}, test_list_context::Vector{Int64}, general_context_features::Vector{Int64}, test_list_context_unchange::Vector{Int64}, position_code_all::Vector{Vector{Int64}}, list_num::Int64,studied_pool::Vector{EpisodicImage} )::Vector{Probe}
     # here, not deep copy word_change_features is safe because even if it influence the original index, the word-change context features will be disgarded when this list ends  
 
-
+  # 
+    # probetypes = repeat([:target, :foil], outer=div(n_probes, 2)) |> shuffle!
     probetypes = repeat([:target, :foil], outer=div(n_probes, 2)) |> shuffle!
     probes = Vector{Probe}(undef, length(probetypes))
 
