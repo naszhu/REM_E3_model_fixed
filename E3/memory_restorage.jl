@@ -24,7 +24,20 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
     if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold))) #just get a new empty EI
 
-        iimage = EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
+        iimage = EpisodicImage(
+            #Word:
+            Word(iprobe_img.word.item, #item
+            fill(0, length(iprobe_img.word.word_features)), #word features
+            iprobe_img.word.type_general, #type_general
+            iprobe_img.word.studypos, #initial_studypos
+            iprobe_img.word.initial_testpos #initial_studypos
+            ), 
+            #Context_features:
+            zeros(length(iprobe_img.context_features)), 
+            #List_Number; 
+            iprobe_img.list_number, 
+            #Type_Current:
+            iprobe_img.type_current)
         
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
@@ -36,7 +49,8 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
 
 
-    # if new, context and content change, be added to the pool
+    # if new, or old but didn't pass threshold -- ADD TRACE 
+    # (start with empty EI, then add features)
 
     if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
@@ -62,11 +76,14 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
             end
         end
+
+    ###### STRENGHTEN TRACE ######################
+    # RESTORE CONTEXT & CONTENT
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         for i in eachindex(iprobe_img.word.word_features)
             j = iimage.word.word_features[i]
-            # if j!=0
+
                 if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
                     # println("success")
                     # println("now",j,iprobe_img.word.word_features[i])
@@ -86,11 +103,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
         end
 
-        # println("Likelihood After ",calculate_likelihood_ratio(iprobe_img.word.word_features, iimage.word.word_features, g_word, c))
 
-
-
-        is_restore_context ? error("context restored in initial is not well written this part") : nothing
+        # the following makes sure that we actually must need to restore context.
+        !is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
     end
 
@@ -100,9 +115,6 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
 
     end
-    # if (decision_isold == 0) 
-    #     push!(image_pool, iimage)
-    # end
 
 
 
@@ -115,15 +127,23 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
-    if decision_isold==0
+    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
-        iimage = EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
+        iimage = EpisodicImage(
+            #Word:
+            Word(iprobe_img.word.item, 
+            fill(0, length(iprobe_img.word.word_features)), 
+            iprobe_img.word.type_general, 
+            iprobe_img.word.studypos,
+            iprobe_img.word.testpos
+            ), 
+            #Context_features:
+            zeros(length(iprobe_img.context_features)), 
+            #List_Number;
+            iprobe_img.list_number, 
+            #Type_Current:
+            iprobe_img.type_current)
 
-    elseif ((decision_isold == 1) & (odds <= recall_odds_threshold))
-
-        # println("not passed",i probe_img.list_number)
-        #give new 
-        iimage = EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img) #here is the new image, not the one in the pool
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         #recall; restore old
@@ -132,12 +152,19 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
         error("decision_isold is not well defined")
     end
 
+
+    ############# ADD TRACE ######################
+    # if new, or old but didn't pass threshold -- ADD TRACE
     if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))
 
         for _ in 1:n_units_time_restore
             for i in eachindex(iprobe_img.word.word_features)
                 j = iimage.word.word_features[i]
-                if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
+
+                # OH, this was wrong in previous version, it should only be 0 becuase this is add trace, only add on those that is not currently there
+                # !This makes storage of new trace in test became stronger than storage of new trace in study! 
+                if (j == 0) 
+
                     iimage.word.word_features[i] = rand() < u_star[end] ? (rand() < c_storeintest ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j # 0.04 to u_star_context[2]
                 end
             end
@@ -159,6 +186,47 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
             end
         end
+
+
+    ###### STRENGHTEN TRACE ######################
+    # RESTORE CONTEXT & CONTENT
+    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+
+        # pass: strenghten
+        #single parameter for missing or replacing
+        # WARNING: rand(Geometric(g_word)) + 1) is not used here, there is no chance of an incorrect random value storage when judging old 
+
+        if !is_store_mismatch
+            error("current prog is not written when doesn't store mismatch")
+        end
+
+        for i in eachindex(iprobe_img.word.word_features)
+            j = iimage.word.word_features[i]
+
+            if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
+
+                # println("Pass here")
+                iimage.word.word_features[i] = rand() < 1 ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore replace 1
+            end
+        end
+
+
+        for _ in 1:n_units_time_restore_f
+            for i in eachindex(iprobe_img.word.word_features)
+                j=iimage.word.word_features[i]
+
+                if decision_isold==1
+                    if (j==0) | ((j!=0) &( decision_isold==1) & (j!=iprobe_img.word.word_features[i]) & (is_store_mismatch))
+                        iimage.word.word_features[i] = rand() < 1 ? (rand() < 1 ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j;
+                    end
+                else
+                end
+            end
+        end
+
+        is_restore_context ? error("context restored in initial is not well written this part") : nothing
+
+
     end
 
     if !is_onlyaddtrace_final #true

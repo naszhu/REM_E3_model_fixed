@@ -123,7 +123,7 @@ is_test_allcontext = false #include general context? not testing all context in 
 is_test_allcontext2 = true #is testing all context in final testZ
 is_test_changecontext2 = false #is testing only change context in final test
 
-is_restore_context = false # currently don't want to restore context features, only add new context features tarce
+is_restore_context = true # HEY! we do need to restore context
 
 is_firststage = true;
 
