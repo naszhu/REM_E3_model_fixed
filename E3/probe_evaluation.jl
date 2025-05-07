@@ -12,23 +12,25 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
     n_listimagepool = length(unique_list_numbers)
     
     results = Array{Any}(undef, n_probes * n_listimagepool)
-    currentlist = probes[1].image.list_number
+    currentlist = probes[1].image.list_number #first stage, any probe number of current list will be the list of the current
     image_pool_currentlist = image_pool
 
+    ### GO through test of each probe
     for i in eachindex(probes)
 
-
-        if is_onlytest_currentlist
+        ##The following is adding an exploring for if only current list tested
+        if is_onlytest_currentlist #false
             error("can't test only current list")
             image_pool_currentlist = filter(img -> img.list_number == currentlist, image_pool)#it's ok even when new probe were add to the image pool, because new probe has current list numebr as well. It will be kept
-        else
+        
+        else #current must be whole pool being in memory
             image_pool_currentlist = image_pool
         end
         # println("this is list $(currentlist),there are $(length(image_pool_currentlist)) images in the current pool")
 
-        # calculate_two_step_likelihoods_rule2(probes[i].image, image_pool);
+
         _, likelihood_ratios_org = calculate_two_step_likelihoods(probes[i].image, image_pool_currentlist, 1.0, i) #proportion is all
-        # likelihood_ratios = calculate_two_step_likelihoods_rule2(probes[i].image, image_pool); #proportion is all
+
         likelihood_ratios = likelihood_ratios_org |> x -> filter(e -> e != 344523466743, x)
         # println(length(likelihood_ratios_org)== length(image_pool_currentlist) )
 

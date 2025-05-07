@@ -29,7 +29,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             Word(iprobe_img.word.item, #item
             fill(0, length(iprobe_img.word.word_features)), #word features
             iprobe_img.word.type_general, #type_general
-            iprobe_img.word.studypos, #initial_studypos
+            iprobe_img.word.initial_studypos, #initial_studypos
             iprobe_img.word.initial_testpos #initial_studypos
             ), 
             #Context_features:
@@ -134,8 +134,8 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             Word(iprobe_img.word.item, 
             fill(0, length(iprobe_img.word.word_features)), 
             iprobe_img.word.type_general, 
-            iprobe_img.word.studypos,
-            iprobe_img.word.testpos
+            iprobe_img.word.initial_studypos,
+            iprobe_img.word.initial_testpos
             ), 
             #Context_features:
             zeros(length(iprobe_img.context_features)), 
@@ -206,23 +206,24 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
 
                 # println("Pass here")
-                iimage.word.word_features[i] = rand() < 1 ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore replace 1
+                iimage.word.word_features[i] = rand() < p_recallFeatureStore ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore replace 1
             end
         end
 
 
-        for _ in 1:n_units_time_restore_f
-            for i in eachindex(iprobe_img.word.word_features)
-                j=iimage.word.word_features[i]
+        # for _ in 1:n_units_time_restore_f
+        ##Take off the for for loop of the number of steps to restore 
 
-                if decision_isold==1
-                    if (j==0) | ((j!=0) &( decision_isold==1) & (j!=iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                        iimage.word.word_features[i] = rand() < 1 ? (rand() < 1 ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j;
-                    end
+        for i in eachindex(iprobe_img.word.word_features)
+            j=iimage.word.word_features[i]
+
+            #delete condition is_store_mismatch; decision_isold
+                if (j==0) | ((j!=0) & (j!=iprobe_img.word.word_features[i]) )
+                    iimage.word.word_features[i] = rand() < p_recallFeatureStore ? (rand() < 1 ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j;
                 else
                 end
-            end
         end
+        # end
 
         is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
