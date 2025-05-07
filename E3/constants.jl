@@ -3,10 +3,56 @@
  
 
 
-#### start of everything::
+#### start of everything:: and Design
 ##########
 is_finaltest = false
 
+####Type general:
+# T; Tn; SO; SOn; F; Fn
+
+#### Type specific:
+# :T (B) --         appearnum=1=T; 1=T; 2=none
+# :Tn+1 (Dn+1) --   appearnum=1=T; 1=T; 2=Fb
+# :Tn (Dn) --       appearnum=2=Fb; 1=T; 2=Fb
+# :SO (A) --        appearnum=1=SO; 1=SO; 2=none
+# :SOn+1 (Cn+1) --  appearnum=1=SO; 1=SO; 2=Fb
+# :SOn (Cn) --      appearnum=2=Fb; 1=SO; 2=Fb
+# :F (Fn)  --       appearnum=1=F; 1=F; 2=none
+# :Fn+1 (Fnn+1) --  appearnum=1=F; 1=F; 2=Fb
+# :Fn (Fnn) --      appearnum=2=Fb; 1=F; 2=Fb
+
+#study: T; SO; Tn+1; SOn+1
+#test: T; SO; Tn; SOn
+
+probeTypeDesign_study = Dict(
+    Symbol("Tn+1") => 1, 
+    :T => 4, 
+    :SO => 4, 
+    :Symbol("SOn+1") => 1)
+
+probeTypeDesign_testProbe_L1 = Dict(
+    :T => 4,       # B
+    Symbol("Tn+1") => 1, # Dn+1
+    
+    :F => 4,       # Fn
+    Symbol("Fn+1") => 1, # Fnn+1
+    
+    )
+        
+#first 2 current new Target, middle 2 current new foil, last 3 Fb bad foil, 
+probeTypeDesign_testProbe_Ln = Dict(
+    :T => 4,       # B
+    Symbol("Tn+1") => 1, # Dn+1
+
+    :F => 1,       # Fn
+    Symbol("Fn+1") => 1, # Fnn+1
+    
+    :Tn => 1,      # Dn
+    :Fn => 1,       # Fnn
+    :SOn => 1     # Cn
+    # :SO => 0,      # A
+    # Symbol("SOn+1") => 0, # Cn+1
+)
 
 # =============================================================================
 # -----------------------------------------
@@ -18,7 +64,7 @@ n_simulations = is_finaltest ? 100 : 500;
 const n_finalprobs = 420;
 
 const n_units_time = 13#number of steps 
-                                                                                                                                                                                                                      
+                                                                               nItemPerUnit=3 #how many units in E3 per type probe                                                                                                                                       
 n_units_time_restore = n_units_time #only applies for adding traces now. 
 n_units_time_restore_t = n_units_time_restore  # -3
 n_units_time_restore_f = n_units_time_restore_t # -3
@@ -77,6 +123,8 @@ p_reinstate_context = 0.8 #stop reinstate after how much features
 n_driftStudyTest = round.(Int, ones(10) * 9) #7
 n_between_listchange = 12; #5;15; 
 const p_driftAndListChange = 0.03; # used for both of two n above
+
+
 
 p_reinstate_rate = 0.5#0.4 #prob of reinstatement
 p_recallFeatureStore = 0.85;
