@@ -29,7 +29,7 @@ function generate_probes(
 
     probeTypeDesign_testProbe_L1::Dict{Symbol, Int} = probeTypeDesign_testProbe_L1,
     probeTypeDesign_testProbe_Ln::Dict{Symbol, Int} = probeTypeDesign_testProbe_Ln
-    )::Vector{Probe}   # here, not deep copy word_change_features is safe because even if it influence the original index, the word-change context features will be disgarded when this list ends  
+    )::Tuple{Vector{Probe}, Vector{EpisodicImage}}   # here, not deep copy word_change_features is safe because even if it influences the original index, the word-change context features will be discarded when this list ends  
 
   # 
     if list_num == 1
@@ -85,7 +85,7 @@ function generate_probes(
     combined_studied_pool_by_type = studied_pool_currlist_by_type
 
 
-        
+    foils_collection = Vector{EpisodicImage}()
     for i in eachindex(probetypes) #should be 1-30
         # println("probe$(i)")
         # haskey(Dict(:a => 1, :b => 2), :ff) => return false
@@ -139,14 +139,18 @@ function generate_probes(
         current_context_features = fast_concat([deepcopy(unchange_features_dynamic), deepcopy(list_change_features_dynamic)]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
         
 
-        probes[i] = Probe(
+        probes[i] = Probe( #create prob from current created target word i
             # appearnum: if old kind, second time appear
             EpisodicImage(target_word, current_context_features, list_num, probetypes[i] in Fb_symbol_tuple ? 2 : 1),
             
             probetypes[i] in T_target_tuple ? :target : :foil, #target or foil
             probetypes[i] in  T_target_tuple ? :T : probetypes[i] in Fb_symbol_tuple ? :Fb : :F #general type of probe, F, Fb or T
-            )
+        )
         
+
+        if probetypes[i] in foilnew_symbol_tuple
+            append!(foils_collection, probes[i].image) # Append the foil to the collection
+        end 
 
         # Commented the following lines because studied_pool is not carried in current function right now, but study_pool did have its images to be stored during study, meaning they won't have a test position assigned, 
         # BUT this is currently IGNORED (unassigned testpos for studied_pool), because the current testpos will not be used for prediction yet in final test, as a start 
@@ -169,7 +173,7 @@ function generate_probes(
     end
 
 
-    return probes
+    return probes, foils_collection
 end
 
 

@@ -14,23 +14,26 @@ function simulate_rem()
         image_pool = EpisodicImage[]
 
         # studied_pool contains all single appear img in iniital test, and no repeatition  
+        ## DEFINE STUDIED POOL
         studied_pool = Vector{Vector{EpisodicImage}}(undef, n_lists) # Create a vector of vectors for each list
         for list_num in 1:n_lists
             studied_pool[list_num] = Vector{EpisodicImage}(undef, list_num == 1 ? total_probe_L1 * nItemPerUnit : total_probe_Ln * nItemPerUnit) # Different lengths for the first row vs. later rows
-        end   
+        end 
+        ## STUDIED POOL DEFINE FINISH  
 
         current_list_words = filter(!isundef, studied_pool[:, list_num])
         
         # There can't be any undefined elements from last list in current study list, add this check here
-        if any(isundef, studied_pool[:, list_num-1])
-            error("studied_pool[:, list_num-1] contains undefined elements")
-        end   
+        ##FETCH last list studied_pool (including foil):
+        
         if list_num > 1
+            if any(isundef, studied_pool[:, list_num-1])
+                error("studied_pool[:, list_num-1] contains undefined elements")
+            end   
             last_list_words = filter(!isundef, studied_pool[:, list_num-1])
         end
 
-        # studied_pool_word_rp is not image pool, it is word pool, it contains repeatitive imgs across lists. It contain absolute 
-        studied_pool_word_rp = Array{Word}(undef, n_probes + Int(n_probes / 2), n_lists) #30 images (10 Tt, 10 Tn, 10 Tf) of 10 lists 30+15=45 per list
+
         general_context_features = rand(Geometric(g_context), nU) .+ 1#
         list_change_context_features = rand(Geometric(g_context), nC) .+ 
 
@@ -38,7 +41,7 @@ function simulate_rem()
 
         for list_num in 1:n_lists
 
-            position_code_all = [fill(0, w_positioncode) for _ in 1:n_words]
+            # position_code_all = [fill(0, w_positioncode) for _ in 1:n_words]
 
 
             word_list = generate_study_list(list_num, g_word, w_word) #::Vector{Word}
@@ -46,20 +49,20 @@ function simulate_rem()
 
             for j in eachindex(word_list)
 
-                if j == 1
-                    position_code_features_study = rand(Geometric(g_context), w_positioncode) .+ 1
-                else
-                    position_code_features_study = deepcopy(position_code_all[j-1])
-                    for ij in 1:w_positioncode
-                        if rand() < p_poscode_change * (j - 1) #cf.change_probability # this equals p_change
-                            position_code_features_study[ij] = rand(Geometric(g_context)) + 1
-                        end
-                    end
-                    # println("previous code$(position_code_all[j-1]),current code$(position_code_features_study)")
-                end
+                # if j == 1
+                #     position_code_features_study = rand(Geometric(g_context), w_positioncode) .+ 1
+                # else
+                #     position_code_features_study = deepcopy(position_code_all[j-1])
+                #     for ij in 1:w_positioncode
+                #         if rand() < p_poscode_change * (j - 1) #cf.change_probability # this equals p_change
+                #             position_code_features_study[ij] = rand(Geometric(g_context)) + 1
+                #         end
+                #     end
+                #     # println("previous code$(position_code_all[j-1]),current code$(position_code_features_study)")
+                # end
 
-                position_code_all[j] = position_code_features_study
-                current_context_features = fast_concat([deepcopy(general_context_features), deepcopy(list_change_context_features), position_code_features_study])
+                # position_code_all[j] = position_code_features_study
+                current_context_features = fast_concat([deepcopy(general_context_features), deepcopy(list_change_context_features)]) #dlete position code in this line in concatenation
 
                 
                 episodic_image = EpisodicImage(word_list[j], current_context_features, list_num, 0)
@@ -74,8 +77,7 @@ function simulate_rem()
                 # end
 
                 # target and nontarget stored into studied pool 
-                studied_pool[j, list_num] = episodic_image
-                studied_pool_word_rp[j, list_num] = episodic_image.word
+                studied_pool[list_num][j] = episodic_image
             end
 
             # study_list_context = deepcopy(list_change_context_features);
@@ -84,49 +86,40 @@ function simulate_rem()
 
             # list_change_context_features only change between lists, change after each list;
             # list_change_context_features use as a record, to reinstate in probe generation 
-            # test_list_context_change change between study and test, & change/reinstate after each test, discard after each list;
+            # Define a function for drifting context features
 
-             #context drift below for both 
+
+            # Apply the drift function to both changing and unchanging contexts
+            ##DRIFT between study and test
+            # this essentially could be moved to drfit_between_list function, but I'll leave that for now....
             for _ in 1:n_driftStudyTest[list_num]
+                drift_ctx_betweenStudyAndTest!(test_list_context_change, p_driftAndListChange, Geometric(g_context))
 
-                # drift for changing context
-                for cf in eachindex(test_list_context_change)
-                    if rand() < p_driftAndListChange #cf.change_probability # this equals p_change
-                        test_list_context_change[cf] = rand(Geometric(g_context)) + 1
-                    end
-                end
-
-                # drift for unchanging context
                 if is_UnchangeCtxDriftAndReinstate
-                    for cf in eachindex(test_list_context_unchange)
-                        if rand() < p_driftAndListChange
-                            test_list_context_unchange[cf] = rand(Geometric(g_context)) + 1
-                        end
-                    end
+                    drift_ctx_betweenStudyAndTest!(test_list_context_unchange, p_driftAndListChange, Geometric(g_context))
                 end
-            end
-
-            #studied_pool[:, list_num]
+            end   #studied_pool[:, list_num]
             # studied_pool[j, list_num]
-            probes = generate_probes(
+
+
+            # println("list $(list_num), ")
+            # @assert length(filter(prb -> prb.classification == :foil, probes)) == Int(n_probes / 2) "wrong number!"
+            # Assuming `generate_probes` now returns a tuple (probes, foils)
+            probes, foils = generate_probes(
                 list_change_context_features, 
                 test_list_context_change, 
                 general_context_features, 
                 test_list_context_unchange, 
                 list_num, 
                 deepcopy(current_list_words); 
+                list_num > 1 ? (last_list_words = deepcopy(last_list_words)) : ()
+            )
 
-                # check if this works later
-                list_num > 1 ? (last_list_words = deepcopy(last_list_words)) : ()  
-            )  
-            
-            # println("list $(list_num), ")
-            @assert length(filter(prb -> prb.classification == :foil, probes)) == Int(n_probes / 2) "wrong number!"
-            # @assert count(isdefined, studied_pool[list_num,:])== 20 "wrong studied"
+            @assert length(filter(isundef, studied_pool[list_num])) == length(foils) "The number of undefined items in studied_pool[:, list_num] does not match the length of foils"   # Fill the rest of the studied pool with the foils
 
+            # the place to start in each list is the same, becuase there are same number of new study item in each list 
+            studied_pool[list_num][n_studyitem+1:end] = [foil.image for foil in foils]  
 
-            studied_pool[n_words+1:n_words+Int(n_words / 2), list_num] = [i.image for i in filter(prb -> prb.classification == :foil, probes)] #fill in the rest 2/3 part of the studied pool
-            studied_pool_word_rp[n_words+1:n_words+Int(n_words / 2), list_num] = [i.image for i in filter(prb -> prb.classification == :foil, probes)] #fill in the rest 2/3 part of the studied pool
             results = probe_evaluation(image_pool, probes, list_change_context_features, general_context_features, sim_num)
             # println("ImagePoolNow", [i.word.item for i in image_pool])
             
@@ -134,18 +127,13 @@ function simulate_rem()
             for (ires, res) in enumerate(results) #1D array, length is 20 words
                 tt = res.is_target == :target ? true : false
                 row = [list_num, res.testpos, sim_num, res.decision_isold, tt, res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff] # Add more fields as needed
-                # results[]=(decision_isold = decision_isold, is_target = probes[i].classification, odds = odds, ilist_image=j,Nratio_imageinlist = nimages_activated/nimages, Nratio_iprobe = nav);
-                # odds = Float64[], Nratio_iprobe = Float64[], Nratio_iimageinlist = Float64[], ilist_image = Int[])
-                push!(df_inital, row)
+              push!(df_inital, row)
             end
+
             # Update list_change_context_features 
-            for _ in 1:n_between_listchange
-                for cf in eachindex(list_change_context_features)
-                    if rand() < p_driftAndListChange #cf.change_probability # this equals p_change
-                        list_change_context_features[cf] = rand(Geometric(g_context)) + 1
-                    end
-                end
-            end
+
+            drift_between_lists!(list_change_context_features, n_between_listchange, p_driftAndListChange)   # println([i.value for i in list_change_context_features])
+ 
             # list_change_context_features .= ifelse.(rand(length(list_change_context_features)) .<  p_driAndndListChange,rand(Geometric(g_context),length(list_change_context_features)) .+ 1,list_change_context_features)
             # println([i.value for i in list_change_context_features])
 
@@ -154,19 +142,11 @@ function simulate_rem()
         studied_pool = [studied_pool...]
         #final test here
 
-
-        for ccf in eachindex(general_context_features)
-            if rand() < final_gap_change #cf.change_probability # this equals p_change
-                general_context_features[ccf] = rand(Geometric(g_context)) + 1
-            end
-        end
-
+        #update change and unchanging context between study and test...
+        drift_ctx_betweenStudyAndTest!(general_context_features,final_gap_change,Geometric(g_context))
+        drift_ctx_betweenStudyAndTest!(list_change_context_features,final_gap_change,Geometric(g_context))
         # list_change_context_features
-        for ccf in eachindex(list_change_context_features)
-            if rand() < final_gap_change #cf.change_probability # this equals p_change
-                list_change_context_features[ccf] = rand(Geometric(g_context)) + 1
-            end
-        end
+
 
         if is_finaltest
             for icondition in [:forward, :backward, :true_random]
