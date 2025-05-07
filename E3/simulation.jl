@@ -12,9 +12,27 @@ function simulate_rem()
 
         #    sim_num=1
         image_pool = EpisodicImage[]
-        studied_pool = Array{EpisodicImage}(undef, n_probes + Int(n_probes / 2), n_lists) #30 images (10 Tt, 10 Tn, 10 Tf) of 10 lists
-        general_context_features = rand(Geometric(g_context), nU) .+ 1#[ContextFeature(rand(Geometric(g_context)) + 1, :general, p_change) for _ in 1:div(w_context, 2)] 
-        list_change_context_features = rand(Geometric(g_context), nC) .+ 1#[ContextFeature(rand(Geometric(g_context)) + 1, :list_change, p_change) for _ in 1:div(w_context, 2)]
+
+        # studied_pool contains all single appear img in iniital test, and no repeatition  
+        studied_pool = Vector{Vector{EpisodicImage}}(undef, n_lists) # Create a vector of vectors for each list
+        for list_num in 1:n_lists
+            studied_pool[list_num] = Vector{EpisodicImage}(undef, list_num == 1 ? total_probe_L1 * nItemPerUnit : total_probe_Ln * nItemPerUnit) # Different lengths for the first row vs. later rows
+        end   
+
+        current_list_words = filter(!isundef, studied_pool[:, list_num])
+        
+        # There can't be any undefined elements from last list in current study list, add this check here
+        if any(isundef, studied_pool[:, list_num-1])
+            error("studied_pool[:, list_num-1] contains undefined elements")
+        end   
+        if list_num > 1
+            last_list_words = filter(!isundef, studied_pool[:, list_num-1])
+        end
+
+        # studied_pool_word_rp is not image pool, it is word pool, it contains repeatitive imgs across lists. It contain absolute 
+        studied_pool_word_rp = Array{Word}(undef, n_probes + Int(n_probes / 2), n_lists) #30 images (10 Tt, 10 Tn, 10 Tf) of 10 lists 30+15=45 per list
+        general_context_features = rand(Geometric(g_context), nU) .+ 1#
+        list_change_context_features = rand(Geometric(g_context), nC) .+ 
 
 
 
@@ -57,23 +75,24 @@ function simulate_rem()
 
                 # target and nontarget stored into studied pool 
                 studied_pool[j, list_num] = episodic_image
+                studied_pool_word_rp[j, list_num] = episodic_image.word
             end
 
             # study_list_context = deepcopy(list_change_context_features);
-            test_list_context = deepcopy(list_change_context_features)
+            test_list_context_change = deepcopy(list_change_context_features)
             test_list_context_unchange = deepcopy(general_context_features)
 
             # list_change_context_features only change between lists, change after each list;
             # list_change_context_features use as a record, to reinstate in probe generation 
-            # test_list_context change between study and test, & change/reinstate after each test, discard after each list;
+            # test_list_context_change change between study and test, & change/reinstate after each test, discard after each list;
 
              #context drift below for both 
             for _ in 1:n_driftStudyTest[list_num]
 
                 # drift for changing context
-                for cf in eachindex(test_list_context)
+                for cf in eachindex(test_list_context_change)
                     if rand() < p_driftAndListChange #cf.change_probability # this equals p_change
-                        test_list_context[cf] = rand(Geometric(g_context)) + 1
+                        test_list_context_change[cf] = rand(Geometric(g_context)) + 1
                     end
                 end
 
@@ -89,19 +108,25 @@ function simulate_rem()
 
             #studied_pool[:, list_num]
             # studied_pool[j, list_num]
-            # println(studied_pool)#studdied pool has length of 30, so only take first 20
-            probes = generate_probes(word_list, list_change_context_features, test_list_context, general_context_features, test_list_context_unchange, position_code_all, list_num, studied_pool[1:n_probes,list_num]) #probe number is current list number, get probes of current list 
-            
+            probes = generate_probes(
+                list_change_context_features, 
+                test_list_context_change, 
+                general_context_features, 
+                test_list_context_unchange, 
+                list_num, 
+                deepcopy(current_list_words); 
 
-            # println("ImagePoolNow", [i.word.item for i in image_pool])
+                # check if this works later
+                list_num > 1 ? (last_list_words = deepcopy(last_list_words)) : ()  
+            )  
+            
             # println("list $(list_num), ")
             @assert length(filter(prb -> prb.classification == :foil, probes)) == Int(n_probes / 2) "wrong number!"
             # @assert count(isdefined, studied_pool[list_num,:])== 20 "wrong studied"
 
-            # foil stored
-            #    println(studied_pool[list_num,20])
-            #    println(studied_pool[list_num,21])
-            studied_pool[n_words+1:n_words+Int(n_words / 2), list_num] = [i.image for i in filter(prb -> prb.classification == :foil, probes)]
+
+            studied_pool[n_words+1:n_words+Int(n_words / 2), list_num] = [i.image for i in filter(prb -> prb.classification == :foil, probes)] #fill in the rest 2/3 part of the studied pool
+            studied_pool_word_rp[n_words+1:n_words+Int(n_words / 2), list_num] = [i.image for i in filter(prb -> prb.classification == :foil, probes)] #fill in the rest 2/3 part of the studied pool
             results = probe_evaluation(image_pool, probes, list_change_context_features, general_context_features, sim_num)
             # println("ImagePoolNow", [i.word.item for i in image_pool])
             

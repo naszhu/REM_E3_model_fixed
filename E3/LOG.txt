@@ -177,3 +177,21 @@ For E3 prediction trys:
 
 - match the change log file
 =========================================================================================================== =#
+
+
+NOTICE and CAREFUL!!!!!!!!!!!!!!!!!
+
+1. Current ignore changing testpos for targets for the studeid item in study_pool, becuase its initialy saved during study, and it dones't have any later assignments, becuase all stuff done are with deep copy (the words have their specific appearance) 
+
+
+"""
+OK, right now, I'm using mutable sturct word, later can change this (and EI) to unmutable struct, by changing all current test specific properties to be studypos_appear1, _appear2, then don't assign any current property in structure of word,maybe just do that in episodic image.... Welll. I will leave that for later optimization...
+"""
+
+
+------------------------
+WORKING LOGIC
+
+- The Word struc have its specific appearance (the reapatitive word in different list will get different word reference); So in final test, for the saved images that will be used (study_pool in generaiting final_probes and images_pool for test), a study1=xx, study2=xx, should be added to word struc. But, not doing this right now. maybe can figure out how to do that more effeiciently later. ....
+
+

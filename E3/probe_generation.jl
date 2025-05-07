@@ -5,98 +5,165 @@
 input: studied word list; context features (word_change will modifed from the current list last word's context features)
 Return: probe
 
-list_change_features: list feature, same as studied one
-test_list_context: changed RI after study, continuous reinstate in test
+list_change_features_ref: This is to be stored as a correction of the list-change context features
+list feature, same as studied one
+list_change_features_dynamic: changed RI after study, continuous reinstate in test
 
 add probe type now.. 
+
+Delete : position_code_all::Vector{Vector{Int64}}
+
+* probe generation use context of current (flowed) context, so will be the same for any probe types
 """
-function generate_probes(studied_words::Vector{Word}, list_change_features::Vector{Int64}, test_list_context::Vector{Int64}, general_context_features::Vector{Int64}, test_list_context_unchange::Vector{Int64}, position_code_all::Vector{Vector{Int64}}, list_num::Int64,studied_pool::Vector{EpisodicImage} )::Vector{Probe}
-    # here, not deep copy word_change_features is safe because even if it influence the original index, the word-change context features will be disgarded when this list ends  
+function generate_probes(
+    list_change_features_ref::Vector{Int64}, # Change_ctx reference
+    list_change_features_dynamic::Vector{Int64},   #Change ctx to be changed
+    unchange_features_ref::Vector{Int64}, # Unchange_ctx reference
+    unchange_features_dynamic::Vector{Int64}, #Unchange ctx to be changed
+    list_num::Int64,
+    studied_pool_currList::Vector{Word} #Pass word kinds in! Do not need IMG part
+    
+    ; #following are defult vars
+    # the next be an optional input, because list 1 dones't have lastlist_studeidpool...
+    studied_pool_lastList::Union{Vector{Word}, Nothing} = nothing,
+
+    probeTypeDesign_testProbe_L1::Dict{Symbol, Int} = probeTypeDesign_testProbe_L1,
+    probeTypeDesign_testProbe_Ln::Dict{Symbol, Int} = probeTypeDesign_testProbe_Ln
+    )::Vector{Probe}   # here, not deep copy word_change_features is safe because even if it influence the original index, the word-change context features will be disgarded when this list ends  
 
   # 
-    # probetypes = repeat([:target, :foil], outer=div(n_probes, 2)) |> shuffle!
-    probetypes = repeat([:target, :foil], outer=div(n_probes, 2)) |> shuffle!
+    if list_num == 1
+        probetypes = reduce(vcat, (fill(key, value * nItemPerUnit) for (key, value) in probeTypeDesign_testProbe_L1)) |> shuffle!
+    else 
+        probetypes = reduce(vcat, (fill(key, value * nItemPerUnit) for (key, value) in probeTypeDesign_testProbe_Ln)) |> shuffle!
+    end
+    
+    foilnew_symbol_tuple = (:F, Symbol(":Fn+1"));
+    Fb_symbol_tuple = (:Tn, :Fn, :SOn);
+    T_target_tuple = (:T, Symbol("Tn+1"));
+
+    
     probes = Vector{Probe}(undef, length(probetypes))
 
-    words = filter(word -> word.type == :T_target, studied_words) |> shuffle! |> deepcopy
-    # println("List $(list_num)")
-    # test
-    stdpos  = 0;
-    for i in eachindex(probetypes)
-        # println("probe$(i)")
-        if probetypes[i] == :target # 
-            target_word = pop!(words) #pop from pre-decided targets
-            stdpos += 1
-            # testpos = 
-        elseif probetypes[i] == :foil  # Foil case
-            target_word = Word(randstring(8), generate_features(Geometric(g_word), w_word), :T_foil, 0) #insert studypos 0
-        else
-            error("probetypewrong")
-        end
+    # Group studied_pool_currList images by their type_general into a dictionary
+    ####Type general:
+    # T; Tn; SO; SOn; F; Fn
 
-         # reinstate changing context: test_list_context
-        nct = length(test_list_context)
-        for ict in eachindex(test_list_context)
-            if ict < Int(round(nct * p_reinstate_context)) #stop reinstate after a certain number of features
+    #only 2 kinds need to be drawn from current studypool; those of type target  
+    # Keep in mind to check later: needs a deepcopy???
+    studied_pool_currlist_by_type = Dict(
+        :T => filter(img -> img.word.type_general == :T, studied_pool_currList)|> shuffle!,
+        Symbol("Tn+1") => filter(img -> img.word.type_general == Symbol("Tn"), studied_pool_currList)|> shuffle!,
+    )
 
-                if (test_list_context[ict] != list_change_features[ict]) & (rand() < p_reinstate_rate)
-                    # println("here")
-                    test_list_context[ict] = list_change_features[ict] #it's ok, change list_change_features[i] won't change left
-                    # test_list_context[ict]=2222 #it's ok, change list_change_features[i] won't change left
-                end
+    # 3 types, last target, last foil, last studyonly
+    # only when list > 1, assign a prior list Dict, and then do the append in combinging the two Dict, 
+    # else, don't do anything just combine 
+    if list>1
+        #make dict
+        studied_pool_priorlist_by_type = Dict(
+            Symbol("Tn") => filter(img -> img.word.type_general == Symbol("Tn"), studied_pool_lastList)|> shuffle! ,
+
+            Symbol("Fn") => filter(img -> img.word.type_general == Symbol("Fn"), studied_pool_lastList) |> shuffle!,
+
+            :SOn => filter(img -> img.word.type_general == :SOn, studied_pool_lastList)|> shuffle!
+        )
+        #combine the two dictionaries
+        for key in keys(studied_pool_priorlist_by_type)
+            if haskey(studied_pool_currlist_by_type, key) #check if current key exist in other Dict. it actually shouldn'T
+    
+                error("Should have key overlaps")
+                append!(studied_pool_currlist_by_type[key], studied_pool_priorlist_by_type[key])
             else
-                # test_list_context[ict]=list_change_features[ict] #the rest context doesn't change or reinstate
+                studied_pool_currlist_by_type[key] = studied_pool_priorlist_by_type[key]
             end
-            # println("$(list_change_features)")
+        end
+        
+    end
+    
+    # would equal study_poolcurrlist no matter list 1 or >list1
+    combined_studied_pool_by_type = studied_pool_currlist_by_type
+
+
+        
+    for i in eachindex(probetypes) #should be 1-30
+        # println("probe$(i)")
+        # haskey(Dict(:a => 1, :b => 2), :ff) => return false
+        if haskey(combined_studied_pool_by_type, probetypes[i]) # Check if probetype matches a key in the combined dictionary
+            
+            target_word = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
+            target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
+            target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
+            target_word.type_specific = probetypes[i] #update the type_specific
+
+        elseif probetypes[i] in (:F, Symbol("Fn+1"))
+            #if combined_studiedpool dones't have it, (don't have the type in prior list, don't have it in current list, that means the type is either Fn or Fn)
+                    
+        # out of T; Tn; SO; SOn; F; Fn
+            pt_general = probetypes[i] == :F ? :F : Symbol("Fn")
+
+            target_word = 
+            Word(
+                randstring(8), 
+                generate_features(Geometric(g_word), w_word), 
+                pt_general, #type_general, either F or Fn (not Fn+1)
+
+                probetypes[i], #type_specific
+                0, #study pos: 0
+                i, #test position 
+
+                probetypes[i] == :F ? false : true, #is_repeat_type
+                probtypes[i]== :F, #type1, will be :F whatsoever
+                probtypes[i]== :F ? :none : :Fb #type2, general type, 
+
+                #the last two assignment could check in const beginnig clarification line on 1, 2 for each line
+            ) # Insert studypos 0
+        else
+            error("probetype not in the list")
         end
 
 
-        # reinstate unchange context test_list_context_unchange
-        if is_UnchangeCtxDriftAndReinstate
-            nct = length(test_list_context_unchange)
-            for ict in eachindex(test_list_context_unchange)
-                if ict < Int(round(nct * p_reinstate_context))
+        # Combine the two loops into one function to avoid redundancy
+        # Reinstate changing context for each test position
+        reinstate_context_duringTest!(list_change_features_dynamic, list_change_features_ref)
 
-                    if (test_list_context_unchange[ict] != general_context_features[ict]) & (rand() < p_reinstate_rate)
-                        # println("here")
-                        test_list_context_unchange[ict] = general_context_features[ict] #it's ok, change list_change_features[i] won't change left
-                        # test_list_context[ict]=2222 #it's ok, change list_change_features[i] won't change left
-                    end
-                else
-                    # test_list_context[ict]=list_change_features[ict] #the rest context doesn't change or reinstate
-                end
-                # println("$(list_change_features)")
-            end
-        end
-
-        # println("$(test_list_context)")
-        current_studypos = probetypes[i] == :target ? target_word.studypos : 0;
-
+        # Reinstate unchanging context if applicable
+        if is_UnchangeCtxDriftAndReinstate #true
+            reinstate_context_duringTest!(unchange_features_dynamic, unchange_features_ref)
+        end   # println("$(list_change_features_dynamic)")
+            
+        #Target word is unique deep copied, so shouldn't overlap. get only current studypos, not a prior one
+        current_studypos = target_word.initial_studypos;
         current_testpos = i; 
 
-
-        current_poscode = probetypes[i] == :target ? position_code_all[current_studypos] : rand(Geometric(g_context), w_positioncode) .+ 1
-        # println("currentprobetype is $(probetypes[i]), position is $(current_studypos)")
-
-        current_context_features = fast_concat([deepcopy(test_list_context_unchange), deepcopy(test_list_context), current_poscode]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
-        # current_context_features = deepcopy(test_list_context); #here needs a deepcopy, otherwise the front remembered context change with later ones  
-
-
-        # probes[i] = Probe(EpisodicImage(target_word, current_context_features, list_num), probetypes[i], target_word.studypos ,i)
-        probes[i] = Probe(EpisodicImage(target_word, current_context_features, list_num, current_testpos), probetypes[i] ,current_testpos)
+        current_context_features = fast_concat([deepcopy(unchange_features_dynamic), deepcopy(list_change_features_dynamic)]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
         
-        if probetypes[i] == :target
 
-            matching_image = findfirst(img -> img.word.item == target_word.item, studied_pool)
+        probes[i] = Probe(
+            # appearnum: if old kind, second time appear
+            EpisodicImage(target_word, current_context_features, list_num, probetypes[i] in Fb_symbol_tuple ? 2 : 1),
+            
+            probetypes[i] in T_target_tuple ? :target : :foil, #target or foil
+            probetypes[i] in  T_target_tuple ? :T : probetypes[i] in Fb_symbol_tuple ? :Fb : :F #general type of probe, F, Fb or T
+            )
+        
 
-            if matching_image !== nothing
-                studied_pool[matching_image].initial_testpos_img = current_testpos #update the test position of the image in the studied pool
-            else
-                error("Image not found in studied pool")
-            end
-        end
+        # Commented the following lines because studied_pool is not carried in current function right now, but study_pool did have its images to be stored during study, meaning they won't have a test position assigned, 
+        # BUT this is currently IGNORED (unassigned testpos for studied_pool), because the current testpos will not be used for prediction yet in final test, as a start 
+        # Later, modify the testpos (of either appear 1 or appear 2 if we need, but now, ignore)  
+
+        # if probetypes[i] == :target
+
+        #     matching_image = findfirst(img -> img.word.item == target_word.item, studied_pool)
+
+        #     if matching_image !== nothing
+        #         studied_pool[matching_image].initial_testpos_img = current_testpos #update the test position of the image in the studied pool
+        #     else
+        #         error("Image not found in studied pool")
+        #     end
+        # end
         # println("List $(list_num),probe $(i)")
-        # # println("contextf1 $(list_change_features)")
+        # # println("contextf1 $(list_change_features_ref)")
         # println("contextf2 $(current_context_features[31:end])")
 
     end
@@ -112,10 +179,10 @@ end
     
     Add, make initial_testpos in probes
     """
-function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::Symbol, general_context_features::Vector{Int64}, list_change_context_features::Vector{Int64})::Vector{Probe}
+function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::Symbol, unchange_features_ref::Vector{Int64}, list_change_context_features::Vector{Int64})::Vector{Probe}
 
     listcg = deepcopy(list_change_context_features)
-    generalcg = deepcopy(general_context_features);
+    generalcg = deepcopy(unchange_features_ref);
     # num_images = length(studied_pool)
     studyPool_Img_byList = Dict{Int64,Vector{EpisodicImage}}()
     for img in studied_pool

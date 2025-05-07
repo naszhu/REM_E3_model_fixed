@@ -54,6 +54,11 @@ probeTypeDesign_testProbe_Ln = Dict(
     # Symbol("SOn+1") => 0, # Cn+1
 )
 
+#following stores total number of NEW probes neede in each list
+total_probe_L1 = 15;
+total_probe_Ln = 12; #remember to *3 for item per unit
+
+nItemPerUnit=3 #how many units in E3 per type probe   
 # =============================================================================
 # -----------------------------------------
 """
@@ -64,7 +69,8 @@ n_simulations = is_finaltest ? 100 : 500;
 const n_finalprobs = 420;
 
 const n_units_time = 13#number of steps 
-                                                                               nItemPerUnit=3 #how many units in E3 per type probe                                                                                                                                       
+
+
 n_units_time_restore = n_units_time #only applies for adding traces now. 
 n_units_time_restore_t = n_units_time_restore  # -3
 n_units_time_restore_f = n_units_time_restore_t # -3

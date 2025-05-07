@@ -16,15 +16,22 @@
 # :Fn (Fnn) --      appearnum=2=Fb; 1=F; 2=Fb
 
 
-struct Word
+"""
+OK, right now, I'm using mutable sturct word, later can change this (and EI) to unmutable struct, by changing all current test specific properties to be studypos_appear1, _appear2, then don't assign any current property in structure of word,maybe just do that in episodic image.... Welll. I will leave that for later optimization...
+"""
+mutable struct Word
     item_code::String #modify from name item
     word_features::Vector{Int64} #just renadom code assigned 
     type_general::Symbol #modified from name: general
+    
+    # 3 current test specific properties
+    type_specific::Symbol # specific current type; 
     initial_studypos::Int64 #change this to make it consistent 
-    initial_testpos::Int64
+    initial_testpos::Int64 #CURRENT! TESTPOS (don't have prior study/test pos right now)
+    
     is_repeat_type::Bool #True if this word is a repeatiive one, False if not
-    type1:: Symbol #
-    type2:: Symbol #
+    type1:: Symbol #general type; of first appear
+    type2:: Symbol #general type; possible to be :none, which means not exist
 end
 
 """
@@ -35,7 +42,7 @@ mutable struct EpisodicImage
     context_features::Vector{Int64}
     list_number::Int64
     # type_current::Symbol #all 9 kinds of types; tell img of current list 
-    # appearnum::Int64 #number of times this image appears across list
+    appearnum::Int64 #number of times this image appears across list
 end
 
 
@@ -49,6 +56,6 @@ struct Probe
     image::EpisodicImage
     ProbeTypeSimple::Symbol #simply :target or :foil; modified from name classfication
     ProbeTypeGeneral::Symbol # :T; :F, :Fb (3 kinds, new Target, new Foil, and all inherented are foils)
-    ProbeTypeDetail::Symbol # 7 kinds: :T; :Tn+1; :F; :Fn+1; :Tn :Fn :SOn
-    appearnum::Int64 #appearnum used here but not for study list, because only Foil will have a second appear anyways
+    # ProbeTypeDetail::Symbol # 7 kinds: :T; :Tn+1; :F; :Fn+1; :Tn :Fn :SOn
+    # appearnum::Int64 #appearnum used here but not for study list, because only Foil will have a second appear anyways
 end
