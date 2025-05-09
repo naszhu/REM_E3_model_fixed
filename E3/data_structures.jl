@@ -30,7 +30,7 @@ mutable struct Word
     initial_testpos::Int64 #CURRENT! TESTPOS (don't have prior study/test pos right now)
     
     is_repeat_type::Bool #True if this word is a repeatiive one, False if not
-    type1:: Symbol #general type; of first appear
+    type1:: Symbol #general type; of first appear, of type T, F, SO, Fb or none
     type2:: Symbol #general type; possible to be :none, which means not exist
 end
 

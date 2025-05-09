@@ -26,18 +26,20 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
         iimage = EpisodicImage(
             #Word:
-            Word(iprobe_img.word.item, #item
-            fill(0, length(iprobe_img.word.word_features)), #word features
-            iprobe_img.word.type_general, #type_general
-            iprobe_img.word.initial_studypos, #initial_studypos
-            iprobe_img.word.initial_testpos #initial_studypos
+            Word(iprobe_img.word.item_code, #item_code
+                fill(0, length(iprobe_img.word.word_features)), #word features
+                iprobe_img.word.type_general, #type_general
+                iprobe_img.word.type_specific, #type_specific
+                iprobe_img.word.initial_studypos, #initial_studypos
+                iprobe_img.word.initial_testpos, #initial_studypos
+                iprobe_img.word.is_repeat_type, #is_repeat_type
+                iprobe_img.word.type1, #type1
+                iprobe_img.word.type2 #type2
             ), 
-            #Context_features:
-            zeros(length(iprobe_img.context_features)), 
-            #List_Number; 
-            iprobe_img.list_number, 
-            #Type_Current:
-            iprobe_img.type_current)
+            zeros(length(iprobe_img.context_features)),#Context_features: 
+            iprobe_img.list_number,#List_Number; 
+            iprobe_img.appearnum #appearnum
+        )
         
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
@@ -54,55 +56,26 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
     if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
+
         for _ in 1:n_units_time_restore
-            for i in eachindex(iprobe_img.word.word_features)
-                j = iimage.word.word_features[i]
-                if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                    iimage.word.word_features[i] = rand() < u_star[end] ? (rand() < c_storeintest ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j # 0.04 to u_star_context[2]
-                end
-            end
+            # Update word features
+            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest, g_word)
 
-
-            for ic in eachindex(iprobe_img.context_features)
-                j = iimage.context_features[ic]
-
-                if j == 0
-                    # println(j,!is_onlyaddtrace)
-                    #u_star_context to 0.04
-                        iimage.context_features[ic] = rand() < u_star_context[end]+u_advFoilInitialT ? (rand() < c_context ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j
-
-                    # iimage.context_features[ic] = rand() < 1 ? (rand() < 1 ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j;
-                end
-
-            end
+            # Update context features
+            # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
+            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context, g_context)
         end
+
+
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        for i in eachindex(iprobe_img.word.word_features)
-            j = iimage.word.word_features[i]
+        restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-                if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                    # println("success")
-                    # println("now",j,iprobe_img.word.word_features[i])
-                    iimage.word.word_features[i] = rand() < p_recallFeatureStore ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore
-
-                end
-            # end
-        end
-
-        for ic in eachindex(iprobe_img.context_features)
-            j = iimage.context_features[ic]
-
-            if (j == 0)|((j!=0) & (j!= iprobe_img.context_features[ic]) ) 
-                iimage.context_features[ic] = rand() < p_recallFeatureStore ? iprobe_img.context_features[ic] : j 
-                # iimage.context_features[ic] = rand() < 1 ? (rand() < 1 ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j;
-            end
-
-        end
-
+        restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
+        
 
         # the following makes sure that we actually must need to restore context.
         !is_restore_context ? error("context restored in initial is not well written this part") : nothing
@@ -131,18 +104,21 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
         iimage = EpisodicImage(
             #Word:
-            Word(iprobe_img.word.item, 
-            fill(0, length(iprobe_img.word.word_features)), 
-            iprobe_img.word.type_general, 
-            iprobe_img.word.initial_studypos,
-            iprobe_img.word.initial_testpos
+            Word(iprobe_img.word.item_code, #item_code
+                fill(0, length(iprobe_img.word.word_features)), #word features
+                iprobe_img.word.type_general, #type_general
+                iprobe_img.word.type_specific, #type_specific
+                iprobe_img.word.initial_studypos, #initial_studypos
+                iprobe_img.word.initial_testpos, #initial_studypos
+                iprobe_img.word.is_repeat_type, #is_repeat_type
+                iprobe_img.word.type1, #type1
+                iprobe_img.word.type2 #type2
             ), 
-            #Context_features:
-            zeros(length(iprobe_img.context_features)), 
-            #List_Number;
-            iprobe_img.list_number, 
-            #Type_Current:
-            iprobe_img.type_current)
+            zeros(length(iprobe_img.context_features)),#Context_features: 
+            iprobe_img.list_number,#List_Number; 
+            iprobe_img.appearnum #appearnum
+        )
+
 
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
@@ -158,33 +134,18 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))
 
         for _ in 1:n_units_time_restore
-            for i in eachindex(iprobe_img.word.word_features)
-                j = iimage.word.word_features[i]
 
-                # OH, this was wrong in previous version, it should only be 0 becuase this is add trace, only add on those that is not currently there
-                # !This makes storage of new trace in test became stronger than storage of new trace in study! 
-                if (j == 0) 
+            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest, g_word)
 
-                    iimage.word.word_features[i] = rand() < u_star[end] ? (rand() < c_storeintest ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j # 0.04 to u_star_context[2]
-                end
-            end
+            # if iprobe_img.list_number == 1
+
+                add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[iprobe_img.list_number], c_context, g_context)
+            # else
+                # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context, g_context)
+            
+            # end
 
 
-            for ic in eachindex(iprobe_img.context_features)
-                j = iimage.context_features[ic]
-
-                if j == 0
-                    # println(j,!is_onlyaddtrace)
-                    #u_star_context to 0.04
-                    if iprobe_img.list_number == 1
-                        iimage.context_features[ic] = rand() < u_star_context[iprobe_img.list_number] ? (rand() < c_context ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j
-                    else
-                        iimage.context_features[ic] = rand() < u_star_context[end]+u_advFoilInitialT+0.1 ? (rand() < c_context ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j
-                    end
-                    # iimage.context_features[ic] = rand() < 1 ? (rand() < 1 ? iprobe_img.context_features[ic] : rand(Geometric(g_context)) + 1) : j;
-                end
-
-            end
         end
 
 

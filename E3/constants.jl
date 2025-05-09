@@ -28,7 +28,7 @@ probeTypeDesign_study = Dict(
     Symbol("Tn+1") => 1, 
     :T => 4, 
     :SO => 4, 
-    :Symbol("SOn+1") => 1)
+    Symbol("SOn+1") => 1)
 
 probeTypeDesign_testProbe_L1 = Dict(
     :T => 4,       # B
