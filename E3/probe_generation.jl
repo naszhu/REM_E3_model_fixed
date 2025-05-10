@@ -25,7 +25,7 @@ function generate_probes(
     
     ; #following are defult vars
     # the next be an optional input, because list 1 dones't have lastlist_studeidpool...
-    studied_pool_lastList::Union{Vector{Word}, Nothing} = nothing,
+    studied_pool_lastList = nothing,
 
     probeTypeDesign_testProbe_L1::Dict{Symbol, Int} = probeTypeDesign_testProbe_L1,
     probeTypeDesign_testProbe_Ln::Dict{Symbol, Int} = probeTypeDesign_testProbe_Ln
@@ -38,11 +38,10 @@ function generate_probes(
         probetypes = reduce(vcat, (fill(key, value * nItemPerUnit) for (key, value) in probeTypeDesign_testProbe_Ln)) |> shuffle!
     end
     
-    foilnew_symbol_tuple = (:F, Symbol(":Fn+1"));
+    foilnew_symbol_tuple = (:F, Symbol("Fn+1"));
     Fb_symbol_tuple = (:Tn, :Fn, :SOn);
     T_target_tuple = (:T, Symbol("Tn+1"));
 
-    
     probes = Vector{Probe}(undef, length(probetypes))
 
     # Group studied_pool_currList images by their type_general into a dictionary
@@ -52,21 +51,21 @@ function generate_probes(
     #only 2 kinds need to be drawn from current studypool; those of type target  
     # Keep in mind to check later: needs a deepcopy???
     studied_pool_currlist_by_type = Dict(
-        :T => filter(img -> img.word.type_general == :T, studied_pool_currList)|> shuffle!,
-        Symbol("Tn+1") => filter(img -> img.word.type_general == Symbol("Tn"), studied_pool_currList)|> shuffle!,
+        :T => filter(iword -> iword.type_general == :T, studied_pool_currList)|> shuffle!,
+        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), studied_pool_currList)|> shuffle!,
     )
 
     # 3 types, last target, last foil, last studyonly
     # only when list > 1, assign a prior list Dict, and then do the append in combinging the two Dict, 
     # else, don't do anything just combine 
-    if list>1
+    if list_num>1
         #make dict
         studied_pool_priorlist_by_type = Dict(
-            Symbol("Tn") => filter(img -> img.word.type_general == Symbol("Tn"), studied_pool_lastList)|> shuffle! ,
+            Symbol("Tn") => filter(iword -> iword.type_general == Symbol("Tn"), studied_pool_lastList)|> shuffle! ,
 
-            Symbol("Fn") => filter(img -> img.word.type_general == Symbol("Fn"), studied_pool_lastList) |> shuffle!,
+            Symbol("Fn") => filter(iword -> iword.type_general == Symbol("Fn"), studied_pool_lastList) |> shuffle!,
 
-            :SOn => filter(img -> img.word.type_general == :SOn, studied_pool_lastList)|> shuffle!
+            :SOn => filter(iword -> iword.type_general == :SOn, studied_pool_lastList)|> shuffle!
         )
         #combine the two dictionaries
         for key in keys(studied_pool_priorlist_by_type)
@@ -88,6 +87,7 @@ function generate_probes(
     foils_collection = Vector{EpisodicImage}()
     for i in eachindex(probetypes) #should be 1-30
         # println("probe$(i)")
+        # println(probetypes[i])
         # haskey(Dict(:a => 1, :b => 2), :ff) => return false
         if haskey(combined_studied_pool_by_type, probetypes[i]) # Check if probetype matches a key in the combined dictionary
             
@@ -96,7 +96,9 @@ function generate_probes(
             target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
             target_word.type_specific = probetypes[i] #update the type_specific
 
-        elseif probetypes[i] in (:F, Symbol("Fn+1"))
+        elseif probetypes[i] in foilnew_symbol_tuple
+
+            # println("Foil")
             #if combined_studiedpool dones't have it, (don't have the type in prior list, don't have it in current list, that means the type is either Fn or Fn)
                     
         # out of T; Tn; SO; SOn; F; Fn
@@ -113,8 +115,8 @@ function generate_probes(
                 i, #test position 
 
                 probetypes[i] == :F ? false : true, #is_repeat_type
-                probtypes[i]== :F, #type1, will be :F whatsoever
-                probtypes[i]== :F ? :none : :Fb #type2, general type, 
+                :F, #type1, will be :F whatsoever
+                probetypes[i]== :F ? :none : :Fb #type2, general type, 
 
                 #the last two assignment could check in const beginnig clarification line on 1, 2 for each line
             ) # Insert studypos 0
@@ -146,13 +148,11 @@ function generate_probes(
             probetypes[i] in T_target_tuple ? :target : :foil, #target or foil
             probetypes[i] in  T_target_tuple ? :T : probetypes[i] in Fb_symbol_tuple ? :Fb : :F #general type of probe, F, Fb or T
         )
-        
 
         if probetypes[i] in foilnew_symbol_tuple
-            append!(foils_collection, probes[i].image) # Append the foil to the collection
-        end 
-
-        # Commented the following lines because studied_pool is not carried in current function right now, but study_pool did have its images to be stored during study, meaning they won't have a test position assigned, 
+            # println("foil")
+            push!(foils_collection, deepcopy(probes[i].image)) # Append a deep copy of the foil to the collection
+        end   # Commented the following lines because studied_pool is not carried in current function right now, but study_pool did have its images to be stored during study, meaning they won't have a test position assigned, 
         # BUT this is currently IGNORED (unassigned testpos for studied_pool), because the current testpos will not be used for prediction yet in final test, as a start 
         # Later, modify the testpos (of either appear 1 or appear 2 if we need, but now, ignore)  
 

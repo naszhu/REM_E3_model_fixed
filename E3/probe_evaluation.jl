@@ -36,7 +36,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
 
         ilist_probe = probes[i].image.list_number
-        i_testpos = probes[i].initial_testpos#1:20
+        i_testpos = probes[i].image.word.initial_testpos#1:20
 
         nl = length(likelihood_ratios)
         odds = 1 / nl * sum(likelihood_ratios)
@@ -62,7 +62,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (likelihood_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
             
 
-            results[n_listimagepool*(i-1)+j] = (decision_isold=decision_isold, is_target=probes[i].classification, odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.studypos, diff=diff)
+            # results[n_listimagepool*(i-1)+j] = (decision_isold=decision_isold, is_target=probes[i].classification, odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.studypos, diff=diff)
             # println(nl, " ",nimages_activated)
         end
     
@@ -70,7 +70,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
 
         if is_restore_initial
-            restore_intest(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, probes[i].classification, list_change_features, general_context_features, odds, likelihood_ratios_org, simu_i, i) 
+            restore_intest(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, odds) 
         end
 
         # println("i, $i, i_testpos, $i_testpos")

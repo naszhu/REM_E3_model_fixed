@@ -47,6 +47,7 @@ println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate
 a = [1 1 1; 1 1 1]
 include("utils.jl")
 
+include("feature_updates.jl")
 include("data_structures.jl")
 
 include("feature_generation.jl")

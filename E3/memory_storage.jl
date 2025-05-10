@@ -10,23 +10,28 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
     # intial_testpos_img, initilaize with 0, change whatever it is in probe creating. Well, the probe is created independently anyways
     new_image = EpisodicImage(
         #word
-        Word(word.item, 
+        Word(word.item_code, 
             zeros(Int64, length(word.word_features)), 
             word.type_general, 
+            word.type_specific,
             word.initial_studypos,
-            word.initial_testpos), 
+            word.initial_testpos,
+            word.is_repeat_type,
+            word.type1,
+            word.type2            
+            ), 
         #context_features
         zeros(length(context_features)), 
         #list_number
         list_num,
         #type_current
-        :dontKType #not sure a type can be assignedhere
+        1 #will be the first time appearance for all studied img
         ) # Zero word features
 
     #######Storage process: CONTENT & CONTEXT
         # go storage for n_units_time times
     #############STORAGE - content
-    for _ in 1:n_units_t #content intial adv??? . Maybe not needed but.. 
+    for _ in 1:n_units_time #content intial adv??? . Maybe not needed but.. 
 
         # This might need to be changed or considered
         for i in eachindex(new_image.word.word_features)
