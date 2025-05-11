@@ -132,10 +132,10 @@ n_driftStudyTest = round.(Int, ones(10) * 9) #7
 n_between_listchange = 12; #5;15; 
 const p_driftAndListChange = 0.03; # used for both of two n above
 
-
+p_ratio_unchanging_between_list = LinRange(0,1, n_lists) #0.1 #ratio of unchanging context between lists
 
 p_reinstate_rate = 0.5#0.4 #prob of reinstatement
-p_recallFeatureStore = 0.85;
+p_recallFeatureStore = 0.6;
 
 final_gap_change = 0.2; #0.21
 p_ListChange_finaltest = ones(10) * 0.55 #0.1 prob list change for final test

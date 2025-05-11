@@ -4,7 +4,7 @@
 function simulate_rem()
     # 1. Initialization
 
-    df_inital = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_iimageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], study_position=Int[], diff_rt=Float64[])
+    df_inital = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_iimageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], study_position=Int[], diff_rt=Float64[])
 
     df_final = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], condition=Symbol[], decision_isold=Int[], is_target=String[], odds=Float64[], rt=Float64[], initial_studypos=Int[], initial_testpos=Int[], study_pos=Float64[])
 
@@ -130,14 +130,18 @@ function simulate_rem()
             studied_pool[list_num][n_studyitem+1:end] = foils
 
             results = probe_evaluation(image_pool, probes, list_change_context_features, general_context_features, sim_num)
+            # println(results)
             # println("ImagePoolNow", [i.word.item for i in image_pool])
 
+            # df_inital = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_iimageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], study_position=Int[], diff_rt=Float64[])
 
-            # for (ires, res) in enumerate(results) #1D array, length is 20 words
-            #     tt = res.is_target == :target ? true : false
-            #     row = [list_num, res.testpos, sim_num, res.decision_isold, tt, res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff] # Add more fields as needed
-            #     push!(df_inital, row)
-            # end
+            for (ires, res) in enumerate(results) #1D array, length is 20 words
+                # tt = res.is_target == :target ? true : false
+
+                row = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff] # Add more fields as needed
+                
+                push!(df_inital, row)
+            end
 
             # Update list_change_context_features 
 
@@ -165,7 +169,7 @@ function simulate_rem()
                 results_final = probe_evaluation2(image_pool_bc, finalprobes)
                 for ii in eachindex(results_final)
                     res = results_final[ii]
-                    push!(df_final, [res.list_num, ii, sim_num, icondition, res.decision_isold, res.is_target, res.odds, res.rt, res.initial_studypos, res.initial_testpos, res.initial_studypos])
+                    push!(df_final, [res.list_num, ii, sim_num, icondition, res.decision_isold, res.is_target,res.type_general,res.type_specific,  res.odds, res.rt, res.initial_studypos, res.initial_testpos])
                 end
             end
         end
@@ -175,3 +179,5 @@ function simulate_rem()
 
     return df_inital, df_final
 end
+
+

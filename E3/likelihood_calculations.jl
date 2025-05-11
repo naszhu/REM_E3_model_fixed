@@ -54,7 +54,15 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
             #here is secon  stage would be wrong, including position code, unchage, change
 
             error("testing all context is mistaken right here")
-           
+        # Adjust the range of changing and unchanging context based on p_ratio
+            num_unchanging_to_use = round(Int, nU * p_ratio)
+            num_changing_to_use = round(Int, nC * (1 - p_ratio))
+
+            probe_context_adjusted = fast_concat([probe_context[1:num_unchanging_to_use], probe_context[nU+1:nU+num_changing_to_use+1]])
+            image_context_adjusted = fast_concat([image_context[1:num_unchanging_to_use], image_context[nU+1:nU+num_changing_to_use+1]])     
+            
+            context_likelihood = calculate_likelihood_ratio(probe_context_adjusted, image_context_adjusted, g_context, c)    
+        
         else  #not testing all context but change only, no unchange or position code
             context_likelihood = calculate_likelihood_ratio(probe_context[nU+1:w_context], image_context[nU+1:w_context], g_context, c)  # this step give prod(lambda); odds
         end

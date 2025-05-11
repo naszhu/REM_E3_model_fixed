@@ -61,8 +61,13 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
             nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (likelihood_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
             
-
-            # results[n_listimagepool*(i-1)+j] = (decision_isold=decision_isold, is_target=probes[i].classification, odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.studypos, diff=diff)
+            #i is each probe, j is list number
+            # testpos=i
+            # println(probes[i].ProbeTypeSimple,probes[i].ProbeTypeSimple==:target)
+            results[n_listimagepool*(i-1)+j] = (decision_isold=decision_isold, 
+            # type_general=probes[i].image.word.type_general,
+            type_general=probes[i].image.word.type_general,
+            type_specific=probes[i].image.word.type_specific, is_target=probes[i].ProbeTypeSimple==:target,  odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff)
             # println(nl, " ",nimages_activated)
         end
     
@@ -140,3 +145,4 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
 
     return results
 end
+
