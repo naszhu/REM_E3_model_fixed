@@ -108,10 +108,11 @@ u_star = vcat(0.06, ones(n_lists-1) * 0.06)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
-u_star_context=vcat(0.08, ones(n_lists-1)*0.05)
+#the following show adv for ONLY CHANGE context (second part of context)
+u_star_context=vcat(0.05, ones(n_lists-1)*0.05)
 u_adv_firstpos=0.05 #adv of first position in eeach list
 
-const c = 0.75 #coying parameter - 0.8 for context copying 
+const c = 0.75 #copying parameter - 0.8 for context copying 
 const c_storeintest = c
 const c_context = c
 # -----------------------------------------
@@ -132,7 +133,7 @@ n_driftStudyTest = round.(Int, ones(10) * 9) #7
 n_between_listchange = 12; #5;15; 
 const p_driftAndListChange = 0.03; # used for both of two n above
 
-p_ratio_unchanging_between_list = LinRange(0.8,0.3, n_lists) #0.1 #ratio of unchanging context between lists
+p_ratio_unchanging_between_list = LinRange(0.17,0, n_lists) #0.1 #ratio of unchanging context between lists
 
 p_reinstate_rate = 0.5#0.4 #prob of reinstatement
 p_recallFeatureStore = 0.6;
@@ -161,8 +162,9 @@ u_advFoilInitialT = 0;
 """
 Thresholds
 """
-context_tau = 100#foil odds should lower than this  
-criterion_initial = LinRange(1, 0.25, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
+context_tau = 1000#foil odds should lower than this  
+criterion_initial = LinRange(1, 0.25, n_probes);
+# criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final = LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
@@ -187,6 +189,7 @@ is_test_allcontext2 = true #is testing all context in final testZ
 is_test_changecontext2 = false #is testing only change context in final test
 
 is_restore_context = true # HEY! we do need to restore context
+is_strengthen_contextandcontent = false
 
 is_firststage = true;
 
@@ -201,7 +204,7 @@ is_UnchangeCtxDriftAndReinstate = true
 is_restore_final = true#followed by the next
 is_onlyaddtrace_final = false
 
-is_restore_forall = true
+
 # -----------------------------------------
 # =============================================================================
 

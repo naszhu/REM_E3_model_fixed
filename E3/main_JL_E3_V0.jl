@@ -138,7 +138,10 @@ CSV.write(csv_path2, all_results)
 
 # println(pwd())
 run(`Rscript E3/R_plots.r`)
-run(`bash -c "feh plot1.png &"`)
+# run(`bash -c "feh plot1.png &"`)
+# run(`xdg-open plot1.png`)
+# Using eog (Eye of GNOME, a lightweight image viewer):
+run(`bash -c "eog plot1.png & disown"`)
 
 if is_finaltest
     CSV.write(csv_path3, allresf)

@@ -8,16 +8,20 @@ library(gridExtra)
 all_results=read.csv("all_results.csv")
 DF=read.csv("DF.csv")
 
-all_results$is_target
+# all_results$is_target
 df1=all_results%>%mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
-mutate(is_target=type_general)%>%
+mutate(is_target=type_specific)%>%
+# filter(list_number%in%c(1))%>%
+mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
+                    is_target %in% c("F","Fn+1")~"F",
+                    TRUE~paste("Fb",is_target,sep="-")))%>%
     group_by(test_position,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
     group_by(test_position,is_target)%>%
     summarize(meanx=mean(meanx))%>%
     mutate(is_target=as.factor(is_target))%>%
     group_by(test_position)%>%
-    mutate(meanx_m=mean(meanx))
+    mutate(meanx_m=mean(meanx)) #mutate only here to add mean line
 
 p_in_20=ggplot(data=df1,aes(x=test_position,y=meanx,group=is_target))+
     geom_line(aes(color=is_target),size=1.5)+
@@ -96,13 +100,19 @@ p_in_20
 #     p_in_20in100
  
 # head(DF2)
-DF2 = DF %>% mutate(meanx = case_when(is_target=="true"~ meanx, TRUE ~ 1-meanx))%>%
+
+levels(as.factor(all_results$type_general))
+levels(as.factor(all_results$type_specific))
+DF2 = all_results %>% 
+mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
 # mutate(correct=decision_isold==is_targe)%>%
-mutate(test_position=as.numeric(test_position))%>%
+# mutate(test_position=as.numeric(test_position))%>%
 mutate(is_target=type_specific)%>%
 mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
                     is_target %in% c("F","Fn+1")~"F",
                     TRUE~paste("Fb",is_target,sep="-")))%>%
+group_by(list_number,is_target,simulation_number)%>%
+summarize(meanx=mean(correct))%>%
 group_by(list_number,is_target)%>%
 summarize(meanx=mean(meanx))
 p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
@@ -110,6 +120,10 @@ p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
     geom_line(aes(color=is_target),linewidth=1.5)+
     # ylim(c(0.65,1))+
     scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")+
+    
+    scale_color_manual(
+                       labels = c("F", "Fb-Fn", "Fb-SOn", "Fb-Tn", "T"), 
+                       values = c("blue", "green", "green", "green", "purple")) + # Customize legend title and labels
     theme(
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
@@ -167,7 +181,10 @@ p1
 
 df_serial=all_results%>%
     mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
-    mutate(is_target=type_general)%>%
+    mutate(is_target=type_specific)%>%
+# mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
+                    # is_target %in% c("F","Fn+1")~"F",
+                    # TRUE~paste("Fb",is_target,sep="-")))%>%
     group_by(study_position,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
     group_by(study_position,is_target)%>%
