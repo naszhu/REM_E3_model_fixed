@@ -95,7 +95,7 @@ Geometric parameters
 
 #####first half unchange context, second half change context, third half word-change context (third half is not added yet)
 
-const w_context = 50; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
+const w_context = 60; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
 w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
