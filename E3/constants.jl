@@ -132,7 +132,7 @@ n_driftStudyTest = round.(Int, ones(10) * 9) #7
 n_between_listchange = 12; #5;15; 
 const p_driftAndListChange = 0.03; # used for both of two n above
 
-p_ratio_unchanging_between_list = LinRange(0,1, n_lists) #0.1 #ratio of unchanging context between lists
+p_ratio_unchanging_between_list = LinRange(0.8,0.3, n_lists) #0.1 #ratio of unchanging context between lists
 
 p_reinstate_rate = 0.5#0.4 #prob of reinstatement
 p_recallFeatureStore = 0.6;
@@ -182,7 +182,7 @@ TRUE FALSE
 firststg_allctx = false; 
 firststg_allctx2 = false;
 
-is_test_allcontext = false #include general context? not testing all context in intial test
+is_test_allcontext = true #!! this should be true if want to apply add unchange into probe (acutaly, likelihood calc)
 is_test_allcontext2 = true #is testing all context in final testZ
 is_test_changecontext2 = false #is testing only change context in final test
 
@@ -201,6 +201,7 @@ is_UnchangeCtxDriftAndReinstate = true
 is_restore_final = true#followed by the next
 is_onlyaddtrace_final = false
 
+is_restore_forall = true
 # -----------------------------------------
 # =============================================================================
 
