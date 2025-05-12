@@ -95,7 +95,7 @@ Geometric parameters
 
 #####first half unchange context, second half change context, third half word-change context (third half is not added yet)
 
-const w_context = 60; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
+w_context = 50; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
 w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
@@ -215,9 +215,16 @@ Brt = 250#base time of RT
 Pi = 30#RT scaling
 # const w_context =60; #first half normal context, second half change context, third half word-change context
 
+println("prob of each feature change between list $(1-(1-p_driftAndListChange)^n_between_listchange)")
+println("prob of each feature drift between study and test $(1-(1-p_driftAndListChange)^n_driftStudyTest[1])")
+aa = (1 - (1 - p_driftAndListChange)^n_between_listchange);
+println("prob of feature change after 4 lists $(1-(1-aa)^8)")
+println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate)^3)")
 
-
-
+#for easiness of understanding 
+p_reinstate_context = (1-(1-p_reinstate_rate)^3);
+p_driftStudyTest = (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
+p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange);
 
 
 
