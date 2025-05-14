@@ -73,7 +73,7 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
         if is_firststage #true
 
             # second stage
-            if context_likelihood > context_tau # if pass context criterion 
+            if context_likelihood > context_tau[probe_img.list_number]; # if pass context criterion 
 
                 ## take off word_features[1:round(Int, w_word * p)]; just give the whole word features
                 word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features, image.word.word_features, g_word, c) 
@@ -145,7 +145,7 @@ function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::V
                 word_likelihoods[ii] = 344523466743  # Or another value to indicate context mismatch
             end
         else
-            
+
             error("first stage must be tested here")
             word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:round(Int, w_word * p)], image.word.word_features[1:round(Int, w_word * p)], g_word, c)
         end

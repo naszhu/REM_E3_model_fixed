@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 50 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -192,7 +192,8 @@ u_advFoilInitialT = 0;
 """
 Thresholds
 """
-context_tau = 1000#foil odds should lower than this  
+#TODO, apply first stage crition change to final test as well
+context_tau = LinRange(10, 1000, n_lists) #1000#foil odds should lower than this  
 criterion_initial = LinRange(1, 0.25, n_probes);
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
