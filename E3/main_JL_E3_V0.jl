@@ -155,7 +155,8 @@ run(`bash -c "eog plot1.png & disown"`)
 if is_finaltest
     CSV.write(csv_path3, allresf)
     run(`Rscript E3/R_plots_finalt.r`)
-    run(`bash -c "feh plot2.png &"`)
+    # run(`bash -c "feh plot2.png &"`)
+    run(`bash -c "eog plot2.png & disown"`)
 end
 
 
