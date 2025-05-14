@@ -12,7 +12,7 @@ restore content and/or context, here, context include change,unchange, and posit
 # end
 
 # function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, probetype::Symbol, list_change_features::Vector{Int64}, general_context_features::Vector{Int64}, odds::Float64, likelihood_ratios::Vector{Float64}, simu_i::Int64, initial_testpos::Int64)
-function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, odds::Float64, )
+function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, odds::Float64 )::Nothing
 
 
     if is_onlyaddtrace
@@ -62,6 +62,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
             # Update context features
             # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
+            @assert u_star_context[end] == u_star_context[1] "u_star_context is not well defined to be used in restore_intest for intial test, final test is dependant on u_star_context[ilist], but not yet like that in inital test, initial doens't have a u_star_context difference right now, notice"
             add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context, g_context)
         end
 
@@ -89,6 +90,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
     end
 
+    return nothing
 
 
 end
@@ -96,7 +98,7 @@ end
 
 
 
-function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, probetype::Symbol, odds::Float64, )
+function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, odds::Float64, finaltest_pos::Int64 )::Nothing
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
@@ -139,7 +141,15 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
             # if iprobe_img.list_number == 1
 
-                add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[iprobe_img.list_number], c_context, g_context)
+            # Issue 12, 13(ambigiou use const array)
+            # this problem occur u_star_context[probe_img.list_number] has problem here because should not use probe's list number but final test order list number, but I don't have that in my structure right now
+
+            iprobe_chunk_boundaries = cumsum([total_probe_L1 * nItemPerUnit_final * 2; fill(total_probe_Ln * nItemPerUnit_final * 2, 9)])  # First chunk has 15*2*2 items, rest 9 chunks have 12*2*2 items
+
+            # Determine the chunk index for the current probe
+            iprobe_chunk = findfirst(x -> finaltest_pos <= x, iprobe_chunk_boundaries)  
+
+            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context, g_context);
             # else
                 # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context, g_context)
             
@@ -161,79 +171,21 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             error("current prog is not written when doesn't store mismatch")
         end
 
-        for i in eachindex(iprobe_img.word.word_features)
-            j = iimage.word.word_features[i]
+        restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-            if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
+        restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
 
-                # println("Pass here")
-                iimage.word.word_features[i] = rand() < p_recallFeatureStore ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore replace 1
-            end
-        end
-
-
-        # for _ in 1:n_units_time_restore_f
-        ##Take off the for for loop of the number of steps to restore 
-
-        for i in eachindex(iprobe_img.word.word_features)
-            j=iimage.word.word_features[i]
-
-            #delete condition is_store_mismatch; decision_isold
-                if (j==0) | ((j!=0) & (j!=iprobe_img.word.word_features[i]) )
-                    iimage.word.word_features[i] = rand() < p_recallFeatureStore ? (rand() < 1 ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j;
-                else
-                end
-        end
-        # end
-
-        is_restore_context ? error("context restored in initial is not well written this part") : nothing
+        !is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
 
     end
-
-    if !is_onlyaddtrace_final #true
-        # error("Here")
-        if (decision_isold == 1) & (odds > recall_odds_threshold) 
-            # pass: strenghten
-            #single parameter for missing or replacing
-            # WARNING: rand(Geometric(g_word)) + 1) is not used here, there is no chance of an incorrect random value storage when judging old 
-
-            if !is_store_mismatch
-                error("current prog is not written when doesn't store mismatch")
-            end
-
-            for i in eachindex(iprobe_img.word.word_features)
-                j = iimage.word.word_features[i]
-                if (j == 0) | ((j != 0) & (decision_isold == 1) & (j != iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                    # println("Pass here")
-                    iimage.word.word_features[i] = rand() < 1 ? iprobe_img.word.word_features[i] : j #p_recallFeatureStore replace 1
-                end
-            end
-
-
-            for _ in 1:n_units_time_restore_f
-                for i in eachindex(iprobe_img.word.word_features)
-                    j=iimage.word.word_features[i]
-
-                    if decision_isold==1
-                        if (j==0) | ((j!=0) &( decision_isold==1) & (j!=iprobe_img.word.word_features[i]) & (is_store_mismatch))
-                            iimage.word.word_features[i] = rand() < 1 ? (rand() < 1 ? iprobe_img.word.word_features[i] : rand(Geometric(g_word)) + 1) : j;
-                        end
-                    else
-                    end
-                end
-            end
-
-            is_restore_context ? error("context restored in initial is not well written this part") : nothing
-        end
-
-    end
-
 
     # if (decision_isold == 0)
     if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))
         push!(image_pool, iimage)
     end
+
+    return nothing
 
 
     # if decision_isold ==1 println("afterchange",iimage) end

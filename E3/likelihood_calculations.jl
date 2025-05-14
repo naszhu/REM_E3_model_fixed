@@ -3,18 +3,18 @@
 
 
 
-function calculate_likelihood_ratio(probe::Vector{Int64}, image::Vector{Int64}, g::Float64, c::Float64)::Float64
+function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int64}, g::Float64, c::Float64)::Float64
 
-    lambda = Vector{Float64}(undef, length(probe))
+    lambda = Vector{Float64}(undef, length(probe_img))
 
-    for k in eachindex(probe) # 1:length(probe)
+    for k in eachindex(probe_img) # 1:length(probe_img)
         if image[k] == 0
             lambda[k] = 1
         elseif image[k] != 0
-            if image[k] != probe[k]# for those that doesn't match
+            if image[k] != probe_img[k]# for those that doesn't match
                 lambda[k] = 1 - c
                 # println(1-c)
-            elseif image[k] == probe[k]
+            elseif image[k] == probe_img[k]
                 lambda[k] = (c + (1 - c) * g * (1 - g)^(image[k] - 1)) / (g * (1 - g)^(image[k] - 1))
             else
                 error("error image match")
@@ -32,7 +32,7 @@ end
 
 """
 Initial test stage
-Input: A probe and the whole image_pool
+Input: A probe_img and the whole image_pool
 adding the filter here
 
 firststg_allctx removed
@@ -50,13 +50,9 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
 
 
         if is_test_allcontext  
-            #FALSE, don't test all context here
-            #here is secon  stage would be wrong, including position code, unchage, change
 
-            # error("testing all context is mistaken right here")
-        # Adjust the range of changing and unchanging context based on p_ratio
             ilist = probe_img.list_number     
-        num_unchanging_to_use = round(Int, nU * p_ratio_unchanging_between_list[ilist])
+            num_unchanging_to_use = round(Int, nU * p_ratio_unchanging_between_list[ilist])
             num_changing_to_use = round(Int, nC * (1 - p_ratio_unchanging_between_list[ilist]))
             # println(p_ratio)
             # println("here")
@@ -100,11 +96,11 @@ end
 
 
 
-function calculate_two_step_likelihoods2(probe::EpisodicImage, image_pool::Vector{EpisodicImage}, p::Float64, iprobe::Int64)::Tuple{Vector{Float64},Vector{Float64}}
+function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::Vector{EpisodicImage}, p::Float64, iprobe::Int64)::Tuple{Vector{Float64},Vector{Float64}}
 
     context_likelihoods = Vector{Float64}(undef, length(image_pool))
     word_likelihoods = Vector{Float64}(undef, length(image_pool))
-    probe_context = probe.context_features
+    probe_context = probe_img.context_features
 
     #all unchanging first half + partial changing 
     probe_context_f = fast_concat([probe_context[1:nU_f], probe_context[nU_f+1:nU_f+nC_f]])
@@ -115,6 +111,7 @@ function calculate_two_step_likelihoods2(probe::EpisodicImage, image_pool::Vecto
 
        
 
+        #ok, idk how much context; differetiate or not will be used in liklihood calc of final test for now, so just keep it as what it was for now
         if is_test_allcontext2  #true; currently goes here; first half unchange
             image_context_f = fast_concat([image_context[1:nU_f], image_context[nU_f+1:nU_f+nC_f]])
             context_likelihood = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c)  # .#  Context calculation
@@ -135,9 +132,9 @@ function calculate_two_step_likelihoods2(probe::EpisodicImage, image_pool::Vecto
             # second stage
             if context_likelihood > context_tau_final # if pass context criterion 
 
-                word_likelihoods[ii] = calculate_likelihood_ratio(probe.word.word_features, image.word.word_features, g_word, c)
+                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features, image.word.word_features, g_word, c)
 
-                # if iprobe !== 1 #CONTEXT FILTER: if not first probe tested, using the filter, 
+                # if iprobe !== 1 #CONTEXT FILTER: if not first probe_img tested, using the filter, 
                 #     # taking  out the very low similarity word_likelihoods
                 #     if word_likelihoods[ii] < tau_filter ##adding a filter
                 #         word_likelihoods[ii]=344523466743
@@ -148,7 +145,9 @@ function calculate_two_step_likelihoods2(probe::EpisodicImage, image_pool::Vecto
                 word_likelihoods[ii] = 344523466743  # Or another value to indicate context mismatch
             end
         else
-            word_likelihoods[ii] = calculate_likelihood_ratio(probe.word.word_features[1:round(Int, w_word * p)], image.word.word_features[1:round(Int, w_word * p)], g_word, c)
+            
+            error("first stage must be tested here")
+            word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:round(Int, w_word * p)], image.word.word_features[1:round(Int, w_word * p)], g_word, c)
         end
 
 

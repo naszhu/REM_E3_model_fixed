@@ -89,6 +89,7 @@ function generate_probes(
         # println("probe$(i)")
         # println(probetypes[i])
         # haskey(Dict(:a => 1, :b => 2), :ff) => return false
+        # println(probetypes[i])
         if haskey(combined_studied_pool_by_type, probetypes[i]) # Check if probetype matches a key in the combined dictionary
             
             target_word = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
@@ -182,11 +183,12 @@ end
 """Input the flattened studied pool, first 30 are t/n/f in list 1, and etc; give last list's list_change_cf to change from list to list for probes
     
     Add, make initial_testpos in probes
+Vec type for episodic image
     """
-function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::Symbol, unchange_features_ref::Vector{Int64}, list_change_context_features::Vector{Int64})::Vector{Probe}
+function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::Symbol, unchange_features_ref::Vector{Int64}, list_change_context_features::Vector{Int64})::Vector{Probe}
 
     listcg = deepcopy(list_change_context_features)
-    generalcg = deepcopy(unchange_features_ref);
+    unchangecg = deepcopy(unchange_features_ref);
     # num_images = length(studied_pool)
     studyPool_Img_byList = Dict{Int64,Vector{EpisodicImage}}()
     for img in studied_pool
@@ -202,8 +204,7 @@ function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::S
     elseif condition == :true_random
 
         # true random doesn't change list context during final test
-        all_images = vcat(values(studyPool_Img_byList)...)  # Combine all lists
-        shuffle!(all_images)  # Shuffle all images together
+        all_images = reduce(vcat, values(studyPool_Img_byList))  # Combine all lists efficiently   shuffle!(all_images)  # Shuffle all images together
         studyPool_Img_byList = Dict{Int64,Vector{EpisodicImage}}(1 => all_images)
         lists = keys(studyPool_Img_byList)
         # println(lists)
@@ -211,7 +212,9 @@ function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::S
 
     icount = 0
     for list_number in lists #lists is [1] for random condition
+
         icount += 1
+        #update the list_change_context_features for each list as they go in final test, but this doens't apply to random condi
         if (icount !=1) && (condition != :true_random)
             for cf in eachindex(listcg)
                 if rand() < p_ListChange_finaltest[icount] #cf.change_probability # this equals p_change
@@ -221,23 +224,27 @@ function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::S
         end
 
 
-        # for cf in eachindex(generalcg)
+        # for cf in eachindex(unchangecg)
         #     if rand() < 0.01 #cf.change_probability # this equals p_change
-        #         generalcg[cf] = rand(Geometric(g_context)) + 1
+        #         unchangecg[cf] = rand(Geometric(g_context)) + 1
         #     end
         # end
 
         # images hold pool_image of the current list, 
         images = studyPool_Img_byList[list_number]
-        images_Tt = filter(img -> img.word.type == :T_target, images) |> shuffle!
-        images_Tnt = filter(img -> img.word.type == :T_nontarget, images) |> shuffle!
-        images_Tf = filter(img -> img.word.type == :T_foil, images) |> shuffle!
+        image_groups = Dict(type => filter(img -> img.word.type_general == type, images) |> shuffle! for type in [:T, :Tn, :SO, :SOn, :F, :Fn]);
 
-        # Generate targets from shuffled list and foils anew
+        # images_T, images_Tn, Images_SO, images_Son, images_F, images_Fn = image_groups[:T], image_groups[:Tn], image_groups[:SO], image_groups[:SOn], image_groups[:F], image_groups[:Fn]   # Generate targets from shuffled list and foils anew
+
         if condition != :true_random
-            probe = fast_concat(fill.([:T_target, :T_nontarget, :T_foil, :F], [7, 7, 7, 21])) |> shuffle!
+
+            probe = reduce(vcat, (fill(key, value * nItemPerUnit_final) for (key, value) in probeTypeDesign_finalTest_L1)) |> shuffle!   
         else
-            probe = fast_concat(fill.([:T_target, :T_nontarget, :T_foil, :F], [7, 7, 7, 21] .* 10)) |> shuffle!
+            # random condition, 
+            # TODO: reduce complexity below, redesign Dict
+            # issue 9
+
+            probe = reduce(vcat, (fill(key, (probeTypeDesign_finalTest_Ln[key]*9 + probeTypeDesign_finalTest_L1[key]*1 ) * nItemPerUnit_final) for key in keys(probeTypeDesign_finalTest_Ln))) |> shuffle!
         end
 
         # Flagging when iprobe_chunk changes value
@@ -249,24 +256,43 @@ function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::S
 
             
             if condition == :true_random
-                iprobe_chunk = ceil(Int, iprobe / 42)  # Divide 420 into 10 chunks, each with 42 probes
 
-                #the following is to change context by chunk (of list) for random condition
-                # don't change context when (list in iprobe == 1) ||
+                # Only make changes at the start of every list (excluding the start of the first list)
+                # Calculate the chunk boundaries dynamically
+                iprobe_chunk_boundaries = cumsum([total_probe_L1 * nItemPerUnit_final * 2; fill(total_probe_Ln * nItemPerUnit_final * 2, 9)])  # First chunk has 15*2*2 items, rest 9 chunks have 12*2*2 items
 
-                if (iprobe!=1) && (iprobe_chunk != ceil(Int, (iprobe - 1) / 42))
-                    
-                    # println("iprobe ",iprobe, " iprobe_chunk ", iprobe_chunk, " flag ", iprobe_chunk != (ceil(Int, (iprobe - 1) / 42)))
+                # Determine the chunk index for the current probe
+                iprobe_chunk = findfirst(x -> iprobe <= x, iprobe_chunk_boundaries)   
+                # iprobe_chunk = findlast(x -> iprobe > x, iprobe_chunk_boundaries)
+                
+                # println(i)
+                # println("iprobe: ", iprobe)
+                # println("iprobe_chunk_boundaries: ", iprobe_chunk_boundaries)
+                # println([iprobe <= x for x in iprobe_chunk_boundaries])
+                # println(iprobe_chunk)
+
+                if (iprobe != 1) && (iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries)) && (iprobe_chunk > 1) 
+
+                    # println("iprobe ", iprobe, " iprobe_chunk ", iprobe_chunk, " flag ")
                     for cf in eachindex(listcg)
-                        if rand() < p_ListChange_finaltest[icount] #cf.change_probability # this equals p_change
+                        if rand() < p_ListChange_finaltest[icount] # cf.change_probability, this equals p_change
                             listcg[cf] = rand(Geometric(g_context)) + 1
                         end
                     end
-                end
+                end   # println("iprobe ",iprobe, " iprobe_chunk ", iprobe_chunk, " flag ", iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries))
 
-                # for cf in eachindex(generalcg)
+                # TODO: check iprobe_chunk correct use here, previously i was using count because i didn't add change into random condition throughout final random condi 
+
+                for cf in eachindex(listcg)
+                    if rand() < p_ListChange_finaltest[iprobe_chunk] #cf.change_probability # this equals p_change
+                        listcg[cf] = rand(Geometric(g_context)) + 1
+                    end
+                end
+                
+
+                # for cf in eachindex(unchangecg)
                 #     if rand() < p_driftAndListChange_final_ #cf.change_probability # this equals p_change
-                #         generalcg[cf] = rand(Geometric(g_context)) + 1
+                #         unchangecg[cf] = rand(Geometric(g_context)) + 1
                 #     end
                 # end
 
@@ -274,52 +300,56 @@ function generate_finalt_probes(studied_pool::Array{EpisodicImage}, condition::S
 
             global img = nothing  # Initialize img as nothing to refresh its value in each iteration
 
-            crrcontext = fast_concat([deepcopy(generalcg), deepcopy(listcg)]);
+            crrcontext = fast_concat([deepcopy(unchangecg), deepcopy(listcg)]);
 
+            if haskey(image_groups, probe[iprobe])
 
-            if probe[iprobe]==:T_target
+                global img = pop!(image_groups[probe[iprobe]])
 
-                global img = pop!(images_Tt) #this way, natrually assigns list number by the orignal image number, 
-                if condition== :true_random
-                   
-                    push!(probes, Probe(EpisodicImage(img.word, crrcontext, img.list_number,
-                     img.initial_testpos_img),:T_target, iprobe))
-                else
-                    push!(probes, Probe(EpisodicImage(img.word, crrcontext, list_number,
-                    img.initial_testpos_img),:T_target, iprobe))
+               
+                push!(probes, 
+                Probe(EpisodicImage(
+                    img.word, 
+                    crrcontext, 
+                    img.list_number, 
+                    img.appearnum), 
+                    :target, #has to be target right here  
+                    probe[iprobe]# the 5 general types are what as simple target foil in final test
+                ))
+
+                # println(probe[iprobe], image_groups)
+ 
+            elseif probe[iprobe] == :FF
+
+                if condition == :true_random
+
+                    global img = EpisodicImage(
+                        Word(randstring(8),
+                            rand(Geometric(g_word), w_word) .+ 1,
+                            :FF, 
+                            :FF, #type_specific; mathces above in final
+                            0, #study pos: 0
+                            iprobe, #test position
+
+                            false, #is_repeat_type
+                            :none, #type1, doesnt have a first or second appearr
+                            :none
+                            ), crrcontext, 0, 0)
+
+                    # for F, the list_number will always be only [1]
+                    push!(probes, 
+                    Probe(
+                        img, 
+                        :foil, #has to be foil here 
+                        :FF  #FF again
+                        ))
+                
+                else #the difference is where set listnumber for other conditions, not valid here. 
                 end
-
-            elseif probe[iprobe]==:T_nontarget
-
-                global img = pop!(images_Tnt)
-                if condition== :true_random
-                   
-                    push!(probes, Probe(EpisodicImage(img.word, crrcontext, img.list_number, img.initial_testpos_img), :T_nontarget, iprobe))
-                else
-                    push!(probes, Probe(EpisodicImage(img.word, crrcontext, list_number, img.initial_testpos_img),:T_nontarget, iprobe))
-                end
-
-            elseif probe[iprobe]==:T_foil
-
-                global img = pop!(images_Tf)
-
-
-                if condition== :true_random
-                   
-                    push!(probes, Probe(EpisodicImage(img.word, crrcontext, img.list_number, img.initial_testpos_img),:T_foil, iprobe))
-                else
-                    push!(probes, Probe(EpisodicImage(img.word, crrcontext, list_number, img.initial_testpos_img),:T_foil, iprobe))
-                end
-
-            elseif probe[iprobe]==:F
-
-                global img = EpisodicImage(Word(randstring(8), rand(Geometric(g_word), w_word) .+ 1, :F, 0), crrcontext, 0, 0)
-                # for F, the list_number will always be only [1]
-                push!(probes, Probe(img, :F, iprobe))  # Generate a new foil
+            
             else
                 error("probe type wrong!")
-            end
-
+            end  
         end
 
         # println([i.value for i in listcg])

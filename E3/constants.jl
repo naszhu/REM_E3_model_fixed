@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-
+is_finaltest = true
+n_simulations = is_finaltest ? 50 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -54,19 +54,49 @@ probeTypeDesign_testProbe_Ln = Dict(
     # Symbol("SOn+1") => 0, # Cn+1
 )
 
+probeTypeDesign_finalTest_L1 = Dict(
+    :T => 4,       # B
+    :Tn => 1, # Dn+1
+
+    :F => 4,       # Fn
+    :Fn => 1, # Fnn+1
+    
+    :SOn => 1,     # Cn
+    :SO => 4,
+    
+    :FF => 15# A
+    # Symbol("SOn+1") => 0, # Cn+1
+)
+
+probeTypeDesign_finalTest_Ln  = Dict(
+    :T => 4,
+    :Tn => 1,
+    :SO => 4,
+    :SOn => 1,
+    :F => 1, #this is diff from Ln
+    :Fn => 1,
+
+    :FF => 12,
+
+) 
+
+#[60, 48, 48, 48, 48, 48, 48, 48, 48, 48]
 #following stores total number of NEW probes neede in each list
 total_probe_L1 = 15;
 total_probe_Ln = 12; #remember to *3 for item per unit
 
 nItemPerUnit=3 #how many units in E3 per type probe   
+nItemPerUnit_final=2 #how many units in E3 per type probe   
 # =============================================================================
 # -----------------------------------------
 """
 Numbers of featuresl; etc
 """
-n_simulations = is_finaltest ? 100 : 500;
 
-const n_finalprobs = 420;
+
+const n_finalprobs = 492; #246*2; (120+120+30*4+9)/3*2*2
+const n_inEachChunk = [60, 48];
+#final test list 1 60 tests, and the rest list 48 tests
 
 const n_units_time = 13#number of steps 
 

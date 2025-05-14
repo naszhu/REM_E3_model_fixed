@@ -67,7 +67,9 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             results[n_listimagepool*(i-1)+j] = (decision_isold=decision_isold, 
             # type_general=probes[i].image.word.type_general,
             type_general=probes[i].image.word.type_general,
-            type_specific=probes[i].image.word.type_specific, is_target=probes[i].ProbeTypeSimple==:target,  odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff)
+            type_specific=probes[i].image.word.type_specific, 
+            is_target=probes[i].ProbeTypeSimple==:target,  
+            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff)
             # println(nl, " ",nimages_activated)
         end
     
@@ -91,23 +93,12 @@ end
 
 
 function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Probe})::Array{Any}
+
     results = Array{Any}(undef, length(probes))
     # println("now#$(length(probes))")
     for i in eachindex(probes)
 
         # _, likelihood_ratios = [calculate_two_step_likelihoods(probes[i].image, image) for image in image_pool] 
-        if i == 1
-            index = 1
-        else
-            index = searchsortedfirst(range_breaks_finalt, i) - 1
-        end
-        # println(index)
-        # if index != -1
-        #     P = P_s[index]
-        # else
-        #     error("Value out of range.")
-        # end
-
 
         _, likelihood_ratios_org = calculate_two_step_likelihoods2(probes[i].image, image_pool, 1.0, i)
         likelihood_ratios = likelihood_ratios_org |> x -> filter(e -> e != 344523466743, x)
@@ -115,31 +106,42 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
 
         # println(likelihood_ratios)
         odds = 1 / length(likelihood_ratios) * sum(likelihood_ratios)
-        # println(round(odds, digits=3), " some llikelihood ", likelihood_ratios[1], " ", likelihood_ratios[2], ", Ndenom: ", length(likelihood_ratios));
-        # round(odds, digits=3)
-        # for ill in likelihood_ratios
-        #     if ill > 1e5
-        #         println("$(ill)")
-        #         break
-        #     end
-        # end            
-        # println(" ")
 
-        crrchunk = ceil(Int, i / 42)
+        # Determine the current list based on the index `i`
+        if i <= n_inEachChunk[1]
+            crrchunk = 1
+        else
+            crrchunk = div(i - n_inEachChunk[1] - 1, n_inEachChunk[2]) + 2
+        end
+        # println(" ", i, " ", crrchunk)
+        # chunk assign correct here after printed check
+        
         criterion_final_i = criterion_final[crrchunk] #this need to be changed if 
 
         decision_isold = odds > criterion_final_i ? 1 : 0
 
         # pold = pcrr_EZddf(log(odds))
-        rt = Brt + Pi * abs(log(odds))
+        # rt = Brt + Pi * abs(log(odds))
 
         # Store results (modify as needed)
-        results[i] = (decision_isold=decision_isold, is_target=string(probes[i].classification), odds=odds, list_num=probes[i].image.list_number, rt=rt, initial_studypos=probes[i].image.word.studypos, initial_testpos = probes[i].image.initial_testpos_img ) #! made changes to results, format different than that in inital
+        results[i] = (decision_isold=decision_isold, 
 
+        test_position = i, #final test pos 
+        initial_testpos = probes[i].image.word.initial_testpos, 
+        initial_studypos=probes[i].image.word.initial_studypos,
+        type_specific =probes[i].image.word.type_specific,
+        type_general=probes[i].image.word.type_general,
+        is_repeat_type=probes[i].image.word.is_repeat_type,
+
+        is_target = probes[i].ProbeTypeSimple==:target,
+        odds=odds, list_num=probes[i].image.list_number ) #! made changes to results, format different than that in inital
+        
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in likelihood_ratios_org]);
         # restore_intest(image_pool,probes[i].image, decision_isold, argmax(likelihood_ratios));
         if is_restore_final
-            restore_intest_final(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, probes[i].classification, odds)
+
+            #Issue 12
+            restore_intest_final(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, odds, i);  #have to pass final testpos 
         end
     end
 

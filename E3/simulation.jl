@@ -6,7 +6,19 @@ function simulate_rem()
 
     df_inital = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_iimageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], study_position=Int[], diff_rt=Float64[])
 
-    df_final = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], condition=Symbol[], decision_isold=Int[], is_target=String[], odds=Float64[], rt=Float64[], initial_studypos=Int[], initial_testpos=Int[], study_pos=Float64[])
+    df_final = DataFrame(
+        list_number=Int[], #initial list number, not containing final list num yet 
+    test_position=Int[],
+    initial_studypos=Int[],
+    initial_testpos=Int[],
+    
+    type_specific=String[],
+    type_general=String[],
+    is_target=Bool[],
+
+    simulation_number=Int[], 
+    condition=String[], 
+    decision_isold=Int[],  odds=Float64[])
 
     for sim_num in 1:n_simulations
 
@@ -152,7 +164,8 @@ function simulate_rem()
 
         end
 
-        studied_pool = [studied_pool...]
+        studied_pool = vcat(studied_pool...)
+        # println(studied_pool)
         #final test here
 
         #update change and unchanging context between study and test...
@@ -161,15 +174,32 @@ function simulate_rem()
         drift_ctx_betweenStudyAndTest!(list_change_context_features, final_gap_change, Geometric(g_context))
         # list_change_context_features
 
+        
 
         if is_finaltest
-            for icondition in [:forward, :backward, :true_random]
+            # for icondition in [:forward, :backward, :true_random]
+            for icondition in [:true_random]
                 image_pool_bc = deepcopy(image_pool)
                 finalprobes = generate_finalt_probes(studied_pool, icondition, general_context_features, list_change_context_features)
                 results_final = probe_evaluation2(image_pool_bc, finalprobes)
+
                 for ii in eachindex(results_final)
+
                     res = results_final[ii]
-                    push!(df_final, [res.list_num, ii, sim_num, icondition, res.decision_isold, res.is_target,res.type_general,res.type_specific,  res.odds, res.rt, res.initial_studypos, res.initial_testpos])
+
+                    push!(df_final, 
+                    [res.list_num,  
+                    res.test_position,
+                    res.initial_studypos,   
+                    res.initial_testpos,
+
+                    replace(string(res.type_specific, r"n\+1" => "n_p1")),
+                    String(res.type_general),   
+                    res.is_target,
+
+                    sim_num, 
+                    String(icondition), 
+                    res.decision_isold, res.odds])
                 end
             end
         end

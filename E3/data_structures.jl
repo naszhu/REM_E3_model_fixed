@@ -3,7 +3,8 @@
 # Data Structures      
 
 #general: 
-# T; Tn; SO; SOn; F; Fn
+# T; Tn; SO; SOn; F; Fn 
+#      + FF for final t
 
 # :T (B) --         appearnum=1=T; 1=T; 2=none
 # :Tn+1 (Dn+1) --   appearnum=1=T; 1=T; 2=Fb
