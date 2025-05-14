@@ -41,7 +41,7 @@ I am not making EI specific to a list right now, to make it more general so that
 mutable struct EpisodicImage
     word::Word
     context_features::Vector{Int64}
-    list_number::Int64
+    list_number::Int64 #TODO: check later; only hold initial test list number for now
     # type_current::Symbol #all 9 kinds of types; tell img of current list 
     appearnum::Int64 #number of times this image appears across list
 end

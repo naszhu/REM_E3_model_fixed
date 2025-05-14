@@ -49,7 +49,7 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
 
 
 
-        if is_test_allcontext  
+        if is_test_allcontext  #true
 
             ilist = probe_img.list_number     
             num_unchanging_to_use = round(Int, nU * p_ratio_unchanging_between_list[ilist])
@@ -77,6 +77,7 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
 
                 ## take off word_features[1:round(Int, w_word * p)]; just give the whole word features
                 word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features, image.word.word_features, g_word, c) 
+                # println("$(probe_img.word.word_features), $(image.word.word_features), $(g_word), $(c), $(word_likelihoods)")
 
 
             else

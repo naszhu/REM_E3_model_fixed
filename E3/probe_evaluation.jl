@@ -107,6 +107,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         # println(likelihood_ratios)
         odds = 1 / length(likelihood_ratios) * sum(likelihood_ratios)
 
+        
         # Determine the current list based on the index `i`
         if i <= n_inEachChunk[1]
             crrchunk = 1
@@ -117,8 +118,11 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         # chunk assign correct here after printed check
         
         criterion_final_i = criterion_final[crrchunk] #this need to be changed if 
+        
+        decision_isold = odds > criterion_final_i ? 1 : 0;
 
-        decision_isold = odds > criterion_final_i ? 1 : 0
+
+        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(crrchunk), npass: $(length(likelihood_ratios)), cri $(criterion_final[crrchunk]) ,odds: $(odds)")
 
         # pold = pcrr_EZddf(log(odds))
         # rt = Brt + Pi * abs(log(odds))

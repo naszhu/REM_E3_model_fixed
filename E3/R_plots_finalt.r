@@ -14,8 +14,9 @@ allresf=read.csv("allresf.csv")
 
     # head(allresf)
     DF00 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target=="true") ~ 1,
+    decision_isold==0 & is_target=="false" ~1,TRUE ~ 0))%>%
     
-    decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
+     mutate(is_target=type_general)%>%
     mutate(test_position=as.numeric(test_position))%>%
     mutate(test_position_group=ntile(test_position,10))%>%
     group_by(test_position_group,is_target,condition)%>%
@@ -35,6 +36,7 @@ allresf=read.csv("allresf.csv")
     
     DF001 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, 
     decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
+    mutate(is_target=type_general)%>%
     mutate(list_number=as.numeric(list_number))%>%
     group_by(list_number,is_target,condition)%>%
     summarize(meanx=mean(correct))
@@ -69,13 +71,14 @@ allresf=read.csv("allresf.csv")
             y="prediction (Hits/Correct Rejection)",
             caption="Figure 3. Between List Final Test Results seen in Final Testing",
             color="Type",fill="Type")+
-        scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
+        # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
         theme(
                 plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
             plot.margin = margin(t = 10, b = 40),
             text=element_text(size=30) # Increase font size globally
-        )+
-        ylim(c(0.5,1))
+        )
+        # ylim(c(0.5,1))
+
 
 pf1
     #     DFff = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, 
@@ -118,7 +121,7 @@ pf1
     # # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
     #     # grid.arrange(p4,p1,p_serial,p_in_20,p10,p101,ncol = 2,nrow=3)
 
-    # DF001
+    # # DF001
 
 # head(DF_fbyi)
 # summary(DF_fbyi$posSum)
@@ -126,7 +129,8 @@ pf1
 # summary(DF_fbyi$initial_testpos)
 
     DF_fbyi = allresf %>% 
-        mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
+        mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, decision_isold==0 & is_target=="foil" ~1))%>%
+        # mutate(is_target=type_general )%>% #uhh, this creates prob
         select(correct,initial_studypos, initial_testpos,is_target,condition,simulation_number)%>%
         pivot_longer(cols=c("initial_studypos","initial_testpos"),names_to="pos_factor",values_to="posSum")%>%
         # mutate(list_number=as.numeric(list_number))%>%
@@ -141,13 +145,13 @@ pf1
         geom_line(aes(color=is_target),size=2)+
         facet_grid(.~pos_factor)+
         labs(title="Final test by initial test position")+
-        ylim(c(0.5,1))+
+        # ylim(c(0.5,1))+
         theme(
                 plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
             plot.margin = margin(t = 10, b = 40),
             text=element_text(size=30) # Increase font size globally
-        )+
-        scale_color_manual(values=c("grey","red","blue","green"))
+        )
+        # scale_color_manual(values=c("grey","red","blue","green"))
     # pf3
     pf4
     # ensure_device(3)

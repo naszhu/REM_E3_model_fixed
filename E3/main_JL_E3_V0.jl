@@ -83,6 +83,15 @@ if is_finaltest
         @transform(:condition = string.(:condition))
     end
 end
+
+
+@chain allresf begin
+    # @by([:list_number, :type_general], :meanx = mean(:decision_isold))
+    @by([:type_general], :meanx = mean(:decision_isold))
+    # @by([:list_number, :is_target, :test_position, :condition], :meanx = mean(:meanx))
+    # @transform(:condition = string.(:condition))
+end
+
 # DFf
 # using CSV
 # CSV.write("temp.csv", DF)
