@@ -125,7 +125,7 @@ function generate_probes(
             error("probetype not in the list")
         end
 
-
+        ############ Context reinstate below
         # Combine the two loops into one function to avoid redundancy
         # Reinstate changing context for each test position
         reinstate_context_duringTest!(list_change_features_dynamic, list_change_features_ref)
@@ -272,18 +272,20 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                 # println(iprobe_chunk)
 
                 ### change listcg based on iprobe_chunk
+                    # only change ctx when listnum>1, do not change at list 1
                 if (iprobe != 1) && (iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries)) && (iprobe_chunk > 1) 
 
                     # println("iprobe ", iprobe, " iprobe_chunk ", iprobe_chunk, " flag ")
-                    
-                    for cf in eachindex(listcg)
-                        if rand() < p_ListChange_finaltest[icount] # cf.change_probability, this equals p_change
-                            listcg[cf] = rand(Geometric(g_context)) + 1
-                        end
-                    end
+                    # have checked iprobe_chunk here is correctly asigned
+
+                    #TODO: issue 14, inconsistent prob use
+                    drift_between_lists_final!(listcg, p_ListChange_finaltest[icount])   
+
+
                 end   # println("iprobe ",iprobe, " iprobe_chunk ", iprobe_chunk, " flag ", iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries))
 
                 # TODO: check iprobe_chunk correct use here, previously i was using count because i didn't add change into random condition throughout final random condi 
+                
 
                 for cf in eachindex(listcg)
                     if rand() < p_ListChange_finaltest[iprobe_chunk] #cf.change_probability # this equals p_change

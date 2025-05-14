@@ -55,6 +55,23 @@ function drift_between_lists!(
     end
 end  
 
+function drift_between_lists_final!(
+    context_features::Vector{Int64}, 
+    # n_drift::Int64, 
+    p_drift::Float64; 
+    g_context::Float64=g_context
+    )::Nothing
+                
+
+    # for _ in 1:n_drift
+        for i in eachindex(context_features)
+            if rand() < p_drift
+                context_features[i] = rand(Geometric(g_context)) + 1
+            end
+        end
+    # end
+end  
+
 
 function add_features_from_empty!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, c_param::Float64, g_param::Float64; u_adv=0.0)::Nothing
     for i in eachindex(probe_features)
