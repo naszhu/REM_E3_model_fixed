@@ -271,9 +271,11 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                 # println([iprobe <= x for x in iprobe_chunk_boundaries])
                 # println(iprobe_chunk)
 
+                ### change listcg based on iprobe_chunk
                 if (iprobe != 1) && (iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries)) && (iprobe_chunk > 1) 
 
                     # println("iprobe ", iprobe, " iprobe_chunk ", iprobe_chunk, " flag ")
+                    
                     for cf in eachindex(listcg)
                         if rand() < p_ListChange_finaltest[icount] # cf.change_probability, this equals p_change
                             listcg[cf] = rand(Geometric(g_context)) + 1
@@ -314,7 +316,12 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                
                 push!(probes, 
-                Probe(img, 
+                Probe(EpisodicImage(
+                    img.word,
+                    crrcontext,
+                    img.list_number, #list number
+                    img.appearnum, #test position
+                ), 
                     :target, #has to be target right here  
                     probe[iprobe]# the 5 general types are what as simple target foil in final test
                 ))
@@ -326,7 +333,8 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                 if condition == :true_random
 
-                    global img = EpisodicImage(
+                    global img = 
+                    EpisodicImage(
                         Word(randstring(8),
                             rand(Geometric(g_word), w_word) .+ 1,
                             :FF, 
@@ -338,7 +346,8 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                             false, #is_repeat_type
                             :none, #type1, doesnt have a first or second appearr
                             :none
-                            ), crrcontext, 0, 0)
+                            ), 
+                    crrcontext, 0, 0)
 
                     # for F, the list_number will always be only [1]
                     push!(probes, 

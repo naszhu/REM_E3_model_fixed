@@ -176,9 +176,10 @@ ratio_U = 0.5 #ratio of general(unchanging) context
 nU = round(Int, w_context * ratio_U)
 nC = w_context - nU
 
-ratio_C_final = 0.1 #ratio of changing context used in final
-nU_f = nU;#allunchange is used
-nC_f = round(Int, nU_f / (1 - ratio_C_final) * ratio_C_final)
+ratio_C_final = 0.8 #ratio of changing context used in final
+nU_f = nU#allunchange is used
+nC_f = round(Int, nC * ratio_C_final)
+
 
 #the advatage of foil in inital test (to make final T prediciton overlap)
 u_advFoilInitialT = 0;
@@ -197,7 +198,7 @@ context_tau = LinRange(10, 1000, n_lists) #1000#foil odds should lower than this
 criterion_initial = LinRange(1, 0.25, n_probes);
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final = LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.05,0.05, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
 # -----------------------------------------
@@ -230,9 +231,10 @@ is_onlytest_currentlist = false; #this is discarded currently
 const is_store_mismatch = true; #if mismatched value is restored during test
 
 
-is_restore_initial = true
-is_UnchangeCtxDriftAndReinstate = true
+is_restore_initial = false # flag check 
 is_restore_final = true#followed by the next
+
+is_UnchangeCtxDriftAndReinstate = true
 is_onlyaddtrace_final = false
 
 
