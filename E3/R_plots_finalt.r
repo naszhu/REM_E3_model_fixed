@@ -10,49 +10,51 @@ DF=read.csv("DF.csv")
 allresf=read.csv("allresf.csv")
 
 
-
+# This way of passing data will make Bool in julia df to  String in R true/false
 
     # head(allresf)
-    DF00 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, 
-    decision_isold==0 & is_target=="F" ~1,TRUE ~ 0))%>%
+    DF00 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target=="true") ~ 1,
+    
+    decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
     mutate(test_position=as.numeric(test_position))%>%
     mutate(test_position_group=ntile(test_position,10))%>%
     group_by(test_position_group,is_target,condition)%>%
     summarize(meanx=mean(correct))
 
-    p10=ggplot(data=DF00, aes(x=test_position_group,y=meanx,group=interaction(is_target,condition)))+
-    geom_point(aes(color=is_target))+
-    geom_line(aes(color=is_target))+
-    scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
-    # ylim(c(0.5,1))+
-    # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
-    # # allresf
-    facet_grid(condition~.)# ylim(c(50,100))
-    # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
+    # p10=ggplot(data=DF00, aes(x=test_position_group,y=meanx,group=interaction(is_target,condition)))+
+    # geom_point(aes(color=is_target))+
+    # geom_line(aes(color=is_target))+
+    # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
+    # # ylim(c(0.5,1))+
+    # # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
+    # # # allresf
+    # facet_grid(condition~.)# ylim(c(50,100))
+    # # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
 
 
     
-    DF001 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, 
-    decision_isold==0 & is_target=="F" ~1,TRUE ~ 0))%>%
+    DF001 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, 
+    decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
     mutate(list_number=as.numeric(list_number))%>%
     group_by(list_number,is_target,condition)%>%
     summarize(meanx=mean(correct))
 
 
 
-    p101=ggplot(data=DF001, aes(x=list_number,y=meanx,group=interaction(is_target,condition)))+
-    geom_point(aes(color=is_target))+
-    geom_line(aes(color=is_target))+
-    scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
-    # ylim(c(0.5,1))+
-    # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
-    # # allresf
-    facet_grid(condition~.)# ylim(c(50,100))
-    # grid.arrange(p10, p101,p1,p3 ,p_in_20,p_in_20in10,ncol = 2,nrow=3)
-    # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
+    # p101=ggplot(data=DF001, aes(x=list_number,y=meanx,group=interaction(is_target,condition)))+
+    # geom_point(aes(color=is_target))+
+    # geom_line(aes(color=is_target))+
+    # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
+    # # ylim(c(0.5,1))+
+    # # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
+    # # # allresf
+    # facet_grid(condition~.)# ylim(c(50,100))
+    # # grid.arrange(p10, p101,p1,p3 ,p_in_20,p_in_20in10,ncol = 2,nrow=3)
+    # # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
 
     
-    df_allfinal=DF001%>%mutate(test_position_group=list_number)%>%ungroup()%>%select(-list_number)%>%
+    df_allfinal=DF001%>%mutate(test_position_group=list_number)%>%
+    ungroup()%>%select(-list_number)%>%
     full_join(DF00,by=c("is_target","condition","test_position_group"))%>%
     mutate(initial_list_order=meanx.x,final_test_order=meanx.y)%>%
     select(-c("meanx.x","meanx.y"))%>%
@@ -75,50 +77,56 @@ allresf=read.csv("allresf.csv")
         )+
         ylim(c(0.5,1))
 
-        DFff = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, 
-    decision_isold==0 & is_target=="F" ~1,TRUE ~ 0))%>%
-    mutate(initial_studypos = as.numeric(initial_studypos))%>%
-    # mutate(test_position_group=ntile(test_position,10))%>%
-    group_by(initial_studypos,is_target,condition)%>%
-    summarize(meanx=mean(correct))
+pf1
+    #     DFff = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, 
+    # decision_isold==0 & is_target=="F" ~1,TRUE ~ 0))%>%
+    # mutate(initial_studypos = as.numeric(initial_studypos))%>%
+    # # mutate(test_position_group=ntile(test_position,10))%>%
+    # group_by(initial_studypos,is_target,condition)%>%
+    # summarize(meanx=mean(correct))
 
-    pf3=ggplot(data=DFff, aes(x=initial_studypos,y=meanx,group=interaction(is_target,condition)))+
-    geom_point(aes(color=is_target))+
-    geom_line(aes(color=is_target),size=2)+
-    theme(
-            plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
-        plot.margin = margin(t = 10, b = 40),
-        text=element_text(size=20) # Increase font size globally
-    )+
-    # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
-    # ylim(c(0.5,1))+
-    # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
-    # # allresf
-    facet_grid(condition~.)# ylim(c(50,100))
+    # pf3=ggplot(data=DFff, aes(x=initial_studypos,y=meanx,group=interaction(is_target,condition)))+
+    # geom_point(aes(color=is_target))+
+    # geom_line(aes(color=is_target),size=2)+
+    # theme(
+    #         plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
+    #     plot.margin = margin(t = 10, b = 40),
+    #     text=element_text(size=20) # Increase font size globally
+    # )+
+    # # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
+    # # ylim(c(0.5,1))+
+    # # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
+    # # # allresf
+    # facet_grid(condition~.)# ylim(c(50,100))
 
 
-    DFff2 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, 
-    decision_isold==0 & is_target=="F" ~1,TRUE ~ 0))%>%
-    mutate(initial_testpos = as.numeric(initial_testpos))%>%
-    # mutate(test_position_group=ntile(test_position,10))%>%
-    group_by(initial_testpos,is_target,condition)%>%
-    summarize(meanx=mean(correct))
+    # DFff2 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, 
+    # decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
+    # mutate(initial_testpos = as.numeric(initial_testpos))%>%
+    # # mutate(test_position_group=ntile(test_position,10))%>%
+    # group_by(initial_testpos,is_target,condition)%>%
+    # summarize(meanx=mean(correct))
 
-    pf4=ggplot(data=DFff2, aes(x=initial_testpos,y=meanx,group=interaction(is_target,condition)))+
-    geom_point(aes(color=is_target))+
-    geom_line(aes(color=is_target),size=2)+
-    # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
-    # ylim(c(0.5,1))+
-    # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
-    # # allresf
-    facet_grid(condition~.)# ylim(c(50,100))
-    # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
-        # grid.arrange(p4,p1,p_serial,p_in_20,p10,p101,ncol = 2,nrow=3)
+    # pf4=ggplot(data=DFff2, aes(x=initial_testpos,y=meanx,group=interaction(is_target,condition)))+
+    # geom_point(aes(color=is_target))+
+    # geom_line(aes(color=is_target),linewitdth=2)+
+    # # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
+    # # ylim(c(0.5,1))+
+    # # scale_x_continuous(name="list number",breaks = 1:10,labels=as.character(1:10))+labs(title="Accuracy by list number in inital test ")
+    # # # allresf
+    # facet_grid(condition~.)# ylim(c(50,100))
+    # # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
+    #     # grid.arrange(p4,p1,p_serial,p_in_20,p10,p101,ncol = 2,nrow=3)
 
     # DF001
 
+head(DF_fbyi)
+summary(DF_fbyi$posSum)
+summary(DF_fbyi$initial_studypos)
+summary(DF_fbyi$initial_testpos)
+
     DF_fbyi = allresf %>% 
-        mutate(correct = case_when( (decision_isold==1) & (is_target!="F") ~ 1, decision_isold==0 & is_target=="F" ~1,TRUE ~ 0))%>%
+        mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
         select(correct,initial_studypos, initial_testpos,is_target,condition,simulation_number)%>%
         pivot_longer(cols=c("initial_studypos","initial_testpos"),names_to="pos_factor",values_to="posSum")%>%
         # mutate(list_number=as.numeric(list_number))%>%
@@ -126,8 +134,7 @@ allresf=read.csv("allresf.csv")
         summarize(meanx=mean(correct))%>%
         group_by(pos_factor,posSum,is_target)%>%
         summarize(meanx=mean(meanx))
-        # filter(condition!="true_random")
-    # DF_fbyi
+
 
     pf4= ggplot(data=DF_fbyi,aes(x=posSum,meanx))+
         geom_point(aes(color=is_target))+
@@ -142,7 +149,7 @@ allresf=read.csv("allresf.csv")
         )+
         scale_color_manual(values=c("grey","red","blue","green"))
     # pf3
-    # # pf4
+    pf4
     # ensure_device(3)
     # dev.set(3)  # Target window for Plot 1
 

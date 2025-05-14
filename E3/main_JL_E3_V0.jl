@@ -143,11 +143,11 @@ run(`Rscript E3/R_plots.r`)
 # Using eog (Eye of GNOME, a lightweight image viewer):
 run(`bash -c "eog plot1.png & disown"`)
 
-# if is_finaltest
-#     CSV.write(csv_path3, allresf)
-#     run(`Rscript R_plots_finalt.r`)
-#     run(`bash -c "feh plot2.png &"`)
-# end
+if is_finaltest
+    CSV.write(csv_path3, allresf)
+    run(`Rscript E3/R_plots_finalt.r`)
+    run(`bash -c "feh plot2.png &"`)
+end
 
 
 
