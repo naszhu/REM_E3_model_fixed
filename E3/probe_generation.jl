@@ -302,20 +302,23 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
             crrcontext = fast_concat([deepcopy(unchangecg), deepcopy(listcg)]);
 
+            ######### If true, current probe is target and so get new prob from past 
+
+            # if (img.word.initial_testpos>30)
+            #     println(img.list_number, img.word.initial_testpos)
+            # end
+
             if haskey(image_groups, probe[iprobe])
 
                 global img = pop!(image_groups[probe[iprobe]])
 
                
                 push!(probes, 
-                Probe(EpisodicImage(
-                    img.word, 
-                    crrcontext, 
-                    img.list_number, 
-                    img.appearnum), 
+                Probe(img, 
                     :target, #has to be target right here  
                     probe[iprobe]# the 5 general types are what as simple target foil in final test
                 ))
+                # println(img.word.initial_testpos)
 
                 # println(probe[iprobe], image_groups)
  
@@ -327,9 +330,10 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                         Word(randstring(8),
                             rand(Geometric(g_word), w_word) .+ 1,
                             :FF, 
+                            
                             :FF, #type_specific; mathces above in final
                             0, #study pos: 0
-                            iprobe, #test position
+                            0,  #inital test position is 0
 
                             false, #is_repeat_type
                             :none, #type1, doesnt have a first or second appearr

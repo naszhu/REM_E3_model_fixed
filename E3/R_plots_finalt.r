@@ -120,10 +120,10 @@ pf1
 
     # DF001
 
-head(DF_fbyi)
-summary(DF_fbyi$posSum)
-summary(DF_fbyi$initial_studypos)
-summary(DF_fbyi$initial_testpos)
+# head(DF_fbyi)
+# summary(DF_fbyi$posSum)
+# summary(DF_fbyi$initial_studypos)
+# summary(DF_fbyi$initial_testpos)
 
     DF_fbyi = allresf %>% 
         mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
