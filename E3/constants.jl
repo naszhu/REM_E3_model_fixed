@@ -231,7 +231,7 @@ is_onlytest_currentlist = false; #this is discarded currently
 const is_store_mismatch = true; #if mismatched value is restored during test
 
 
-is_restore_initial = false # flag check 
+is_restore_initial = true # flag check 
 is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = true

@@ -35,7 +35,8 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
                 iprobe_img.word.type1, #type1
                 iprobe_img.word.type2 #type2
             ), 
-            zeros(length(iprobe_img.context_features)),#Context_features: 
+            # zeros(length(iprobe_img.context_features)),#Context_features: 
+            fill(0, length(iprobe_img.context_features)),#Context_features: 
             iprobe_img.list_number,#List_Number; 
             iprobe_img.appearnum #appearnum
         )
@@ -57,8 +58,13 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
 
         for _ in 1:n_units_time_restore
+            #shouldn't have this in adding trace
+
+        # println(iprobe_img.word.type_general)
+        # for _ in 1:n_units_time #shouldn't have this in adding trace
             # Update word features
             add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest, g_word)
+            @assert length(iprobe_img.context_features) == length(iimage.context_features) "context features should be the same length" 
 
             # Update context features
             # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
@@ -72,10 +78,13 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     # RESTORE CONTEXT & CONTENT
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        if is_strengthen_contextandcontent
+        # println(iprobe_img.word.type_general)
+        if is_strengthen_contextandcontent #false
             restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
             restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
+        else
+            # error("should strenghen here")
         end
 
         # the following makes sure that we actually must need to restore context.
