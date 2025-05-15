@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = true
-n_simulations = is_finaltest ? 200 : 500;
+n_simulations = is_finaltest ? 50 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -159,19 +159,20 @@ Ratios of stuff of featuresl; etc
 p_poscode_change = 0.1
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.1#0.4 #prob of reinstatement
+p_reinstate_rate = 0.4#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^1) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(10) * 50) #7
+n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = 12; #5;15; 
 (1-(1-p_driftAndListChange)^n_between_listchange)
 
 
-p_ratio_unchanging_between_list = LinRange(0.17,0, n_lists) #0.1 #ratio of unchanging context between lists
+# p_ratio_unchanging_between_list = LinRange(0.17,0, n_lists) #0.1 #ratio of unchanging context between lists; actual calc of how many nC, nU here is calculated in probe generation
+p_ratio_unchanging_between_list = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 
 p_recallFeatureStore = 0.6;
 
