@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 100 : 500;
+is_finaltest = true
+n_simulations = is_finaltest ? 200 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -159,7 +159,7 @@ Ratios of stuff of featuresl; etc
 p_poscode_change = 0.1
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.5#0.4 #prob of reinstatement
+p_reinstate_rate = 0.1#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^1) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below

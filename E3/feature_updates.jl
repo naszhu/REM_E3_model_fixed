@@ -3,8 +3,9 @@
 
 # Combine the two loops into one function to avoid redundancy
 # the following is used within function probe_generation
-function reinstate_context_duringTest!(context_array::Vector{Int64}, reference_array::Vector{Int64};p_reinstate_context::Float64=p_reinstate_context,
-    p_reinstate_rate::Float64=p_reinstate_rate)::Nothing
+function reinstate_context_duringTest!(context_array::Vector{Int64}, reference_array::Vector{Int64},
+    p_reinstate_context::Float64,
+    p_reinstate_rate::Float64)::Nothing
 
         nct = length(context_array)
         for ict in eachindex(context_array)
