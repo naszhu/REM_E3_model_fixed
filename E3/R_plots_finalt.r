@@ -129,7 +129,10 @@ pf1
 # summary(DF_fbyi$initial_testpos)
 
     DF_fbyi = allresf %>% 
-        mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, decision_isold==0 & is_target=="foil" ~1))%>%
+        mutate(correct = case_when( 
+            (decision_isold==1) & (is_target=="true") ~ 1, 
+            decision_isold==0 & is_target=="false" ~1,
+            TRUE ~ 0))%>%
         # mutate(is_target=type_general )%>% #uhh, this creates prob
         select(correct,initial_studypos, initial_testpos,is_target,condition,simulation_number)%>%
         pivot_longer(cols=c("initial_studypos","initial_testpos"),names_to="pos_factor",values_to="posSum")%>%
