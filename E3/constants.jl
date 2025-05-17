@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 50 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -139,6 +139,7 @@ u_star = vcat(0.06, ones(n_lists-1) * 0.06)
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
 #the following show adv for ONLY CHANGE context (second part of context)
+#TODO: nospecialty for first list right now
 u_star_context=vcat(0.05, ones(n_lists-1)*0.05)
 u_adv_firstpos=0.05 #adv of first position in eeach list
 
@@ -154,7 +155,7 @@ const c_context = c
 """
 Ratios of stuff of featuresl; etc
 """
-
+########## Prob DRIFT and so on
 
 p_poscode_change = 0.1
 p_reinstate_context = 0.8 #stop reinstate after how much features
@@ -167,26 +168,33 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = 12; #5;15; 
+n_between_listchange = 25; #5;15; 
 (1-(1-p_driftAndListChange)^n_between_listchange)
 
-
-# p_ratio_unchanging_between_list = LinRange(0.17,0, n_lists) #0.1 #ratio of unchanging context between lists; actual calc of how many nC, nU here is calculated in probe generation
-p_ratio_unchanging_between_list = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
-
-p_recallFeatureStore = 0.6;
-
-final_gap_change = 0.2; #0.21
-p_ListChange_finaltest = ones(10) * 0.55 #0.1 prob list change for final test
 
 #first half unchange context, second half change context
 ratio_U = 0.5 #ratio of general(unchanging) context
 nU = round(Int, w_context * ratio_U)
 nC = w_context - nU
 
-ratio_C_final = 0.8 #ratio of changing context used in final
-nU_f = nU#allunchange is used
-nC_f = round(Int, nC * ratio_C_final)
+
+# p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
+ratio_unchanging_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
+
+nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
+nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
+
+ratio_unchanging_to_itself_final = LinRange(0.0,0.0, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(1,0.2, n_lists) # if use no unchanging
+
+nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
+nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
+
+p_recallFeatureStore = 0.6;
+
+final_gap_change = 0.2; #0.21
+p_ListChange_finaltest = ones(10) * 0.55 #0.1 prob list change for final test
 
 
 #the advatage of foil in inital test (to make final T prediciton overlap)
@@ -202,8 +210,9 @@ u_advFoilInitialT = 0;
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(10, 1000, n_lists) #1000#foil odds should lower than this  
-criterion_initial = LinRange(1, 0.25, n_probes);
+context_tau = LinRange(100, 100, n_lists) #1000#foil odds should lower than this  
+
+criterion_initial = LinRange(20, 12, n_probes);
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.05,0.05, 10)#LinRange(0.18, 0.23, 10)

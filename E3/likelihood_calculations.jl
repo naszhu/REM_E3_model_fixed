@@ -52,15 +52,15 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
         if is_test_allcontext  #true
 
             ilist = probe_img.list_number     
-            num_unchanging_to_use = round(Int, nU * p_ratio_unchanging_between_list[ilist])
-            num_changing_to_use = round(Int, nC * (1 - p_ratio_unchanging_between_list[ilist]))
-            # println(p_ratio)
-            # println("here")
 
-            probe_context_adjusted = fast_concat([probe_context[1:num_unchanging_to_use], probe_context[nU+1:nU+num_changing_to_use]])
+            U_ctx = nU_in[ilist]
+            C_ctx = nC_in[ilist]
 
-            image_context_adjusted = fast_concat([image_context[1:num_unchanging_to_use], image_context[nU+1:nU+num_changing_to_use]])     
-            
+            # println("$ilist, $U_ctx, $C_ctx, $(probe_context[1 : U_ctx]), $(probe_context[(U_ctx +1) : (C_ctx + U_ctx)])")
+
+            probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
+            image_context_adjusted = fast_concat([image_context[1 : U_ctx], image_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
+
             context_likelihood = calculate_likelihood_ratio(probe_context_adjusted, image_context_adjusted, g_context, c)    
         
         else  #not testing all context but change only, no unchange or position code
