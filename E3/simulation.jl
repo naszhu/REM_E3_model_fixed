@@ -157,7 +157,7 @@ function simulate_rem()
 
             # Update list_change_context_features 
 
-            drift_between_lists!(list_change_context_features, n_between_listchange, p_driftAndListChange)   # println([i.value for i in list_change_context_features])
+            drift_between_lists!(list_change_context_features, n_between_listchange[list_num], p_driftAndListChange)   # println([i.value for i in list_change_context_features])
 
             # list_change_context_features .= ifelse.(rand(length(list_change_context_features)) .<  p_driAndndListChange,rand(Geometric(g_context),length(list_change_context_features)) .+ 1,list_change_context_features)
             # println([i.value for i in list_change_context_features])

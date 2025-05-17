@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 50 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -139,8 +139,8 @@ u_star = vcat(0.06, ones(n_lists-1) * 0.06)
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
 #the following show adv for ONLY CHANGE context (second part of context)
-#TODO: nospecialty for first list right now
-u_star_context=vcat(0.05, ones(n_lists-1)*0.05)
+#: nospecialty for first list right now
+u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 u_adv_firstpos=0.05 #adv of first position in eeach list
 
 const c = 0.75 #copying parameter - 0.8 for context copying 
@@ -168,8 +168,8 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = 25; #5;15; 
-(1-(1-p_driftAndListChange)^n_between_listchange)
+n_between_listchange = LinRange(8, 20, n_lists); #5;15; #CHANGED, this is used in sim()
+(1-(1-p_driftAndListChange)^ n_between_listchange[1])
 
 
 #first half unchange context, second half change context
@@ -179,6 +179,7 @@ nC = w_context - nU
 
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
+#CHANGED
 ratio_unchanging_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
@@ -210,9 +211,9 @@ u_advFoilInitialT = 0;
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(100, 100, n_lists) #1000#foil odds should lower than this  
+context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = LinRange(20, 12, n_probes);
+criterion_initial = LinRange(5, 3, n_probes); #CHANGED
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.05,0.05, 10)#LinRange(0.18, 0.23, 10)
@@ -265,16 +266,35 @@ Brt = 250#base time of RT
 Pi = 30#RT scaling
 # const w_context =60; #first half normal context, second half change context, third half word-change context
 
-println("prob of each feature change between list $(1-(1-p_driftAndListChange)^n_between_listchange)")
+println("prob of each feature change between list $(1-(1-p_driftAndListChange)^n_between_listchange[1])")
 println("prob of each feature drift between study and test $(1-(1-p_driftAndListChange)^n_driftStudyTest[1])")
-aa = (1 - (1 - p_driftAndListChange)^n_between_listchange);
+aa = (1 - (1 - p_driftAndListChange)^n_between_listchange[1]);
 println("prob of feature change after 4 lists $(1-(1-aa)^8)")
 println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate)^3)")
 
 #for easiness of understanding 
 p_reinstate_context = (1-(1-p_reinstate_rate)^3);
-p_driftStudyTest = (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
-p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange);
+# println(typeof(n_driftStudyTest[1]))
+# println((1-(1-p_driftAndListChange)^ (n_driftStudyTest[1])))
+# p_driftStudyTest=(1-(1-p_driftAndListChange)^ Int(n_driftStudyTest[1]))
+@show typeof(p_driftAndListChange)
+@show typeof(n_driftStudyTest)
+@show typeof(n_driftStudyTest[1])
+println(@which p_driftStudyTest)
+println(@which p_driftAndListChange)
+local_n = Int(n_driftStudyTest[1])  # Force conversion
+s=LinRange(0,1,10)
+aa=3^s
+
+# test_p = (1-(1-p_driftAndListChange)^local_n)
+# test_p = (1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
+
+# println(typeof(n_driftStudyTest[1]))
+# println((1-(1-p_driftAndListChange)^ (Float64(n_driftStudyTest[1]))))  # Convert to Float64
+# p_driftStudyTest=(1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
+
+# p_driftStudyTest = a
+p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[1]);
 
 
 
