@@ -99,30 +99,30 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
     for i in eachindex(probes)
 
         # _, likelihood_ratios = [calculate_two_step_likelihoods(probes[i].image, image) for image in image_pool] 
+        # Determine the current list based on the index `i`
+        # global currchunk
+        if i <= n_inEachChunk[1]
+            currchunk = 1
+        else
+            currchunk = div(i - n_inEachChunk[1] - 1, n_inEachChunk[2]) + 2
+        end
+        # println(" ", i, " ", currchunk)
+        # chunk assign correct here after printed check
 
-        _, likelihood_ratios_org = calculate_two_step_likelihoods2(probes[i].image, image_pool, 1.0, i)
+        _, likelihood_ratios_org = calculate_two_step_likelihoods2(probes[i].image, image_pool, 1.0, currchunk)
         likelihood_ratios = likelihood_ratios_org |> x -> filter(e -> e != 344523466743, x)
         #    if ii==1 println(size(image_pool),"of", size(likelihood_ratios)) end
 
         # println(likelihood_ratios)
         odds = 1 / length(likelihood_ratios) * sum(likelihood_ratios)
-
         
-        # Determine the current list based on the index `i`
-        if i <= n_inEachChunk[1]
-            crrchunk = 1
-        else
-            crrchunk = div(i - n_inEachChunk[1] - 1, n_inEachChunk[2]) + 2
-        end
-        # println(" ", i, " ", crrchunk)
-        # chunk assign correct here after printed check
         
-        criterion_final_i = criterion_final[crrchunk] #this need to be changed if 
+        criterion_final_i = criterion_final[currchunk] #this need to be changed if 
         
         decision_isold = odds > criterion_final_i ? 1 : 0;
 
 
-        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(crrchunk), npass: $(length(likelihood_ratios)), cri $(criterion_final[crrchunk]) ,odds: $(odds)")
+        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(likelihood_ratios)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
         # pold = pcrr_EZddf(log(odds))
         # rt = Brt + Pi * abs(log(odds))

@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
+is_finaltest = true
 n_simulations = is_finaltest ? 50 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -185,8 +185,8 @@ ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
-ratio_unchanging_to_itself_final = LinRange(0.0,0.0, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(1,0.2, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.2,0.2, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)

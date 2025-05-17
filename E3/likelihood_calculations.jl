@@ -97,15 +97,16 @@ end
 
 
 
-function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::Vector{EpisodicImage}, p::Float64, iprobe::Int64)::Tuple{Vector{Float64},Vector{Float64}}
+function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::Vector{EpisodicImage}, p::Float64, currchunk::Int64)::Tuple{Vector{Float64},Vector{Float64}}
 
     context_likelihoods = Vector{Float64}(undef, length(image_pool))
     word_likelihoods = Vector{Float64}(undef, length(image_pool))
     probe_context = probe_img.context_features
 
     #all unchanging first half + partial changing 
-    probe_context_f = fast_concat([probe_context[1:nU_f], probe_context[nU_f+1:nU_f+nC_f]])
-
+    nU_f_i = nU_f[currchunk] 
+    nC_f_i = nC_f[currchunk]
+    probe_context_f = fast_concat([probe_context[1:nU_f_i], probe_context[(nU + 1) : (nU + nC_f_i)]])
     for ii in eachindex(image_pool)
         image = image_pool[ii]
         image_context = image.context_features
@@ -114,7 +115,7 @@ function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::V
 
         #ok, idk how much context; differetiate or not will be used in liklihood calc of final test for now, so just keep it as what it was for now
         if is_test_allcontext2  #true; currently goes here; first half unchange
-            image_context_f = fast_concat([image_context[1:nU_f], image_context[nU_f+1:nU_f+nC_f]])
+            image_context_f = fast_concat([image_context[1:nU_f_i], image_context[(nU + 1) : (nU + nC_f_i)]])
             context_likelihood = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c)  # .#  Context calculation
 
         elseif is_test_changecontext2 #false
