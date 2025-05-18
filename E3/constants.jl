@@ -168,7 +168,7 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = LinRange(8, 20, n_lists); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(12, 40, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1-(1-p_driftAndListChange)^ n_between_listchange[1])
 
 
@@ -180,7 +180,7 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.6, 0.6, n_lists) # if use no unchanging
 ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
@@ -274,27 +274,11 @@ println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate
 
 #for easiness of understanding 
 p_reinstate_context = (1-(1-p_reinstate_rate)^3);
-# println(typeof(n_driftStudyTest[1]))
-# println((1-(1-p_driftAndListChange)^ (n_driftStudyTest[1])))
-# p_driftStudyTest=(1-(1-p_driftAndListChange)^ Int(n_driftStudyTest[1]))
-@show typeof(p_driftAndListChange)
-@show typeof(n_driftStudyTest)
-@show typeof(n_driftStudyTest[1])
-println(@which p_driftStudyTest)
-println(@which p_driftAndListChange)
-local_n = Int(n_driftStudyTest[1])  # Force conversion
-s=LinRange(0,1,10)
-aa=3^s
 
-# test_p = (1-(1-p_driftAndListChange)^local_n)
-# test_p = (1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
-
-# println(typeof(n_driftStudyTest[1]))
-# println((1-(1-p_driftAndListChange)^ (Float64(n_driftStudyTest[1]))))  # Convert to Float64
-# p_driftStudyTest=(1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
-
+p_driftStudyTest = (1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
 # p_driftStudyTest = a
-p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[1]);
+p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[1])
+p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[end])
 
 
 

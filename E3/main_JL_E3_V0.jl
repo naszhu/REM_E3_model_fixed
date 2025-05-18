@@ -36,11 +36,11 @@ Threads.nthreads()
 include("constants.jl") 
 # recall_odds_threshold = 1e5;
 
-println("prob of each feature change between list $(1-(1-p_driftAndListChange)^n_between_listchange)")
-println("prob of each feature drift between study and test $(1-(1-p_driftAndListChange)^n_driftStudyTest[1])")
-aa = (1 - (1 - p_driftAndListChange)^n_between_listchange);
-println("prob of feature change after 4 lists $(1-(1-aa)^8)")
-println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate)^3)")
+# println("prob of each feature change between list $(1-(1-p_driftAndListChange)^n_between_listchange[1])")
+# println("prob of each feature drift between study and test $(1-(1-p_driftAndListChange)^n_driftStudyTest[1])")
+# aa = (1 - (1 - p_driftAndListChange)^n_between_listchange[1]);
+# println("prob of feature change after 4 lists $(1-(1-aa)^8)")
+# println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate)^3)")
 
 
 a = [1 1 1; 1 1 1]
