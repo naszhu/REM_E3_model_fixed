@@ -13,3 +13,9 @@ function fast_concat(vectors::Vector{Vector{T}}) where {T}
 end
 
 
+log_transform(x; k=10) = log1p(k*x) / log1p(k)
+# “Notch” or band-stop style transform: strong suppression in mid-range, mild/no suppression at extremes
+notch_transform(x; α=10.0, μ=0.5, σ=0.2) = x / (1 + α * exp(-((x - μ)^2) / (2*σ^2)))
+
+# multiplicative-notch version
+valley_transform(x; α=0.8, μ=0.5, σ=0.2) = x * (1 - α * exp(-((x - μ)^2) / (2*σ^2)))
