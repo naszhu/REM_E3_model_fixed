@@ -64,19 +64,19 @@ allresf=read.csv("allresf.csv")
 
 
     pf1=ggplot(data=df_allfinal, aes(test_position_group,val,group=interaction(position_kind,condition,is_target)))+
-        geom_point(aes(color=is_target,group=is_target))+
-        geom_line(aes(color=is_target,group=is_target),size=1.5)+
+        geom_point(aes(color=is_target,shape=is_target),size=5)+
+        geom_line(aes(color=is_target,linetype=is_target),size=1.5)+
         facet_grid(condition~position_kind)+
         labs(x="Final test position cut in 10 chunks (left column), Initial test list order (right column)",
             y="prediction (Hits/Correct Rejection)",
-            caption="Figure 3. Between List Final Test Results seen in Final Testing",
-            color="Type",fill="Type")+
-        # scale_color_manual(values=c("#56B4E9","red","#009E73","purple"))+
+            caption="Between List Final Test Results seen in Final Testing")+
         theme(
                 plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
             plot.margin = margin(t = 10, b = 40),
             text=element_text(size=30) # Increase font size globally
-        )
+        )+
+    scale_color_manual(values=c("blue","red","blue","green","green","purple","purple"))
+    # scale_shape_discrete(values=c(16,17,18,19,20,21,22))+
         # ylim(c(0.5,1))
 
 
