@@ -32,10 +32,13 @@ allresf=read.csv("allresf.csv")
     # facet_grid(condition~.)# ylim(c(50,100))
     # # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
 
-
+# allresf%>% mutate(correct = case_when( (decision_isold==1) & (is_target=="true") ~ 1, 
+#     decision_isold==0 & is_target=="false" ~1,TRUE ~ 0))%>%
+#     # filter(is_target=="false")%>%
+#     select(correct,decision_isold,is_target,condition,simulation_number)%>%as_tibble()
     
-    DF001 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target!="foil") ~ 1, 
-    decision_isold==0 & is_target=="foil" ~1,TRUE ~ 0))%>%
+    DF001 = allresf %>% mutate(correct = case_when( (decision_isold==1) & (is_target=="true") ~ 1, 
+    decision_isold==0 & is_target=="false" ~1,TRUE ~ 0))%>%
     mutate(is_target=type_general)%>%
     mutate(list_number=as.numeric(list_number))%>%
     group_by(list_number,is_target,condition)%>%
