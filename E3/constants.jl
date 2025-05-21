@@ -5,9 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 50 : 200;
-n_simulations = is_finaltest ? 50 : 200;
+is_finaltest = true
+n_simulations = is_finaltest ? 100 : 200;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -169,7 +168,7 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(12, 20, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(12, 12, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1-(1-p_driftAndListChange)^ n_between_listchange[1])
 
 
@@ -181,8 +180,8 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.2, 0.2, n_lists) # if use no unchanging
-ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.5, 0.15, n_lists) # if use no unchanging
+ratio_changing_to_itself_init = LinRange(0.75, 1, n_lists) # if use no unchanging
 
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
@@ -214,7 +213,7 @@ p_word_feature_use = LinRange(1, 0.7, n_lists) #0.5 #ratio of word features used
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 criterion_initial = LinRange(1, 1, n_probes); #CHANGED
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
