@@ -54,6 +54,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     # if new, or old but didn't pass threshold -- ADD TRACE 
     # (start with empty EI, then add features)
 
+    c_storeintest_ilist = c_storeintest[iprobe_img.list_number];
+    c_context_ilist = c_context[iprobe_img.list_number];
+
     if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
 
@@ -63,13 +66,13 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         # println(iprobe_img.word.type_general)
         # for _ in 1:n_units_time #shouldn't have this in adding trace
             # Update word features
-            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest, g_word)
+            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word)
             @assert length(iprobe_img.context_features) == length(iimage.context_features) "context features should be the same length" 
 
             # Update context features
             # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
             @assert u_star_context[end] == u_star_context[1] "u_star_context is not well defined to be used in restore_intest for intial test, final test is dependant on u_star_context[ilist], but not yet like that in inital test, initial doens't have a u_star_context difference right now, notice"
-            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context, g_context)
+            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist, g_context)
         end
 
 
@@ -139,14 +142,14 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
         error("decision_isold is not well defined")
     end
 
-
+    
     ############# ADD TRACE ######################
     # if new, or old but didn't pass threshold -- ADD TRACE
     if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))
 
         for _ in 1:n_units_time_restore
 
-            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest, g_word)
+            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word) #TODO
 
             # if iprobe_img.list_number == 1
 
@@ -158,9 +161,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             # Determine the chunk index for the current probe
             iprobe_chunk = findfirst(x -> finaltest_pos <= x, iprobe_chunk_boundaries)  
 
-            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context, g_context);
+            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context[end], g_context); #TODO: use last big ctx?
             # else
-                # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context, g_context)
+                # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context_ilist, g_context)
             
             # end
 

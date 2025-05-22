@@ -58,7 +58,6 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
         image_context = image.context_features
 
 
-
         if is_test_allcontext  #true
 
 
@@ -70,10 +69,10 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
             probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
             image_context_adjusted = fast_concat([image_context[1 : U_ctx], image_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
 
-            context_likelihood = calculate_likelihood_ratio(probe_context_adjusted, image_context_adjusted, g_context, c, true, ilist)    
+            context_likelihood = calculate_likelihood_ratio(probe_context_adjusted, image_context_adjusted, g_context, c_context[ilist], true, ilist)    #a bug fixed here
         
         else  #not testing all context but change only, no unchange or position code
-            context_likelihood = calculate_likelihood_ratio(probe_context[nU+1:w_context], image_context[nU+1:w_context], g_context, c, true, ilist)  # this step give prod(lambda); odds
+            context_likelihood = calculate_likelihood_ratio(probe_context[nU+1:w_context], image_context[nU+1:w_context], c_context[ilist], c, true, ilist)  # this step give prod(lambda); odds
         end
 
         # println(length(probe_context))
@@ -87,7 +86,7 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
                 ## take off word_features[1:round(Int, w_word * p)]; just give the whole word features
                 w_word_use = round(Int, w_word * p_word_feature_use[probe_img.list_number])
                 
-                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:w_word_use], image.word.word_features[1:w_word_use], g_word, c,false,ilist) 
+                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:w_word_use], image.word.word_features[1:w_word_use], g_word, c[ilist],false,ilist) 
                 # println("$(probe_img.word.word_features), $(image.word.word_features), $(g_word), $(c), $(word_likelihoods)")
 
 
@@ -129,7 +128,7 @@ function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::V
         #ok, idk how much context; differetiate or not will be used in liklihood calc of final test for now, so just keep it as what it was for now
         if is_test_allcontext2  #true; currently goes here; first half unchange
             image_context_f = fast_concat([image_context[1:nU_f_i], image_context[(nU + 1) : (nU + nC_f_i)]])
-            context_likelihood = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c, true, listnum)  # .#  Context calculation
+            context_likelihood = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c[end], true, listnum)  # .#  Context calculation TODO, FIXME end here?
 
         elseif is_test_changecontext2 #false
             error("no")
@@ -147,7 +146,7 @@ function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::V
             # second stage
             if context_likelihood > context_tau_final # if pass context criterion 
 
-                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features, image.word.word_features, g_word, c, false, listnum)
+                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features, image.word.word_features, g_word, c[end], false, listnum) #TODO
 
                 # if iprobe !== 1 #CONTEXT FILTER: if not first probe_img tested, using the filter, 
                 #     # taking  out the very low similarity word_likelihoods

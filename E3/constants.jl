@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 400 : 200;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -143,9 +143,9 @@ u_star_storeintest = u_star #for word # ratio of this and the next is key for T_
 u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 u_adv_firstpos=0.05 #adv of first position in eeach list
 
-const c = 0.75 #copying parameter - 0.8 for context copying 
-const c_storeintest = c
-const c_context = c
+c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
+c_storeintest = c
+c_context = LinRange(0.75,0.6, n_lists)
 # -----------------------------------------
 # =============================================================================
 
@@ -180,8 +180,8 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.5, 0.15, n_lists) # if use no unchanging
-ratio_changing_to_itself_init = LinRange(0.75, 1, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.4, 0.4, n_lists) # if use no unchanging
+ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)

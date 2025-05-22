@@ -46,7 +46,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
                 # else stored_val =(rand() < u_star[word.studypos] ? 1 : 0)*word.word_features[i];
                 # end
                 if stored_val != 0 #if sucessfully stored do the folowing, else keep the same value
-                    copied_val = rand() < c ? stored_val : rand(Geometric(g_word)) + 1
+                    copied_val = rand() < c[list_num] ? stored_val : rand(Geometric(g_word)) + 1
                     new_image.word.word_features[i] = copied_val
                 end
             end
@@ -75,7 +75,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
                 end
 
                 if stored_val != 0 #if sucessfully stored do the folowing, else keep the same value
-                    copied_val = rand() < c_context ? stored_val : rand(Geometric(g_context)) + 1
+                    copied_val = rand() < c_context[list_num] ? stored_val : rand(Geometric(g_context)) + 1
                     new_image.context_features[ic] = copied_val
                 end
             end
