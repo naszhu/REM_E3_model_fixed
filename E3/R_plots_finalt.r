@@ -42,7 +42,9 @@ allresf=read.csv("allresf.csv")
     mutate(is_target=type_general)%>%
     mutate(list_number=as.numeric(list_number))%>%
     group_by(list_number,is_target,condition)%>%
-    summarize(meanx=mean(correct))
+    summarize(meanx=mean(correct))%>%
+    mutate(is_target = case_when(list_number==10 & is_target%in%c("Tn","SOn","Fn") ~  substr(is_target, 1, nchar(is_target) - 1),
+    TRUE ~ is_target))
 
 
 
@@ -56,8 +58,28 @@ allresf=read.csv("allresf.csv")
     # facet_grid(condition~.)# ylim(c(50,100))
     # # grid.arrange(p10, p101,p1,p3 ,p_in_20,p_in_20in10,ncol = 2,nrow=3)
     # # grid.arrange(p1, p4,p2,p3 ,ncol = 2,nrow=2)
+# assume your data has a factor called “type_comment” with exactly these 7 levels
+my.ltys <- c(
+  "Tn"  = "longdash",  # 1. Target: studied & tested at (n), Foil (n+1)
+  "SOn" = "dotted",    # 2. Studied-only (n); Foil (n+1)
+  "T"   = "dotdash",   # 3. Target: started & tested at (n); Appear once
+  "Fn"  = "dashed",    # 4. Foil (n), Foil (n+1)
+  "F"   = "solid",     # 5. Foil (n); Appear once
+  "SO"  = "dashed",    # 6. Studied-only (n); Appear once
+  "FF"  = "solid"      # 7. Final Foil
+)
 
+my.shps <- c(
+  "Tn"                = NA,    # no point glyph
+  "SOn"          = 22,    # square (filled/colourable)
+  "T"    = 8,     # asterisk/star
+  "Fn"              = 24,    # filled triangle-up
+  "F"      = 15,    # filled square
+  "SO"     = 3,     # plus
+  "FF"            = 16     # filled circle
+)
     
+    #assuming this list number is first-appear list number
     df_allfinal=DF001%>%mutate(test_position_group=list_number)%>%
     ungroup()%>%select(-list_number)%>%
     full_join(DF00,by=c("is_target","condition","test_position_group"))%>%
@@ -67,7 +89,7 @@ allresf=read.csv("allresf.csv")
 
 
     pf1=ggplot(data=df_allfinal, aes(test_position_group,val,group=interaction(position_kind,condition,is_target)))+
-        geom_point(aes(color=is_target,shape=is_target),size=5)+
+        geom_point(aes(color=is_target,shape=is_target),size=6)+
         geom_line(aes(color=is_target,linetype=is_target),size=1.5)+
         facet_grid(condition~position_kind)+
         labs(x="Final test position cut in 10 chunks (left column), Initial test list order (right column)",
@@ -78,7 +100,9 @@ allresf=read.csv("allresf.csv")
             plot.margin = margin(t = 10, b = 40),
             text=element_text(size=30) # Increase font size globally
         )+
-    scale_color_manual(values=c("blue","red","blue","green","green","purple","purple"))
+    scale_color_manual(values=c("blue","red","blue","green","green","purple","purple"))+
+  scale_linetype_manual(values = my.ltys) +
+  scale_shape_manual(values    = my.shps)
     # scale_shape_discrete(values=c(16,17,18,19,20,21,22))+
         # ylim(c(0.5,1))
 
