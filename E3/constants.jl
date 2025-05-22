@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = true
-n_simulations = is_finaltest ? 100 : 200;
+n_simulations = is_finaltest ? 400 : 200;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -153,7 +153,7 @@ const c_context = c
 # =============================================================================
 # -----------------------------------------
 """
-Ratios of stuff of featuresl; etc
+Ratios of stuff of featuresl; etc 
 """
 ########## Prob DRIFT and so on
 
@@ -187,14 +187,14 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.8,0.8, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.2,0.2, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
-p_recallFeatureStore = 0.6;
+p_recallFeatureStore = 0.7;
 
-final_gap_change = 0.2; #0.21
+final_gap_change = 0.1; #0.21
 p_ListChange_finaltest = ones(10) * 0.55 #0.1 prob list change for final test
 
 
@@ -218,7 +218,7 @@ context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lo
 criterion_initial = LinRange(1, 1, n_probes); #CHANGED
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.05,0.05, 10)#LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
 # -----------------------------------------
