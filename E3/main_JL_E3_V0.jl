@@ -26,7 +26,7 @@ Description :
 # Pkg.add([ "Random", "Distributions","Statistics", "DataFrames", "DataFramesMeta","BenchmarkTools", "ProfileView", "Profile", "QuadGK"])
 # Pkg.add("RCall")
 using Random, Distributions, Statistics, DataFrames, DataFramesMeta
-using RCall
+# using RCall
 using BenchmarkTools, ProfileView, Profile, Base.Threads
 using QuadGK
 Threads.nthreads()
@@ -129,7 +129,7 @@ end
 # ```
 
 # Example `rcall_visualizations.jl`:
-using RCall
+# using RCall
 
 # In your main script, you can call this function after running the simulation:
 # include("rcall_visualizations.jl")
