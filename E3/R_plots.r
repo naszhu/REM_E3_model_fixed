@@ -160,24 +160,26 @@ p1
 
 
 
-# DF3 = all_results %>% 
-# group_by(list_number, simulation_number, ilist_image)%>%
-# # summarize(meanx=mean(Nratio_iimageinlist))%>%
-# summarize(meanx=mean(N_imageinlist))%>%
-# group_by(list_number, ilist_image)%>%
-# summarize(meanx=mean(meanx))%>%
-# mutate(list_number=as.factor(list_number))
-# # mutate(ilist_image=as.factor(ilist_image))
-# # mutate(test_position=as.factor(test_position))
+DF3 = all_results %>% 
+group_by(list_number, simulation_number, ilist_image)%>%
+# summarize(meanx=mean(Nratio_iimageinlist))%>%
+summarize(meanx=mean(N_imageinlist))%>%
+group_by(list_number, ilist_image)%>%
+summarize(meanx=mean(meanx))%>%
+mutate(list_number=as.factor(list_number))
+# mutate(ilist_image=as.factor(ilist_image))
+# mutate(test_position=as.factor(test_position))
 
-# p4=ggplot(data=DF3, aes(x=ilist_image,y=meanx, group=list_number))+
-# geom_point(aes(color=list_number))+
-# geom_line(aes(color=list_number))+
-# geom_text(aes(label = round(meanx,digits=3)),nudge_y = 0.01,size=10)+
-# labs(title="Ratio of activated trace for 10 lists in 10 color")+
-# # scale_x_continuous(name="list",breaks = rev(1:10),labels=as.character(rev(1:10)))
-# scale_x_reverse(name="traces from which list, left end - recent list, right, right end - prior list",breaks = 1:10,labels=as.character(1:10)) +
-# theme(text = element_text(size = 30))  # Increase font size globally
+p4=ggplot(data=DF3, aes(x=ilist_image,y=meanx, group=list_number))+
+geom_point(aes(color=list_number))+
+geom_line(aes(color=list_number))+
+geom_text(aes(label = round(meanx,digits=3)),nudge_y = 0.01,size=10)+
+labs(title="Ratio of activated trace for 10 lists in 10 color")+
+# scale_x_continuous(name="list",breaks = rev(1:10),labels=as.character(rev(1:10)))
+scale_x_reverse(name="traces from which list, left end - recent list, right, right end - prior list",breaks = 1:10,labels=as.character(1:10)) +
+theme(text = element_text(size = 30))  # Increase font size globally
+
+p4
 
 df_serial=all_results%>%
     mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
@@ -242,7 +244,7 @@ p_serial
 png(filename="plot1.png", width=500, height=1200)
 # grid.arrange(p1,list_rt,p_in_20,testpos_rt,p_serial,p4,ncol = 2,nrow=3)
 # grid.arrange(p1,p_in_20,p_serial,p4,ncol = 2,nrow=2)
-grid.arrange(p1,p_in_20,p_serial,ncol = 1,nrow=3)
+grid.arrange(p1,p_in_20,p_serial,p4, ncol = 2,nrow=3)
 dev.off()
 # system("feh plot1.png &", wait = FALSE)      # if `feh` is installed
 # system("feh plot1.png",)      # if `feh` is installed
