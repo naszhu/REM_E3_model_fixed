@@ -1,11 +1,13 @@
 
 
-
-
+"""
+NOTE: cu and U_ctx has to appear at the same time, or both not appear, can't just have one appear
+"""
 function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int64}, g::Float64, cc::Float64, isctx_ll::Bool, listnum::Int64; cu:: Float64 = 0.0, U_ctx::Int64 = 0 )::Float64
 
     lambda = Vector{Float64}(undef, length(probe_img))
 
+    @assert (cu===0.0 && U_ctx===0) || (cu !==0.0 && U_ctx !==0) "STH wrong!$(cu), $(U_ctx), $(!(cu !==0.0 && U_ctx !==0.0))"
 
     @assert length(probe_img)==length(probe_img) "NOT SAME LENGTH"
 
@@ -103,7 +105,7 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
                 ## take off word_features[1:round(Int, w_word * p)]; just give the whole word features
                 w_word_use = round(Int, w_word * p_word_feature_use[probe_img.list_number])
                 
-                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:w_word_use], image.word.word_features[1:w_word_use], g_word, c[ilist],false,ilist) 
+                word_likelihoods[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:w_word_use], image.word.word_features[1:w_word_use], g_word, c[ilist],false,ilist ) 
                 # println("$(probe_img.word.word_features), $(image.word.word_features), $(g_word), $(c), $(word_likelihoods)")
 
 
@@ -145,7 +147,7 @@ function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::V
         #ok, idk how much context; differetiate or not will be used in liklihood calc of final test for now, so just keep it as what it was for now
         if is_test_allcontext2  #true; currently goes here; first half unchange
             image_context_f = fast_concat([image_context[1:nU_f_i], image_context[(nU + 1) : (nU + nC_f_i)]])
-            context_likelihood = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c[end], true, listnum)  # .#  Context calculation TODO, FIXME end here?
+            context_likelihood = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c_context_c[end], true, listnum; cu = c_context_un[end], U_ctx = nU_f_i)  # .#  Context calculation TODO, FIXME end here?
 
         elseif is_test_changecontext2 #false
             error("no")

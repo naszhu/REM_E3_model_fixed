@@ -145,7 +145,7 @@ u_adv_firstpos=0.05 #adv of first position in eeach list
 
 c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
 c_storeintest = c
-c_context_c = LinRange(0.75,0.6, n_lists)
+c_context_c = LinRange(0.75,0.6, n_lists) #0.75->0.6
 c_context_un = LinRange(0.75,0.75, n_lists)
 # -----------------------------------------
 # =============================================================================
