@@ -74,13 +74,27 @@ function drift_between_lists_final!(
 end  
 
 
-function add_features_from_empty!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, c_param::Float64, g_param::Float64; u_adv=0.0)::Nothing
+function add_features_from_empty!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, cc::Float64, g_param::Float64; u_adv=0.0, cu::Float64=0.0)::Nothing
+
+    @assert length(target_features) == length(probe_features) "LENGTH NOT MATCH"
+
     for i in eachindex(probe_features)
+
+        if cu==0.0
+            c_param = cc
+        else
+            if i > nU #FIXME: fast workaround here
+                c_param = cc
+            else
+                c_param = cu
+            end
+        end
         j = target_features[i]
         if j == 0
             target_features[i] = rand() < u_star ? (rand() < c_param ? probe_features[i] : rand(Geometric(g_param)) + 1) : j
         end
     end
+
 end
 
 

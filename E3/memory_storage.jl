@@ -65,6 +65,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
                 ## Initial adv of storing only for changing. 
                 ## this is to predit, initial test result have initial adv in within-list studypos data, but not in final test within-list studypos data
 
+               
                 if ((ic > nU) && (word.initial_studypos == 1))
                     
                     stored_val = (rand() < u_star_context[list_num]+u_adv_firstpos ? 1 : 0) * context_features[ic]
@@ -74,8 +75,10 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
 
                 end
 
+                which_ctx_use = ic > nU ? c_context_c[list_num] : c_context_un[list_num]
+
                 if stored_val != 0 #if sucessfully stored do the folowing, else keep the same value
-                    copied_val = rand() < c_context[list_num] ? stored_val : rand(Geometric(g_context)) + 1
+                    copied_val = rand() < which_ctx_use ? stored_val : rand(Geometric(g_context)) + 1
                     new_image.context_features[ic] = copied_val
                 end
             end

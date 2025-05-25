@@ -2,11 +2,26 @@
 
 
 
-function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int64}, g::Float64, c::Float64, isctx_ll::Bool, listnum::Int64)::Float64
+function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int64}, g::Float64, cc::Float64, isctx_ll::Bool, listnum::Int64; cu:: Float64 = 0.0, U_ctx::Int64 = 0 )::Float64
 
     lambda = Vector{Float64}(undef, length(probe_img))
 
+
+    @assert length(probe_img)==length(probe_img) "NOT SAME LENGTH"
+
     for k in eachindex(probe_img) # 1:length(probe_img)
+
+        if cu==0.0 #FIXME: quick work around here
+            c = cc
+        else #if there is an input of cu
+            if k > U_ctx
+                c=cc
+            else
+                c=cu
+            end
+        end
+
+
         if image[k] == 0
             lambda[k] = 1
         elseif image[k] != 0
@@ -69,9 +84,11 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
             probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
             image_context_adjusted = fast_concat([image_context[1 : U_ctx], image_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
 
-            context_likelihood = calculate_likelihood_ratio(probe_context_adjusted, image_context_adjusted, g_context, c_context[ilist], true, ilist)    #a bug fixed here
+            context_likelihood = calculate_likelihood_ratio(probe_context_adjusted, image_context_adjusted, g_context, c_context_c[ilist], true, ilist; cu = c_context_un[ilist], U_ctx = U_ctx)    #a bug fixed here #FIXME: a tech quick skipthrough here
+
         
         else  #not testing all context but change only, no unchange or position code
+            error("HALT here, not written")
             context_likelihood = calculate_likelihood_ratio(probe_context[nU+1:w_context], image_context[nU+1:w_context], c_context[ilist], c, true, ilist)  # this step give prod(lambda); odds
         end
 
