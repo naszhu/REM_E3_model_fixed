@@ -241,10 +241,10 @@ p_serial
 #         text=element_text(size=20) # Increase font size globally
 #     )
 
-png(filename="plot1.png", width=500, height=1200)
+png(filename="plot1.png", width=1300, height=1200)
 # grid.arrange(p1,list_rt,p_in_20,testpos_rt,p_serial,p4,ncol = 2,nrow=3)
 # grid.arrange(p1,p_in_20,p_serial,p4,ncol = 2,nrow=2)
-grid.arrange(p1,p_in_20,p_serial,p4, ncol = 2,nrow=3)
+grid.arrange(p1,p_in_20,p_serial,p4, ncol = 2,nrow=2)
 dev.off()
 # system("feh plot1.png &", wait = FALSE)      # if `feh` is installed
 # system("feh plot1.png",)      # if `feh` is installed

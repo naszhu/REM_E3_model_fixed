@@ -13,12 +13,13 @@ function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int6
 
     for k in eachindex(probe_img) # 1:length(probe_img)
 
+        # The following: if different copying parameter for CC and UC, then how to decide wich one to use?
         if cu==0.0 #FIXME: quick work around here
             c = cc
         else #if there is an input of cu
             if k > U_ctx
                 c=cc
-            else
+            else 
                 c=cu
             end
         end
@@ -41,6 +42,14 @@ function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int6
                     # notch_transform(lk_prior; α=LinRange(0,0, 10)[listnum], μ=10, σ=0.1)
                     # valley_transform(lk_prior; α=0.8, μ=0.5, σ=0.1)
                 end
+
+
+        if k>U_ctx #if changing ctx
+
+            lambda[k] = lambda[k] ^ LLpower # for the second half of context features, which is changing context
+        else
+            # lambda[k] = lambda[k]^ 0.7 # for the first half of context features, which is unchanging context
+        end
                 # lambda[k] = log_transform(lk_prior; k=1.2)
             else
                 error("error image match")
@@ -48,6 +57,8 @@ function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int6
         else
             error("error here")
         end
+
+
     end
 
     return prod(lambda)
