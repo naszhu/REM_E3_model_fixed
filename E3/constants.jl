@@ -140,12 +140,15 @@ u_star_storeintest = u_star #for word # ratio of this and the next is key for T_
 
 #the following show adv for ONLY CHANGE context (second part of context)
 #: nospecialty for first list right now
-u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
-u_adv_firstpos=0.05 #adv of first position in eeach list
+# u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
+# u_adv_firstpos=0.05 #adv of first position in eeach list
+u_star_context=vcat(1, ones(n_lists-1)*1)#CHANGED
+u_adv_firstpos=1 #adv of first position in eeach list
 
 c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
 c_storeintest = c
-c_context_c = LinRange(0.75,0.6, n_lists) #0.75->0.6
+# c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
+c_context_c = LinRange(0.8,0.8, n_lists) #0.75->0.6
 c_context_un = LinRange(0.75,0.75, n_lists)
 # -----------------------------------------
 # =============================================================================
@@ -157,6 +160,7 @@ c_context_un = LinRange(0.75,0.75, n_lists)
 Ratios of stuff of featuresl; etc 
 """
 ########## Prob DRIFT and so on
+LLpower = 1.5 #power of likelihood for changing context, 
 
 p_poscode_change = 0.1
 p_reinstate_context = 0.8 #stop reinstate after how much features
