@@ -47,13 +47,30 @@ function drift_between_lists!(
     )::Nothing
                 
 
-    for _ in 1:n_drift
-        for i in eachindex(context_features)
-            if rand() < p_drift
-                context_features[i] = rand(Geometric(g_context)) + 1
-            end
+    # for _ in 1:n_drift
+    #     for i in eachindex(context_features)
+    #         if rand() < p_drift
+    #             context_features[i] = rand(Geometric(g_context)) + 1
+    #         end
+    #     end
+    # end
+
+    # for i in eachindex(context_features)
+    #     for _ in 1:40
+    #             if rand() < 0.03
+    #                 context_features[i] = rand(Geometric(g_context)) + 1
+    #             end
+    #     end
+    # end
+
+    for i in eachindex(context_features)
+        for _ in 1:n_drift
+                if rand() < p_drift
+                    context_features[i] = rand(Geometric(g_context)) + 1
+                end
         end
     end
+
 end  
 
 function drift_between_lists_final!(
@@ -73,7 +90,10 @@ function drift_between_lists_final!(
     # end
 end  
 
-
+"""
+assume read nU from constant.jl
+cu and cc is copying parameter value
+"""
 function add_features_from_empty!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, cc::Float64, g_param::Float64; u_adv=0.0, cu::Float64=0.0)::Nothing
 
     @assert length(target_features) == length(probe_features) "LENGTH NOT MATCH"
@@ -98,14 +118,37 @@ function add_features_from_empty!(target_features::Vector{Int}, probe_features::
 end
 
 
-function restore_features!(target_features::Vector{Int}, source_features::Vector{Int}, p_recallFeatureStore::Float64; is_store_mismatch::Bool=is_store_mismatch)::Nothing
-    for i in eachindex(source_features)
-        current_value = target_features[i]
-        source_value = source_features[i]
+function restore_features!(target_features::Vector{Int}, source_features::Vector{Int}, p_recallFeatureStore::Float64; is_store_mismatch::Bool=is_store_mismatch, is_ctx::Bool=false)::Nothing
 
-        if (current_value == 0) || ((current_value != 0) && (current_value != source_value) && is_store_mismatch)
-            target_features[i] = rand() < p_recallFeatureStore ? source_value : current_value
-        end
+    # for _ in 1:n_units_time_restore
+        for i in eachindex(source_features)
+            current_value = target_features[i]
+            source_value = source_features[i]
+
+            if is_ctx
+                @assert length(target_features)==nU+nC "not same length"
+                if i>nU # for CC
+                    pps = 0.8
+                else # for unchanging 
+                    pps = 0
+                end
+            else #if content
+                pps = 0
+            end
+            
+            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
+            #     target_features[i] = rand() < pps ? source_value : current_value
+            # end
+            
+            if (current_value !== 0) 
+                target_features[i] = rand() < pps ? source_value : current_value
+            end
+            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
+            #     target_features[i] = rand() < u_star_context[1] ? (rand() < c_context_c[1] ? current_value : rand(Geometric(g_context)) + 1) : current_value
+            # end
+
+            
+        # end
     end
 end
 

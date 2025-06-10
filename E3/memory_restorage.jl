@@ -86,7 +86,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         if is_strengthen_contextandcontent #false
             restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-            restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
+            restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
         else
             # error("should strenghen here")
         end

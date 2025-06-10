@@ -138,18 +138,24 @@ u_star = vcat(0.06, ones(n_lists-1) * 0.06)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
-#the following show adv for ONLY CHANGE context (second part of context)
 #: nospecialty for first list right now
+#the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 u_adv_firstpos=0.05 #adv of first position in eeach list
-u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
+u_star_context=vcat(1, ones(n_lists-1)*1)#CHANGED
 # u_adv_firstpos=1 #adv of first position in eeach list
 
-c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
+# c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
+# c_storeintest = c
+# # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
+# c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
+# c_context_un = LinRange(0.75,0.75, n_lists)
+nnnow=0.75
+c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 c_storeintest = c
-# c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
-c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
-c_context_un = LinRange(0.75,0.75, n_lists)
+# c_context_c = LinRange(0.5,nnnow, n_lists) #nnnow->0.6
+c_context_c = LinRange(nnnow,nnnow, n_lists) #nnnow->0.6
+c_context_un = LinRange(nnnow,nnnow, n_lists)
 # -----------------------------------------
 # =============================================================================
 
@@ -173,8 +179,8 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(12, 12, n_lists)); #5;15; #CHANGED, this is used in sim()
-(1-(1-p_driftAndListChange)^ n_between_listchange[1])
+n_between_listchange = round.(Int, LinRange(8, 8, n_lists)); #5;15; #CHANGED, this is used in sim()
+(1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
 #first half unchange context, second half change context
@@ -185,9 +191,10 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.2, 0.2, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.0, 0.0, n_lists) # if use no unchanging
 ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
+# Only influence LL calculation below, otherwise, nU and nC used
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
@@ -197,7 +204,7 @@ ratio_changing_to_itself_final = LinRange(0.2,0.2, n_lists) # if use no unchangi
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
-p_recallFeatureStore = 0.7;
+p_recallFeatureStore = 1.0;
 
 final_gap_change = 0.1; #0.21
 p_ListChange_finaltest = ones(10) * 0.55 #0.1 prob list change for final test
@@ -246,7 +253,7 @@ is_test_allcontext2 = true #is testing all context in final testZ
 is_test_changecontext2 = false #is testing only change context in final test
 
 is_restore_context = true # HEY! we do need to restore context
-is_strengthen_contextandcontent = false
+is_strengthen_contextandcontent = true
 
 is_firststage = true;
 

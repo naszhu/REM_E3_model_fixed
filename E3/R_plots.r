@@ -159,8 +159,9 @@ p1
 # )
 
 
-
+print(summary(as.factor(all_results$type_specific)))
 DF3 = all_results %>% 
+filter(type_specific=="F")%>%
 group_by(list_number, simulation_number, ilist_image)%>%
 # summarize(meanx=mean(Nratio_iimageinlist))%>%
 summarize(meanx=mean(N_imageinlist))%>%

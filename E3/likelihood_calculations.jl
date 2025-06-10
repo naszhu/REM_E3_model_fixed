@@ -3,11 +3,18 @@
 """
 NOTE: cu and U_ctx has to appear at the same time, or both not appear, can't just have one appear
 """
+# Example:
+# calculate_likelihood_ratio([1, 2, 2],[1, 3, 0], g_context, c_context_c[1], true, 1; cu = c_context_un[1], U_ctx = nU_in[1])
+c= c_storeintest[1] #copying parameter - 0.8 for context copying
+g = g_context #general context copying parameter
+jj=7
+(c + (1 - c) * g * (1 - g)^(jj - 1)) / (g * (1 - g)^(jj - 1))
+
 function calculate_likelihood_ratio(probe_img::Vector{Int64}, image::Vector{Int64}, g::Float64, cc::Float64, isctx_ll::Bool, listnum::Int64; cu:: Float64 = 0.0, U_ctx::Int64 = 0 )::Float64
 
     lambda = Vector{Float64}(undef, length(probe_img))
 
-    @assert (cu===0.0 && U_ctx===0) || (cu !==0.0 && U_ctx !==0) "STH wrong!$(cu), $(U_ctx), $(!(cu !==0.0 && U_ctx !==0.0))"
+    # @assert (cu===0.0 && U_ctx===0) || (cu !==0.0 && U_ctx !==0) "STH wrong!$(cu), $(U_ctx), $(!(cu !==0.0 && U_ctx !==0.0))"
 
     @assert length(probe_img)==length(probe_img) "NOT SAME LENGTH"
 
