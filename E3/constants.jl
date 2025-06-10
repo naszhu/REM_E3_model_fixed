@@ -141,14 +141,14 @@ u_star_storeintest = u_star #for word # ratio of this and the next is key for T_
 #the following show adv for ONLY CHANGE context (second part of context)
 #: nospecialty for first list right now
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
-# u_adv_firstpos=0.05 #adv of first position in eeach list
-u_star_context=vcat(1, ones(n_lists-1)*1)#CHANGED
-u_adv_firstpos=1 #adv of first position in eeach list
+u_adv_firstpos=0.05 #adv of first position in eeach list
+u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
+# u_adv_firstpos=1 #adv of first position in eeach list
 
 c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
 c_storeintest = c
 # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
-c_context_c = LinRange(0.8,0.8, n_lists) #0.75->0.6
+c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 c_context_un = LinRange(0.75,0.75, n_lists)
 # -----------------------------------------
 # =============================================================================
@@ -160,9 +160,9 @@ c_context_un = LinRange(0.75,0.75, n_lists)
 Ratios of stuff of featuresl; etc 
 """
 ########## Prob DRIFT and so on
-LLpower = 1.5 #power of likelihood for changing context, 
+LLpower = 1 #power of likelihood for changing context, 
 
-p_poscode_change = 0.1
+# p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
 p_reinstate_rate = 0.4#0.4 #prob of reinstatement
@@ -185,7 +185,7 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.4, 0.4, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.2, 0.2, n_lists) # if use no unchanging
 ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
@@ -207,7 +207,7 @@ p_ListChange_finaltest = ones(10) * 0.55 #0.1 prob list change for final test
 u_advFoilInitialT = 0;
 
 
-p_word_feature_use = LinRange(1, 0.7, n_lists) #0.5 #ratio of word features used in the first stage
+p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used in the first stage
 # -----------------------------------------
 # =============================================================================
 
@@ -218,9 +218,9 @@ p_word_feature_use = LinRange(1, 0.7, n_lists) #0.5 #ratio of word features used
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = LinRange(1, 1, n_probes); #CHANGED
+criterion_initial = LinRange(6, 4, n_probes); #CHANGED
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
