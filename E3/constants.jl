@@ -233,6 +233,10 @@ criterion_initial = LinRange(6, 4, n_probes); #CHANGED
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
+
+context_threshold_filter = 10000
+p1_old_after_filter = LinRange(1, 0.8, 10);
+p2_old_after_filter = LinRange(0.5, 0.9, 10);
 # -----------------------------------------
 # =============================================================================
 

@@ -29,37 +29,58 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         # println("this is list $(currentlist),there are $(length(image_pool_currentlist)) images in the current pool")
 
 
-        _, likelihood_ratios_org = calculate_two_step_likelihoods(probes[i].image, image_pool_currentlist, 1.0, i) #proportion is all
+        context_LL_ratios, content_LL_ratios_org = calculate_two_step_likelihoods(probes[i].image, image_pool_currentlist, 1.0, i) #proportion is all
 
-        likelihood_ratios = likelihood_ratios_org |> x -> filter(e -> e != 344523466743, x)
-        # println(length(likelihood_ratios_org)== length(image_pool_currentlist) )
+        content_LL_ratios_filtered = content_LL_ratios_org |> x -> filter(e -> e != 344523466743, x)
+        # println(length(content_LL_ratios_org)== length(image_pool_currentlist) )
 
 
         ilist_probe = probes[i].image.list_number
         i_testpos = probes[i].image.word.initial_testpos#1:20
 
-        nl = length(likelihood_ratios)
-        odds = 1 / nl * sum(likelihood_ratios)
+        nl = length(content_LL_ratios_filtered)
+        odds = 1 / nl * sum(content_LL_ratios_filtered)
+        odds_context = 1 / length(context_LL_ratios) * sum(context_LL_ratios)
 
         if (isnan(odds))
-            println("Current context_tau is too high, there are some simulations that have no tarce passing context filter in first step", nl, likelihood_ratios)
+            println("Current context_tau is too high, there are some simulations that have no tarce passing context filter in first step", nl, content_LL_ratios_filtered)
         end
-        decision_isold = odds > criterion_initial[i_testpos] ? 1 : 0
+
+        
+        if odds>criterion_initial[i_testpos] #val=1; if pass, possible to recall 
+            if odds> recall_odds_threshold #100, do a recall
+                if odds_context > context_threshold_filter #context familiar enough
+                    # println("Recall, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
+                    decision_isold = rand() < p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
+                else
+                    # println("Recall, but context not familiar enough, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
+                    decision_isold = rand() < p2_old_after_filter[ilist_probe] ? 1 : 0 #recall but not familiar enough, might be confusing foils, judge new
+
+                end
+
+            else #doesn't do recall,judge old
+                decision_isold = 1 #still old, but not recall
+            end
+        else #if didn't pass, directly judge new
+            decision_isold = 0
+        end
+
+
         diff = 1 / (abs(odds - criterion_initial[i_testpos]) + 1e-10)
 
         #criterion change by test position
 
         # decision_isold = odds > criterion_initial[i_testpos] ? 1 : 0;
 
-        nav = length(likelihood_ratios) / (length(image_pool_currentlist))
+        nav = length(content_LL_ratios_filtered) / (length(image_pool_currentlist))
         # println(nav)
         if (decision_isold == 1) && (odds > recall_odds_threshold)
-            imgMax = image_pool_currentlist[argmax(likelihood_ratios)]
+            imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
         end
 
         for j in eachindex(unique_list_numbers)
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
-            nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (likelihood_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
+            nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (content_LL_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
             
             #i is each probe, j is list number
             # testpos=i
@@ -73,7 +94,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             # println(nl, " ",nimages_activated)
         end
     
-        imax = argmax([ill==344523466743 ? -Inf : ill for ill in likelihood_ratios_org]);
+        imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
 
 
         if is_restore_initial
@@ -98,7 +119,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
     # println("now#$(length(probes))")
     for i in eachindex(probes)
 
-        # _, likelihood_ratios = [calculate_two_step_likelihoods(probes[i].image, image) for image in image_pool] 
+        # _, content_LL_ratios_filtered = [calculate_two_step_likelihoods(probes[i].image, image) for image in image_pool] 
         # Determine the current list based on the index `i`
         # global currchunk
         if i <= n_inEachChunk[1]
@@ -109,12 +130,12 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         # println(" ", i, " ", currchunk)
         # chunk assign correct here after printed check
 
-        _, likelihood_ratios_org = calculate_two_step_likelihoods2(probes[i].image, image_pool, 1.0, currchunk)
-        likelihood_ratios = likelihood_ratios_org |> x -> filter(e -> e != 344523466743, x)
-        #    if ii==1 println(size(image_pool),"of", size(likelihood_ratios)) end
+        _, content_LL_ratios_org = calculate_two_step_likelihoods2(probes[i].image, image_pool, 1.0, currchunk)
+        content_LL_ratios_filtered = content_LL_ratios_org |> x -> filter(e -> e != 344523466743, x)
+        #    if ii==1 println(size(image_pool),"of", size(content_LL_ratios_filtered)) end
 
-        # println(likelihood_ratios)
-        odds = 1 / length(likelihood_ratios) * sum(likelihood_ratios)
+        # println(content_LL_ratios_filtered)
+        odds = 1 / length(content_LL_ratios_filtered) * sum(content_LL_ratios_filtered)
         
         
         criterion_final_i = criterion_final[currchunk] #this need to be changed if 
@@ -122,7 +143,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         decision_isold = odds > criterion_final_i ? 1 : 0;
 
 
-        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(likelihood_ratios)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
+        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
         # pold = pcrr_EZddf(log(odds))
         # rt = Brt + Pi * abs(log(odds))
@@ -140,8 +161,8 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         is_target = probes[i].ProbeTypeSimple==:target,
         odds=odds, list_num=probes[i].image.list_number ) #! made changes to results, format different than that in inital
         
-        imax = argmax([ill==344523466743 ? -Inf : ill for ill in likelihood_ratios_org]);
-        # restore_intest(image_pool,probes[i].image, decision_isold, argmax(likelihood_ratios));
+        imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
+        # restore_intest(image_pool,probes[i].image, decision_isold, argmax(content_LL_ratios_filtered));
         if is_restore_final
 
             #Issue 12
