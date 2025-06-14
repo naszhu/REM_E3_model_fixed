@@ -31,6 +31,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
     #######Storage process: CONTENT & CONTEXT
         # go storage for n_units_time times
     #############STORAGE - content
+    
     for _ in 1:n_units_time #content intial adv??? . Maybe not needed but.. 
 
         # This might need to be changed or considered
@@ -46,7 +47,8 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
                 # else stored_val =(rand() < u_star[word.studypos] ? 1 : 0)*word.word_features[i];
                 # end
                 if stored_val != 0 #if sucessfully stored do the folowing, else keep the same value
-                    copied_val = rand() < c[list_num] ? stored_val : rand(Geometric(g_word)) + 1
+                    # println(c," ss")
+                    copied_val = rand() < c[1] ? stored_val : rand(Geometric(g_word)) + 1
                     new_image.word.word_features[i] = copied_val
                 end
             end
@@ -94,5 +96,4 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
 
     # return image_pool
 end
-
 

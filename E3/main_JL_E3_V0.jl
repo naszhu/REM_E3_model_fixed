@@ -33,6 +33,7 @@ Threads.nthreads()
 # JULIA_NUM_THREADS=8 julia
 
 
+include("utils.jl")
 include("constants.jl") 
 # recall_odds_threshold = 1e5;
 
@@ -44,7 +45,6 @@ include("constants.jl")
 
 
 a = [1 1 1; 1 1 1]
-include("utils.jl")
 
 include("feature_updates.jl")
 include("data_structures.jl")

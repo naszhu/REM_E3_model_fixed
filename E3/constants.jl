@@ -151,7 +151,8 @@ u_star_context=vcat(1, ones(n_lists-1)*1)#CHANGED
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
 nnnow=0.75
-c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
+c = LinRange(0.75, 0.776,n_lists)  #copying parameter - 0.8 for context copying 
+# println(c," aassssss")
 c_storeintest = c
 # c_context_c = LinRange(0.5,nnnow, n_lists) #nnnow->0.6
 c_context_c = LinRange(nnnow,nnnow, n_lists) #nnnow->0.6
@@ -179,7 +180,7 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(8, 8, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(25, 25, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -191,7 +192,7 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.0, 0.0, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.4, 0.4, n_lists) # if use no unchanging
 ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
 # Only influence LL calculation below, otherwise, nU and nC used
@@ -199,7 +200,7 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.2,0.2, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(1,1, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
@@ -227,15 +228,15 @@ Thresholds
 #TODO, apply first stage crition change to final test as well
 context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = LinRange(6, 4, n_probes); #CHANGED
+criterion_initial = generate_asymptotic_values(0.5); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
 
-context_threshold_filter = 10000
-p1_old_after_filter = LinRange(1, 0.8, 10);
+context_threshold_filter = 0
+p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 p2_old_after_filter = LinRange(0.5, 0.9, 10);
 # -----------------------------------------
 # =============================================================================
@@ -297,7 +298,6 @@ p_driftStudyTest = (1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
 # p_driftStudyTest = a
 p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[1])
 p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[end])
-
 
 
 

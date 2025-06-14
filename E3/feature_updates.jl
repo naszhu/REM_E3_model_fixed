@@ -130,25 +130,24 @@ function restore_features!(target_features::Vector{Int}, source_features::Vector
                 if i>nU # for CC
                     pps = 0.8
                 else # for unchanging 
-                    pps = 0
+                    pps = 0.8
                 end
             else #if content
-                pps = 0
+                pps = 0.8
             end
             
-            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
-            #     target_features[i] = rand() < pps ? source_value : current_value
-            # end
-            
-            if (current_value !== 0) 
+            if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
                 target_features[i] = rand() < pps ? source_value : current_value
             end
+            
+            # if (current_value !== 0) 
+            #     target_features[i] = rand() < pps ? source_value : current_value
+            # end
             # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
             #     target_features[i] = rand() < u_star_context[1] ? (rand() < c_context_c[1] ? current_value : rand(Geometric(g_context)) + 1) : current_value
             # end
 
             
-        # end
-    end
+        end
+    # end
 end
-

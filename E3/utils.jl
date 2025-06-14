@@ -19,3 +19,23 @@ notch_transform(x; α=10.0, μ=0.5, σ=0.2) = x / (1 + α * exp(-((x - μ)^2) / 
 
 # multiplicative-notch version
 valley_transform(x; α=0.8, μ=0.5, σ=0.2) = x * (1 - α * exp(-((x - μ)^2) / (2*σ^2)))
+
+"""
+   For criterion change across lists: generate a power function that asymptotically increases and flattens out near position 4, here's a simplified version of the code:
+
+   p: # Power exponent for the asymptotic increase; p = 2.0 , roughly stop increasing at 4th position
+
+   currently, this function only have argument inputs p, and though should include arguments of how dimn1 change as well 
+"""
+function generate_asymptotic_values(p::Float64)
+    # Generate linearly decreasing dim1 from 6 to 4
+    dim1 = LinRange(0.3, 0.3, n_probes)
+    
+    t = LinRange(1, 100, n_lists)   # Normalized range for column positions (0 to 1)
+    dim2 = t .^ p  # Apply the power-law to create the asymptotic increase
+    
+    # 3) Create the 2D matrix by outer-product of dim1 and dim2
+    M = dim1 .* transpose(dim2)     # M is of size (n_probes, n_lists)
+    
+    return M
+end

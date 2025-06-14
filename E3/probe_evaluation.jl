@@ -47,7 +47,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         end
 
         
-        if odds>criterion_initial[i_testpos] #val=1; if pass, possible to recall 
+        if odds>criterion_initial[i_testpos,ilist_probe] #val=1; if pass, possible to recall 
             if odds> recall_odds_threshold #100, do a recall
                 if odds_context > context_threshold_filter #context familiar enough
                     # println("Recall, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
@@ -66,7 +66,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         end
 
 
-        diff = 1 / (abs(odds - criterion_initial[i_testpos]) + 1e-10)
+        diff = 1 / (abs(odds - criterion_initial[i_testpos,ilist_probe]) + 1e-10)
 
         #criterion change by test position
 
@@ -172,4 +172,3 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
 
     return results
 end
-

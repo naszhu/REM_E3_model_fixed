@@ -124,7 +124,7 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
                 ## take off word_features[1:round(Int, w_word * p)]; just give the whole word features
                 w_word_use = round(Int, w_word * p_word_feature_use[probe_img.list_number])
                 
-                word_likelihood_imgi_ratios[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:w_word_use], image.word.word_features[1:w_word_use], g_word, c[ilist],false,ilist ) 
+                word_likelihood_imgi_ratios[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:w_word_use], image.word.word_features[1:w_word_use], g_word, c[1],false,ilist ) 
                 # println("$(probe_img.word.word_features), $(image.word.word_features), $(g_word), $(c), $(word_likelihood_imgi_ratios)")
 
 
