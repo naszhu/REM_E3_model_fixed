@@ -18,6 +18,7 @@ function generate_study_list(list_num::Int, g_word::Float64,w_word::Int64 )::Vec
     # nItemPerUnit=3; Tn+1=4; T=1; SO=4; SOn+1=1;
     # Create the symbol array based on the counts
     types = reduce(vcat, fill(symbol, count*nItemPerUnit) for (symbol, count) in probeTypeDesign_study) |> shuffle!
+    # println(length(types), " nw:",n_words)
     @assert length(types) == n_words "The number of types does not match the number of words"
     type_general = map(x -> occursin(r"\+1$", String(x)) ? Symbol(replace(String(x), r"\+1$" => "")) : x, types)   
 

@@ -233,6 +233,7 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
         # images hold pool_image of the current list, 
         images = studyPool_Img_byList[list_number]
         image_groups = Dict(type => filter(img -> img.word.type_general == type, images) |> shuffle! for type in [:T, :Tn, :SO, :SOn, :F, :Fn]);
+        # println(length(image_groups[:T]), " T images in list ")
 
         # images_T, images_Tn, Images_SO, images_Son, images_F, images_Fn = image_groups[:T], image_groups[:Tn], image_groups[:SO], image_groups[:SOn], image_groups[:F], image_groups[:Fn]   # Generate targets from shuffled list and foils anew
 
@@ -314,6 +315,7 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
             if haskey(image_groups, probe[iprobe])
 
+                # println(length(image_groups[probe[iprobe]]), " images in group ", probe[iprobe], " in list ", list_number, " .length probe: ", length(probe), " iprobe: ", iprobe)
                 global img = pop!(image_groups[probe[iprobe]])
 
                
