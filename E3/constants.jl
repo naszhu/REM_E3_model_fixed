@@ -229,7 +229,7 @@ Thresholds
 #TODO, apply first stage crition change to final test as well
 context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = generate_asymptotic_values(0.5); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
+criterion_initial = generate_asymptotic_values(1.0, 1.0, 1.0, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)

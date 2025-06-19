@@ -27,11 +27,11 @@ valley_transform(x; α=0.8, μ=0.5, σ=0.2) = x * (1 - α * exp(-((x - μ)^2) / 
 
    currently, this function only have argument inputs p, and though should include arguments of how dimn1 change as well 
 """
-function generate_asymptotic_values(p::Float64)
+function generate_asymptotic_values(p::Float64, within_list_start::Float64, within_list_end::Float64,  between_list_start::Float64,  between_list_end::Float64 )::Matrix{Float64}
     # Generate linearly decreasing dim1 from 6 to 4
-    dim1 = LinRange(0.3, 0.3, n_probes)
+    dim1 = LinRange(within_list_start, within_list_end, n_probes)
     
-    t = LinRange(1, 1, n_lists)   # Normalized range for column positions (0 to 1)
+    t = LinRange(between_list_start, between_list_end, n_lists)   # Normalized range for column positions (0 to 1)
     dim2 = t .^ p  # Apply the power-law to create the asymptotic increase
     
     # 3) Create the 2D matrix by outer-product of dim1 and dim2
