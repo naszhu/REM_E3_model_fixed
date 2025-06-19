@@ -74,9 +74,11 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
         nav = length(content_LL_ratios_filtered) / (length(image_pool_currentlist))
         # println(nav)
-        if (decision_isold == 1) && (odds > recall_odds_threshold)
-            imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
-        end
+        # if (decision_isold == 1) && (odds > recall_odds_threshold)
+        #     imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
+        # end
+
+
 
         for j in eachindex(unique_list_numbers)
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
