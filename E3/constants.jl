@@ -236,7 +236,9 @@ criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
 
-# p_switch_listOrgin =  LinRange(0.1, 0.6 , 10)#probabiltiy of switch from familarity to recall, from familarity to knowing "List of Origin"
+p_switch_toListOrgin =  LinRange(0.1, 0.6 , 10)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_old_with_ListOrigin = 0.8 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
+
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
