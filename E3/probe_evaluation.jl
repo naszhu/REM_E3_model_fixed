@@ -74,9 +74,19 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
         nav = length(content_LL_ratios_filtered) / (length(image_pool_currentlist))
         # println(nav)
-        if (decision_isold == 1) && (odds > recall_odds_threshold)
-            imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
-        end
+        # if (decision_isold == 1) && (odds > recall_odds_threshold)
+        #     imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
+        # end
+
+        ############### Add new sampling LL preparing lines
+        filtered_content_LL_ratios_inOriginalLength = content_LL_ratios_org |> x -> map(e -> e == 344523466743 ? 0 : e, x)
+
+        # Step 2: Calculate the total sum of the filtered likelihood ratios
+        total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength)
+
+        # Step 3: Assign probabilities proportionally
+        sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength)) : [filtered_content_LL_ratios_inOriginalLength[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength)]
+        ################
 
         for j in eachindex(unique_list_numbers)
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
@@ -94,11 +104,9 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             # println(nl, " ",nimages_activated)
         end
     
-        imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
-
 
         if is_restore_initial
-            restore_intest(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, odds) 
+            restore_intest(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds) 
         end
 
         # println("i, $i, i_testpos, $i_testpos")
