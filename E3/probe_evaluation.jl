@@ -49,14 +49,8 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         
         if odds>criterion_initial[i_testpos,ilist_probe] #val=1; if pass, possible to recall 
             if odds> recall_odds_threshold #100, do a recall
-                if odds_context > context_threshold_filter #context familiar enough
-                    # println("Recall, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
-                    decision_isold = rand() < p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
-                else
-                    # println("Recall, but context not familiar enough, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
-                    decision_isold = rand() < p2_old_after_filter[ilist_probe] ? 1 : 0 #recall but not familiar enough, might be confusing foils, judge new
+                decision_isold = 1 #p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
 
-                end
 
             else #doesn't do recall,judge old
                 decision_isold = 1 #still old, but not recall
