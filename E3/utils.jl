@@ -39,3 +39,16 @@ function generate_asymptotic_values(p::Float64, within_list_start::Float64, with
     
     return M
 end
+
+
+
+"""
+the fixed start asympotopically changes vector: gradually decrease the level of increase  
+"""
+function generate_asymptotic_increase_fixed_start(start_at::Float64, rate::Float64, num_values::Int64)::Vector{Float64}
+    values = zeros(num_values)
+    for i in 1:num_values
+        values[i] = start_at + (1 - exp(-rate * (i - 1))) * (1 - start_at)
+    end
+    return values
+end
