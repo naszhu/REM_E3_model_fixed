@@ -151,7 +151,7 @@ u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.76
+nnnow=0.75
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
 c_storeintest = c
@@ -238,9 +238,15 @@ recall_odds_threshold = 100;
 
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
-start_end_at=[0.2, 1]
-p_switch_toListOrgin =  vcat(0, LinRange(start_end_at[1], start_end_at[2] , ilist_switch_stop_at-1), start_end_at[2]*ones(n_lists-ilist_switch_stop_at)...) #probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-p_old_with_ListOrigin = 0.5 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
+start_and_rate = [0.28, 0.25]
+start_and_end = [0.2, 0.65]
+
+
+# asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1)
+asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
+
+p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_old_with_ListOrigin = 0.45 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
