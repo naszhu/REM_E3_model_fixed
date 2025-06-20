@@ -56,12 +56,12 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             if odds> recall_odds_threshold #100, do a recall
                 if rand() < p_switch_toListOrgin[ilist_probe] # if LOR was recalled
 
-                    if imgMax.list_number == ilist_probe #if the max image is from the current list, then prob old
-                        decision_isold = 1 #this, should include a prob or not?
+                    # if imgMax.list_number == ilist_probe #if the max image is from the current list, then prob old
+                    #     decision_isold = 1 #this, should include a prob or not?
 
-                    else #if the max image is not from the current list, then switch to origin list
+                    # else #if the max image is not from the current list, then switch to origin list
                         decision_isold = rand() < p_old_with_ListOrigin ? 1 : 0; #recall, judge old #recall, judge new
-                    end
+                    # end
                     
                     #decision_isold = rand() < 1 p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
                 else
