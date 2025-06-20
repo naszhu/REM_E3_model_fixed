@@ -181,7 +181,7 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(0.0, 0.0, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(15, 15, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -229,15 +229,15 @@ Thresholds
 #TODO, apply first stage crition change to final test as well
 context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = generate_asymptotic_values(1.0, 0.3, 0.3, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
+criterion_initial = generate_asymptotic_values(1.0, 0.1, 0.1, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
 
-p_switch_toListOrgin =  LinRange(0.0, 0.0 , 10)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-p_old_with_ListOrigin = 1 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
+p_switch_toListOrgin =  LinRange(0.03, 0.8 , 10)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_old_with_ListOrigin = 0.6 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
