@@ -151,7 +151,7 @@ u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.75
+nnnow=0.76
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
 c_storeintest = c
@@ -229,15 +229,15 @@ Thresholds
 #TODO, apply first stage crition change to final test as well
 context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = generate_asymptotic_values(1.0, 0.07, 0.07, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
+criterion_initial = generate_asymptotic_values(1.0, 0.05, 0.05, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 100;
 
-p_switch_toListOrgin =  LinRange(0.2, 0.8 , 10)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-p_old_with_ListOrigin = 0.6 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
+p_switch_toListOrgin =  LinRange(0.2, 1 , 10)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_old_with_ListOrigin = 0.5 #probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
