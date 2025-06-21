@@ -60,8 +60,18 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                     #     decision_isold = 1 #this, should include a prob or not?
 
                     # else #if the max image is not from the current list, then switch to origin list
-                        decision_isold = rand() < p_old_with_ListOrigin ? 1 : 0; #recall, judge old #recall, judge new
+
+                    if probes[i].image.word.type_general === :SOn
+                        decision_isold = rand() < p_old_with_ListOrigin_SOn ? 1 : 0;
+                    elseif probes[i].image.word.type_general in [:Fn, :Tn]
+                        #if the image is from ListOrigin, then recall it
+                        decision_isold = rand() < p_old_with_ListOrigin_Tn_Fn ? 1 : 0; #recall, judge old #recall, judge new
                     # end
+                    else #if the image is not from ListOrigin, then judge new
+                        decision_isold = 1 #recall, judge old
+                    end
+
+
                     
                     #decision_isold = rand() < 1 p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
                 else
