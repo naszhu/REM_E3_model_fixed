@@ -247,7 +247,9 @@ asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_sto
 
 p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
 p_old_with_ListOrigin_SOn = 0.45
-p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ probability of old, if the image is from the current list, and if its recalled, and if it was switched to known LOF
+# p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
+p_old_with_ListOrigin_Fn = 0.5 
+p_old_with_ListOrigin_Tn = 0.1 #PO++
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
