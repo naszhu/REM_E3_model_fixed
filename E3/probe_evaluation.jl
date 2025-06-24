@@ -63,9 +63,13 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
                     if probes[i].image.word.type_general === :SOn
                         decision_isold = rand() < p_old_with_ListOrigin_SOn ? 1 : 0;
-                    elseif probes[i].image.word.type_general in [:Fn, :Tn]
+                    elseif probes[i].image.word.type_general in [:Tn]
                         #if the image is from ListOrigin, then recall it
-                        decision_isold = rand() < p_old_with_ListOrigin_Tn_Fn ? 1 : 0; #recall, judge old #recall, judge new
+                        decision_isold = rand() < p_old_with_ListOrigin_Tn ? 1 : 0; #recall, judge old #recall, judge new
+                    # end
+                    elseif probes[i].image.word.type_general in [:Fn]
+                        #if the image is from ListOrigin, then recall it
+                        decision_isold = rand() < p_old_with_ListOrigin_Fn ? 1 : 0; #recall, judge old #recall, judge new
                     # end
                     else #if the image is not from ListOrigin, then judge new
                         decision_isold = 1 #recall, judge old
