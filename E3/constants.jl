@@ -227,7 +227,7 @@ p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used i
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(1, 1, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(0, 0, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
@@ -276,7 +276,7 @@ is_test_changecontext2 = false #is testing only change context in final test
 is_restore_context = true # HEY! we do need to restore context
 is_strengthen_contextandcontent = true
 
-is_firststage = true;
+is_firststage = false;
 
 is_onlyaddtrace = false; #*add but not strengtening trace
 is_onlytest_currentlist = false; #this is discarded currently
