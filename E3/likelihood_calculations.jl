@@ -133,8 +133,8 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
                 word_likelihood_imgi_ratios[ii] = 344523466743  
             end
         else #don't pass through
-            error("first stage must be tested here")
-            word_likelihood_imgi_ratios[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:round(Int, w_word * p)], image.word.word_features[1:round(Int, w_word * p)], g_word, c, false,ilist)
+            # error("first stage must be tested here")
+            word_likelihood_imgi_ratios[ii] = calculate_likelihood_ratio(probe_img.word.word_features[1:round(Int, w_word * p)], image.word.word_features[1:round(Int, w_word * p)], g_word, c[1], false,ilist)
         end
 
 
