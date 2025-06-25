@@ -227,14 +227,14 @@ p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used i
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(1, 1, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 100;
+recall_odds_threshold = 0.1;
 
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
@@ -249,7 +249,7 @@ p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists
 p_old_with_ListOrigin_SOn = 0.35
 # p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
 p_old_with_ListOrigin_Fn = 0.45 
-p_old_with_ListOrigin_Tn = 0.1 #PO++
+p_old_with_ListOrigin_Tn = 0.2 #PO++
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 

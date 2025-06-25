@@ -61,9 +61,9 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
                     # else #if the max image is not from the current list, then switch to origin list
 
-                    if probes[i].image.word.type_general in [:SOn,:SO]
+                    if probes[i].image.word.type_general in [:SOn,:SO, :T]
                         decision_isold = rand() < p_old_with_ListOrigin_SOn ? 1 : 0;
-                    elseif probes[i].image.word.type_general in [:T,:Tn]
+                    elseif probes[i].image.word.type_general in [:Tn]
                         #if the image is from ListOrigin, then recall it
                         decision_isold = rand() < p_old_with_ListOrigin_Tn ? 1 : 0; #recall, judge old #recall, judge new
                     # end
