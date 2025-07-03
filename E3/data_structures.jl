@@ -2,7 +2,7 @@
 ===============================================#
 # Data Structures      
 
-#general: 
+#type general: 
 # T; Tn; SO; SOn; F; Fn 
 #      + FF for final t
 

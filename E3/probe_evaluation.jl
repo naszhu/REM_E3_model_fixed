@@ -46,16 +46,44 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             println("Current context_tau is too high, there are some simulations that have no tarce passing context filter in first step", nl, content_LL_ratios_filtered)
         end
 
+        if (odds>criterion_initial[i_testpos,ilist_probe]) && (odds > recall_odds_threshold) #recall which?
+            imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
+        end
+
+
         
         if odds>criterion_initial[i_testpos,ilist_probe] #val=1; if pass, possible to recall 
             if odds> recall_odds_threshold #100, do a recall
-                if odds_context > context_threshold_filter #context familiar enough
-                    # println("Recall, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
-                    decision_isold = rand() < p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
-                else
-                    # println("Recall, but context not familiar enough, odds: $odds, context: $odds_context, threshold: $(context_threshold_filter)")
-                    decision_isold = rand() < p2_old_after_filter[ilist_probe] ? 1 : 0 #recall but not familiar enough, might be confusing foils, judge new
+                if rand() < p_switch_toListOrgin[ilist_probe] # if LOR was recalled
 
+                    # if imgMax.list_number == ilist_probe #if the max image is from the current list, then prob old
+                    #     decision_isold = 1 #this, should include a prob or not?
+
+                    # else #if the max image is not from the current list, then switch to origin list
+
+                    if probes[i].image.word.type_general in [:SOn,:SO, :T]
+                        decision_isold = rand() < p_old_with_ListOrigin_SOn ? 1 : 0;
+                    elseif probes[i].image.word.type_general in [:Tn]
+                        #if the image is from ListOrigin, then recall it
+                        decision_isold = rand() < p_old_with_ListOrigin_Tn ? 1 : 0; #recall, judge old #recall, judge new
+                    # end
+                    elseif probes[i].image.word.type_general in [:F,:Fn]
+                        #if the image is from ListOrigin, then recall it
+                        decision_isold = rand() < p_old_with_ListOrigin_Fn ? 1 : 0; #recall, judge old #recall, judge new
+                    # end
+                    else #if the image is not from ListOrigin, then judge new
+                        error("shouldn't have an else function here")
+                        decision_isold = 1 #recall, judge old
+                    end
+
+
+                    
+                    #decision_isold = rand() < 1 p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
+                else
+
+                    # LOR not recalled: judge old (??)
+                    decision_isold = 1
+                
                 end
 
             else #doesn't do recall,judge old

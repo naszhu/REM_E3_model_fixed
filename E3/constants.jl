@@ -151,7 +151,7 @@ u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.75
+nnnow=0.70
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
 c_storeintest = c
@@ -181,7 +181,7 @@ const p_driftAndListChange = 0.03; # used for both of two n below
 n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(0.0, 0.0, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(15, 15, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -227,18 +227,33 @@ p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used i
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(10000, 10000, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(0, 0, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = generate_asymptotic_values(1.0, 1.0, 1.0, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4
+criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 100;
+recall_odds_threshold = 0.1;
 
-context_threshold_filter = 0
-p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
-p2_old_after_filter = LinRange(0.5, 0.9, 10);
+# stop increasing at around list t
+ilist_switch_stop_at = 5; 
+# start_and_rate = [0.28, 0.25]
+start_and_end = [0.2, 0.5]
+
+
+# asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
+asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
+
+p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_old_with_ListOrigin_SOn = 0.35
+# p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
+p_old_with_ListOrigin_Fn = 0.45 
+p_old_with_ListOrigin_Tn = 0.2 #PO++
+
+# context_threshold_filter = 0
+# p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
+# p2_old_after_filter = LinRange(0.5, 0.9, 10);
 # -----------------------------------------
 # =============================================================================
 
@@ -261,7 +276,7 @@ is_test_changecontext2 = false #is testing only change context in final test
 is_restore_context = true # HEY! we do need to restore context
 is_strengthen_contextandcontent = true
 
-is_firststage = true;
+is_firststage = false;
 
 is_onlyaddtrace = false; #*add but not strengtening trace
 is_onlytest_currentlist = false; #this is discarded currently
