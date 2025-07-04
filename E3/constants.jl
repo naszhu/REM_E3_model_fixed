@@ -239,7 +239,7 @@ recall_odds_threshold = 0.1;
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
 # start_and_rate = [0.28, 0.25]
-start_and_end = [0.2, 0.5]
+start_and_end = [0.0, 0.0]
 
 
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
@@ -276,7 +276,7 @@ is_test_changecontext2 = false #is testing only change context in final test
 is_restore_context = true # HEY! we do need to restore context
 is_strengthen_contextandcontent = true
 
-is_firststage = false;
+is_firststage = true;
 
 is_onlyaddtrace = false; #*add but not strengtening trace
 is_onlytest_currentlist = false; #this is discarded currently
