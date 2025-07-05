@@ -134,7 +134,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
     
 
         if is_restore_initial
-            # restore_intest(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds) 
+            restore_intest(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds) 
         end
 
         # println("i, $i, i_testpos, $i_testpos")
