@@ -64,20 +64,20 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
 
-        for _ in 1:n_units_time_restore
-            #shouldn't have this in adding trace
+        # for _ in 1:n_units_time_restore
+        #     #shouldn't have this in adding trace
 
-        # println(iprobe_img.word.type_general)
-        # for _ in 1:n_units_time #shouldn't have this in adding trace
-            # Update word features
-            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word)
-            @assert length(iprobe_img.context_features) == length(iimage.context_features) "context features should be the same length" 
+        # # println(iprobe_img.word.type_general)
+        # # for _ in 1:n_units_time #shouldn't have this in adding trace
+        #     # Update word features
+        #     add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word)
+        #     @assert length(iprobe_img.context_features) == length(iimage.context_features) "context features should be the same length" 
 
-            # Update context features
-            # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
-            @assert u_star_context[end] == u_star_context[1] "u_star_context is not well defined to be used in restore_intest for intial test, final test is dependant on u_star_context[ilist], but not yet like that in inital test, initial doens't have a u_star_context difference right now, notice"
-            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context; cu = c_context_ilist_cu) 
-        end
+        #     # Update context features
+        #     # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
+        #     @assert u_star_context[end] == u_star_context[1] "u_star_context is not well defined to be used in restore_intest for intial test, final test is dependant on u_star_context[ilist], but not yet like that in inital test, initial doens't have a u_star_context difference right now, notice"
+        #     add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context; cu = c_context_ilist_cu) 
+        # end
 
 
 
