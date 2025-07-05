@@ -177,21 +177,21 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        # pass: strenghten
-        #single parameter for missing or replacing
-        # WARNING: rand(Geometric(g_word)) + 1) is not used here, there is no chance of an incorrect random value storage when judging old 
+    #     # pass: strenghten
+    #     #single parameter for missing or replacing
+    #     # WARNING: rand(Geometric(g_word)) + 1) is not used here, there is no chance of an incorrect random value storage when judging old 
 
-        if !is_store_mismatch
-            error("current prog is not written when doesn't store mismatch")
-        end
+    #     if !is_store_mismatch
+    #         error("current prog is not written when doesn't store mismatch")
+    #     end
 
-        restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
+    #     restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-        restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
+    #     restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
 
-        !is_restore_context ? error("context restored in initial is not well written this part") : nothing
+    #     !is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
 
     end
