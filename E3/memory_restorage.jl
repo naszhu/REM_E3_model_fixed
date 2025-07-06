@@ -21,8 +21,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     #is_onlyaddtrace is false
     # println("nothere")
 
-    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold))) #just get a new empty EI
-
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold))) #just get a new empty EI
+    
+    ######### create empty EpisodicImage whatever
         iimage = EpisodicImage(
             #Word:
             Word(iprobe_img.word.item_code, #item_code
@@ -41,16 +42,16 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             iprobe_img.appearnum #appearnum
         )
         
-    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
-        #recall; restore old
-        cdf_each_boral_sets = Categorical(sampling_probabilities)     
-        index_sampled = rand(cdf_each_boral_sets)
-        iimage = image_pool[index_sampled]
-    else
-        error("decision_isold is not well defined")
-    end
+    #     @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
+    #     #recall; restore old
+    #     cdf_each_boral_sets = Categorical(sampling_probabilities)     
+    #     index_sampled = rand(cdf_each_boral_sets)
+    #     iimage = image_pool[index_sampled]
+    # else
+    #     error("decision_isold is not well defined")
+    # end
 
 
 
@@ -61,9 +62,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     c_context_ilist_cc = c_context_c[iprobe_img.list_number];
     c_context_ilist_cu = c_context_un[iprobe_img.list_number];
 
-    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
 
-
+    #######3 Produce new trace whatever
         for _ in 1:n_units_time_restore
             #shouldn't have this in adding trace
 
@@ -83,28 +84,28 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        # println(iprobe_img.word.type_general)
-        if is_strengthen_contextandcontent #false
-            restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
+    #     # println(iprobe_img.word.type_general)
+    #     if is_strengthen_contextandcontent #false
+    #         restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-            restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
-        else
-            # error("should strenghen here")
-        end
+    #         restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
+    #     else
+    #         # error("should strenghen here")
+    #     end
 
-        # the following makes sure that we actually must need to restore context.
-        !is_restore_context ? error("context restored in initial is not well written this part") : nothing
+    #     # the following makes sure that we actually must need to restore context.
+    #     !is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
-    end
+    # end
 
 
-    if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))
+    # if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))
         push!(image_pool, iimage)
         # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
 
-    end
+    # end
 
     return nothing
 
