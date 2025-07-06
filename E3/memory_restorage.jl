@@ -22,7 +22,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     # println("nothere")
 
     # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold))) #just get a new empty EI
-    if decision_isold==0
+    # if decision_isold==0
     ######### create empty EpisodicImage whatever
         iimage = EpisodicImage(
             #Word:
@@ -62,57 +62,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context; cu = c_context_ilist_cu) 
         end
 
-    elseif decision_isold==1
-
-    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
-
-        @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
-        #recall; restore old
-        # println(sampling_probabilities)
-        cdf_each_boral_sets = Categorical(sampling_probabilities) #raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
-        index_sampled = rand(cdf_each_boral_sets)
-        iimage = image_pool[index_sampled]
-    # else
-    #     error("decision_isold is not well defined")
+  
     # end
-
-
-
-    # if new, or old but didn't pass threshold -- ADD TRACE 
-    # (start with empty EI, then add features)
-
-
-    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
-
-
-
-
-
-    ###### STRENGHTEN TRACE ######################
-    # RESTORE CONTEXT & CONTENT
-    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
-
-    #     # println(iprobe_img.word.type_general)
-    #     if is_strengthen_contextandcontent #true, I checked this value is true
-            restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
-
-            restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
-    #     else
-    #         # error("should strenghen here")
-    #     end
-
-    #     # the following makes sure that we actually must need to restore context.
-    #     !is_restore_context ? error("context restored in initial is not well written this part") : nothing
-
-    # end
-
-
-    # if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))
-        push!(image_pool, iimage)
-        # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
-
-    # end
-    end #end of judgement of if answer old or new
+    # end #end of judgement of if answer old or new
 
     return nothing
 
