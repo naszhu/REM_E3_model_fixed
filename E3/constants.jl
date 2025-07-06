@@ -104,8 +104,8 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 # n_units_time_restore = n_units_time + 10
 
 
-const n_probes = 30; # Number of probes to test
-const n_lists = 10;
+const n_probes = 200; # Number of probes to test
+const n_lists = 2;
 # const n_words = 40;
 const n_words = n_probes;
 
@@ -245,11 +245,11 @@ start_and_end = [0.2, 0.5]
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
 asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
-p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_switch_toListOrgin = [0.2,0.2]#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
 p_old_with_ListOrigin_SOn = 0.35
 # p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
 p_old_with_ListOrigin_Fn = 0.45 
-p_old_with_ListOrigin_Tn = 0.01 #PO++ (prior target have lowest-make sense)
+p_old_with_ListOrigin_Tn = 0.2 #PO++ (prior target have lowest-make sense)
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
