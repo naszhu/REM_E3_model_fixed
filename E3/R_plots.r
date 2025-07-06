@@ -19,13 +19,15 @@ mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
     summarize(meanx=mean(correct))%>%
     group_by(test_position,is_target)%>%
     summarize(meanx=mean(meanx))%>%
+    group_by(test_position_grouped_for200tests = ceiling(test_position / 20), is_target)%>%
+    summarise(meanx = mean(meanx))%>%
     mutate(is_target=as.factor(is_target))%>%
-    group_by(test_position)%>%
+    group_by(test_position_grouped_for200tests)%>%
     mutate(meanx_m=mean(meanx)) #mutate only here to add mean line
 
-p_in_20=ggplot(data=df1,aes(x=test_position,y=meanx,group=is_target))+
+p_in_20=ggplot(data=df1,aes(x=test_position_grouped_for200tests,y=meanx,group=is_target))+
     geom_line(aes(color=is_target),size=1.5)+
-    geom_line(aes(x=test_position,y=meanx_m),color="black",size=1.5)+
+    geom_line(aes(x=test_position_grouped_for200tests,y=meanx_m),color="black",size=1.5)+
     # geom_point()+ylim(c(0.5,1))+
     theme(
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
@@ -128,7 +130,7 @@ p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
         text=element_text(size=20) # Increase font size globally
-    )
+    )+ylim(c(0,1))
 p1
 
 # DF2 = DF %>% mutate(meanx = case_when(is_target=="true"~ meanx, TRUE ~ 1-meanx))%>%
