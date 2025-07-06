@@ -41,28 +41,10 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             iprobe_img.list_number,#List_Number; 
             iprobe_img.appearnum #appearnum
         )
-    
-    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-    #     @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
-    #     #recall; restore old
-    #     cdf_each_boral_sets = Categorical(sampling_probabilities)     
-    #     index_sampled = rand(cdf_each_boral_sets)
-    #     iimage = image_pool[index_sampled]
-    # else
-    #     error("decision_isold is not well defined")
-    # end
-
-
-
-    # if new, or old but didn't pass threshold -- ADD TRACE 
-    # (start with empty EI, then add features)
-
-    c_storeintest_ilist = c_storeintest[iprobe_img.list_number];
-    c_context_ilist_cc = c_context_c[iprobe_img.list_number];
-    c_context_ilist_cu = c_context_un[iprobe_img.list_number];
-
-    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
+        c_storeintest_ilist = c_storeintest[iprobe_img.list_number];
+        c_context_ilist_cc = c_context_c[iprobe_img.list_number];
+        c_context_ilist_cu = c_context_un[iprobe_img.list_number];
 
     #######3 Produce new trace whatever
         for _ in 1:n_units_time_restore
@@ -80,6 +62,30 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context; cu = c_context_ilist_cu) 
         end
 
+    elseif decision_isold==1
+
+    # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+
+        @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
+        #recall; restore old
+        # println(sampling_probabilities)
+        cdf_each_boral_sets = Categorical(sampling_probabilities) #raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
+        index_sampled = rand(cdf_each_boral_sets)
+        iimage = image_pool[index_sampled]
+    # else
+    #     error("decision_isold is not well defined")
+    # end
+
+
+
+    # if new, or old but didn't pass threshold -- ADD TRACE 
+    # (start with empty EI, then add features)
+
+
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
+
+
+
 
 
     ###### STRENGHTEN TRACE ######################
@@ -87,10 +93,10 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
     #     # println(iprobe_img.word.type_general)
-    #     if is_strengthen_contextandcontent #false
-    #         restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
+    #     if is_strengthen_contextandcontent #true, I checked this value is true
+            restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-    #         restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
+            restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
     #     else
     #         # error("should strenghen here")
     #     end
@@ -106,7 +112,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
 
     # end
-    end
+    end #end of judgement of if answer old or new
 
     return nothing
 
