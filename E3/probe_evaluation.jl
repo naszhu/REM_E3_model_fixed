@@ -115,10 +115,11 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         filtered_content_LL_ratios_inOriginalLength = content_LL_ratios_org |> x -> map(e -> e == 344523466743 ? 0 : e, x)
 
         # Step 2: Calculate the total sum of the filtered likelihood ratios
-        total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength)
-
+        
+        filtered_content_LL_ratios_inOriginalLength_to_11thpower= filtered_content_LL_ratios_inOriginalLength .^ (1/11) # raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
         # Step 3: Assign probabilities proportionally
-        sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength)) : [filtered_content_LL_ratios_inOriginalLength[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength)]
+        total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength_to_11thpower)
+        sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)]
         ################
 
         for j in eachindex(unique_list_numbers)
