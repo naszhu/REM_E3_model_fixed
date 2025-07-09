@@ -121,8 +121,12 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength)
 
         # Step 3: Assign probabilities proportionally
-        sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength)) : [filtered_content_LL_ratios_inOriginalLength[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength)]
-        ################
+        
+        filtered_content_LL_ratios_inOriginalLength_to_11thpower= filtered_content_LL_ratios_inOriginalLength .^ (1/11) # raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
+        # Step 3: Assign probabilities proportionally
+        total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength_to_11thpower)
+        sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)]
+         ################
 
         for j in eachindex(unique_list_numbers)
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
