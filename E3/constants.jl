@@ -249,7 +249,7 @@ p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists
 p_old_with_ListOrigin_SOn = 0.35
 # p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
 p_old_with_ListOrigin_Fn = 0.45 
-p_old_with_ListOrigin_Tn = 0.2 #PO++
+p_old_with_ListOrigin_Tn = 0.01 #PO++ (prior target have lowest-make sense)
 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
