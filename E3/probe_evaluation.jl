@@ -147,8 +147,9 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
 
 
-        if is_restore_initial
-            restore_intest(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, odds) 
+        if is_restore_initial 
+            # input imax whatever = strenghten whatever
+            restore_intest(image_pool, probes[i].image, decision_isold, imax, odds) 
         end
 
         # println("i, $i, i_testpos, $i_testpos")
