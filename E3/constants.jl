@@ -282,7 +282,7 @@ is_firststage = true;
 is_onlyaddtrace = false; #*add but not strengtening trace
 is_onlytest_currentlist = false; #this is discarded currently
  
-const is_store_mismatch = true; #if mismatched value is restored during test
+const is_store_mismatch = false; #if mismatched value is restored during test
 
 
 is_restore_initial = true # flag check 
