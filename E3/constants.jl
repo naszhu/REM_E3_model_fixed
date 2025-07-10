@@ -104,8 +104,8 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 # n_units_time_restore = n_units_time + 10
 
 
-const n_probes = 30; # Number of probes to test
-const n_lists = 10;
+const n_probes = 200; # Number of probes to test
+const n_lists = 2;
 # const n_words = 40;
 const n_words = n_probes;
 
@@ -129,7 +129,7 @@ Geometric parameters
 w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
-w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
+w_word = 20;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
 const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
@@ -227,7 +227,7 @@ p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used i
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(0, 0, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
@@ -246,7 +246,7 @@ start_and_end = [0.0, 0.0] #this controls p_switch below
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
 asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
-p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_switch_toListOrgin = [0.0, 0.0]#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
 p_old_with_ListOrigin_SOn = 0.65
 # p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
 p_old_with_ListOrigin_Fn = 0.25 
