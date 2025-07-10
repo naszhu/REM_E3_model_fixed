@@ -1,0 +1,1 @@
+⚠️ Known bug: should have made p_switch to zero in checking pure influence, but forgot to do that. I went back, checked out each commit and found that the predictions change a bit but the general trend of the A)-D) are the same.
