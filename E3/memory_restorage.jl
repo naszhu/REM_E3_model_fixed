@@ -12,7 +12,8 @@ restore content and/or context, here, context include change,unchange, and posit
 # end
 
 # function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, probetype::Symbol, list_change_features::Vector{Int64}, general_context_features::Vector{Int64}, odds::Float64, likelihood_ratios::Vector{Float64}, simu_i::Int64, initial_testpos::Int64)
-function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, sampling_probabilities::Vector{Float64}, odds::Float64 )::Nothing
+function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, odds::Float64 )::Nothing
+
 
 
     if is_onlyaddtrace
@@ -43,11 +44,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
+
         #recall; restore old
-        cdf_each_boral_sets = Categorical(sampling_probabilities)     
-        index_sampled = rand(cdf_each_boral_sets)
-        iimage = image_pool[index_sampled]
+        iimage = image_pool[imax] 
     else
         error("decision_isold is not well defined")
     end
