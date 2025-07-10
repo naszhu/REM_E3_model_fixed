@@ -120,7 +120,7 @@ end
 
 function restore_features!(target_features::Vector{Int}, source_features::Vector{Int}, p_recallFeatureStore::Float64; is_store_mismatch::Bool=is_store_mismatch, is_ctx::Bool=false)::Nothing
 
-    # for _ in 1:n_units_time_restore
+    for _ in 1:n_units_time_restore
         for i in eachindex(source_features)
             current_value = target_features[i]
             source_value = source_features[i]
@@ -128,26 +128,33 @@ function restore_features!(target_features::Vector{Int}, source_features::Vector
             if is_ctx
                 @assert length(target_features)==nU+nC "not same length"
                 if i>nU # for CC
-                    pps = 0.8
+                    # pps = 0.8
+                    c_usenow = c_context_c[1] 
+                    u_star_now = u_star_context[1] + u_advFoilInitialT #u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
                 else # for unchanging 
-                    pps = 0.8
+                    # pps = 0.8
+                    c_usenow = c_context_c[1]
+                    u_star_now = u_star_context[1] + u_advFoilInitialT 
                 end
             else #if content
-                pps = 0.8
+                # pps = 0.8
+                c_usenow = c[1] 
+                u_star_now = u_star[1] + u_advFoilInitialT 
             end
             
-            if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
-                target_features[i] = rand() < pps ? source_value : current_value
-            end
+            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
+            #     target_features[i] = rand() < pps ? source_value : current_value
+            # end
             
             # if (current_value !== 0) 
             #     target_features[i] = rand() < pps ? source_value : current_value
             # end
-            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
-            #     target_features[i] = rand() < u_star_context[1] ? (rand() < c_context_c[1] ? current_value : rand(Geometric(g_context)) + 1) : current_value
-            # end
+            #is_store_mismatch is false now so no mismatch stored
+            if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
+                target_features[i] = rand() < u_star_now[1] ? (rand() < c_usenow[1] ? current_value : rand(Geometric(g_context)) + 1) : current_value
+            end
 
             
         end
-    # end
+    end #restore n end
 end
