@@ -23,7 +23,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     # println("nothere")
 
     # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold))) #just get a new empty EI
-    
+    if decision_isold==0
     ######### create empty EpisodicImage whatever
         iimage = EpisodicImage(
             #Word:
@@ -42,7 +42,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             iprobe_img.list_number,#List_Number; 
             iprobe_img.appearnum #appearnum
         )
-        
+    
     # elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
 
@@ -105,6 +105,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
 
     # end
+    end
 
     return nothing
 
