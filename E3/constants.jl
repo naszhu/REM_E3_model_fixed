@@ -206,6 +206,7 @@ ratio_changing_to_itself_final = LinRange(1,1, n_lists) # if use no unchanging
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
+# the following value doesn't matter or say is not used currently
 p_recallFeatureStore = 1.0;
 
 final_gap_change = 0.1; #0.21
@@ -234,7 +235,7 @@ criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHAN
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.1;
+recall_odds_threshold = 0.0;
 
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 

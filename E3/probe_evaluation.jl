@@ -46,9 +46,9 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             println("Current context_tau is too high, there are some simulations that have no tarce passing context filter in first step", nl, content_LL_ratios_filtered)
         end
 
-        if (odds>criterion_initial[i_testpos,ilist_probe]) && (odds > recall_odds_threshold) #recall which?
-            imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
-        end
+        # if (odds>criterion_initial[i_testpos,ilist_probe]) && (odds > recall_odds_threshold) #recall which?
+        #     imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
+        # end
 
 
         
