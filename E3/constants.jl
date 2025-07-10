@@ -234,12 +234,12 @@ criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHAN
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.1;
+recall_odds_threshold = 0.2;
 
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
 # start_and_rate = [0.28, 0.25]
-start_and_end = [0.2, 0.5]
+start_and_end = [0.0, 0.0]
 
 
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
