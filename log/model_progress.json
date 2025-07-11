@@ -1,5 +1,32 @@
 [
   {
+    "commit": "0a7e2b0",
+    "branch": "even-more-align-with-criss-etal",
+    "message": "fix(script): the two py was wrong",
+    "timestamp": "2025-07-12 00:31:13",
+    "plot1": "plot_archive/0a7e2b0_20250712_003113_plot1.png",
+    "plot2": "plot_archive/0a7e2b0_20250712_003113_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py"
+    ]
+  },
+  {
+    "commit": "6046777",
+    "branch": "even-more-align-with-criss-etal",
+    "message": "epxlore(model-e3): make criterion 1",
+    "timestamp": "2025-07-12 00:30:41",
+    "plot1": "plot_archive/6046777_20250712_003041_plot1.png",
+    "plot2": "plot_archive/6046777_20250712_003041_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.json"
+    ]
+  },
+  {
     "commit": "da246dd",
     "branch": "even-more-align-with-criss-etal",
     "message": "feat(all): add the log trace scripts",

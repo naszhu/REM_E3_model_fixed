@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-log_path = Path("log/plot_log.json")
+log_path = Path("log/model_progress.json")
 html_path = Path("log/model_progress.html")
 
 with open(log_path, "r") as f:

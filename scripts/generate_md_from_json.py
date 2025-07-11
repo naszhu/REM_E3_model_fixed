@@ -1,6 +1,6 @@
 import json, os
 
-json_path = "log/plot_log.json"
+json_path = "log/model_progress.json"
 md_path = "log/model_progress.md"
 
 # 安全读取 json
