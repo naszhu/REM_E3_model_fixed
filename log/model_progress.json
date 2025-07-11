@@ -1,0 +1,85 @@
+[
+  {
+    "commit": "b85e63e",
+    "branch": "even-more-align-with-criss-etal",
+    "message": "feat(model-e3): redo 1 by only add lists and change n pictures",
+    "timestamp": "2025-07-12 00:29:05",
+    "plot1": "plot_archive/b85e63e_20250712_002905_plot1.png",
+    "plot2": "plot_archive/b85e63e_20250712_002905_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "cc74f9b",
+    "branch": "main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-12 00:08:04",
+    "plot1": "plot_archive/cc74f9b_20250712_000804_plot1.png",
+    "plot2": "plot_archive/cc74f9b_20250712_000804_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "log/plot_log.json",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "f27ef7e",
+    "branch": "main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-12 00:07:46",
+    "plot1": "plot_archive/f27ef7e_20250712_000746_plot1.png",
+    "plot2": "plot_archive/f27ef7e_20250712_000746_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "log/plot_log.json",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "2a2101e",
+    "branch": "main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-12 00:07:30",
+    "plot1": "plot_archive/2a2101e_20250712_000730_plot1.png",
+    "plot2": "plot_archive/2a2101e_20250712_000730_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.md",
+      "log/plot_log.json",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "2a2101e",
+    "branch": "main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-12 00:07:20",
+    "plot1": "plot_archive/2a2101e_20250712_000720_plot1.png",
+    "plot2": "plot_archive/2a2101e_20250712_000720_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.md",
+      "log/plot_log.json",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  }
+]
