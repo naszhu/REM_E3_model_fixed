@@ -106,7 +106,7 @@ p_in_20
 levels(as.factor(all_results$type_general))
 levels(as.factor(all_results$type_specific))
 DF2 = all_results %>% 
-filter(list_number==1)%>%
+# filter(list_number==1)%>%
 mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
 # mutate(correct=decision_isold==is_targe)%>%
 # mutate(test_position=as.numeric(test_position))%>%
