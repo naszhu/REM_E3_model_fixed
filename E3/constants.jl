@@ -104,7 +104,7 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 # n_units_time_restore = n_units_time + 10
 
 
-const n_probes = 75*2; # Number of probes to test
+const n_probes = 80; # Number of probes to test
 const n_lists = 6;
 # const n_words = 40;
 const n_words = n_probes;
