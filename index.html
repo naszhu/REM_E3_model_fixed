@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>REM E3 Model Fixed</title>
+  <style>
+    :root {
+      --primary: #2a9d8f;
+      --secondary: #264653;
+      --background: #f0f4f8;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --accent: #e76f51;
+    }
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--secondary);
+      color: #ffffff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+    }
+    main {
+      max-width: 900px;
+      margin: -1rem auto 2rem;
+      padding: 0 1rem;
+    }
+    section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+    }
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    code {
+      background: #eef1f3;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #eef1f3;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>REM E3 Model Fixed</h1>
+    <p>Shuchun Lai (Lea Lai) — Ph.D. Candidate & Researcher</p>
+  </header>
+  <main>
+    <section>
+      <h2>Overview</h2>
+      <p>This repository contains the core implementation, simulation, and analysis code for <strong>Experiment 3 (E3)</strong> within the <em>project-context</em> research. It focuses on the fixed E3 model structure and provides all scripts necessary to reproduce the results.</p>
+    </section>
+    <section>
+      <h2>🎓 Dissertation Project</h2>
+      <p>My Ph.D. dissertation explores long-term context memory using the REM (Retrieving Effectively from Memory) model. Key themes include:</p>
+      <ul>
+        <li>Context vs. feature similarity in recognition tasks</li>
+        <li>Stage-wise decision thresholds and memory trace strengthening</li>
+        <li>Computational simulations with Julia and Bayesian analyses with Stan</li>
+      </ul>
+      <p>Experiment 3 (E3) extends these concepts to multi-list learning, examining how context change by list and word influences recognition performance over time.</p>
+    </section>
+    <section>
+      <h2>🔗 Important Links</h2>
+      <ul>
+        <li><a href="https://github.com/naszhu/REM_E3_model_fixed">This Repository</a></li>
+        <li><a href="https://github.com/naszhu/project-context">Parent project-context Repo</a></li>
+        <li><a href="https://github.com/naszhu/REM_E3_model_fixed/issues">Issues & Templates</a></li>
+        <li><a href="https://github.com/naszhu/REM_E3_model_fixed/releases">Releases & Tags</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>📂 Repository Structure</h2>
+      <ul>
+        <li><code>E3/</code> — Julia scripts & modules for Experiment 3</li>
+        <li><code>E3/main_JL_E3_V0.jl</code> — Main Julia simulation script</li>
+        <li><code>*.jl</code> — Additional Julia modules (constants, data structures, feature generation, simulation, probe evaluation)</li>
+        <li><code>R_plots.r</code>, <code>R_plots_finalt.r</code> — R scripts for data analysis & visualization</li>
+        <li><code>DF.csv</code>, <code>plot1.png</code>, etc. — Sample data & outputs</li>
+        <li><code>.github/ISSUE_TEMPLATE/</code> — Issue reporting templates</li>
+        <li><code>LOG.txt</code> — Simulation log file</li>
+      </ul>
+    </section>
+    <section>
+      <h2>🚀 Getting Started</h2>
+      <p><strong>Prerequisites:</strong> Julia v1.10+, R v4.0+, and required packages in <code>Project.toml</code> & <code>Manifest.toml</code>.</p>
+      <p><strong>Run Model:</strong></p>
+      <pre><code>cd REM_E3_model_fixed/E3
+julia main_JL_E3_V0.jl</code></pre>
+      <p><strong>Run Analysis:</strong></p>
+      <pre><code>Rscript R_plots.r</code></pre>
+    </section>
+    <section>
+      <h2>📈 Usage & Examples</h2>
+      <p>Example outputs: <code>plot1.png</code>, <code>plot2.png</code>. Regenerate these via the R scripts to explore parameter effects.</p>
+    </section>
+    <section>
+      <h2>🔧 Development & Contribution</h2>
+      <p>Follow conventional commits:</p>
+      <ul>
+        <li><code>feat(model-e3): add new simulation</code></li>
+        <li><code>fix(model-e3): correct logic</code></li>
+        <li><code>test(model-e3): add tests</code></li>
+      </ul>
+      <p>Fork, issue, and PR welcome!</p>
+    </section>
+    <section>
+      <h2>🏷️ Versioning</h2>
+      <p>Tags under <code>v0.x</code>. See <a href="https://github.com/naszhu/REM_E3_model_fixed/tags">tags page</a>.</p>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>© 2025 Shuchun Lai (Lea Lai)</p>
+    <p><a href="https://naszhu.github.io/REM_E3_model_fixed/">Live Site</a></p>
+  </footer>
+</body>
+</html>
