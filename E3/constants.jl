@@ -104,8 +104,8 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 # n_units_time_restore = n_units_time + 10
 
 
-const n_probes = 200; # Number of probes to test
-const n_lists = 2;
+const n_probes = 75*2; # Number of probes to test
+const n_lists = 6;
 # const n_words = 40;
 const n_words = n_probes;
 
@@ -126,13 +126,13 @@ Geometric parameters
 
 #####first half unchange context, second half change context, third half word-change context (third half is not added yet)
 
-w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
+w_context = 40; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
 w_word = 20;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
-const g_word = 0.4; #geometric base rate
-const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
+const g_word = 0.35; #geometric base rate
+const g_context = 0.35; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
 u_star = vcat(0.06, ones(n_lists-1) * 0.06)
@@ -192,8 +192,8 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.4, 0.4, n_lists) # if use no unchanging
-ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_changing_to_itself_init = LinRange(0, 0, n_lists) # if use no unchanging
 
 # Only influence LL calculation below, otherwise, nU and nC used
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
@@ -246,7 +246,7 @@ start_and_end = [0.0, 0.0] #this controls p_switch below
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
 asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
-p_switch_toListOrgin = [0.0, 0.0]#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+p_switch_toListOrgin = zeros(n_lists)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
 p_old_with_ListOrigin_SOn = 0.65
 # p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
 p_old_with_ListOrigin_Fn = 0.25 
