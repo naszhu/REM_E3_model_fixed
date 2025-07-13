@@ -1,5 +1,61 @@
 [
   {
+    "commit": "d17d5f2",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:40:43",
+    "plot1": "plot_archive/d17d5f2_20250714_014043_plot1.png",
+    "plot2": "plot_archive/d17d5f2_20250714_014043_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "096f799",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:40:01",
+    "plot1": "plot_archive/096f799_20250714_014001_plot1.png",
+    "plot2": "plot_archive/096f799_20250714_014001_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "638959c",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:36:21",
+    "plot1": "plot_archive/638959c_20250714_013621_plot1.png",
+    "plot2": "plot_archive/638959c_20250714_013621_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "ac499fb",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:35:49",
+    "plot1": "plot_archive/ac499fb_20250714_013549_plot1.png",
+    "plot2": "plot_archive/ac499fb_20250714_013549_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
     "commit": "480fea3",
     "branch": "save-uncleaned-messy-main",
     "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
