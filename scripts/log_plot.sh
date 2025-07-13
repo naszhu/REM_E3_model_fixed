@@ -8,8 +8,8 @@ changed_files=$(git diff-tree --no-commit-id --name-only -r HEAD | paste -sd ","
 
 mkdir -p plot_archive
 safe_time=$(date "+%Y%m%d_%H%M%S")
-plot1_dest="plot_archive/${commit}_${safe_time}_plot1.png"
-plot2_dest="plot_archive/${commit}_${safe_time}_plot2.png"
+plot1_dest="../plot_archive/${commit}_${safe_time}_plot1.png"
+plot2_dest="../plot_archive/${commit}_${safe_time}_plot2.png"
 cp plot1.png "$plot1_dest"
 cp plot2.png "$plot2_dest"
 
