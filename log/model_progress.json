@@ -1,5 +1,42 @@
 [
   {
+    "commit": "b69c0dd",
+    "branch": "main",
+    "message": "chore(page): add the .index html",
+    "timestamp": "2025-07-14 00:29:25",
+    "plot1": "plot_archive/b69c0dd_20250714_002925_plot1.png",
+    "plot2": "plot_archive/b69c0dd_20250714_002925_plot2.png",
+    "changed_files": [
+      "index.html"
+    ]
+  },
+  {
+    "commit": "1c111d3",
+    "branch": "temp",
+    "message": "chore(page): add the .index html",
+    "timestamp": "2025-07-12 01:19:23",
+    "plot1": "plot_archive/1c111d3_20250712_011923_plot1.png",
+    "plot2": "plot_archive/1c111d3_20250712_011923_plot2.png",
+    "changed_files": [
+      "index.html",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py"
+    ]
+  },
+  {
+    "commit": "b69c0dd",
+    "branch": "temp",
+    "message": "chore(page): add the .index html",
+    "timestamp": "2025-07-12 01:11:00",
+    "plot1": "plot_archive/b69c0dd_20250712_011100_plot1.png",
+    "plot2": "plot_archive/b69c0dd_20250712_011100_plot2.png",
+    "changed_files": [
+      "index.html"
+    ]
+  },
+  {
     "commit": "19a3242",
     "branch": "HEAD",
     "message": "explore(model-e3): CHECKING pure contribution of first-stage",
