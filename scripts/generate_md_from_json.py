@@ -32,7 +32,7 @@ with open(md_path, "w") as f:
             for fname in files:
                 f.write(f"- `{fname.strip()}`  \n")
         if plot1:
-            f.write(f"![]({plot1})  \n")
+            f.write(f"![](../{plot1})  \n")
         if plot2:
-            f.write(f"![]({plot2})  \n")
+            f.write(f"![](../{plot2})  \n")
         f.write("\n")

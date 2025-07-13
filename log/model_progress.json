@@ -1,5 +1,108 @@
 [
   {
+    "commit": "ebba4b0",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 02:11:41",
+    "plot1": "plot_archive/ebba4b0_20250714_021141_plot1.png",
+    "plot2": "plot_archive/ebba4b0_20250714_021141_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "4e0e83e",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 02:08:39",
+    "plot1": "plot_archive/4e0e83e_20250714_020839_plot1.png",
+    "plot2": "plot_archive/4e0e83e_20250714_020839_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "4e0e83e",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:53:45",
+    "plot1": "plot_archive/4e0e83e_20250714_015345_plot1.png",
+    "plot2": "plot_archive/4e0e83e_20250714_015345_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "bf2fab8",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:51:04",
+    "plot1": "plot_archive/bf2fab8_20250714_015104_plot1.png",
+    "plot2": "plot_archive/bf2fab8_20250714_015104_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "a5a9228",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:46:11",
+    "plot1": "plot_archive/a5a9228_20250714_014611_plot1.png",
+    "plot2": "plot_archive/a5a9228_20250714_014611_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "af2c4f0",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:42:33",
+    "plot1": "plot_archive/af2c4f0_20250714_014233_plot1.png",
+    "plot2": "plot_archive/af2c4f0_20250714_014233_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py"
+    ]
+  },
+  {
+    "commit": "570bd9b",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:42:12",
+    "plot1": "plot_archive/570bd9b_20250714_014212_plot1.png",
+    "plot2": "plot_archive/570bd9b_20250714_014212_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "d17d5f2",
     "branch": "save-uncleaned-messy-main",
     "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
