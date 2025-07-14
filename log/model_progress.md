@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [5d12d4d](https://github.com/naszhu/REM_E3_model_fixed/commit/5d12d4d) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 00:33:46  
+**Message:**
+```
+explore(model-e3): replacing missing only during strenghtren last version not exactly correct, now the true amend
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5d12d4d_20250715_003346_plot1.png)  
+![](../plot_archive/5d12d4d_20250715_003346_plot2.png)  
+
 ## Commit [d5a0f20](https://github.com/naszhu/REM_E3_model_fixed/commit/d5a0f20) (branch: `jul-14-explore`)
 **Time:** 2025-07-15 00:09:00  
 **Message:**

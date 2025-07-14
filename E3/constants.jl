@@ -245,12 +245,17 @@ start_and_end = [0.2, 0.5]
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
 asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
-p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-p_old_with_ListOrigin_SOn = 0.65
-# p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
-p_old_with_ListOrigin_Fn = 0.25 
-p_old_with_ListOrigin_Tn = 0.01 #PO++ (prior target have lowest-make sense)
+# p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.6
+z3_Tn = 0.4
 
+p_new_with_ListOrigin_SOn = 0.65
+# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
+p_new_with_ListOrigin_Fn = 0.25 
+p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
+p_new_with_ListOrigin_T = 0.3 
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
