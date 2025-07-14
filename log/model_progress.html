@@ -1,410 +1,316 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Model Progress Dashboard</title>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Progress Summary</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #fafafa;
+        }
+        .commit-block {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 40px;
             padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 2.5em;
-            font-weight: 300;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .subtitle {
-            font-size: 1.1em;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .commit-entry {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 5px solid #667eea;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
-        
-        .commit-entry:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-        
         .commit-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .commit-link {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
-            position: relative;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .commit-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .branch-badge {
-            background: #28a745;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: 500;
-        }
-        
-        .timestamp {
-            color: #666;
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .timestamp::before {
-            content: "🕒";
-        }
-        
-        .message-section {
-            margin: 20px 0;
-        }
-        
-        .section-title {
-            font-weight: 600;
-            color: #333;
             margin-bottom: 10px;
-            font-size: 1.1em;
         }
-        
-        .commit-message {
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            line-height: 1.4;
-            color: #495057;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .commit-header a {
+            font-weight: bold;
+            color: #3366cc;
+            text-decoration: none;
         }
-        
-        .commit-subject {
-            margin-bottom: 15px;
-        }
-        
-        .subject-label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
+        .commit-header small {
+            color: #777;
             font-size: 0.9em;
         }
-        
-        .subject-text {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            padding: 12px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            color: #495057;
-            font-weight: 600;
-        }
-        
-        .commit-body {
-            margin-top: 15px;
-        }
-        
-        .body-label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 0.9em;
-        }
-        
-        .body-text {
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            padding: 15px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            line-height: 1.4;
-            color: #495057;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            min-height: 50px;
-        }
-        
-        .files-section {
-            margin: 20px 0;
-        }
-        
-        .files-list {
-            list-style: none;
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            border: 1px solid #e9ecef;
-        }
-        
-        .files-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f8f9fa;
-            color: #495057;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-        }
-        
-        .files-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .files-list li::before {
-            content: "📄";
-            margin-right: 8px;
-        }
-        
-        .plots-section {
-            margin: 20px 0;
-        }
-        
-        .plot-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .plot-row {
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
             margin-top: 15px;
         }
-        
-        .plot-item {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        .plot-row img {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
         }
-        
-        .plot-item:hover {
-            transform: scale(1.02);
+        h1 {
+            margin-bottom: 30px;
         }
-        
-        .plot-item img {
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-            border-radius: 8px;
-            display: block;
-        }
-        
-        .plot-label {
-            text-align: center;
-            margin-top: 10px;
-            font-weight: 600;
-            color: #666;
-        }
-        
-        /* Tooltip Styles */
-        .commit-link {
-            position: relative;
-        }
-        
-        .commit-link::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            font-size: 0.85em;
-            white-space: pre-line;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 1000;
-            width: 450px;
-            word-wrap: break-word;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            font-family: 'Courier New', monospace;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-        
-        .commit-link::before {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(6px);
-            border: 6px solid transparent;
-            border-top-color: #333;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 1000;
-        }
-        
-        /* Adjust tooltip position for elements near the left edge */
-        .commit-header .commit-link::after {
-            left: 0;
-            transform: translateX(0);
-        }
-        
-        .commit-header .commit-link::before {
-            left: 60px;
-            transform: translateX(-50%) translateY(6px);
-        }
-        
-        .commit-link:hover::after,
-        .commit-link:hover::before {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .no-data {
-            text-align: center;
-            padding: 60px;
-            color: #666;
-            font-size: 1.1em;
-        }
-        
-        .no-data::before {
-            content: "📊";
-            display: block;
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            header {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .commit-entry {
-                padding: 20px;
-            }
-            
-            .commit-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .plot-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .plot-item img {
-                max-width: 100%;
-            }
+        .changed-files {
+            font-size: 0.9em;
+            color: #444;
+            margin-top: 5px;
         }
     </style>
-    </head><body><div class="container"><header><h1>Model Progress Dashboard</h1><div class="subtitle">Tracking commits and model development</div></header><div class="content"><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/e727f7a" 
-              class="commit-link" 
-              data-tooltip="282928f HEAD@{1}: checkout: moving from save-uncleaned-messy-main to save-uncleaned-messy-main">e727f7a</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 11:23 PM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-subject"><div class="subject-label">Subject:</div><div class="subject-text">explore(model-e3, logscr-e3): Merge branch &#x27;even-more-align-with-criss-etal&#x27; into save-uncleaned-messy-main</div></div></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/e727f7a_20250714_232300_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/e727f7a_20250714_232300_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/ef14fac" 
-              class="commit-link" 
-              data-tooltip="No reflog available">ef14fac</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 07:48 PM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): add commit message body on top of the head</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/ef14fac_20250714_194819_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/ef14fac_20250714_194819_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a77fcd7" 
-              class="commit-link" 
-              data-tooltip="No reflog available">a77fcd7</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 07:47 PM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/a77fcd7_20250714_194746_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/a77fcd7_20250714_194746_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a77fcd7" 
-              class="commit-link" 
-              data-tooltip="No reflog available">a77fcd7</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 02:20 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/a77fcd7_20250714_022009_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/a77fcd7_20250714_022009_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/ebba4b0" 
-              class="commit-link" 
-              data-tooltip="No reflog available">ebba4b0</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 02:11 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/ebba4b0_20250714_021141_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/ebba4b0_20250714_021141_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/4e0e83e" 
-              class="commit-link" 
-              data-tooltip="No reflog available">4e0e83e</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 02:08 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/4e0e83e_20250714_020839_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/4e0e83e_20250714_020839_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/4e0e83e" 
-              class="commit-link" 
-              data-tooltip="No reflog available">4e0e83e</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:53 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/4e0e83e_20250714_015345_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/4e0e83e_20250714_015345_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/bf2fab8" 
-              class="commit-link" 
-              data-tooltip="No reflog available">bf2fab8</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:51 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/bf2fab8_20250714_015104_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/bf2fab8_20250714_015104_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a5a9228" 
-              class="commit-link" 
-              data-tooltip="No reflog available">a5a9228</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:46 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/a5a9228_20250714_014611_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/a5a9228_20250714_014611_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/af2c4f0" 
-              class="commit-link" 
-              data-tooltip="No reflog available">af2c4f0</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:42 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): re-fix the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_md_from_json.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/af2c4f0_20250714_014233_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/af2c4f0_20250714_014233_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/570bd9b" 
-              class="commit-link" 
-              data-tooltip="No reflog available">570bd9b</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:42 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(predplot-e3): make the predplot within-list back to that for all lists</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>E3/R_plots.r</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/570bd9b_20250714_014212_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/570bd9b_20250714_014212_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/d17d5f2" 
-              class="commit-link" 
-              data-tooltip="No reflog available">d17d5f2</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:40 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(predplot-e3): make the predplot within-list back to that for all lists</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>E3/R_plots.r</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/d17d5f2_20250714_014043_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/d17d5f2_20250714_014043_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/096f799" 
-              class="commit-link" 
-              data-tooltip="No reflog available">096f799</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:40 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(predplot-e3): make the predplot within-list back to that for all lists</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>E3/R_plots.r</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/096f799_20250714_014001_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/096f799_20250714_014001_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/638959c" 
-              class="commit-link" 
-              data-tooltip="No reflog available">638959c</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:36 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(predplot-e3): make the predplot within-list back to that for all lists</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>E3/R_plots.r</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/638959c_20250714_013621_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/638959c_20250714_013621_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/ac499fb" 
-              class="commit-link" 
-              data-tooltip="No reflog available">ac499fb</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:35 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">fix(logscr-e3): the file address of the pictures missded &quot;../&quot;</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/log_plot.sh</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/ac499fb_20250714_013549_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/ac499fb_20250714_013549_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:26 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012645_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012645_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:25 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012528_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012528_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:24 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012408_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012408_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:23 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012329_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012329_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:22 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012220_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/480fea3_20250714_012220_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:19 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../../plot_archive/480fea3_20250714_011936_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../../plot_archive/480fea3_20250714_011936_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3" 
-              class="commit-link" 
-              data-tooltip="No reflog available">480fea3</a></div><div class="branch-badge">save-uncleaned-messy-main</div><div class="timestamp">July 14, 2025 at 01:16 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/480fea3_20250714_011649_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/480fea3_20250714_011649_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/0064b1a" 
-              class="commit-link" 
-              data-tooltip="No reflog available">0064b1a</a></div><div class="branch-badge">main</div><div class="timestamp">July 12, 2025 at 12:13 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/0064b1a_20250712_001337_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/0064b1a_20250712_001337_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div><div class="commit-entry"><div class="commit-header"><div><a href="https://github.com/naszhu/REM_E3_model_fixed/commit/8d3f94a" 
-              class="commit-link" 
-              data-tooltip="No reflog available">8d3f94a</a></div><div class="branch-badge">main</div><div class="timestamp">July 12, 2025 at 12:12 AM</div></div><div class="message-section"><div class="section-title">Commit Message</div><div class="commit-message">feat(all): add log .md and html automatic tracking for each time of predplots in commits</div></div><div class="files-section"><div class="section-title">Changed Files</div><ul class="files-list"><li>.gitignore</li><li>log/model_progress.html</li><li>log/model_progress.json</li><li>log/model_progress.md</li><li>scripts/generate_html_from_json.py</li><li>scripts/generate_md_from_json.py</li><li>scripts/log_plot.sh</li><li>scripts/update_plot_log.py</li></ul></div><div class="plots-section"><div class="section-title">Generated Plots</div><div class="plot-container"><div class="plot-item"><img src="../plot_archive/8d3f94a_20250712_001252_plot1.png" alt="Plot 1" loading="lazy"><div class="plot-label">Plot 1</div></div><div class="plot-item"><img src="../plot_archive/8d3f94a_20250712_001252_plot2.png" alt="Plot 2" loading="lazy"><div class="plot-label">Plot 2</div></div></div></div></div></div></div></body></html>
+</head>
+<body>
+<h1>Model Progress Summary</h1>
+
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/8d3f94a">8d3f94a</a><br>
+            <small>Branch: main &nbsp;|&nbsp; Time: 2025-07-12 00:12:52 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/8d3f94a_20250712_001252_plot1.png" alt="plot image"><img src="../plot_archive/8d3f94a_20250712_001252_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/0064b1a">0064b1a</a><br>
+            <small>Branch: main &nbsp;|&nbsp; Time: 2025-07-12 00:13:37 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/0064b1a_20250712_001337_plot1.png" alt="plot image"><img src="../plot_archive/0064b1a_20250712_001337_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:16:49 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/480fea3_20250714_011649_plot1.png" alt="plot image"><img src="../plot_archive/480fea3_20250714_011649_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:19:36 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../../plot_archive/480fea3_20250714_011936_plot1.png" alt="plot image"><img src="../../plot_archive/480fea3_20250714_011936_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:22:20 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/480fea3_20250714_012220_plot1.png" alt="plot image"><img src="../plot_archive/480fea3_20250714_012220_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:23:29 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/480fea3_20250714_012329_plot1.png" alt="plot image"><img src="../plot_archive/480fea3_20250714_012329_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:24:08 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/480fea3_20250714_012408_plot1.png" alt="plot image"><img src="../plot_archive/480fea3_20250714_012408_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:25:28 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/480fea3_20250714_012528_plot1.png" alt="plot image"><img src="../plot_archive/480fea3_20250714_012528_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/480fea3">480fea3</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:26:45 &nbsp;|&nbsp; Message: feat(all): add log .md and html automatic tracking for each time of predplots in commits</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: .gitignore, log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/generate_md_from_json.py, scripts/log_plot.sh, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/480fea3_20250714_012645_plot1.png" alt="plot image"><img src="../plot_archive/480fea3_20250714_012645_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/ac499fb">ac499fb</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:35:49 &nbsp;|&nbsp; Message: fix(logscr-e3): the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/ac499fb_20250714_013549_plot1.png" alt="plot image"><img src="../plot_archive/ac499fb_20250714_013549_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/638959c">638959c</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:36:21 &nbsp;|&nbsp; Message: fix(predplot-e3): make the predplot within-list back to that for all lists</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: E3/R_plots.r, log/model_progress.html, log/model_progress.json, log/model_progress.md
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/638959c_20250714_013621_plot1.png" alt="plot image"><img src="../plot_archive/638959c_20250714_013621_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/096f799">096f799</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:40:01 &nbsp;|&nbsp; Message: fix(predplot-e3): make the predplot within-list back to that for all lists</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: E3/R_plots.r, log/model_progress.html, log/model_progress.json, log/model_progress.md
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/096f799_20250714_014001_plot1.png" alt="plot image"><img src="../plot_archive/096f799_20250714_014001_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/d17d5f2">d17d5f2</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:40:43 &nbsp;|&nbsp; Message: fix(predplot-e3): make the predplot within-list back to that for all lists</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: E3/R_plots.r, log/model_progress.html, log/model_progress.json, log/model_progress.md
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/d17d5f2_20250714_014043_plot1.png" alt="plot image"><img src="../plot_archive/d17d5f2_20250714_014043_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/570bd9b">570bd9b</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:42:12 &nbsp;|&nbsp; Message: fix(predplot-e3): make the predplot within-list back to that for all lists</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: E3/R_plots.r, log/model_progress.html, log/model_progress.json, log/model_progress.md
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/570bd9b_20250714_014212_plot1.png" alt="plot image"><img src="../plot_archive/570bd9b_20250714_014212_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/af2c4f0">af2c4f0</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:42:33 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/af2c4f0_20250714_014233_plot1.png" alt="plot image"><img src="../plot_archive/af2c4f0_20250714_014233_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a5a9228">a5a9228</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:46:11 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/a5a9228_20250714_014611_plot1.png" alt="plot image"><img src="../plot_archive/a5a9228_20250714_014611_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/bf2fab8">bf2fab8</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:51:04 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/bf2fab8_20250714_015104_plot1.png" alt="plot image"><img src="../plot_archive/bf2fab8_20250714_015104_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/4e0e83e">4e0e83e</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 01:53:45 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/4e0e83e_20250714_015345_plot1.png" alt="plot image"><img src="../plot_archive/4e0e83e_20250714_015345_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/4e0e83e">4e0e83e</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 02:08:39 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/4e0e83e_20250714_020839_plot1.png" alt="plot image"><img src="../plot_archive/4e0e83e_20250714_020839_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/ebba4b0">ebba4b0</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 02:11:41 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/ebba4b0_20250714_021141_plot1.png" alt="plot image"><img src="../plot_archive/ebba4b0_20250714_021141_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a77fcd7">a77fcd7</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 02:20:09 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/a77fcd7_20250714_022009_plot1.png" alt="plot image"><img src="../plot_archive/a77fcd7_20250714_022009_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a77fcd7">a77fcd7</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 19:47:46 &nbsp;|&nbsp; Message: fix(logscr-e3): re-fix the file address of the pictures missded "../"</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py, scripts/log_plot.sh
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/a77fcd7_20250714_194746_plot1.png" alt="plot image"><img src="../plot_archive/a77fcd7_20250714_194746_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/ef14fac">ef14fac</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 19:48:19 &nbsp;|&nbsp; Message: fix(logscr-e3): add commit message body on top of the head</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_md_from_json.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/ef14fac_20250714_194819_plot1.png" alt="plot image"><img src="../plot_archive/ef14fac_20250714_194819_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/4c30c12">4c30c12</a><br>
+            <small>Branch: save-uncleaned-messy-main &nbsp;|&nbsp; Time: 2025-07-14 23:29:10 &nbsp;|&nbsp; Message: feat(logscr-e3): make the script to include body message and the html file to look pretty</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/4c30c12_20250714_232910_plot1.png" alt="plot image"><img src="../plot_archive/4c30c12_20250714_232910_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/a12187b">a12187b</a><br>
+            <small>Branch: jul-14-explore &nbsp;|&nbsp; Time: 2025-07-14 23:39:51 &nbsp;|&nbsp; Message: fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/a12187b_20250714_233951_plot1.png" alt="plot image"><img src="../plot_archive/a12187b_20250714_233951_plot2.png" alt="plot image"></div></div>
+    <div class="commit-block">
+        <div class="commit-header">
+            Commit <a href="https://github.com/naszhu/REM_E3_model_fixed/commit/73bfb75">73bfb75</a><br>
+            <small>Branch: jul-14-explore &nbsp;|&nbsp; Time: 2025-07-15 00:04:44 &nbsp;|&nbsp; Message: fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3</small>
+        </div>
+        <div class="changed-files">
+            Changed Files: log/model_progress.html, log/model_progress.json, log/model_progress.md, scripts/generate_html_from_json.py, scripts/update_plot_log.py
+        </div>
+        <div class="plot-row">
+    <img src="../plot_archive/73bfb75_20250715_000444_plot1.png" alt="plot image"><img src="../plot_archive/73bfb75_20250715_000444_plot2.png" alt="plot image"></div></div></body></html>

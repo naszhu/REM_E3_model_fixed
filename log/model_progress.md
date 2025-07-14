@@ -1,13 +1,49 @@
 # Model Progress
 
-## Commit [e727f7a](https://github.com/naszhu/REM_E3_model_fixed/commit/e727f7a) (branch: `save-uncleaned-messy-main`)
-**Time:** 2025-07-14 23:23:00  
+## Commit [73bfb75](https://github.com/naszhu/REM_E3_model_fixed/commit/73bfb75) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 00:04:44  
 **Message:**
 ```
-explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main
+fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3
 ```
-![](../plot_archive/e727f7a_20250714_232300_plot1.png)  
-![](../plot_archive/e727f7a_20250714_232300_plot2.png)  
+**Changed Files:**
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_html_from_json.py`  
+- `scripts/update_plot_log.py`  
+![](../plot_archive/73bfb75_20250715_000444_plot1.png)  
+![](../plot_archive/73bfb75_20250715_000444_plot2.png)  
+
+## Commit [a12187b](https://github.com/naszhu/REM_E3_model_fixed/commit/a12187b) (branch: `jul-14-explore`)
+**Time:** 2025-07-14 23:39:51  
+**Message:**
+```
+fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later
+```
+**Changed Files:**
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_html_from_json.py`  
+- `scripts/update_plot_log.py`  
+![](../plot_archive/a12187b_20250714_233951_plot1.png)  
+![](../plot_archive/a12187b_20250714_233951_plot2.png)  
+
+## Commit [4c30c12](https://github.com/naszhu/REM_E3_model_fixed/commit/4c30c12) (branch: `save-uncleaned-messy-main`)
+**Time:** 2025-07-14 23:29:10  
+**Message:**
+```
+feat(logscr-e3): make the script to include body message and the html file to look pretty
+```
+**Changed Files:**
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_html_from_json.py`  
+- `scripts/update_plot_log.py`  
+![](../plot_archive/4c30c12_20250714_232910_plot1.png)  
+![](../plot_archive/4c30c12_20250714_232910_plot2.png)  
 
 ## Commit [ef14fac](https://github.com/naszhu/REM_E3_model_fixed/commit/ef14fac) (branch: `save-uncleaned-messy-main`)
 **Time:** 2025-07-14 19:48:19  

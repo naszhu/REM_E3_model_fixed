@@ -1,16 +1,47 @@
 [
   {
-    "commit": "e727f7a",
+    "commit": "73bfb75",
+    "branch": "jul-14-explore",
+    "message": "fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3",
+    "timestamp": "2025-07-15 00:04:44",
+    "plot1": "plot_archive/73bfb75_20250715_000444_plot1.png",
+    "plot2": "plot_archive/73bfb75_20250715_000444_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "a12187b",
+    "branch": "jul-14-explore",
+    "message": "fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later",
+    "timestamp": "2025-07-14 23:39:51",
+    "plot1": "plot_archive/a12187b_20250714_233951_plot1.png",
+    "plot2": "plot_archive/a12187b_20250714_233951_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "4c30c12",
     "branch": "save-uncleaned-messy-main",
-    "message": "explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main",
-    "subject": "explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main",
-    "body": "",
-    "timestamp": "2025-07-14 23:23:00",
-    "plot1": "plot_archive/e727f7a_20250714_232300_plot1.png",
-    "plot2": "plot_archive/e727f7a_20250714_232300_plot2.png",
-    "changed_files": [],
-    "reflog": [
-      "282928f HEAD@{1}: checkout: moving from save-uncleaned-messy-main to save-uncleaned-messy-main"
+    "message": "feat(logscr-e3): make the script to include body message and the html file to look pretty",
+    "timestamp": "2025-07-14 23:29:10",
+    "plot1": "plot_archive/4c30c12_20250714_232910_plot1.png",
+    "plot2": "plot_archive/4c30c12_20250714_232910_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
     ]
   },
   {
