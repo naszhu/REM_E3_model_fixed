@@ -1,5 +1,35 @@
 # Model Progress
 
+## Commit [d5a0f20](https://github.com/naszhu/REM_E3_model_fixed/commit/d5a0f20) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 00:09:00  
+**Message:**
+```
+explore(model-e3): replacing missing only during strenghtren
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d5a0f20_20250715_000900_plot1.png)  
+![](../plot_archive/d5a0f20_20250715_000900_plot2.png)  
+
+## Commit [b6de0fc](https://github.com/naszhu/REM_E3_model_fixed/commit/b6de0fc) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 00:06:27  
+**Message:**
+```
+fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3 -recall-odds = 0.3
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_html_from_json.py`  
+- `scripts/update_plot_log.py`  
+![](../plot_archive/b6de0fc_20250715_000627_plot1.png)  
+![](../plot_archive/b6de0fc_20250715_000627_plot2.png)  
+
 ## Commit [73bfb75](https://github.com/naszhu/REM_E3_model_fixed/commit/73bfb75) (branch: `jul-14-explore`)
 **Time:** 2025-07-15 00:04:44  
 **Message:**
