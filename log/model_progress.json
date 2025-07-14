@@ -1,5 +1,80 @@
 [
   {
+    "commit": "560590c",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 22:12:13",
+    "plot1": "plot_archive/560590c_20250715_221213_plot1.png",
+    "plot2": "plot_archive/560590c_20250715_221213_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "a267390",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 01:24:24",
+    "plot1": "plot_archive/a267390_20250715_012424_plot1.png",
+    "plot2": "plot_archive/a267390_20250715_012424_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "1900109",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 01:24:08",
+    "plot1": "plot_archive/1900109_20250715_012408_plot1.png",
+    "plot2": "plot_archive/1900109_20250715_012408_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2ad28e0",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 01:02:44",
+    "plot1": "plot_archive/2ad28e0_20250715_010244_plot1.png",
+    "plot2": "plot_archive/2ad28e0_20250715_010244_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b85c5ad",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): p-switch remake, and p_switch not vary by list for now to see reults",
+    "timestamp": "2025-07-15 00:50:23",
+    "plot1": "plot_archive/b85c5ad_20250715_005023_plot1.png",
+    "plot2": "plot_archive/b85c5ad_20250715_005023_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "5d12d4d",
     "branch": "jul-14-explore",
     "message": "explore(model-e3): replacing missing only during strenghtren last version not exactly correct, now the true amend",

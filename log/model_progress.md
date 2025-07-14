@@ -1,5 +1,129 @@
 # Model Progress
 
+## Commit [560590c](https://github.com/naszhu/REM_E3_model_fixed/commit/560590c) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 22:12:13  
+**Message:**
+```
+explore(model-e3): make to see only list 1 and 2, add n_simulation
+
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.9
+z3_Tn = 0.7
+
+p_new_with_ListOrigin_SOn = 0.65
+# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+
+p_new_with_ListOrigin_Fn = 0.45
+p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
+p_new_with_ListOrigin_T = 0.3 Good valu e now 0.71, 0.5, 0.5 + the z last one was mistaken now good
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/560590c_20250715_221213_plot1.png)  
+![](../plot_archive/560590c_20250715_221213_plot2.png)  
+
+## Commit [a267390](https://github.com/naszhu/REM_E3_model_fixed/commit/a267390) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 01:24:24  
+**Message:**
+```
+explore(model-e3): make to see only list 1 and 2, add n_simulation
+
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.9
+z3_Tn = 0.7
+
+p_new_with_ListOrigin_SOn = 0.65
+# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+
+p_new_with_ListOrigin_Fn = 0.45
+p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
+p_new_with_ListOrigin_T = 0.3 Good valu e now 0.71, 0.5, 0.5 + the z last one was mistaken now good
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a267390_20250715_012424_plot1.png)  
+![](../plot_archive/a267390_20250715_012424_plot2.png)  
+
+## Commit [1900109](https://github.com/naszhu/REM_E3_model_fixed/commit/1900109) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 01:24:08  
+**Message:**
+```
+explore(model-e3): make to see only list 1 and 2, add n_simulation
+
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.9
+z3_Tn = 0.7
+
+p_new_with_ListOrigin_SOn = 0.65
+# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+
+p_new_with_ListOrigin_Fn = 0.45
+p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
+p_new_with_ListOrigin_T = 0.3 Good valu e now 0.71, 0.5, 0.5 + the z
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1900109_20250715_012408_plot1.png)  
+![](../plot_archive/1900109_20250715_012408_plot2.png)  
+
+## Commit [2ad28e0](https://github.com/naszhu/REM_E3_model_fixed/commit/2ad28e0) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 01:02:44  
+**Message:**
+```
+explore(model-e3): make to see only list 1 and 2, add n_simulation
+
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.9
+z3_Tn = 0.7
+
+p_new_with_ListOrigin_SOn = 0.65
+# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+
+p_new_with_ListOrigin_Fn = 0.45
+p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
+p_new_with_ListOrigin_T = 0.3
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2ad28e0_20250715_010244_plot1.png)  
+![](../plot_archive/2ad28e0_20250715_010244_plot2.png)  
+
+## Commit [b85c5ad](https://github.com/naszhu/REM_E3_model_fixed/commit/b85c5ad) (branch: `jul-14-explore`)
+**Time:** 2025-07-15 00:50:23  
+**Message:**
+```
+explore(model-e3): p-switch remake, and p_switch not vary by list for now to see reults
+
+- If the trace is a present list target, the prob of a switch from familiarity is z4; with prob 1-z4 familiarity is used and an OLD response is made. If a switch is made (p = z4) then the response made will be NEW with prob w4 and OLD otherwise.
+- If the trace is a study-only confusing foil, then a switch is made with prob z1 and if switched the prob of NEW is w1, otherwise the response is OLD. (I assume these probabilities are low).
+- If the trace is a test-only confusing foil, then a switch is made with prob z2 and if switched the prob of NEW is w2, otherwise the response is OLD. (I assume these probabilities are substantial).
+- If the trace is a study-test confusing foil, then a switch is made with prob z3 and if switched the prob of NEW is w3, otherwise the response is OLD. (I assume these probabilities are substantial. possibly higher than z2 and w2)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b85c5ad_20250715_005023_plot1.png)  
+![](../plot_archive/b85c5ad_20250715_005023_plot2.png)  
+
 ## Commit [5d12d4d](https://github.com/naszhu/REM_E3_model_fixed/commit/5d12d4d) (branch: `jul-14-explore`)
 **Time:** 2025-07-15 00:33:46  
 **Message:**

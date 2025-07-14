@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 200;
+n_simulations = is_finaltest ? 100 : 1000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -105,7 +105,7 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 
 
 const n_probes = 30; # Number of probes to test
-const n_lists = 10;
+const n_lists = 2;
 # const n_words = 40;
 const n_words = n_probes;
 
@@ -248,14 +248,25 @@ asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_sto
 # p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
 z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
 z1_SOn = 0.3
-z2_Fn = 0.6
-z3_Tn = 0.4
+z2_Fn = 0.9
+z3_Tn = 0.7
 
-p_new_with_ListOrigin_SOn = 0.65
 # p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
-p_new_with_ListOrigin_Fn = 0.25 
-p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
-p_new_with_ListOrigin_T = 0.3 
+p_new_with_ListOrigin_Fn = 0.32 #good
+p_new_with_ListOrigin_SOn = 0.53
+p_new_with_ListOrigin_Tn = 0.22 ##good
+p_new_with_ListOrigin_T = 0.45 
+# Test only F: CR ~=0.55
+# Study only SOn: CR ~= 0.47
+# Study and test :  CR~= 0.43
+# Calculate z * p for each corresponding name
+z_times_p = Dict(
+    :T => z4_T * p_new_with_ListOrigin_T,
+    :Fn => z2_Fn * p_new_with_ListOrigin_Fn,
+    :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
+    :Tn => z3_Tn * p_new_with_ListOrigin_Tn
+)
+println("z_times_p: ", z_times_p)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
