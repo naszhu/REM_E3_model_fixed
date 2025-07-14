@@ -1,5 +1,19 @@
 [
   {
+    "commit": "e727f7a",
+    "branch": "save-uncleaned-messy-main",
+    "message": "explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main",
+    "subject": "explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main",
+    "body": "",
+    "timestamp": "2025-07-14 23:23:00",
+    "plot1": "plot_archive/e727f7a_20250714_232300_plot1.png",
+    "plot2": "plot_archive/e727f7a_20250714_232300_plot2.png",
+    "changed_files": [],
+    "reflog": [
+      "282928f HEAD@{1}: checkout: moving from save-uncleaned-messy-main to save-uncleaned-messy-main"
+    ]
+  },
+  {
     "commit": "ef14fac",
     "branch": "save-uncleaned-messy-main",
     "message": "fix(logscr-e3): add commit message body on top of the head",

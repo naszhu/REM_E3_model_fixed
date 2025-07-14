@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [e727f7a](https://github.com/naszhu/REM_E3_model_fixed/commit/e727f7a) (branch: `save-uncleaned-messy-main`)
+**Time:** 2025-07-14 23:23:00  
+**Message:**
+```
+explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main
+```
+![](../plot_archive/e727f7a_20250714_232300_plot1.png)  
+![](../plot_archive/e727f7a_20250714_232300_plot2.png)  
+
 ## Commit [ef14fac](https://github.com/naszhu/REM_E3_model_fixed/commit/ef14fac) (branch: `save-uncleaned-messy-main`)
 **Time:** 2025-07-14 19:48:19  
 **Message:**
