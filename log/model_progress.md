@@ -1,5 +1,43 @@
 # Model Progress
 
+## Commit [a77fcd7](https://github.com/naszhu/REM_E3_model_fixed/commit/a77fcd7) (branch: `save-uncleaned-messy-main`)
+**Time:** 2025-07-14 19:47:46  
+**Message:**
+```
+fix(logscr-e3): re-fix the file address of the pictures missded "../"
+
+forgot to commit one file
+-when pSOn = 0.45 its not that weird but ....
+-when pSO=0.45, p_listorigin 0.5 to 0.5, it looks - it drops very low at list 2 for target Hits -m p-switch 0.1 to 0.5, pold=0.64, look better but still lots discripancy among the 3 CFs -m make pSOn to 0.35 will change all Fbs, (Why? only becuase its caused by restorage makes this possible), raise 2 Fb
+```
+**Changed Files:**
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_md_from_json.py`  
+- `scripts/log_plot.sh`  
+![](../plot_archive/a77fcd7_20250714_194746_plot1.png)  
+![](../plot_archive/a77fcd7_20250714_194746_plot2.png)  
+
+## Commit [a77fcd7](https://github.com/naszhu/REM_E3_model_fixed/commit/a77fcd7) (branch: `save-uncleaned-messy-main`)
+**Time:** 2025-07-14 02:20:09  
+**Message:**
+```
+fix(logscr-e3): re-fix the file address of the pictures missded "../"
+
+forgot to commit one file
+-when pSOn = 0.45 its not that weird but ....
+-when pSO=0.45, p_listorigin 0.5 to 0.5, it looks - it drops very low at list 2 for target Hits -m p-switch 0.1 to 0.5, pold=0.64, look better but still lots discripancy among the 3 CFs -m make pSOn to 0.35 will change all Fbs, (Why? only becuase its caused by restorage makes this possible), raise 2 Fb
+```
+**Changed Files:**
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_md_from_json.py`  
+- `scripts/log_plot.sh`  
+![](../plot_archive/a77fcd7_20250714_022009_plot1.png)  
+![](../plot_archive/a77fcd7_20250714_022009_plot2.png)  
+
 ## Commit [ebba4b0](https://github.com/naszhu/REM_E3_model_fixed/commit/ebba4b0) (branch: `save-uncleaned-messy-main`)
 **Time:** 2025-07-14 02:11:41  
 **Message:**
