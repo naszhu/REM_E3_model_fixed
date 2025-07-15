@@ -268,13 +268,13 @@ z_times_p = Dict(
 )
 
 
-rate_z = 1.5
-beta_z = 1 #beta for z_time_p_val
+how_much_z = 0.3
+how_fast_z = 4.0
 z_time_p_val = Dict(
-    :T   => generate_asymptotic_increase_fixed_start(0.1125, rate_z, beta_z, n_lists),
-    :Fn  => generate_asymptotic_increase_fixed_start(0.288, rate_z, beta_z, n_lists),
-    :SOn => generate_asymptotic_increase_fixed_start(0.159, rate_z, beta_z, n_lists),
-    :Tn  => generate_asymptotic_increase_fixed_start(0.154, rate_z, beta_z, n_lists)
+    :T   => asym_increase_shift(0.1125, how_much_z, how_fast_z, n_lists),
+    :Fn  => asym_increase_shift(0.288, how_much_z, how_fast_z, n_lists),
+    :SOn => asym_increase_shift(0.159, how_much_z, how_fast_z, n_lists),
+    :Tn  => asym_increase_shift(0.154, how_much_z, how_fast_z, n_lists)
 )
 println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
