@@ -59,9 +59,11 @@ generate_asymptotic_increase_fixed_start(start_val, rate, length)
 Generates a vector of asymptotically increasing values starting from start_val
 The increase is asymptotic with a fixed rate, not targeting a specific end value
 """
-function generate_asymptotic_increase_fixed_start(start_val, rate, length)
+function generate_asymptotic_increase_fixed_start(start_val, rate, beta, length)
     # Generates a vector of asymptotically increasing values starting from start_val
     # The increase is asymptotic with a fixed rate, not targeting a specific end value
-    vals = [start_val * (1 + rate * (1 - exp(-0.5 * (i-1)/(length-1)))) for i in 1:length]
+    vals = [start_val * (1 + rate * (1 - exp(-beta * (i-1)/(length-1)))) for i in 1:length]
     return vals
 end
+generate_asymptotic_increase_fixed_start(0.1, 3, 0.5, 10)
+

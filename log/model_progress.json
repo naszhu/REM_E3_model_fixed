@@ -1,5 +1,20 @@
 [
   {
+    "commit": "dd92537",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): get asumpotic increase, this works but i want to addd beta",
+    "timestamp": "2025-07-16 01:16:52",
+    "plot1": "plot_archive/dd92537_20250716_011652_plot1.png",
+    "plot2": "plot_archive/dd92537_20250716_011652_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "bc6c7ab",
     "branch": "jul-14-explore",
     "message": "explore(model-e3):werid the generate functions why?",

@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [dd92537](https://github.com/naszhu/REM_E3_model_fixed/commit/dd92537) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 01:16:52  
+**Message:**
+```
+explore(model-e3): get asumpotic increase, this works but i want to addd beta
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/dd92537_20250716_011652_plot1.png)  
+![](../plot_archive/dd92537_20250716_011652_plot2.png)  
+
 ## Commit [bc6c7ab](https://github.com/naszhu/REM_E3_model_fixed/commit/bc6c7ab) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 01:00:47  
 **Message:**
