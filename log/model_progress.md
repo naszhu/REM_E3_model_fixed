@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [f8b3b23](https://github.com/naszhu/REM_E3_model_fixed/commit/f8b3b23) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 00:59:30  
+**Message:**
+```
+explore(model-e3): make z and w into product
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f8b3b23_20250716_005931_plot1.png)  
+![](../plot_archive/f8b3b23_20250716_005931_plot2.png)  
+
 ## Commit [fa6d486](https://github.com/naszhu/REM_E3_model_fixed/commit/fa6d486) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 00:10:44  
 **Message:**

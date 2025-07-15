@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 1000;
+n_simulations = is_finaltest ? 100 : 100;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -105,7 +105,7 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 
 
 const n_probes = 30; # Number of probes to test
-const n_lists = 2;
+const n_lists = 10;
 # const n_words = 40;
 const n_words = n_probes;
 
@@ -229,7 +229,7 @@ Thresholds
 #TODO, apply first stage crition change to final test as well
 context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
+criterion_initial = generate_asymptotic_values(1.0, 0.10, 0.10, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
@@ -266,13 +266,23 @@ z_times_p = Dict(
     :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
     :Tn => z3_Tn * p_new_with_ListOrigin_Tn
 )
+
+
+rate_z = 0.03
+beta_z=0.5
+# z_time_p_val = Dict(
+#     :T   => generate_asymptotic_increase_fixed_start(0.1125, rate_z, beta_z, n_lists),
+#     :Fn  => generate_asymptotic_increase_fixed_start(0.288, rate_z, beta_z, n_lists),
+#     :SOn => generate_asymptotic_increase_fixed_start(0.159, rate_z, beta_z, n_lists),
+#     :Tn  => generate_asymptotic_increase_fixed_start(0.154, rate_z, beta_z, n_lists)
+# )
 z_time_p_val = Dict(
-    :T => 0.1125,
-    :Fn => 0.28800000000000003,
-    :SOn => 0.159,
-    :Tn => 0.154
+    :T   => generate_asymptotic_increase_fixed_start_nb(0.1125, rate_z, n_lists),
+    :Fn  => generate_asymptotic_increase_fixed_start_nb(0.288, rate_z, n_lists),
+    :SOn => generate_asymptotic_increase_fixed_start_nb(0.159, rate_z, n_lists),
+    :Tn  => generate_asymptotic_increase_fixed_start_nb(0.154, rate_z, n_lists)
 )
-println("z_times_p: ", z_times_p)
+println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);

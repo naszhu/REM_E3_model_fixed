@@ -52,3 +52,38 @@ function generate_asymptotic_increase_fixed_start(start_at::Float64, rate::Float
     end
     return values
 end
+
+# """
+# generate_asymptotic_increase_fixed_start(start_val, rate, length)
+# Generates a vector of asymptotically increasing values starting from start_val
+# The increase is asymptotic with a fixed rate, not targeting a specific end value
+# """
+# function generate_asymptotic_increase_fixed_start(start_val::Float64, rate::Float64, beta::Float64, length::Int64)::Vector{Float64}
+#     # Generates a vector of asymptotically increasing values starting from start_val
+#     # The increase is asymptotic with a fixed rate, not targeting a specific end value
+#     vals = [start_val * (1 + rate * (1 - exp(-beta * (i-1)/(length-1)))) for i in 1:length]
+#     return vals
+# end
+
+"""
+generate_asymptotic_increase_fixed_start(start_val, rate, length)
+Generates a vector of asymptotically increasing values starting from start_val
+The increase is asymptotic with a fixed rate, not targeting a specific end value
+"""
+function generate_asymptotic_increase_fixed_start(start_val, rate, beta, length)
+    # Generates a vector of asymptotically increasing values starting from start_val
+    # The increase is asymptotic with a fixed rate, not targeting a specific end value
+    vals = [start_val * (1 + rate * (1 - exp(-beta * (i-1)/(length-1)))) for i in 1:length]
+    return vals
+end
+
+
+function generate_asymptotic_increase_fixed_start_nb(start_val, rate, length)
+    # Generates a vector of asymptotically increasing values starting from start_val
+    # The increase is asymptotic with a fixed rate, not targeting a specific end value
+    vals = [start_val * (1 + rate * (1 - exp(-0.5 * (i-1)/(length-1)))) for i in 1:length]
+    return vals
+end
+
+generate_asymptotic_increase_fixed_start_nb(0.2, 0.03, 10)
+generate_asymptotic_increase_fixed_start(0.2, 0.03, 0.5, 10)
