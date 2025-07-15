@@ -1,7 +1,7 @@
 # Model Progress
 
-## Commit [763ddea](https://github.com/naszhu/REM_E3_model_fixed/commit/763ddea) (branch: `jul-14-explore`)
-**Time:** 2025-07-16 02:09:50  
+## Commit [5fa0487](https://github.com/naszhu/REM_E3_model_fixed/commit/5fa0487) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 02:10:30  
 **Message:**
 ```
 explore(model-e3): ok, there actually are the rate difference and speed difference
@@ -12,13 +12,31 @@ Asympotote  issue refs #38
 ```
 **Changed Files:**
 - `E3/constants.jl`  
-- `E3/main_JL_E3_V0.jl`  
 - `E3/utils.jl`  
 - `log/model_progress.html`  
 - `log/model_progress.json`  
 - `log/model_progress.md`  
-![](../plot_archive/763ddea_20250716_020950_plot1.png)  
-![](../plot_archive/763ddea_20250716_020950_plot2.png)  
+![](../plot_archive/5fa0487_20250716_021030_plot1.png)  
+![](../plot_archive/5fa0487_20250716_021030_plot2.png)  
+
+## Commit [3bb22b4](https://github.com/naszhu/REM_E3_model_fixed/commit/3bb22b4) (branch: `HEAD`)
+**Time:** 2025-07-16 02:05:03  
+**Message:**
+```
+explore(model-e3): ok, there actually are the rate difference and speed difference
+
+sort of work? no but actually forgot to take out fact for list 1, will be chnaged next
+
+Asympotote  issue refs #38
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3bb22b4_20250716_020503_plot1.png)  
+![](../plot_archive/3bb22b4_20250716_020503_plot2.png)  
 
 ## Commit [dd92537](https://github.com/naszhu/REM_E3_model_fixed/commit/dd92537) (branch: `HEAD`)
 **Time:** 2025-07-16 01:48:07  

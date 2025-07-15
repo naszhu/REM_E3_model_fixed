@@ -54,9 +54,14 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         
         if odds > criterion_initial[i_testpos, ilist_probe] 
             if odds > recall_odds_threshold
-                product = get(z_time_p_val, probes[i].image.word.type_specific, zeros(Float64, n_lists)) 
-                # println(product)
-                decision_isold = rand() < product[ilist_probe] ? 0 : 1    
+                if ilist_probe == 1
+                    decision_isold = 1 #if list 1, always recall
+                else
+                    product = get(z_time_p_val, probes[i].image.word.type_specific, zeros(Float64, n_lists-1)) 
+                    # println(product)
+                    # println(ilist_probe)
+                    decision_isold = rand() < product[ilist_probe-1] ? 0 : 1   
+                end
             else
                 decision_isold = 1
             end
