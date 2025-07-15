@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [bc6c7ab](https://github.com/naszhu/REM_E3_model_fixed/commit/bc6c7ab) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 01:00:47  
+**Message:**
+```
+explore(model-e3):werid the generate functions why?
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bc6c7ab_20250716_010047_plot1.png)  
+![](../plot_archive/bc6c7ab_20250716_010047_plot2.png)  
+
 ## Commit [f8b3b23](https://github.com/naszhu/REM_E3_model_fixed/commit/f8b3b23) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 00:59:30  
 **Message:**
