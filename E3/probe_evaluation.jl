@@ -52,40 +52,12 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
 
         
-        if odds>criterion_initial[i_testpos,ilist_probe] #val=1; if pass, possible to recall 
-            if odds> recall_odds_threshold #100, do a recall
-                if probes[i].image.word.type_specific == :Tn
-
-                    p_switch_toListOrgin = z3_Tn
-                    p_new_with_listorigin = p_new_with_ListOrigin_Tn
-                elseif probes[i].image.word.type_specific == :SOn
-
-                    p_switch_toListOrgin = z1_SOn
-                    p_new_with_listorigin = p_new_with_ListOrigin_SOn
-                elseif probes[i].image.word.type_specific == :Fn
-
-                    p_switch_toListOrgin = z2_Fn
-                    p_new_with_listorigin = p_new_with_ListOrigin_Fn
-                elseif probes[i].image.word.type_specific == :T || probes[i].image.word.type_specific == Symbol("Tn+1")
-                    
-                    p_switch_toListOrgin = z4_T
-                    p_new_with_listorigin = p_new_with_ListOrigin_T
-                else
-
-                    p_switch_toListOrgin = 0.0
-                    p_new_with_listorigin = 0.0
-                end    
-
-                if rand() < p_switch_toListOrgin
-
-                    decision_isold = rand() < p_new_with_listorigin ? 0 : 1;
-                else 
-                    decision_isold = 1; #still old, but not recall
-                end
-                
-
-            else #doesn't do recall,judge old
-                decision_isold = 1 #still old, but not recall
+        if odds > criterion_initial[i_testpos, ilist_probe] 
+            if odds > recall_odds_threshold
+                product = get(z_time_p_val, probes[i].image.word.type_specific, 0.0)
+                decision_isold = rand() < product ? 0 : 1    
+            else
+                decision_isold = 1
             end
         else #if didn't pass, directly judge new
             decision_isold = 0

@@ -266,6 +266,12 @@ z_times_p = Dict(
     :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
     :Tn => z3_Tn * p_new_with_ListOrigin_Tn
 )
+z_time_p_val = Dict(
+    :T => 0.1125,
+    :Fn => 0.28800000000000003,
+    :SOn => 0.159,
+    :Tn => 0.154
+)
 println("z_times_p: ", z_times_p)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 

@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [fa6d486](https://github.com/naszhu/REM_E3_model_fixed/commit/fa6d486) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 00:10:44  
+**Message:**
+```
+explore(model-e3): make to see only list 1 and 2, add n_simulation
+
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.9
+z3_Tn = 0.7
+
+p_new_with_ListOrigin_SOn = 0.65
+p_new_with_ListOrigin_Fn = 0.45
+p_new_with_ListOrigin_Tn = 0.5 #PO++ (prior target have lowest-make sense)
+p_new_with_ListOrigin_T = 0.3 Good valu e now 0.71, 0.5, 0.5 + the z last one was mistaken now good
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fa6d486_20250716_001044_plot1.png)  
+![](../plot_archive/fa6d486_20250716_001044_plot2.png)  
+
 ## Commit [560590c](https://github.com/naszhu/REM_E3_model_fixed/commit/560590c) (branch: `jul-14-explore`)
 **Time:** 2025-07-15 22:12:13  
 **Message:**

@@ -1,5 +1,20 @@
 [
   {
+    "commit": "fa6d486",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-16 00:10:44",
+    "plot1": "plot_archive/fa6d486_20250716_001044_plot1.png",
+    "plot2": "plot_archive/fa6d486_20250716_001044_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "560590c",
     "branch": "jul-14-explore",
     "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
