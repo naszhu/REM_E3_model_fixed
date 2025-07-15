@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [82ed94d](https://github.com/naszhu/REM_E3_model_fixed/commit/82ed94d) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 02:25:43  
+**Message:**
+```
+explore(model-e3): A working v relatively
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/82ed94d_20250716_022543_plot1.png)  
+![](../plot_archive/82ed94d_20250716_022543_plot2.png)  
+
 ## Commit [5fa0487](https://github.com/naszhu/REM_E3_model_fixed/commit/5fa0487) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 02:10:30  
 **Message:**
