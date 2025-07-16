@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [5898072](https://github.com/naszhu/REM_E3_model_fixed/commit/5898072) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 21:58:40  
+**Message:**
+```
+finetune(model-e3): so far the best parm values
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5898072_20250716_215840_plot1.png)  
+![](../plot_archive/5898072_20250716_215840_plot2.png)  
+
 ## Commit [b60bde6](https://github.com/naszhu/REM_E3_model_fixed/commit/b60bde6) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 19:44:56  
 **Message:**

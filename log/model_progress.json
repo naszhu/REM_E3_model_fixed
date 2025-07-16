@@ -1,5 +1,19 @@
 [
   {
+    "commit": "5898072",
+    "branch": "jul-14-explore",
+    "message": "finetune(model-e3): so far the best parm values",
+    "timestamp": "2025-07-16 21:58:40",
+    "plot1": "plot_archive/5898072_20250716_215840_plot1.png",
+    "plot2": "plot_archive/5898072_20250716_215840_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b60bde6",
     "branch": "jul-14-explore",
     "message": "finetune(model-e3): so far the best parm values",
