@@ -1,5 +1,47 @@
 # Model Progress
 
+## Commit [b60bde6](https://github.com/naszhu/REM_E3_model_fixed/commit/b60bde6) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 19:44:56  
+**Message:**
+```
+finetune(model-e3): so far the best parm values
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b60bde6_20250716_194456_plot1.png)  
+![](../plot_archive/b60bde6_20250716_194456_plot2.png)  
+
+## Commit [2b61c39](https://github.com/naszhu/REM_E3_model_fixed/commit/2b61c39) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 19:43:21  
+**Message:**
+```
+finetune(model-e3): so far the best parm values
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2b61c39_20250716_194321_plot1.png)  
+![](../plot_archive/2b61c39_20250716_194321_plot2.png)  
+
+## Commit [f0ade9f](https://github.com/naszhu/REM_E3_model_fixed/commit/f0ade9f) (branch: `jul-14-explore`)
+**Time:** 2025-07-16 19:43:01  
+**Message:**
+```
+fix(model-e3): ok, there is a mistake: forgot to assign Tn+1, which is current target as well
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f0ade9f_20250716_194301_plot1.png)  
+![](../plot_archive/f0ade9f_20250716_194301_plot2.png)  
+
 ## Commit [82ed94d](https://github.com/naszhu/REM_E3_model_fixed/commit/82ed94d) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 02:25:43  
 **Message:**

@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 500;
+n_simulations = is_finaltest ? 100 : 100;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -269,14 +269,14 @@ z_times_p = Dict(
 
 
 how_much_z = 0.2
-how_fast_z = 0.9
+how_fast_z = 0.5
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
 z_time_p_val = Dict(
     :T   => asym_increase_shift(0.1, how_much_z, how_fast_z, n_lists-1),
     Symbol("Tn+1")  => asym_increase_shift(0.1, how_much_z, how_fast_z, n_lists-1),
     :Fn  => asym_increase_shift(0.288, how_much_z, how_fast_z, n_lists-1),
     :SOn => asym_increase_shift(0.159, how_much_z, how_fast_z, n_lists-1),
-    :Tn  => asym_increase_shift(0.25, how_much_z, how_fast_z, n_lists-1),
+    :Tn  => asym_increase_shift(0.3, how_much_z, how_fast_z, n_lists-1),
     Symbol("Fn+1") => asym_increase_shift(0.01, how_much_z, how_fast_z, n_lists-1),
     :F  => asym_increase_shift(0.01, how_much_z, how_fast_z, n_lists-1)
 )
