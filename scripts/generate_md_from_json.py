@@ -1,61 +1,67 @@
 import json
+import os
 import subprocess
-from pathlib import Path
 
-json_path = Path("log/model_progress.json")
-md_path = Path("log/model_progress.md")
-repo_url = "https://github.com/naszhu/REM_E3_model_fixed/commit"
+json_path = "log/model_progress.json"
+md_path = "log/model_progress.md"
 
-def get_reflog_between_commits(current_commit):
-    """Get reflog entries from the previous commit up to current_commit."""
-    reflog = subprocess.run(["git", "reflog"], capture_output=True, text=True).stdout.splitlines()
-    collecting = False
-    entries = []
-    for line in reflog:
-        if current_commit in line:
-            collecting = True
-            continue
-        if collecting:
-            if "commit" in line or "checkout" in line:
-                entries.append(line)
+# 读取 JSON
+if not os.path.exists(json_path) or os.path.getsize(json_path) == 0:
+    log = []
+else:
+    try:
+        with open(json_path, "r") as f:
+            log = json.load(f)
+    except json.JSONDecodeError:
+        log = []
+
+# 获取 HEAD 的 SHA
+try:
+    head_sha = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], text=True
+    ).strip()
+except subprocess.CalledProcessError:
+    head_sha = None
+
+# 写入 markdown
+with open(md_path, "w") as f:
+    f.write("# Model Progress\n\n")
+    for idx, entry in enumerate(log):
+        sha = entry.get("commit", "unknown")
+        branch = entry.get("branch", "unknown")
+        ts = entry.get("timestamp", "")
+        plot1 = entry.get("plot1", "")
+        plot2 = entry.get("plot2", "")
+        files = entry.get("changed_files", [])
+
+        # 若是 HEAD 的 commit（可能刚 amend），强制用 HEAD 获取
+        try:
+            if sha == head_sha:
+                full_msg = subprocess.check_output(
+                    ["git", "show", "-s", "--format=%B", "HEAD"],
+                    text=True
+                ).strip()
             else:
-                break
-    return entries
+                full_msg = subprocess.check_output(
+                    ["git", "show", "-s", "--format=%B", sha],
+                    text=True
+                ).strip()
+        except subprocess.CalledProcessError:
+            full_msg = "Unable to retrieve full message."
 
-def generate_md():
-    if not json_path.exists():
-        print("JSON log not found.")
-        return
+        # 写入 markdown
+        f.write(f"## Commit [{sha}](https://github.com/naszhu/REM_E3_model_fixed/commit/{sha}) (branch: `{branch}`)\n")
+        f.write(f"**Time:** {ts}  \n")
+        f.write(f"**Message:**\n```\n{full_msg}\n```\n")
 
-    with open(json_path, "r", encoding="utf-8") as f:
-        logs = json.load(f)
+        if files:
+            f.write("**Changed Files:**\n")
+            for fname in files:
+                f.write(f"- `{fname.strip()}`  \n")
 
-    lines = ["# Model Progress Log\n"]
+        if plot1:
+            f.write(f"![](../{plot1})  \n")
+        if plot2:
+            f.write(f"![](../{plot2})  \n")
 
-    for log in reversed(logs):
-        commit = log["commit"]
-        lines.append(f"## Commit [`{commit}`]({repo_url}/{commit})  `({log['branch']})`")
-        lines.append(f"- **Message**: {log['message']}")
-        lines.append(f"- **Timestamp**: {log['timestamp']}")
-        lines.append(f"- **Changed Files**: `{', '.join(log['changed_files'])}`")
-        lines.append("")
-        lines.append("**Plots:**  ")
-        lines.append(f"![plot1]({log['plot1']})")
-        lines.append(f"![plot2]({log['plot2']})")
-        lines.append("")
-
-        # reflog entries between commits
-        reflog_lines = get_reflog_between_commits(commit)
-        if reflog_lines:
-            lines.append("**Git Reflog Since Previous Commit:**")
-            lines.append("```")
-            lines.extend(reflog_lines)
-            lines.append("```")
-
-        lines.append("\n---\n")
-
-    md_path.write_text("\n".join(lines), encoding="utf-8")
-    print(f"✅ Markdown updated: {md_path}")
-
-if __name__ == "__main__":
-    generate_md()
+        f.write("\n")

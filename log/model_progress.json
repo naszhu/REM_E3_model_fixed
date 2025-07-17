@@ -1,24 +1,18 @@
 [
   {
-    "commit": "b69c0dd",
+    "commit": "bb9023f",
     "branch": "main",
-    "message": "chore(page): add the .index html",
-    "timestamp": "2025-07-14 00:29:25",
-    "plot1": "plot_archive/b69c0dd_20250714_002925_plot1.png",
-    "plot2": "plot_archive/b69c0dd_20250714_002925_plot2.png",
+    "message": "merge(model-e3): A working V:  Merge branch 'jul-14-explore' into save-uncleaned-messy-main",
+    "timestamp": "2025-07-19 23:04:36",
+    "plot1": "plot_archive/bb9023f_20250719_230436_plot1.png",
+    "plot2": "plot_archive/bb9023f_20250719_230436_plot2.png",
     "changed_files": [
-      "index.html"
-    ]
-  },
-  {
-    "commit": "1c111d3",
-    "branch": "temp",
-    "message": "chore(page): add the .index html",
-    "timestamp": "2025-07-12 01:19:23",
-    "plot1": "plot_archive/1c111d3_20250712_011923_plot1.png",
-    "plot2": "plot_archive/1c111d3_20250712_011923_plot2.png",
-    "changed_files": [
-      "index.html",
+      ".gitignore",
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "E3/utils.jl",
       "log/model_progress.html",
       "log/model_progress.json",
       "log/model_progress.md",
@@ -26,26 +20,687 @@
     ]
   },
   {
-    "commit": "b69c0dd",
-    "branch": "temp",
-    "message": "chore(page): add the .index html",
-    "timestamp": "2025-07-12 01:11:00",
-    "plot1": "plot_archive/b69c0dd_20250712_011100_plot1.png",
-    "plot2": "plot_archive/b69c0dd_20250712_011100_plot2.png",
+    "commit": "e713c5f",
+    "branch": "main",
+    "message": "feat(logscr-e3): modiefied py and md to add log",
+    "timestamp": "2025-07-17 22:53:02",
+    "plot1": "plot_archive/e713c5f_20250717_225303_plot1.png",
+    "plot2": "plot_archive/e713c5f_20250717_225303_plot2.png",
     "changed_files": [
-      "index.html"
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py"
     ]
   },
   {
-    "commit": "19a3242",
-    "branch": "HEAD",
-    "message": "explore(model-e3): CHECKING pure contribution of first-stage",
-    "timestamp": "2025-07-12 00:45:39",
-    "plot1": "plot_archive/19a3242_20250712_004539_plot1.png",
-    "plot2": "plot_archive/19a3242_20250712_004539_plot2.png",
+    "commit": "b2d6103",
+    "branch": "jul-14-explore",
+    "message": "finetune(model-e3): even better for others but bad for new foil",
+    "timestamp": "2025-07-17 19:46:04",
+    "plot1": "plot_archive/b2d6103_20250717_194604_plot1.png",
+    "plot2": "plot_archive/b2d6103_20250717_194604_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "5898072",
+    "branch": "jul-14-explore",
+    "message": "finetune(model-e3): so far the best parm values",
+    "timestamp": "2025-07-16 21:58:40",
+    "plot1": "plot_archive/5898072_20250716_215840_plot1.png",
+    "plot2": "plot_archive/5898072_20250716_215840_plot2.png",
     "changed_files": [
       "E3/constants.jl",
-      "E3/probe_evaluation.jl"
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b60bde6",
+    "branch": "jul-14-explore",
+    "message": "finetune(model-e3): so far the best parm values",
+    "timestamp": "2025-07-16 19:44:56",
+    "plot1": "plot_archive/b60bde6_20250716_194456_plot1.png",
+    "plot2": "plot_archive/b60bde6_20250716_194456_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2b61c39",
+    "branch": "jul-14-explore",
+    "message": "finetune(model-e3): so far the best parm values",
+    "timestamp": "2025-07-16 19:43:21",
+    "plot1": "plot_archive/2b61c39_20250716_194321_plot1.png",
+    "plot2": "plot_archive/2b61c39_20250716_194321_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f0ade9f",
+    "branch": "jul-14-explore",
+    "message": "fix(model-e3): ok, there is a mistake: forgot to assign Tn+1, which is current target as well",
+    "timestamp": "2025-07-16 19:43:01",
+    "plot1": "plot_archive/f0ade9f_20250716_194301_plot1.png",
+    "plot2": "plot_archive/f0ade9f_20250716_194301_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "82ed94d",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): A working v relatively",
+    "timestamp": "2025-07-16 02:25:43",
+    "plot1": "plot_archive/82ed94d_20250716_022543_plot1.png",
+    "plot2": "plot_archive/82ed94d_20250716_022543_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "5fa0487",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): ok, there actually are the rate difference and speed difference",
+    "timestamp": "2025-07-16 02:10:30",
+    "plot1": "plot_archive/5fa0487_20250716_021030_plot1.png",
+    "plot2": "plot_archive/5fa0487_20250716_021030_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "3bb22b4",
+    "branch": "HEAD",
+    "message": "explore(model-e3): ok, there actually are the rate difference and speed difference",
+    "timestamp": "2025-07-16 02:05:03",
+    "plot1": "plot_archive/3bb22b4_20250716_020503_plot1.png",
+    "plot2": "plot_archive/3bb22b4_20250716_020503_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "dd92537",
+    "branch": "HEAD",
+    "message": "explore(model-e3): get asumpotic increase, this works but i want to addd beta",
+    "timestamp": "2025-07-16 01:48:07",
+    "plot1": "plot_archive/dd92537_20250716_014807_plot1.png",
+    "plot2": "plot_archive/dd92537_20250716_014807_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "bc6c7ab",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3):werid the generate functions why?",
+    "timestamp": "2025-07-16 01:00:47",
+    "plot1": "plot_archive/bc6c7ab_20250716_010047_plot1.png",
+    "plot2": "plot_archive/bc6c7ab_20250716_010047_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f8b3b23",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make z and w into product",
+    "timestamp": "2025-07-16 00:59:30",
+    "plot1": "plot_archive/f8b3b23_20250716_005931_plot1.png",
+    "plot2": "plot_archive/f8b3b23_20250716_005931_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "fa6d486",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-16 00:10:44",
+    "plot1": "plot_archive/fa6d486_20250716_001044_plot1.png",
+    "plot2": "plot_archive/fa6d486_20250716_001044_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "560590c",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 22:12:13",
+    "plot1": "plot_archive/560590c_20250715_221213_plot1.png",
+    "plot2": "plot_archive/560590c_20250715_221213_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "a267390",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 01:24:24",
+    "plot1": "plot_archive/a267390_20250715_012424_plot1.png",
+    "plot2": "plot_archive/a267390_20250715_012424_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "1900109",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 01:24:08",
+    "plot1": "plot_archive/1900109_20250715_012408_plot1.png",
+    "plot2": "plot_archive/1900109_20250715_012408_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2ad28e0",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): make to see only list 1 and 2, add n_simulation",
+    "timestamp": "2025-07-15 01:02:44",
+    "plot1": "plot_archive/2ad28e0_20250715_010244_plot1.png",
+    "plot2": "plot_archive/2ad28e0_20250715_010244_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b85c5ad",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): p-switch remake, and p_switch not vary by list for now to see reults",
+    "timestamp": "2025-07-15 00:50:23",
+    "plot1": "plot_archive/b85c5ad_20250715_005023_plot1.png",
+    "plot2": "plot_archive/b85c5ad_20250715_005023_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "5d12d4d",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): replacing missing only during strenghtren last version not exactly correct, now the true amend",
+    "timestamp": "2025-07-15 00:33:46",
+    "plot1": "plot_archive/5d12d4d_20250715_003346_plot1.png",
+    "plot2": "plot_archive/5d12d4d_20250715_003346_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d5a0f20",
+    "branch": "jul-14-explore",
+    "message": "explore(model-e3): replacing missing only during strenghtren",
+    "timestamp": "2025-07-15 00:09:00",
+    "plot1": "plot_archive/d5a0f20_20250715_000900_plot1.png",
+    "plot2": "plot_archive/d5a0f20_20250715_000900_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b6de0fc",
+    "branch": "jul-14-explore",
+    "message": "fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3 -recall-odds = 0.3",
+    "timestamp": "2025-07-15 00:06:27",
+    "plot1": "plot_archive/b6de0fc_20250715_000627_plot1.png",
+    "plot2": "plot_archive/b6de0fc_20250715_000627_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "73bfb75",
+    "branch": "jul-14-explore",
+    "message": "fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3",
+    "timestamp": "2025-07-15 00:04:44",
+    "plot1": "plot_archive/73bfb75_20250715_000444_plot1.png",
+    "plot2": "plot_archive/73bfb75_20250715_000444_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "a12187b",
+    "branch": "jul-14-explore",
+    "message": "fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later",
+    "timestamp": "2025-07-14 23:39:51",
+    "plot1": "plot_archive/a12187b_20250714_233951_plot1.png",
+    "plot2": "plot_archive/a12187b_20250714_233951_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "4c30c12",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(logscr-e3): make the script to include body message and the html file to look pretty",
+    "timestamp": "2025-07-14 23:29:10",
+    "plot1": "plot_archive/4c30c12_20250714_232910_plot1.png",
+    "plot2": "plot_archive/4c30c12_20250714_232910_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "ef14fac",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): add commit message body on top of the head",
+    "timestamp": "2025-07-14 19:48:19",
+    "plot1": "plot_archive/ef14fac_20250714_194819_plot1.png",
+    "plot2": "plot_archive/ef14fac_20250714_194819_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py"
+    ]
+  },
+  {
+    "commit": "a77fcd7",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 19:47:46",
+    "plot1": "plot_archive/a77fcd7_20250714_194746_plot1.png",
+    "plot2": "plot_archive/a77fcd7_20250714_194746_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "a77fcd7",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 02:20:09",
+    "plot1": "plot_archive/a77fcd7_20250714_022009_plot1.png",
+    "plot2": "plot_archive/a77fcd7_20250714_022009_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "ebba4b0",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 02:11:41",
+    "plot1": "plot_archive/ebba4b0_20250714_021141_plot1.png",
+    "plot2": "plot_archive/ebba4b0_20250714_021141_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "4e0e83e",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 02:08:39",
+    "plot1": "plot_archive/4e0e83e_20250714_020839_plot1.png",
+    "plot2": "plot_archive/4e0e83e_20250714_020839_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "4e0e83e",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:53:45",
+    "plot1": "plot_archive/4e0e83e_20250714_015345_plot1.png",
+    "plot2": "plot_archive/4e0e83e_20250714_015345_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "bf2fab8",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:51:04",
+    "plot1": "plot_archive/bf2fab8_20250714_015104_plot1.png",
+    "plot2": "plot_archive/bf2fab8_20250714_015104_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "a5a9228",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:46:11",
+    "plot1": "plot_archive/a5a9228_20250714_014611_plot1.png",
+    "plot2": "plot_archive/a5a9228_20250714_014611_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "af2c4f0",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): re-fix the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:42:33",
+    "plot1": "plot_archive/af2c4f0_20250714_014233_plot1.png",
+    "plot2": "plot_archive/af2c4f0_20250714_014233_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_md_from_json.py"
+    ]
+  },
+  {
+    "commit": "570bd9b",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:42:12",
+    "plot1": "plot_archive/570bd9b_20250714_014212_plot1.png",
+    "plot2": "plot_archive/570bd9b_20250714_014212_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d17d5f2",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:40:43",
+    "plot1": "plot_archive/d17d5f2_20250714_014043_plot1.png",
+    "plot2": "plot_archive/d17d5f2_20250714_014043_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "096f799",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:40:01",
+    "plot1": "plot_archive/096f799_20250714_014001_plot1.png",
+    "plot2": "plot_archive/096f799_20250714_014001_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "638959c",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(predplot-e3): make the predplot within-list back to that for all lists",
+    "timestamp": "2025-07-14 01:36:21",
+    "plot1": "plot_archive/638959c_20250714_013621_plot1.png",
+    "plot2": "plot_archive/638959c_20250714_013621_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "ac499fb",
+    "branch": "save-uncleaned-messy-main",
+    "message": "fix(logscr-e3): the file address of the pictures missded \"../\"",
+    "timestamp": "2025-07-14 01:35:49",
+    "plot1": "plot_archive/ac499fb_20250714_013549_plot1.png",
+    "plot2": "plot_archive/ac499fb_20250714_013549_plot2.png",
+    "changed_files": [
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/log_plot.sh"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:26:45",
+    "plot1": "plot_archive/480fea3_20250714_012645_plot1.png",
+    "plot2": "plot_archive/480fea3_20250714_012645_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:25:28",
+    "plot1": "plot_archive/480fea3_20250714_012528_plot1.png",
+    "plot2": "plot_archive/480fea3_20250714_012528_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:24:08",
+    "plot1": "plot_archive/480fea3_20250714_012408_plot1.png",
+    "plot2": "plot_archive/480fea3_20250714_012408_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:23:29",
+    "plot1": "plot_archive/480fea3_20250714_012329_plot1.png",
+    "plot2": "plot_archive/480fea3_20250714_012329_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:22:20",
+    "plot1": "plot_archive/480fea3_20250714_012220_plot1.png",
+    "plot2": "plot_archive/480fea3_20250714_012220_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:19:36",
+    "plot1": "../plot_archive/480fea3_20250714_011936_plot1.png",
+    "plot2": "../plot_archive/480fea3_20250714_011936_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
+    ]
+  },
+  {
+    "commit": "480fea3",
+    "branch": "save-uncleaned-messy-main",
+    "message": "feat(all): add log .md and html automatic tracking for each time of predplots in commits",
+    "timestamp": "2025-07-14 01:16:49",
+    "plot1": "plot_archive/480fea3_20250714_011649_plot1.png",
+    "plot2": "plot_archive/480fea3_20250714_011649_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "scripts/generate_html_from_json.py",
+      "scripts/generate_md_from_json.py",
+      "scripts/log_plot.sh",
+      "scripts/update_plot_log.py"
     ]
   },
   {

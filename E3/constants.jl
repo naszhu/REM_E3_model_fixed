@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 200;
+n_simulations = is_finaltest ? 100 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -104,8 +104,8 @@ n_units_time_restore_f = n_units_time_restore_t # -3
 # n_units_time_restore = n_units_time + 10
 
 
-const n_probes = 200; # Number of probes to test
-const n_lists = 2;
+const n_probes = 30; # Number of probes to test
+const n_lists = 10;
 # const n_words = 40;
 const n_words = n_probes;
 
@@ -135,7 +135,7 @@ const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star = vcat(0.06, ones(n_lists-1) * 0.06)
+u_star = vcat(0.043, ones(n_lists-1) * 0.043)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
@@ -229,28 +229,60 @@ Thresholds
 #TODO, apply first stage crition change to final test as well
 context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
-criterion_initial = generate_asymptotic_values(1.0, 0.11, 0.11, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
+criterion_initial = generate_asymptotic_values(1.0, 0.23, 0.23, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.18,0.2, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.2;
+recall_odds_threshold = 0.3; #this value should be bigger a bit than criterion_initial
 
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
 # start_and_rate = [0.28, 0.25]
-start_and_end = [0.0, 0.0]
+start_and_end = [0.2, 0.5]
 
 
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
 asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
-p_switch_toListOrgin = [0.2,0.2]#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-p_old_with_ListOrigin_SOn = 0.35
-# p_old_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
-p_old_with_ListOrigin_Fn = 0.45 
-p_old_with_ListOrigin_Tn = 0.2 #PO++ (prior target have lowest-make sense)
+# p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+z1_SOn = 0.3
+z2_Fn = 0.9
+z3_Tn = 0.7
 
+# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
+p_new_with_ListOrigin_Fn = 0.32 #good
+p_new_with_ListOrigin_SOn = 0.53
+p_new_with_ListOrigin_Tn = 0.22 ##good
+p_new_with_ListOrigin_T = 0.45 
+# Test only F: CR ~=0.55
+# Study only SOn: CR ~= 0.47
+# Study and test :  CR~= 0.43
+# Calculate z * p for each corresponding name
+z_times_p = Dict(
+    :T => z4_T * p_new_with_ListOrigin_T,
+    :Fn => z2_Fn * p_new_with_ListOrigin_Fn,
+    :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
+    :Tn => z3_Tn * p_new_with_ListOrigin_Tn
+)
+
+
+how_much_z = 0.32
+how_much_z_target = 0.10
+how_fast_z = 0.4
+how_fast_z_target = how_fast_z
+# z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
+z_time_p_val = Dict(
+    :T   => asym_increase_shift(0.1, how_much_z_target, how_fast_z_target, n_lists-1),
+    Symbol("Tn+1")  => asym_increase_shift(0.1, how_much_z_target, how_fast_z_target, n_lists-1),
+    :Fn  => asym_increase_shift(0.18, how_much_z, how_fast_z, n_lists-1),
+    :Tn  => asym_increase_shift(0.15, how_much_z, how_fast_z, n_lists-1),
+    :SOn => asym_increase_shift(0.03, how_much_z, how_fast_z, n_lists-1),
+    Symbol("Fn+1") => asym_increase_shift(0.01, how_much_z, how_fast_z, n_lists-1),
+    :F  => asym_increase_shift(0.01, how_much_z, how_fast_z, n_lists-1)
+)
+println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
