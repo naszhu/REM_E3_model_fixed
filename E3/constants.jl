@@ -297,6 +297,8 @@ println("z_time_p_val: ", z_time_p_val)
 TRUE FALSE
 """
 
+sampling_method = false
+
 #cancle this; this is to combine content and context in frist stage for a test, but figured that it doesn't work at all
 firststg_allctx = false; 
 firststg_allctx2 = false;

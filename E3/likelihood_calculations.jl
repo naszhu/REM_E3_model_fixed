@@ -88,10 +88,10 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
     ilist = probe_img.list_number     
 
     probe_context = probe_img.context_features
-    probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
-
     U_ctx = nU_in[ilist]
     C_ctx = nC_in[ilist]
+    probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
+
 
     for ii in eachindex(image_pool)
         image = image_pool[ii]

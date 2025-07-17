@@ -1,5 +1,78 @@
 # Model Progress
 
+## Commit [56135a1](https://github.com/naszhu/REM_E3_model_fixed/commit/56135a1) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:24:10  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+- changing the sampling method will make a little difference to Fb results (make it a bit lower, but shouldbe adjustable)
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/56135a1_20250718_002410_plot1.png)  
+![](../plot_archive/56135a1_20250718_002410_plot2.png)  
+
+## Commit [d0c4657](https://github.com/naszhu/REM_E3_model_fixed/commit/d0c4657) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:04:19  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d0c4657_20250718_000419_plot1.png)  
+![](../plot_archive/d0c4657_20250718_000419_plot2.png)  
+
+## Commit [1c5d950](https://github.com/naszhu/REM_E3_model_fixed/commit/1c5d950) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:02:42  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1c5d950_20250718_000242_plot1.png)  
+![](../plot_archive/1c5d950_20250718_000242_plot2.png)  
+
+## Commit [b18039d](https://github.com/naszhu/REM_E3_model_fixed/commit/b18039d) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:01:53  
+**Message:**
+```
+refactor(model-e3): likelihood calcualtion for initial test save more time (move some variable assign before for loop)
+```
+**Changed Files:**
+- `E3/likelihood_calculations.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b18039d_20250718_000153_plot1.png)  
+![](../plot_archive/b18039d_20250718_000153_plot2.png)  
+
 ## Commit [bb9023f](https://github.com/naszhu/REM_E3_model_fixed/commit/bb9023f) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-17 23:14:46  
 **Message:**
