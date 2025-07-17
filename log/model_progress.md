@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [bb9023f](https://github.com/naszhu/REM_E3_model_fixed/commit/bb9023f) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-17 23:14:46  
+**Message:**
+```
+merge(model-e3): A working V:  Merge branch 'jul-14-explore' into save-uncleaned-messy-main
+```
+**Changed Files:**
+- `.gitignore`  
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_md_from_json.py`  
+![](../plot_archive/bb9023f_20250717_231446_plot1.png)  
+![](../plot_archive/bb9023f_20250717_231446_plot2.png)  
+
 ## Commit [e713c5f](https://github.com/naszhu/REM_E3_model_fixed/commit/e713c5f) (branch: `main`)
 **Time:** 2025-07-17 22:53:02  
 **Message:**
