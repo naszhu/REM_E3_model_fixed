@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [b2d6103](https://github.com/naszhu/REM_E3_model_fixed/commit/b2d6103) (branch: `jul-14-explore`)
+**Time:** 2025-07-17 19:46:04  
+**Message:**
+```
+finetune(model-e3): even better for others but bad for new foil
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b2d6103_20250717_194604_plot1.png)  
+![](../plot_archive/b2d6103_20250717_194604_plot2.png)  
+
 ## Commit [5898072](https://github.com/naszhu/REM_E3_model_fixed/commit/5898072) (branch: `jul-14-explore`)
 **Time:** 2025-07-16 21:58:40  
 **Message:**
