@@ -1,5 +1,68 @@
 # Model Progress
 
+## Commit [26697e2](https://github.com/naszhu/REM_E3_model_fixed/commit/26697e2) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:36:57  
+**Message:**
+```
+feat(model-e3): add back finat_test first v, not sure if works
+
+Found problem of 1/11 at issue #39
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `plot2.png`  
+![](../plot_archive/26697e2_20250718_003657_plot1.png)  
+![](../plot_archive/26697e2_20250718_003657_plot2.png)  
+
+## Commit [26697e2](https://github.com/naszhu/REM_E3_model_fixed/commit/26697e2) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:36:09  
+**Message:**
+```
+feat(model-e3): add back finat_test first v, not sure if works
+
+Found problem of 1/11 at issue #39
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `plot2.png`  
+![](../plot_archive/26697e2_20250718_003609_plot1.png)  
+![](../plot_archive/26697e2_20250718_003609_plot2.png)  
+
+## Commit [1a54d3e](https://github.com/naszhu/REM_E3_model_fixed/commit/1a54d3e) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:35:53  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+- changing the sampling method will make a little difference to Fb results (make it a bit lower, but shouldbe adjustable)
+
+- if taking 1/11 power of the LL for the samppling, it changes a bit of the results but not much, seems acceptable (making the Fb to drop as well)
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1a54d3e_20250718_003553_plot1.png)  
+![](../plot_archive/1a54d3e_20250718_003553_plot2.png)  
+
 ## Commit [56135a1](https://github.com/naszhu/REM_E3_model_fixed/commit/56135a1) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-18 00:24:10  
 **Message:**

@@ -158,6 +158,20 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         
         decision_isold = odds > criterion_final_i ? 1 : 0;
 
+        
+        ############### Add new sampling LL preparing lines
+        filtered_content_LL_ratios_inOriginalLength = content_LL_ratios_org |> x -> map(e -> e == 344523466743 ? 0 : e, x)
+
+        # Step 2: Calculate the total sum of the filtered likelihood ratios
+        total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength)
+
+        filtered_content_LL_ratios_inOriginalLength_to_11thpower= filtered_content_LL_ratios_inOriginalLength .^ (1/11) # raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
+        # Step 3: Assign probabilities proportionally
+        total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength_to_11thpower);
+
+        sampling_probabilities = total_sum_LL == 0 ? 
+            zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : 
+            [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)];
 
         # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
@@ -182,7 +196,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         if is_restore_final
 
             #Issue 12
-            restore_intest_final(image_pool, probes[i].image, decision_isold, decision_isold == 1 ? imax : 1, odds, i);  #have to pass final testpos 
+            restore_intest_final(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds, i, content_LL_ratios_org);  #have to pass final testpos 
         end
     end
 

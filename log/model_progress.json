@@ -1,5 +1,58 @@
 [
   {
+    "commit": "26697e2",
+    "branch": "jul-17-add-finalT",
+    "message": "feat(model-e3): add back finat_test first v, not sure if works",
+    "timestamp": "2025-07-18 00:36:57",
+    "plot1": "plot_archive/26697e2_20250718_003657_plot1.png",
+    "plot2": "plot_archive/26697e2_20250718_003657_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "plot2.png"
+    ]
+  },
+  {
+    "commit": "26697e2",
+    "branch": "jul-17-add-finalT",
+    "message": "feat(model-e3): add back finat_test first v, not sure if works",
+    "timestamp": "2025-07-18 00:36:09",
+    "plot1": "plot_archive/26697e2_20250718_003609_plot1.png",
+    "plot2": "plot_archive/26697e2_20250718_003609_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "plot2.png"
+    ]
+  },
+  {
+    "commit": "1a54d3e",
+    "branch": "jul-17-add-finalT",
+    "message": "feat(model-e3): add sampling_method choice",
+    "timestamp": "2025-07-18 00:35:53",
+    "plot1": "plot_archive/1a54d3e_20250718_003553_plot1.png",
+    "plot2": "plot_archive/1a54d3e_20250718_003553_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/likelihood_calculations.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "56135a1",
     "branch": "jul-17-add-finalT",
     "message": "feat(model-e3): add sampling_method choice",

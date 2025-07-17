@@ -52,7 +52,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         else
             # Pick the image from image_pool with the maximum content_LL_ratios value
             @assert length(content_LL_ratios) == length(image_pool) "content_LL_ratios and image_pool must have the same length"
-            imax = argmax(content_LL_ratios)
+            imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
             iimage = image_pool[imax]
         end
     else
@@ -121,7 +121,7 @@ end
 
 
 
-function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, odds::Float64, finaltest_pos::Int64 )::Nothing
+function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, sampling_probabilities::Vector{Float64}, odds::Float64, finaltest_pos::Int64,content_LL_ratios::Vector{Float64} )::Nothing
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
@@ -147,8 +147,18 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
     elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        #recall; restore old
-        iimage = image_pool[imax] #FIXME
+        if sampling_method
+            @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
+            #recall; restore old
+            cdf_each_boral_sets = Categorical(sampling_probabilities)     
+            index_sampled = rand(cdf_each_boral_sets)
+            iimage = image_pool[index_sampled]
+        else
+            # Pick the image from image_pool with the maximum content_LL_ratios value
+            @assert length(content_LL_ratios) == length(image_pool) "content_LL_ratios and image_pool must have the same length"
+            imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
+            iimage = image_pool[imax]
+        end
     else
         error("decision_isold is not well defined")
     end
@@ -196,7 +206,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
         restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-        restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore)
+        restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
 
         !is_restore_context ? error("context restored in initial is not well written this part") : nothing
 

@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
+is_finaltest = true
 n_simulations = is_finaltest ? 100 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -297,7 +297,7 @@ println("z_time_p_val: ", z_time_p_val)
 TRUE FALSE
 """
 
-sampling_method = false
+sampling_method = true
 
 #cancle this; this is to combine content and context in frist stage for a test, but figured that it doesn't work at all
 firststg_allctx = false; 
