@@ -52,48 +52,19 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
 
         
-        if odds>criterion_initial[i_testpos,ilist_probe] #val=1; if pass, possible to recall 
-            # if odds> recall_odds_threshold #100, do a recall
-            #     # if probes[i].image.word.type_specific in [:Tn]
-            #         # decision_isold=0
-                
-            #     if rand() < p_switch_toListOrgin[ilist_probe] # if LOR was recalled
-
-            #         # if imgMax.list_number == ilist_probe #if the max image is from the current list, then prob old
-            #         #     decision_isold = 1 #this, should include a prob or not?
-
-                    # else #if the max image is not from the current list, then switch to origin list
-                    # println(probes[i].image.word.type_specific)
-                    # else #if the max image is not from the current list, then switch to origin list
-
-                    if probes[i].image.word.type_general in [:SOn,:SO, :T]
-                        decision_isold = rand() < p_old_with_ListOrigin_SOn ? 1 : 0;
-                    elseif probes[i].image.word.type_general in [:Tn]
-                        #if the image is from ListOrigin, then recall it
-                        decision_isold = rand() < p_old_with_ListOrigin_Tn ? 1 : 0; #recall, judge old #recall, judge new
-                    # end
-                    elseif probes[i].image.word.type_general in [:F,:Fn]
-                        #if the image is from ListOrigin, then recall it
-                        decision_isold = rand() < p_old_with_ListOrigin_Fn ? 1 : 0; #recall, judge old #recall, judge new
-                    # end
-                    else #if the image is not from ListOrigin, then judge new
-                        error("shouldn't have an else function here")
-                        decision_isold = 1 #recall, judge old
-                    end
-
-
-                    
-                    #decision_isold = rand() < 1 p1_old_after_filter[ilist_probe] ? 1 : 0  #recall, judge old
-                # else
-
-                    # LOR not recalled: judge old (??)
-                    decision_isold = 1
-                
-                # end
-
-            # else #doesn't do recall,judge old
-                # decision_isold = 1 #still old, but not recall
-            # end
+        if odds > criterion_initial[i_testpos, ilist_probe] 
+            if odds > recall_odds_threshold
+                if ilist_probe == 1
+                    decision_isold = 1 #if list 1, always recall
+                else
+                    product = get(z_time_p_val, probes[i].image.word.type_specific, zeros(Float64, n_lists-1)) 
+                    # println(product)
+                    # println(ilist_probe)
+                    decision_isold = rand() < product[ilist_probe-1] ? 0 : 1   
+                end
+            else
+                decision_isold = 1
+            end
         else #if didn't pass, directly judge new
             decision_isold = 0
         end
