@@ -27,13 +27,19 @@ mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
 
 p_in_20=ggplot(data=df1,aes(x=test_position_grouped_foralltests,y=meanx,group=is_target))+
     geom_line(aes(color=is_target),size=1.5)+
+    geom_point(aes(color=is_target, shape=is_target),size=10)+
     geom_line(aes(x=test_position_grouped_foralltests,y=meanx_m),color="black",size=1.5)+
     # geom_point()+ylim(c(0.5,1))+
     theme(
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
         text=element_text(size=20) # Increase font size globally
-    )
+    )+
+  scale_color_manual(values=c("blue","green","green","green","purple"))+
+scale_shape_manual(
+    values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
+    # labels = c("F", "Fb-Fn", "Fb-SOn", "Fb-Tn", "T")
+)
 p_in_20
 
 
@@ -126,6 +132,10 @@ p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
     scale_color_manual(
                        labels = c("F", "Fb-Fn", "Fb-SOn", "Fb-Tn", "T"), 
                        values = c("blue", "green", "green", "green", "purple")) + # Customize legend title and labels
+    scale_shape_manual(
+    values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
+    # labels = c("F", "Fb-Fn", "Fb-SOn", "Fb-Tn", "T")
+)+
     theme(
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
@@ -189,7 +199,14 @@ df_serial=all_results%>%
     mutate(is_target=type_specific)%>%
 # mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
                     # is_target %in% c("F","Fn+1")~"F",
-                    # TRUE~paste("Fb",is_target,sep="-")))%>%
+                    # TRUE~paste("Fb",is_target,sep="-")))%>%\
+
+    mutate(study_position = ceiling(study_position/3))%>%
+# filter(list_number%in%c(1))%>%
+mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
+                    is_target %in% c("F","Fn+1")~"F",
+                    TRUE~paste("Fb",is_target,sep="-")))%>%
+
     group_by(study_position,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
     group_by(study_position,is_target)%>%
@@ -198,12 +215,15 @@ df_serial=all_results%>%
 
 p_serial=ggplot(data=df_serial,aes(x=study_position,meanx))+
     geom_line(aes(color=is_target),size=2)+
-    geom_point(size=2,aes(color=is_target))+
+    geom_point(size=10,aes(color=is_target,shape=is_target))+
     theme(
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
         text=element_text(size=20) # Increase font size globally
-    )
+    )+
+    scale_shape_manual(
+    values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
+    )+ scale_color_manual(values=c("blue","green","green","green","purple"))
     # ylim(c(0.75,1))
 p_serial
 
@@ -247,7 +267,7 @@ p_serial
 png(filename="plot1.png", width=1300, height=1200)
 # grid.arrange(p1,list_rt,p_in_20,testpos_rt,p_serial,p4,ncol = 2,nrow=3)
 # grid.arrange(p1,p_in_20,p_serial,p4,ncol = 2,nrow=2)
-grid.arrange(p1,p_in_20,p_serial,p4, ncol = 2,nrow=2)
+grid.arrange(p1,p4,p_serial,p_in_20, ncol = 2,nrow=2)
 dev.off()
 # system("feh plot1.png &", wait = FALSE)      # if `feh` is installed
 # system("feh plot1.png",)      # if `feh` is installed

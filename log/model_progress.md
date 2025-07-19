@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [0b7ce2b](https://github.com/naszhu/REM_E3_model_fixed/commit/0b7ce2b) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:14:17  
+**Message:**
+```
+explore(model-e3): final test work well
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0b7ce2b_20250719_181417_plot1.png)  
+![](../plot_archive/0b7ce2b_20250719_181417_plot2.png)  
+
 ## Commit [5c3398d](https://github.com/naszhu/REM_E3_model_fixed/commit/5c3398d) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 15:24:51  
 **Message:**

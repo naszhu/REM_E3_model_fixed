@@ -1,5 +1,19 @@
 [
   {
+    "commit": "0b7ce2b",
+    "branch": "jul-17-add-finalT",
+    "message": "explore(model-e3): final test work well",
+    "timestamp": "2025-07-19 18:14:17",
+    "plot1": "plot_archive/0b7ce2b_20250719_181417_plot1.png",
+    "plot2": "plot_archive/0b7ce2b_20250719_181417_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "5c3398d",
     "branch": "jul-17-add-finalT",
     "message": "feat(model-e3): add back finat_test first v, not sure if works",
