@@ -1,5 +1,34 @@
 # Model Progress
 
+## Commit [aa64353](https://github.com/naszhu/REM_E3_model_fixed/commit/aa64353) (branch: `HEAD`)
+**Time:** 2025-07-19 22:00:15  
+**Message:**
+```
+finettune(model-e3): fine tunning initial test alone with final test
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/aa64353_20250719_220015_plot1.png)  
+![](../plot_archive/aa64353_20250719_220015_plot2.png)  
+
+## Commit [c5ecefd](https://github.com/naszhu/REM_E3_model_fixed/commit/c5ecefd) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 21:36:11  
+**Message:**
+```
+feat(model-e3): It  actually work? add new trace when strenghten
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c5ecefd_20250719_213611_plot1.png)  
+![](../plot_archive/c5ecefd_20250719_213611_plot2.png)  
+
 ## Commit [fee2e67](https://github.com/naszhu/REM_E3_model_fixed/commit/fee2e67) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 20:35:59  
 **Message:**
