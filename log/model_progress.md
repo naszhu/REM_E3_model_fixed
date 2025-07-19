@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [5c3398d](https://github.com/naszhu/REM_E3_model_fixed/commit/5c3398d) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 15:24:51  
+**Message:**
+```
+feat(model-e3): add back finat_test first v, not sure if works
+
+Found problem of 1/11 at issue #39
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `plot2.png`  
+![](../plot_archive/5c3398d_20250719_152451_plot1.png)  
+![](../plot_archive/5c3398d_20250719_152451_plot2.png)  
+
 ## Commit [26697e2](https://github.com/naszhu/REM_E3_model_fixed/commit/26697e2) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-18 00:36:57  
 **Message:**
