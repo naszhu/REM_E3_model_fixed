@@ -126,9 +126,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
-    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))
+    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
 
-        iimage = EpisodicImage(
+        iimage_toadd = EpisodicImage(
             #Word:
             Word(iprobe_img.word.item_code, #item_code
                 fill(0, length(iprobe_img.word.word_features)), #word features
@@ -145,33 +145,32 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             iprobe_img.appearnum #appearnum
         )
 
-
-    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+    end
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         if sampling_method
             @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
             #recall; restore old
             cdf_each_boral_sets = Categorical(sampling_probabilities)     
             index_sampled = rand(cdf_each_boral_sets)
-            iimage = image_pool[index_sampled]
+            iimage_tostrenghten = image_pool[index_sampled]
         else
             # Pick the image from image_pool with the maximum content_LL_ratios value
             @assert length(content_LL_ratios) == length(image_pool) "content_LL_ratios and image_pool must have the same length"
             imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
-            iimage = image_pool[imax]
+            iimage_tostrenghten = image_pool[imax]
         end
-    else
-        error("decision_isold is not well defined")
+
     end
 
     
     ############# ADD TRACE ######################
     # if new, or old but didn't pass threshold -- ADD TRACE
-    if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))
+    if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
 
         for _ in 1:n_units_time_restore
 
-            add_features_from_empty!(iimage.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word) #TODO
+            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word) #TODO
 
             # if iprobe_img.list_number == 1
 
@@ -183,7 +182,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             # Determine the chunk index for the current probe
             iprobe_chunk = findfirst(x -> finaltest_pos <= x, iprobe_chunk_boundaries)  
 
-            add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context_c[end], g_context; cu=c_context_un[end]); #TODO: use last big ctx?
+            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context_c[end], g_context; cu=c_context_un[end]); #TODO: use last big ctx?
             # else
                 # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context_ilist, g_context)
             
@@ -205,9 +204,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             error("current prog is not written when doesn't store mismatch")
         end
 
-        restore_features!(iimage.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
+        restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-        restore_features!(iimage.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
+        restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
 
         !is_restore_context ? error("context restored in initial is not well written this part") : nothing
 
@@ -215,8 +214,8 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     end
 
     # if (decision_isold == 0)
-    if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))
-        push!(image_pool, iimage)
+    if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
+        push!(image_pool, iimage_toadd)
     end
 
     return nothing

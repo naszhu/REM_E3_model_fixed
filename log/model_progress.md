@@ -1,7 +1,7 @@
 # Model Progress
 
-## Commit [aa64353](https://github.com/naszhu/REM_E3_model_fixed/commit/aa64353) (branch: `HEAD`)
-**Time:** 2025-07-19 22:00:15  
+## Commit [aa64353](https://github.com/naszhu/REM_E3_model_fixed/commit/aa64353) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 21:53:37  
 **Message:**
 ```
 finettune(model-e3): fine tunning initial test alone with final test
@@ -11,8 +11,8 @@ finettune(model-e3): fine tunning initial test alone with final test
 - `log/model_progress.html`  
 - `log/model_progress.json`  
 - `log/model_progress.md`  
-![](../plot_archive/aa64353_20250719_220015_plot1.png)  
-![](../plot_archive/aa64353_20250719_220015_plot2.png)  
+![](../plot_archive/aa64353_20250719_215337_plot1.png)  
+![](../plot_archive/aa64353_20250719_215337_plot2.png)  
 
 ## Commit [c5ecefd](https://github.com/naszhu/REM_E3_model_fixed/commit/c5ecefd) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 21:36:11  

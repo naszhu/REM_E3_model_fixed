@@ -1,11 +1,11 @@
 [
   {
     "commit": "aa64353",
-    "branch": "HEAD",
+    "branch": "jul-17-add-finalT",
     "message": "finettune(model-e3): fine tunning initial test alone with final test",
-    "timestamp": "2025-07-19 22:00:15",
-    "plot1": "plot_archive/aa64353_20250719_220015_plot1.png",
-    "plot2": "plot_archive/aa64353_20250719_220015_plot2.png",
+    "timestamp": "2025-07-19 21:53:37",
+    "plot1": "plot_archive/aa64353_20250719_215337_plot1.png",
+    "plot2": "plot_archive/aa64353_20250719_215337_plot2.png",
     "changed_files": [
       "E3/constants.jl",
       "log/model_progress.html",
