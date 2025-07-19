@@ -1,5 +1,20 @@
 [
   {
+    "commit": "afeed74",
+    "branch": "jul-17-add-finalT",
+    "message": "feat(model-e3):  Final test add trace when strengthen",
+    "timestamp": "2025-07-19 22:54:18",
+    "plot1": "plot_archive/afeed74_20250719_225418_plot1.png",
+    "plot2": "plot_archive/afeed74_20250719_225418_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "aa64353",
     "branch": "jul-17-add-finalT",
     "message": "finettune(model-e3): fine tunning initial test alone with final test",

@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [afeed74](https://github.com/naszhu/REM_E3_model_fixed/commit/afeed74) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 22:54:18  
+**Message:**
+```
+feat(model-e3):  Final test add trace when strengthen
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/afeed74_20250719_225418_plot1.png)  
+![](../plot_archive/afeed74_20250719_225418_plot2.png)  
+
 ## Commit [aa64353](https://github.com/naszhu/REM_E3_model_fixed/commit/aa64353) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 21:53:37  
 **Message:**
