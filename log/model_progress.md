@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [da048c7](https://github.com/naszhu/REM_E3_model_fixed/commit/da048c7) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-20 00:36:57  
+**Message:**
+```
+feat(model-e3):  fine tune initial test within-list test position
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/da048c7_20250720_003657_plot1.png)  
+![](../plot_archive/da048c7_20250720_003657_plot2.png)  
+
 ## Commit [afeed74](https://github.com/naszhu/REM_E3_model_fixed/commit/afeed74) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 22:54:18  
 **Message:**

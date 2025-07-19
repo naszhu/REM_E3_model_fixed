@@ -1,5 +1,19 @@
 [
   {
+    "commit": "da048c7",
+    "branch": "jul-17-add-finalT",
+    "message": "feat(model-e3):  fine tune initial test within-list test position",
+    "timestamp": "2025-07-20 00:36:57",
+    "plot1": "plot_archive/da048c7_20250720_003657_plot1.png",
+    "plot2": "plot_archive/da048c7_20250720_003657_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "afeed74",
     "branch": "jul-17-add-finalT",
     "message": "feat(model-e3):  Final test add trace when strengthen",
