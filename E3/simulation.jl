@@ -113,7 +113,7 @@ function simulate_rem()
             for _ in 1:n_driftStudyTest[list_num]
                 drift_ctx_betweenStudyAndTest!(test_list_context_change, p_driftAndListChange, Geometric(g_context))
 
-                if is_UnchangeCtxDriftAndReinstate
+                if is_UnchangeCtxDriftAndReinstate #true
                     drift_ctx_betweenStudyAndTest!(test_list_context_unchange, p_driftAndListChange, Geometric(g_context))
                 end
             end   #studied_pool[:, list_num]

@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [4bff7f9](https://github.com/naszhu/REM_E3_model_fixed/commit/4bff7f9) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 20:03:40  
+**Message:**
+```
+refactor(predplot-e3): refined the ylim a bit even better
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4bff7f9_20250719_200340_plot1.png)  
+![](../plot_archive/4bff7f9_20250719_200340_plot2.png)  
+
 ## Commit [22eabe2](https://github.com/naszhu/REM_E3_model_fixed/commit/22eabe2) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 20:02:35  
 **Message:**
