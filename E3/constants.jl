@@ -135,7 +135,7 @@ const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star = vcat(0.043, ones(n_lists-1) * 0.043)
+u_star = vcat(0.041, ones(n_lists-1) * 0.041)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
@@ -173,15 +173,15 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.7#0.4 #prob of reinstatement
+p_reinstate_rate = 0.4#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^1) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(10) * 18) #7
+n_driftStudyTest = round.(Int, ones(10) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(25, 25, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(15, 15, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -230,7 +230,8 @@ Thresholds
 context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 # originally 0.23 works, but now needs to adjust
-criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.18, 1.0, 1.0); #CHANGED,[iprobe, jlist], when p =0, no power function, when p=2.0, roughly stop increase at position 4 
+criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
+# criterion_initial = generate_asymptotic_values(1.0, 0.23, 0.23, 1.0, 1.0, 0.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.29,0.255, 10)#LinRange(0.18, 0.23, 10)

@@ -27,9 +27,9 @@ valley_transform(x; α=0.8, μ=0.5, σ=0.2) = x * (1 - α * exp(-((x - μ)^2) / 
 
    currently, this function only have argument inputs p, and though should include arguments of how dimn1 change as well 
 """
-function generate_asymptotic_values(p::Float64, within_list_start::Float64, within_list_end::Float64,  between_list_start::Float64,  between_list_end::Float64 )::Matrix{Float64}
+function generate_asymptotic_values(p::Float64, within_list_start::Float64, within_list_end::Float64,  between_list_start::Float64,  between_list_end::Float64,b_rate::Float64 )::Matrix{Float64}
     # Generate linearly decreasing dim1 from 6 to 4
-    dim1 = LinRange(within_list_start, within_list_end, n_probes)
+    dim1 = asym_decrease(within_list_start, within_list_end,b_rate, n_probes)
     
     t = LinRange(between_list_start, between_list_end, n_lists)   # Normalized range for column positions (0 to 1)
     dim2 = t .^ p  # Apply the power-law to create the asymptotic increase
@@ -41,9 +41,25 @@ function generate_asymptotic_values(p::Float64, within_list_start::Float64, with
 end
 
 
+# asym_range(start_val, end_val, beta, n)
+# beta 越大越快趋近 end_val
+"""
+This is for calculating help for criterion_initial
+"""
+function asym_decrease(start_val::Float64,
+                       end_val::Float64,
+                       beta::Float64,
+                       n::Int)::Vector{Float64}
+    @assert n ≥ 1
+    [end_val + (start_val - end_val) * exp(-beta * (i - 1) / (n - 1))
+     for i in 1:n]
+end
+
+
 
 """
 the fixed start asympotopically changes vector: gradually decrease the level of increase  
+This is currently being used for p_switch*pOld
 """
 function generate_asymptotic_increase_fixed_start(start_at::Float64, rate::Float64, num_values::Int64)::Vector{Float64}
     values = zeros(num_values)

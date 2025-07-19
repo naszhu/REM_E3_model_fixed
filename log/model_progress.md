@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [6eb32d6](https://github.com/naszhu/REM_E3_model_fixed/commit/6eb32d6) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:57:42  
+**Message:**
+```
+refactor(predplot-e3): make predplot within-list y limit the same with the data plot
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6eb32d6_20250719_185742_plot1.png)  
+![](../plot_archive/6eb32d6_20250719_185742_plot2.png)  
+
 ## Commit [05dc0ef](https://github.com/naszhu/REM_E3_model_fixed/commit/05dc0ef) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 18:49:19  
 **Message:**
