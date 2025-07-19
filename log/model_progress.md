@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [fee2e67](https://github.com/naszhu/REM_E3_model_fixed/commit/fee2e67) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 20:35:59  
+**Message:**
+```
+explore(model-e3): take out context drift between study-test? doens't change final test prediction
+
+- thought this made initial test within-list by test position narrows from that at the beggining
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fee2e67_20250719_203559_plot1.png)  
+![](../plot_archive/fee2e67_20250719_203559_plot2.png)  
+
 ## Commit [4bff7f9](https://github.com/naszhu/REM_E3_model_fixed/commit/4bff7f9) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 20:03:40  
 **Message:**

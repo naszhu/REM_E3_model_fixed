@@ -1,5 +1,20 @@
 [
   {
+    "commit": "fee2e67",
+    "branch": "jul-17-add-finalT",
+    "message": "explore(model-e3): take out context drift between study-test? doens't change final test prediction",
+    "timestamp": "2025-07-19 20:35:59",
+    "plot1": "plot_archive/fee2e67_20250719_203559_plot1.png",
+    "plot2": "plot_archive/fee2e67_20250719_203559_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "4bff7f9",
     "branch": "jul-17-add-finalT",
     "message": "refactor(predplot-e3): refined the ylim a bit even better",
