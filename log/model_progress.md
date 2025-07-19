@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [22eabe2](https://github.com/naszhu/REM_E3_model_fixed/commit/22eabe2) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 20:02:35  
+**Message:**
+```
+finetune(model-e3): asypmotoptic on criterion_initial
+
+(give back between list and study-test change)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/22eabe2_20250719_200235_plot1.png)  
+![](../plot_archive/22eabe2_20250719_200235_plot2.png)  
+
 ## Commit [6eb32d6](https://github.com/naszhu/REM_E3_model_fixed/commit/6eb32d6) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 18:57:42  
 **Message:**

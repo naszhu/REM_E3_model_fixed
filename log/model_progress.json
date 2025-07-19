@@ -1,5 +1,20 @@
 [
   {
+    "commit": "22eabe2",
+    "branch": "jul-17-add-finalT",
+    "message": "finetune(model-e3): asypmotoptic on criterion_initial",
+    "timestamp": "2025-07-19 20:02:35",
+    "plot1": "plot_archive/22eabe2_20250719_200235_plot1.png",
+    "plot2": "plot_archive/22eabe2_20250719_200235_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "6eb32d6",
     "branch": "jul-17-add-finalT",
     "message": "refactor(predplot-e3): make predplot within-list y limit the same with the data plot",
