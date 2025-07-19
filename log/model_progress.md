@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [5b91d47](https://github.com/naszhu/REM_E3_model_fixed/commit/5b91d47) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:30:22  
+**Message:**
+```
+refactor(predplot-e3): make the plot within-list, and color, point shape consistent
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5b91d47_20250719_183022_plot1.png)  
+![](../plot_archive/5b91d47_20250719_183022_plot2.png)  
+
 ## Commit [0b7ce2b](https://github.com/naszhu/REM_E3_model_fixed/commit/0b7ce2b) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-19 18:14:17  
 **Message:**

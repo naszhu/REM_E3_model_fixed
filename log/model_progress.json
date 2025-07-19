@@ -1,5 +1,19 @@
 [
   {
+    "commit": "5b91d47",
+    "branch": "jul-17-add-finalT",
+    "message": "refactor(predplot-e3): make the plot within-list, and color, point shape consistent",
+    "timestamp": "2025-07-19 18:30:22",
+    "plot1": "plot_archive/5b91d47_20250719_183022_plot1.png",
+    "plot2": "plot_archive/5b91d47_20250719_183022_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "0b7ce2b",
     "branch": "jul-17-add-finalT",
     "message": "explore(model-e3): final test work well",
