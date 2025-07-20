@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [b05e0c3](https://github.com/naszhu/REM_E3_model_fixed/commit/b05e0c3) (branch: `jul-21-checkout`)
+**Time:** 2025-07-21 02:24:27  
+**Message:**
+```
+explore(model-e3): same work v, but commented uneed in restore_intest
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b05e0c3_20250721_022427_plot1.png)  
+![](../plot_archive/b05e0c3_20250721_022427_plot2.png)  
+
 ## Commit [022904f](https://github.com/naszhu/REM_E3_model_fixed/commit/022904f) (branch: `jul-21-checkout`)
 **Time:** 2025-07-21 01:48:43  
 **Message:**

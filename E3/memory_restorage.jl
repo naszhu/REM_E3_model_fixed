@@ -108,10 +108,11 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     end
 
 
-    if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
+    if (decision_isold == 0) || ((decision_isold == 1) && (odds < recall_odds_threshold))|| ((decision_isold==1) && (odds > recall_odds_threshold) && (odds<0.8)) 
         push!(image_pool, iimage_toadd)
         # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
-
+    else
+        # print("here")
     end
 
     return nothing

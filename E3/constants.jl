@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
-n_simulations = is_finaltest ? 100 : 200;
+is_finaltest = false
+n_simulations = is_finaltest ? 500 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -135,7 +135,7 @@ const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star = vcat(0.039, ones(n_lists-1) * 0.039)
+u_star = vcat(0.036, ones(n_lists-1) * 0.036)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
@@ -270,18 +270,18 @@ z_times_p = Dict(
 )
 
 
-how_much_z = 0.25
+how_much_z = 0.3
 how_much_z_target = 0.11
 how_fast_z = 0.4
 how_fast_z_target = how_fast_z
 how_much_z_f = 0.25
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
 z_time_p_val = Dict(
-    :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+    :T   => asym_increase_shift(0.01, how_much_z_target, how_fast_z_target, n_lists-1),
     Symbol("Tn+1")  => asym_increase_shift(0.01, how_much_z_target, how_fast_z_target, n_lists-1),
-    :Fn  => asym_increase_shift(0.30, how_much_z, how_fast_z, n_lists-1),
-    :Tn  => asym_increase_shift(0.28, how_much_z, how_fast_z, n_lists-1),
-    :SOn => asym_increase_shift(0.18, how_much_z, how_fast_z, n_lists-1),
+    :Fn  => asym_increase_shift(0.30-0.1, how_much_z, how_fast_z, n_lists-1),
+    :Tn  => asym_increase_shift(0.28-0.13, how_much_z, how_fast_z, n_lists-1),
+    :SOn => asym_increase_shift(0.18-0.20, how_much_z, how_fast_z, n_lists-1),
     Symbol("Fn+1") => asym_increase_shift(0.001, how_much_z_f, how_fast_z, n_lists-1),
     :F  => asym_increase_shift(0.001, how_much_z_f, how_fast_z, n_lists-1)
 )

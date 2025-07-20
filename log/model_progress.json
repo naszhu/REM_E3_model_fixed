@@ -1,5 +1,19 @@
 [
   {
+    "commit": "b05e0c3",
+    "branch": "jul-21-checkout",
+    "message": "explore(model-e3): same work v, but commented uneed in restore_intest",
+    "timestamp": "2025-07-21 02:24:27",
+    "plot1": "plot_archive/b05e0c3_20250721_022427_plot1.png",
+    "plot2": "plot_archive/b05e0c3_20250721_022427_plot2.png",
+    "changed_files": [
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "022904f",
     "branch": "jul-21-checkout",
     "message": "fix(model-e3): fixed that inital_crition didn't change by testposition, & commented other conditions in restore function",
