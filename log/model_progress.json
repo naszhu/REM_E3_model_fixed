@@ -1,5 +1,19 @@
 [
   {
+    "commit": "542cf51",
+    "branch": "jul-21-checkout",
+    "message": "refactor(predplot-e3): make the final test within-list plot good",
+    "timestamp": "2025-07-21 01:46:11",
+    "plot1": "plot_archive/542cf51_20250721_014611_plot1.png",
+    "plot2": "plot_archive/542cf51_20250721_014611_plot2.png",
+    "changed_files": [
+      "E3/R_plots_finalt.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "da048c7",
     "branch": "jul-17-add-finalT",
     "message": "feat(model-e3):  fine tune initial test within-list test position",

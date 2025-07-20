@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [542cf51](https://github.com/naszhu/REM_E3_model_fixed/commit/542cf51) (branch: `jul-21-checkout`)
+**Time:** 2025-07-21 01:46:11  
+**Message:**
+```
+refactor(predplot-e3): make the final test within-list plot good
+```
+**Changed Files:**
+- `E3/R_plots_finalt.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/542cf51_20250721_014611_plot1.png)  
+![](../plot_archive/542cf51_20250721_014611_plot2.png)  
+
 ## Commit [da048c7](https://github.com/naszhu/REM_E3_model_fixed/commit/da048c7) (branch: `jul-17-add-finalT`)
 **Time:** 2025-07-20 00:36:57  
 **Message:**

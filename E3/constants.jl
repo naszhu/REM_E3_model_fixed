@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 300 : 200;
+is_finaltest = true
+n_simulations = is_finaltest ? 100 : 200;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -231,7 +231,7 @@ context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lowe
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.4, 0.25, 1.0, 1.0, 0.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.45, 0.3, 1.0, 1.0, 5.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.51,0.51, 10)#LinRange(0.18, 0.23, 10)
