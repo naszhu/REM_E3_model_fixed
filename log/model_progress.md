@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [022904f](https://github.com/naszhu/REM_E3_model_fixed/commit/022904f) (branch: `jul-21-checkout`)
+**Time:** 2025-07-21 01:48:43  
+**Message:**
+```
+fix(model-e3): fixed that inital_crition didn't change by testposition, & commented other conditions in restore function
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/022904f_20250721_014843_plot1.png)  
+![](../plot_archive/022904f_20250721_014843_plot2.png)  
+
 ## Commit [542cf51](https://github.com/naszhu/REM_E3_model_fixed/commit/542cf51) (branch: `jul-21-checkout`)
 **Time:** 2025-07-21 01:46:11  
 **Message:**
