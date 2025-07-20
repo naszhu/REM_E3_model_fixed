@@ -87,21 +87,22 @@ function calculate_two_step_likelihoods(probe_img::EpisodicImage, image_pool::Ve
     word_likelihood_imgi_ratios = Vector{Float64}(undef, length(image_pool))
     ilist = probe_img.list_number     
 
+    probe_context = probe_img.context_features
+    U_ctx = nU_in[ilist]
+    C_ctx = nC_in[ilist]
+    probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
+
+
     for ii in eachindex(image_pool)
         image = image_pool[ii]
-        probe_context = probe_img.context_features
         image_context = image.context_features
 
 
         if is_test_allcontext  #true
 
 
-            U_ctx = nU_in[ilist]
-            C_ctx = nC_in[ilist]
-
             # println("$ilist, $U_ctx, $C_ctx, $(probe_context[1 : U_ctx]), $(probe_context[(U_ctx +1) : (C_ctx + U_ctx)])")
 
-            probe_context_adjusted = fast_concat([probe_context[1 : U_ctx], probe_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
             image_context_adjusted = fast_concat([image_context[1 : U_ctx], image_context[(nU +1) : (nU + C_ctx)]]) #take the first half unchange and the second half change
 
             # context LL of trace i in memory
@@ -164,7 +165,8 @@ function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::V
        
 
         #ok, idk how much context; differetiate or not will be used in liklihood calc of final test for now, so just keep it as what it was for now
-        if is_test_allcontext2  #true; currently goes here; first half unchange
+        if is_test_allcontext2
+              #true; currently goes here; first half unchange
             image_context_f = fast_concat([image_context[1:nU_f_i], image_context[(nU + 1) : (nU + nC_f_i)]])
             context_likelihood_imgi_ratio = calculate_likelihood_ratio(probe_context_f, image_context_f, g_context, c_context_c[end], true, listnum; cu = c_context_un[end], U_ctx = nU_f_i)  # .#  Context calculation TODO, FIXME end here?
 

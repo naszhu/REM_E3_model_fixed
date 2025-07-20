@@ -1,7 +1,346 @@
 # Model Progress
 
-## Commit [bb9023f](https://github.com/naszhu/REM_E3_model_fixed/commit/bb9023f) (branch: `main`)
-**Time:** 2025-07-19 23:04:36  
+## Commit [72825e6](https://github.com/naszhu/REM_E3_model_fixed/commit/72825e6) (branch: `main`)
+**Time:** 2025-07-21 00:01:15  
+**Message:**
+```
+merge(model-e3): A working V:  Merge branch 'jul-14-explore' into main
+```
+**Changed Files:**
+- `.gitignore`  
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/generate_md_from_json.py`  
+![](../plot_archive/72825e6_20250721_000115_plot1.png)  
+![](../plot_archive/72825e6_20250721_000115_plot2.png)  
+
+## Commit [da048c7](https://github.com/naszhu/REM_E3_model_fixed/commit/da048c7) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-20 00:36:57  
+**Message:**
+```
+feat(model-e3):  fine tune initial test within-list test position
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/da048c7_20250720_003657_plot1.png)  
+![](../plot_archive/da048c7_20250720_003657_plot2.png)  
+
+## Commit [afeed74](https://github.com/naszhu/REM_E3_model_fixed/commit/afeed74) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 22:54:18  
+**Message:**
+```
+feat(model-e3):  Final test add trace when strengthen
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/afeed74_20250719_225418_plot1.png)  
+![](../plot_archive/afeed74_20250719_225418_plot2.png)  
+
+## Commit [aa64353](https://github.com/naszhu/REM_E3_model_fixed/commit/aa64353) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 21:53:37  
+**Message:**
+```
+finettune(model-e3): fine tunning initial test alone with final test
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/aa64353_20250719_215337_plot1.png)  
+![](../plot_archive/aa64353_20250719_215337_plot2.png)  
+
+## Commit [c5ecefd](https://github.com/naszhu/REM_E3_model_fixed/commit/c5ecefd) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 21:36:11  
+**Message:**
+```
+feat(model-e3): It  actually work? add new trace when strenghten
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c5ecefd_20250719_213611_plot1.png)  
+![](../plot_archive/c5ecefd_20250719_213611_plot2.png)  
+
+## Commit [fee2e67](https://github.com/naszhu/REM_E3_model_fixed/commit/fee2e67) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 20:35:59  
+**Message:**
+```
+explore(model-e3): take out context drift between study-test? doens't change final test prediction
+
+- thought this made initial test within-list by test position narrows from that at the beggining
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fee2e67_20250719_203559_plot1.png)  
+![](../plot_archive/fee2e67_20250719_203559_plot2.png)  
+
+## Commit [4bff7f9](https://github.com/naszhu/REM_E3_model_fixed/commit/4bff7f9) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 20:03:40  
+**Message:**
+```
+refactor(predplot-e3): refined the ylim a bit even better
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4bff7f9_20250719_200340_plot1.png)  
+![](../plot_archive/4bff7f9_20250719_200340_plot2.png)  
+
+## Commit [22eabe2](https://github.com/naszhu/REM_E3_model_fixed/commit/22eabe2) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 20:02:35  
+**Message:**
+```
+finetune(model-e3): asypmotoptic on criterion_initial
+
+(give back between list and study-test change)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/22eabe2_20250719_200235_plot1.png)  
+![](../plot_archive/22eabe2_20250719_200235_plot2.png)  
+
+## Commit [6eb32d6](https://github.com/naszhu/REM_E3_model_fixed/commit/6eb32d6) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:57:42  
+**Message:**
+```
+refactor(predplot-e3): make predplot within-list y limit the same with the data plot
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6eb32d6_20250719_185742_plot1.png)  
+![](../plot_archive/6eb32d6_20250719_185742_plot2.png)  
+
+## Commit [05dc0ef](https://github.com/naszhu/REM_E3_model_fixed/commit/05dc0ef) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:49:19  
+**Message:**
+```
+finetune(model-e3): initial test within-list tuning - a relative good v but some problems to solve
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/05dc0ef_20250719_184919_plot1.png)  
+![](../plot_archive/05dc0ef_20250719_184919_plot2.png)  
+
+## Commit [5b91d47](https://github.com/naszhu/REM_E3_model_fixed/commit/5b91d47) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:30:22  
+**Message:**
+```
+refactor(predplot-e3): make the plot within-list, and color, point shape consistent
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5b91d47_20250719_183022_plot1.png)  
+![](../plot_archive/5b91d47_20250719_183022_plot2.png)  
+
+## Commit [0b7ce2b](https://github.com/naszhu/REM_E3_model_fixed/commit/0b7ce2b) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 18:14:17  
+**Message:**
+```
+explore(model-e3): final test work well
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0b7ce2b_20250719_181417_plot1.png)  
+![](../plot_archive/0b7ce2b_20250719_181417_plot2.png)  
+
+## Commit [5c3398d](https://github.com/naszhu/REM_E3_model_fixed/commit/5c3398d) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-19 15:24:51  
+**Message:**
+```
+feat(model-e3): add back finat_test first v, not sure if works
+
+Found problem of 1/11 at issue #39
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `plot2.png`  
+![](../plot_archive/5c3398d_20250719_152451_plot1.png)  
+![](../plot_archive/5c3398d_20250719_152451_plot2.png)  
+
+## Commit [26697e2](https://github.com/naszhu/REM_E3_model_fixed/commit/26697e2) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:36:57  
+**Message:**
+```
+feat(model-e3): add back finat_test first v, not sure if works
+
+Found problem of 1/11 at issue #39
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `plot2.png`  
+![](../plot_archive/26697e2_20250718_003657_plot1.png)  
+![](../plot_archive/26697e2_20250718_003657_plot2.png)  
+
+## Commit [26697e2](https://github.com/naszhu/REM_E3_model_fixed/commit/26697e2) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:36:09  
+**Message:**
+```
+feat(model-e3): add back finat_test first v, not sure if works
+
+Found problem of 1/11 at issue #39
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `plot2.png`  
+![](../plot_archive/26697e2_20250718_003609_plot1.png)  
+![](../plot_archive/26697e2_20250718_003609_plot2.png)  
+
+## Commit [1a54d3e](https://github.com/naszhu/REM_E3_model_fixed/commit/1a54d3e) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:35:53  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+- changing the sampling method will make a little difference to Fb results (make it a bit lower, but shouldbe adjustable)
+
+- if taking 1/11 power of the LL for the samppling, it changes a bit of the results but not much, seems acceptable (making the Fb to drop as well)
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1a54d3e_20250718_003553_plot1.png)  
+![](../plot_archive/1a54d3e_20250718_003553_plot2.png)  
+
+## Commit [56135a1](https://github.com/naszhu/REM_E3_model_fixed/commit/56135a1) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:24:10  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+- changing the sampling method will make a little difference to Fb results (make it a bit lower, but shouldbe adjustable)
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/56135a1_20250718_002410_plot1.png)  
+![](../plot_archive/56135a1_20250718_002410_plot2.png)  
+
+## Commit [d0c4657](https://github.com/naszhu/REM_E3_model_fixed/commit/d0c4657) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:04:19  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d0c4657_20250718_000419_plot1.png)  
+![](../plot_archive/d0c4657_20250718_000419_plot2.png)  
+
+## Commit [1c5d950](https://github.com/naszhu/REM_E3_model_fixed/commit/1c5d950) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:02:42  
+**Message:**
+```
+feat(model-e3): add sampling_method choice
+
+Refs #34
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1c5d950_20250718_000242_plot1.png)  
+![](../plot_archive/1c5d950_20250718_000242_plot2.png)  
+
+## Commit [b18039d](https://github.com/naszhu/REM_E3_model_fixed/commit/b18039d) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-18 00:01:53  
+**Message:**
+```
+refactor(model-e3): likelihood calcualtion for initial test save more time (move some variable assign before for loop)
+```
+**Changed Files:**
+- `E3/likelihood_calculations.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b18039d_20250718_000153_plot1.png)  
+![](../plot_archive/b18039d_20250718_000153_plot2.png)  
+
+## Commit [bb9023f](https://github.com/naszhu/REM_E3_model_fixed/commit/bb9023f) (branch: `jul-17-add-finalT`)
+**Time:** 2025-07-17 23:14:46  
 **Message:**
 ```
 merge(model-e3): A working V:  Merge branch 'jul-14-explore' into save-uncleaned-messy-main
@@ -17,8 +356,8 @@ merge(model-e3): A working V:  Merge branch 'jul-14-explore' into save-uncleaned
 - `log/model_progress.json`  
 - `log/model_progress.md`  
 - `scripts/generate_md_from_json.py`  
-![](../plot_archive/bb9023f_20250719_230436_plot1.png)  
-![](../plot_archive/bb9023f_20250719_230436_plot2.png)  
+![](../plot_archive/bb9023f_20250717_231446_plot1.png)  
+![](../plot_archive/bb9023f_20250717_231446_plot2.png)  
 
 ## Commit [e713c5f](https://github.com/naszhu/REM_E3_model_fixed/commit/e713c5f) (branch: `main`)
 **Time:** 2025-07-17 22:53:02  
