@@ -89,6 +89,9 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
         # println("Word Features: ", new_image.word.word_features)
     end
 
+    # if new_image.word.type_general==:F
+    #     println(new_image.word.initial_studypos)
+    # end
     push!(image_pool, new_image)
 
     # println("Studied word: ", new_image.word.item, " List: ", new_image.list_number, " Study Position: ", new_image.word.studypos," ",[iimg.word.item for iimg in image_pool])

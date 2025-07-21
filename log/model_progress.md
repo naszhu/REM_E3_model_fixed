@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [fd00120](https://github.com/naszhu/REM_E3_model_fixed/commit/fd00120) (branch: `jul-21-checkout`)
+**Time:** 2025-07-22 00:25:01  
+**Message:**
+```
+fintune(model-e3): initial test works
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fd00120_20250722_002501_plot1.png)  
+![](../plot_archive/fd00120_20250722_002501_plot2.png)  
+
 ## Commit [b05e0c3](https://github.com/naszhu/REM_E3_model_fixed/commit/b05e0c3) (branch: `jul-21-checkout`)
 **Time:** 2025-07-21 02:24:27  
 **Message:**

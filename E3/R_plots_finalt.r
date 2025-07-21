@@ -154,6 +154,9 @@ pf1
 # summary(DF_fbyi$posSum)
 # summary(DF_fbyi$initial_studypos)
 # summary(DF_fbyi$initial_testpos)
+allresf%>%mutate(as.factor(type_specific))%>% summary()
+
+allresf %>% filter(type_specific=='Tr"n\\+1" => "n_p1"')%>%group_by(type_specific,initial_testpos)%>%summarize(meanx=mean(decision_isold))
 
     DF_fbyi = allresf %>% 
         mutate(correct = case_when( 
@@ -178,7 +181,7 @@ pf1
 
         facet_grid(.~pos_factor)+
         labs(title="Final test by initial test position")+
-        ylim(c(0.5,1))+
+        # ylim(c(0.5,1))+
         theme(
                 plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
             plot.margin = margin(t = 10, b = 40),

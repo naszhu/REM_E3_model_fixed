@@ -127,8 +127,8 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
-    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
-
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
+    
         iimage_toadd = EpisodicImage(
             #Word:
             Word(iprobe_img.word.item_code, #item_code
@@ -146,7 +146,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             iprobe_img.appearnum #appearnum
         )
 
-    end
+    # end
     if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         if sampling_method
@@ -167,7 +167,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     
     ############# ADD TRACE ######################
     # if new, or old but didn't pass threshold -- ADD TRACE
-    if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
+    # if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
 
         for _ in 1:n_units_time_restore
 
@@ -195,7 +195,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         # pass: strenghten
         #single parameter for missing or replacing
@@ -215,7 +215,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     end
 
     # if (decision_isold == 0)
-    if (decision_isold == 0) | ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
+    if (decision_isold == 0) || ((decision_isold == 1) && (odds < recall_odds_threshold))|| ((decision_isold==1) && (odds > recall_odds_threshold) && (odds<0.8)) 
         push!(image_pool, iimage_toadd)
     end
 
