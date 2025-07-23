@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [1520aa8](https://github.com/naszhu/REM_E3_model_fixed/commit/1520aa8) (branch: `main`)
+**Time:** 2025-07-23 17:00:48  
+**Message:**
+```
+merge(model-e3): feature strenghtening trace. Merge branch 'jul-17-add-finalT'
+```
+![](../plot_archive/1520aa8_20250723_170048_plot1.png)  
+![](../plot_archive/1520aa8_20250723_170048_plot2.png)  
+
 ## Commit [72825e6](https://github.com/naszhu/REM_E3_model_fixed/commit/72825e6) (branch: `main`)
 **Time:** 2025-07-21 00:01:15  
 **Message:**

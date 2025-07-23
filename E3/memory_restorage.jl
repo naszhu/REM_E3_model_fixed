@@ -21,7 +21,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     #is_onlyaddtrace is false
     # println("nothere")
 
-    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) #just get a new empty EI
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) #just get a new empty EI
 
         iimage_toadd = EpisodicImage(
             #Word:
@@ -40,7 +40,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             iprobe_img.list_number,#List_Number; 
             iprobe_img.appearnum #appearnum
         )
-    end
+    # end
 
         
     if ((decision_isold==1) & (odds > recall_odds_threshold) )
@@ -69,7 +69,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     c_context_ilist_cc = c_context_c[iprobe_img.list_number];
     c_context_ilist_cu = c_context_un[iprobe_img.list_number];
 
-    if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold))
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold))
 
 
         for _ in 1:n_units_time_restore
@@ -91,7 +91,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    elseif ((decision_isold==1) & (odds > recall_odds_threshold) )
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         # println(iprobe_img.word.type_general)
         if is_strengthen_contextandcontent #false
