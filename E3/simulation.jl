@@ -82,6 +82,16 @@ function simulate_rem()
 
                 # study in here
                 store_episodic_image(image_pool, episodic_image.word, episodic_image.context_features, list_num)
+            # for i in image_pool
+            #     if i.word.type_general == :T
+            #         println(i.word.initial_testpos)
+            #     end
+            # end
+            # for i in image_pool
+                # if episodic_image.word.type_general == :T
+                #     println(episodic_image.word.initial_testpos)
+                # end
+            # end
 
                 # for cf in eachindex(word_change_context_features)
                 #     if rand() <  p_wordchange #cf.change_probability # this equals p_change
@@ -91,6 +101,13 @@ function simulate_rem()
 
                 # target and nontarget stored into studied pool 
                 studied_pool[list_num][j] = episodic_image
+                
+                # if episodic_image.word.type_general == :T
+                #     println(episodic_image.word.initial_testpos)
+                #     # println("list $(list_num), word $(j), initial_studypos $(episodic_image.word.initial_studypos)")
+                #     # println("word type_general: ", episodic_image.word.type_general)
+                #     # println("word type_specific: ", episodic_image.word.type_specific)
+                # end
             end
 
             # println(studied_pool[list_num])
@@ -125,6 +142,11 @@ function simulate_rem()
             # Assuming `generate_probes` now returns a tuple (probes, foils)
             last_lw = list_num > 1 ? (last_list_words = deepcopy(last_list_words)) : () # last_lw is the last list words, if list_num == 1, then it is undef;
 
+            # for i in image_pool
+            #     if i.word.type_general == :T
+            #         println(i.word.initial_testpos)
+            #     end
+            # end
             probes, foils = generate_probes(
                 list_change_context_features,
                 test_list_context_change,
@@ -177,7 +199,11 @@ function simulate_rem()
         drift_ctx_betweenStudyAndTest!(list_change_context_features, final_gap_change, Geometric(g_context))
         # list_change_context_features
 
-        
+        # for i in studied_pool
+        #     if i.word.type_general==:T
+        #         println(i.word.initial_testpos)
+        #     end
+        # end
 
         if is_finaltest
             # for icondition in [:forward, :backward, :true_random]

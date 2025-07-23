@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [9e42d3b](https://github.com/naszhu/REM_E3_model_fixed/commit/9e42d3b) (branch: `main`)
+**Time:** 2025-07-23 17:02:24  
+**Message:**
+```
+merge(model-e3): Merge branch 'jul-17-add-finalT'
+```
+![](../plot_archive/9e42d3b_20250723_170224_plot1.png)  
+![](../plot_archive/9e42d3b_20250723_170224_plot2.png)  
+
 ## Commit [1520aa8](https://github.com/naszhu/REM_E3_model_fixed/commit/1520aa8) (branch: `main`)
 **Time:** 2025-07-23 17:00:48  
 **Message:**

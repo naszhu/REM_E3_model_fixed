@@ -38,6 +38,11 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         ilist_probe = probes[i].image.list_number
         i_testpos = probes[i].image.word.initial_testpos#1:20
 
+
+        # if probes[i].image.word.type_specific== :T
+        #     println(probes[i].image.word.initial_testpos)
+        # end
+
         nl = length(content_LL_ratios_filtered)
         odds = 1 / nl * sum(content_LL_ratios_filtered)
         odds_context = 1 / length(context_LL_ratios) * sum(context_LL_ratios)
@@ -118,6 +123,11 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         end
 
         # println("i, $i, i_testpos, $i_testpos")
+        # for i in image_pool
+        #     if i.word.type_general==:T
+        #         println(i.word.initial_testpos)
+        #     end
+        # end
 
 
 
@@ -193,6 +203,11 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
         # restore_intest(image_pool,probes[i].image, decision_isold, argmax(content_LL_ratios_filtered));
+        
+        # println(probes[i].image.word.type_specific)
+        # if probes[i].image.word.type_specific== :T
+        #     println(probes[i].image.word.initial_testpos)
+        # end
         if is_restore_final
 
             #Issue 12

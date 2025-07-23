@@ -1,5 +1,14 @@
 [
   {
+    "commit": "9e42d3b",
+    "branch": "main",
+    "message": "merge(model-e3): Merge branch 'jul-17-add-finalT'",
+    "timestamp": "2025-07-23 17:02:24",
+    "plot1": "plot_archive/9e42d3b_20250723_170224_plot1.png",
+    "plot2": "plot_archive/9e42d3b_20250723_170224_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "1520aa8",
     "branch": "main",
     "message": "merge(model-e3): feature strenghtening trace. Merge branch 'jul-17-add-finalT'",
