@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [16cfa3f](https://github.com/naszhu/REM_E3_model_fixed/commit/16cfa3f) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-24 20:49:59  
+**Message:**
+```
+merge(model-e3): Merge branch 'jul-21-checkout'
+```
+![](../plot_archive/16cfa3f_20250724_204959_plot1.png)  
+![](../plot_archive/16cfa3f_20250724_204959_plot2.png)  
+
 ## Commit [9e42d3b](https://github.com/naszhu/REM_E3_model_fixed/commit/9e42d3b) (branch: `main`)
 **Time:** 2025-07-23 17:02:24  
 **Message:**

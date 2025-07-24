@@ -130,16 +130,16 @@ function restore_features!(target_features::Vector{Int}, source_features::Vector
                 @assert length(target_features)==nU+nC "not same length"
                 if i>nU # for CC
                     # pps = 0.8
-                    c_usenow = c_context_c[1] 
+                    c_usenow = 1 # c_context_c[1] #, perfect storage 
                     u_star_now = u_star_context[1] + u_advFoilInitialT #u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
                 else # for unchanging 
                     # pps = 0.8
-                    c_usenow = c_context_c[1]
+                    c_usenow = 1 # c_context_c[1]
                     u_star_now = u_star_context[1] + u_advFoilInitialT 
                 end
             else #if content
                 # pps = 0.8
-                c_usenow = c[1] 
+                c_usenow = 1#c[1] 
                 u_star_now = u_star[1] + u_advFoilInitialT 
             end
             
