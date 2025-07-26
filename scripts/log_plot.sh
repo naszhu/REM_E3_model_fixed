@@ -4,12 +4,12 @@ commit=$(git rev-parse --short HEAD)
 branch=$(git rev-parse --abbrev-ref HEAD)
 commit_msg=$(git log -1 --pretty=%s)
 # timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-commit_ts = $(git log -1 --format=%ct HEAD)
+commit_ts=$(git log -1 --format=%cd --date=format:'%Y-%m-%d %H:%M:%S' HEAD)
 changed_files=$(git diff-tree --no-commit-id --name-only -r HEAD | paste -sd "," -)
 
 mkdir -p plot_archive
 # safe_time=$(date "+%Y%m%d_%H%M%S")
-safe_time=$(date -d "@$commit_ts" +%Y%m%d_%H%M%S)      # Linux
+safe_time=$(git log -1 --format=%cd --date=format:'%Y%m%d_%H%M%S' HEAD)
 # this is last commit commit name address below
 plot1_dest="plot_archive/${commit}_${safe_time}_plot1.png"
 plot2_dest="plot_archive/${commit}_${safe_time}_plot2.png"
