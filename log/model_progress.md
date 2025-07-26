@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [720d452](https://github.com/naszhu/REM_E3_model_fixed/commit/720d452) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-26 19:56:22  
+**Message:**
+```
+fix(logscr-e3): .sh correct again on the json contents and so on
+```
+**Changed Files:**
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `scripts/log_plot.sh`  
+![](../plot_archive/720d452_20250726_195622_plot1.png)  
+![](../plot_archive/720d452_20250726_195622_plot2.png)  
+
 ## Commit [57cedfe](https://github.com/naszhu/REM_E3_model_fixed/commit/57cedfe) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-26 19:55:37  
 **Message:**

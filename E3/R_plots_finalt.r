@@ -102,9 +102,9 @@ my.shps <- c(
         )+
     scale_color_manual(values=c("blue","red","blue","green","green","purple","purple"))+
   scale_linetype_manual(values = my.ltys) +
-  scale_shape_manual(values    = my.shps)
+  scale_shape_manual(values    = my.shps)+
     # scale_shape_discrete(values=c(16,17,18,19,20,21,22))+
-        # ylim(c(0.5,1))
+        ylim(c(0.52,0.9))
 
 
 pf1
