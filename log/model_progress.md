@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [4b1eed4](https://github.com/naszhu/REM_E3_model_fixed/commit/4b1eed4) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-26 18:26:19  
+**Message:**
+```
+explore(model-e3): A high number simulation 500 test
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4b1eed4_20250726_182619_plot1.png)  
+![](../plot_archive/4b1eed4_20250726_182619_plot2.png)  
+
 ## Commit [1de03ab](https://github.com/naszhu/REM_E3_model_fixed/commit/1de03ab) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-26 16:50:04  
 **Message:**
