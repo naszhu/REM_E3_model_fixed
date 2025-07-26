@@ -41,10 +41,10 @@ allresf=read.csv("allresf.csv")
     decision_isold==0 & is_target=="false" ~1,TRUE ~ 0))%>%
     mutate(is_target=type_general)%>%
     mutate(list_number=as.numeric(list_number))%>%
-    group_by(list_number,is_target,condition)%>%
-    summarize(meanx=mean(correct))%>%
     mutate(is_target = case_when(list_number==10 & is_target%in%c("Tn","SOn","Fn") ~  substr(is_target, 1, nchar(is_target) - 1),
-    TRUE ~ is_target))
+    TRUE ~ is_target))%>%
+    group_by(list_number,is_target,condition)%>%
+    summarize(meanx=mean(correct))
 
 
 

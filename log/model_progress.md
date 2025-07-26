@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [158dc43](https://github.com/naszhu/REM_E3_model_fixed/commit/158dc43) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-26 16:48:21  
+**Message:**
+```
+fix(model-e3): A bug in feature restorage (strenghtening) function
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/158dc43_20250726_164821_plot1.png)  
+![](../plot_archive/158dc43_20250726_164821_plot2.png)  
+
 ## Commit [890124b](https://github.com/naszhu/REM_E3_model_fixed/commit/890124b) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-26 16:01:16  
 **Message:**
