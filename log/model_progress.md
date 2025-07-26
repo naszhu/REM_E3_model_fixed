@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [97ebbe3](https://github.com/naszhu/REM_E3_model_fixed/commit/97ebbe3) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:**   
+**Message:**
+```
+explore(model-e3): Decrease Strenghten after fixed bug version
+
+- decrease strenghten means go back to original strenghten but not more.
+- this makes prediction in final green>blue (SO>F) , which is more aligned with data now
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/97ebbe3__plot1.png)  
+![](../plot_archive/97ebbe3__plot2.png)  
+
 ## Commit [4b1eed4](https://github.com/naszhu/REM_E3_model_fixed/commit/4b1eed4) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-26 18:26:19  
 **Message:**
