@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [1de03ab](https://github.com/naszhu/REM_E3_model_fixed/commit/1de03ab) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-26 16:50:04  
+**Message:**
+```
+fix(predplot-e3): Final Plot of SOn, Fn, Tn mistakenly put making linnig mistaken
+
+Refs #25
+```
+**Changed Files:**
+- `E3/R_plots_finalt.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1de03ab_20250726_165004_plot1.png)  
+![](../plot_archive/1de03ab_20250726_165004_plot2.png)  
+
 ## Commit [158dc43](https://github.com/naszhu/REM_E3_model_fixed/commit/158dc43) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-26 16:48:21  
 **Message:**
