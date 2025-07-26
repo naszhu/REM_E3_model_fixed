@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [890124b](https://github.com/naszhu/REM_E3_model_fixed/commit/890124b) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-26 16:01:16  
+**Message:**
+```
+explore(model-e3): better strenghtening for 3 factors?
+
+better u better c replace mismatches, doesn't work well though in raising final test predictions
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/890124b_20250726_160116_plot1.png)  
+![](../plot_archive/890124b_20250726_160116_plot2.png)  
+
 ## Commit [3fcfc4c](https://github.com/naszhu/REM_E3_model_fixed/commit/3fcfc4c) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-24 21:36:02  
 **Message:**
