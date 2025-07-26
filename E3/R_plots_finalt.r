@@ -41,10 +41,10 @@ allresf=read.csv("allresf.csv")
     decision_isold==0 & is_target=="false" ~1,TRUE ~ 0))%>%
     mutate(is_target=type_general)%>%
     mutate(list_number=as.numeric(list_number))%>%
-    group_by(list_number,is_target,condition)%>%
-    summarize(meanx=mean(correct))%>%
     mutate(is_target = case_when(list_number==10 & is_target%in%c("Tn","SOn","Fn") ~  substr(is_target, 1, nchar(is_target) - 1),
-    TRUE ~ is_target))
+    TRUE ~ is_target))%>%
+    group_by(list_number,is_target,condition)%>%
+    summarize(meanx=mean(correct))
 
 
 
@@ -102,9 +102,9 @@ my.shps <- c(
         )+
     scale_color_manual(values=c("blue","red","blue","green","green","purple","purple"))+
   scale_linetype_manual(values = my.ltys) +
-  scale_shape_manual(values    = my.shps)
+  scale_shape_manual(values    = my.shps)+
     # scale_shape_discrete(values=c(16,17,18,19,20,21,22))+
-        # ylim(c(0.5,1))
+        ylim(c(0.52,0.93))
 
 
 pf1
