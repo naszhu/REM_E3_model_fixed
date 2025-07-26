@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [3dccf67](https://github.com/naszhu/REM_E3_model_fixed/commit/3dccf67) (branch: `jul-23-checkout-increase-strengthening`)
+**Time:** 2025-07-26 21:25:49  
+**Message:**
+```
+finetune(model-e3): taking away the strenghten, finetuneing
+
+- maybe needs a bit stronger for the strnehgtneing
+```
+**Changed Files:**
+- `E3/R_plots_finalt.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3dccf67_20250726_212549_plot1.png)  
+![](../plot_archive/3dccf67_20250726_212549_plot2.png)  
+
 ## Commit [720d452](https://github.com/naszhu/REM_E3_model_fixed/commit/720d452) (branch: `jul-23-checkout-increase-strengthening`)
 **Time:** 2025-07-26 19:56:22  
 **Message:**

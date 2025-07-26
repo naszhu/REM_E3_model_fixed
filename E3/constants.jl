@@ -201,7 +201,7 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.2,0.2, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
@@ -234,7 +234,7 @@ context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lowe
 criterion_initial = generate_asymptotic_values(1.0, 0.45, 0.22, 1.0, 1.0, 5.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.35,0.31, 10)#LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.33,0.26, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 0.3; #this value should be bigger a bit than criterion_initial
 

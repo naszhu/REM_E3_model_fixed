@@ -155,7 +155,7 @@ function restore_features!(target_features::Vector{Int}, source_features::Vector
             # end
             #is_store_mismatch is false now so no mismatch stored
             if (current_value === 0) 
-                target_features[i] = rand() < u_star_now[1] ? (rand() < c_usenow[1] ? source_value : rand(Geometric(g_context)) + 1) : current_value
+                target_features[i] = rand() < u_star_now[1]+0.06 ? (rand() < c_usenow[1]+0.1 ? source_value : rand(Geometric(g_context)) + 1) : current_value
             end
 
             
