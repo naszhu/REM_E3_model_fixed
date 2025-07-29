@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [dec9122](https://github.com/naszhu/REM_E3_model_fixed/commit/dec9122) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:38:01  
+**Message:**
+```
+finetune(model-e3): gosh have fine tuned to get the best one yet
+
+Refs pattern-expoain #40
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/dec9122_20250729_233801_plot1.png)  
+![](../plot_archive/dec9122_20250729_233801_plot2.png)  
+
 ## Commit [58c9594](https://github.com/naszhu/REM_E3_model_fixed/commit/58c9594) (branch: `jul-27-test`)
 **Time:** 2025-07-29 23:13:15  
 **Message:**

@@ -1,5 +1,20 @@
 [
   {
+    "commit": "dec9122",
+    "branch": "jul-27-test",
+    "message": "finetune(model-e3): gosh have fine tuned to get the best one yet",
+    "timestamp": "2025-07-29 23:38:01",
+    "plot1": "plot_archive/dec9122_20250729_233801_plot1.png",
+    "plot2": "plot_archive/dec9122_20250729_233801_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "58c9594",
     "branch": "jul-27-test",
     "message": "fix(model-e3): fixed a bug on context was reinstated even for first item (shouldn't be the case)",
