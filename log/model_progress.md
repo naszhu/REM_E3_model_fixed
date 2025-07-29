@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [58c9594](https://github.com/naszhu/REM_E3_model_fixed/commit/58c9594) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:13:15  
+**Message:**
+```
+fix(model-e3): fixed a bug on context was reinstated even for first item (shouldn't be the case)
+```
+**Changed Files:**
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/58c9594_20250729_231315_plot1.png)  
+![](../plot_archive/58c9594_20250729_231315_plot2.png)  
+
 ## Commit [36071b6](https://github.com/naszhu/REM_E3_model_fixed/commit/36071b6) (branch: `jul-27-test`)
 **Time:** 2025-07-29 23:12:26  
 **Message:**

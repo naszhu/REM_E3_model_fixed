@@ -1,5 +1,19 @@
 [
   {
+    "commit": "58c9594",
+    "branch": "jul-27-test",
+    "message": "fix(model-e3): fixed a bug on context was reinstated even for first item (shouldn't be the case)",
+    "timestamp": "2025-07-29 23:13:15",
+    "plot1": "plot_archive/58c9594_20250729_231315_plot1.png",
+    "plot2": "plot_archive/58c9594_20250729_231315_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "36071b6",
     "branch": "jul-27-test",
     "message": "finetnue(model-e3): tunning up, doesn't work exactly well, (with only context drift)",
