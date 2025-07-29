@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 200 : 300;
+n_simulations = is_finaltest ? 200 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -173,12 +173,12 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.18#0.4 #prob of reinstatement
-(1-(1-p_reinstate_rate)^1) #each feature reinstate after 1
+p_reinstate_rate = 0.25#0.4 #prob of reinstatement
+(1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()

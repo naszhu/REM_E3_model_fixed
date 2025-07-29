@@ -1,5 +1,21 @@
 [
   {
+    "commit": "5c74721",
+    "branch": "jul-27-test",
+    "message": "feat(model-e3): within-list prediction, only use context drift between study and test, no criterion change",
+    "timestamp": "2025-07-29 22:48:44",
+    "plot1": "plot_archive/5c74721_20250729_224844_plot1.png",
+    "plot2": "plot_archive/5c74721_20250729_224844_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "9b16540",
     "branch": "jul-27-test",
     "message": "finetune(model-e3): tuning for initial test",

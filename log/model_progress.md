@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [5c74721](https://github.com/naszhu/REM_E3_model_fixed/commit/5c74721) (branch: `jul-27-test`)
+**Time:** 2025-07-29 22:48:44  
+**Message:**
+```
+feat(model-e3): within-list prediction, only use context drift between study and test, no criterion change
+
+- Note: commented feature_update value p_reinstate_context for now, this is a techdebt and should be solved later.
+
+n_driftStudyTest = 12
+n_between_listchange= 18
+
+Refs patter-explain  #40
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5c74721_20250729_224844_plot1.png)  
+![](../plot_archive/5c74721_20250729_224844_plot2.png)  
+
 ## Commit [9b16540](https://github.com/naszhu/REM_E3_model_fixed/commit/9b16540) (branch: `jul-27-test`)
 **Time:** 2025-07-27 20:59:46  
 **Message:**
