@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [36071b6](https://github.com/naszhu/REM_E3_model_fixed/commit/36071b6) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:12:26  
+**Message:**
+```
+finetnue(model-e3): tunning up, doesn't work exactly well, (with only context drift)
+
+p_reinstate_rate = 0.15#0.4 #prob of reinstatement
+n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
+n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15;
+
+Refs pattern-expoain #40
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/36071b6_20250729_231226_plot1.png)  
+![](../plot_archive/36071b6_20250729_231226_plot2.png)  
+
 ## Commit [5c74721](https://github.com/naszhu/REM_E3_model_fixed/commit/5c74721) (branch: `jul-27-test`)
 **Time:** 2025-07-29 22:48:44  
 **Message:**
