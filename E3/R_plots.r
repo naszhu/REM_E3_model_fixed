@@ -38,7 +38,7 @@ p_in_20=ggplot(data=df1,aes(x=test_position_grouped_foralltests,y=meanx,group=is
   scale_color_manual(values=c("blue","green","green","green","purple"))+
 scale_shape_manual(
     values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
-)+ scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.1), limits = c(0.47, 0.85))
+)+ scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.1), limits = c(0.47, 0.8))
 p_in_20
 
 
@@ -223,7 +223,7 @@ p_serial=ggplot(data=df_serial,aes(x=study_position,meanx))+
     scale_shape_manual(
     values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
     )+ scale_color_manual(values=c("blue","green","green","green","purple"))+
-    scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.05), limits = c(0.5, 0.8))
+    scale_y_continuous(breaks = seq(0.55, 0.8, by = 0.05), limits = c(0.55, 0.8))
 p_serial
 
 # df_rt=all_results%>%

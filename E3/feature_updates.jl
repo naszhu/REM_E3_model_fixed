@@ -9,11 +9,11 @@ function reinstate_context_duringTest!(context_array::Vector{Int64}, reference_a
 
         nct = length(context_array)
         for ict in eachindex(context_array)
-            if ict < Int(round(nct * p_reinstate_context))
+            # if ict < Int(round(nct * p_reinstate_context))
                 if (context_array[ict] != reference_array[ict]) & (rand() < p_reinstate_rate)
                     context_array[ict] = reference_array[ict]
                 end
-            end
+            # end
         end
 end   
 

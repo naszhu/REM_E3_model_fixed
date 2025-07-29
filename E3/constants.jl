@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 500 : 400;
+n_simulations = is_finaltest ? 200 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -135,7 +135,7 @@ const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star = vcat(0.04, ones(n_lists-1) * 0.04)
+u_star = vcat(0.045, ones(n_lists-1) * 0.045)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
@@ -173,15 +173,15 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.4#0.4 #prob of reinstatement
+p_reinstate_rate = 0.18#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^1) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(10) * 7) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
-n_between_listchange = round.(Int, LinRange(15, 15, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -227,11 +227,11 @@ p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used i
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(1000, 1000, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.35, 0.18, 1.0, 1.0, 5.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.19, 0.19, 1.0, 1.0, 5.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.33,0.26, 10)#LinRange(0.18, 0.23, 10)
