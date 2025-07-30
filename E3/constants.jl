@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 200 : 1000;
+is_finaltest = true
+n_simulations = is_finaltest ? 200 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -208,7 +208,7 @@ nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
 p_recallFeatureStore = 1.0;
 
-final_gap_change = 0.07; #0.21
+final_gap_change = 0.09; #0.21
 p_ListChange_finaltest = ones(10) * 0.25 #0.1 prob list change for final test
 
 
@@ -234,7 +234,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 criterion_initial = generate_asymptotic_values(1.0, 0.18, 0.14, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.33,0.26, 10)#LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 0.3; #this value should be bigger a bit than criterion_initial
 

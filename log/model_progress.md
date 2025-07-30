@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [11f50cd](https://github.com/naszhu/REM_E3_model_fixed/commit/11f50cd) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:41:35  
+**Message:**
+```
+finetune(model-e3): 1000 simulations
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/11f50cd_20250729_234135_plot1.png)  
+![](../plot_archive/11f50cd_20250729_234135_plot2.png)  
+
 ## Commit [dec9122](https://github.com/naszhu/REM_E3_model_fixed/commit/dec9122) (branch: `jul-27-test`)
 **Time:** 2025-07-29 23:38:01  
 **Message:**
