@@ -128,13 +128,14 @@ function generate_probes(
         ############ Context reinstate below
         # Combine the two loops into one function to avoid redundancy
         # Reinstate changing context for each test position
-        reinstate_context_duringTest!(list_change_features_dynamic, list_change_features_ref, p_reinstate_context, p_reinstate_rate)
+        if i>1   
+                reinstate_context_duringTest!(list_change_features_dynamic, list_change_features_ref, p_reinstate_context, p_reinstate_rate)
 
-        # Reinstate unchanging context if applicable
-        if is_UnchangeCtxDriftAndReinstate #true
-            reinstate_context_duringTest!(unchange_features_dynamic, unchange_features_ref, p_reinstate_context, p_reinstate_rate)
-        end   # println("$(list_change_features_dynamic)")
-            
+            # Reinstate unchanging context if applicable
+            if is_UnchangeCtxDriftAndReinstate #true
+                reinstate_context_duringTest!(unchange_features_dynamic, unchange_features_ref, p_reinstate_context, p_reinstate_rate)
+            end   # println("$(list_change_features_dynamic)")
+        end 
         #Target word is unique deep copied, so shouldn't overlap. get only current studypos, not a prior one
         current_studypos = target_word.initial_studypos;
         current_testpos = i; 

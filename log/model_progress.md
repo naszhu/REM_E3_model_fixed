@@ -1,5 +1,118 @@
 # Model Progress
 
+## Commit [11f50cd](https://github.com/naszhu/REM_E3_model_fixed/commit/11f50cd) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:41:35  
+**Message:**
+```
+finetune(model-e3): 1000 simulations
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/11f50cd_20250729_234135_plot1.png)  
+![](../plot_archive/11f50cd_20250729_234135_plot2.png)  
+
+## Commit [dec9122](https://github.com/naszhu/REM_E3_model_fixed/commit/dec9122) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:38:01  
+**Message:**
+```
+finetune(model-e3): gosh have fine tuned to get the best one yet
+
+Refs pattern-expoain #40
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/dec9122_20250729_233801_plot1.png)  
+![](../plot_archive/dec9122_20250729_233801_plot2.png)  
+
+## Commit [58c9594](https://github.com/naszhu/REM_E3_model_fixed/commit/58c9594) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:13:15  
+**Message:**
+```
+fix(model-e3): fixed a bug on context was reinstated even for first item (shouldn't be the case)
+```
+**Changed Files:**
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/58c9594_20250729_231315_plot1.png)  
+![](../plot_archive/58c9594_20250729_231315_plot2.png)  
+
+## Commit [36071b6](https://github.com/naszhu/REM_E3_model_fixed/commit/36071b6) (branch: `jul-27-test`)
+**Time:** 2025-07-29 23:12:26  
+**Message:**
+```
+finetnue(model-e3): tunning up, doesn't work exactly well, (with only context drift)
+
+p_reinstate_rate = 0.15#0.4 #prob of reinstatement
+n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
+n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15;
+
+Refs pattern-expoain #40
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/36071b6_20250729_231226_plot1.png)  
+![](../plot_archive/36071b6_20250729_231226_plot2.png)  
+
+## Commit [5c74721](https://github.com/naszhu/REM_E3_model_fixed/commit/5c74721) (branch: `jul-27-test`)
+**Time:** 2025-07-29 22:48:44  
+**Message:**
+```
+feat(model-e3): within-list prediction, only use context drift between study and test, no criterion change
+
+- Note: commented feature_update value p_reinstate_context for now, this is a techdebt and should be solved later.
+
+n_driftStudyTest = 12
+n_between_listchange= 18
+
+Refs patter-explain  #40
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5c74721_20250729_224844_plot1.png)  
+![](../plot_archive/5c74721_20250729_224844_plot2.png)  
+
+## Commit [9b16540](https://github.com/naszhu/REM_E3_model_fixed/commit/9b16540) (branch: `jul-27-test`)
+**Time:** 2025-07-27 20:59:46  
+**Message:**
+```
+finetune(model-e3): tuning for initial test
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9b16540_20250727_205946_plot1.png)  
+![](../plot_archive/9b16540_20250727_205946_plot2.png)  
+
+## Commit [304c223](https://github.com/naszhu/REM_E3_model_fixed/commit/304c223) (branch: `jul-27-test`)
+**Time:** 2025-07-27 00:38:15  
+**Message:**
+```
+merge(model-e3): Merge branch 'jul-23-checkout-increase-strengthening' fine tunning strenghten
+```
+![](../plot_archive/304c223_20250727_003815_plot1.png)  
+![](../plot_archive/304c223_20250727_003815_plot2.png)  
+
 ## Commit [16cfa3f](https://github.com/naszhu/REM_E3_model_fixed/commit/16cfa3f) (branch: `main`)
 **Time:** 2025-07-23 17:02:24  
 **Message:**
