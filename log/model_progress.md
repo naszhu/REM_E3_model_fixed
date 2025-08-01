@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [7db7757](https://github.com/naszhu/REM_E3_model_fixed/commit/7db7757) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 22:47:56  
+**Message:**
+```
+feat(model-e3): The recall threshold parameter
+
+- I made a parameter recall_to_addtrace_treshold and so now when put this parameter as inf, it's like eliminating this. all that < odds +Inf will be
+
+- changing this parameter doesn't influence the results too much, tuned the u* and criterion pramter only a little bit
+
+Closes #48
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7db7757_20250801_224756_plot1.png)  
+![](../plot_archive/7db7757_20250801_224756_plot2.png)  
+
 ## Commit [fe1e5f3](https://github.com/naszhu/REM_E3_model_fixed/commit/fe1e5f3) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-01 22:36:58  
 **Message:**

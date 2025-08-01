@@ -1,5 +1,20 @@
 [
   {
+    "commit": "7db7757",
+    "branch": "Aug-1-meeting-log-change",
+    "message": "feat(model-e3): The recall threshold parameter",
+    "timestamp": "2025-08-01 22:47:56",
+    "plot1": "plot_archive/7db7757_20250801_224756_plot1.png",
+    "plot2": "plot_archive/7db7757_20250801_224756_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "fe1e5f3",
     "branch": "Aug-1-meeting-log-change",
     "message": "feat(model-e3): don't 1/11 power for sampling",

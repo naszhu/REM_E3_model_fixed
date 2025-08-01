@@ -131,11 +131,11 @@ w_positioncode = 0
 w_allcontext = w_context + w_positioncode
 w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
-const g_word = 0.4; #geometric base rate
-const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
+g_word = 0.3; #geometric base rate
+g_context = g_word; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NOT
-u_star_v = 0.05
+u_star_v = 0.044
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -179,7 +179,7 @@ p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 11) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 9) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
@@ -232,12 +232,12 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.18, 0.18, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.12, 0.12, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.3; #this value should be bigger a bit than criterion_initial
+recall_odds_threshold = 0 ; #putting it as 0 means eliminating it #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf # this is related to issue #48
 
 
