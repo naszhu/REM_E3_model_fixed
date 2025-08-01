@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [fe1e5f3](https://github.com/naszhu/REM_E3_model_fixed/commit/fe1e5f3) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 22:36:58  
+**Message:**
+```
+feat(model-e3): don't 1/11 power for sampling
+
+- i am not sure if it works well, but I took out the criterion change parameter.
+
+Refs #37 and Meeting-log #46 point 3
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fe1e5f3_20250801_223658_plot1.png)  
+![](../plot_archive/fe1e5f3_20250801_223658_plot2.png)  
+
 ## Commit [d3a2d15](https://github.com/naszhu/REM_E3_model_fixed/commit/d3a2d15) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-01 22:36:08  
 **Message:**

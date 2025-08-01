@@ -135,7 +135,7 @@ const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NOT
-u_star_v = 0.048
+u_star_v = 0.05
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -232,12 +232,14 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.17, 0.17, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.18, 0.18, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 0.3; #this value should be bigger a bit than criterion_initial
+recall_to_addtrace_threshold = Inf # this is related to issue #48
+
 
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
