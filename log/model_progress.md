@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [666cbc4](https://github.com/naszhu/REM_E3_model_fixed/commit/666cbc4) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:04:27  
+**Message:**
+```
+finetune(model-e3): tried eliminating product prameter for F, while Go back HEAD~1 commit,
+
+- eliminating that makes foil go down too much
+
+Refs Log Meeting #46 point 5
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/666cbc4_20250802_000427_plot1.png)  
+![](../plot_archive/666cbc4_20250802_000427_plot2.png)  
+
 ## Commit [5d404a5](https://github.com/naszhu/REM_E3_model_fixed/commit/5d404a5) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-02 00:04:07  
 **Message:**
