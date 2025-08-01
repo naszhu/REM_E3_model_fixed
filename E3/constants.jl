@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
-n_simulations = is_finaltest ? 200 : 500;
+is_finaltest = false
+n_simulations = is_finaltest ? 200 : 400;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -134,8 +134,9 @@ w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fi
 const g_word = 0.4; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
-#!! adv for content? NO
-u_star = vcat(0.05, ones(n_lists-1) * 0.05)
+#!! adv for content? NOT
+u_star_v = 0.048
+u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
@@ -143,7 +144,7 @@ u_star_storeintest = u_star #for word # ratio of this and the next is key for T_
 #the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 u_adv_firstpos=0.00 #adv of first position in eeach list
-u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
+u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # u_adv_firstpos=1 #adv of first position in eeach list
 
 # c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
@@ -178,7 +179,7 @@ p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 10) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 11) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
@@ -231,7 +232,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.18, 0.14, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.17, 0.17, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
@@ -248,26 +249,26 @@ start_and_end = [0.2, 0.5]
 asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
 # p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
-z1_SOn = 0.3
-z2_Fn = 0.9
-z3_Tn = 0.7
+# z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+# z1_SOn = 0.3
+# z2_Fn = 0.9
+# z3_Tn = 0.7
 
-# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
-p_new_with_ListOrigin_Fn = 0.32 #good
-p_new_with_ListOrigin_SOn = 0.53
-p_new_with_ListOrigin_Tn = 0.22 ##good
-p_new_with_ListOrigin_T = 0.45 
-# Test only F: CR ~=0.55
-# Study only SOn: CR ~= 0.47
-# Study and test :  CR~= 0.43
-# Calculate z * p for each corresponding name
-z_times_p = Dict(
-    :T => z4_T * p_new_with_ListOrigin_T,
-    :Fn => z2_Fn * p_new_with_ListOrigin_Fn,
-    :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
-    :Tn => z3_Tn * p_new_with_ListOrigin_Tn
-)
+# # p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
+# p_new_with_ListOrigin_Fn = 0.32 #good
+# p_new_with_ListOrigin_SOn = 0.53
+# p_new_with_ListOrigin_Tn = 0.22 ##good
+# p_new_with_ListOrigin_T = 0.45 
+# # Test only F: CR ~=0.55
+# # Study only SOn: CR ~= 0.47
+# # Study and test :  CR~= 0.43
+# # Calculate z * p for each corresponding name
+# z_times_p = Dict(
+#     :T => z4_T * p_new_with_ListOrigin_T,
+#     :Fn => z2_Fn * p_new_with_ListOrigin_Fn,
+#     :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
+#     :Tn => z3_Tn * p_new_with_ListOrigin_Tn
+# )
 
 
 how_much_z = 0.3
@@ -279,9 +280,9 @@ how_much_z_f = 0.1
 z_time_p_val = Dict(
     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
     Symbol("Tn+1")  => asym_increase_shift(0.03, how_much_z_target, how_fast_z_target, n_lists-1),
-    :Fn  => asym_increase_shift(0.26, how_much_z, how_fast_z, n_lists-1),
-    :Tn  => asym_increase_shift(0.29, how_much_z, how_fast_z, n_lists-1),
-    :SOn => asym_increase_shift(0.08, how_much_z, how_fast_z, n_lists-1),
+    :Fn  => asym_increase_shift(0.26+0.07, how_much_z, how_fast_z, n_lists-1),
+    :Tn  => asym_increase_shift(0.29+0.08, how_much_z, how_fast_z, n_lists-1),
+    :SOn => asym_increase_shift(0.08+0.1, how_much_z, how_fast_z, n_lists-1),
     Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
     :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
 )

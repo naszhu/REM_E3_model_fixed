@@ -1,5 +1,34 @@
 # Model Progress
 
+## Commit [d3a2d15](https://github.com/naszhu/REM_E3_model_fixed/commit/d3a2d15) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 22:36:08  
+**Message:**
+```
+feat(model-e3): don't 1/11 power for sampling
+
+- i am not sure if it works well, but I took out the criterion change parameter.
+
+Refs #37 and Meeting-log #46
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d3a2d15_20250801_223608_plot1.png)  
+![](../plot_archive/d3a2d15_20250801_223608_plot2.png)  
+
+## Commit [c1abc04](https://github.com/naszhu/REM_E3_model_fixed/commit/c1abc04) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-07-30 22:28:14  
+**Message:**
+```
+merge(model-e3): Final Finetuning Merge branch 'jul-27-test'
+```
+![](../plot_archive/c1abc04_20250730_222814_plot1.png)  
+![](../plot_archive/c1abc04_20250730_222814_plot2.png)  
+
 ## Commit [11f50cd](https://github.com/naszhu/REM_E3_model_fixed/commit/11f50cd) (branch: `jul-27-test`)
 **Time:** 2025-07-29 23:41:35  
 **Message:**
