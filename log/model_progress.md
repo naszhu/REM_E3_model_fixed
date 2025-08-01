@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [d406a7f](https://github.com/naszhu/REM_E3_model_fixed/commit/d406a7f) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 23:19:54  
+**Message:**
+```
+feat(model-e3): Eliminating one of the g parameter, and eliminate recall threshold
+
+- Eliminated both because always need to asjust u* and the sets of parameters
+
+- took away the const assignment for g_context and g_word
+
+Refs Meeting Log #46 point 1, 2
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d406a7f_20250801_231954_plot1.png)  
+![](../plot_archive/d406a7f_20250801_231954_plot2.png)  
+
 ## Commit [7db7757](https://github.com/naszhu/REM_E3_model_fixed/commit/7db7757) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-01 22:47:56  
 **Message:**
