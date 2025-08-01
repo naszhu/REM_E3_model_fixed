@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 200 : 1000;
+n_simulations = is_finaltest ? 200 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -232,7 +232,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.12, 0.12, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.13, 0.13, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
@@ -285,8 +285,8 @@ z_time_p_val = Dict(
     :Fn  => asym_increase_shift(0.26+0.07, how_much_z, how_fast_z, n_lists-1),
     :Tn  => asym_increase_shift(0.29+0.08, how_much_z, how_fast_z, n_lists-1),
     :SOn => asym_increase_shift(0.08+0.1, how_much_z, how_fast_z, n_lists-1),
-    # Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
-    # :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
+    Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
+    :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
 )
 println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
