@@ -1,5 +1,41 @@
 # Model Progress
 
+## Commit [5d404a5](https://github.com/naszhu/REM_E3_model_fixed/commit/5d404a5) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:04:07  
+**Message:**
+```
+finetune(model-e3): tried eliminating product prameter for F, while Go back HEAD~1 commit,
+
+- eliminating that makes foil go down too much
+
+Refs Log Meeting #46 point 5
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5d404a5_20250802_000407_plot1.png)  
+![](../plot_archive/5d404a5_20250802_000407_plot2.png)  
+
+## Commit [35ae1e8](https://github.com/naszhu/REM_E3_model_fixed/commit/35ae1e8) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 23:53:18  
+**Message:**
+```
+finetune(model-e3): trade-off among criterions,  get 1s  test position good for Fb?
+
+I don't relly know, can't get a good one
+
+Refs trade-off naszhu/project-context/#14
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/35ae1e8_20250801_235318_plot1.png)  
+![](../plot_archive/35ae1e8_20250801_235318_plot2.png)  
+
 ## Commit [d406a7f](https://github.com/naszhu/REM_E3_model_fixed/commit/d406a7f) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-01 23:19:54  
 **Message:**

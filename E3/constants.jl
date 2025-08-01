@@ -135,7 +135,7 @@ g_word = 0.3; #geometric base rate
 g_context = g_word; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NOT
-u_star_v = 0.037
+u_star_v = 0.044
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -174,12 +174,12 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.2#0.4 #prob of reinstatement
+p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 8) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 9) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
@@ -232,7 +232,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.16, 0.16, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.12, 0.12, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
@@ -285,8 +285,8 @@ z_time_p_val = Dict(
     :Fn  => asym_increase_shift(0.26+0.07, how_much_z, how_fast_z, n_lists-1),
     :Tn  => asym_increase_shift(0.29+0.08, how_much_z, how_fast_z, n_lists-1),
     :SOn => asym_increase_shift(0.08+0.1, how_much_z, how_fast_z, n_lists-1),
-    Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
-    :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
+    # Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
+    # :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
 )
 println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
