@@ -175,7 +175,7 @@ function simulate_rem()
             for (ires, res) in enumerate(results) #1D array, length is 20 words
                 # tt = res.is_target == :target ? true : false
 
-                row = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff] # Add more fields as needed
+                row = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds_after_power, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff] # Add more fields as needed
                 
                 push!(df_inital, row)
             end

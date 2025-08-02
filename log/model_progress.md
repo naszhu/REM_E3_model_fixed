@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [53c0b61](https://github.com/naszhu/REM_E3_model_fixed/commit/53c0b61) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 00:47:13  
+**Message:**
+```
+merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'
+```
+![](../plot_archive/53c0b61_20250803_004713_plot1.png)  
+![](../plot_archive/53c0b61_20250803_004713_plot2.png)  
+
 ## Commit [63b6f1e](https://github.com/naszhu/REM_E3_model_fixed/commit/63b6f1e) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-02 00:22:24  
 **Message:**
