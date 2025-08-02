@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 200 : 300;
+n_simulations = is_finaltest ? 200 : 500;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -131,11 +131,11 @@ w_positioncode = 0
 w_allcontext = w_context + w_positioncode
 w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
-g_word = 0.3; #geometric base rate
+g_word = 0.4; #geometric base rate
 g_context = g_word; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NOT
-u_star_v = 0.044
+u_star_v = 0.05
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -228,27 +228,27 @@ p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used i
 Thresholds
 """
 #TODO, apply first stage crition change to final test as well
-context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower than this  
+context_tau = LinRange(80,80, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.13, 0.13, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.15, 0.15, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
-context_tau_final = 100 #0.20.2 above if this is 10
+context_tau_final = 1000 #0.20.2 above if this is 10
 recall_odds_threshold = 0 ; #putting it as 0 means eliminating it #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf # this is related to issue #48
 
 
 # stop increasing at around list t
-ilist_switch_stop_at = 5; 
+# ilist_switch_stop_at = 5; 
 # start_and_rate = [0.28, 0.25]
-start_and_end = [0.2, 0.5]
+# start_and_end = [0.2, 0.5]
 
 
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
-asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
+# asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
 # p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
 # z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test

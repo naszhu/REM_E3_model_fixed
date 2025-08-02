@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [63b6f1e](https://github.com/naszhu/REM_E3_model_fixed/commit/63b6f1e) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:22:24  
+**Message:**
+```
+finetune(model-e3): 1000 simulation that without product_f commented
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/63b6f1e_20250802_002224_plot1.png)  
+![](../plot_archive/63b6f1e_20250802_002224_plot2.png)  
+
 ## Commit [00904ab](https://github.com/naszhu/REM_E3_model_fixed/commit/00904ab) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-02 00:18:15  
 **Message:**
