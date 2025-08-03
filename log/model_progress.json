@@ -1,5 +1,14 @@
 [
   {
+    "commit": "c1abc04",
+    "branch": "Aug-3-sideway-temp-try",
+    "message": "merge(model-e3): Final Finetuning Merge branch 'jul-27-test'",
+    "timestamp": "2025-07-30 22:28:14",
+    "plot1": "plot_archive/c1abc04_20250730_222814_plot1.png",
+    "plot2": "plot_archive/c1abc04_20250730_222814_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "11f50cd",
     "branch": "jul-27-test",
     "message": "finetune(model-e3): 1000 simulations",

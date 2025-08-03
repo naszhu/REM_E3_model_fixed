@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [c1abc04](https://github.com/naszhu/REM_E3_model_fixed/commit/c1abc04) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-07-30 22:28:14  
+**Message:**
+```
+merge(model-e3): Final Finetuning Merge branch 'jul-27-test'
+```
+![](../plot_archive/c1abc04_20250730_222814_plot1.png)  
+![](../plot_archive/c1abc04_20250730_222814_plot2.png)  
+
 ## Commit [11f50cd](https://github.com/naszhu/REM_E3_model_fixed/commit/11f50cd) (branch: `jul-27-test`)
 **Time:** 2025-07-29 23:41:35  
 **Message:**

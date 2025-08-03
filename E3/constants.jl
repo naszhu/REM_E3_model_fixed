@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
-n_simulations = is_finaltest ? 200 : 500;
+is_finaltest = false
+n_simulations = is_finaltest ? 200 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -129,13 +129,14 @@ Geometric parameters
 w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
-w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
+w_word = 23;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
-const g_word = 0.4; #geometric base rate
+const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star = vcat(0.05, ones(n_lists-1) * 0.05)
+u_star_v = 0.043
+u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
@@ -143,7 +144,7 @@ u_star_storeintest = u_star #for word # ratio of this and the next is key for T_
 #the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
 u_adv_firstpos=0.00 #adv of first position in eeach list
-u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
+u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # u_adv_firstpos=1 #adv of first position in eeach list
 
 # c = LinRange(0.75, 0.75,n_lists)  #copying parameter - 0.8 for context copying 
@@ -178,7 +179,7 @@ p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 10) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 8) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
