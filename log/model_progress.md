@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [6440748](https://github.com/naszhu/REM_E3_model_fixed/commit/6440748) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:37:27  
+**Message:**
+```
+explore(model-e3): ok, so the problem is recall_to_addtrace_treshold parameter?
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6440748_20250803_193727_plot1.png)  
+![](../plot_archive/6440748_20250803_193727_plot2.png)  
+
 ## Commit [bf52d22](https://github.com/naszhu/REM_E3_model_fixed/commit/bf52d22) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-08-03 19:23:58  
 **Message:**
