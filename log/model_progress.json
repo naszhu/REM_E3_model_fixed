@@ -1,5 +1,22 @@
 [
   {
+    "commit": "a951863",
+    "branch": "Aug-2-test",
+    "message": "feat(model-e3): Adding back 1/11 power",
+    "timestamp": "2025-08-03 01:53:50",
+    "plot1": "plot_archive/a951863_20250803_015350_plot1.png",
+    "plot2": "plot_archive/a951863_20250803_015350_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "53c0b61",
     "branch": "Aug-2-test",
     "message": "merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'",

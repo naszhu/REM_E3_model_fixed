@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [a951863](https://github.com/naszhu/REM_E3_model_fixed/commit/a951863) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 01:53:50  
+**Message:**
+```
+feat(model-e3): Adding back 1/11 power
+
+both for sampling and for odds taking
+- this version is withiout a fine-tuining, this will be done next commit
+
+Refs #37
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a951863_20250803_015350_plot1.png)  
+![](../plot_archive/a951863_20250803_015350_plot2.png)  
+
 ## Commit [53c0b61](https://github.com/naszhu/REM_E3_model_fixed/commit/53c0b61) (branch: `Aug-2-test`)
 **Time:** 2025-08-03 00:47:13  
 **Message:**

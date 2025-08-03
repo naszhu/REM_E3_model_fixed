@@ -129,7 +129,7 @@ Geometric parameters
 w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
-w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
+w_word = 20;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
 g_word = 0.3; #geometric base rate
 g_context = g_word; #0.3 originallly geometric base rate of context, or 0.2
