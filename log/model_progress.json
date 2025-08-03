@@ -1,5 +1,19 @@
 [
   {
+    "commit": "52972ed",
+    "branch": "Aug-3-sideway-temp-try",
+    "message": "explore(model-e3): increased proportion of unchanging contex t, seems to work well?",
+    "timestamp": "2025-08-03 20:19:44",
+    "plot1": "plot_archive/52972ed_20250803_201944_plot1.png",
+    "plot2": "plot_archive/52972ed_20250803_201944_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "7a4bb1a",
     "branch": "Aug-3-sideway-temp-try",
     "message": "explore(model-e3): trying making all 1/11 power, This shouldn't influence for now",

@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [52972ed](https://github.com/naszhu/REM_E3_model_fixed/commit/52972ed) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 20:19:44  
+**Message:**
+```
+explore(model-e3): increased proportion of unchanging contex t, seems to work well?
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/52972ed_20250803_201944_plot1.png)  
+![](../plot_archive/52972ed_20250803_201944_plot2.png)  
+
 ## Commit [7a4bb1a](https://github.com/naszhu/REM_E3_model_fixed/commit/7a4bb1a) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-08-03 19:49:41  
 **Message:**
