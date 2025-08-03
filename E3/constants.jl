@@ -174,12 +174,12 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 0.8 #stop reinstate after how much features
 
-p_reinstate_rate = 0.15#0.4 #prob of reinstatement
+p_reinstate_rate = 0.3#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 8) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 13) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
@@ -233,7 +233,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-criterion_initial = generate_asymptotic_values(1.0, 0.2^power_taken, 0.14^power_taken, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.16^power_taken, 0.16^power_taken, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.24^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)

@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [b687aab](https://github.com/naszhu/REM_E3_model_fixed/commit/b687aab) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 20:25:00  
+**Message:**
+```
+finetune(model-e3): This seems to work well for now
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b687aab_20250803_202500_plot1.png)  
+![](../plot_archive/b687aab_20250803_202500_plot2.png)  
+
 ## Commit [52972ed](https://github.com/naszhu/REM_E3_model_fixed/commit/52972ed) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-08-03 20:19:44  
 **Message:**
