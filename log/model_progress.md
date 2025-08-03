@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [bf52d22](https://github.com/naszhu/REM_E3_model_fixed/commit/bf52d22) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:23:58  
+**Message:**
+```
+explore(model-e3): OK found it would work when turn down the w_word value, go back to previous v and try
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bf52d22_20250803_192358_plot1.png)  
+![](../plot_archive/bf52d22_20250803_192358_plot2.png)  
+
 ## Commit [c1abc04](https://github.com/naszhu/REM_E3_model_fixed/commit/c1abc04) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-07-30 22:28:14  
 **Message:**

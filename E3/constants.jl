@@ -237,8 +237,8 @@ criterion_initial = generate_asymptotic_values(1.0, 0.18, 0.14, 1.0, 1.0, 3.0)
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.3; #this value should be bigger a bit than criterion_initial
-
+recall_odds_threshold = 0.3 #this value should be bigger a bit than criterion_initial
+recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
 # start_and_rate = [0.28, 0.25]
