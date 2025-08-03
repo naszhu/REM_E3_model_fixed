@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 200 : 300;
+n_simulations = is_finaltest ? 200 : 1000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -238,7 +238,7 @@ criterion_initial = generate_asymptotic_values(1.0, 0.16^power_taken, 0.16^power
 
 criterion_final =  LinRange(0.24^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0^power_taken #this value should be bigger a bit than criterion_initial
+recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
@@ -281,9 +281,9 @@ how_much_z_f = 0.1
 z_time_p_val = Dict(
     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
     Symbol("Tn+1")  => asym_increase_shift(0.03, how_much_z_target, how_fast_z_target, n_lists-1),
-    :Fn  => asym_increase_shift(0.26, how_much_z, how_fast_z, n_lists-1),
-    :Tn  => asym_increase_shift(0.29, how_much_z, how_fast_z, n_lists-1),
-    :SOn => asym_increase_shift(0.08, how_much_z, how_fast_z, n_lists-1),
+    :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
+    :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
+    :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
     Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
     :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
 )

@@ -1,5 +1,47 @@
 # Model Progress
 
+## Commit [7f43080](https://github.com/naszhu/REM_E3_model_fixed/commit/7f43080) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 23:28:11  
+**Message:**
+```
+fintune(model-e3): another test, raise recall_odds
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7f43080_20250803_232811_plot1.png)  
+![](../plot_archive/7f43080_20250803_232811_plot2.png)  
+
+## Commit [7f43080](https://github.com/naszhu/REM_E3_model_fixed/commit/7f43080) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 23:28:11  
+**Message:**
+```
+fintune(model-e3): another test, raise recall_odds
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7f43080_20250803_232811_plot1.png)  
+![](../plot_archive/7f43080_20250803_232811_plot2.png)  
+
+## Commit [aa5cf49](https://github.com/naszhu/REM_E3_model_fixed/commit/aa5cf49) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 22:42:21  
+**Message:**
+```
+finetune(model-e3): this may work even better
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/aa5cf49_20250803_224221_plot1.png)  
+![](../plot_archive/aa5cf49_20250803_224221_plot2.png)  
+
 ## Commit [b687aab](https://github.com/naszhu/REM_E3_model_fixed/commit/b687aab) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-08-03 20:25:00  
 **Message:**

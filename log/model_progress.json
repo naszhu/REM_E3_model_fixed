@@ -1,5 +1,47 @@
 [
   {
+    "commit": "7f43080",
+    "branch": "Aug-3-sideway-temp-try",
+    "message": "fintune(model-e3): another test, raise recall_odds",
+    "timestamp": "2025-08-03 23:28:11",
+    "plot1": "plot_archive/7f43080_20250803_232811_plot1.png",
+    "plot2": "plot_archive/7f43080_20250803_232811_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "7f43080",
+    "branch": "Aug-3-sideway-temp-try",
+    "message": "fintune(model-e3): another test, raise recall_odds",
+    "timestamp": "2025-08-03 23:28:11",
+    "plot1": "plot_archive/7f43080_20250803_232811_plot1.png",
+    "plot2": "plot_archive/7f43080_20250803_232811_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "aa5cf49",
+    "branch": "Aug-3-sideway-temp-try",
+    "message": "finetune(model-e3): this may work even better",
+    "timestamp": "2025-08-03 22:42:21",
+    "plot1": "plot_archive/aa5cf49_20250803_224221_plot1.png",
+    "plot2": "plot_archive/aa5cf49_20250803_224221_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b687aab",
     "branch": "Aug-3-sideway-temp-try",
     "message": "finetune(model-e3): This seems to work well for now",
