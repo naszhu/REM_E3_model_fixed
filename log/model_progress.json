@@ -1,5 +1,19 @@
 [
   {
+    "commit": "77925a7",
+    "branch": "Aug-2-test",
+    "message": "explore(model-e3): OK, turn down w_word doens't really work here, don't know why",
+    "timestamp": "2025-08-03 19:30:42",
+    "plot1": "plot_archive/77925a7_20250803_193042_plot1.png",
+    "plot2": "plot_archive/77925a7_20250803_193042_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "a951863",
     "branch": "Aug-2-test",
     "message": "feat(model-e3): Adding back 1/11 power",

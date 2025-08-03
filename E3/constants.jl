@@ -129,7 +129,7 @@ Geometric parameters
 w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
-w_word = 20;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
+w_word = 25;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
 g_word = 0.3; #geometric base rate
 g_context = g_word; #0.3 originallly geometric base rate of context, or 0.2
@@ -237,7 +237,7 @@ criterion_initial = generate_asymptotic_values(1.0, 0.13^(1/11), 0.13^(1/11), 1.
 
 criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0 ; #putting it as 0 means eliminating it #this value should be bigger a bit than criterion_initial
+recall_odds_threshold = 0.3 ; #putting it as 0 means eliminating it #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf # this is related to issue #48
 
 

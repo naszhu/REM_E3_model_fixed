@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [77925a7](https://github.com/naszhu/REM_E3_model_fixed/commit/77925a7) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 19:30:42  
+**Message:**
+```
+explore(model-e3): OK, turn down w_word doens't really work here, don't know why
+
+See commits bf52d22
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/77925a7_20250803_193042_plot1.png)  
+![](../plot_archive/77925a7_20250803_193042_plot2.png)  
+
 ## Commit [a951863](https://github.com/naszhu/REM_E3_model_fixed/commit/a951863) (branch: `Aug-2-test`)
 **Time:** 2025-08-03 01:53:50  
 **Message:**
