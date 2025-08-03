@@ -232,12 +232,13 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-criterion_initial = generate_asymptotic_values(1.0, 0.18, 0.18, 1.0, 1.0, 3.0) 
+power_taken = (1/11)
+criterion_initial = generate_asymptotic_values(1.0, 0.18^power_taken, 0.14^power_taken, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.24,0.18, 10)#LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.24^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.3 #this value should be bigger a bit than criterion_initial
+recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 

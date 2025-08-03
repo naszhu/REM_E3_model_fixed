@@ -1,5 +1,34 @@
 # Model Progress
 
+## Commit [148c7f9](https://github.com/naszhu/REM_E3_model_fixed/commit/148c7f9) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:48:45  
+**Message:**
+```
+explore(model-e3): trying making all 1/11 power, seems to work, maybe, needs fine=tuneing though to see better
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/148c7f9_20250803_194845_plot1.png)  
+![](../plot_archive/148c7f9_20250803_194845_plot2.png)  
+
+## Commit [a2c4b41](https://github.com/naszhu/REM_E3_model_fixed/commit/a2c4b41) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:44:35  
+**Message:**
+```
+explore(model-e3): problem appears when making criterion_initial all the same
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a2c4b41_20250803_194435_plot1.png)  
+![](../plot_archive/a2c4b41_20250803_194435_plot2.png)  
+
 ## Commit [6440748](https://github.com/naszhu/REM_E3_model_fixed/commit/6440748) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-08-03 19:37:27  
 **Message:**
