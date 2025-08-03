@@ -194,7 +194,7 @@ nC = w_context - nU
 
 # p_ratio_unchanging_out_of_total = LinRange(0.17,0.17, n_lists) #0.1 #ratio of unchanging context between lists
 #CHANGED
-ratio_unchanging_to_itself_init = LinRange(0.4, 0.4, n_lists) # if use no unchanging
+ratio_unchanging_to_itself_init = LinRange(0.5, 0.5, n_lists) # if use no unchanging
 ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 
 # Only influence LL calculation below, otherwise, nU and nC used
@@ -238,7 +238,7 @@ criterion_initial = generate_asymptotic_values(1.0, 0.18^power_taken, 0.14^power
 
 criterion_final =  LinRange(0.24^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
+recall_odds_threshold = 0^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 

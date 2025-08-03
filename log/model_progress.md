@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [7a4bb1a](https://github.com/naszhu/REM_E3_model_fixed/commit/7a4bb1a) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:49:41  
+**Message:**
+```
+explore(model-e3): trying making all 1/11 power, This shouldn't influence for now
+
+Shouldn't influence for now becuase currently sampling already with 1/11 power,
+and making odds to have 1/11 power is nothing that influences for now
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7a4bb1a_20250803_194941_plot1.png)  
+![](../plot_archive/7a4bb1a_20250803_194941_plot2.png)  
+
 ## Commit [148c7f9](https://github.com/naszhu/REM_E3_model_fixed/commit/148c7f9) (branch: `Aug-3-sideway-temp-try`)
 **Time:** 2025-08-03 19:48:45  
 **Message:**
