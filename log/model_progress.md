@@ -1,15 +1,375 @@
 # Model Progress
 
-## Commit [a1827d5](https://github.com/naszhu/REM_E3_model_fixed/commit/a1827d5) (branch: `main`)
-**Time:** 2025-08-05 17:29:24  
+## Commit [7ed5eb5](https://github.com/naszhu/REM_E3_model_fixed/commit/7ed5eb5) (branch: `main`)
+**Time:** 2025-08-05 17:30:47  
 **Message:**
 ```
-merge(model-e3): Merge branch 'Aug-2-test'
+restore(model-e3): restoring back to jul-17 branch becuase the elimination doesn't work
 
-This is attemps after the eliminating, but doesn't seem to work well
+- The md files are not staged here (i.e., kept the history of explorations)
 ```
-![](../plot_archive/a1827d5_20250805_172924_plot1.png)  
-![](../plot_archive/a1827d5_20250805_172924_plot2.png)  
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7ed5eb5_20250805_173047_plot1.png)  
+![](../plot_archive/7ed5eb5_20250805_173047_plot2.png)  
+
+## Commit [7f43080](https://github.com/naszhu/REM_E3_model_fixed/commit/7f43080) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 23:28:11  
+**Message:**
+```
+fintune(model-e3): another test, raise recall_odds
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7f43080_20250803_232811_plot1.png)  
+![](../plot_archive/7f43080_20250803_232811_plot2.png)  
+
+## Commit [aa5cf49](https://github.com/naszhu/REM_E3_model_fixed/commit/aa5cf49) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 22:42:21  
+**Message:**
+```
+finetune(model-e3): this may work even better
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/aa5cf49_20250803_224221_plot1.png)  
+![](../plot_archive/aa5cf49_20250803_224221_plot2.png)  
+
+## Commit [b687aab](https://github.com/naszhu/REM_E3_model_fixed/commit/b687aab) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 20:25:00  
+**Message:**
+```
+finetune(model-e3): This seems to work well for now
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b687aab_20250803_202500_plot1.png)  
+![](../plot_archive/b687aab_20250803_202500_plot2.png)  
+
+## Commit [52972ed](https://github.com/naszhu/REM_E3_model_fixed/commit/52972ed) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 20:19:44  
+**Message:**
+```
+explore(model-e3): increased proportion of unchanging contex t, seems to work well?
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/52972ed_20250803_201944_plot1.png)  
+![](../plot_archive/52972ed_20250803_201944_plot2.png)  
+
+## Commit [7a4bb1a](https://github.com/naszhu/REM_E3_model_fixed/commit/7a4bb1a) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:49:41  
+**Message:**
+```
+explore(model-e3): trying making all 1/11 power, This shouldn't influence for now
+
+Shouldn't influence for now becuase currently sampling already with 1/11 power,
+and making odds to have 1/11 power is nothing that influences for now
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7a4bb1a_20250803_194941_plot1.png)  
+![](../plot_archive/7a4bb1a_20250803_194941_plot2.png)  
+
+## Commit [148c7f9](https://github.com/naszhu/REM_E3_model_fixed/commit/148c7f9) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:48:45  
+**Message:**
+```
+explore(model-e3): trying making all 1/11 power, seems to work, maybe, needs fine=tuneing though to see better
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/148c7f9_20250803_194845_plot1.png)  
+![](../plot_archive/148c7f9_20250803_194845_plot2.png)  
+
+## Commit [a2c4b41](https://github.com/naszhu/REM_E3_model_fixed/commit/a2c4b41) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:44:35  
+**Message:**
+```
+explore(model-e3): problem appears when making criterion_initial all the same
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a2c4b41_20250803_194435_plot1.png)  
+![](../plot_archive/a2c4b41_20250803_194435_plot2.png)  
+
+## Commit [6440748](https://github.com/naszhu/REM_E3_model_fixed/commit/6440748) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:37:27  
+**Message:**
+```
+explore(model-e3): ok, so the problem is recall_to_addtrace_treshold parameter?
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6440748_20250803_193727_plot1.png)  
+![](../plot_archive/6440748_20250803_193727_plot2.png)  
+
+## Commit [77925a7](https://github.com/naszhu/REM_E3_model_fixed/commit/77925a7) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 19:30:42  
+**Message:**
+```
+explore(model-e3): OK, turn down w_word doens't really work here, don't know why
+
+See commits bf52d22
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/77925a7_20250803_193042_plot1.png)  
+![](../plot_archive/77925a7_20250803_193042_plot2.png)  
+
+## Commit [bf52d22](https://github.com/naszhu/REM_E3_model_fixed/commit/bf52d22) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-08-03 19:23:58  
+**Message:**
+```
+explore(model-e3): OK found it would work when turn down the w_word value, go back to previous v and try
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bf52d22_20250803_192358_plot1.png)  
+![](../plot_archive/bf52d22_20250803_192358_plot2.png)  
+
+## Commit [a951863](https://github.com/naszhu/REM_E3_model_fixed/commit/a951863) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 01:53:50  
+**Message:**
+```
+feat(model-e3): Adding back 1/11 power
+
+both for sampling and for odds taking
+- this version is withiout a fine-tuining, this will be done next commit
+
+Refs #37
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a951863_20250803_015350_plot1.png)  
+![](../plot_archive/a951863_20250803_015350_plot2.png)  
+
+## Commit [53c0b61](https://github.com/naszhu/REM_E3_model_fixed/commit/53c0b61) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 00:47:13  
+**Message:**
+```
+merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'
+```
+![](../plot_archive/53c0b61_20250803_004713_plot1.png)  
+![](../plot_archive/53c0b61_20250803_004713_plot2.png)  
+
+## Commit [63b6f1e](https://github.com/naszhu/REM_E3_model_fixed/commit/63b6f1e) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:22:24  
+**Message:**
+```
+finetune(model-e3): 1000 simulation that without product_f commented
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/63b6f1e_20250802_002224_plot1.png)  
+![](../plot_archive/63b6f1e_20250802_002224_plot2.png)  
+
+## Commit [00904ab](https://github.com/naszhu/REM_E3_model_fixed/commit/00904ab) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:18:15  
+**Message:**
+```
+finetune(model-e3): 1000 simulation for above (version with product _F commented)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/00904ab_20250802_001815_plot1.png)  
+![](../plot_archive/00904ab_20250802_001815_plot2.png)  
+
+## Commit [666cbc4](https://github.com/naszhu/REM_E3_model_fixed/commit/666cbc4) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:04:27  
+**Message:**
+```
+finetune(model-e3): tried eliminating product prameter for F, while Go back HEAD~1 commit,
+
+- eliminating that makes foil go down too much
+
+Refs Log Meeting #46 point 5
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/666cbc4_20250802_000427_plot1.png)  
+![](../plot_archive/666cbc4_20250802_000427_plot2.png)  
+
+## Commit [5d404a5](https://github.com/naszhu/REM_E3_model_fixed/commit/5d404a5) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-02 00:04:07  
+**Message:**
+```
+finetune(model-e3): tried eliminating product prameter for F, while Go back HEAD~1 commit,
+
+- eliminating that makes foil go down too much
+
+Refs Log Meeting #46 point 5
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5d404a5_20250802_000407_plot1.png)  
+![](../plot_archive/5d404a5_20250802_000407_plot2.png)  
+
+## Commit [35ae1e8](https://github.com/naszhu/REM_E3_model_fixed/commit/35ae1e8) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 23:53:18  
+**Message:**
+```
+finetune(model-e3): trade-off among criterions,  get 1s  test position good for Fb?
+
+I don't relly know, can't get a good one
+
+Refs trade-off naszhu/project-context/#14
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/35ae1e8_20250801_235318_plot1.png)  
+![](../plot_archive/35ae1e8_20250801_235318_plot2.png)  
+
+## Commit [d406a7f](https://github.com/naszhu/REM_E3_model_fixed/commit/d406a7f) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 23:19:54  
+**Message:**
+```
+feat(model-e3): Eliminating one of the g parameter, and eliminate recall threshold
+
+- Eliminated both because always need to asjust u* and the sets of parameters
+
+- took away the const assignment for g_context and g_word
+
+Refs Meeting Log #46 point 1, 2
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d406a7f_20250801_231954_plot1.png)  
+![](../plot_archive/d406a7f_20250801_231954_plot2.png)  
+
+## Commit [7db7757](https://github.com/naszhu/REM_E3_model_fixed/commit/7db7757) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 22:47:56  
+**Message:**
+```
+feat(model-e3): The recall threshold parameter
+
+- I made a parameter recall_to_addtrace_treshold and so now when put this parameter as inf, it's like eliminating this. all that < odds +Inf will be
+
+- changing this parameter doesn't influence the results too much, tuned the u* and criterion pramter only a little bit
+
+Closes #48
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7db7757_20250801_224756_plot1.png)  
+![](../plot_archive/7db7757_20250801_224756_plot2.png)  
+
+## Commit [fe1e5f3](https://github.com/naszhu/REM_E3_model_fixed/commit/fe1e5f3) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 22:36:58  
+**Message:**
+```
+feat(model-e3): don't 1/11 power for sampling
+
+- i am not sure if it works well, but I took out the criterion change parameter.
+
+Refs #37 and Meeting-log #46 point 3
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fe1e5f3_20250801_223658_plot1.png)  
+![](../plot_archive/fe1e5f3_20250801_223658_plot2.png)  
+
+## Commit [d3a2d15](https://github.com/naszhu/REM_E3_model_fixed/commit/d3a2d15) (branch: `Aug-1-meeting-log-change`)
+**Time:** 2025-08-01 22:36:08  
+**Message:**
+```
+feat(model-e3): don't 1/11 power for sampling
+
+- i am not sure if it works well, but I took out the criterion change parameter.
+
+Refs #37 and Meeting-log #46
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d3a2d15_20250801_223608_plot1.png)  
+![](../plot_archive/d3a2d15_20250801_223608_plot2.png)  
+
+## Commit [c1abc04](https://github.com/naszhu/REM_E3_model_fixed/commit/c1abc04) (branch: `Aug-3-sideway-temp-try`)
+**Time:** 2025-07-30 22:28:14  
+**Message:**
+```
+merge(model-e3): Final Finetuning Merge branch 'jul-27-test'
+```
+![](../plot_archive/c1abc04_20250730_222814_plot1.png)  
+![](../plot_archive/c1abc04_20250730_222814_plot2.png)  
 
 ## Commit [11f50cd](https://github.com/naszhu/REM_E3_model_fixed/commit/11f50cd) (branch: `jul-27-test`)
 **Time:** 2025-07-29 23:41:35  

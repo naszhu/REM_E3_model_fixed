@@ -44,7 +44,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         # end
 
         nl = length(content_LL_ratios_filtered)
-        odds = 1 / nl * sum(content_LL_ratios_filtered)
+        odds = (1 / nl * sum(content_LL_ratios_filtered))^power_taken
         odds_context = 1 / length(context_LL_ratios) * sum(context_LL_ratios)
 
         if (isnan(odds))
@@ -95,7 +95,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
         # Step 3: Assign probabilities proportionally
         
-        filtered_content_LL_ratios_inOriginalLength_to_11thpower= filtered_content_LL_ratios_inOriginalLength .^ (1/11) # raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
+        filtered_content_LL_ratios_inOriginalLength_to_11thpower= filtered_content_LL_ratios_inOriginalLength .^ power_taken # raise to 1/11 power, so that the sampling is more likely to sample the higher LL ratios, but not too much
         # Step 3: Assign probabilities proportionally
         total_sum_LL = sum(filtered_content_LL_ratios_inOriginalLength_to_11thpower)
         sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)]
