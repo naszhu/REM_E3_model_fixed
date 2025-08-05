@@ -44,21 +44,21 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         # end
 
         nl = length(content_LL_ratios_filtered)
-        odds_after_power = (1 / nl * sum(content_LL_ratios_filtered))^(1/11)
+        odds = 1 / nl * sum(content_LL_ratios_filtered)
         odds_context = 1 / length(context_LL_ratios) * sum(context_LL_ratios)
 
-        if (isnan(odds_after_power))
+        if (isnan(odds))
             println("Current context_tau is too high, there are some simulations that have no tarce passing context filter in first step", nl, content_LL_ratios_filtered)
         end
 
-        if (odds_after_power>criterion_initial[i_testpos,ilist_probe]) && (odds_after_power > recall_odds_threshold) #recall which?
+        if (odds>criterion_initial[i_testpos,ilist_probe]) && (odds > recall_odds_threshold) #recall which?
             imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
         end
 
 
         
-        if odds_after_power > criterion_initial[i_testpos, ilist_probe] 
-            if odds_after_power > recall_odds_threshold
+        if odds > criterion_initial[i_testpos, ilist_probe] 
+            if odds > recall_odds_threshold
                 if ilist_probe == 1
                     decision_isold = 1 #if list 1, always recall
                 else
@@ -75,15 +75,15 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         end
 
 
-        diff = 1 / (abs(odds_after_power - criterion_initial[i_testpos,ilist_probe]) + 1e-10)
+        diff = 1 / (abs(odds - criterion_initial[i_testpos,ilist_probe]) + 1e-10)
 
         #criterion change by test position
 
-        # decision_isold = odds_after_power > criterion_initial[i_testpos] ? 1 : 0;
+        # decision_isold = odds > criterion_initial[i_testpos] ? 1 : 0;
 
         nav = length(content_LL_ratios_filtered) / (length(image_pool_currentlist))
         # println(nav)
-        # if (decision_isold == 1) && (odds_after_power > recall_odds_threshold)
+        # if (decision_isold == 1) && (odds > recall_odds_threshold)
         #     imgMax = image_pool_currentlist[argmax(content_LL_ratios_filtered)]
         # end
 
@@ -113,13 +113,13 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             type_general=probes[i].image.word.type_general,
             type_specific=probes[i].image.word.type_specific, 
             is_target=probes[i].ProbeTypeSimple==:target,  
-            odds_after_power=odds_after_power, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff)
+            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff)
             # println(nl, " ",nimages_activated)
         end
     
 
         if is_restore_initial
-            restore_intest(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds_after_power, content_LL_ratios_org)  
+            restore_intest(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds, content_LL_ratios_org)  
         end
 
         # println("i, $i, i_testpos, $i_testpos")
@@ -161,12 +161,12 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         #    if ii==1 println(size(image_pool),"of", size(content_LL_ratios_filtered)) end
 
         # println(content_LL_ratios_filtered)
-        odds_after_power = 1 / length(content_LL_ratios_filtered) * sum(content_LL_ratios_filtered)
+        odds = 1 / length(content_LL_ratios_filtered) * sum(content_LL_ratios_filtered)
         
         
         criterion_final_i = criterion_final[currchunk] #this need to be changed if 
         
-        decision_isold = odds_after_power > criterion_final_i ? 1 : 0;
+        decision_isold = odds > criterion_final_i ? 1 : 0;
 
         
         ############### Add new sampling LL preparing lines
@@ -183,10 +183,10 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
             zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : 
             [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)];
 
-        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds_after_power: $(odds_after_power)")
+        # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
-        # pold = pcrr_EZddf(log(odds_after_power))
-        # rt = Brt + Pi * abs(log(odds_after_power))
+        # pold = pcrr_EZddf(log(odds))
+        # rt = Brt + Pi * abs(log(odds))
 
         # Store results (modify as needed)
         results[i] = (decision_isold=decision_isold, 
@@ -199,7 +199,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         is_repeat_type=probes[i].image.word.is_repeat_type,
 
         is_target = probes[i].ProbeTypeSimple==:target,
-        odds_after_power=odds_after_power, list_num=probes[i].image.list_number ) #! made changes to results, format different than that in inital
+        odds=odds, list_num=probes[i].image.list_number ) #! made changes to results, format different than that in inital
         
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
         # restore_intest(image_pool,probes[i].image, decision_isold, argmax(content_LL_ratios_filtered));
@@ -211,7 +211,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         if is_restore_final
 
             #Issue 12
-            restore_intest_final(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds_after_power, i, content_LL_ratios_org);  #have to pass final testpos 
+            restore_intest_final(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds, i, content_LL_ratios_org);  #have to pass final testpos 
         end
     end
 
