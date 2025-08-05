@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 200 : 1000;
+n_simulations = is_finaltest ? 200 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -275,7 +275,7 @@ z_times_p = Dict(
 how_much_z = 0.3
 how_much_z_target = 0.16
 how_fast_z = 0.4
-how_fast_z_target = how_fast_z
+how_fast_z_target = 1.0
 how_much_z_f = 0.1
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
 z_time_p_val = Dict(

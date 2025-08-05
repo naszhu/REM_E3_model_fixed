@@ -1,5 +1,18 @@
 # Model Progress
 
+## Commit [798fca7](https://github.com/naszhu/REM_E3_model_fixed/commit/798fca7) (branch: `Aug-5-test`)
+**Time:** 2025-08-05 17:41:29  
+**Message:**
+```
+merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'
+
+Because the eliminating doesn't work, I went back to this version
+
+the .json files have been specially edited.  (added to include files changes from all prior commits). Added file changes from aug-3-sideway... branch becuase I can't just accept new neither just use old, so have to manually add them
+```
+![](../plot_archive/798fca7_20250805_174129_plot1.png)  
+![](../plot_archive/798fca7_20250805_174129_plot2.png)  
+
 ## Commit [7ed5eb5](https://github.com/naszhu/REM_E3_model_fixed/commit/7ed5eb5) (branch: `main`)
 **Time:** 2025-08-05 17:30:47  
 **Message:**

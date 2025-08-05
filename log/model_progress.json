@@ -1,5 +1,14 @@
 [
   {
+    "commit": "798fca7",
+    "branch": "Aug-5-test",
+    "message": "merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'",
+    "timestamp": "2025-08-05 17:41:29",
+    "plot1": "plot_archive/798fca7_20250805_174129_plot1.png",
+    "plot2": "plot_archive/798fca7_20250805_174129_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "7ed5eb5",
     "branch": "main",
     "message": "restore(model-e3): restoring back to jul-17 branch becuase the elimination doesn't work",
