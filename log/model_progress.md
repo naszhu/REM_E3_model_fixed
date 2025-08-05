@@ -1,5 +1,61 @@
 # Model Progress
 
+## Commit [53c0b61](https://github.com/naszhu/REM_E3_model_fixed/commit/53c0b61) (branch: `main`)
+**Time:** 2025-08-03 00:47:13  
+**Message:**
+```
+merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'
+```
+![](../plot_archive/53c0b61_20250803_004713_plot1.png)  
+![](../plot_archive/53c0b61_20250803_004713_plot2.png)  
+
+## Commit [77925a7](https://github.com/naszhu/REM_E3_model_fixed/commit/77925a7) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 19:30:42  
+**Message:**
+```
+explore(model-e3): OK, turn down w_word doens't really work here, don't know why
+
+See commits bf52d22
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/77925a7_20250803_193042_plot1.png)  
+![](../plot_archive/77925a7_20250803_193042_plot2.png)  
+
+## Commit [a951863](https://github.com/naszhu/REM_E3_model_fixed/commit/a951863) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 01:53:50  
+**Message:**
+```
+feat(model-e3): Adding back 1/11 power
+
+both for sampling and for odds taking
+- this version is withiout a fine-tuining, this will be done next commit
+
+Refs #37
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a951863_20250803_015350_plot1.png)  
+![](../plot_archive/a951863_20250803_015350_plot2.png)  
+
+## Commit [53c0b61](https://github.com/naszhu/REM_E3_model_fixed/commit/53c0b61) (branch: `Aug-2-test`)
+**Time:** 2025-08-03 00:47:13  
+**Message:**
+```
+merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'
+```
+![](../plot_archive/53c0b61_20250803_004713_plot1.png)  
+![](../plot_archive/53c0b61_20250803_004713_plot2.png)  
+
 ## Commit [63b6f1e](https://github.com/naszhu/REM_E3_model_fixed/commit/63b6f1e) (branch: `Aug-1-meeting-log-change`)
 **Time:** 2025-08-02 00:22:24  
 **Message:**

@@ -1,5 +1,54 @@
 [
   {
+    "commit": "53c0b61",
+    "branch": "main",
+    "message": "merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'",
+    "timestamp": "2025-08-03 00:47:13",
+    "plot1": "plot_archive/53c0b61_20250803_004713_plot1.png",
+    "plot2": "plot_archive/53c0b61_20250803_004713_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "77925a7",
+    "branch": "Aug-2-test",
+    "message": "explore(model-e3): OK, turn down w_word doens't really work here, don't know why",
+    "timestamp": "2025-08-03 19:30:42",
+    "plot1": "plot_archive/77925a7_20250803_193042_plot1.png",
+    "plot2": "plot_archive/77925a7_20250803_193042_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "a951863",
+    "branch": "Aug-2-test",
+    "message": "feat(model-e3): Adding back 1/11 power",
+    "timestamp": "2025-08-03 01:53:50",
+    "plot1": "plot_archive/a951863_20250803_015350_plot1.png",
+    "plot2": "plot_archive/a951863_20250803_015350_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "53c0b61",
+    "branch": "Aug-2-test",
+    "message": "merge(finetune): Eliminating prameters, Merge branch 'Aug-1-meeting-log-change'",
+    "timestamp": "2025-08-03 00:47:13",
+    "plot1": "plot_archive/53c0b61_20250803_004713_plot1.png",
+    "plot2": "plot_archive/53c0b61_20250803_004713_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "63b6f1e",
     "branch": "Aug-1-meeting-log-change",
     "message": "finetune(model-e3): 1000 simulation that without product_f commented",
