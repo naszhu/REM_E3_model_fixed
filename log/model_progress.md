@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [0520676](https://github.com/naszhu/REM_E3_model_fixed/commit/0520676) (branch: `Aug-5-test`)
+**Time:** 2025-08-05 17:55:05  
+**Message:**
+```
+explore(model-e3): making rising rate for target to go fast than others.
+
+- Branch details:  This branch is to test the 2-parameter ideas for switch basing on meeting log Aug-4
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0520676_20250805_175505_plot1.png)  
+![](../plot_archive/0520676_20250805_175505_plot2.png)  
+
 ## Commit [798fca7](https://github.com/naszhu/REM_E3_model_fixed/commit/798fca7) (branch: `Aug-5-test`)
 **Time:** 2025-08-05 17:41:29  
 **Message:**

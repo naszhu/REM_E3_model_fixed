@@ -1,5 +1,19 @@
 [
   {
+    "commit": "0520676",
+    "branch": "Aug-5-test",
+    "message": "explore(model-e3): making rising rate for target to go fast than others.",
+    "timestamp": "2025-08-05 17:55:05",
+    "plot1": "plot_archive/0520676_20250805_175505_plot1.png",
+    "plot2": "plot_archive/0520676_20250805_175505_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "798fca7",
     "branch": "Aug-5-test",
     "message": "merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'",
