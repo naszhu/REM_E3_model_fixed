@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [e7e0a7d](https://github.com/naszhu/REM_E3_model_fixed/commit/e7e0a7d) (branch: `Aug-5-test`)
+**Time:** 2025-08-06 16:26:51  
+**Message:**
+```
+finetune(model-e3): A good version?
+
+- I thought the products that I sent is good.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e7e0a7d_20250806_162651_plot1.png)  
+![](../plot_archive/e7e0a7d_20250806_162651_plot2.png)  
+
 ## Commit [0520676](https://github.com/naszhu/REM_E3_model_fixed/commit/0520676) (branch: `Aug-5-test`)
 **Time:** 2025-08-05 17:55:05  
 **Message:**

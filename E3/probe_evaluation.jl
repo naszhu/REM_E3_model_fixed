@@ -161,7 +161,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         #    if ii==1 println(size(image_pool),"of", size(content_LL_ratios_filtered)) end
 
         # println(content_LL_ratios_filtered)
-        odds = 1 / length(content_LL_ratios_filtered) * sum(content_LL_ratios_filtered)
+        odds = (1 / length(content_LL_ratios_filtered) * sum(content_LL_ratios_filtered))^power_taken
         
         
         criterion_final_i = criterion_final[currchunk] #this need to be changed if 

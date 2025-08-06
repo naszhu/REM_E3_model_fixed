@@ -1,5 +1,19 @@
 [
   {
+    "commit": "e7e0a7d",
+    "branch": "Aug-5-test",
+    "message": "finetune(model-e3): A good version?",
+    "timestamp": "2025-08-06 16:26:51",
+    "plot1": "plot_archive/e7e0a7d_20250806_162651_plot1.png",
+    "plot2": "plot_archive/e7e0a7d_20250806_162651_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "0520676",
     "branch": "Aug-5-test",
     "message": "explore(model-e3): making rising rate for target to go fast than others.",

@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 200 : 600;
+is_finaltest = true
+n_simulations = is_finaltest ? 100 : 600;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -209,7 +209,7 @@ nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
 p_recallFeatureStore = 1.0;
 
-final_gap_change = 0.09; #0.21
+final_gap_change = 0.15; #0.21
 p_ListChange_finaltest = ones(10) * 0.25 #0.1 prob list change for final test
 
 
