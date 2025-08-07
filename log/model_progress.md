@@ -1,5 +1,36 @@
 # Model Progress
 
+## Commit [ea16e48](https://github.com/naszhu/REM_E3_model_fixed/commit/ea16e48) (branch: `Aug-5-test`)
+**Time:** 2025-08-07 18:29:58  
+**Message:**
+```
+explore(model-d3): puting threshold_recall = 0,
+
+this makes within-list prediction worse
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ea16e48_20250807_182958_plot1.png)  
+![](../plot_archive/ea16e48_20250807_182958_plot2.png)  
+
+## Commit [e215ede](https://github.com/naszhu/REM_E3_model_fixed/commit/e215ede) (branch: `Aug-5-test`)
+**Time:** 2025-08-06 16:39:41  
+**Message:**
+```
+fix(model-e3): Final test odds forgot to take 1/11
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e215ede_20250806_163941_plot1.png)  
+![](../plot_archive/e215ede_20250806_163941_plot2.png)  
+
 ## Commit [e7e0a7d](https://github.com/naszhu/REM_E3_model_fixed/commit/e7e0a7d) (branch: `Aug-5-test`)
 **Time:** 2025-08-06 16:26:51  
 **Message:**
