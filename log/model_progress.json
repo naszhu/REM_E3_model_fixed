@@ -1,5 +1,80 @@
 [
   {
+    "commit": "798fca7",
+    "branch": "main",
+    "message": "merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'",
+    "timestamp": "2025-08-05 17:41:29",
+    "plot1": "plot_archive/798fca7_20250805_174129_plot1.png",
+    "plot2": "plot_archive/798fca7_20250805_174129_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "ea16e48",
+    "branch": "Aug-5-test",
+    "message": "explore(model-d3): puting threshold_recall = 0,",
+    "timestamp": "2025-08-07 18:29:58",
+    "plot1": "plot_archive/ea16e48_20250807_182958_plot1.png",
+    "plot2": "plot_archive/ea16e48_20250807_182958_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e215ede",
+    "branch": "Aug-5-test",
+    "message": "fix(model-e3): Final test odds forgot to take 1/11",
+    "timestamp": "2025-08-06 16:39:41",
+    "plot1": "plot_archive/e215ede_20250806_163941_plot1.png",
+    "plot2": "plot_archive/e215ede_20250806_163941_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e7e0a7d",
+    "branch": "Aug-5-test",
+    "message": "finetune(model-e3): A good version?",
+    "timestamp": "2025-08-06 16:26:51",
+    "plot1": "plot_archive/e7e0a7d_20250806_162651_plot1.png",
+    "plot2": "plot_archive/e7e0a7d_20250806_162651_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "0520676",
+    "branch": "Aug-5-test",
+    "message": "explore(model-e3): making rising rate for target to go fast than others.",
+    "timestamp": "2025-08-05 17:55:05",
+    "plot1": "plot_archive/0520676_20250805_175505_plot1.png",
+    "plot2": "plot_archive/0520676_20250805_175505_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "798fca7",
+    "branch": "Aug-5-test",
+    "message": "merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'",
+    "timestamp": "2025-08-05 17:41:29",
+    "plot1": "plot_archive/798fca7_20250805_174129_plot1.png",
+    "plot2": "plot_archive/798fca7_20250805_174129_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "7ed5eb5",
     "branch": "main",
     "message": "restore(model-e3): restoring back to jul-17 branch becuase the elimination doesn't work",

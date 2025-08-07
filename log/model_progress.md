@@ -1,5 +1,94 @@
 # Model Progress
 
+## Commit [798fca7](https://github.com/naszhu/REM_E3_model_fixed/commit/798fca7) (branch: `main`)
+**Time:** 2025-08-05 17:41:29  
+**Message:**
+```
+merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'
+
+Because the eliminating doesn't work, I went back to this version
+
+the .json files have been specially edited.  (added to include files changes from all prior commits). Added file changes from aug-3-sideway... branch becuase I can't just accept new neither just use old, so have to manually add them
+```
+![](../plot_archive/798fca7_20250805_174129_plot1.png)  
+![](../plot_archive/798fca7_20250805_174129_plot2.png)  
+
+## Commit [ea16e48](https://github.com/naszhu/REM_E3_model_fixed/commit/ea16e48) (branch: `Aug-5-test`)
+**Time:** 2025-08-07 18:29:58  
+**Message:**
+```
+explore(model-d3): puting threshold_recall = 0,
+
+this makes within-list prediction worse
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ea16e48_20250807_182958_plot1.png)  
+![](../plot_archive/ea16e48_20250807_182958_plot2.png)  
+
+## Commit [e215ede](https://github.com/naszhu/REM_E3_model_fixed/commit/e215ede) (branch: `Aug-5-test`)
+**Time:** 2025-08-06 16:39:41  
+**Message:**
+```
+fix(model-e3): Final test odds forgot to take 1/11
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e215ede_20250806_163941_plot1.png)  
+![](../plot_archive/e215ede_20250806_163941_plot2.png)  
+
+## Commit [e7e0a7d](https://github.com/naszhu/REM_E3_model_fixed/commit/e7e0a7d) (branch: `Aug-5-test`)
+**Time:** 2025-08-06 16:26:51  
+**Message:**
+```
+finetune(model-e3): A good version?
+
+- I thought the products that I sent is good.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e7e0a7d_20250806_162651_plot1.png)  
+![](../plot_archive/e7e0a7d_20250806_162651_plot2.png)  
+
+## Commit [0520676](https://github.com/naszhu/REM_E3_model_fixed/commit/0520676) (branch: `Aug-5-test`)
+**Time:** 2025-08-05 17:55:05  
+**Message:**
+```
+explore(model-e3): making rising rate for target to go fast than others.
+
+- Branch details:  This branch is to test the 2-parameter ideas for switch basing on meeting log Aug-4
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0520676_20250805_175505_plot1.png)  
+![](../plot_archive/0520676_20250805_175505_plot2.png)  
+
+## Commit [798fca7](https://github.com/naszhu/REM_E3_model_fixed/commit/798fca7) (branch: `Aug-5-test`)
+**Time:** 2025-08-05 17:41:29  
+**Message:**
+```
+merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'
+
+Because the eliminating doesn't work, I went back to this version
+
+the .json files have been specially edited.  (added to include files changes from all prior commits). Added file changes from aug-3-sideway... branch becuase I can't just accept new neither just use old, so have to manually add them
+```
+![](../plot_archive/798fca7_20250805_174129_plot1.png)  
+![](../plot_archive/798fca7_20250805_174129_plot2.png)  
+
 ## Commit [7ed5eb5](https://github.com/naszhu/REM_E3_model_fixed/commit/7ed5eb5) (branch: `main`)
 **Time:** 2025-08-05 17:30:47  
 **Message:**
