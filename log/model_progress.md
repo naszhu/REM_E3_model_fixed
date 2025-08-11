@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [4da5858](https://github.com/naszhu/REM_E3_model_fixed/commit/4da5858) (branch: `aug-11`)
+**Time:** 2025-08-07 18:31:33  
+**Message:**
+```
+merge(model-e3): Merge branch 'Aug-5-test'
+```
+![](../plot_archive/4da5858_20250807_183133_plot1.png)  
+![](../plot_archive/4da5858_20250807_183133_plot2.png)  
+
 ## Commit [798fca7](https://github.com/naszhu/REM_E3_model_fixed/commit/798fca7) (branch: `main`)
 **Time:** 2025-08-05 17:41:29  
 **Message:**
