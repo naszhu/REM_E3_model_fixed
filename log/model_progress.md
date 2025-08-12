@@ -1,5 +1,77 @@
 # Model Progress
 
+## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
+**Time:** 2025-08-12 18:40:30  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_chart (5) (2).html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7c13755_20250812_184030_plot1.png)  
+![](../plot_archive/7c13755_20250812_184030_plot2.png)  
+
+## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
+**Time:** 2025-08-12 18:40:30  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_chart (5) (2).html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7c13755_20250812_184030_plot1.png)  
+![](../plot_archive/7c13755_20250812_184030_plot2.png)  
+
+## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
+**Time:** 2025-08-12 18:40:30  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_chart (5) (2).html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7c13755_20250812_184030_plot1.png)  
+![](../plot_archive/7c13755_20250812_184030_plot2.png)  
+
+## Commit [b21648e](https://github.com/naszhu/REM_E3_model_fixed/commit/b21648e) (branch: `aug-11`)
+**Time:** 2025-08-11 20:06:11  
+**Message:**
+```
+explore(model-e3): final test, a relative good v, but problems remain
+
+- OI not bit enough
+
+- BRANCH purpose: do more simulation for initial test and fine-tune final test
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b21648e_20250811_200611_plot1.png)  
+![](../plot_archive/b21648e_20250811_200611_plot2.png)  
+
 ## Commit [9b09fa0](https://github.com/naszhu/REM_E3_model_fixed/commit/9b09fa0) (branch: `aug-11`)
 **Time:** 2025-08-11 19:03:57  
 **Message:**
