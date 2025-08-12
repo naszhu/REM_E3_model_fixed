@@ -1,5 +1,46 @@
 # Model Progress
 
+## Commit [505d5f5](https://github.com/naszhu/REM_E3_model_fixed/commit/505d5f5) (branch: `aug-11`)
+**Time:** 2025-08-12 23:46:18  
+**Message:**
+```
+update(model-e3): strengthen context restoration logic on parameter is_strengthen_contextandcontent
+
+- Increased the number of simulations for final tests from 100 to 1000.
+- Modified the reinstatement context probability from 0.8 to 1.
+- Updated logic in memory restoration functions to ensure context and content strengthening is correctly applied.
+
+Making is_strengthen_contextandcontent to align with E1
+
+Refs naszhu/REM_E3_model_fixed#21
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/505d5f5_20250812_234618_plot1.png)  
+![](../plot_archive/505d5f5_20250812_234618_plot2.png)  
+
+## Commit [9b8cf1b](https://github.com/naszhu/REM_E3_model_fixed/commit/9b8cf1b) (branch: `aug-11`)
+**Time:** 2025-08-12 18:44:02  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_aug12.html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9b8cf1b_20250812_184402_plot1.png)  
+![](../plot_archive/9b8cf1b_20250812_184402_plot2.png)  
+
 ## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
 **Time:** 2025-08-12 18:40:30  
 **Message:**
