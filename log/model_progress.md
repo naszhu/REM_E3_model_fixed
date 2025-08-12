@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [b467152](https://github.com/naszhu/REM_E3_model_fixed/commit/b467152) (branch: `aug-11`)
+**Time:** 2025-08-12 23:46:38  
+**Message:**
+```
+fix(model-e3): strengthen context restoration logic on  parameters
+
+fixed the mismatch between E1 and E3, but it doesn't really change the prediction much at all
+
+- Increased the number of simulations for final tests from 100 to 1000.
+- Modified the reinstatement context probability from 0.8 to 1.
+- Updated logic in memory restoration functions to ensure context and content strengthening is correctly applied.
+
+Making is_strengthen_contextandcontent to align with E1
+
+Refs naszhu/REM_E3_model_fixed#21
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b467152_20250812_234638_plot1.png)  
+![](../plot_archive/b467152_20250812_234638_plot2.png)  
+
 ## Commit [505d5f5](https://github.com/naszhu/REM_E3_model_fixed/commit/505d5f5) (branch: `aug-11`)
 **Time:** 2025-08-12 23:46:18  
 **Message:**
