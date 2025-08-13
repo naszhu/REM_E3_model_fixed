@@ -216,13 +216,9 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
         icount += 1
         #update the list_change_context_features for each list as they go in final test, but this doens't apply to random condi
-        # if (icount !=1) && (condition != :true_random)
-        #     for cf in eachindex(listcg)
-        #         if rand() < p_ListChange_finaltest[icount] #cf.change_probability # this equals p_change
-        #             listcg[cf] = rand(Geometric(g_context)) + 1
-        #         end
-        #     end
-        # end
+        if (icount !=1) && (condition != :true_random)
+            drift_context_during_final_test!(listcg, p_ListChange_finaltest[icount])
+        end
 
 
         # for cf in eachindex(unchangecg)
@@ -288,13 +284,14 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                     # have checked iprobe_chunk here is correctly asigned
 
                     #issue 14, inconsistent prob use
-                    # if (condition != :true_random)
-                    drift_between_lists_final!(listcg, p_ListChange_finaltest[icount])   
-                    # end
+                    drift_between_lists_final!(listcg, p_ListChange_finaltest[iprobe_chunk])
 
                 end   # println("iprobe ",iprobe, " iprobe_chunk ", iprobe_chunk, " flag ", iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries))
 
                 # TODO: check iprobe_chunk correct use here, previously i was using count because i didn't add change into random condition throughout final random condi 
+
+                # Add back probe-level context change for random condition
+                # drift_context_during_final_test!(listcg, p_ListChange_finaltest[iprobe_chunk])
 
                 # for cf in eachindex(unchangecg)
                 #     if rand() < p_driftAndListChange_final_ #cf.change_probability # this equals p_change

@@ -1,5 +1,46 @@
 # Model Progress
 
+## Commit [50efaea](https://github.com/naszhu/REM_E3_model_fixed/commit/50efaea) (branch: `HEAD`)
+**Time:** 2025-08-14 01:15:08  
+**Message:**
+```
+fix(model-e3): refine simulation parameters and add context drift function
+
+BIG BUG on no cotext change , sth happened
+
+- Increased the number of simulations for final tests from 300 to 500.
+- Introduced a new function `drift_context_during_final_test!` to update context features with a specified probability during final tests.
+- Updated the logic in `generate_finalt_probes` to utilize the new context drift function for improved context management.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/50efaea_20250814_011508_plot1.png)  
+![](../plot_archive/50efaea_20250814_011508_plot2.png)  
+
+## Commit [c810676](https://github.com/naszhu/REM_E3_model_fixed/commit/c810676) (branch: `aug-14-test`)
+**Time:** 2025-08-14 00:39:21  
+**Message:**
+```
+merge(model-e3): integrate parameter adjustments and threshold optimizations
+
+Merge branch 'aug-11' into main
+
+- Merged experimental changes from aug-11 branch
+- Updated context copying parameters (nnnow=0.70)
+- Refined criterion thresholds with power transformation
+- Improved z-value calculations for list origin probabilities
+- Enhanced asymptotic value generation for decision thresholds
+
+Ref: https://github.com/naszhu/REM_E3_model_fixed/
+```
+![](../plot_archive/c810676_20250814_003921_plot1.png)  
+![](../plot_archive/c810676_20250814_003921_plot2.png)  
+
 ## Commit [e169187](https://github.com/naszhu/REM_E3_model_fixed/commit/e169187) (branch: `aug-11`)
 **Time:** 2025-08-12 23:48:22  
 **Message:**

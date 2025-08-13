@@ -88,6 +88,23 @@ function drift_between_lists_final!(
             end
         end
     # end
+end
+
+"""
+Context drift during final test - updates context features with probability p_drift
+This function is specifically for final test context changes, separate from study-test drift
+"""
+function drift_context_during_final_test!(
+    context_features::Vector{Int64}, 
+    p_drift::Float64; 
+    g_context::Float64=g_context
+    )::Nothing
+    
+    for i in eachindex(context_features)
+        if rand() < p_drift
+            context_features[i] = rand(Geometric(g_context)) + 1
+        end
+    end
 end  
 
 """

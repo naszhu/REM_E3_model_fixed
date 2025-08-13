@@ -1,5 +1,30 @@
 [
   {
+    "commit": "50efaea",
+    "branch": "HEAD",
+    "message": "fix(model-e3): refine simulation parameters and add context drift function",
+    "timestamp": "2025-08-14 01:15:08",
+    "plot1": "plot_archive/50efaea_20250814_011508_plot1.png",
+    "plot2": "plot_archive/50efaea_20250814_011508_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "c810676",
+    "branch": "aug-14-test",
+    "message": "merge(model-e3): integrate parameter adjustments and threshold optimizations",
+    "timestamp": "2025-08-14 00:39:21",
+    "plot1": "plot_archive/c810676_20250814_003921_plot1.png",
+    "plot2": "plot_archive/c810676_20250814_003921_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "e169187",
     "branch": "aug-11",
     "message": "add(vscode): create settings file for Visual Studio Code with custom theme",
