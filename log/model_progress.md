@@ -1,5 +1,182 @@
 # Model Progress
 
+## Commit [e169187](https://github.com/naszhu/REM_E3_model_fixed/commit/e169187) (branch: `aug-11`)
+**Time:** 2025-08-12 23:48:22  
+**Message:**
+```
+add(vscode): create settings file for Visual Studio Code with custom theme
+
+- Introduced a new settings.json file to configure the workbench color theme and customize UI colors for better visibility and aesthetics.
+```
+**Changed Files:**
+- `.vscode/settings.json`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e169187_20250812_234822_plot1.png)  
+![](../plot_archive/e169187_20250812_234822_plot2.png)  
+
+## Commit [b467152](https://github.com/naszhu/REM_E3_model_fixed/commit/b467152) (branch: `aug-11`)
+**Time:** 2025-08-12 23:46:38  
+**Message:**
+```
+fix(model-e3): strengthen context restoration logic on  parameters
+
+fixed the mismatch between E1 and E3, but it doesn't really change the prediction much at all
+
+- Increased the number of simulations for final tests from 100 to 1000.
+- Modified the reinstatement context probability from 0.8 to 1.
+- Updated logic in memory restoration functions to ensure context and content strengthening is correctly applied.
+
+Making is_strengthen_contextandcontent to align with E1
+
+Refs naszhu/REM_E3_model_fixed#21
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b467152_20250812_234638_plot1.png)  
+![](../plot_archive/b467152_20250812_234638_plot2.png)  
+
+## Commit [505d5f5](https://github.com/naszhu/REM_E3_model_fixed/commit/505d5f5) (branch: `aug-11`)
+**Time:** 2025-08-12 23:46:18  
+**Message:**
+```
+update(model-e3): strengthen context restoration logic on parameter is_strengthen_contextandcontent
+
+- Increased the number of simulations for final tests from 100 to 1000.
+- Modified the reinstatement context probability from 0.8 to 1.
+- Updated logic in memory restoration functions to ensure context and content strengthening is correctly applied.
+
+Making is_strengthen_contextandcontent to align with E1
+
+Refs naszhu/REM_E3_model_fixed#21
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/505d5f5_20250812_234618_plot1.png)  
+![](../plot_archive/505d5f5_20250812_234618_plot2.png)  
+
+## Commit [9b8cf1b](https://github.com/naszhu/REM_E3_model_fixed/commit/9b8cf1b) (branch: `aug-11`)
+**Time:** 2025-08-12 18:44:02  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_aug12.html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9b8cf1b_20250812_184402_plot1.png)  
+![](../plot_archive/9b8cf1b_20250812_184402_plot2.png)  
+
+## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
+**Time:** 2025-08-12 18:40:30  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_chart (5) (2).html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7c13755_20250812_184030_plot1.png)  
+![](../plot_archive/7c13755_20250812_184030_plot2.png)  
+
+## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
+**Time:** 2025-08-12 18:40:30  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_chart (5) (2).html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7c13755_20250812_184030_plot1.png)  
+![](../plot_archive/7c13755_20250812_184030_plot2.png)  
+
+## Commit [7c13755](https://github.com/naszhu/REM_E3_model_fixed/commit/7c13755) (branch: `aug-11`)
+**Time:** 2025-08-12 18:40:30  
+**Message:**
+```
+add(docs): create new documents for research parameters and dataplot
+
+- Added 'Dataplot-e2-aug12.docx' for data visualization.
+- Introduced 'research_parameters_chart (5) (2).html' detailing updated research parameters with structured tables and calculated probabilities.
+```
+**Changed Files:**
+- `docs/Dataplot-e2-aug12.docx`  
+- `docs/research_parameters_chart (5) (2).html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7c13755_20250812_184030_plot1.png)  
+![](../plot_archive/7c13755_20250812_184030_plot2.png)  
+
+## Commit [b21648e](https://github.com/naszhu/REM_E3_model_fixed/commit/b21648e) (branch: `aug-11`)
+**Time:** 2025-08-11 20:06:11  
+**Message:**
+```
+explore(model-e3): final test, a relative good v, but problems remain
+
+- OI not bit enough
+
+- BRANCH purpose: do more simulation for initial test and fine-tune final test
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b21648e_20250811_200611_plot1.png)  
+![](../plot_archive/b21648e_20250811_200611_plot2.png)  
+
+## Commit [9b09fa0](https://github.com/naszhu/REM_E3_model_fixed/commit/9b09fa0) (branch: `aug-11`)
+**Time:** 2025-08-11 19:03:57  
+**Message:**
+```
+finetune(model-e3): A 2000 simulation, good for initial test
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9b09fa0_20250811_190357_plot1.png)  
+![](../plot_archive/9b09fa0_20250811_190357_plot2.png)  
+
+## Commit [4da5858](https://github.com/naszhu/REM_E3_model_fixed/commit/4da5858) (branch: `aug-11`)
+**Time:** 2025-08-07 18:31:33  
+**Message:**
+```
+merge(model-e3): Merge branch 'Aug-5-test'
+```
+![](../plot_archive/4da5858_20250807_183133_plot1.png)  
+![](../plot_archive/4da5858_20250807_183133_plot2.png)  
+
 ## Commit [798fca7](https://github.com/naszhu/REM_E3_model_fixed/commit/798fca7) (branch: `main`)
 **Time:** 2025-08-05 17:41:29  
 **Message:**

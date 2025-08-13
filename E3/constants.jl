@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 100 : 600;
+is_finaltest = true
+n_simulations = is_finaltest ? 300 : 2000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -172,7 +172,7 @@ Ratios of stuff of featuresl; etc
 LLpower = 1 #power of likelihood for changing context, 
 
 # p_poscode_change = 0.1 #this is no need; deleted feature
-p_reinstate_context = 0.8 #stop reinstate after how much features
+p_reinstate_context = 1 #stop reinstate after how much features
 
 p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
@@ -202,15 +202,15 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.2,0.2, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.5,0.5, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
-p_recallFeatureStore = 1.0;
+p_recallFeatureStore = 1.0; #this value is currently abandoned, this is to be used in 
 
-final_gap_change = 0.15; #0.21
-p_ListChange_finaltest = ones(10) * 0.25 #0.1 prob list change for final test
+final_gap_change = 0.16; #0.21
+p_ListChange_finaltest = ones(10) * 0.8 #0.1 prob list change for final test
 
 
 #the advatage of foil in inital test (to make final T prediciton overlap)
@@ -233,12 +233,12 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-criterion_initial = generate_asymptotic_values(1.0, 0.14^power_taken, 0.14^power_taken, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.148^power_taken, 0.148^power_taken, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.24^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.0^power_taken #this value should be bigger a bit than criterion_initial
+recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
 ilist_switch_stop_at = 5; 
