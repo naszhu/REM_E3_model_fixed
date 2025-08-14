@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [9de83ab](https://github.com/naszhu/REM_E3_model_fixed/commit/9de83ab) (branch: `HEAD`)
+**Time:** 2025-08-14 23:42:14  
+**Message:**
+```
+ix(model-e3): fix broken chunk boundary detection causing excessive context drift
+
+- Replace complex findlast() logic with simple previous_chunk tracking
+- Fix causes context drift to trigger only at chunk boundaries (9 times) instead of 432 times
+- Resolves massive interference in final test results
+- Addresses TODO comment about iprobe_chunk correct usage, this to do has been there hanging for so  long.
+
+-  Added a chunk_test.jl file for chunk testing.
+
+Fixes #51: Critical bug that was present for months
+```
+**Changed Files:**
+- `E3/degbug_scr/chunk_test.jl`  
+- `E3/probe_generation.jl`  
+![](../plot_archive/9de83ab_20250814_234214_plot1.png)  
+![](../plot_archive/9de83ab_20250814_234214_plot2.png)  
+
 ## Commit [50efaea](https://github.com/naszhu/REM_E3_model_fixed/commit/50efaea) (branch: `HEAD`)
 **Time:** 2025-08-14 01:15:08  
 **Message:**
