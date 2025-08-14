@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = true
-n_simulations = is_finaltest ? 200 : 2000;
+n_simulations = is_finaltest ? 100 : 2000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
