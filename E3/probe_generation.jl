@@ -285,6 +285,7 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                     #issue 14, inconsistent prob use
                     drift_between_lists_final!(listcg, p_ListChange_finaltest[iprobe_chunk])
+                    drift_between_lists_final!(unchangecg, p_ListChange_finaltest[iprobe_chunk])
 
                 end   # println("iprobe ",iprobe, " iprobe_chunk ", iprobe_chunk, " flag ", iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries))
 
