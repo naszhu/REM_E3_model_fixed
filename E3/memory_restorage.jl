@@ -12,7 +12,7 @@ restore content and/or context, here, context include change,unchange, and posit
 # end
 
 # function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, probetype::Symbol, list_change_features::Vector{Int64}, general_context_features::Vector{Int64}, odds::Float64, likelihood_ratios::Vector{Float64}, simu_i::Int64, initial_testpos::Int64)
-function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, sampling_probabilities::Vector{Float64}, odds::Float64, content_LL_ratios::Vector{Float64})::Nothing
+function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, odds::Float64, content_LL_ratios::Vector{Float64}, sampled_item::Union{EpisodicImage, Nothing})::Nothing
 
 
     if is_onlyaddtrace
@@ -45,17 +45,13 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         
     if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        if sampling_method
-            @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
-            #recall; restore old
-            cdf_each_boral_sets = Categorical(sampling_probabilities)     
-            index_sampled = rand(cdf_each_boral_sets)
-            iimage_tostrenghten = image_pool[index_sampled]
+        if !isnothing(sampled_item)
+            # Use the pre-sampled item
+            iimage_tostrenghten = sampled_item
         else
-            # Pick the image from image_pool with the maximum content_LL_ratios value
-            @assert length(content_LL_ratios) == length(image_pool) "content_LL_ratios and image_pool must have the same length"
-            imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
-            iimage_tostrenghten  = image_pool[imax]
+            # If nothing was sampled, criteria didn't pass, so no restoration should happen
+            # This case should not occur in normal operation since sampling happens before decision logic
+            error("No item was sampled but restoration was attempted. This indicates a logic error.")
         end
     
     end
@@ -123,7 +119,7 @@ end
 
 
 
-function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, sampling_probabilities::Vector{Float64}, odds::Float64, finaltest_pos::Int64,content_LL_ratios::Vector{Float64} )::Nothing
+function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, odds::Float64, finaltest_pos::Int64, content_LL_ratios::Vector{Float64}, sampled_item::Union{EpisodicImage, Nothing})::Nothing
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
@@ -149,17 +145,13 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     # end
     if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
-        if sampling_method
-            @assert length(image_pool) == length(sampling_probabilities) "image_pool and sampling_probabilities should be the same length"
-            #recall; restore old
-            cdf_each_boral_sets = Categorical(sampling_probabilities)     
-            index_sampled = rand(cdf_each_boral_sets)
-            iimage_tostrenghten = image_pool[index_sampled]
+        if !isnothing(sampled_item)
+            # Use the pre-sampled item
+            iimage_tostrenghten = sampled_item
         else
-            # Pick the image from image_pool with the maximum content_LL_ratios value
-            @assert length(content_LL_ratios) == length(image_pool) "content_LL_ratios and image_pool must have the same length"
-            imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
-            iimage_tostrenghten = image_pool[imax]
+            # If nothing was sampled, criteria didn't pass, so no restoration should happen
+            # This case should not occur in normal operation since sampling happens before decision logic
+            error("No item was sampled but restoration was attempted. This indicates a logic error.")
         end
 
     end

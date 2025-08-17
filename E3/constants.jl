@@ -304,6 +304,9 @@ TRUE FALSE
 
 sampling_method = true
 
+# New parameter to control decision logic: true = use sampled item, false = use probe (original behavior)
+use_sampled_item_for_decision = true
+
 #cancle this; this is to combine content and context in frist stage for a test, but figured that it doesn't work at all
 firststg_allctx = false; 
 firststg_allctx2 = false;
