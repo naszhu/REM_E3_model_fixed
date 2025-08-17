@@ -1,5 +1,37 @@
 # Model Progress
 
+## Commit [80e50df](https://github.com/naszhu/REM_E3_model_fixed/commit/80e50df) (branch: `aug-14-test`)
+**Time:** 2025-08-17 16:56:05  
+**Message:**
+```
+fix(model-e3): restructure decision logic and fix bounds errors
+
+- Restructure decision logic to sample items BEFORE making decisions
+- Fix critical bug where decisions were based on probe instead of sampled item
+- Add configurable parameter use_sampled_item_for_decision for backward compatibility
+- Eliminate redundant sampling by passing sampled_item directly to restore functions
+- Fix bounds error caused by list_number 0 accessing negative array indices
+- Clean up restore function logic to handle cases where no item is sampled
+- Maintain identical decision structure while changing only the source of type information
+- Update both probe_evaluation and probe_evaluation2 functions consistently
+
+This fixes the fundamental logical flaw where the model was making decisions
+based on what was being tested rather than what was actually retrieved
+from memory. The new structure ensures decisions are based on sampled
+items while maintaining full backward compatibility.
+
+Closes #53
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/80e50df_20250817_165605_plot1.png)  
+![](../plot_archive/80e50df_20250817_165605_plot2.png)  
+
 ## Commit [4464576](https://github.com/naszhu/REM_E3_model_fixed/commit/4464576) (branch: `aug-14-test`)
 **Time:** 2025-08-17 16:55:44  
 **Message:**
