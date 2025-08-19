@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [8d4dcbb](https://github.com/naszhu/REM_E3_model_fixed/commit/8d4dcbb) (branch: `aug-14-test`)
+**Time:** 2025-08-19 09:29:02  
+**Message:**
+```
+fix(model-e3):  z  value mistaken on type Tn+1
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8d4dcbb_20250819_092902_plot1.png)  
+![](../plot_archive/8d4dcbb_20250819_092902_plot2.png)  
+
 ## Commit [7ab7cb0](https://github.com/naszhu/REM_E3_model_fixed/commit/7ab7cb0) (branch: `aug-14-test`)
 **Time:** 2025-08-17 21:35:17  
 **Message:**
