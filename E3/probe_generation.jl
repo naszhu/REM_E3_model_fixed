@@ -190,6 +190,10 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
     listcg = deepcopy(list_change_context_features)
     unchangecg = deepcopy(unchange_features_ref);
+    
+    # Track previous chunk to detect chunk boundaries
+    previous_chunk = 0
+    
     # num_images = length(studied_pool)
     studyPool_Img_byList = Dict{Int64,Vector{EpisodicImage}}()
     for img in studied_pool
@@ -216,13 +220,9 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
         icount += 1
         #update the list_change_context_features for each list as they go in final test, but this doens't apply to random condi
-        # if (icount !=1) && (condition != :true_random)
-        #     for cf in eachindex(listcg)
-        #         if rand() < p_ListChange_finaltest[icount] #cf.change_probability # this equals p_change
-        #             listcg[cf] = rand(Geometric(g_context)) + 1
-        #         end
-        #     end
-        # end
+        if (icount !=1) && (condition != :true_random)
+            drift_context_during_final_test!(listcg, p_ListChange_finaltest[icount])
+        end
 
 
         # for cf in eachindex(unchangecg)
@@ -268,41 +268,34 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                 # Only make changes at the start of every list (excluding the start of the first list)
                 # Calculate the chunk boundaries dynamically
-                iprobe_chunk_boundaries = cumsum([total_probe_L1 * nItemPerUnit_final * 2; fill(total_probe_Ln * nItemPerUnit_final * 2, 9)])  # First chunk has 15*2*2 items, rest 9 chunks have 12*2*2 items
-
-                # Determine the chunk index for the current probe
+                iprobe_chunk_boundaries = cumsum([total_probe_L1 * nItemPerUnit_final * 2; fill(total_probe_Ln * nItemPerUnit_final * 2, 9)])
                 iprobe_chunk = findfirst(x -> iprobe <= x, iprobe_chunk_boundaries)   
-                # iprobe_chunk = findlast(x -> iprobe > x, iprobe_chunk_boundaries)
+            
                 
                 # println(i)
                 # println("iprobe: ", iprobe)
                 # println("iprobe_chunk_boundaries: ", iprobe_chunk_boundaries)
                 # println([iprobe <= x for x in iprobe_chunk_boundaries])
-                # println(iprobe_chunk)
+                # println("iprobe_chunk: ", iprobe_chunk, " previous_chunk: ", get(previous_chunk, 0, 0))
 
                 ### change listcg based on iprobe_chunk
-                    # only change ctx when listnum>1, do not change at list 1
-                if (iprobe != 1) && (iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries)) && (iprobe_chunk > 1) 
+                # only change ctx when moving to a new chunk (excluding the first chunk)
 
-                    # println("iprobe ", iprobe, " iprobe_chunk ", iprobe_chunk, " flag ")
+                if (iprobe != 1) && (iprobe_chunk > 1) && (iprobe_chunk != previous_chunk)
+
+                    # println("iprobe ", iprobe, " iprobe_chunk ", iprobe_chunk, " flag - CHUNK BOUNDARY DETECTED")
                     # have checked iprobe_chunk here is correctly asigned
 
                     #issue 14, inconsistent prob use
-                    # if (condition != :true_random)
-                    drift_between_lists_final!(listcg, p_ListChange_finaltest[icount])   
-                    # end
+                    drift_between_lists_final!(listcg, p_ListChange_finaltest[iprobe_chunk])
+                    drift_between_lists_final!(unchangecg, 0.02)
 
-                end   # println("iprobe ",iprobe, " iprobe_chunk ", iprobe_chunk, " flag ", iprobe_chunk != findlast(x -> (iprobe - 1) > x, iprobe_chunk_boundaries))
+                end   
+                previous_chunk = iprobe_chunk
 
-                # TODO: check iprobe_chunk correct use here, previously i was using count because i didn't add change into random condition throughout final random condi 
-
-                # for cf in eachindex(unchangecg)
-                #     if rand() < p_driftAndListChange_final_ #cf.change_probability # this equals p_change
-                #         unchangecg[cf] = rand(Geometric(g_context)) + 1
-                #     end
-                # end
-
-            end
+            else
+                error("other conditions not well written")
+            end # end true trandom condition 
 
             global img = nothing  # Initialize img as nothing to refresh its value in each iteration
 

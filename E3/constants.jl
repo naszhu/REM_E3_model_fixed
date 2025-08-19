@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = true
-n_simulations = is_finaltest ? 300 : 2000;
+n_simulations = is_finaltest ? 100 : 2000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -209,7 +209,7 @@ nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
 p_recallFeatureStore = 1.0; #this value is currently abandoned, this is to be used in 
 
-final_gap_change = 0.16; #0.21
+final_gap_change = 0.1; #0.21
 p_ListChange_finaltest = ones(10) * 0.8 #0.1 prob list change for final test
 
 
@@ -280,7 +280,7 @@ how_much_z_f = 0.1
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
 z_time_p_val = Dict(
     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-    Symbol("Tn+1")  => asym_increase_shift(0.03, how_much_z_target, how_fast_z_target, n_lists-1),
+    Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
     :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
     :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
     :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
@@ -303,6 +303,9 @@ TRUE FALSE
 """
 
 sampling_method = true
+
+# New parameter to control decision logic: true = use sampled item, false = use probe (original behavior)
+use_sampled_item_for_decision = false
 
 #cancle this; this is to combine content and context in frist stage for a test, but figured that it doesn't work at all
 firststg_allctx = false; 

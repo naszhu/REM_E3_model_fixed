@@ -56,25 +56,6 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         end
 
 
-        
-        if odds > criterion_initial[i_testpos, ilist_probe] 
-            if odds > recall_odds_threshold
-                if ilist_probe == 1
-                    decision_isold = 1 #if list 1, always recall
-                else
-                    product = get(z_time_p_val, probes[i].image.word.type_specific, zeros(Float64, n_lists-1)) 
-                    # println(product)
-                    # println(ilist_probe)
-                    decision_isold = rand() < product[ilist_probe-1] ? 0 : 1   
-                end
-            else
-                decision_isold = 1
-            end
-        else #if didn't pass, directly judge new
-            decision_isold = 0
-        end
-
-
         diff = 1 / (abs(odds - criterion_initial[i_testpos,ilist_probe]) + 1e-10)
 
         #criterion change by test position
@@ -101,6 +82,52 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         sampling_probabilities = total_sum_LL == 0 ? zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)]
          ################
 
+        # Sample or select item BEFORE decision logic
+        sampled_item = nothing
+        if odds > criterion_initial[i_testpos, ilist_probe] && odds > recall_odds_threshold
+            if sampling_method
+                # Use sampling probabilities
+                cdf_each_boral_sets = Categorical(sampling_probabilities)
+                index_sampled = rand(cdf_each_boral_sets)
+                sampled_item = image_pool_currentlist[index_sampled]
+            else
+                # Pick the image with maximum content_LL_ratios value
+                imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org])
+                sampled_item = image_pool_currentlist[imax]
+            end
+        end
+
+        # Decision logic - same structure but configurable type source
+        if odds > criterion_initial[i_testpos, ilist_probe] 
+            if odds > recall_odds_threshold
+                # Determine which list number and type to use for decision
+                if use_sampled_item_for_decision && !isnothing(sampled_item)
+                    # Use sampled item's list number and type
+                    decision_list_number = sampled_item.list_number
+                    decision_type = sampled_item.word.type_specific
+                else
+                    # Use probe's list number and type (original behavior)
+                    decision_list_number = ilist_probe
+                    decision_type = probes[i].image.word.type_specific
+                end
+                
+                if decision_list_number == 1
+                    decision_isold = 1 #if list 1, always recall
+                elseif decision_list_number > 1
+                    product = get(z_time_p_val, decision_type, zeros(Float64, n_lists-1)) 
+                    decision_isold = rand() < product[decision_list_number-1] ? 0 : 1   
+                else
+                    # For list 0 or other invalid cases, default to new
+                    error("List number mistaken initial")
+                    decision_isold = 0
+                end
+            else
+                decision_isold = 1
+            end
+        else #if didn't pass, directly judge new
+            decision_isold = 0
+        end
+
         for j in eachindex(unique_list_numbers)
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
             nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (content_LL_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
@@ -119,7 +146,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
     
 
         if is_restore_initial
-            restore_intest(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds, content_LL_ratios_org)  
+            restore_intest(image_pool, probes[i].image, decision_isold, odds, content_LL_ratios_org, sampled_item)  
         end
 
         # println("i, $i, i_testpos, $i_testpos")
@@ -166,9 +193,6 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         
         criterion_final_i = criterion_final[currchunk] #this need to be changed if 
         
-        decision_isold = odds > criterion_final_i ? 1 : 0;
-
-        
         ############### Add new sampling LL preparing lines
         filtered_content_LL_ratios_inOriginalLength = content_LL_ratios_org |> x -> map(e -> e == 344523466743 ? 0 : e, x)
 
@@ -182,6 +206,29 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         sampling_probabilities = total_sum_LL == 0 ? 
             zeros(length(filtered_content_LL_ratios_inOriginalLength_to_11thpower)) : 
             [filtered_content_LL_ratios_inOriginalLength_to_11thpower[i_LL_proportion] ./ total_sum_LL  for i_LL_proportion in eachindex(filtered_content_LL_ratios_inOriginalLength_to_11thpower)];
+
+        # Sample or select item BEFORE decision logic for final test
+        sampled_item = nothing
+        if odds > criterion_final_i && odds > recall_odds_threshold
+            if sampling_method
+                # Use sampling probabilities
+                cdf_each_boral_sets = Categorical(sampling_probabilities)
+                index_sampled = rand(cdf_each_boral_sets)
+                sampled_item = image_pool[index_sampled]
+            else
+                # Pick the image with maximum content_LL_ratios value
+                imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org])
+                sampled_item = image_pool[imax]
+            end
+        end
+
+        # Decision logic for final test - same structure but configurable type source
+        
+        if odds > criterion_final_i
+            decision_isold = 1
+        else #if didn't pass, directly judge new
+            decision_isold = 0
+        end
 
         # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
@@ -211,7 +258,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         if is_restore_final
 
             #Issue 12
-            restore_intest_final(image_pool, probes[i].image, decision_isold, sampling_probabilities, odds, i, content_LL_ratios_org);  #have to pass final testpos 
+            restore_intest_final(image_pool, probes[i].image, decision_isold, odds, i, content_LL_ratios_org, sampled_item);  #have to pass final testpos 
         end
     end
 

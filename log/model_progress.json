@@ -1,5 +1,123 @@
 [
   {
+    "commit": "c810676",
+    "branch": "main",
+    "message": "merge(model-e3): integrate parameter adjustments and threshold optimizations",
+    "timestamp": "2025-08-14 00:39:21",
+    "plot1": "plot_archive/c810676_20250814_003921_plot1.png",
+    "plot2": "plot_archive/c810676_20250814_003921_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "8d4dcbb",
+    "branch": "aug-14-test",
+    "message": "fix(model-e3):  z  value mistaken on type Tn+1",
+    "timestamp": "2025-08-19 09:29:02",
+    "plot1": "plot_archive/8d4dcbb_20250819_092902_plot1.png",
+    "plot2": "plot_archive/8d4dcbb_20250819_092902_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "7ab7cb0",
+    "branch": "aug-14-test",
+    "message": "chore(model-e3): Have tested on use_sample_for_decison = false, seems to be good",
+    "timestamp": "2025-08-17 21:35:17",
+    "plot1": "plot_archive/7ab7cb0_20250817_213517_plot1.png",
+    "plot2": "plot_archive/7ab7cb0_20250817_213517_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "80e50df",
+    "branch": "aug-14-test",
+    "message": "fix(model-e3): restructure decision logic and fix bounds errors",
+    "timestamp": "2025-08-17 16:56:05",
+    "plot1": "plot_archive/80e50df_20250817_165605_plot1.png",
+    "plot2": "plot_archive/80e50df_20250817_165605_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "4464576",
+    "branch": "aug-14-test",
+    "message": "fix(model-e3): restructure decision logic and fix bounds errors",
+    "timestamp": "2025-08-17 16:55:44",
+    "plot1": "plot_archive/4464576_20250817_165544_plot1.png",
+    "plot2": "plot_archive/4464576_20250817_165544_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "893d5ae",
+    "branch": "aug-14-test",
+    "message": "finetune(model-e3): Change UC change in final - give a good OI after bug fixed",
+    "timestamp": "2025-08-15 00:20:14",
+    "plot1": "plot_archive/893d5ae_20250815_002014_plot1.png",
+    "plot2": "plot_archive/893d5ae_20250815_002014_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl"
+    ]
+  },
+  {
+    "commit": "9de83ab",
+    "branch": "HEAD",
+    "message": "ix(model-e3): fix broken chunk boundary detection causing excessive context drift",
+    "timestamp": "2025-08-14 23:42:14",
+    "plot1": "plot_archive/9de83ab_20250814_234214_plot1.png",
+    "plot2": "plot_archive/9de83ab_20250814_234214_plot2.png",
+    "changed_files": [
+      "E3/degbug_scr/chunk_test.jl",
+      "E3/probe_generation.jl"
+    ]
+  },
+  {
+    "commit": "50efaea",
+    "branch": "HEAD",
+    "message": "fix(model-e3): refine simulation parameters and add context drift function",
+    "timestamp": "2025-08-14 01:15:08",
+    "plot1": "plot_archive/50efaea_20250814_011508_plot1.png",
+    "plot2": "plot_archive/50efaea_20250814_011508_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "c810676",
+    "branch": "aug-14-test",
+    "message": "merge(model-e3): integrate parameter adjustments and threshold optimizations",
+    "timestamp": "2025-08-14 00:39:21",
+    "plot1": "plot_archive/c810676_20250814_003921_plot1.png",
+    "plot2": "plot_archive/c810676_20250814_003921_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "e169187",
     "branch": "aug-11",
     "message": "add(vscode): create settings file for Visual Studio Code with custom theme",

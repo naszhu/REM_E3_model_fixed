@@ -1,5 +1,193 @@
 # Model Progress
 
+## Commit [c810676](https://github.com/naszhu/REM_E3_model_fixed/commit/c810676) (branch: `main`)
+**Time:** 2025-08-14 00:39:21  
+**Message:**
+```
+merge(model-e3): integrate parameter adjustments and threshold optimizations
+
+Merge branch 'aug-11' into main
+
+- Merged experimental changes from aug-11 branch
+- Updated context copying parameters (nnnow=0.70)
+- Refined criterion thresholds with power transformation
+- Improved z-value calculations for list origin probabilities
+- Enhanced asymptotic value generation for decision thresholds
+
+Ref: https://github.com/naszhu/REM_E3_model_fixed/
+```
+![](../plot_archive/c810676_20250814_003921_plot1.png)  
+![](../plot_archive/c810676_20250814_003921_plot2.png)  
+
+## Commit [8d4dcbb](https://github.com/naszhu/REM_E3_model_fixed/commit/8d4dcbb) (branch: `aug-14-test`)
+**Time:** 2025-08-19 09:29:02  
+**Message:**
+```
+fix(model-e3):  z  value mistaken on type Tn+1
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8d4dcbb_20250819_092902_plot1.png)  
+![](../plot_archive/8d4dcbb_20250819_092902_plot2.png)  
+
+## Commit [7ab7cb0](https://github.com/naszhu/REM_E3_model_fixed/commit/7ab7cb0) (branch: `aug-14-test`)
+**Time:** 2025-08-17 21:35:17  
+**Message:**
+```
+chore(model-e3): Have tested on use_sample_for_decison = false, seems to be good
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7ab7cb0_20250817_213517_plot1.png)  
+![](../plot_archive/7ab7cb0_20250817_213517_plot2.png)  
+
+## Commit [80e50df](https://github.com/naszhu/REM_E3_model_fixed/commit/80e50df) (branch: `aug-14-test`)
+**Time:** 2025-08-17 16:56:05  
+**Message:**
+```
+fix(model-e3): restructure decision logic and fix bounds errors
+
+- Restructure decision logic to sample items BEFORE making decisions
+- Fix critical bug where decisions were based on probe instead of sampled item
+- Add configurable parameter use_sampled_item_for_decision for backward compatibility
+- Eliminate redundant sampling by passing sampled_item directly to restore functions
+- Fix bounds error caused by list_number 0 accessing negative array indices
+- Clean up restore function logic to handle cases where no item is sampled
+- Maintain identical decision structure while changing only the source of type information
+- Update both probe_evaluation and probe_evaluation2 functions consistently
+
+This fixes the fundamental logical flaw where the model was making decisions
+based on what was being tested rather than what was actually retrieved
+from memory. The new structure ensures decisions are based on sampled
+items while maintaining full backward compatibility.
+
+Closes #53
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/80e50df_20250817_165605_plot1.png)  
+![](../plot_archive/80e50df_20250817_165605_plot2.png)  
+
+## Commit [4464576](https://github.com/naszhu/REM_E3_model_fixed/commit/4464576) (branch: `aug-14-test`)
+**Time:** 2025-08-17 16:55:44  
+**Message:**
+```
+fix(model-e3): restructure decision logic and fix bounds errors
+
+- Restructure decision logic to sample items BEFORE making decisions
+- Fix critical bug where decisions were based on probe instead of sampled item
+- Add configurable parameter use_sampled_item_for_decision for backward compatibility
+- Eliminate redundant sampling by passing sampled_item directly to restore functions
+- Fix bounds error caused by list_number 0 accessing negative array indices
+- Clean up restore function logic to handle cases where no item is sampled
+- Maintain identical decision structure while changing only the source of type information
+- Update both probe_evaluation and probe_evaluation2 functions consistently
+
+This fixes the fundamental logical flaw where the model was making decisions
+based on what was being tested rather than what was actually retrieved
+from memory. The new structure ensures decisions are based on sampled
+items while maintaining full backward compatibility.
+
+Closes #53
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4464576_20250817_165544_plot1.png)  
+![](../plot_archive/4464576_20250817_165544_plot2.png)  
+
+## Commit [893d5ae](https://github.com/naszhu/REM_E3_model_fixed/commit/893d5ae) (branch: `aug-14-test`)
+**Time:** 2025-08-15 00:20:14  
+**Message:**
+```
+finetune(model-e3): Change UC change in final - give a good OI after bug fixed
+
+- Reduced the number of simulations for final tests from 200 to 100 for efficiency.
+- Updated the context drift parameter in `generate_finalt_probes` from 0.001 to 0.02 to enhance feature management during final tests.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+![](../plot_archive/893d5ae_20250815_002014_plot1.png)  
+![](../plot_archive/893d5ae_20250815_002014_plot2.png)  
+
+## Commit [9de83ab](https://github.com/naszhu/REM_E3_model_fixed/commit/9de83ab) (branch: `HEAD`)
+**Time:** 2025-08-14 23:42:14  
+**Message:**
+```
+ix(model-e3): fix broken chunk boundary detection causing excessive context drift
+
+- Replace complex findlast() logic with simple previous_chunk tracking
+- Fix causes context drift to trigger only at chunk boundaries (9 times) instead of 432 times
+- Resolves massive interference in final test results
+- Addresses TODO comment about iprobe_chunk correct usage, this to do has been there hanging for so  long.
+
+-  Added a chunk_test.jl file for chunk testing.
+
+Fixes #51: Critical bug that was present for months
+```
+**Changed Files:**
+- `E3/degbug_scr/chunk_test.jl`  
+- `E3/probe_generation.jl`  
+![](../plot_archive/9de83ab_20250814_234214_plot1.png)  
+![](../plot_archive/9de83ab_20250814_234214_plot2.png)  
+
+## Commit [50efaea](https://github.com/naszhu/REM_E3_model_fixed/commit/50efaea) (branch: `HEAD`)
+**Time:** 2025-08-14 01:15:08  
+**Message:**
+```
+fix(model-e3): refine simulation parameters and add context drift function
+
+BIG BUG on no cotext change , sth happened
+
+- Increased the number of simulations for final tests from 300 to 500.
+- Introduced a new function `drift_context_during_final_test!` to update context features with a specified probability during final tests.
+- Updated the logic in `generate_finalt_probes` to utilize the new context drift function for improved context management.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/50efaea_20250814_011508_plot1.png)  
+![](../plot_archive/50efaea_20250814_011508_plot2.png)  
+
+## Commit [c810676](https://github.com/naszhu/REM_E3_model_fixed/commit/c810676) (branch: `aug-14-test`)
+**Time:** 2025-08-14 00:39:21  
+**Message:**
+```
+merge(model-e3): integrate parameter adjustments and threshold optimizations
+
+Merge branch 'aug-11' into main
+
+- Merged experimental changes from aug-11 branch
+- Updated context copying parameters (nnnow=0.70)
+- Refined criterion thresholds with power transformation
+- Improved z-value calculations for list origin probabilities
+- Enhanced asymptotic value generation for decision thresholds
+
+Ref: https://github.com/naszhu/REM_E3_model_fixed/
+```
+![](../plot_archive/c810676_20250814_003921_plot1.png)  
+![](../plot_archive/c810676_20250814_003921_plot2.png)  
+
 ## Commit [e169187](https://github.com/naszhu/REM_E3_model_fixed/commit/e169187) (branch: `aug-11`)
 **Time:** 2025-08-12 23:48:22  
 **Message:**
