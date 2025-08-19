@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [7ab7cb0](https://github.com/naszhu/REM_E3_model_fixed/commit/7ab7cb0) (branch: `aug-14-test`)
+**Time:** 2025-08-17 21:35:17  
+**Message:**
+```
+chore(model-e3): Have tested on use_sample_for_decison = false, seems to be good
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7ab7cb0_20250817_213517_plot1.png)  
+![](../plot_archive/7ab7cb0_20250817_213517_plot2.png)  
+
 ## Commit [80e50df](https://github.com/naszhu/REM_E3_model_fixed/commit/80e50df) (branch: `aug-14-test`)
 **Time:** 2025-08-17 16:56:05  
 **Message:**

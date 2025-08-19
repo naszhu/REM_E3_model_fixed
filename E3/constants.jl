@@ -280,7 +280,7 @@ how_much_z_f = 0.1
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
 z_time_p_val = Dict(
     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-    Symbol("Tn+1")  => asym_increase_shift(0.03, how_much_z_target, how_fast_z_target, n_lists-1),
+    Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
     :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
     :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
     :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
