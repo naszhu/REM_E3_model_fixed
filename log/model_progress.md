@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [f0af48f](https://github.com/naszhu/REM_E3_model_fixed/commit/f0af48f) (branch: `aug-20-newfeat`)
+**Time:** 2025-08-19 09:31:48  
+**Message:**
+```
+merge(model-e3): refine decision logic and enhance context management
+
+- Restructured [decision logic] to sample items before making decisions, ensuring that the model uses the correct context.
+- Introduced a new parameter `use_sampled_item_for_decision` for backward compatibility.
+- Fixed bounds errors related to list number access and cleaned up restore function logic.
+- Added a new function `drift_context_during_final_test!` to manage context changes during final tests.
+- Updated simulation parameters for final tests, reducing the number of simulations for efficiency.
+
+This commit addresses critical bugs and improves the overall decision-making process in the model.
+```
+![](../plot_archive/f0af48f_20250819_093148_plot1.png)  
+![](../plot_archive/f0af48f_20250819_093148_plot2.png)  
+
 ## Commit [c810676](https://github.com/naszhu/REM_E3_model_fixed/commit/c810676) (branch: `main`)
 **Time:** 2025-08-14 00:39:21  
 **Message:**
