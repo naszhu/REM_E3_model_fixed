@@ -1,5 +1,22 @@
 [
   {
+    "commit": "08d428d",
+    "branch": "aug-20-newfeat",
+    "message": "feat(model-e3): content drift replace UC drift",
+    "timestamp": "2025-08-21 19:36:34",
+    "plot1": "plot_archive/08d428d_20250821_193634_plot1.png",
+    "plot2": "plot_archive/08d428d_20250821_193634_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/issue_body.txt",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "f0af48f",
     "branch": "aug-20-newfeat",
     "message": "merge(model-e3): refine decision logic and enhance context management",
