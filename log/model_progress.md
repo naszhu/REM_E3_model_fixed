@@ -1,5 +1,37 @@
 # Model Progress
 
+## Commit [f2e29b7](https://github.com/naszhu/REM_E3_model_fixed/commit/f2e29b7) (branch: `aug-23-new-test`)
+**Time:** 2025-08-23 21:23:00  
+**Message:**
+```
+feat(model-e3): introduce OT feature for enhanced decision-making and memory updates
+
+- Added an OT feature to track whether items have been tested before, influencing decision logic during evaluations.
+- Updated feature generation to include the OT feature in both study lists and probes.
+- Implemented functions to manage OT feature updates during memory restoration and strengthening processes.
+- Adjusted decision logic to utilize the OT feature for improved accuracy in determining item status.
+
+These changes aim to refine the model's memory management and enhance the decision-making process by incorporating additional contextual information.
+
+Refs OT add #54
+Closes #55
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f2e29b7_20250823_212300_plot1.png)  
+![](../plot_archive/f2e29b7_20250823_212300_plot2.png)  
+
 ## Commit [7780739](https://github.com/naszhu/REM_E3_model_fixed/commit/7780739) (branch: `aug-23-new-test`)
 **Time:** 2025-08-23 19:28:53  
 **Message:**

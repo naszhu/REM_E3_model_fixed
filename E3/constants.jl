@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 1000;
+n_simulations = is_finaltest ? 100 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -149,7 +149,7 @@ u_star_v = 0.046
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
-
+u_star_adv = 0# 0.06
 #: nospecialty for first list right now
 #the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
@@ -163,6 +163,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
 nnnow=0.70
+c_adv = 0#0.06
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
 c_storeintest = c
@@ -288,16 +289,16 @@ how_fast_z = 0.4
 how_fast_z_target = 0.8
 how_much_z_f = 0.1
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
-z_time_p_val = Dict(
-    :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-    Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-    :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
-    :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
-    :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
-    Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
-    :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
-)
-println("z_time_p_val: ", z_time_p_val)
+# z_time_p_val = Dict(
+#     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+#     Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+#     :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
+#     :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
+#     :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
+#     Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
+#     :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
+# )
+# println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
