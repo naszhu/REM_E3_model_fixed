@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
-n_simulations = is_finaltest ? 100 : 2000;
+is_finaltest = false
+n_simulations = is_finaltest ? 100 : 1000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -177,9 +177,9 @@ p_reinstate_context = 1 #stop reinstate after how much features
 p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
-const p_driftAndListChange = 0.03; # used for both of two n below
+const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 14) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
@@ -329,7 +329,9 @@ const is_store_mismatch = true; #if mismatched value is restored during test
 is_restore_initial = true # flag check 
 is_restore_final = true#followed by the next
 
-is_UnchangeCtxDriftAndReinstate = true
+is_UnchangeCtxDriftAndReinstate = false
+is_content_drift_between_study_and_test = true; # use content drift between study and test
+
 is_onlyaddtrace_final = false
 
 

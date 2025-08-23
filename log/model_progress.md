@@ -1,5 +1,60 @@
 # Model Progress
 
+## Commit [654fc84](https://github.com/naszhu/REM_E3_model_fixed/commit/654fc84) (branch: `aug-20-newfeat`)
+**Time:** 2025-08-21 19:41:44  
+**Message:**
+```
+explore(model-e3): 1000 simuation
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/654fc84_20250821_194144_plot1.png)  
+![](../plot_archive/654fc84_20250821_194144_plot2.png)  
+
+## Commit [08d428d](https://github.com/naszhu/REM_E3_model_fixed/commit/08d428d) (branch: `aug-20-newfeat`)
+**Time:** 2025-08-21 19:36:34  
+**Message:**
+```
+feat(model-e3): content drift replace UC drift
+
+- Set `is_finaltest` to false and adjusted `n_simulations` to 500 for improved testing efficiency.
+- Renamed `context_features` to `context_or_content_features` in `drift_ctx_betweenStudyAndTest!` function for clarity.
+- Introduced `is_content_drift_between_study_and_test` flag to manage content drift during simulations.
+- Updated logic in `simulate_rem` to incorporate new content drift functionality, ensuring better context management during tests.
+
+These changes aim to refine the simulation process and enhance the model's handling of context drift.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/issue_body.txt`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/08d428d_20250821_193634_plot1.png)  
+![](../plot_archive/08d428d_20250821_193634_plot2.png)  
+
+## Commit [f0af48f](https://github.com/naszhu/REM_E3_model_fixed/commit/f0af48f) (branch: `aug-20-newfeat`)
+**Time:** 2025-08-19 09:31:48  
+**Message:**
+```
+merge(model-e3): refine decision logic and enhance context management
+
+- Restructured [decision logic] to sample items before making decisions, ensuring that the model uses the correct context.
+- Introduced a new parameter `use_sampled_item_for_decision` for backward compatibility.
+- Fixed bounds errors related to list number access and cleaned up restore function logic.
+- Added a new function `drift_context_during_final_test!` to manage context changes during final tests.
+- Updated simulation parameters for final tests, reducing the number of simulations for efficiency.
+
+This commit addresses critical bugs and improves the overall decision-making process in the model.
+```
+![](../plot_archive/f0af48f_20250819_093148_plot1.png)  
+![](../plot_archive/f0af48f_20250819_093148_plot2.png)  
+
 ## Commit [c810676](https://github.com/naszhu/REM_E3_model_fixed/commit/c810676) (branch: `main`)
 **Time:** 2025-08-14 00:39:21  
 **Message:**

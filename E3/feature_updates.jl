@@ -21,16 +21,14 @@ end
 # this and the following function might could be renamed, and they essentially are the same.. but I'll leave that optimization for later change.......
 # the following and the one next to that is just replace feature with certain prob, with or without n steps
 function drift_ctx_betweenStudyAndTest!(
-    context_features::Vector{Int64}, 
+    context_or_content_features::Vector{Int64}, 
     probability::Float64, 
     distribution::Distribution
-
     )::Nothing
 
-    
-    for cf in eachindex(context_features)
+    for cf in eachindex(context_or_content_features)
         if rand() < probability
-            context_features[cf] = rand(distribution) + 1
+            context_or_content_features[cf] = rand(distribution) + 1
         end
     end
 end
