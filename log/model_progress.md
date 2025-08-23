@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [654fc84](https://github.com/naszhu/REM_E3_model_fixed/commit/654fc84) (branch: `aug-20-newfeat`)
+**Time:** 2025-08-21 19:41:44  
+**Message:**
+```
+explore(model-e3): 1000 simuation
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/654fc84_20250821_194144_plot1.png)  
+![](../plot_archive/654fc84_20250821_194144_plot2.png)  
+
 ## Commit [08d428d](https://github.com/naszhu/REM_E3_model_fixed/commit/08d428d) (branch: `aug-20-newfeat`)
 **Time:** 2025-08-21 19:36:34  
 **Message:**

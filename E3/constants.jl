@@ -179,7 +179,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 14) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
