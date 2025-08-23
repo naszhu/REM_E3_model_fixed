@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [7780739](https://github.com/naszhu/REM_E3_model_fixed/commit/7780739) (branch: `aug-23-new-test`)
+**Time:** 2025-08-23 19:28:53  
+**Message:**
+```
+merge(model-e3): replace UC drift in to content drift. Merge branch 'aug-20-newfeat'
+```
+![](../plot_archive/7780739_20250823_192853_plot1.png)  
+![](../plot_archive/7780739_20250823_192853_plot2.png)  
+
 ## Commit [654fc84](https://github.com/naszhu/REM_E3_model_fixed/commit/654fc84) (branch: `aug-20-newfeat`)
 **Time:** 2025-08-21 19:41:44  
 **Message:**

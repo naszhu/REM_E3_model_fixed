@@ -129,7 +129,7 @@ function add_features_from_empty!(target_features::Vector{Int}, probe_features::
             target_features[i] = rand() < u_star ? (rand() < c_param ? probe_features[i] : rand(Geometric(g_param)) + 1) : j
         end
     end
-
+    return nothing
 end
 
 
@@ -170,11 +170,73 @@ function restore_features!(target_features::Vector{Int}, source_features::Vector
             # end
             #is_store_mismatch is false now so no mismatch stored
             if (current_value === 0) 
-                target_features[i] = rand() < u_star_now[1]+0.06 ? (rand() < c_usenow[1]+0.1 ? source_value : rand(Geometric(g_context)) + 1) : current_value
+                target_features[i] = rand() < u_star_now[1]+0.06 ? (rand() < c_usenow[1]+0.06 ? source_value : rand(Geometric(g_context)) + 1) : current_value
             end
 
             
         end 
     end # for _ in 1:n_units_time_restore
     # end
+    return nothing
+end
+
+# =============================================================================
+# OT Feature Update Functions
+# =============================================================================
+
+"""
+Directly set the OT feature (tested before) to a specific value
+"""
+function update_ot_feature!(word::Word, value::Int64)::Nothing
+    if length(word.word_features) >= tested_before_feature_pos
+        word.word_features[tested_before_feature_pos] = value
+    end
+    return nothing
+end
+
+"""
+Update OT feature during strengthening process with probability κs
+"""
+function update_ot_feature_strengthen!(word::Word)::Nothing
+    if length(word.word_features) >= tested_before_feature_pos
+        if word.word_features[tested_before_feature_pos] == 0 && rand() < κs
+            word.word_features[tested_before_feature_pos] = 1
+        end
+    end
+    return nothing
+end
+
+"""
+Update OT feature when adding traces during strengthening with probability κb
+"""
+function update_ot_feature_add_trace_strengthen!(word::Word)::Nothing
+    if length(word.word_features) >= tested_before_feature_pos
+        if word.word_features[tested_before_feature_pos] == 0 && rand() < κb
+            word.word_features[tested_before_feature_pos] = 1
+        end
+    end
+    return nothing
+end
+
+"""
+Update OT feature when adding traces without strengthening with probability κt
+"""
+function update_ot_feature_add_trace_only!(word::Word)::Nothing
+    if length(word.word_features) >= tested_before_feature_pos
+        if word.word_features[tested_before_feature_pos] == 0 && rand() < κt
+            word.word_features[tested_before_feature_pos] = 1
+        end
+    end
+    return nothing
+end
+
+"""
+Get the current value of the OT feature
+"""
+function get_ot_feature_value(word::Word)::Int64
+    if length(word.word_features) >= tested_before_feature_pos
+        return word.word_features[tested_before_feature_pos]
+    else
+        return 0
+    end
 end

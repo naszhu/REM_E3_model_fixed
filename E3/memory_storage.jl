@@ -11,7 +11,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
     new_image = EpisodicImage(
         #word
         Word(word.item_code, 
-            zeros(Int64, length(word.word_features)), 
+            zeros(Int64, w_word + 1),  # Always 25 features (24 normal + 1 OT)
             word.type_general, 
             word.type_specific,
             word.initial_studypos,

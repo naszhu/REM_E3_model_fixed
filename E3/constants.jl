@@ -129,7 +129,17 @@ Geometric parameters
 w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
-w_word = 23;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
+# Word features configuration
+
+w_word = 24  # number of normal word features (always 24)
+# OT feature (tested before) configuration
+n_ot_features = 1  # number of OT features to add
+const tested_before_feature_pos = w_word + n_ot_features  # position of OT feature (25)
+
+# Kappa parameters for OT feature updates
+const κs = 0.8  # kappa for strengthening items (after passing recall threshold)
+const κb = 0.9  # kappa for adding traces when item IS being strengthened
+const κt = 0.7  # kappa for adding traces when item is NOT being strengthened (pure addition) 
 
 const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
@@ -301,6 +311,7 @@ println("z_time_p_val: ", z_time_p_val)
 """
 TRUE FALSE
 """
+use_ot_feature = true  # flag to enable/disable OT feature
 
 sampling_method = true
 

@@ -46,8 +46,8 @@ include("constants.jl")
 
 a = [1 1 1; 1 1 1]
 
-include("feature_updates.jl")
 include("data_structures.jl")
+include("feature_updates.jl")
 
 include("feature_generation.jl")
 
