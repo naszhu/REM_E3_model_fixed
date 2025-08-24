@@ -139,16 +139,16 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # Kappa parameters for OT feature updates - using asymptotic functions like z parameters
 # κs: Probability of INCORRECT test information (decreasing function)
 κs_base = 0.0       # starting value for list 1 (no incorrect info yet)
-κs_asymptote = 0.5 # asymptotic value (floor near 0.05)
+κs_asymptote = 0.4 # asymptotic value (floor near 0.05)
 κs_rate = 5.0       # how fast κs decreases to asymptote
 
 # κb: Probability of adding traces during strengthening (increasing function)
-κb_base = 0.1       # starting value for adding traces during strengthening
+κb_base = 0.5       # starting value for adding traces during strengthening
 κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
 κb_rate =5.0       # how fast κb approaches asymptote
 
 # κt: Probability of adding traces without strengthening (increasing function)
-κt_base = 0.1       # starting value for adding traces without strengthening
+κt_base = 0.5       # starting value for adding traces without strengthening
 κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
 κt_rate = 5.0      # how fast κt approaches asymptote
 
@@ -177,12 +177,13 @@ const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star_v = 0.1
+u_star_v = 0.046
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 (1-(1-u_star_v)^n_units_time)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 u_star_adv = 0# 0.06
+1-(1-(u_star_v + u_star_adv))^n_units_time
 #: nospecialty for first list right now
 #the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
@@ -195,7 +196,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.70
+nnnow=0.8
 c_adv = 0#0.06
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")

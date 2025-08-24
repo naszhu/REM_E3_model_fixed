@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [b34c8a6](https://github.com/naszhu/REM_E3_model_fixed/commit/b34c8a6) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 19:42:16  
+**Message:**
+```
+explore(model-e3): adjust u_star_v parameter for improved model dynamics
+
+- Increased the value of `u_star_v` from 0.06 to 0.1 to enhance the model's adaptability.
+- Updated the calculation of `u_star` to reflect the new `u_star_v` value, ensuring consistency in model behavior.
+
+These changes aim to refine the model's performance by optimizing the parameter settings.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b34c8a6_20250824_194216_plot1.png)  
+![](../plot_archive/b34c8a6_20250824_194216_plot2.png)  
+
 ## Commit [4661491](https://github.com/naszhu/REM_E3_model_fixed/commit/4661491) (branch: `aug-23-new-test`)
 **Time:** 2025-08-24 19:33:24  
 **Message:**
