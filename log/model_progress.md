@@ -1,5 +1,78 @@
 # Model Progress
 
+## Commit [5c90a04](https://github.com/naszhu/REM_E3_model_fixed/commit/5c90a04) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 21:03:39  
+**Message:**
+```
+fix(model-e3): previous use of ks is wrong
+
+ks should be used for studying item but not for test, and kb is used for strengthening for both,
+
+- Introduced a flag `use_ot_feature` to enable or disable the OT feature functionality across various functions.
+- Updated `add_features_from_empty!`, `restore_features!`, and `update_ot_feature` functions to incorporate list number handling for dynamic kappa value selection.
+- Modified decision logic in `probe_evaluation` to utilize the OT feature only when enabled, ensuring fallback logic is in place when the feature is disabled.
+- Adjusted related functions to maintain consistency in handling the OT feature during memory restoration and strengthening processes.
+
+These changes aim to improve the model's adaptability and decision-making accuracy by refining the integration of the OT feature.
+
+This updates issue #54 as well
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5c90a04_20250824_210339_plot1.png)  
+![](../plot_archive/5c90a04_20250824_210339_plot2.png)  
+
+## Commit [21fe52e](https://github.com/naszhu/REM_E3_model_fixed/commit/21fe52e) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 21:03:21  
+**Message:**
+```
+enhance(model-e3): integrate OT feature handling in memory updates and evaluations
+
+- Introduced a flag `use_ot_feature` to enable or disable the OT feature functionality across various functions.
+- Updated `add_features_from_empty!`, `restore_features!`, and `update_ot_feature` functions to incorporate list number handling for dynamic kappa value selection.
+- Modified decision logic in `probe_evaluation` to utilize the OT feature only when enabled, ensuring fallback logic is in place when the feature is disabled.
+- Adjusted related functions to maintain consistency in handling the OT feature during memory restoration and strengthening processes.
+
+These changes aim to improve the model's adaptability and decision-making accuracy by refining the integration of the OT feature.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/21fe52e_20250824_210321_plot1.png)  
+![](../plot_archive/21fe52e_20250824_210321_plot2.png)  
+
+## Commit [caf263c](https://github.com/naszhu/REM_E3_model_fixed/commit/caf263c) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 20:04:36  
+**Message:**
+```
+explore(model-e3): c to 0.8, ks, kb change lower
+
+- Decreased `κs_asymptote` from 0.5 to 0.4 to refine the probability of incorrect test information.
+- Increased `κb_base` and `κt_base` from 0.1 to 0.5 to enhance the probability of adding traces during strengthening and without strengthening.
+- Adjusted `u_star_v` from 0.1 to 0.046 to optimize model dynamics.
+- Increased `nnnow` from 0.7 to 0.8 to improve context copying parameters.
+
+These changes aim to enhance the model's adaptability and performance by fine-tuning critical parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/caf263c_20250824_200436_plot1.png)  
+![](../plot_archive/caf263c_20250824_200436_plot2.png)  
+
 ## Commit [b34c8a6](https://github.com/naszhu/REM_E3_model_fixed/commit/b34c8a6) (branch: `aug-23-new-test`)
 **Time:** 2025-08-24 19:42:16  
 **Message:**

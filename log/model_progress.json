@@ -1,5 +1,53 @@
 [
   {
+    "commit": "5c90a04",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): previous use of ks is wrong",
+    "timestamp": "2025-08-24 21:03:39",
+    "plot1": "plot_archive/5c90a04_20250824_210339_plot1.png",
+    "plot2": "plot_archive/5c90a04_20250824_210339_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "21fe52e",
+    "branch": "aug-23-new-test",
+    "message": "enhance(model-e3): integrate OT feature handling in memory updates and evaluations",
+    "timestamp": "2025-08-24 21:03:21",
+    "plot1": "plot_archive/21fe52e_20250824_210321_plot1.png",
+    "plot2": "plot_archive/21fe52e_20250824_210321_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "caf263c",
+    "branch": "aug-23-new-test",
+    "message": "explore(model-e3): c to 0.8, ks, kb change lower",
+    "timestamp": "2025-08-24 20:04:36",
+    "plot1": "plot_archive/caf263c_20250824_200436_plot1.png",
+    "plot2": "plot_archive/caf263c_20250824_200436_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b34c8a6",
     "branch": "aug-23-new-test",
     "message": "explore(model-e3): adjust u_star_v parameter for improved model dynamics",

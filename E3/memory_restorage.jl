@@ -74,13 +74,13 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         # println(iprobe_img.word.type_general)
         # for _ in 1:n_units_time #shouldn't have this in adding trace
             # Update word features
-            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word)
+            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word, iprobe_img.list_number)
             @assert length(iprobe_img.context_features) == length(iimage_toadd.context_features) "context features should be the same length"
 
             # Update context features
             # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
             @assert u_star_context[end] == u_star_context[1] "u_star_context is not well defined to be used in restore_intest for intial test, final test is dependant on u_star_context[ilist], but not yet like that in inital test, initial doens't have a u_star_context difference right now, notice"
-            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context; cu = c_context_ilist_cu) 
+            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context, iprobe_img.list_number; cu = c_context_ilist_cu) 
         end
 
 
@@ -91,9 +91,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
         # println(iprobe_img.word.type_general)
         if is_strengthen_contextandcontent #true
-            restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
+            restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore, iprobe_img.list_number)
 
-            restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
+            restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore, iprobe_img.list_number, is_ctx=true)
             
             # Update OT feature during strengthening
             update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
@@ -176,7 +176,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
         for _ in 1:n_units_time_restore
 
-            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word) #TODO
+            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word, iprobe_img.list_number) #TODO
 
             # if iprobe_img.list_number == 1
 
@@ -188,7 +188,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             # Determine the chunk index for the current probe
             iprobe_chunk = findfirst(x -> finaltest_pos <= x, iprobe_chunk_boundaries)  
 
-            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context_c[end], g_context; cu=c_context_un[end]); #TODO: use last big ctx?
+            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context_c[end], g_context, iprobe_img.list_number; cu=c_context_un[end]); #TODO: use last big ctx?
             # else
                 # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context_ilist, g_context)
             
@@ -210,10 +210,10 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             error("current prog is not written when doesn't store mismatch")
         end
 
-        if is_strengthen_contextandcontent #true
-            restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
+        if is_strenghten_contextandcontent #true
+            restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore, iprobe_img.list_number)
 
-            restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
+            restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore, iprobe_img.list_number, is_ctx=true)
             
             # Update OT feature during strengthening in final test
             update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)

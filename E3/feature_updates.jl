@@ -109,31 +109,49 @@ end
 assume read nU from constant.jl
 cu and cc is copying parameter value
 """
-function add_features_from_empty!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, cc::Float64, g_param::Float64; u_adv=0.0, cu::Float64=0.0)::Nothing
+function add_features_from_empty!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, cc::Float64, g_param::Float64, list_number::Int64; u_adv=0.0, cu::Float64=0.0)::Nothing
 
-    @assert length(target_features) == length(probe_features) "LENGTH NOT MATCH"
+    @assert length(target_features) === length(probe_features) "LENGTH NOT MATCH"
 
     for i in eachindex(probe_features)
-
-        if cu==0.0
-            c_param = cc
+        # Special handling for OT feature (last feature) - only if enabled
+        if use_ot_feature && i === tested_before_feature_pos
+            # OT feature: use κs probability for incorrect test info
+            if target_features[i] === 0
+                if list_number == 1
+                    κ_value = κs_base
+                else
+                    κ_index = list_number - 1
+                    κ_value = κs[κ_index]
+                end
+                # κs probability of setting OT feature to 1 (incorrect test info)
+                target_features[i] = rand() < κ_value ? 1 : target_features[i]
+            end
+        elseif i === tested_before_feature_pos && !use_ot_feature
+            # OT feature is disabled, keep it as 0
+            target_features[i] = 0
         else
-            if i > nU #FIXME: fast workaround here
+            # Normal features: use existing geometric distribution logic
+            if cu === 0.0
                 c_param = cc
             else
-                c_param = cu
+                if i > nU #FIXME: fast workaround here
+                    c_param = cc
+                else
+                    c_param = cu
+                end
             end
-        end
-        j = target_features[i]
-        if j == 0
-            target_features[i] = rand() < u_star ? (rand() < c_param ? probe_features[i] : rand(Geometric(g_param)) + 1) : j
+            j = target_features[i]
+            if j === 0
+                target_features[i] = rand() < u_star ? (rand() < c_param ? probe_features[i] : rand(Geometric(g_param)) + 1) : j
+            end
         end
     end
     return nothing
 end
 
 
-function restore_features!(target_features::Vector{Int}, source_features::Vector{Int}, p_recallFeatureStore::Float64; is_store_mismatch::Bool=is_store_mismatch, is_ctx::Bool=false)::Nothing
+function restore_features!(target_features::Vector{Int}, source_features::Vector{Int}, p_recallFeatureStore::Float64, list_number::Int64; is_store_mismatch::Bool=is_store_mismatch, is_ctx::Bool=false)::Nothing
 
     
     for _ in 1:n_units_time_restore
@@ -141,38 +159,54 @@ function restore_features!(target_features::Vector{Int}, source_features::Vector
             current_value = target_features[i]
             source_value = source_features[i]
 
-            if is_ctx
-                @assert length(target_features)==nU+nC "not same length"
-                if i>nU # for CC
-                    # pps = 0.8
-                    # c_usenow = 0.9 # c_context_c[1] #, perfect storage
-                    c_usenow = c_context_c[1] #, perfect storage 
-                    u_star_now = u_star_context[1] + u_advFoilInitialT #u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
-                else # for unchanging 
-                    # pps = 0.8
-                    # c_usenow = 0.9 # c_context_c[1]
-                    c_usenow =c_context_c[1]
-                    u_star_now = u_star_context[1] + u_advFoilInitialT 
+            # Special handling for OT feature (last feature) - only if enabled
+            if use_ot_feature && i === tested_before_feature_pos
+                # OT feature: use κs probability for incorrect test info during restoration
+                if current_value === 0
+                    if list_number === 1
+                        κ_value = κs_first_list_val # first is 0
+                    else
+                        κ_index = list_number - 1
+                        κ_value = κs[κ_index]
+                    end
+                    # κs probability of setting OT feature to 1 (incorrect test info)
+                    target_features[i] = rand() < κ_value ? 1 : target_features[i]
                 end
-            else #if content
-                # pps = 0.8
-                # c_usenow = 0.9#c[1] 
-                 c_usenow = c[1] 
-                u_star_now = u_star[1] + u_advFoilInitialT 
-            end
             
-            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
-            #     target_features[i] = rand() < pps ? source_value : current_value
-            # end
-            
-            # if (current_value !== 0) 
-            #     target_features[i] = rand() < pps ? source_value : current_value
-            # end
-            #is_store_mismatch is false now so no mismatch stored
-            if (current_value === 0) 
-                target_features[i] = rand() < u_star_now[1]+u_star_adv ? (rand() < c_usenow[1]+c_adv ? source_value : rand(Geometric(g_context)) + 1) : current_value
+            else
+                # Normal features: use existing logic
+                if is_ctx
+                    @assert length(target_features) === nU+nC "not same length"
+                    if i>nU # for CC
+                        # pps = 0.8
+                        # c_usenow = 0.9 # c_context_c[1] #, perfect storage
+                        c_usenow = c_context_c[1] #, perfect storage 
+                        u_star_now = u_star_context[1] + u_advFoilInitialT #u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
+                    else # for unchanging 
+                        # pps = 0.8
+                        # c_usenow = 0.9 # c_context_c[1]
+                        c_usenow =c_context_c[1]
+                        u_star_now = u_star_context[1] + u_advFoilInitialT 
+                    end
+                else #if content
+                    # pps = 0.8
+                    # c_usenow = 0.9#c[1] 
+                     c_usenow = c[1] 
+                    u_star_now = u_star[1] + u_advFoilInitialT 
+                end
+                
+                # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
+                #     target_features[i] = rand() < pps ? source_value : current_value
+                # end
+                
+                # if (current_value !== 0) 
+                #     target_features[i] = rand() < pps ? source_value : current_value
+                # end
+                #is_store_mismatch is false now so no mismatch stored
+                if (current_value === 0) 
+                    target_features[i] = rand() < u_star_now[1]+u_star_adv ? (rand() < c_usenow[1]+c_adv ? source_value : rand(Geometric(g_context)) + 1) : current_value
+                end
             end
-
             
         end 
     end # for _ in 1:n_units_time_restore
@@ -188,7 +222,7 @@ end
 Directly set the OT feature (tested before) to a specific value
 """
 function update_ot_feature!(word::Word, value::Int64)::Nothing
-    if length(word.word_features) >= tested_before_feature_pos
+    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         word.word_features[tested_before_feature_pos] = value
     end
     return nothing
@@ -197,18 +231,36 @@ end
 """
 Update OT feature during strengthening process with probability κs for specific list
 """
-function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
-    if length(word.word_features) >= tested_before_feature_pos
+function update_ot_feature_study!(word::Word, list_number::Int64)::Nothing
+    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κs value (no asymptotic effect yet)
-        if list_number == 1
+        if list_number === 1
+            κ_value = κs_base
+        else
+            κ_index = list_number - 1
+            κ_value = κs[κ_index]
+        end
+        
+        if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
+            word.word_features[tested_before_feature_pos] = 1
+        end
+    end
+    return nothing
+end
+
+function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
+    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+        # For list 1, use base κb value (no asymptotic effect yet)
+        if list_number === 1
             κ_value = κb_base
         else
             κ_index = list_number - 1
             κ_value = κb[κ_index]
         end
         
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
+        if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
             word.word_features[tested_before_feature_pos] = 1
         end
     end
@@ -219,7 +271,7 @@ end
 Update OT feature when adding traces during strengthening with probability κb for specific list
 """
 function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)::Nothing
-    if length(word.word_features) >= tested_before_feature_pos
+    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
         if list_number == 1
@@ -240,17 +292,17 @@ end
 Update OT feature when adding traces without strengthening with probability κt for specific list
 """
 function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Nothing
-    if length(word.word_features) >= tested_before_feature_pos
+    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κt value (no asymptotic effect yet)
-        if list_number == 1
+        if list_number === 1
             κ_value = κt_base
         else
             κ_index = list_number - 1
             κ_value = κt[κ_index]
         end
         
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
+        if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
             word.word_features[tested_before_feature_pos] = 1
         end
     end
@@ -261,7 +313,7 @@ end
 Get the current value of the OT feature
 """
 function get_ot_feature_value(word::Word)::Int64
-    if length(word.word_features) >= tested_before_feature_pos
+    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         return word.word_features[tested_before_feature_pos]
     else
         return 0
