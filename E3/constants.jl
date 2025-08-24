@@ -136,16 +136,48 @@ w_word = 24  # number of normal word features (always 24)
 n_ot_features = 1  # number of OT features to add
 const tested_before_feature_pos = w_word + n_ot_features  # position of OT feature (25)
 
-# Kappa parameters for OT feature updates
-const κs = 0.8  # kappa for strengthening items (after passing recall threshold)
-const κb = 0.9  # kappa for adding traces when item IS being strengthened
-const κt = 0.7  # kappa for adding traces when item is NOT being strengthened (pure addition) 
+# Kappa parameters for OT feature updates - using asymptotic functions like z parameters
+# κs: Probability of INCORRECT test information (decreasing function)
+κs_base = 0.0       # starting value for list 1 (no incorrect info yet)
+κs_asymptote = 0.5 # asymptotic value (floor near 0.05)
+κs_rate = 5.0       # how fast κs decreases to asymptote
+
+# κb: Probability of adding traces during strengthening (increasing function)
+κb_base = 0.1       # starting value for adding traces during strengthening
+κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
+κb_rate =5.0       # how fast κb approaches asymptote
+
+# κt: Probability of adding traces without strengthening (increasing function)
+κt_base = 0.1       # starting value for adding traces without strengthening
+κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
+κt_rate = 5.0      # how fast κt approaches asymptote
+
+# Generate asymptotic κ values across lists
+# κs: decreasing function (incorrect test info decreases with experience)
+# κb, κt: increasing functions (adding traces improves with experience)
+# κb_asymptote - κb_base 
+κs_values = asym_decrease(κs_base, κs_asymptote, κs_rate, n_lists - 1)
+κb_values = asym_increase_shift(κb_base, κb_asymptote - κb_base, κb_rate, n_lists - 1)
+κt_values = asym_increase_shift(κt_base, κt_asymptote - κt_base, κt_rate, n_lists - 1)
+
+# For backward compatibility, keep the original names but now they're vectors
+const κs = κs_values  # kappa for strengthening items (asymptotic across lists)
+const κb = κb_values  # kappa for adding traces when item IS being strengthened
+const κt = κt_values  # kappa for adding traces when item is NOT being strengthened
+
+# Debug output to show asymptotic κ values
+println("Asymptotic κ values generated (starting from list 2):")
+println("κs (incorrect test info - DECREASING): ", κs)
+println("κb (add trace + strengthen - INCREASING): ", κb)
+println("κt (add trace only - INCREASING): ", κt)
+println("Note: κ[1] corresponds to list 2, κ[2] to list 3, etc.")
+println("κs decreases from $(κs_base) to $(κs_asymptote) (incorrect info decreases with experience)") 
 
 const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star_v = 0.046
+u_star_v = 0.06
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -244,7 +276,8 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-criterion_initial = generate_asymptotic_values(1.0, 0.148^power_taken, 0.148^power_taken, 1.0, 1.0, 3.0) 
+ci=0.7 #0.148^power_taken
+criterion_initial = generate_asymptotic_values(1.0, ci,ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)

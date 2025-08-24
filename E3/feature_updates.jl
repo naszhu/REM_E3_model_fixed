@@ -195,11 +195,20 @@ function update_ot_feature!(word::Word, value::Int64)::Nothing
 end
 
 """
-Update OT feature during strengthening process with probability κs
+Update OT feature during strengthening process with probability κs for specific list
 """
-function update_ot_feature_strengthen!(word::Word)::Nothing
+function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
     if length(word.word_features) >= tested_before_feature_pos
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κs
+        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+        # For list 1, use base κs value (no asymptotic effect yet)
+        if list_number == 1
+            κ_value = κb_base
+        else
+            κ_index = list_number - 1
+            κ_value = κb[κ_index]
+        end
+        
+        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
             word.word_features[tested_before_feature_pos] = 1
         end
     end
@@ -207,11 +216,20 @@ function update_ot_feature_strengthen!(word::Word)::Nothing
 end
 
 """
-Update OT feature when adding traces during strengthening with probability κb
+Update OT feature when adding traces during strengthening with probability κb for specific list
 """
-function update_ot_feature_add_trace_strengthen!(word::Word)::Nothing
+function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)::Nothing
     if length(word.word_features) >= tested_before_feature_pos
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κb
+        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+        # For list 1, use base κb value (no asymptotic effect yet)
+        if list_number == 1
+            κ_value = κb_base
+        else
+            κ_index = list_number - 1
+            κ_value = κb[κ_index]
+        end
+        
+        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
             word.word_features[tested_before_feature_pos] = 1
         end
     end
@@ -219,11 +237,20 @@ function update_ot_feature_add_trace_strengthen!(word::Word)::Nothing
 end
 
 """
-Update OT feature when adding traces without strengthening with probability κt
+Update OT feature when adding traces without strengthening with probability κt for specific list
 """
-function update_ot_feature_add_trace_only!(word::Word)::Nothing
+function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Nothing
     if length(word.word_features) >= tested_before_feature_pos
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κt
+        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+        # For list 1, use base κt value (no asymptotic effect yet)
+        if list_number == 1
+            κ_value = κt_base
+        else
+            κ_index = list_number - 1
+            κ_value = κt[κ_index]
+        end
+        
+        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
             word.word_features[tested_before_feature_pos] = 1
         end
     end

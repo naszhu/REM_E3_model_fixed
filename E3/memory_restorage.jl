@@ -96,7 +96,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
             
             # Update OT feature during strengthening
-            update_ot_feature_strengthen!(iimage_tostrenghten.word)
+            update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
         else
             # error("should strenghen here")
         end
@@ -113,9 +113,9 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     if (odds < criterion) || ((odds > criterion) && (odds < recall_odds_threshold))|| ((odds > criterion) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
         # Update OT feature when actually adding trace to memory (not strengthening)
         if is_strenghten
-            update_ot_feature_add_trace_strengthen!(iimage_toadd.word)
+            update_ot_feature_add_trace_strengthen!(iimage_toadd.word, iprobe_img.list_number)
         else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, but need to be caution later
-            update_ot_feature_add_trace_only!(iimage_toadd.word)
+            update_ot_feature_add_trace_only!(iimage_toadd.word, iprobe_img.list_number)
         end
         
         push!(image_pool, iimage_toadd)
@@ -216,7 +216,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
             
             # Update OT feature during strengthening in final test
-            update_ot_feature_strengthen!(iimage_tostrenghten.word)
+            update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
         else
              # nothing for now
         end
@@ -234,9 +234,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
         # Update OT feature when actually adding trace to memory in final test (not strengthening)
         if is_strenghten
-            update_ot_feature_add_trace_strengthen!(iimage_toadd.word)
-        else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, but need to be caution later
-            update_ot_feature_add_trace_only!(iimage_toadd.word)
+            update_ot_feature_add_trace_strengthen!(iimage_toadd.word, iprobe_img.list_number)
+        else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, need to be caution later
+            update_ot_feature_add_trace_only!(iimage_toadd.word, iprobe_img.list_number)
         end        
         push!(image_pool, iimage_toadd)
     elseif odds<recall_to_addtrace_threshold

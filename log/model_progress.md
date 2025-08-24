@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [eab207e](https://github.com/naszhu/REM_E3_model_fixed/commit/eab207e) (branch: `aug-23-new-test`)
+**Time:** 2025-08-23 22:05:23  
+**Message:**
+```
+refactor(model-e3): update simulation parameters and enhance feature restoration logic
+
+- Increased the number of simulations from 1000 to 300 for improved testing efficiency.
+- Adjusted the logic in the feature restoration function to incorporate new parameters for better decision-making.
+- Commented out the previous `z_time_p_val` dictionary and related print statement for clarity and future reference.
+
+These changes aim to refine the simulation process and enhance the model's feature restoration capabilities.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/eab207e_20250823_220523_plot1.png)  
+![](../plot_archive/eab207e_20250823_220523_plot2.png)  
+
 ## Commit [f2e29b7](https://github.com/naszhu/REM_E3_model_fixed/commit/f2e29b7) (branch: `aug-23-new-test`)
 **Time:** 2025-08-23 21:23:00  
 **Message:**
