@@ -138,7 +138,7 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 
 # Kappa parameters for OT feature updates - using asymptotic functions like z parameters
 # κs: Probability of INCORRECT test information (decreasing function)
-κs_base = 0.15       # starting value for list 1 (no incorrect info yet)
+κs_base = 0.00       # starting value for list 1 (no incorrect info yet)
 κs_asymptote = 0.0 # asymptotic value (floor near 0.05)
 κs_rate = 5.0       # how fast κs decreases to asymptote
 κs_list_1_value = 0.0
@@ -200,7 +200,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.8
+nnnow=0.9
 c_adv = 0#0.06
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
@@ -282,7 +282,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-ci=0.7 #0.148^power_taken
+ci=0.6 #0.148^power_taken
 criterion_initial = generate_asymptotic_values(1.0, ci,ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 

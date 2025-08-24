@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [0ec8103](https://github.com/naszhu/REM_E3_model_fixed/commit/0ec8103) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 22:37:10  
+**Message:**
+```
+finetune(model-e3):  ks_base=0.15, doensn't help much
+
+- Reduced `κs_base` from 0.3 to 0.15 to better reflect the starting probability of incorrect test information.
+- Decreased `κs_asymptote` from 0.1 to 0.0 to align with the new model dynamics.
+
+These changes aim to enhance the model's performance by refining the kappa parameters used in OT feature updates.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0ec8103_20250824_223710_plot1.png)  
+![](../plot_archive/0ec8103_20250824_223710_plot2.png)  
+
 ## Commit [c5603af](https://github.com/naszhu/REM_E3_model_fixed/commit/c5603af) (branch: `aug-23-new-test`)
 **Time:** 2025-08-24 22:28:40  
 **Message:**
