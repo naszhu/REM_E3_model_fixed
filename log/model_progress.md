@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [4661491](https://github.com/naszhu/REM_E3_model_fixed/commit/4661491) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 19:33:24  
+**Message:**
+```
+fix(model-e3): kb and ks used mistakenly ealier
+
+- Updated kappa parameters for OT feature updates to use asymptotic functions, improving the model's adaptability across lists.
+- Modified update functions to accept list numbers, allowing for dynamic kappa value selection based on the list context.
+- Added debug output to display generated asymptotic kappa values for better traceability during simulations.
+- Adjusted related memory restoration functions to incorporate the new update logic.
+
+These changes aim to refine the feature update process and enhance the model's performance in memory management.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4661491_20250824_193324_plot1.png)  
+![](../plot_archive/4661491_20250824_193324_plot2.png)  
+
 ## Commit [eab207e](https://github.com/naszhu/REM_E3_model_fixed/commit/eab207e) (branch: `aug-23-new-test`)
 **Time:** 2025-08-23 22:05:23  
 **Message:**

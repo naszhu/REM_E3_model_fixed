@@ -177,8 +177,9 @@ const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star_v = 0.06
+u_star_v = 0.1
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
+(1-(1-u_star_v)^n_units_time)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 u_star_adv = 0# 0.06

@@ -1,5 +1,22 @@
 [
   {
+    "commit": "4661491",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): kb and ks used mistakenly ealier",
+    "timestamp": "2025-08-24 19:33:24",
+    "plot1": "plot_archive/4661491_20250824_193324_plot1.png",
+    "plot2": "plot_archive/4661491_20250824_193324_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "eab207e",
     "branch": "aug-23-new-test",
     "message": "refactor(model-e3): update simulation parameters and enhance feature restoration logic",
