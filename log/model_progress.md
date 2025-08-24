@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [c5603af](https://github.com/naszhu/REM_E3_model_fixed/commit/c5603af) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 22:28:40  
+**Message:**
+```
+fix(model-e3): wrong on ks use again, bug caused by cursor
+
+- Updated functions to replace `add_features_from_empty!` with `add_feature_during_restore!` and `restore_features!` with `strengthen_features!` for clarity and consistency in handling the OT feature.
+- Incorporated list number handling for dynamic kappa value selection in the updated functions.
+- Adjusted the initialization of word features to account for the number of OT features, ensuring accurate memory storage and retrieval.
+
+These changes aim to enhance the model's adaptability and improve the clarity of the memory management process.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c5603af_20250824_222840_plot1.png)  
+![](../plot_archive/c5603af_20250824_222840_plot2.png)  
+
 ## Commit [2a2c900](https://github.com/naszhu/REM_E3_model_fixed/commit/2a2c900) (branch: `aug-23-new-test`)
 **Time:** 2025-08-24 21:05:08  
 **Message:**

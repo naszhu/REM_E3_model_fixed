@@ -138,8 +138,8 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 
 # Kappa parameters for OT feature updates - using asymptotic functions like z parameters
 # κs: Probability of INCORRECT test information (decreasing function)
-κs_base = 0.3       # starting value for list 1 (no incorrect info yet)
-κs_asymptote = 0.1 # asymptotic value (floor near 0.05)
+κs_base = 0.15       # starting value for list 1 (no incorrect info yet)
+κs_asymptote = 0.0 # asymptotic value (floor near 0.05)
 κs_rate = 5.0       # how fast κs decreases to asymptote
 κs_list_1_value = 0.0
 

@@ -1,5 +1,22 @@
 [
   {
+    "commit": "c5603af",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): wrong on ks use again, bug caused by cursor",
+    "timestamp": "2025-08-24 22:28:40",
+    "plot1": "plot_archive/c5603af_20250824_222840_plot1.png",
+    "plot2": "plot_archive/c5603af_20250824_222840_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "2a2c900",
     "branch": "aug-23-new-test",
     "message": "fix(model-e3): previous use of ks is wrong",
