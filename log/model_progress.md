@@ -1,5 +1,34 @@
 # Model Progress
 
+## Commit [2a2c900](https://github.com/naszhu/REM_E3_model_fixed/commit/2a2c900) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 21:05:08  
+**Message:**
+```
+fix(model-e3): previous use of ks is wrong
+
+ks should be used for studying item but not for test, and kb is used for strengthening for both,
+
+- Introduced a flag `use_ot_feature` to enable or disable the OT feature functionality across various functions.
+- Updated `add_features_from_empty!`, `restore_features!`, and `update_ot_feature` functions to incorporate list number handling for dynamic kappa value selection.
+- Modified decision logic in `probe_evaluation` to utilize the OT feature only when enabled, ensuring fallback logic is in place when the feature is disabled.
+- Adjusted related functions to maintain consistency in handling the OT feature during memory restoration and strengthening processes.
+
+These changes aim to improve the model's adaptability and decision-making accuracy by refining the integration of the OT feature.
+
+This updates issue #54 as well
+This create issue #56, be caution
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2a2c900_20250824_210508_plot1.png)  
+![](../plot_archive/2a2c900_20250824_210508_plot2.png)  
+
 ## Commit [5c90a04](https://github.com/naszhu/REM_E3_model_fixed/commit/5c90a04) (branch: `aug-23-new-test`)
 **Time:** 2025-08-24 21:03:39  
 **Message:**

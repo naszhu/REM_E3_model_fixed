@@ -1,5 +1,22 @@
 [
   {
+    "commit": "2a2c900",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): previous use of ks is wrong",
+    "timestamp": "2025-08-24 21:05:08",
+    "plot1": "plot_archive/2a2c900_20250824_210508_plot1.png",
+    "plot2": "plot_archive/2a2c900_20250824_210508_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "5c90a04",
     "branch": "aug-23-new-test",
     "message": "fix(model-e3): previous use of ks is wrong",
