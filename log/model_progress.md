@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [d0412c2](https://github.com/naszhu/REM_E3_model_fixed/commit/d0412c2) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 22:51:57  
+**Message:**
+```
+finetune(model-e3): adjust kappa parameters for improved model dynamics
+
+- Set `κs_base` to 0.00 to better reflect the starting probability of incorrect test information.
+- Increased `nnnow` from 0.8 to 0.9 to enhance context copying parameters.
+- Decreased `ci` from 0.7 to 0.6 to optimize the initial criterion values.
+
+These changes aim to refine the model's performance by fine-tuning critical parameters related to kappa and context copying.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d0412c2_20250824_225157_plot1.png)  
+![](../plot_archive/d0412c2_20250824_225157_plot2.png)  
+
 ## Commit [0ec8103](https://github.com/naszhu/REM_E3_model_fixed/commit/0ec8103) (branch: `aug-23-new-test`)
 **Time:** 2025-08-24 22:37:10  
 **Message:**
