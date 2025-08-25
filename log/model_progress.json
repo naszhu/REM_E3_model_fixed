@@ -1,5 +1,210 @@
 [
   {
+    "commit": "713a4dc",
+    "branch": "main",
+    "message": "merge(model-e3): Merge branch 'aug-23-new-test'",
+    "timestamp": "2025-08-26 01:32:33",
+    "plot1": "plot_archive/713a4dc_20250826_013233_plot1.png",
+    "plot2": "plot_archive/713a4dc_20250826_013233_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "7780739",
+    "branch": "main",
+    "message": "merge(model-e3): replace UC drift in to content drift. Merge branch 'aug-20-newfeat'",
+    "timestamp": "2025-08-23 19:28:53",
+    "plot1": "plot_archive/7780739_20250823_192853_plot1.png",
+    "plot2": "plot_archive/7780739_20250823_192853_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "d0412c2",
+    "branch": "aug-23-new-test",
+    "message": "finetune(model-e3): adjust kappa parameters for improved model dynamics",
+    "timestamp": "2025-08-24 22:51:57",
+    "plot1": "plot_archive/d0412c2_20250824_225157_plot1.png",
+    "plot2": "plot_archive/d0412c2_20250824_225157_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "0ec8103",
+    "branch": "aug-23-new-test",
+    "message": "finetune(model-e3):  ks_base=0.15, doensn't help much",
+    "timestamp": "2025-08-24 22:37:10",
+    "plot1": "plot_archive/0ec8103_20250824_223710_plot1.png",
+    "plot2": "plot_archive/0ec8103_20250824_223710_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "c5603af",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): wrong on ks use again, bug caused by cursor",
+    "timestamp": "2025-08-24 22:28:40",
+    "plot1": "plot_archive/c5603af_20250824_222840_plot1.png",
+    "plot2": "plot_archive/c5603af_20250824_222840_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2a2c900",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): previous use of ks is wrong",
+    "timestamp": "2025-08-24 21:05:08",
+    "plot1": "plot_archive/2a2c900_20250824_210508_plot1.png",
+    "plot2": "plot_archive/2a2c900_20250824_210508_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "5c90a04",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): previous use of ks is wrong",
+    "timestamp": "2025-08-24 21:03:39",
+    "plot1": "plot_archive/5c90a04_20250824_210339_plot1.png",
+    "plot2": "plot_archive/5c90a04_20250824_210339_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "21fe52e",
+    "branch": "aug-23-new-test",
+    "message": "enhance(model-e3): integrate OT feature handling in memory updates and evaluations",
+    "timestamp": "2025-08-24 21:03:21",
+    "plot1": "plot_archive/21fe52e_20250824_210321_plot1.png",
+    "plot2": "plot_archive/21fe52e_20250824_210321_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "caf263c",
+    "branch": "aug-23-new-test",
+    "message": "explore(model-e3): c to 0.8, ks, kb change lower",
+    "timestamp": "2025-08-24 20:04:36",
+    "plot1": "plot_archive/caf263c_20250824_200436_plot1.png",
+    "plot2": "plot_archive/caf263c_20250824_200436_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b34c8a6",
+    "branch": "aug-23-new-test",
+    "message": "explore(model-e3): adjust u_star_v parameter for improved model dynamics",
+    "timestamp": "2025-08-24 19:42:16",
+    "plot1": "plot_archive/b34c8a6_20250824_194216_plot1.png",
+    "plot2": "plot_archive/b34c8a6_20250824_194216_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "4661491",
+    "branch": "aug-23-new-test",
+    "message": "fix(model-e3): kb and ks used mistakenly ealier",
+    "timestamp": "2025-08-24 19:33:24",
+    "plot1": "plot_archive/4661491_20250824_193324_plot1.png",
+    "plot2": "plot_archive/4661491_20250824_193324_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "eab207e",
+    "branch": "aug-23-new-test",
+    "message": "refactor(model-e3): update simulation parameters and enhance feature restoration logic",
+    "timestamp": "2025-08-23 22:05:23",
+    "plot1": "plot_archive/eab207e_20250823_220523_plot1.png",
+    "plot2": "plot_archive/eab207e_20250823_220523_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f2e29b7",
+    "branch": "aug-23-new-test",
+    "message": "feat(model-e3): introduce OT feature for enhanced decision-making and memory updates",
+    "timestamp": "2025-08-23 21:23:00",
+    "plot1": "plot_archive/f2e29b7_20250823_212300_plot1.png",
+    "plot2": "plot_archive/f2e29b7_20250823_212300_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_generation.jl",
+      "E3/feature_updates.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/probe_generation.jl",
+      "criterion",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "7780739",
+    "branch": "aug-23-new-test",
+    "message": "merge(model-e3): replace UC drift in to content drift. Merge branch 'aug-20-newfeat'",
+    "timestamp": "2025-08-23 19:28:53",
+    "plot1": "plot_archive/7780739_20250823_192853_plot1.png",
+    "plot2": "plot_archive/7780739_20250823_192853_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "654fc84",
     "branch": "aug-20-newfeat",
     "message": "explore(model-e3): 1000 simuation",

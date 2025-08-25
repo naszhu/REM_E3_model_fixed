@@ -1,5 +1,292 @@
 # Model Progress
 
+## Commit [713a4dc](https://github.com/naszhu/REM_E3_model_fixed/commit/713a4dc) (branch: `main`)
+**Time:** 2025-08-26 01:32:33  
+**Message:**
+```
+merge(model-e3): Merge branch 'aug-23-new-test'
+```
+![](../plot_archive/713a4dc_20250826_013233_plot1.png)  
+![](../plot_archive/713a4dc_20250826_013233_plot2.png)  
+
+## Commit [7780739](https://github.com/naszhu/REM_E3_model_fixed/commit/7780739) (branch: `main`)
+**Time:** 2025-08-23 19:28:53  
+**Message:**
+```
+merge(model-e3): replace UC drift in to content drift. Merge branch 'aug-20-newfeat'
+```
+![](../plot_archive/7780739_20250823_192853_plot1.png)  
+![](../plot_archive/7780739_20250823_192853_plot2.png)  
+
+## Commit [d0412c2](https://github.com/naszhu/REM_E3_model_fixed/commit/d0412c2) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 22:51:57  
+**Message:**
+```
+finetune(model-e3): adjust kappa parameters for improved model dynamics
+
+- Set `κs_base` to 0.00 to better reflect the starting probability of incorrect test information.
+- Increased `nnnow` from 0.8 to 0.9 to enhance context copying parameters.
+- Decreased `ci` from 0.7 to 0.6 to optimize the initial criterion values.
+
+These changes aim to refine the model's performance by fine-tuning critical parameters related to kappa and context copying.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d0412c2_20250824_225157_plot1.png)  
+![](../plot_archive/d0412c2_20250824_225157_plot2.png)  
+
+## Commit [0ec8103](https://github.com/naszhu/REM_E3_model_fixed/commit/0ec8103) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 22:37:10  
+**Message:**
+```
+finetune(model-e3):  ks_base=0.15, doensn't help much
+
+- Reduced `κs_base` from 0.3 to 0.15 to better reflect the starting probability of incorrect test information.
+- Decreased `κs_asymptote` from 0.1 to 0.0 to align with the new model dynamics.
+
+These changes aim to enhance the model's performance by refining the kappa parameters used in OT feature updates.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0ec8103_20250824_223710_plot1.png)  
+![](../plot_archive/0ec8103_20250824_223710_plot2.png)  
+
+## Commit [c5603af](https://github.com/naszhu/REM_E3_model_fixed/commit/c5603af) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 22:28:40  
+**Message:**
+```
+fix(model-e3): wrong on ks use again, bug caused by cursor
+
+- Updated functions to replace `add_features_from_empty!` with `add_feature_during_restore!` and `restore_features!` with `strengthen_features!` for clarity and consistency in handling the OT feature.
+- Incorporated list number handling for dynamic kappa value selection in the updated functions.
+- Adjusted the initialization of word features to account for the number of OT features, ensuring accurate memory storage and retrieval.
+
+These changes aim to enhance the model's adaptability and improve the clarity of the memory management process.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c5603af_20250824_222840_plot1.png)  
+![](../plot_archive/c5603af_20250824_222840_plot2.png)  
+
+## Commit [2a2c900](https://github.com/naszhu/REM_E3_model_fixed/commit/2a2c900) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 21:05:08  
+**Message:**
+```
+fix(model-e3): previous use of ks is wrong
+
+ks should be used for studying item but not for test, and kb is used for strengthening for both,
+
+- Introduced a flag `use_ot_feature` to enable or disable the OT feature functionality across various functions.
+- Updated `add_features_from_empty!`, `restore_features!`, and `update_ot_feature` functions to incorporate list number handling for dynamic kappa value selection.
+- Modified decision logic in `probe_evaluation` to utilize the OT feature only when enabled, ensuring fallback logic is in place when the feature is disabled.
+- Adjusted related functions to maintain consistency in handling the OT feature during memory restoration and strengthening processes.
+
+These changes aim to improve the model's adaptability and decision-making accuracy by refining the integration of the OT feature.
+
+This updates issue #54 as well
+This create issue #56, be caution
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2a2c900_20250824_210508_plot1.png)  
+![](../plot_archive/2a2c900_20250824_210508_plot2.png)  
+
+## Commit [5c90a04](https://github.com/naszhu/REM_E3_model_fixed/commit/5c90a04) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 21:03:39  
+**Message:**
+```
+fix(model-e3): previous use of ks is wrong
+
+ks should be used for studying item but not for test, and kb is used for strengthening for both,
+
+- Introduced a flag `use_ot_feature` to enable or disable the OT feature functionality across various functions.
+- Updated `add_features_from_empty!`, `restore_features!`, and `update_ot_feature` functions to incorporate list number handling for dynamic kappa value selection.
+- Modified decision logic in `probe_evaluation` to utilize the OT feature only when enabled, ensuring fallback logic is in place when the feature is disabled.
+- Adjusted related functions to maintain consistency in handling the OT feature during memory restoration and strengthening processes.
+
+These changes aim to improve the model's adaptability and decision-making accuracy by refining the integration of the OT feature.
+
+This updates issue #54 as well
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5c90a04_20250824_210339_plot1.png)  
+![](../plot_archive/5c90a04_20250824_210339_plot2.png)  
+
+## Commit [21fe52e](https://github.com/naszhu/REM_E3_model_fixed/commit/21fe52e) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 21:03:21  
+**Message:**
+```
+enhance(model-e3): integrate OT feature handling in memory updates and evaluations
+
+- Introduced a flag `use_ot_feature` to enable or disable the OT feature functionality across various functions.
+- Updated `add_features_from_empty!`, `restore_features!`, and `update_ot_feature` functions to incorporate list number handling for dynamic kappa value selection.
+- Modified decision logic in `probe_evaluation` to utilize the OT feature only when enabled, ensuring fallback logic is in place when the feature is disabled.
+- Adjusted related functions to maintain consistency in handling the OT feature during memory restoration and strengthening processes.
+
+These changes aim to improve the model's adaptability and decision-making accuracy by refining the integration of the OT feature.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/21fe52e_20250824_210321_plot1.png)  
+![](../plot_archive/21fe52e_20250824_210321_plot2.png)  
+
+## Commit [caf263c](https://github.com/naszhu/REM_E3_model_fixed/commit/caf263c) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 20:04:36  
+**Message:**
+```
+explore(model-e3): c to 0.8, ks, kb change lower
+
+- Decreased `κs_asymptote` from 0.5 to 0.4 to refine the probability of incorrect test information.
+- Increased `κb_base` and `κt_base` from 0.1 to 0.5 to enhance the probability of adding traces during strengthening and without strengthening.
+- Adjusted `u_star_v` from 0.1 to 0.046 to optimize model dynamics.
+- Increased `nnnow` from 0.7 to 0.8 to improve context copying parameters.
+
+These changes aim to enhance the model's adaptability and performance by fine-tuning critical parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/caf263c_20250824_200436_plot1.png)  
+![](../plot_archive/caf263c_20250824_200436_plot2.png)  
+
+## Commit [b34c8a6](https://github.com/naszhu/REM_E3_model_fixed/commit/b34c8a6) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 19:42:16  
+**Message:**
+```
+explore(model-e3): adjust u_star_v parameter for improved model dynamics
+
+- Increased the value of `u_star_v` from 0.06 to 0.1 to enhance the model's adaptability.
+- Updated the calculation of `u_star` to reflect the new `u_star_v` value, ensuring consistency in model behavior.
+
+These changes aim to refine the model's performance by optimizing the parameter settings.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b34c8a6_20250824_194216_plot1.png)  
+![](../plot_archive/b34c8a6_20250824_194216_plot2.png)  
+
+## Commit [4661491](https://github.com/naszhu/REM_E3_model_fixed/commit/4661491) (branch: `aug-23-new-test`)
+**Time:** 2025-08-24 19:33:24  
+**Message:**
+```
+fix(model-e3): kb and ks used mistakenly ealier
+
+- Updated kappa parameters for OT feature updates to use asymptotic functions, improving the model's adaptability across lists.
+- Modified update functions to accept list numbers, allowing for dynamic kappa value selection based on the list context.
+- Added debug output to display generated asymptotic kappa values for better traceability during simulations.
+- Adjusted related memory restoration functions to incorporate the new update logic.
+
+These changes aim to refine the feature update process and enhance the model's performance in memory management.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4661491_20250824_193324_plot1.png)  
+![](../plot_archive/4661491_20250824_193324_plot2.png)  
+
+## Commit [eab207e](https://github.com/naszhu/REM_E3_model_fixed/commit/eab207e) (branch: `aug-23-new-test`)
+**Time:** 2025-08-23 22:05:23  
+**Message:**
+```
+refactor(model-e3): update simulation parameters and enhance feature restoration logic
+
+- Increased the number of simulations from 1000 to 300 for improved testing efficiency.
+- Adjusted the logic in the feature restoration function to incorporate new parameters for better decision-making.
+- Commented out the previous `z_time_p_val` dictionary and related print statement for clarity and future reference.
+
+These changes aim to refine the simulation process and enhance the model's feature restoration capabilities.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/eab207e_20250823_220523_plot1.png)  
+![](../plot_archive/eab207e_20250823_220523_plot2.png)  
+
+## Commit [f2e29b7](https://github.com/naszhu/REM_E3_model_fixed/commit/f2e29b7) (branch: `aug-23-new-test`)
+**Time:** 2025-08-23 21:23:00  
+**Message:**
+```
+feat(model-e3): introduce OT feature for enhanced decision-making and memory updates
+
+- Added an OT feature to track whether items have been tested before, influencing decision logic during evaluations.
+- Updated feature generation to include the OT feature in both study lists and probes.
+- Implemented functions to manage OT feature updates during memory restoration and strengthening processes.
+- Adjusted decision logic to utilize the OT feature for improved accuracy in determining item status.
+
+These changes aim to refine the model's memory management and enhance the decision-making process by incorporating additional contextual information.
+
+Refs OT add #54
+Closes #55
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f2e29b7_20250823_212300_plot1.png)  
+![](../plot_archive/f2e29b7_20250823_212300_plot2.png)  
+
+## Commit [7780739](https://github.com/naszhu/REM_E3_model_fixed/commit/7780739) (branch: `aug-23-new-test`)
+**Time:** 2025-08-23 19:28:53  
+**Message:**
+```
+merge(model-e3): replace UC drift in to content drift. Merge branch 'aug-20-newfeat'
+```
+![](../plot_archive/7780739_20250823_192853_plot1.png)  
+![](../plot_archive/7780739_20250823_192853_plot2.png)  
+
 ## Commit [654fc84](https://github.com/naszhu/REM_E3_model_fixed/commit/654fc84) (branch: `aug-20-newfeat`)
 **Time:** 2025-08-21 19:41:44  
 **Message:**
