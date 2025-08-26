@@ -1,5 +1,22 @@
 [
   {
+    "commit": "1f65eaa",
+    "branch": "aug-26-within-list-fix",
+    "message": "feat(model-e3): content drift: probe distortion mechanism and update constants",
+    "timestamp": "2025-08-26 20:24:44",
+    "plot1": "plot_archive/1f65eaa_20250826_202444_plot1.png",
+    "plot2": "plot_archive/1f65eaa_20250826_202444_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "864c339",
     "branch": "aug-26-within-list-fix",
     "message": "restore(model-e3): restore back to commit before last whole branch merge",

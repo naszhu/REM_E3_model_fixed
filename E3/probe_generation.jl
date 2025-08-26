@@ -105,10 +105,15 @@ function generate_probes(
         # out of T; Tn; SO; SOn; F; Fn
             pt_general = probetypes[i] == :F ? :F : Symbol("Fn")
 
+            features = generate_features(Geometric(g_word), w_word)
+            
+            # Add OT feature (always added)
+            push!(features, 0)  # For new probes, OT feature starts as 0 (not tested before)
+
             target_word = 
             Word(
                 randstring(8), 
-                generate_features(Geometric(g_word), w_word), 
+                features, 
                 pt_general, #type_general, either F or Fn (not Fn+1)
 
                 probetypes[i], #type_specific
@@ -198,7 +203,7 @@ function generate_probes(
         # The foils_collection already contains deep copies of the original probes
         # before distortion was applied, so it remains clean
     end
-    
+
     return probes, foils_collection
 end
 
@@ -357,10 +362,14 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                 if condition == :true_random
 
+
+                    features = generate_features(Geometric(g_word), w_word)
+                    push!(features, 0)  # For FF probes, OT feature starts as 0 (not tested before)
+
                     global img = 
                     EpisodicImage(
                         Word(randstring(8),
-                            rand(Geometric(g_word), w_word) .+ 1,
+                            features,
                             :FF, 
                             
                             :FF, #type_specific; mathces above in final

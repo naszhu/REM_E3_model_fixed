@@ -131,6 +131,53 @@ w_positioncode = 0
 w_allcontext = w_context + w_positioncode
 w_word = 23;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
+
+n_ot_features = 1  # number of OT features to add
+const tested_before_feature_pos = w_word + n_ot_features  # position of OT feature (25)
+
+# Kappa parameters for OT feature updates - using asymptotic functions like z parameters
+# κs: Probability of INCORRECT test information (decreasing function)
+κs_base = 0.00       # starting value for list 1 (no incorrect info yet)
+κs_asymptote = 0.0 # asymptotic value (floor near 0.05)
+κs_rate = 5.0       # how fast κs decreases to asymptote
+κs_list_1_value = 0.0
+
+# κb: Probability of adding traces during strengthening (increasing function)
+κb_base = 0.5       # starting value for adding traces during strengthening
+κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
+κb_rate =5.0       # how fast κb approaches asymptote
+
+# κt: Probability of adding traces without strengthening (increasing function)
+κt_base = 0.5       # starting value for adding traces without strengthening
+κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
+κt_rate = 5.0      # how fast κt approaches asymptote
+
+# Generate asymptotic κ values across lists
+# κs: decreasing function (incorrect test info decreases with experience)
+# κb, κt: increasing functions (adding traces improves with experience)
+# κb_asymptote - κb_base 
+κs_values = asym_decrease(κs_base, κs_asymptote, κs_rate, n_lists - 1)
+κb_values = asym_increase_shift(κb_base, κb_asymptote - κb_base, κb_rate, n_lists - 1)
+κt_values = asym_increase_shift(κt_base, κt_asymptote - κt_base, κt_rate, n_lists - 1)
+
+κs_first_list_val = 0.0
+# TODO: Note that the current kappa s starts from this value specified right here, but other kappa s are starting with the base value. You need to remember that.
+# For backward compatibility, keep the original names but now they're vectors
+
+const κs = κs_values  # kappa for strengthening items (asymptotic across lists)
+const κb = κb_values  # kappa for adding traces when item IS being strengthened
+const κt = κt_values  # kappa for adding traces when item is NOT being strengthened
+
+# Debug output to show asymptotic κ values
+println("Asymptotic κ values generated (starting from list 2):")
+println("κs (incorrect test info - DECREASING): ", κs)
+println("κb (add trace + strengthen - INCREASING): ", κb)
+println("κt (add trace only - INCREASING): ", κt)
+println("Note: κ[1] corresponds to list 2, κ[2] to list 3, etc.")
+println("κs decreases from $(κs_base) to $(κs_asymptote) (incorrect info decreases with experience)") 
+
+
+
 const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
@@ -139,6 +186,9 @@ u_star_v = 0.046
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
+
+u_star_adv = 0# 0.06
+1-(1-(u_star_v + u_star_adv))^n_units_time
 
 #: nospecialty for first list right now
 #the following show adv for ONLY CHANGE context (second part of context)
@@ -153,6 +203,8 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
 nnnow=0.70
+c_adv = 0#0.06
+
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
 c_storeintest = c
@@ -252,53 +304,57 @@ context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
-ilist_switch_stop_at = 5; 
+
+
+
+##################### Product parm
+# ilist_switch_stop_at = 5; 
 # start_and_rate = [0.28, 0.25]
-start_and_end = [0.2, 0.5]
+# start_and_end = [0.2, 0.5]
 
 
 # asymptotic_vals =  generate_asymptotic_increase_fixed_start(start_and_rate[1], start_and_rate[2], ilist_switch_stop_at-1) 
-asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
+# asymptotic_vals =  LinRange(start_and_end[1], start_and_end[2], ilist_switch_stop_at-1)
 
-# p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
-z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
-z1_SOn = 0.3
-z2_Fn = 0.9
-z3_Tn = 0.7
+# # p_switch_toListOrgin = vcat(0,asymptotic_vals, asymptotic_vals[end]*ones(n_lists-ilist_switch_stop_at)...)#probabiltiy of switch (or can say, recall LOR) from familarity to recall, from familarity to knowing "List of Origin"
+# z4_T = 0.25 #prob of switch from familiarity to recall of list origin for target in initial test
+# z1_SOn = 0.3
+# z2_Fn = 0.9
+# z3_Tn = 0.7
 
-# p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
-p_new_with_ListOrigin_Fn = 0.32 #good
-p_new_with_ListOrigin_SOn = 0.53
-p_new_with_ListOrigin_Tn = 0.22 ##good
-p_new_with_ListOrigin_T = 0.45 
-# Test only F: CR ~=0.55
-# Study only SOn: CR ~= 0.47
-# Study and test :  CR~= 0.43
-# Calculate z * p for each corresponding name
-z_times_p = Dict(
-    :T => z4_T * p_new_with_ListOrigin_T,
-    :Fn => z2_Fn * p_new_with_ListOrigin_Fn,
-    :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
-    :Tn => z3_Tn * p_new_with_ListOrigin_Tn
-)
+# # p_new_with_ListOrigin_Tn_Fn = 0.5 #PO+ 
+# p_new_with_ListOrigin_Fn = 0.32 #good
+# p_new_with_ListOrigin_SOn = 0.53
+# p_new_with_ListOrigin_Tn = 0.22 ##good
+# p_new_with_ListOrigin_T = 0.45 
+# # Test only F: CR ~=0.55
+# # Study only SOn: CR ~= 0.47
+# # Study and test :  CR~= 0.43
+# # Calculate z * p for each corresponding name
+# z_times_p = Dict(
+#     :T => z4_T * p_new_with_ListOrigin_T,
+#     :Fn => z2_Fn * p_new_with_ListOrigin_Fn,
+#     :SOn => z1_SOn * p_new_with_ListOrigin_SOn,
+#     :Tn => z3_Tn * p_new_with_ListOrigin_Tn
+# )
 
 
-how_much_z = 0.3
-how_much_z_target = 0.16
-how_fast_z = 0.4
-how_fast_z_target = 0.8
-how_much_z_f = 0.1
-# z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
-z_time_p_val = Dict(
-    :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-    Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-    :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
-    :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
-    :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
-    Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
-    :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
-)
-println("z_time_p_val: ", z_time_p_val)
+# how_much_z = 0.3
+# how_much_z_target = 0.16
+# how_fast_z = 0.4
+# how_fast_z_target = 0.8
+# how_much_z_f = 0.1
+# # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
+# z_time_p_val = Dict(
+#     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+#     Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+#     :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
+#     :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
+#     :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
+#     Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
+#     :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
+# )
+# println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
@@ -312,6 +368,8 @@ println("z_time_p_val: ", z_time_p_val)
 """
 TRUE FALSE
 """
+use_ot_feature = true  # flag to enable/disable OT feature
+
 
 sampling_method = true
 

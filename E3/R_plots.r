@@ -38,7 +38,7 @@ p_in_20=ggplot(data=df1,aes(x=test_position_grouped_foralltests,y=meanx,group=is
   scale_color_manual(values=c("blue","green","green","green","purple"))+
 scale_shape_manual(
     values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
-)+ scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.1), limits = c(0.47, 0.82))
+)#+ scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.1), limits = c(0.47, 0.82))
 p_in_20
 
 
@@ -139,7 +139,7 @@ p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
         text=element_text(size=20) # Increase font size globally
-    )+ylim(c(0.41,0.89))
+    )#+ylim(c(0.41,0.89))
 p1
 
 # DF2 = DF %>% mutate(meanx = case_when(is_target=="true"~ meanx, TRUE ~ 1-meanx))%>%

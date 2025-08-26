@@ -101,26 +101,40 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         if odds > criterion_initial[i_testpos, ilist_probe] 
             if odds > recall_odds_threshold
                 # Determine which list number and type to use for decision
-                if use_sampled_item_for_decision && !isnothing(sampled_item)
-                    # Use sampled item's list number and type
-                    decision_list_number = sampled_item.list_number
-                    decision_type = sampled_item.word.type_specific
-                else
-                    # Use probe's list number and type (original behavior)
-                    decision_list_number = ilist_probe
-                    decision_type = probes[i].image.word.type_specific
-                end
+                # if use_sampled_item_for_decision && !isnothing(sampled_item)
+                #     # Use sampled item's list number and type
+                #     decision_list_number = sampled_item.list_number
+                #     decision_type = sampled_item.word.type_specific
+                # else
+                #     # Use probe's list number and type (original behavior)
+                #     decision_list_number = ilist_probe
+                #     decision_type = probes[i].image.word.type_specific
+                # end
                 
-                if decision_list_number == 1
-                    decision_isold = 1 #if list 1, always recall
-                elseif decision_list_number > 1
-                    product = get(z_time_p_val, decision_type, zeros(Float64, n_lists-1)) 
-                    decision_isold = rand() < product[decision_list_number-1] ? 0 : 1   
-                else
-                    # For list 0 or other invalid cases, default to new
-                    error("List number mistaken initial")
-                    decision_isold = 0
+                # if decision_list_number == 1
+                #     decision_isold = 1 #if list 1, always recall
+                # elseif decision_list_number > 1
+                #     product = get(z_time_p_val, decision_type, zeros(Float64, n_lists-1)) 
+                #     decision_isold = rand() < product[decision_list_number-1] ? 0 : 1   
+                # else
+                #     # For list 0 or other invalid cases, default to new
+                #     error("List number mistaken initial")
+                #     decision_isold = 0
+                # end
+
+                if use_ot_feature && !isnothing(sampled_item) 
+                    # Use OT feature from sampled item
+                    ot_value = get_ot_feature_value(sampled_item.word)
+                    if ot_value == 1
+                        decision_isold = 0  # OT=1 means judged new
+                    else
+                        decision_isold = 1  # OT=0 means judged old
+                    end
+                    # OT feature disabled or no sampled item - use fallback logic
+                    decision_isold = 1
                 end
+
+
             else
                 decision_isold = 1
             end
@@ -146,7 +160,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
     
 
         if is_restore_initial
-            restore_intest(image_pool, probes[i].image, decision_isold, odds, content_LL_ratios_org, sampled_item)  
+            restore_intest(image_pool, probes[i].image, decision_isold, odds, content_LL_ratios_org, sampled_item, criterion_initial[i_testpos, ilist_probe])  
         end
 
         # println("i, $i, i_testpos, $i_testpos")
@@ -258,7 +272,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         if is_restore_final
 
             #Issue 12
-            restore_intest_final(image_pool, probes[i].image, decision_isold, odds, i, content_LL_ratios_org, sampled_item);  #have to pass final testpos 
+            restore_intest_final(image_pool, probes[i].image, decision_isold, odds, i, content_LL_ratios_org, sampled_item, criterion_final_i);  #have to pass final testpos 
         end
     end
 

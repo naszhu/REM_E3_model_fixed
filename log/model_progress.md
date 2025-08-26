@@ -1,5 +1,33 @@
 # Model Progress
 
+## Commit [1f65eaa](https://github.com/naszhu/REM_E3_model_fixed/commit/1f65eaa) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:24:44  
+**Message:**
+```
+feat(model-e3): content drift: probe distortion mechanism and update constants
+
+redo commit 9dd4a2cbb1fa4aa4b6b0148fad3a144318bbb6cb
+
+- Introduced a new function `distort_probes_with_linear_decay` to apply a linear decrease in distortion probability for probes, improving the modeling of content drift between study and test.
+- Added constants for distortion parameters, including `max_distortion_probes` and `base_distortion_prob`, to refine the distortion process.
+- Updated `criterion_initial` calculation to use a new variable `ci` for better clarity and consistency.
+- Commented out unused code in `simulate_rem` to improve readability and maintainability.
+
+These changes aim to enhance the model's accuracy in simulating probe behavior and content dynamics.
+
+Refs this is to solve #57
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1f65eaa_20250826_202444_plot1.png)  
+![](../plot_archive/1f65eaa_20250826_202444_plot2.png)  
+
 ## Commit [864c339](https://github.com/naszhu/REM_E3_model_fixed/commit/864c339) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 20:14:18  
 **Message:**
