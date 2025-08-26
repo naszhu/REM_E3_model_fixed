@@ -11,7 +11,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
     new_image = EpisodicImage(
         #word
         Word(word.item_code, 
-            zeros(Int64, w_word + 1),  # Always 25 features (24 normal + 1 OT)
+            zeros(Int64, length(word.word_features)), 
             word.type_general, 
             word.type_specific,
             word.initial_studypos,
@@ -32,30 +32,60 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
         # go storage for n_units_time times
     #############STORAGE - content
     
-    # update OT 
-    if use_ot_feature
-        update_ot_feature_study!(new_image.word.word_features, list_num)
-    end
-
-
     for _ in 1:n_units_time #content intial adv??? . Maybe not needed but.. 
-        
 
-        # In your storage function:
-        store_word_features!(
-            new_image.word.word_features, 
-            word.word_features,
-            u_star[list_num],
-            c[1], #caution here
-            g_word,
-            tested_before_feature_pos
-        )
+        # This might need to be changed or considered
+        for i in eachindex(new_image.word.word_features)
+            j = new_image.word.word_features[i]
 
-        #############STORAGE - context
-            # a[length(a)/2]1-3 4-7; 3,3
-            
-        update_context_features_during_study!(new_image, context_features, word, list_num)
+            # copystore_process(new_image,j,u_star,)
+            if j == 0 # if nothing is stored
+                # no adv for content right now. u_star = [0.06]*length_10
+                stored_val = (rand() < u_star[list_num] ? 1 : 0) * word.word_features[i]
+                # if list_num==1
+                #     stored_val =(rand() < u_star[word.studypos]-0.02 ? 1 : 0)*word.word_features[i];
+                # else stored_val =(rand() < u_star[word.studypos] ? 1 : 0)*word.word_features[i];
+                # end
+                if stored_val != 0 #if sucessfully stored do the folowing, else keep the same value
+                    # println(c," ss")
+                    copied_val = rand() < c[1] ? stored_val : rand(Geometric(g_word)) + 1
+                    new_image.word.word_features[i] = copied_val
+                end
+            end
+        end
 
+
+    #############STORAGE - context
+        # a[length(a)/2]1-3 4-7; 3,3
+        for ic in eachindex(new_image.context_features)
+        # for ic in eachindex() #only change context features, not unchange context features
+            j = new_image.context_features[ic]
+
+            if j == 0 # if nothing is stored
+                # stored_val =(rand() < u_star_context[word.studypos] ? 1 : 0)*context_features[ic];
+
+                ## Initial adv of storing only for changing. 
+                ## this is to predit, initial test result have initial adv in within-list studypos data, but not in final test within-list studypos data
+
+               
+                if ((ic > nU) && (word.initial_studypos == 1))
+                    
+                    stored_val = (rand() < u_star_context[list_num]+u_adv_firstpos ? 1 : 0) * context_features[ic]
+                else
+
+                    stored_val = (rand() < u_star_context[list_num] ? 1 : 0) * context_features[ic]
+
+                end
+
+                which_ctx_use = ic > nU ? c_context_c[list_num] : c_context_un[list_num]
+
+                if stored_val != 0 #if sucessfully stored do the folowing, else keep the same value
+                    copied_val = rand() < which_ctx_use ? stored_val : rand(Geometric(g_context)) + 1
+                    new_image.context_features[ic] = copied_val
+                end
+            end
+
+        end
         # println("Word Features: ", new_image.word.word_features)
     end
 

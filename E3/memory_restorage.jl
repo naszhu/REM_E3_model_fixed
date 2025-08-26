@@ -12,7 +12,7 @@ restore content and/or context, here, context include change,unchange, and posit
 # end
 
 # function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, imax::Int64, probetype::Symbol, list_change_features::Vector{Int64}, general_context_features::Vector{Int64}, odds::Float64, likelihood_ratios::Vector{Float64}, simu_i::Int64, initial_testpos::Int64)
-function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, odds::Float64, content_LL_ratios::Vector{Float64}, sampled_item::Union{EpisodicImage, Nothing}, criterion::Float64)::Nothing
+function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, odds::Float64, content_LL_ratios::Vector{Float64}, sampled_item::Union{EpisodicImage, Nothing})::Nothing
 
 
     if is_onlyaddtrace
@@ -21,12 +21,12 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     #is_onlyaddtrace is false
     # println("nothere")
 
-        # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) #just get a new empty EI
-    
+    # if ((decision_isold==0) | ((decision_isold == 1) & (odds <= recall_odds_threshold)))| ((decision_isold==1) & (odds > recall_odds_threshold)) #just get a new empty EI
+
         iimage_toadd = EpisodicImage(
             #Word:
             Word(iprobe_img.word.item_code, #item_code
-                fill(0, w_word + n_ot_features), #word features - always 25 (24 normal + 1 OT)
+                fill(0, length(iprobe_img.word.word_features)), #word features
                 iprobe_img.word.type_general, #type_general
                 iprobe_img.word.type_specific, #type_specific
                 iprobe_img.word.initial_studypos, #initial_studypos
@@ -43,7 +43,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     # end
 
         
-    if ((odds > criterion) & (odds > recall_odds_threshold) )
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         if !isnothing(sampled_item)
             # Use the pre-sampled item
@@ -72,34 +72,28 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
             #shouldn't have this in adding trace
 
         # println(iprobe_img.word.type_general)
-        
         # for _ in 1:n_units_time #shouldn't have this in adding trace
             # Update word features
-            add_feature_during_restore!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word, iprobe_img.list_number)
+            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist, g_word)
             @assert length(iprobe_img.context_features) == length(iimage_toadd.context_features) "context features should be the same length"
 
             # Update context features
             # u_advFoilInitialT is the adv for foil (judged new, add trace) in initial test, to see if final test p overlappsss....u_advFoilInitialT=0 currently
             @assert u_star_context[end] == u_star_context[1] "u_star_context is not well defined to be used in restore_intest for intial test, final test is dependant on u_star_context[ilist], but not yet like that in inital test, initial doens't have a u_star_context difference right now, notice"
-            add_feature_during_restore!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context, iprobe_img.list_number; cu = c_context_ilist_cu) 
+            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context; cu = c_context_ilist_cu) 
         end
 
 
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    if ((odds > criterion) & (odds > recall_odds_threshold) )
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         # println(iprobe_img.word.type_general)
         if is_strengthen_contextandcontent #true
+            restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-            # doesn't have to care about the OT feature here becuase its jumpted, will be specifically handeled below
-            strengthen_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore, iprobe_img.list_number)
-
-            strengthen_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore, iprobe_img.list_number, is_ctx=true)
-            
-            # Update OT feature during strengthening
-            update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
+            restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
         else
             # error("should strenghen here")
         end
@@ -110,17 +104,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     end
 
 
-    is_strenghten = (odds > criterion) && (odds > recall_odds_threshold) 
-
-
-    if (odds < criterion) || ((odds > criterion) && (odds < recall_odds_threshold))|| ((odds > criterion) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
-        # Update OT feature when actually adding trace to memory (not strengthening)
-        if is_strenghten #Add trace while strengthening is also happening.
-            update_ot_feature_add_trace_strengthen!(iimage_toadd.word, iprobe_img.list_number)
-        else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, but need to be caution later
-            update_ot_feature_add_trace_only!(iimage_toadd.word, iprobe_img.list_number)
-        end
-        
+    if (decision_isold == 0) || ((decision_isold == 1) && (odds < recall_odds_threshold))|| ((decision_isold==1) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
         push!(image_pool, iimage_toadd)
         # println("pass, decision_isold $(decision_isold); is pass $(odds < recall_odds_threshold)")
     else
@@ -135,7 +119,7 @@ end
 
 
 
-function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, odds::Float64, finaltest_pos::Int64, content_LL_ratios::Vector{Float64}, sampled_item::Union{EpisodicImage, Nothing}, criterion::Float64)::Nothing
+function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicImage, decision_isold::Int64, odds::Float64, finaltest_pos::Int64, content_LL_ratios::Vector{Float64}, sampled_item::Union{EpisodicImage, Nothing})::Nothing
 #     iimage = decision_isold == 1 ? image_pool[imax] : EpisodicImage(Word(iprobe_img.word.item, fill(0, length(iprobe_img.word.word_features)), iprobe_img.word.type, iprobe_img.word.studypos), zeros(length(iprobe_img.context_features)), iprobe_img.list_number, iprobe_img.initial_testpos_img)
 # # println(iimage.initial_testpos_img)
 
@@ -144,7 +128,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
         iimage_toadd = EpisodicImage(
             #Word:
             Word(iprobe_img.word.item_code, #item_code
-                fill(0, w_word + 1), #word features - always 25 (24 normal + 1 OT)
+                fill(0, length(iprobe_img.word.word_features)), #word features
                 iprobe_img.word.type_general, #type_general
                 iprobe_img.word.type_specific, #type_specific
                 iprobe_img.word.initial_studypos, #initial_studypos
@@ -159,7 +143,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
         )
 
     # end
-    if ((odds > criterion) & (odds > recall_odds_threshold) )
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         if !isnothing(sampled_item)
             # Use the pre-sampled item
@@ -179,7 +163,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
         for _ in 1:n_units_time_restore
 
-            add_feature_during_restore!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word, iprobe_img.list_number) #TODO
+            add_features_from_empty!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word) #TODO
 
             # if iprobe_img.list_number == 1
 
@@ -191,9 +175,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             # Determine the chunk index for the current probe
             iprobe_chunk = findfirst(x -> finaltest_pos <= x, iprobe_chunk_boundaries)  
 
-            add_feature_during_restore!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context_c[end], g_context, iprobe_img.list_number; cu=c_context_un[end]); #TODO: use last big ctx?
+            add_features_from_empty!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[iprobe_chunk], c_context_c[end], g_context; cu=c_context_un[end]); #TODO: use last big ctx?
             # else
-                # add_feature_during_restore!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context_ilist, g_context)
+                # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context_ilist, g_context)
             
             # end
 
@@ -203,7 +187,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    if ((odds > criterion) & (odds > recall_odds_threshold) )
+    if ((decision_isold==1) & (odds > recall_odds_threshold) )
 
         # pass: strenghten
         #single parameter for missing or replacing
@@ -213,13 +197,10 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             error("current prog is not written when doesn't store mismatch")
         end
 
-        if is_strenghten_contextandcontent #true
-            strengthen_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore, iprobe_img.list_number)
+        if is_strengthen_contextandcontent #true
+            restore_features!(iimage_tostrenghten.word.word_features, iprobe_img.word.word_features, p_recallFeatureStore)
 
-            strengthen_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore, iprobe_img.list_number, is_ctx=true)
-            
-            # Update OT feature during strengthening in final test
-            update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
+            restore_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore,is_ctx=true)
         else
              # nothing for now
         end
@@ -229,21 +210,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
     end
 
-    is_strenghten = (odds > criterion) && (odds > recall_odds_threshold) 
-
-
     # if (decision_isold == 0)
-    if (odds < criterion) || ((odds > criterion) && (odds < recall_odds_threshold))|| ((odds > criterion) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
-
-        # Update OT feature when actually adding trace to memory in final test (not strengthening)
-        if is_strenghten
-            update_ot_feature_add_trace_strengthen!(iimage_toadd.word, iprobe_img.list_number)
-        else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, need to be caution later
-            update_ot_feature_add_trace_only!(iimage_toadd.word, iprobe_img.list_number)
-        end        
+    if (decision_isold == 0) || ((decision_isold == 1) && (odds < recall_odds_threshold))|| ((decision_isold==1) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
         push!(image_pool, iimage_toadd)
-    elseif odds<recall_to_addtrace_threshold
-        error("there is no recall to add trace threshold but somehow not all traces were added")
     end
 
     return nothing

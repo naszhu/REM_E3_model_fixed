@@ -24,15 +24,9 @@ function generate_study_list(list_num::Int, g_word::Float64,w_word::Int64 )::Vec
 
 
     for i in eachindex(word_list)
-        # Generate 24 normal features using Geometric distribution
-        features = rand(Geometric(g_word), w_word) .+ 1
-        
-        # Add OT feature (always added)
-        push!(features, 0)  # For study items, OT feature starts as 0 (not tested before)
-        
         word_list[i] = Word(
             randstring(8), #"Word$(i)L$(list_num)", # item_code
-            features, # word_features with OT feature
+            rand(Geometric(g_word), w_word) .+ 1, # word_features
             type_general[i], # type_general
             types[i], # type_specific
             i,# initial_studypos

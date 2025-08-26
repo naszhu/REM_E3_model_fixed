@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 300;
+n_simulations = is_finaltest ? 100 : 200;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -129,53 +129,7 @@ Geometric parameters
 w_context = 56; #first half unchange context, second half change context, third half word-change context (third half is not added yet)
 w_positioncode = 0
 w_allcontext = w_context + w_positioncode
-# Word features configuration
-
-w_word = 24  # number of normal word features (always 24)
-# OT feature (tested before) configuration
-n_ot_features = 1  # number of OT features to add
-const tested_before_feature_pos = w_word + n_ot_features  # position of OT feature (25)
-
-# Kappa parameters for OT feature updates - using asymptotic functions like z parameters
-# κs: Probability of INCORRECT test information (decreasing function)
-κs_base = 0.00       # starting value for list 1 (no incorrect info yet)
-κs_asymptote = 0.0 # asymptotic value (floor near 0.05)
-κs_rate = 5.0       # how fast κs decreases to asymptote
-κs_list_1_value = 0.0
-
-# κb: Probability of adding traces during strengthening (increasing function)
-κb_base = 0.5       # starting value for adding traces during strengthening
-κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
-κb_rate =5.0       # how fast κb approaches asymptote
-
-# κt: Probability of adding traces without strengthening (increasing function)
-κt_base = 0.5       # starting value for adding traces without strengthening
-κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
-κt_rate = 5.0      # how fast κt approaches asymptote
-
-# Generate asymptotic κ values across lists
-# κs: decreasing function (incorrect test info decreases with experience)
-# κb, κt: increasing functions (adding traces improves with experience)
-# κb_asymptote - κb_base 
-κs_values = asym_decrease(κs_base, κs_asymptote, κs_rate, n_lists - 1)
-κb_values = asym_increase_shift(κb_base, κb_asymptote - κb_base, κb_rate, n_lists - 1)
-κt_values = asym_increase_shift(κt_base, κt_asymptote - κt_base, κt_rate, n_lists - 1)
-
-κs_first_list_val = 0.0
-# TODO: Note that the current kappa s starts from this value specified right here, but other kappa s are starting with the base value. You need to remember that.
-# For backward compatibility, keep the original names but now they're vectors
-
-const κs = κs_values  # kappa for strengthening items (asymptotic across lists)
-const κb = κb_values  # kappa for adding traces when item IS being strengthened
-const κt = κt_values  # kappa for adding traces when item is NOT being strengthened
-
-# Debug output to show asymptotic κ values
-println("Asymptotic κ values generated (starting from list 2):")
-println("κs (incorrect test info - DECREASING): ", κs)
-println("κb (add trace + strengthen - INCREASING): ", κb)
-println("κt (add trace only - INCREASING): ", κt)
-println("Note: κ[1] corresponds to list 2, κ[2] to list 3, etc.")
-println("κs decreases from $(κs_base) to $(κs_asymptote) (incorrect info decreases with experience)") 
+w_word = 23;#25 # number of word features, 30 optimal for inital test, 25 for fianal, lower w would lower overall accuracy 
 
 const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
@@ -183,11 +137,9 @@ const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 #!! adv for content? NO
 u_star_v = 0.046
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
-(1-(1-u_star_v)^n_units_time)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
-u_star_adv = 0# 0.06
-1-(1-(u_star_v + u_star_adv))^n_units_time
+
 #: nospecialty for first list right now
 #the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
@@ -200,8 +152,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.9
-c_adv = 0#0.06
+nnnow=0.70
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
 # println(c," aassssss")
 c_storeintest = c
@@ -221,25 +172,15 @@ Ratios of stuff of featuresl; etc
 LLpower = 1 #power of likelihood for changing context, 
 
 # p_poscode_change = 0.1 #this is no need; deleted feature
-p_reinstate_context = 1 #stop reinstate after what percentage features
+p_reinstate_context = 1 #stop reinstate after how much features
 
-# probability of reinstate 
-p_reinstate_rate = 0.4#0.4 #prob of reinstatement
+p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-# context drift between study and test
 n_driftStudyTest = round.(Int, ones(n_lists) * 14) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
-
-
-# Distortion between study and test on contents, seperate from the above probability for now
-# Probe distortion parameters for content drift between study and test
-max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.8  # Base probability of distortion for the first probe
-
-
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
@@ -292,8 +233,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-ci=0.6 #0.148^power_taken
-criterion_initial = generate_asymptotic_values(1.0, 0.6,0.6, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.148^power_taken, 0.148^power_taken, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
@@ -338,16 +278,16 @@ how_fast_z = 0.4
 how_fast_z_target = 0.8
 how_much_z_f = 0.1
 # z_time_p_val should take the same length as n_lists-1, thus ilist-1 when using
-# z_time_p_val = Dict(
-#     :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-#     Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
-#     :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
-#     :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
-#     :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
-#     Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
-#     :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
-# )
-# println("z_time_p_val: ", z_time_p_val)
+z_time_p_val = Dict(
+    :T   => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+    Symbol("Tn+1")  => asym_increase_shift(0.05, how_much_z_target, how_fast_z_target, n_lists-1),
+    :Fn  => asym_increase_shift(0.26+0.05, how_much_z, how_fast_z, n_lists-1),
+    :Tn  => asym_increase_shift(0.29+0.06, how_much_z, how_fast_z, n_lists-1),
+    :SOn => asym_increase_shift(0.08+0.06, how_much_z, how_fast_z, n_lists-1),
+    Symbol("Fn+1") => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1),
+    :F  => asym_increase_shift(0.00, how_much_z_f, how_fast_z, n_lists-1)
+)
+println("z_time_p_val: ", z_time_p_val)
 # context_threshold_filter = 0
 # p1_old_after_filter = LinRange(1, 1 , 10); #this is when that equals no threshold change 
 # p2_old_after_filter = LinRange(0.5, 0.9, 10);
@@ -361,7 +301,6 @@ how_much_z_f = 0.1
 """
 TRUE FALSE
 """
-use_ot_feature = true  # flag to enable/disable OT feature
 
 sampling_method = true
 
@@ -390,9 +329,8 @@ const is_store_mismatch = true; #if mismatched value is restored during test
 is_restore_initial = true # flag check 
 is_restore_final = true#followed by the next
 
-is_UnchangeCtxDriftAndReinstate = true
-is_content_drift_between_study_and_test = false; # use content drift between study and test
-
+is_UnchangeCtxDriftAndReinstate = false
+is_content_drift_between_study_and_test = true; # use content drift between study and test
 
 is_onlyaddtrace_final = false
 
