@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [9dd4a2c](https://github.com/naszhu/REM_E3_model_fixed/commit/9dd4a2c) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 16:33:27  
+**Message:**
+```
+feat(model-e3): probe distortion at beginning between study and test
+
+This is modified but for some reason the within-list is still wrong
+
+- Introduced a new function `distort_probes_with_linear_decay` to apply a linear decrease in distortion probability for probes, improving the modeling of content drift between study and test.
+- Updated constants related to reinstatement and context drift, including `p_reinstate_rate` and `n_driftStudyTest`, to refine model dynamics.
+- Adjusted flags for context drift behavior, enabling more flexible control over content drift during simulations.
+
+These changes aim to improve the model's adaptability and accuracy in simulating probe behavior and context dynamics.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9dd4a2c_20250826_163327_plot1.png)  
+![](../plot_archive/9dd4a2c_20250826_163327_plot2.png)  
+
 ## Commit [2be1bd0](https://github.com/naszhu/REM_E3_model_fixed/commit/2be1bd0) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 01:33:10  
 **Message:**

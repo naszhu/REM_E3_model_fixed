@@ -1,5 +1,22 @@
 [
   {
+    "commit": "9dd4a2c",
+    "branch": "aug-26-within-list-fix",
+    "message": "feat(model-e3): probe distortion at beginning between study and test",
+    "timestamp": "2025-08-26 16:33:27",
+    "plot1": "plot_archive/9dd4a2c_20250826_163327_plot1.png",
+    "plot2": "plot_archive/9dd4a2c_20250826_163327_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "2be1bd0",
     "branch": "aug-26-within-list-fix",
     "message": "merge(model-e3): Merge branch 'aug-23-new-test'",
