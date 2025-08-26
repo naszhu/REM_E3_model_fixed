@@ -1,5 +1,40 @@
 # Model Progress
 
+## Commit [864c339](https://github.com/naszhu/REM_E3_model_fixed/commit/864c339) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:14:18  
+**Message:**
+```
+restore(model-e3): restore back to commit before last whole branch merge
+
+back to 778073961c864fde39c6f800836c15f886c28ab4
+
+This is to solve #57
+```
+**Changed Files:**
+- `E3/comprehensive_debug.jl`  
+- `E3/constants.jl`  
+- `E3/corrected_debug_reversing_trend.jl`  
+- `E3/debug_reversing_trend.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/fix_content_drift_imbalance.jl`  
+- `E3/fix_reversing_trend.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `E3/quick_fix_reversing_trend.jl`  
+- `E3/real_root_cause_analysis.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/864c339_20250826_201418_plot1.png)  
+![](../plot_archive/864c339_20250826_201418_plot2.png)  
+
 ## Commit [b3a1c46](https://github.com/naszhu/REM_E3_model_fixed/commit/b3a1c46) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 20:13:53  
 **Message:**
