@@ -121,7 +121,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 #     error("List number mistaken initial")
                 #     decision_isold = 0
                 # end
-
+                @assert !isnothing(sampled_item) "sampled item is nothing"
                 if use_ot_feature && !isnothing(sampled_item) 
                     # Use OT feature from sampled item
                     ot_value = get_ot_feature_value(sampled_item.word)
@@ -131,7 +131,8 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                         decision_isold = 1  # OT=0 means judged old
                     end
                     # OT feature disabled or no sampled item - use fallback logic
-                    decision_isold = 1
+                else #if not OT feature: use familarity and so pass recall threshold is old
+                    decision_isold = 1 #This is the bug issue partially
                 end
 
 

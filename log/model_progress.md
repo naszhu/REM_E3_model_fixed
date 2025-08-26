@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [007c234](https://github.com/naszhu/REM_E3_model_fixed/commit/007c234) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 21:11:58  
+**Message:**
+```
+finetune(model-e3): update kappa parameters and distortion probabilities for improved model dynamics
+
+- Adjusted `κs_asymptote` from 0.0 to 0.3 to better reflect the asymptotic behavior of incorrect test information.
+- Reduced `κb_base` and `κt_base` from 0.5 to 0.1 to enhance the model's response to adding traces during strengthening and without strengthening.
+- Updated `base_distortion_prob` from 0.8 to 0.6 to refine the initial probability of distortion for probes.
+- Increased `ci` from 0.84 to 0.9 to optimize the initial criterion values for model dynamics.
+
+These changes aim to enhance the model's performance by fine-tuning critical parameters related to kappa and distortion mechanisms.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/007c234_20250826_211158_plot1.png)  
+![](../plot_archive/007c234_20250826_211158_plot2.png)  
+
 ## Commit [e048c24](https://github.com/naszhu/REM_E3_model_fixed/commit/e048c24) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 21:05:11  
 **Message:**
