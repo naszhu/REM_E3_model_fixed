@@ -1,5 +1,308 @@
 # Model Progress
 
+## Commit [07a86d3](https://github.com/naszhu/REM_E3_model_fixed/commit/07a86d3) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 22:24:49  
+**Message:**
+```
+fix(model-e3): refine feature strengthening logic and enhance probe evaluation assertions
+
+Found bug of where is the last v's difference between where we had problem, but what's the problem?. why?
+
+why after chaning the decision logic, it instantly causes the within-list result be different? could it be the problem of the marking of the within-list test item to be 1 making the later ones mistaken?
+
+- Updated the `strengthen_features!` function to include additional conditions for updating target features when current values are zero or mismatched, improving feature accuracy.
+- Added an assertion in `probe_evaluation` to ensure that a sampled item is not `nothing`, addressing potential bugs in decision-making logic related to the OT feature.
+
+These changes aim to enhance the robustness and reliability of the model's feature handling and evaluation processes.
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/07a86d3_20250826_222449_plot1.png)  
+![](../plot_archive/07a86d3_20250826_222449_plot2.png)  
+
+## Commit [007c234](https://github.com/naszhu/REM_E3_model_fixed/commit/007c234) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 21:11:58  
+**Message:**
+```
+finetune(model-e3): update kappa parameters and distortion probabilities for improved model dynamics
+
+- Adjusted `κs_asymptote` from 0.0 to 0.3 to better reflect the asymptotic behavior of incorrect test information.
+- Reduced `κb_base` and `κt_base` from 0.5 to 0.1 to enhance the model's response to adding traces during strengthening and without strengthening.
+- Updated `base_distortion_prob` from 0.8 to 0.6 to refine the initial probability of distortion for probes.
+- Increased `ci` from 0.84 to 0.9 to optimize the initial criterion values for model dynamics.
+
+These changes aim to enhance the model's performance by fine-tuning critical parameters related to kappa and distortion mechanisms.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/007c234_20250826_211158_plot1.png)  
+![](../plot_archive/007c234_20250826_211158_plot2.png)  
+
+## Commit [e048c24](https://github.com/naszhu/REM_E3_model_fixed/commit/e048c24) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 21:05:11  
+**Message:**
+```
+feat(model-e3): integrate OT feature updates and enhance memory management
+
+this is done by comparing change to 2be1bd01705c8e9c730147862981aa275a206d32
+
+- Introduced a new OT feature to track prior testing status, with associated kappa parameters for dynamic updates during study and restoration processes.
+- Updated functions to handle the OT feature, including `update_ot_feature!`, `strengthen_features!`, and `store_word_features!`, ensuring accurate memory storage and retrieval.
+- Enhanced decision-making logic in `probe_evaluation` to utilize the OT feature when enabled, improving the model's adaptability in evaluating probe responses.
+- Adjusted memory restoration functions to incorporate the new OT feature, ensuring consistent handling across different contexts.
+
+These changes aim to refine the model's performance by improving the integration and management of the OT feature within the memory framework.
+
+In solving #57
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e048c24_20250826_210511_plot1.png)  
+![](../plot_archive/e048c24_20250826_210511_plot2.png)  
+
+## Commit [1f65eaa](https://github.com/naszhu/REM_E3_model_fixed/commit/1f65eaa) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:24:44  
+**Message:**
+```
+feat(model-e3): content drift: probe distortion mechanism and update constants
+
+redo commit 9dd4a2cbb1fa4aa4b6b0148fad3a144318bbb6cb
+
+- Introduced a new function `distort_probes_with_linear_decay` to apply a linear decrease in distortion probability for probes, improving the modeling of content drift between study and test.
+- Added constants for distortion parameters, including `max_distortion_probes` and `base_distortion_prob`, to refine the distortion process.
+- Updated `criterion_initial` calculation to use a new variable `ci` for better clarity and consistency.
+- Commented out unused code in `simulate_rem` to improve readability and maintainability.
+
+These changes aim to enhance the model's accuracy in simulating probe behavior and content dynamics.
+
+Refs this is to solve #57
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1f65eaa_20250826_202444_plot1.png)  
+![](../plot_archive/1f65eaa_20250826_202444_plot2.png)  
+
+## Commit [864c339](https://github.com/naszhu/REM_E3_model_fixed/commit/864c339) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:14:18  
+**Message:**
+```
+restore(model-e3): restore back to commit before last whole branch merge
+
+back to 778073961c864fde39c6f800836c15f886c28ab4
+
+This is to solve #57
+```
+**Changed Files:**
+- `E3/comprehensive_debug.jl`  
+- `E3/constants.jl`  
+- `E3/corrected_debug_reversing_trend.jl`  
+- `E3/debug_reversing_trend.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/fix_content_drift_imbalance.jl`  
+- `E3/fix_reversing_trend.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `E3/quick_fix_reversing_trend.jl`  
+- `E3/real_root_cause_analysis.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/864c339_20250826_201418_plot1.png)  
+![](../plot_archive/864c339_20250826_201418_plot2.png)  
+
+## Commit [b3a1c46](https://github.com/naszhu/REM_E3_model_fixed/commit/b3a1c46) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:13:53  
+**Message:**
+```
+restore(model-e3): restore back to commit before last whole branch merge
+
+back to 778073961c864fde39c6f800836c15f886c28ab4
+
+This is to solve #57
+```
+**Changed Files:**
+- `E3/comprehensive_debug.jl`  
+- `E3/constants.jl`  
+- `E3/corrected_debug_reversing_trend.jl`  
+- `E3/debug_reversing_trend.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/fix_content_drift_imbalance.jl`  
+- `E3/fix_reversing_trend.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `E3/quick_fix_reversing_trend.jl`  
+- `E3/real_root_cause_analysis.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b3a1c46_20250826_201353_plot1.png)  
+![](../plot_archive/b3a1c46_20250826_201353_plot2.png)  
+
+## Commit [b3a1c46](https://github.com/naszhu/REM_E3_model_fixed/commit/b3a1c46) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:13:53  
+**Message:**
+```
+restore(model-e3): restore back to commit before last whole branch merge
+
+back to 778073961c864fde39c6f800836c15f886c28ab4
+
+This is to solve #57
+```
+**Changed Files:**
+- `E3/comprehensive_debug.jl`  
+- `E3/constants.jl`  
+- `E3/corrected_debug_reversing_trend.jl`  
+- `E3/debug_reversing_trend.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/fix_content_drift_imbalance.jl`  
+- `E3/fix_reversing_trend.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `E3/quick_fix_reversing_trend.jl`  
+- `E3/real_root_cause_analysis.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b3a1c46_20250826_201353_plot1.png)  
+![](../plot_archive/b3a1c46_20250826_201353_plot2.png)  
+
+## Commit [b6333e5](https://github.com/naszhu/REM_E3_model_fixed/commit/b6333e5) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 20:10:57  
+**Message:**
+```
+restore(model-e3): restore back to commit before last whole branch merge
+
+back to 778073961c864fde39c6f800836c15f886c28ab4
+
+This is to solve #57
+```
+**Changed Files:**
+- `E3/comprehensive_debug.jl`  
+- `E3/constants.jl`  
+- `E3/corrected_debug_reversing_trend.jl`  
+- `E3/debug_reversing_trend.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/fix_content_drift_imbalance.jl`  
+- `E3/fix_reversing_trend.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `E3/quick_fix_reversing_trend.jl`  
+- `E3/real_root_cause_analysis.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `criterion`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b6333e5_20250826_201057_plot1.png)  
+![](../plot_archive/b6333e5_20250826_201057_plot2.png)  
+
+## Commit [d1322de](https://github.com/naszhu/REM_E3_model_fixed/commit/d1322de) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 16:49:55  
+**Message:**
+```
+debug(model-e3): not exactly sure what is going on
+
+- Introduced a new script `comprehensive_debug.jl` to analyze the reversing trend issue, providing detailed insights into probe distortion and its impact on model behavior.
+- The script includes simulations of probe distortion, current state analysis, and critical discoveries regarding the root cause of the reversing trend.
+- Recommendations for immediate fixes and verification steps are provided to restore balanced probe distortion and address the identified issues.
+```
+**Changed Files:**
+- `E3/comprehensive_debug.jl`  
+- `E3/corrected_debug_reversing_trend.jl`  
+- `E3/debug_reversing_trend.jl`  
+- `E3/fix_content_drift_imbalance.jl`  
+- `E3/fix_reversing_trend.jl`  
+- `E3/quick_fix_reversing_trend.jl`  
+- `E3/real_root_cause_analysis.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d1322de_20250826_164955_plot1.png)  
+![](../plot_archive/d1322de_20250826_164955_plot2.png)  
+
+## Commit [9dd4a2c](https://github.com/naszhu/REM_E3_model_fixed/commit/9dd4a2c) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 16:33:27  
+**Message:**
+```
+feat(model-e3): probe distortion at beginning between study and test
+
+This is modified but for some reason the within-list is still wrong
+
+- Introduced a new function `distort_probes_with_linear_decay` to apply a linear decrease in distortion probability for probes, improving the modeling of content drift between study and test.
+- Updated constants related to reinstatement and context drift, including `p_reinstate_rate` and `n_driftStudyTest`, to refine model dynamics.
+- Adjusted flags for context drift behavior, enabling more flexible control over content drift during simulations.
+
+These changes aim to improve the model's adaptability and accuracy in simulating probe behavior and context dynamics.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9dd4a2c_20250826_163327_plot1.png)  
+![](../plot_archive/9dd4a2c_20250826_163327_plot2.png)  
+
+## Commit [2be1bd0](https://github.com/naszhu/REM_E3_model_fixed/commit/2be1bd0) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 01:33:10  
+**Message:**
+```
+merge(model-e3): Merge branch 'aug-23-new-test'
+```
+![](../plot_archive/2be1bd0_20250826_013310_plot1.png)  
+![](../plot_archive/2be1bd0_20250826_013310_plot2.png)  
+
 ## Commit [713a4dc](https://github.com/naszhu/REM_E3_model_fixed/commit/713a4dc) (branch: `main`)
 **Time:** 2025-08-26 01:32:33  
 **Message:**

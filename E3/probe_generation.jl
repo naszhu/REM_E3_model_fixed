@@ -105,12 +105,11 @@ function generate_probes(
         # out of T; Tn; SO; SOn; F; Fn
             pt_general = probetypes[i] == :F ? :F : Symbol("Fn")
 
-            # Generate 24 normal features using Geometric distribution
-            features = rand(Geometric(g_word), w_word) .+ 1
+            features = generate_features(Geometric(g_word), w_word)
             
             # Add OT feature (always added)
             push!(features, 0)  # For new probes, OT feature starts as 0 (not tested before)
-            
+
             target_word = 
             Word(
                 randstring(8), 
@@ -180,6 +179,30 @@ function generate_probes(
 
     end
 
+
+    if is_content_drift_between_study_and_test
+        # Apply distortion to probes with linear decay in probability
+        # The distortion probability starts high for the first probe and linearly decreases to 0
+        # after max_distortion_probes (default: 8). This creates a strong distortion effect
+        # for early probes that gradually diminishes for later probes.
+        # 
+        # Keep original probes for foils collection, but distort probes for testing
+        # The foils_collection already contains deep copies of the original probes
+        # before distortion was applied, so it remains clean and unaffected.
+        distorted_probes, original_probes = distort_probes_with_linear_decay(
+            probes, 
+            max_distortion_probes;  # Use constant from constants.jl
+            base_distortion_prob = base_distortion_prob,  # Use constant from constants.jl
+            g_word = g_word  # Use the constant defined in constants.jl
+        )
+        
+        # Replace probes with distorted versions for testing
+        probes = distorted_probes
+        
+        # Note: original_probes are kept for reference but not returned
+        # The foils_collection already contains deep copies of the original probes
+        # before distortion was applied, so it remains clean
+    end
 
     return probes, foils_collection
 end
@@ -339,12 +362,10 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                 if condition == :true_random
 
-                    # Generate 24 normal features using Geometric distribution
-                    features = rand(Geometric(g_word), w_word) .+ 1
-                    
-                    # Add OT feature (always added)
+
+                    features = generate_features(Geometric(g_word), w_word)
                     push!(features, 0)  # For FF probes, OT feature starts as 0 (not tested before)
-                    
+
                     global img = 
                     EpisodicImage(
                         Word(randstring(8),

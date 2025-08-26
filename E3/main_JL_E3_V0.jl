@@ -46,8 +46,8 @@ include("constants.jl")
 
 a = [1 1 1; 1 1 1]
 
-include("data_structures.jl")
 include("feature_updates.jl")
+include("data_structures.jl")
 
 include("feature_generation.jl")
 
@@ -160,4 +160,4 @@ end
 
 
 
-# all_results[all_results.list_number.!==all_results.ilist_image,:]~/
+# all_results[all_results.list_number.!==all_results.ilist_image,:]

@@ -37,11 +37,9 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
         update_ot_feature_study!(new_image.word.word_features, list_num)
     end
 
-
     for _ in 1:n_units_time #content intial adv??? . Maybe not needed but.. 
-        
 
-        # In your storage function:
+       # In your storage function:
         store_word_features!(
             new_image.word.word_features, 
             word.word_features,
@@ -53,10 +51,8 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
 
         #############STORAGE - context
             # a[length(a)/2]1-3 4-7; 3,3
-            
+        
         update_context_features_during_study!(new_image, context_features, word, list_num)
-
-        # println("Word Features: ", new_image.word.word_features)
     end
 
     # if new_image.word.type_general==:F

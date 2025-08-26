@@ -6,15 +6,15 @@
 function reinstate_context_duringTest!(context_array::Vector{Int64}, reference_array::Vector{Int64},
     p_reinstate_context::Float64,
     p_reinstate_rate::Float64)::Nothing
-    
-    nct = length(context_array)
-    for ict in eachindex(context_array)
-        # if ict < Int(round(nct * p_reinstate_context))
-        if (context_array[ict] != reference_array[ict]) & (rand() < p_reinstate_rate)
-            context_array[ict] = reference_array[ict]
+
+        nct = length(context_array)
+        for ict in eachindex(context_array)
+            # if ict < Int(round(nct * p_reinstate_context))
+                if (context_array[ict] != reference_array[ict]) & (rand() < p_reinstate_rate)
+                    context_array[ict] = reference_array[ict]
+                end
+            # end
         end
-        # end
-    end
 end   
 
 
@@ -25,7 +25,7 @@ function drift_ctx_betweenStudyAndTest!(
     probability::Float64, 
     distribution::Distribution
     )::Nothing
-    
+
     for cf in eachindex(context_or_content_features)
         if rand() < probability
             context_or_content_features[cf] = rand(distribution) + 1
@@ -43,8 +43,8 @@ function drift_between_lists!(
     g_context::Float64=g_context
     
     )::Nothing
-    
-    
+                
+
     # for _ in 1:n_drift
     #     for i in eachindex(context_features)
     #         if rand() < p_drift
@@ -52,7 +52,7 @@ function drift_between_lists!(
     #         end
     #     end
     # end
-    
+
     # for i in eachindex(context_features)
     #     for _ in 1:40
     #             if rand() < 0.03
@@ -60,15 +60,15 @@ function drift_between_lists!(
     #             end
     #     end
     # end
-    
+
     for i in eachindex(context_features)
         for _ in 1:n_drift
-            if rand() < p_drift
-                context_features[i] = rand(Geometric(g_context)) + 1
-            end
+                if rand() < p_drift
+                    context_features[i] = rand(Geometric(g_context)) + 1
+                end
         end
     end
-    
+
 end  
 
 function drift_between_lists_final!(
@@ -77,14 +77,14 @@ function drift_between_lists_final!(
     p_drift::Float64; 
     g_context::Float64=g_context
     )::Nothing
-    
-    
+                
+
     # for _ in 1:n_drift
-    for i in eachindex(context_features)
-        if rand() < p_drift
-            context_features[i] = rand(Geometric(g_context)) + 1
+        for i in eachindex(context_features)
+            if rand() < p_drift
+                context_features[i] = rand(Geometric(g_context)) + 1
+            end
         end
-    end
     # end
 end
 
@@ -104,6 +104,7 @@ function drift_context_during_final_test!(
         end
     end
 end  
+
 
 
 """
@@ -153,63 +154,68 @@ function update_context_features_during_study!(image::EpisodicImage, context_fea
 end
 
 
+
 """
 assume read nU from constant.jl
 cu and cc is copying parameter value
-
-This function is to add a new trace into memory, starting from an empty trace for the target features.
 """
-function add_feature_during_restore!(target_features::Vector{Int64}, probe_features::Vector{Int64}, u_star::Float64, cc::Float64, g_param::Float64, list_number::Int64; u_adv=0.0, cu::Float64=0.0)::Nothing
-    
-    @assert length(target_features) === length(probe_features) "LENGTH NOT MATCH"
-    
+function add_feature_during_restore!(target_features::Vector{Int}, probe_features::Vector{Int}, u_star::Float64, cc::Float64, g_param::Float64, list_number::Int64; u_adv=0.0, cu::Float64=0.0)::Nothing
+
+    @assert length(target_features) == length(probe_features) "LENGTH NOT MATCH"
+
     is_content = cu === 0.0 #if cu is 0, then this is a content
 
+
     for i in eachindex(probe_features)
-        # Special handling for OT feature (last feature) - only if enabled
+
+         # Special handling for OT feature (last feature) - only if enabled
         # skip the OT feature here, this will be specifically handled later
         if use_ot_feature && i === tested_before_feature_pos && is_content
             # OT feature: use κs probability for incorrect test info
              #do nothing for when OT feature here,this will be specifically handled later
 
-        else #when feature i is not OT feature, or all other else situations
+        else#when feature i is not OT feature, or all other else situations
             # Normal features: use existing geometric distribution logic
+
             if is_content #cu?==0.0? this means when this is a content (so no cu will be inputed)
                 c_param = cc
-            else
+            else     
+
                 if i > nU #FIXME: fast workaround here
-                    c_param = cc #different c for change 
+                    c_param = cc
                 else
-                    c_param = cu #the c for unchange
+                    c_param = cu
                 end
             end
+            
             j = target_features[i]
-            if j === 0 #replace normal feature
+            if j === 0
                 target_features[i] = rand() < u_star ? (rand() < c_param ? probe_features[i] : rand(Geometric(g_param)) + 1) : j
             end
         end
+        
     end
+
     return nothing
 end
 
 
-function strengthen_features!(target_features::Vector{Int64}, source_features::Vector{Int64}, p_recallFeatureStore::Float64, list_number::Int64; is_store_mismatch::Bool=is_store_mismatch, is_ctx::Bool=false)::Nothing
-    
+function strengthen_features!(target_features::Vector{Int}, source_features::Vector{Int}, p_recallFeatureStore::Float64,  list_number::Int64; is_store_mismatch::Bool=is_store_mismatch, is_ctx::Bool=false)::Nothing
+
     
     for _ in 1:n_units_time_restore
         for i in eachindex(source_features)
             current_value = target_features[i]
             source_value = source_features[i]
-            
-            # Special handling for OT feature (last feature) - only if enabled
-            # skip the OT feature here, this will be specifically handled later
+
             if use_ot_feature && i === tested_before_feature_pos && !is_ctx
                 # OT feature: use κs probability for incorrect test info during restoration
                 # have tested this does happen               
             else
-                # Normal features: use existing logic
+                 # Normal features: use existing logic
+
                 if is_ctx
-                    @assert length(target_features) === nU+nC "not same length"
+                    @assert length(target_features)==nU+nC "not same length"
                     if i>nU # for CC
                         # pps = 0.8
                         # c_usenow = 0.9 # c_context_c[1] #, perfect storage
@@ -227,26 +233,30 @@ function strengthen_features!(target_features::Vector{Int64}, source_features::V
                     c_usenow = c[1] 
                     u_star_now = u_star[1] + u_advFoilInitialT 
                 end
-                
+            
+            # if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
+            #     target_features[i] = rand() < pps ? source_value : current_value
+            # end
+            
+            # if (current_value !== 0) 
+            #     target_features[i] = rand() < pps ? source_value : current_value
+            # end
+            #is_store_mismatch is false now so no mismatch stored
+                # if (current_value === 0) 
                 if (current_value === 0) || ((current_value !== 0) && (current_value !== source_value) && is_store_mismatch)
                     target_features[i] = rand() < u_star_now[1]+u_star_adv ? (rand() < c_usenow[1]+c_adv ? source_value : rand(Geometric(g_context)) + 1) : current_value
-                
-                
-                # if (current_value !== 0) 
-                #     target_features[i] = rand() < pps ? source_value : current_value
-                # 
-                #is_store_mismatch is false now so no mismatch stored
-                # if (current_value === 0) 
-                #     target_features[i] = rand() < u_star_now[1]+u_star_adv ? (rand() < c_usenow[1]+c_adv ? source_value : rand(Geometric(g_context)) + 1) : current_value
-
                 end
-            end
+
+            end #end of the OT feature judgement
+
             
         end 
     end # for _ in 1:n_units_time_restore
     # end
-    return nothing
 end
+
+
+
 
 # =============================================================================
 # OT Feature Update Functions
@@ -277,7 +287,7 @@ function update_ot_feature_study!(word_features::Vector{Int64}, list_number::Int
         end
         
         # omit if the value=0 part becuase it should always be 0 during study
-        word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : word_features[tested_before_feature_pos]
+        word_features[tested_before_feature_pos] = rand() < κ_value ? word_features[tested_before_feature_pos]+ot_value_study : word_features[tested_before_feature_pos]
         
     end
     return nothing
@@ -297,8 +307,9 @@ function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
             κ_value = κb[κ_index]
         end
         
-        if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] = 1
+        # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
+        if  rand() < κ_value
+            word.word_features[tested_before_feature_pos] += ot_value_test
         end
     end
     return nothing
@@ -318,8 +329,8 @@ function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)
             κ_value = κb[κ_index]
         end
         
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] = 1
+        if rand() < κ_value
+            word.word_features[tested_before_feature_pos] += ot_value_test;
         end
     end
     return nothing
@@ -340,7 +351,7 @@ function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Noth
         end
         
         if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] = 1
+            word.word_features[tested_before_feature_pos] += ot_value_test;
         end
     end
     return nothing

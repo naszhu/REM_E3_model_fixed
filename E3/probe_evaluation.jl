@@ -97,22 +97,45 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             end
         end
 
-        # Decision logic - modified to include OT feature evaluation (only if enabled)
+        # Decision logic - same structure but configurable type source
         if odds > criterion_initial[i_testpos, ilist_probe] 
             if odds > recall_odds_threshold
-                # Second stage: Use OT feature for decision (only if enabled)
+                # Determine which list number and type to use for decision
+                # if use_sampled_item_for_decision && !isnothing(sampled_item)
+                #     # Use sampled item's list number and type
+                #     decision_list_number = sampled_item.list_number
+                #     decision_type = sampled_item.word.type_specific
+                # else
+                #     # Use probe's list number and type (original behavior)
+                #     decision_list_number = ilist_probe
+                #     decision_type = probes[i].image.word.type_specific
+                # end
+                
+                # if decision_list_number == 1
+                #     decision_isold = 1 #if list 1, always recall
+                # elseif decision_list_number > 1
+                #     product = get(z_time_p_val, decision_type, zeros(Float64, n_lists-1)) 
+                #     decision_isold = rand() < product[decision_list_number-1] ? 0 : 1   
+                # else
+                #     # For list 0 or other invalid cases, default to new
+                #     error("List number mistaken initial")
+                #     decision_isold = 0
+                # end
+                @assert !isnothing(sampled_item) "sampled item is nothing"
                 if use_ot_feature && !isnothing(sampled_item) 
                     # Use OT feature from sampled item
                     ot_value = get_ot_feature_value(sampled_item.word)
-                    if ot_value == 1
+                    if ot_value >= ot_value_threshold
                         decision_isold = 0  # OT=1 means judged new
                     else
                         decision_isold = 1  # OT=0 means judged old
                     end
-                else
                     # OT feature disabled or no sampled item - use fallback logic
-                    decision_isold = 1
+                else #if not OT feature: use familarity and so pass recall threshold is old
+                    decision_isold = 1 #This is the bug issue partially
                 end
+
+
             else
                 decision_isold = 1
             end
@@ -214,25 +237,10 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
             end
         end
 
-        # Decision logic - modified to include OT feature evaluation (only if enabled)
+        # Decision logic for final test - same structure but configurable type source
+        
         if odds > criterion_final_i
-            if odds > recall_odds_threshold
-                # Second stage: Use OT feature for decision (only if enabled)
-                if use_ot_feature && !isnothing(sampled_item) 
-                    # Use OT feature from sampled item
-                    ot_value = get_ot_feature_value(sampled_item.word)
-                    if ot_value == 1
-                        decision_isold = 0  # OT=1 means judged new
-                    else
-                        decision_isold = 1  # OT=0 means judged old
-                    end
-                else
-                    # OT feature disabled or no sampled item - use fallback logic
-                    decision_isold = 1
-                end
-            else
-                decision_isold = 1
-            end
+            decision_isold = 1
         else #if didn't pass, directly judge new
             decision_isold = 0
         end
