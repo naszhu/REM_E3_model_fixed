@@ -201,6 +201,9 @@ function simulate_rem()
 
             # list_change_context_features .= ifelse.(rand(length(list_change_context_features)) .<  p_driAndndListChange,rand(Geometric(g_context),length(list_change_context_features)) .+ 1,list_change_context_features)
             # println([i.value for i in list_change_context_features])
+            for i_img in image_pool
+                i_img.word.word_features[tested_before_feature_pos] = rand() < κ_update_between_list ? i_img.word.word_features[tested_before_feature_pos]+ ot_value_between_lists : i_img.word.word_features[tested_before_feature_pos];
+            end
 
         end
 

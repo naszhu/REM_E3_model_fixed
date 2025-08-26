@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [07a86d3](https://github.com/naszhu/REM_E3_model_fixed/commit/07a86d3) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 22:24:49  
+**Message:**
+```
+fix(model-e3): refine feature strengthening logic and enhance probe evaluation assertions
+
+Found bug of where is the last v's difference between where we had problem, but what's the problem?. why?
+
+why after chaning the decision logic, it instantly causes the within-list result be different? could it be the problem of the marking of the within-list test item to be 1 making the later ones mistaken?
+
+- Updated the `strengthen_features!` function to include additional conditions for updating target features when current values are zero or mismatched, improving feature accuracy.
+- Added an assertion in `probe_evaluation` to ensure that a sampled item is not `nothing`, addressing potential bugs in decision-making logic related to the OT feature.
+
+These changes aim to enhance the robustness and reliability of the model's feature handling and evaluation processes.
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/07a86d3_20250826_222449_plot1.png)  
+![](../plot_archive/07a86d3_20250826_222449_plot2.png)  
+
 ## Commit [007c234](https://github.com/naszhu/REM_E3_model_fixed/commit/007c234) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 21:11:58  
 **Message:**

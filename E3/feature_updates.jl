@@ -287,7 +287,7 @@ function update_ot_feature_study!(word_features::Vector{Int64}, list_number::Int
         end
         
         # omit if the value=0 part becuase it should always be 0 during study
-        word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : word_features[tested_before_feature_pos]
+        word_features[tested_before_feature_pos] = rand() < κ_value ? word_features[tested_before_feature_pos]+ot_value_study : word_features[tested_before_feature_pos]
         
     end
     return nothing
@@ -307,8 +307,9 @@ function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
             κ_value = κb[κ_index]
         end
         
-        if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] = 1
+        # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
+        if  rand() < κ_value
+            word.word_features[tested_before_feature_pos] += ot_value_test
         end
     end
     return nothing
@@ -328,8 +329,8 @@ function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)
             κ_value = κb[κ_index]
         end
         
-        if word.word_features[tested_before_feature_pos] == 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] = 1
+        if rand() < κ_value
+            word.word_features[tested_before_feature_pos] += ot_value_test;
         end
     end
     return nothing
@@ -350,7 +351,7 @@ function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Noth
         end
         
         if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] = 1
+            word.word_features[tested_before_feature_pos] += ot_value_test;
         end
     end
     return nothing

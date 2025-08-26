@@ -1,5 +1,20 @@
 [
   {
+    "commit": "07a86d3",
+    "branch": "aug-26-within-list-fix",
+    "message": "fix(model-e3): refine feature strengthening logic and enhance probe evaluation assertions",
+    "timestamp": "2025-08-26 22:24:49",
+    "plot1": "plot_archive/07a86d3_20250826_222449_plot1.png",
+    "plot2": "plot_archive/07a86d3_20250826_222449_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "007c234",
     "branch": "aug-26-within-list-fix",
     "message": "finetune(model-e3): update kappa parameters and distortion probabilities for improved model dynamics",

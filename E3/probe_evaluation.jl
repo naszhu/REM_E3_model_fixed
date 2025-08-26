@@ -125,7 +125,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 if use_ot_feature && !isnothing(sampled_item) 
                     # Use OT feature from sampled item
                     ot_value = get_ot_feature_value(sampled_item.word)
-                    if ot_value == 1
+                    if ot_value >= ot_value_threshold
                         decision_isold = 0  # OT=1 means judged new
                     else
                         decision_isold = 1  # OT=0 means judged old
