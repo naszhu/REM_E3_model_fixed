@@ -1,5 +1,26 @@
 [
   {
+    "commit": "e048c24",
+    "branch": "aug-26-within-list-fix",
+    "message": "feat(model-e3): integrate OT feature updates and enhance memory management",
+    "timestamp": "2025-08-26 21:05:11",
+    "plot1": "plot_archive/e048c24_20250826_210511_plot1.png",
+    "plot2": "plot_archive/e048c24_20250826_210511_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "E3/feature_generation.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "1f65eaa",
     "branch": "aug-26-within-list-fix",
     "message": "feat(model-e3): content drift: probe distortion mechanism and update constants",

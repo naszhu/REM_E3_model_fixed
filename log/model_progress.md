@@ -1,5 +1,37 @@
 # Model Progress
 
+## Commit [e048c24](https://github.com/naszhu/REM_E3_model_fixed/commit/e048c24) (branch: `aug-26-within-list-fix`)
+**Time:** 2025-08-26 21:05:11  
+**Message:**
+```
+feat(model-e3): integrate OT feature updates and enhance memory management
+
+this is done by comparing change to 2be1bd01705c8e9c730147862981aa275a206d32
+
+- Introduced a new OT feature to track prior testing status, with associated kappa parameters for dynamic updates during study and restoration processes.
+- Updated functions to handle the OT feature, including `update_ot_feature!`, `strengthen_features!`, and `store_word_features!`, ensuring accurate memory storage and retrieval.
+- Enhanced decision-making logic in `probe_evaluation` to utilize the OT feature when enabled, improving the model's adaptability in evaluating probe responses.
+- Adjusted memory restoration functions to incorporate the new OT feature, ensuring consistent handling across different contexts.
+
+These changes aim to refine the model's performance by improving the integration and management of the OT feature within the memory framework.
+
+In solving #57
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_generation.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e048c24_20250826_210511_plot1.png)  
+![](../plot_archive/e048c24_20250826_210511_plot2.png)  
+
 ## Commit [1f65eaa](https://github.com/naszhu/REM_E3_model_fixed/commit/1f65eaa) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 20:24:44  
 **Message:**
