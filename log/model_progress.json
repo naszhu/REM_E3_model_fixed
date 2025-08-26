@@ -1,5 +1,14 @@
 [
   {
+    "commit": "2be1bd0",
+    "branch": "aug-26-within-list-fix",
+    "message": "merge(model-e3): Merge branch 'aug-23-new-test'",
+    "timestamp": "2025-08-26 01:33:10",
+    "plot1": "plot_archive/2be1bd0_20250826_013310_plot1.png",
+    "plot2": "plot_archive/2be1bd0_20250826_013310_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "713a4dc",
     "branch": "main",
     "message": "merge(model-e3): Merge branch 'aug-23-new-test'",

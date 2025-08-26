@@ -120,11 +120,11 @@ function simulate_rem()
             test_list_context_change = deepcopy(list_change_context_features)
             test_list_context_unchange = deepcopy(general_context_features)
 
-            word_list_content_whole_list = Vector{Any}(undef, length(word_list))
-            for i_word in eachindex(word_list)
-                content_i = deepcopy(word_list[i_word].word_features)
-                word_list_content_whole_list[i_word] = content_i
-            end
+            # word_list_content_whole_list = Vector{Any}(undef, length(word_list))
+            # for i_word in eachindex(word_list)
+            #     content_i = deepcopy(word_list[i_word].word_features)
+            #     word_list_content_whole_list[i_word] = content_i
+            # end
 
             # list_change_context_features only change between lists, change after each list;
             # list_change_context_features use as a record, to reinstate in probe generation 
@@ -141,13 +141,13 @@ function simulate_rem()
                     drift_ctx_betweenStudyAndTest!(test_list_context_unchange, p_driftAndListChange, Geometric(g_context))
                 end
 
-                if is_content_drift_between_study_and_test #true
+                # if is_content_drift_between_study_and_test #true
 
-                    for iword in eachindex(word_list_content_whole_list)
+                    # for iword in eachindex(word_list_content_whole_list)
 
-                        drift_ctx_betweenStudyAndTest!(word_list_content_whole_list[iword], p_driftAndListChange, Geometric(g_word))
-                    end
-                end
+                    #     drift_ctx_betweenStudyAndTest!(word_list_content_whole_list[iword], p_driftAndListChange, Geometric(g_word))
+                    # end
+                # end
             end   #studied_pool[:, list_num]
             # studied_pool[j, list_num]
 

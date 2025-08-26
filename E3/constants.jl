@@ -221,15 +221,25 @@ Ratios of stuff of featuresl; etc
 LLpower = 1 #power of likelihood for changing context, 
 
 # p_poscode_change = 0.1 #this is no need; deleted feature
-p_reinstate_context = 1 #stop reinstate after how much features
+p_reinstate_context = 1 #stop reinstate after what percentage features
 
-p_reinstate_rate = 0.2#0.4 #prob of reinstatement
+# probability of reinstate 
+p_reinstate_rate = 0.4#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
+# context drift between study and test
 n_driftStudyTest = round.(Int, ones(n_lists) * 14) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
+
+
+# Distortion between study and test on contents, seperate from the above probability for now
+# Probe distortion parameters for content drift between study and test
+max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
+base_distortion_prob = 0.8  # Base probability of distortion for the first probe
+
+
 
 n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
@@ -283,7 +293,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
 ci=0.6 #0.148^power_taken
-criterion_initial = generate_asymptotic_values(1.0, 0.6,0.57, 1.0, 1.0, 3.0) 
+criterion_initial = generate_asymptotic_values(1.0, 0.6,0.6, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
@@ -380,8 +390,9 @@ const is_store_mismatch = true; #if mismatched value is restored during test
 is_restore_initial = true # flag check 
 is_restore_final = true#followed by the next
 
-is_UnchangeCtxDriftAndReinstate = false
-is_content_drift_between_study_and_test = true; # use content drift between study and test
+is_UnchangeCtxDriftAndReinstate = true
+is_content_drift_between_study_and_test = false; # use content drift between study and test
+
 
 is_onlyaddtrace_final = false
 
