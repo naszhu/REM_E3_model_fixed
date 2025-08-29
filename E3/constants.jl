@@ -305,7 +305,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-ci=0.58 #0.148^power_taken
+ci=0.98 #0.148^power_taken
 
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
