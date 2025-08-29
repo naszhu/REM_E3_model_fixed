@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [9f88ac1](https://github.com/naszhu/REM_E3_model_fixed/commit/9f88ac1) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:12:19  
+**Message:**
+```
+finetune(model-e3): adjust kappa parameters for improved model dynamics
+
+- Increased `κs_base` and `κs_asymptote` to 0.80 to enhance the model's response dynamics related to incorrect test information.
+- Decreased `κb_base` and `κt_base` to 0.20 to refine the initial probabilities of adding traces during and without strengthening.
+
+These changes aim to further optimize the model's performance by fine-tuning critical kappa parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9f88ac1_20250829_201219_plot1.png)  
+![](../plot_archive/9f88ac1_20250829_201219_plot2.png)  
+
 ## Commit [793ec6b](https://github.com/naszhu/REM_E3_model_fixed/commit/793ec6b) (branch: `aug-29-test`)
 **Time:** 2025-08-29 20:09:07  
 **Message:**
