@@ -1,5 +1,14 @@
 [
   {
+    "commit": "c035450",
+    "branch": "aug-29-test",
+    "message": "merge(model-e3):Merge branch 'aug-26-within-list-fix'",
+    "timestamp": "2025-08-26 23:14:57",
+    "plot1": "plot_archive/c035450_20250826_231457_plot1.png",
+    "plot2": "plot_archive/c035450_20250826_231457_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "07a86d3",
     "branch": "aug-26-within-list-fix",
     "message": "fix(model-e3): refine feature strengthening logic and enhance probe evaluation assertions",

@@ -1,5 +1,16 @@
 # Model Progress
 
+## Commit [c035450](https://github.com/naszhu/REM_E3_model_fixed/commit/c035450) (branch: `aug-29-test`)
+**Time:** 2025-08-26 23:14:57  
+**Message:**
+```
+merge(model-e3):Merge branch 'aug-26-within-list-fix'
+
+Within list fix.
+```
+![](../plot_archive/c035450_20250826_231457_plot1.png)  
+![](../plot_archive/c035450_20250826_231457_plot2.png)  
+
 ## Commit [07a86d3](https://github.com/naszhu/REM_E3_model_fixed/commit/07a86d3) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 22:24:49  
 **Message:**
