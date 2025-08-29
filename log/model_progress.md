@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [e16f69c](https://github.com/naszhu/REM_E3_model_fixed/commit/e16f69c) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:14:46  
+**Message:**
+```
+finetune(model-e3): adjust criterion initial values for improved model accuracy
+
+- Updated `ci` from 0.58 to 0.98 to optimize the initial criterion values, reflecting a necessary adjustment for better model performance.
+- Maintained `context_tau` at a constant value to ensure consistency with the updated foil odds.
+
+These changes aim to enhance the model's accuracy by fine-tuning critical parameters related to the criterion initialization.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e16f69c_20250829_201446_plot1.png)  
+![](../plot_archive/e16f69c_20250829_201446_plot2.png)  
+
 ## Commit [4c8c5d6](https://github.com/naszhu/REM_E3_model_fixed/commit/4c8c5d6) (branch: `aug-29-test`)
 **Time:** 2025-08-29 20:13:33  
 **Message:**

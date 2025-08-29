@@ -344,17 +344,17 @@ function update_ot_feature_study!(word_features::Vector{Int64}, list_number::Int
 end
 
 """
-This function is exactly the same as update_ot_feature_add_trace_strengthen! below because during all strenghten, kb is being used, for now
+This function is for strenghten
 """
 function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = κb_base
+            κ_value = κt_base
         else
             κ_index = list_number - 1
-            κ_value = κb[κ_index]
+            κ_value = κt[κ_index]
         end
         
         # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
@@ -366,7 +366,7 @@ function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
 end
 
 """
-Update OT feature when adding traces during strengthening with probability κb for specific list
+This function for adding trace when strenghten
 """
 function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)::Nothing
     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
@@ -387,17 +387,17 @@ function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)
 end
 
 """
-Update OT feature when adding traces without strengthening with probability κt for specific list
+This function for adding trace without strenghten
 """
 function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Nothing
     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κt value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = κt_base
+            κ_value = κb_base
         else
             κ_index = list_number - 1
-            κ_value = κt[κ_index]
+            κ_value = κb[κ_index]
         end
         
         if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
