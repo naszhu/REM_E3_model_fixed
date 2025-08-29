@@ -1,5 +1,19 @@
 [
   {
+    "commit": "63beedd",
+    "branch": "aug-29-test",
+    "message": "fix(model-e3): change sequance of modules includion in main script",
+    "timestamp": "2025-08-29 19:16:48",
+    "plot1": "plot_archive/63beedd_20250829_191648_plot1.png",
+    "plot2": "plot_archive/63beedd_20250829_191648_plot2.png",
+    "changed_files": [
+      "E3/main_JL_E3_V0.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "c035450",
     "branch": "aug-29-test",
     "message": "merge(model-e3):Merge branch 'aug-26-within-list-fix'",

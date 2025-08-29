@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [63beedd](https://github.com/naszhu/REM_E3_model_fixed/commit/63beedd) (branch: `aug-29-test`)
+**Time:** 2025-08-29 19:16:48  
+**Message:**
+```
+fix(model-e3): change sequance of modules includion in main script
+
+changed the inclusion of the "data_structures.jl" file to put on top  in the main script to ensure necessary data structures are available for subsequent operations. Removed redundant inclusion to streamline the code.
+```
+**Changed Files:**
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/63beedd_20250829_191648_plot1.png)  
+![](../plot_archive/63beedd_20250829_191648_plot2.png)  
+
 ## Commit [c035450](https://github.com/naszhu/REM_E3_model_fixed/commit/c035450) (branch: `aug-29-test`)
 **Time:** 2025-08-26 23:14:57  
 **Message:**
