@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [793ec6b](https://github.com/naszhu/REM_E3_model_fixed/commit/793ec6b) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:09:07  
+**Message:**
+```
+finetune(model-e3): update kappa parameters and criterion initial values for improved model performance
+
+- Increased `κs_base`, `κs_asymptote`, `κb_base`, and `κt_base` to 0.50 to enhance the model's response dynamics.
+- Adjusted `ci` from 0.67 to 0.78 to optimize the initial criterion values for better model accuracy.
+- Commented out the `ylim` function in R plots to allow for dynamic y-axis scaling.
+
+These changes aim to refine the model's performance by fine-tuning critical parameters related to kappa and feature evaluation.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/793ec6b_20250829_200907_plot1.png)  
+![](../plot_archive/793ec6b_20250829_200907_plot2.png)  
+
 ## Commit [4ab69bb](https://github.com/naszhu/REM_E3_model_fixed/commit/4ab69bb) (branch: `aug-29-test`)
 **Time:** 2025-08-29 20:02:05  
 **Message:**

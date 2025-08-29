@@ -146,19 +146,19 @@ ot_value_threshold=2;
 
 # Kappa parameters for OT feature updates - using asymptotic functions like z parameters
 # κs: Probability of INCORRECT test information (decreasing function)
-κs_base = 0.50       # starting value for list 1 (no incorrect info yet)
-κs_asymptote = 0.50 # asymptotic value (floor near 0.05)
+κs_base = 0.80       # starting value for list 1 (no incorrect info yet)
+κs_asymptote = 0.80 # asymptotic value (floor near 0.05)
 κs_rate = 5.0       # how fast κs decreases to asymptote
 κs_list_1_value = 0.0
 
 
 # κb: Probability of adding traces during strengthening (increasing function)
-κb_base = 0.5       # starting value for adding traces during strengthening
+κb_base = 0.2       # starting value for adding traces during strengthening
 κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
 κb_rate =5.0       # how fast κb approaches asymptote
 
 # κt: Probability of adding traces without strengthening (increasing function)
-κt_base = 0.5       # starting value for adding traces without strengthening
+κt_base = 0.2       # starting value for adding traces without strengthening
 κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
 κt_rate = 5.0      # how fast κt approaches asymptote
 

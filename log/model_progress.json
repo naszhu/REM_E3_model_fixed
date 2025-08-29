@@ -1,5 +1,20 @@
 [
   {
+    "commit": "793ec6b",
+    "branch": "aug-29-test",
+    "message": "finetune(model-e3): update kappa parameters and criterion initial values for improved model performance",
+    "timestamp": "2025-08-29 20:09:07",
+    "plot1": "plot_archive/793ec6b_20250829_200907_plot1.png",
+    "plot2": "plot_archive/793ec6b_20250829_200907_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "4ab69bb",
     "branch": "aug-29-test",
     "message": "finetune(model-e3): update kappa parameters and feature constants for improved model dynamics",
