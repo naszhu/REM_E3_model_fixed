@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [aa9b958](https://github.com/naszhu/REM_E3_model_fixed/commit/aa9b958) (branch: `aug-29-test`)
+**Time:** 2025-08-29 19:54:40  
+**Message:**
+```
+refactor(model-e3): moving feature distortion function to feature_updates module
+
+Fixed a bug as well, do not distort the OT features.
+
+- Added a new function `distort_probes_with_linear_decay` to apply a linear decrease in distortion probability from the first to the last probe, enhancing the modeling of content drift.
+- Updated the function to include parameters for maximum distortion probes, base distortion probability, and geometric distribution for feature value generation.
+- Renamed `update_context_features_during_study!` to `store_context_features_during_study` for clarity in functionality.
+
+These changes aim to improve the accuracy and flexibility of probe distortion mechanisms within the model.
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/aa9b958_20250829_195440_plot1.png)  
+![](../plot_archive/aa9b958_20250829_195440_plot2.png)  
+
 ## Commit [63beedd](https://github.com/naszhu/REM_E3_model_fixed/commit/63beedd) (branch: `aug-29-test`)
 **Time:** 2025-08-29 19:16:48  
 **Message:**
