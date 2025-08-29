@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [4ab69bb](https://github.com/naszhu/REM_E3_model_fixed/commit/4ab69bb) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:02:05  
+**Message:**
+```
+finetune(model-e3): update kappa parameters and feature constants for improved model dynamics
+
+- Adjusted `κ_update_between_list` from 0.85 to 0.25 to refine the update mechanism for features between lists.
+- Set `κs_asymptote` to 0.00 to reflect a more accurate asymptotic behavior for incorrect test information.
+- Increased `κb_base` from 0.1 to 0.2 to enhance the initial probability of adding traces during strengthening.
+- Updated `u_star_v` from 0.04 to 0.07 and `nnnow` from 0.70 to 0.8 to improve context copying parameters.
+- Modified `n_driftStudyTest` from 14 to 10 to adjust the drift study test values.
+- Revised `ci` from 0.9 to 0.67 and updated `criterion_final` to use a range of 7 for better model performance.
+
+These changes aim to enhance the model's accuracy and responsiveness by fine-tuning critical parameters related to kappa and feature dynamics.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4ab69bb_20250829_200205_plot1.png)  
+![](../plot_archive/4ab69bb_20250829_200205_plot2.png)  
+
 ## Commit [aa9b958](https://github.com/naszhu/REM_E3_model_fixed/commit/aa9b958) (branch: `aug-29-test`)
 **Time:** 2025-08-29 19:54:40  
 **Message:**
