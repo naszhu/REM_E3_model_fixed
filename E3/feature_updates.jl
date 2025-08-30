@@ -1,5 +1,55 @@
 
 
+"""
+Distort probe features with linear decrease in distortion probability from first to last probe.
+The distortion probability starts high for the first probe and linearly decreases to 0 after a specified number of probes.
+
+Distort probe content features
+
+Args:
+    probes: Vector of probes to potentially distort
+    max_distortion_probes: Number of probes until distortion probability reaches 0
+    base_distortion_prob: Base probability of distortion for the first probe
+    g_word: Geometric distribution parameter for generating new feature values
+
+Returns:
+    Tuple of (distorted_probes, original_probes) where original_probes are deep copies for reference
+"""
+function distort_probes_with_linear_decay(
+    probes::Vector{Probe}, 
+    max_distortion_probes::Int; 
+    base_distortion_prob::Float64 = 0.8,
+    g_word::Float64 = 0.3
+)::Tuple{Vector{Probe}, Vector{Probe}}
+    
+    # Create deep copies of original probes for reference
+    original_probes = deepcopy(probes)
+    distorted_probes = deepcopy(probes)
+    
+    # Calculate linear decrease in distortion probability
+    for i in eachindex(probes)
+        if i <= max_distortion_probes
+            # Linear decrease from base_distortion_prob to 0
+            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+            
+            # Apply distortion to each feature of the probe's word
+            if rand() < current_prob
+                # Distort each feature with the current probability
+                for j in eachindex(distorted_probes[i].image.word.word_features)
+                    if i <= w_word #only distort normal content features
+                        if rand() < current_prob
+                            # Generate new feature value using Geometric distribution
+                            distorted_probes[i].image.word.word_features[j] = rand(Geometric(g_word)) + 1
+                        end
+                    end
+                end
+            end
+        end
+        # For probes beyond max_distortion_probes, no distortion (probability = 0)
+    end
+    
+    return distorted_probes, original_probes
+end
 
 # Combine the two loops into one function to avoid redundancy
 # the following is used within function probe_generation
@@ -130,7 +180,7 @@ function store_word_features!(target::Vector{Int}, source::Vector{Int},
 end
 
 # New function for updating context features
-function update_context_features_during_study!(image::EpisodicImage, context_features::Vector{Int64}, word::Word, list_num::Int64)
+function store_context_features_during_study(image::EpisodicImage, context_features::Vector{Int64}, word::Word, list_num::Int64)
     for ic in eachindex(image.context_features)
         j = image.context_features[ic]
 
@@ -294,17 +344,17 @@ function update_ot_feature_study!(word_features::Vector{Int64}, list_number::Int
 end
 
 """
-This function is exactly the same as update_ot_feature_add_trace_strengthen! below because during all strenghten, kb is being used, for now
+This function is for strenghten
 """
 function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = κb_base
+            κ_value = κt_base
         else
             κ_index = list_number - 1
-            κ_value = κb[κ_index]
+            κ_value = κt[κ_index]
         end
         
         # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
@@ -316,7 +366,7 @@ function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
 end
 
 """
-Update OT feature when adding traces during strengthening with probability κb for specific list
+This function for adding trace when strenghten
 """
 function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)::Nothing
     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
@@ -337,17 +387,17 @@ function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)
 end
 
 """
-Update OT feature when adding traces without strengthening with probability κt for specific list
+This function for adding trace without strenghten
 """
 function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Nothing
     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κt value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = κt_base
+            κ_value = κb_base
         else
             κ_index = list_number - 1
-            κ_value = κt[κ_index]
+            κ_value = κb[κ_index]
         end
         
         if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value

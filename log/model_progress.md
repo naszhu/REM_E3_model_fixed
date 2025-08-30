@@ -1,5 +1,214 @@
 # Model Progress
 
+## Commit [17e334a](https://github.com/naszhu/REM_E3_model_fixed/commit/17e334a) (branch: `aug-29-test`)
+**Time:** 2025-08-30 19:07:12  
+**Message:**
+```
+finetune(model-e3): update κb and κt parameters for clarity and consistency
+
+- Set `κb_base` and `κb_asymptote` to 0.0 to clarify the probability of adding traces during strengthening.
+- Adjusted `κt_base` and `κt_asymptote` to 0.0 to reflect the probability of adding traces without strengthening.
+
+These changes aim to enhance the clarity of the model's parameters related to trace addition during feature strengthening.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/17e334a_20250830_190712_plot1.png)  
+![](../plot_archive/17e334a_20250830_190712_plot2.png)  
+
+## Commit [17e334a](https://github.com/naszhu/REM_E3_model_fixed/commit/17e334a) (branch: `aug-29-test`)
+**Time:** 2025-08-30 19:07:12  
+**Message:**
+```
+finetune(model-e3): update κb and κt parameters for clarity and consistency
+
+- Set `κb_base` and `κb_asymptote` to 0.0 to clarify the probability of adding traces during strengthening.
+- Adjusted `κt_base` and `κt_asymptote` to 0.0 to reflect the probability of adding traces without strengthening.
+
+These changes aim to enhance the clarity of the model's parameters related to trace addition during feature strengthening.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/17e334a_20250830_190712_plot1.png)  
+![](../plot_archive/17e334a_20250830_190712_plot2.png)  
+
+## Commit [8874844](https://github.com/naszhu/REM_E3_model_fixed/commit/8874844) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:34:30  
+**Message:**
+```
+fix(model-e3): update OT feature strengthening functions for clarity and consistency
+
+- Revised function documentation to clarify the purpose of `update_ot_feature_strengthen!`, `update_ot_feature_add_trace_strengthen!`, and `update_ot_feature_add_trace_only!`.
+- Adjusted the logic for κ value assignments to ensure correct parameter usage during feature updates, enhancing the model's operational consistency.
+
+These changes aim to improve code readability and maintainability while ensuring accurate feature strengthening behavior.
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8874844_20250829_203430_plot1.png)  
+![](../plot_archive/8874844_20250829_203430_plot2.png)  
+
+## Commit [e16f69c](https://github.com/naszhu/REM_E3_model_fixed/commit/e16f69c) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:14:46  
+**Message:**
+```
+finetune(model-e3): adjust criterion initial values for improved model accuracy
+
+- Updated `ci` from 0.58 to 0.98 to optimize the initial criterion values, reflecting a necessary adjustment for better model performance.
+- Maintained `context_tau` at a constant value to ensure consistency with the updated foil odds.
+
+These changes aim to enhance the model's accuracy by fine-tuning critical parameters related to the criterion initialization.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e16f69c_20250829_201446_plot1.png)  
+![](../plot_archive/e16f69c_20250829_201446_plot2.png)  
+
+## Commit [4c8c5d6](https://github.com/naszhu/REM_E3_model_fixed/commit/4c8c5d6) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:13:33  
+**Message:**
+```
+finetune(model-e3): adjust criterion initial values for improved model accuracy
+
+- Updated `ci` from 0.78 to 0.58 to optimize the initial criterion values, reflecting a necessary adjustment for better model performance.
+- Modified `context_tau` to ensure alignment with the updated foil odds.
+
+These changes aim to enhance the model's accuracy by fine-tuning critical parameters related to the criterion initialization.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4c8c5d6_20250829_201333_plot1.png)  
+![](../plot_archive/4c8c5d6_20250829_201333_plot2.png)  
+
+## Commit [9f88ac1](https://github.com/naszhu/REM_E3_model_fixed/commit/9f88ac1) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:12:19  
+**Message:**
+```
+finetune(model-e3): adjust kappa parameters for improved model dynamics
+
+- Increased `κs_base` and `κs_asymptote` to 0.80 to enhance the model's response dynamics related to incorrect test information.
+- Decreased `κb_base` and `κt_base` to 0.20 to refine the initial probabilities of adding traces during and without strengthening.
+
+These changes aim to further optimize the model's performance by fine-tuning critical kappa parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9f88ac1_20250829_201219_plot1.png)  
+![](../plot_archive/9f88ac1_20250829_201219_plot2.png)  
+
+## Commit [793ec6b](https://github.com/naszhu/REM_E3_model_fixed/commit/793ec6b) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:09:07  
+**Message:**
+```
+finetune(model-e3): update kappa parameters and criterion initial values for improved model performance
+
+- Increased `κs_base`, `κs_asymptote`, `κb_base`, and `κt_base` to 0.50 to enhance the model's response dynamics.
+- Adjusted `ci` from 0.67 to 0.78 to optimize the initial criterion values for better model accuracy.
+- Commented out the `ylim` function in R plots to allow for dynamic y-axis scaling.
+
+These changes aim to refine the model's performance by fine-tuning critical parameters related to kappa and feature evaluation.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/793ec6b_20250829_200907_plot1.png)  
+![](../plot_archive/793ec6b_20250829_200907_plot2.png)  
+
+## Commit [4ab69bb](https://github.com/naszhu/REM_E3_model_fixed/commit/4ab69bb) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:02:05  
+**Message:**
+```
+finetune(model-e3): update kappa parameters and feature constants for improved model dynamics
+
+- Adjusted `κ_update_between_list` from 0.85 to 0.25 to refine the update mechanism for features between lists.
+- Set `κs_asymptote` to 0.00 to reflect a more accurate asymptotic behavior for incorrect test information.
+- Increased `κb_base` from 0.1 to 0.2 to enhance the initial probability of adding traces during strengthening.
+- Updated `u_star_v` from 0.04 to 0.07 and `nnnow` from 0.70 to 0.8 to improve context copying parameters.
+- Modified `n_driftStudyTest` from 14 to 10 to adjust the drift study test values.
+- Revised `ci` from 0.9 to 0.67 and updated `criterion_final` to use a range of 7 for better model performance.
+
+These changes aim to enhance the model's accuracy and responsiveness by fine-tuning critical parameters related to kappa and feature dynamics.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4ab69bb_20250829_200205_plot1.png)  
+![](../plot_archive/4ab69bb_20250829_200205_plot2.png)  
+
+## Commit [aa9b958](https://github.com/naszhu/REM_E3_model_fixed/commit/aa9b958) (branch: `aug-29-test`)
+**Time:** 2025-08-29 19:54:40  
+**Message:**
+```
+refactor(model-e3): moving feature distortion function to feature_updates module
+
+Fixed a bug as well, do not distort the OT features.
+
+- Added a new function `distort_probes_with_linear_decay` to apply a linear decrease in distortion probability from the first to the last probe, enhancing the modeling of content drift.
+- Updated the function to include parameters for maximum distortion probes, base distortion probability, and geometric distribution for feature value generation.
+- Renamed `update_context_features_during_study!` to `store_context_features_during_study` for clarity in functionality.
+
+These changes aim to improve the accuracy and flexibility of probe distortion mechanisms within the model.
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/aa9b958_20250829_195440_plot1.png)  
+![](../plot_archive/aa9b958_20250829_195440_plot2.png)  
+
+## Commit [63beedd](https://github.com/naszhu/REM_E3_model_fixed/commit/63beedd) (branch: `aug-29-test`)
+**Time:** 2025-08-29 19:16:48  
+**Message:**
+```
+fix(model-e3): change sequance of modules includion in main script
+
+changed the inclusion of the "data_structures.jl" file to put on top  in the main script to ensure necessary data structures are available for subsequent operations. Removed redundant inclusion to streamline the code.
+```
+**Changed Files:**
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/63beedd_20250829_191648_plot1.png)  
+![](../plot_archive/63beedd_20250829_191648_plot2.png)  
+
+## Commit [c035450](https://github.com/naszhu/REM_E3_model_fixed/commit/c035450) (branch: `aug-29-test`)
+**Time:** 2025-08-26 23:14:57  
+**Message:**
+```
+merge(model-e3):Merge branch 'aug-26-within-list-fix'
+
+Within list fix.
+```
+![](../plot_archive/c035450_20250826_231457_plot1.png)  
+![](../plot_archive/c035450_20250826_231457_plot2.png)  
+
 ## Commit [07a86d3](https://github.com/naszhu/REM_E3_model_fixed/commit/07a86d3) (branch: `aug-26-within-list-fix`)
 **Time:** 2025-08-26 22:24:49  
 **Message:**

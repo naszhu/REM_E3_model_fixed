@@ -142,31 +142,32 @@ ot_value_between_lists = 1;
 ot_value_test = 1;
 ot_value_threshold=2;
 
-κ_update_between_list = 0.85;
+κ_update_between_list = 0.25;
 
 # Kappa parameters for OT feature updates - using asymptotic functions like z parameters
 # κs: Probability of INCORRECT test information (decreasing function)
-κs_base = 0.00       # starting value for list 1 (no incorrect info yet)
-κs_asymptote = 0.3 # asymptotic value (floor near 0.05)
+κs_base = 0.80       # starting value for list 1 (no incorrect info yet)
+κs_asymptote = 0.80 # asymptotic value (floor near 0.05)
 κs_rate = 5.0       # how fast κs decreases to asymptote
 κs_list_1_value = 0.0
 
 
-# κb: Probability of adding traces during strengthening (increasing function)
-κb_base = 0.1       # starting value for adding traces during strengthening
-κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
+# κb: Probability adding 
+κb_base = 0.0       # starting value for adding traces during strengthening
+κb_asymptote = 0.0 # asymptotic value for adding traces during strengthening
 κb_rate =5.0       # how fast κb approaches asymptote
 
-# κt: Probability of adding traces without strengthening (increasing function)
-κt_base = 0.1       # starting value for adding traces without strengthening
-κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
+# κt: Probability of strengthening 
+κt_base = 0.0       # starting value for adding traces without strengthening
+κt_asymptote = 0.0 # asymptotic value for adding traces without strengthening
 κt_rate = 5.0      # how fast κt approaches asymptote
 
 # Generate asymptotic κ values across lists
 # κs: decreasing function (incorrect test info decreases with experience)
 # κb, κt: increasing functions (adding traces improves with experience)
 # κb_asymptote - κb_base 
-κs_values = asym_decrease(κs_base, κs_asymptote, κs_rate, n_lists - 1)
+# κs_values = asym_decrease(κs_base, κs_asymptote, κs_rate, n_lists - 1)
+κs_values = asym_increase_shift(κs_base, κb_asymptote - κb_base, κs_rate, n_lists - 1)
 κb_values = asym_increase_shift(κb_base, κb_asymptote - κb_base, κb_rate, n_lists - 1)
 κt_values = asym_increase_shift(κt_base, κt_asymptote - κt_base, κt_rate, n_lists - 1)
 
@@ -192,7 +193,7 @@ const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star_v = 0.04
+u_star_v = 0.07
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -212,7 +213,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.70
+nnnow=0.8
 c_adv = 0#0.06
 
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
@@ -241,7 +242,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 14) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 10) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 
@@ -304,12 +305,12 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-ci=0.9 #0.148^power_taken
+ci=0.98 #0.148^power_taken
 
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 10)#LinRange(0.18, 0.23, 10)
+criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 7)#LinRange(0.18, 0.23, 10)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
