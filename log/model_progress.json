@@ -1,5 +1,47 @@
 [
   {
+    "commit": "17e334a",
+    "branch": "aug-29-test",
+    "message": "finetune(model-e3): update \u03bab and \u03bat parameters for clarity and consistency",
+    "timestamp": "2025-08-30 19:07:12",
+    "plot1": "plot_archive/17e334a_20250830_190712_plot1.png",
+    "plot2": "plot_archive/17e334a_20250830_190712_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "17e334a",
+    "branch": "aug-29-test",
+    "message": "finetune(model-e3): update \u03bab and \u03bat parameters for clarity and consistency",
+    "timestamp": "2025-08-30 19:07:12",
+    "plot1": "plot_archive/17e334a_20250830_190712_plot1.png",
+    "plot2": "plot_archive/17e334a_20250830_190712_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "8874844",
+    "branch": "aug-29-test",
+    "message": "fix(model-e3): update OT feature strengthening functions for clarity and consistency",
+    "timestamp": "2025-08-29 20:34:30",
+    "plot1": "plot_archive/8874844_20250829_203430_plot1.png",
+    "plot2": "plot_archive/8874844_20250829_203430_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "e16f69c",
     "branch": "aug-29-test",
     "message": "finetune(model-e3): adjust criterion initial values for improved model accuracy",

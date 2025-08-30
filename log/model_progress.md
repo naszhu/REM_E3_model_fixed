@@ -1,5 +1,62 @@
 # Model Progress
 
+## Commit [17e334a](https://github.com/naszhu/REM_E3_model_fixed/commit/17e334a) (branch: `aug-29-test`)
+**Time:** 2025-08-30 19:07:12  
+**Message:**
+```
+finetune(model-e3): update κb and κt parameters for clarity and consistency
+
+- Set `κb_base` and `κb_asymptote` to 0.0 to clarify the probability of adding traces during strengthening.
+- Adjusted `κt_base` and `κt_asymptote` to 0.0 to reflect the probability of adding traces without strengthening.
+
+These changes aim to enhance the clarity of the model's parameters related to trace addition during feature strengthening.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/17e334a_20250830_190712_plot1.png)  
+![](../plot_archive/17e334a_20250830_190712_plot2.png)  
+
+## Commit [17e334a](https://github.com/naszhu/REM_E3_model_fixed/commit/17e334a) (branch: `aug-29-test`)
+**Time:** 2025-08-30 19:07:12  
+**Message:**
+```
+finetune(model-e3): update κb and κt parameters for clarity and consistency
+
+- Set `κb_base` and `κb_asymptote` to 0.0 to clarify the probability of adding traces during strengthening.
+- Adjusted `κt_base` and `κt_asymptote` to 0.0 to reflect the probability of adding traces without strengthening.
+
+These changes aim to enhance the clarity of the model's parameters related to trace addition during feature strengthening.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/17e334a_20250830_190712_plot1.png)  
+![](../plot_archive/17e334a_20250830_190712_plot2.png)  
+
+## Commit [8874844](https://github.com/naszhu/REM_E3_model_fixed/commit/8874844) (branch: `aug-29-test`)
+**Time:** 2025-08-29 20:34:30  
+**Message:**
+```
+fix(model-e3): update OT feature strengthening functions for clarity and consistency
+
+- Revised function documentation to clarify the purpose of `update_ot_feature_strengthen!`, `update_ot_feature_add_trace_strengthen!`, and `update_ot_feature_add_trace_only!`.
+- Adjusted the logic for κ value assignments to ensure correct parameter usage during feature updates, enhancing the model's operational consistency.
+
+These changes aim to improve code readability and maintainability while ensuring accurate feature strengthening behavior.
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8874844_20250829_203430_plot1.png)  
+![](../plot_archive/8874844_20250829_203430_plot2.png)  
+
 ## Commit [e16f69c](https://github.com/naszhu/REM_E3_model_fixed/commit/e16f69c) (branch: `aug-29-test`)
 **Time:** 2025-08-29 20:14:46  
 **Message:**

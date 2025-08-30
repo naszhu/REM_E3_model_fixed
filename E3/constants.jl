@@ -152,14 +152,14 @@ ot_value_threshold=2;
 κs_list_1_value = 0.0
 
 
-# κb: Probability of adding traces during strengthening (increasing function)
-κb_base = 0.2       # starting value for adding traces during strengthening
-κb_asymptote = 0.98 # asymptotic value for adding traces during strengthening
+# κb: Probability adding 
+κb_base = 0.0       # starting value for adding traces during strengthening
+κb_asymptote = 0.0 # asymptotic value for adding traces during strengthening
 κb_rate =5.0       # how fast κb approaches asymptote
 
-# κt: Probability of adding traces without strengthening (increasing function)
-κt_base = 0.2       # starting value for adding traces without strengthening
-κt_asymptote = 0.98 # asymptotic value for adding traces without strengthening
+# κt: Probability of strengthening 
+κt_base = 0.0       # starting value for adding traces without strengthening
+κt_asymptote = 0.0 # asymptotic value for adding traces without strengthening
 κt_rate = 5.0      # how fast κt approaches asymptote
 
 # Generate asymptotic κ values across lists
