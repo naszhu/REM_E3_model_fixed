@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [82a4029](https://github.com/naszhu/REM_E3_model_fixed/commit/82a4029) (branch: `aug-30-test`)
+**Time:** 2025-08-30 23:27:00  
+**Message:**
+```
+merge(model-e3): Merge branch 'aug-29-test'
+```
+![](../plot_archive/82a4029_20250830_232700_plot1.png)  
+![](../plot_archive/82a4029_20250830_232700_plot2.png)  
+
 ## Commit [17e334a](https://github.com/naszhu/REM_E3_model_fixed/commit/17e334a) (branch: `aug-29-test`)
 **Time:** 2025-08-30 19:07:12  
 **Message:**

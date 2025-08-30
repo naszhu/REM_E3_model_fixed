@@ -1,5 +1,14 @@
 [
   {
+    "commit": "82a4029",
+    "branch": "aug-30-test",
+    "message": "merge(model-e3): Merge branch 'aug-29-test'",
+    "timestamp": "2025-08-30 23:27:00",
+    "plot1": "plot_archive/82a4029_20250830_232700_plot1.png",
+    "plot2": "plot_archive/82a4029_20250830_232700_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "17e334a",
     "branch": "aug-29-test",
     "message": "finetune(model-e3): update \u03bab and \u03bat parameters for clarity and consistency",
