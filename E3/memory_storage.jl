@@ -52,7 +52,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
         #############STORAGE - context
             # a[length(a)/2]1-3 4-7; 3,3
         
-        update_context_features_during_study!(new_image, context_features, word, list_num)
+        store_context_features_during_study(new_image, context_features, word, list_num)
     end
 
     # if new_image.word.type_general==:F

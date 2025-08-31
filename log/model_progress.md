@@ -1,5 +1,16 @@
 # Model Progress
 
+## Commit [60ed225](https://github.com/naszhu/REM_E3_model_fixed/commit/60ed225) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 00:11:11  
+**Message:**
+```
+merge(model-e3): Merge branch 'aug-30-test'
+
+Refs #58
+```
+![](../plot_archive/60ed225_20250901_001111_plot1.png)  
+![](../plot_archive/60ed225_20250901_001111_plot2.png)  
+
 ## Commit [7741691](https://github.com/naszhu/REM_E3_model_fixed/commit/7741691) (branch: `aug-30-test`)
 **Time:** 2025-08-30 23:52:32  
 **Message:**

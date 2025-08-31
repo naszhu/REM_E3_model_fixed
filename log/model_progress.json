@@ -1,5 +1,14 @@
 [
   {
+    "commit": "60ed225",
+    "branch": "aug-31-new-model-v6",
+    "message": "merge(model-e3): Merge branch 'aug-30-test'",
+    "timestamp": "2025-09-01 00:11:11",
+    "plot1": "plot_archive/60ed225_20250901_001111_plot1.png",
+    "plot2": "plot_archive/60ed225_20250901_001111_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "7741691",
     "branch": "aug-30-test",
     "message": "refactor(model-e3): add is_same_item and is_sampled flags to probe evaluation and simulation",

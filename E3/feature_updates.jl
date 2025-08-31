@@ -312,108 +312,250 @@ end
 # OT Feature Update Functions
 # =============================================================================
 
-"""
-Directly set the OT feature (tested before) to a specific value
-"""
-function update_ot_feature!(word::Word, value::Int64, list_number::Int64)::Nothing
-    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
-        word.word_features[tested_before_feature_pos] = value
-    end
-    return nothing
-end
+# """
+# Directly set the OT feature (tested before) to a specific value
+# """
+# function update_ot_feature!(word::Word, value::Int64, list_number::Int64)::Nothing
+#     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+#         word.word_features[tested_before_feature_pos] = value
+#     end
+#     return nothing
+# end
 
-"""
-Update OT feature during strengthening process with probability κs for specific list
-"""
-function update_ot_feature_study!(word_features::Vector{Int64}, list_number::Int64)::Nothing
-    if use_ot_feature && length(word_features) >= tested_before_feature_pos
+# """
+# Update OT feature during strengthening process with probability κs for specific list
+# """
+# function update_ot_feature_study!(word_features::Vector{Int64}, list_number::Int64)::Nothing
+#     if use_ot_feature && length(word_features) >= tested_before_feature_pos
+#         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+#         # For list 1, use base κs value (no asymptotic effect yet)
+#         if list_number === 1
+#             κ_value = κs_list_1_value
+#         else
+#             κ_index = list_number - 1
+#             κ_value = κs[κ_index]
+#         end
+        
+#         # omit if the value=0 part becuase it should always be 0 during study
+#         word_features[tested_before_feature_pos] = rand() < κ_value ? word_features[tested_before_feature_pos]+ot_value_study : word_features[tested_before_feature_pos]
+        
+#     end
+#     return nothing
+# end
+
+# """
+# This function is for strenghten
+# """
+# function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
+#     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+#         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+#         # For list 1, use base κb value (no asymptotic effect yet)
+#         if list_number === 1
+#             κ_value = κt_base
+#         else
+#             κ_index = list_number - 1
+#             κ_value = κt[κ_index]
+#         end
+        
+#         # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
+#         if  rand() < κ_value
+#             word.word_features[tested_before_feature_pos] += ot_value_test
+#         end
+#     end
+#     return nothing
+# end
+
+# """
+# This function for adding trace when strenghten
+# """
+# function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)::Nothing
+#     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+#         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+#         # For list 1, use base κb value (no asymptotic effect yet)
+#         if list_number == 1
+#             κ_value = κb_base
+#         else
+#             κ_index = list_number - 1
+#             κ_value = κb[κ_index]
+#         end
+        
+#         if rand() < κ_value
+#             word.word_features[tested_before_feature_pos] += ot_value_test;
+#         end
+#     end
+#     return nothing
+# end
+
+# """
+# This function for adding trace without strenghten
+# """
+# function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Nothing
+#     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+#         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+#         # For list 1, use base κt value (no asymptotic effect yet)
+#         if list_number === 1
+#             κ_value = κb_base
+#         else
+#             κ_index = list_number - 1
+#             κ_value = κb[κ_index]
+#         end
+        
+#         if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
+#             word.word_features[tested_before_feature_pos] += ot_value_test;
+#         end
+#     end
+#     return nothing
+# end
+
+# """
+# Get the current value of the OT feature
+# """
+# function get_ot_feature_value(word::Word)::Int64
+#     if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+#         return word.word_features[tested_before_feature_pos]
+#     else
+#         return 0
+#     end
+# end
+
+
+
+
+# --------
+########### Z feature functions here
+function update_Z_feature_study!(word_features::Vector{Int64}, list_number::Int64)::Nothing
+    if use_Z_feature && length(word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κs value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = κs_list_1_value
+            # κ_value = κu_list_1_value
+            κ_value = 0 # this number doesn't matter because first list won't use Z (is this true?)
         else
             κ_index = list_number - 1
-            κ_value = κs[κ_index]
+            κ_value = κu[κ_index]
         end
         
         # omit if the value=0 part becuase it should always be 0 during study
-        word_features[tested_before_feature_pos] = rand() < κ_value ? word_features[tested_before_feature_pos]+ot_value_study : word_features[tested_before_feature_pos]
+        word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change back to 0 and 1 structure rather than accumulation structure
         
     end
     return nothing
 end
 
 """
-This function is for strenghten
+This is for studied only confusing foils.
 """
-function update_ot_feature_strengthen!(word::Word, list_number::Int64)::Nothing
-    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+function update_Z_feature_SOn_CFs!(word::Word, list_number::Int64)::Nothing
+    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = κt_base
+            κ_value = 0
+        else
+            κ_index = list_number - 1
+            κ_value = κs[κ_index] #updated by ks
+        end
+        
+        # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
+        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 
+    end
+    return nothing
+end
+
+
+"""
+This is for previous target confusing foil
+"""
+function update_Z_feature_Tn_CFs!(word::Word, list_number::Int64)::Nothing
+    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
+        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+        # For list 1, use base κb value (no asymptotic effect yet)
+        if list_number == 1
+            κ_value = 0
+        else
+            κ_index = list_number - 1
+            κ_value = κb[κ_index]
+        end
+        
+        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 
+    end
+    return nothing
+end
+
+"""
+This is for previous foil, confusing foil.
+"""
+function update_Z_feature_Fn_CFs!(word::Word, list_number::Int64)::Nothing
+    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
+        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
+        # For list 1, use base κt value (no asymptotic effect yet)
+        if list_number === 1
+            κ_value = 0
         else
             κ_index = list_number - 1
             κ_value = κt[κ_index]
         end
         
-        # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-        if  rand() < κ_value
-            word.word_features[tested_before_feature_pos] += ot_value_test
-        end
+        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 
     end
     return nothing
 end
 
-"""
-This function for adding trace when strenghten
-"""
-function update_ot_feature_add_trace_strengthen!(word::Word, list_number::Int64)::Nothing
-    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
-        # For list 1, use base κb value (no asymptotic effect yet)
-        if list_number == 1
-            κ_value = κb_base
-        else
-            κ_index = list_number - 1
-            κ_value = κb[κ_index]
-        end
-        
-        if rand() < κ_value
-            word.word_features[tested_before_feature_pos] += ot_value_test;
-        end
-    end
-    return nothing
-end
 
-"""
-This function for adding trace without strenghten
-"""
-function update_ot_feature_add_trace_only!(word::Word, list_number::Int64)::Nothing
-    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
-        # For list 1, use base κt value (no asymptotic effect yet)
-        if list_number === 1
-            κ_value = κb_base
-        else
-            κ_index = list_number - 1
-            κ_value = κb[κ_index]
-        end
-        
-        if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-            word.word_features[tested_before_feature_pos] += ot_value_test;
-        end
-    end
-    return nothing
-end
-
-"""
-Get the current value of the OT feature
-"""
-function get_ot_feature_value(word::Word)::Int64
-    if use_ot_feature && length(word.word_features) >= tested_before_feature_pos
+function get_Z_feature_value(word::Word)::Int64
+    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
         return word.word_features[tested_before_feature_pos]
     else
         return 0
     end
+end
+
+"""
+Update Z features for single-appearance studied items between lists.
+This function identifies studied items that appear only once across all lists and updates their Z features.
+"""
+function update_Z_features_single_appearance_studied_items!(
+    image_pool::Vector{EpisodicImage}, 
+    studied_pool::Vector{Vector{EpisodicImage}}, 
+    list_num::Int64, 
+    n_studyitem::Int64
+)::Nothing
+    
+    for img in image_pool
+        # Check if this image is from the current list (not a foil)
+        if img.list_number == list_num
+            # Check if this is a studied item (not a foil) by looking at its position in studied_pool
+            # Studied items are in positions 1:n_studyitem
+            is_studied_item = false
+            for j in 1:n_studyitem
+                if !isnothing(studied_pool[list_num][j]) && 
+                   studied_pool[list_num][j].word.item_code == img.word.item_code
+                    is_studied_item = true
+                    break
+                end
+            end
+            
+            # If it's a studied item, check if it appears only once (not doubling)
+            if is_studied_item
+                # Count how many times this item appears across all lists
+                appearance_count = 0
+                for list_idx in 1:list_num
+                    if !isnothing(studied_pool[list_idx])
+                        for item in studied_pool[list_idx]
+                            if !isnothing(item) && item.word.item_code == img.word.item_code
+                                appearance_count += 1
+                            end
+                        end
+                    end
+                end
+                
+                # If the item appears only once (not doubling), update its Z feature
+                if appearance_count == 1
+                    update_Z_feature_SOn_CFs!(img.word, list_num)
+                end
+            end
+        end
+    end
+    
+    return nothing
 end

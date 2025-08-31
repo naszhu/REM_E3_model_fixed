@@ -136,19 +136,24 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 #     decision_isold = 0
                 # end
                 @assert !isnothing(sampled_item) "sampled item is nothing"
-                if use_ot_feature && !isnothing(sampled_item) 
-                    # Use OT feature from sampled item
-                    ot_value = get_ot_feature_value(sampled_item.word)
-                    if ot_value >= ot_value_threshold
-                        decision_isold = 0  # OT=1 means judged new
-                    else
-                        decision_isold = 1  # OT=0 means judged old
+                if ilist_probe!=1
+                    if use_ot_feature && !isnothing(sampled_item) && (rand() < h_j[ilist_probe])
+                        # Use OT feature from sampled item
+                        
+                        Z_value = get_Z_feature_value(sampled_item.word)
+                        if Z_value == 1
+                            decision_isold = 0  # OT=1 means judged new
+                        else
+                            decision_isold = 1  # OT=0 means judged old
+                        end
+                        
+                        # OT feature disabled or no sampled item - use fallback logic
+                    else #if not OT feature: use familarity and so pass recall threshold is old
+                        decision_isold = 1 #This is the bug issue partially
                     end
-                    # OT feature disabled or no sampled item - use fallback logic
-                else #if not OT feature: use familarity and so pass recall threshold is old
-                    decision_isold = 1 #This is the bug issue partially
+                else
+                    decision_isold = 1 #first list use famialrity only, not considering Z feature #FIXME, is this true?
                 end
-
 
             else
                 decision_isold = 1

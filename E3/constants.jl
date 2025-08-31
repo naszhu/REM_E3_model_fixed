@@ -144,48 +144,39 @@ ot_value_threshold=1;
 
 κ_update_between_list = 0.0;
 
-# Kappa parameters for OT feature updates - using asymptotic functions like z parameters
-# κs: Probability of INCORRECT test information (decreasing function)
-κs_base = 0.80       # starting value for list 1 (no incorrect info yet)
-κs_asymptote = 0.80 # asymptotic value (floor near 0.05)
-κs_rate = 5.0       # how fast κs decreases to asymptote
-κs_list_1_value = 0.0
+# Kappa parameters for Z feature, OT feature is discarted now
+# ks for study, 
+# ku for study only confusing foil
+# kb for study and tested confusing foil
+# kt for test only confusing foil
 
+# f(j) is decreasing function
+# h(j) is increasing function
 
-# κb: Probability adding 
-κb_base = 0.0       # starting value for adding traces during strengthening
-κb_asymptote = 0.0 # asymptotic value for adding traces during strengthening
-κb_rate =5.0       # how fast κb approaches asymptote
+ks_base = 0.70
+ku_base = 0.70
+kb_base = 0.70
+kt_base = 0.70
 
-# κt: Probability of strengthening 
-κt_base = 0.0       # starting value for adding traces without strengthening
-κt_asymptote = 0.0 # asymptotic value for adding traces without strengthening
-κt_rate = 5.0      # how fast κt approaches asymptote
+fj_asymptote_decrease_val = 0.5
+fj_rate = 5.0
 
-# Generate asymptotic κ values across lists
-# κs: decreasing function (incorrect test info decreases with experience)
-# κb, κt: increasing functions (adding traces improves with experience)
-# κb_asymptote - κb_base 
-# κs_values = asym_decrease(κs_base, κs_asymptote, κs_rate, n_lists - 1)
-κs_values = asym_increase_shift(κs_base, κb_asymptote - κb_base, κs_rate, n_lists - 1)
-κb_values = asym_increase_shift(κb_base, κb_asymptote - κb_base, κb_rate, n_lists - 1)
-κt_values = asym_increase_shift(κt_base, κt_asymptote - κt_base, κt_rate, n_lists - 1)
+@assert ks_base>fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-κs_first_list_val = 0.0
-# TODO: Note that the current kappa s starts from this value specified right here, but other kappa s are starting with the base value. You need to remember that.
-# For backward compatibility, keep the original names but now they're vectors
+hj_asymptote_increase_val = 0.7
+hj_rate = 5.0
 
-const κs = κs_values  # kappa for strengthening items (asymptotic across lists)
-const κb = κb_values  # kappa for adding traces when item IS being strengthened
-const κt = κt_values  # kappa for adding traces when item is NOT being strengthened
+# the following equals to ks*f(j), 
+# κ are used instead of k for a simplification for now for easier modificatino of the code
+κu_values = asym_decrease_shift_fj(ku_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1) 
+κs_values = 1 .-asym_decrease_shift_fj(ks_base, fj_asymptote_decrease_val, hj_rate, n_lists - 1)
+κb_values = 1 .-asym_decrease_shift_fj(kb_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
+κt_values = 1 .-asym_decrease_shift_fj(kt_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 
-# Debug output to show asymptotic κ values
-println("Asymptotic κ values generated (starting from list 2):")
-println("κs (incorrect test info - DECREASING): ", κs)
-println("κb (add trace + strengthen - INCREASING): ", κb)
-println("κt (add trace only - INCREASING): ", κt)
-println("Note: κ[1] corresponds to list 2, κ[2] to list 3, etc.")
-println("κs decreases from $(κs_base) to $(κs_asymptote) (incorrect info decreases with experience)") 
+const κu = κu_values 
+const κs = κs_values  
+const κb = κb_values  
+const κt = κt_values  
 
 
 
@@ -379,8 +370,9 @@ recall_to_addtrace_threshold = Inf
 """
 TRUE FALSE
 """
-use_ot_feature = true  # flag to enable/disable OT feature
-
+# FIXME: I disabled the OT feature but I didn't. I made this code vulnerable because I did delete the OT part but I kept the true and false in some other features.
+use_ot_feature = false  # flag to enable/disable OT feature
+use_Z_feature = true
 
 sampling_method = true
 
