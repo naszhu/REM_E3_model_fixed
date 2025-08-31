@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [7741691](https://github.com/naszhu/REM_E3_model_fixed/commit/7741691) (branch: `aug-30-test`)
+**Time:** 2025-08-30 23:52:32  
+**Message:**
+```
+refactor(model-e3): add is_same_item and is_sampled flags to probe evaluation and simulation
+
+- Introduced `is_same_item` and `is_sampled` flags in `probe_evaluation` and `probe_evaluation2` functions to track whether the sampled item matches the probe and if an item was sampled.
+- Updated the DataFrame structure in `simulate_rem` to include these new flags, ensuring comprehensive data tracking during simulations.
+- Adjusted relevant logic to maintain consistency and clarity in the evaluation process.
+
+These changes aim to improve the model's ability to analyze probe sampling outcomes and enhance data integrity during simulations.
+
+For realizing  #58
+```
+**Changed Files:**
+- `E3/probe_evaluation.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7741691_20250830_235232_plot1.png)  
+![](../plot_archive/7741691_20250830_235232_plot2.png)  
+
 ## Commit [82a4029](https://github.com/naszhu/REM_E3_model_fixed/commit/82a4029) (branch: `aug-30-test`)
 **Time:** 2025-08-30 23:27:00  
 **Message:**

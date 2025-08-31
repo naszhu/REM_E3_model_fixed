@@ -138,11 +138,11 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 ### Give different OT values now with each time of encountering an item.
 ## So OT not full in value anymore, but it will add one whenever encountering.
 ot_value_study = 1; 
-ot_value_between_lists = 1;
+ot_value_between_lists = 0;
 ot_value_test = 1;
-ot_value_threshold=2;
+ot_value_threshold=1;
 
-κ_update_between_list = 0.25;
+κ_update_between_list = 0.0;
 
 # Kappa parameters for OT feature updates - using asymptotic functions like z parameters
 # κs: Probability of INCORRECT test information (decreasing function)
