@@ -84,16 +84,30 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
 
         # Sample or select item BEFORE decision logic
         sampled_item = nothing
+        is_same_item = false  # Initialize is_same_item
+        is_sampled = false    # Initialize is_sampled
         if odds > criterion_initial[i_testpos, ilist_probe] && odds > recall_odds_threshold
+
+            is_sampled = true
+            
             if sampling_method
                 # Use sampling probabilities
                 cdf_each_boral_sets = Categorical(sampling_probabilities)
                 index_sampled = rand(cdf_each_boral_sets)
                 sampled_item = image_pool_currentlist[index_sampled]
+                
+                # Check if the sampled item is the same as the probe being tested
+                
+                is_same_item = sampled_item.word.item_code == probes[i].image.word.item_code
+
+
             else
                 # Pick the image with maximum content_LL_ratios value
                 imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org])
                 sampled_item = image_pool_currentlist[imax]
+                
+                # Check if the sampled item is the same as the probe being tested
+                is_same_item = sampled_item.word.item_code == probes[i].image.word.item_code
             end
         end
 
@@ -155,7 +169,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             type_general=probes[i].image.word.type_general,
             type_specific=probes[i].image.word.type_specific, 
             is_target=probes[i].ProbeTypeSimple==:target,  
-            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff)
+            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff, is_same_item=is_same_item, is_sampled=is_sampled)
             # println(nl, " ",nimages_activated)
         end
     
@@ -224,16 +238,26 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
 
         # Sample or select item BEFORE decision logic for final test
         sampled_item = nothing
+        is_same_item = false  # Initialize is_same_item
+        is_sampled = false    # Initialize is_sampled
         if odds > criterion_final_i && odds > recall_odds_threshold
+            is_sampled = true  # Item was sampled
             if sampling_method
                 # Use sampling probabilities
                 cdf_each_boral_sets = Categorical(sampling_probabilities)
                 index_sampled = rand(cdf_each_boral_sets)
                 sampled_item = image_pool[index_sampled]
+                
+                # Check if the sampled item is the same as the probe being tested
+                is_same_item = sampled_item.word.item_code == probes[i].image.word.item_code
+                
             else
                 # Pick the image with maximum content_LL_ratios value
                 imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org])
                 sampled_item = image_pool[imax]
+                
+                # Check if the sampled item is the same as the probe being tested
+                is_same_item = sampled_item.word.item_code == probes[i].image.word.item_code
             end
         end
 
@@ -261,7 +285,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         is_repeat_type=probes[i].image.word.is_repeat_type,
 
         is_target = probes[i].ProbeTypeSimple==:target,
-        odds=odds, list_num=probes[i].image.list_number ) #! made changes to results, format different than that in inital
+        odds=odds, list_num=probes[i].image.list_number, is_same_item=is_same_item, is_sampled=is_sampled) #! made changes to results, format different than that in inital
         
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
         # restore_intest(image_pool,probes[i].image, decision_isold, argmax(content_LL_ratios_filtered));

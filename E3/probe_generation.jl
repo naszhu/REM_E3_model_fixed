@@ -112,7 +112,7 @@ function generate_probes(
 
             target_word = 
             Word(
-                randstring(8), 
+                randstring(8), #item_code
                 features, 
                 pt_general, #type_general, either F or Fn (not Fn+1)
 
