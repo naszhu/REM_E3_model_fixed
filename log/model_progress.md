@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [174a28d](https://github.com/naszhu/REM_E3_model_fixed/commit/174a28d) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:01:57  
+**Message:**
+```
+explore(model-e3): comment out Z feature updates for clarity
+
+- Commented out calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to clarify the strengthening process.
+- Updated filtering logic in `probe_evaluation.jl` to ensure Z values are calculated only for the current list or chunk being tested, enhancing performance and focus of calculations.
+
+These changes aim to improve code clarity and ensure that Z feature calculations are context-specific, thereby refining the model's evaluation process.
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/174a28d_20250901_230157_plot1.png)  
+![](../plot_archive/174a28d_20250901_230157_plot2.png)  
+
 ## Commit [2e26a1f](https://github.com/naszhu/REM_E3_model_fixed/commit/2e26a1f) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 22:50:09  
 **Message:**
