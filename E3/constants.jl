@@ -154,14 +154,14 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # h(j) is increasing function
 
 ku_base = 0.90 # study
-ks_base = 0.82 #SOn (study only)
-kb_base = 0.80 #Tn (study and test)
-kt_base = 0.50 #Fn (test only)
+ks_base = 0.92 #SOn (study only)
+kb_base = 0.90 #Tn (study and test)
+kt_base = 0.90 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.8
+fj_asymptote_decrease_val = 0.9
 fj_rate = 5.0
 
-@assert ks_base>fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
+@assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
 hj_asymptote_increase_val = 0.4
 hj_rate = 5.0

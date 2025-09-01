@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [832b9c5](https://github.com/naszhu/REM_E3_model_fixed/commit/832b9c5) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 20:49:48  
+**Message:**
+```
+explore(probe_evaluation): add debug prints for item code mismatches
+
+- Introduced debug print statements in `probe_evaluation.jl` to log details when sampled item codes do not match probe item codes, aiding in troubleshooting.
+- Updated filtering in `R_plots.r` to include only target items in the sampling data, improving the accuracy of visualized results.
+
+These changes aim to facilitate debugging and enhance the clarity of sampling analysis in the model.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/832b9c5_20250901_204948_plot1.png)  
+![](../plot_archive/832b9c5_20250901_204948_plot2.png)  
+
 ## Commit [a33f756](https://github.com/naszhu/REM_E3_model_fixed/commit/a33f756) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 20:43:03  
 **Message:**
