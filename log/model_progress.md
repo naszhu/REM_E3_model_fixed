@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [104a863](https://github.com/naszhu/REM_E3_model_fixed/commit/104a863) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 22:49:34  
+**Message:**
+```
+fix(model-e3): Adjusted the handling of `word_features` to ensure consistent feature updates
+
+- Increased `n_simulations` from 200 to 1000 to enhance the robustness of simulation results.
+- Updated `fj_asymptote_decrease_val` from 0.0 to 0.8 to refine model responsiveness.
+- Modified the `update_Z_feature_study!` function to accept a `Word` object instead of a vector, improving code clarity and structure.
+- Adjusted the handling of `word_features` to ensure consistent feature updates during simulations.
+
+These changes aim to optimize the model's performance and enhance the clarity of feature handling in the code.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/104a863_20250901_224934_plot1.png)  
+![](../plot_archive/104a863_20250901_224934_plot2.png)  
+
 ## Commit [c99e21c](https://github.com/naszhu/REM_E3_model_fixed/commit/c99e21c) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 21:22:16  
 **Message:**

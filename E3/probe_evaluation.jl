@@ -179,6 +179,16 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
             nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (content_LL_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
             
+            # Calculate Z values for current list targets
+            current_list_targets = filter(img -> img.list_number === j && (img.word.type_specific == :T || img.word.type_specific == Symbol("Tn+1")), image_pool_currentlist)
+            Z_sum = 0
+            Z_proportion = 0.0
+            
+            if !isempty(current_list_targets)
+                Z_sum = sum(get_Z_feature_value(target.word) for target in current_list_targets)
+                Z_proportion = Z_sum / length(current_list_targets)
+            end
+            
             #i is each probe, j is list number
             # testpos=i
             # println(probes[i].ProbeTypeSimple,probes[i].ProbeTypeSimple==:target)
@@ -187,7 +197,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             type_general=probes[i].image.word.type_general,
             type_specific=probes[i].image.word.type_specific, 
             is_target=probes[i].ProbeTypeSimple==:target,  
-            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff, is_same_item=is_same_item, is_sampled=is_sampled)
+            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff, is_same_item=is_same_item, is_sampled=is_sampled, Z_sum=Z_sum, Z_proportion=Z_proportion)
             # println(nl, " ",nimages_activated)
         end
     
@@ -287,6 +297,16 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
             decision_isold = 0
         end
 
+        # Calculate Z values for all targets in memory pool
+        all_targets = filter(img -> (img.word.type_specific == :T || img.word.type_specific == Symbol("Tn+1")), image_pool)
+        Z_sum = 0
+        Z_proportion = 0.0
+        
+        if !isempty(all_targets)
+            Z_sum = sum(get_Z_feature_value(target.word) for target in all_targets)
+            Z_proportion = Z_sum / length(all_targets)
+        end
+
         # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
         # pold = pcrr_EZddf(log(odds))
@@ -303,7 +323,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         is_repeat_type=probes[i].image.word.is_repeat_type,
 
         is_target = probes[i].ProbeTypeSimple==:target,
-        odds=odds, list_num=probes[i].image.list_number, is_same_item=is_same_item, is_sampled=is_sampled) #! made changes to results, format different than that in inital
+        odds=odds, list_num=probes[i].image.list_number, is_same_item=is_same_item, is_sampled=is_sampled, Z_sum=Z_sum, Z_proportion=Z_proportion) #! made changes to results, format different than that in inital
         
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
         # restore_intest(image_pool,probes[i].image, decision_isold, argmax(content_LL_ratios_filtered));

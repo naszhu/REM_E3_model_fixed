@@ -15,11 +15,11 @@ mutate(is_target=type_specific)%>%
 mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
                     is_target %in% c("F","Fn+1")~"F",
                     TRUE~paste("Fb",is_target,sep="-")))%>%
-    group_by(test_position,is_target,simulation_number)%>%
+    group_by(testpos,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
-    group_by(test_position,is_target)%>%
+    group_by(testpos,is_target)%>%
     summarize(meanx=mean(meanx))%>%
-    group_by(test_position_grouped_foralltests = ceiling(test_position / 3), is_target)%>% #break every 3
+    group_by(test_position_grouped_foralltests = ceiling(testpos / 3), is_target)%>% #break every 3
     summarise(meanx = mean(meanx))%>%
     mutate(is_target=as.factor(is_target))%>%
     group_by(test_position_grouped_foralltests)%>%
@@ -200,19 +200,19 @@ df_serial=all_results%>%
                     # is_target %in% c("F","Fn+1")~"F",
                     # TRUE~paste("Fb",is_target,sep="-")))%>%\
 
-    mutate(study_position = ceiling(study_position/3))%>%
+    mutate(studypos = ceiling(studypos/3))%>%
 # filter(list_number%in%c(1))%>%
 mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
                     is_target %in% c("F","Fn+1")~"F",
                     TRUE~paste("Fb",is_target,sep="-")))%>%
 
-    group_by(study_position,is_target,simulation_number)%>%
+    group_by(studypos,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
-    group_by(study_position,is_target)%>%
+    group_by(studypos,is_target)%>%
     summarize(meanx=mean(meanx))%>%
     mutate(is_target=as.factor(is_target))
 
-p_serial=ggplot(data=df_serial,aes(x=study_position,meanx))+
+p_serial=ggplot(data=df_serial,aes(x=studypos,meanx))+
     geom_line(aes(color=is_target),size=2)+
     geom_point(size=10,aes(color=is_target,shape=is_target))+
     theme(
@@ -269,11 +269,11 @@ sampling_data <- all_results %>%
   filter(decision_isold==1)%>%
 #   filter(type_specific %in% c("T","Tn+1"))%>%
   mutate(is_same_item = case_when(is_same_item=="true"~1,is_same_item=="false"~0))%>%
-  select(simulation_number, test_position, list_number, is_same_item)%>%
-  group_by(simulation_number, test_position, list_number) %>%     # Group by list number
-  summarize(
-    prob_correct = mean(is_same_item)
-  )%>% group_by(test_position, list_number) %>%     # Group by list number
+      select(simulation_number, testpos, list_number, is_same_item)%>%
+    group_by(simulation_number, testpos, list_number) %>%     # Group by list number
+    summarize(
+      prob_correct = mean(is_same_item)
+    )%>% group_by(testpos, list_number) %>%     # Group by list number
   summarize(
     prob_correct = mean(prob_correct)
   )%>%group_by(list_number)%>%
@@ -303,10 +303,76 @@ sampling_data <- all_results %>%
   )
 
 
-png(filename="plot1.png", width=1300, height=1800)
+
+################ Z plot
+
+
+# Plot 1: Z_proportion by list_number
+z_by_list_plot <- all_results %>%
+  group_by(list_number) %>%
+  summarise(
+    mean_Z_proportion = mean(Z_proportion, na.rm = TRUE),
+    se_Z_proportion = sd(Z_proportion, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ggplot(aes(x = list_number, y = mean_Z_proportion)) +
+  geom_line(color = "#4e79a7", size = 1.2) +
+  geom_point(size = 3, color = "#4e79a7") +
+  geom_errorbar(aes(ymin = mean_Z_proportion - se_Z_proportion, 
+                    ymax = mean_Z_proportion + se_Z_proportion), 
+                width = 0.2, color = "#4e79a7") +
+  labs(
+    title = "Z Feature Proportion by List Number",
+    subtitle = "Average proportion of Z=1 across all targets in memory pool",
+    x = "List Number",
+    y = "Mean Z Proportion",
+    caption = "Error bars represent standard error"
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    text=element_text(size=30)
+  )
+
+# Plot 2: Z_proportion by testpos within lists
+z_by_testpos_plot <- all_results %>%
+  group_by(list_number, testpos) %>%
+  summarise(
+    mean_Z_proportion = mean(Z_proportion, na.rm = TRUE),
+    se_Z_proportion = sd(Z_proportion, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ggplot(aes(x = testpos, y = mean_Z_proportion, color = factor(list_number))) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  geom_errorbar(aes(ymin = mean_Z_proportion - se_Z_proportion, 
+                    ymax = mean_Z_proportion + se_Z_proportion), 
+                width = 0.2) +
+  labs(
+    title = "Z Feature Proportion by Test Position Within Lists",
+    subtitle = "Z proportion changes during testing within each list",
+    x = "Test Position (testpos)",
+    y = "Mean Z Proportion",
+    color = "List Number",
+    caption = "Error bars represent standard error"
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
+  scale_color_viridis_d() +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom",
+    text=element_text(size=30)
+  )
+
+
+png(filename="plot1.png", width=2000, height=1800)
 # grid.arrange(p1,list_rt,p_in_20,testpos_rt,p_serial,p4,ncol = 2,nrow=3)
 # grid.arrange(p1,p_in_20,p_serial,p4,ncol = 2,nrow=2)
-grid.arrange(p1,p4,p_serial,p_in_20,sampling_accuracy_plot, ncol = 2,nrow=3)
+grid.arrange(p1,p4,p_serial,p_in_20,sampling_accuracy_plot,z_by_testpos_plot,z_by_list_plot, ncol = 3,nrow=3)
 # grid.arrange(p1,p4,p_serial,p_in_20, ncol = 2,nrow=2)
 # dev.off()
 dev.off() 

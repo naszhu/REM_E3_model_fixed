@@ -4,7 +4,7 @@
 function simulate_rem()
     # 1. Initialization
 
-    df_inital = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_iimageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], study_position=Int[], diff_rt=Float64[], is_same_item=Bool[], is_sampled=Bool[])
+    df_inital = DataFrame(list_number=Int[], testpos=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_imageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], studypos=Int[], diff=Float64[], is_same_item=Bool[], is_sampled=Bool[], Z_sum=Int[], Z_proportion=Float64[])
 
     df_final = DataFrame(
         list_number=Int[], #initial list number, not containing final list num yet 
@@ -18,7 +18,7 @@ function simulate_rem()
 
     simulation_number=Int[], 
     condition=String[], 
-    decision_isold=Int[],  odds=Float64[], is_same_item=Bool[], is_sampled=Bool[])
+    decision_isold=Int[],  odds=Float64[], is_same_item=Bool[], is_sampled=Bool[], Z_sum=Int[], Z_proportion=Float64[])
 
     for sim_num in 1:n_simulations
 
@@ -190,7 +190,7 @@ function simulate_rem()
             for (ires, res) in enumerate(results) #1D array, length is 20 words
                 # tt = res.is_target == :target ? true : false
 
-                row = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff, res.is_same_item, res.is_sampled] # Add more fields as needed
+                row = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion] # Add Z_sum and Z_proportion columns
                 
                 push!(df_inital, row)
             end
@@ -253,7 +253,7 @@ function simulate_rem()
 
                     sim_num, 
                     String(icondition), 
-                    res.decision_isold, res.odds, res.is_same_item, res.is_sampled])
+                    res.decision_isold, res.odds, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion])
                 end
             end
         end

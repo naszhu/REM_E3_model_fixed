@@ -65,8 +65,8 @@ include("simulation.jl")
 all_results, allresf = simulate_rem()
 # all_results 
 DF = @chain all_results begin
-    @by([:list_number, :is_target, :test_position, :simulation_number,:type_general,:type_specific], :meanx = mean(:decision_isold))
-    @by([:list_number, :is_target, :test_position,:type_general,:type_specific], :meanx = mean(:meanx))
+    @by([:list_number, :is_target, :testpos, :simulation_number,:type_general,:type_specific], :meanx = mean(:decision_isold))
+    @by([:list_number, :is_target, :testpos,:type_general,:type_specific], :meanx = mean(:meanx))
 end
 
 if is_finaltest
