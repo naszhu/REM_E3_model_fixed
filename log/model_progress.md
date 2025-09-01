@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [24697ba](https://github.com/naszhu/REM_E3_model_fixed/commit/24697ba) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:12:19  
+**Message:**
+```
+finetune(model-e3): adjust base parameters and asymptote values for model refinement
+
+- Decreased `ku_base` from 0.90 to 0.85, `ks_base` from 0.92 to 0.32, `kb_base` from 0.90 to 0.30, and `kt_base` from 0.90 to 0.30 to refine model performance.
+- Updated `fj_asymptote_decrease_val` from 0.9 to 0.85 and `hj_asymptote_increase_val` from 0.4 to 0.3 for better alignment with model dynamics.
+- Adjusted calculations for `κs_values`, `κb_values`, and `κt_values` to reflect the new base parameters.
+
+These changes aim to further optimize the model's performance through precise parameter adjustments.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/24697ba_20250901_211219_plot1.png)  
+![](../plot_archive/24697ba_20250901_211219_plot2.png)  
+
 ## Commit [b87b108](https://github.com/naszhu/REM_E3_model_fixed/commit/b87b108) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 20:53:28  
 **Message:**
