@@ -1,5 +1,25 @@
 [
   {
+    "commit": "2e26a1f",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): debug, check what z is doing by plotting it",
+    "timestamp": "2025-09-01 22:50:09",
+    "plot1": "plot_archive/2e26a1f_20250901_225009_plot1.png",
+    "plot2": "plot_archive/2e26a1f_20250901_225009_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/R_plots_Z_analysis.r",
+      "E3/constants.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "104a863",
     "branch": "aug-31-new-model-v6",
     "message": "fix(model-e3): Adjusted the handling of `word_features` to ensure consistent feature updates",

@@ -1,5 +1,32 @@
 # Model Progress
 
+## Commit [2e26a1f](https://github.com/naszhu/REM_E3_model_fixed/commit/2e26a1f) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 22:50:09  
+**Message:**
+```
+explore(model-e3): debug, check what z is doing by plotting it
+
+- Increased `n_simulations` from 1000 to 300 for final tests to improve simulation robustness.
+- Renamed variables in data processing from `test_position` to `testpos` for consistency across files.
+- Added calculations for `Z_sum` and `Z_proportion` in `probe_evaluation.jl` and `simulation.jl` to enhance feature analysis.
+- Introduced new R plots for visualizing Z feature proportions by list number and test position, improving data analysis capabilities.
+
+These changes aim to refine the model's performance and enhance the clarity of feature handling in the code.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/R_plots_Z_analysis.r`  
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2e26a1f_20250901_225009_plot1.png)  
+![](../plot_archive/2e26a1f_20250901_225009_plot2.png)  
+
 ## Commit [104a863](https://github.com/naszhu/REM_E3_model_fixed/commit/104a863) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 22:49:34  
 **Message:**

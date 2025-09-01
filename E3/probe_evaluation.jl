@@ -179,14 +179,17 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
             nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (content_LL_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
             
-            # Calculate Z values for current list targets
-            current_list_targets = filter(img -> img.list_number === j && (img.word.type_specific == :T || img.word.type_specific == Symbol("Tn+1")), image_pool_currentlist)
+            # Calculate Z values for current list targets ONLY (not all memory pool)
+            # Only calculate Z for the list being currently tested (j == currentlist)
             Z_sum = 0
             Z_proportion = 0.0
             
-            if !isempty(current_list_targets)
-                Z_sum = sum(get_Z_feature_value(target.word) for target in current_list_targets)
-                Z_proportion = Z_sum / length(current_list_targets)
+            if j == currentlist  # Only calculate Z for the list being tested
+                current_list_targets = filter(img -> img.list_number == j && (img.word.type_specific === :T || img.word.type_specific === Symbol("Tn+1")), image_pool_currentlist)
+                if !isempty(current_list_targets)
+                    Z_sum = sum(get_Z_feature_value(target.word) for target in current_list_targets)
+                    Z_proportion = Z_sum / length(current_list_targets)
+                end
             end
             
             #i is each probe, j is list number
@@ -297,14 +300,14 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
             decision_isold = 0
         end
 
-        # Calculate Z values for all targets in memory pool
-        all_targets = filter(img -> (img.word.type_specific == :T || img.word.type_specific == Symbol("Tn+1")), image_pool)
+        # Calculate Z values for targets in current chunk ONLY (not all memory pool)
+        current_chunk_targets = filter(img -> img.list_number == currchunk && (img.word.type_specific === :T || img.word.type_specific === Symbol("Tn+1")), image_pool)
         Z_sum = 0
         Z_proportion = 0.0
         
-        if !isempty(all_targets)
-            Z_sum = sum(get_Z_feature_value(target.word) for target in all_targets)
-            Z_proportion = Z_sum / length(all_targets)
+        if !isempty(current_chunk_targets)
+            Z_sum = sum(get_Z_feature_value(target.word) for target in current_chunk_targets)
+            Z_proportion = Z_sum / length(current_chunk_targets)
         end
 
         # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
