@@ -153,7 +153,7 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.50 # study
+ku_base = 0.40 # study
 ks_base = 0.50 #SOn (study only)
 kb_base = 0.50 #Tn (study and test)
 kt_base = 0.50 #Fn (test only)
@@ -235,7 +235,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 10) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 
@@ -247,7 +247,7 @@ base_distortion_prob = 0.6  # Base probability of distortion for the first probe
 
 
 
-n_between_listchange = round.(Int, LinRange(18, 18, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(25, 25, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -298,7 +298,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-ci=0.76 #0.148^power_taken
+ci=0.77 #0.148^power_taken
 
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
