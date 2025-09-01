@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [ac5e7b4](https://github.com/naszhu/REM_E3_model_fixed/commit/ac5e7b4) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:21:32  
+**Message:**
+```
+fix(model-e3): uncomment the update Z feature of study item
+
+Solves the problem, found T to be working
+- Adjusted `ks_base`, `kb_base`, and `kt_base` values to enhance model calibration and responsiveness.
+- Updated `fj_asymptote_decrease_val` to improve model dynamics.
+- Re-enabled calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` and `memory_storage.jl` to ensure proper feature updates during the restoration process.
+
+These changes aim to optimize the model's performance and ensure accurate feature handling in the code.
+
+Closes #61
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ac5e7b4_20250901_232132_plot1.png)  
+![](../plot_archive/ac5e7b4_20250901_232132_plot2.png)  
+
 ## Commit [174a28d](https://github.com/naszhu/REM_E3_model_fixed/commit/174a28d) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 23:01:57  
 **Message:**

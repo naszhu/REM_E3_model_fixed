@@ -1,5 +1,21 @@
 [
   {
+    "commit": "ac5e7b4",
+    "branch": "aug-31-new-model-v6",
+    "message": "fix(model-e3): uncomment the update Z feature of study item",
+    "timestamp": "2025-09-01 23:21:32",
+    "plot1": "plot_archive/ac5e7b4_20250901_232132_plot1.png",
+    "plot2": "plot_archive/ac5e7b4_20250901_232132_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "174a28d",
     "branch": "aug-31-new-model-v6",
     "message": "explore(model-e3): comment out Z feature updates for clarity",
