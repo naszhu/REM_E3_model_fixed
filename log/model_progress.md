@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [a33f756](https://github.com/naszhu/REM_E3_model_fixed/commit/a33f756) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 20:43:03  
+**Message:**
+```
+fintune(model-e3): working? reorganize file inclusions and enhance R plotting functionality
+
+- Removed and re-added the inclusion of `data_structures.jl` in `main_JL_E3_V0.jl` for better structure.
+- Added a new plot in `R_plots.r` to visualize the probability of correct sampling when an item is sampled, enhancing data analysis capabilities.
+- Updated the layout of the plots to include the new sampling accuracy plot, improving the overall presentation of results.
+
+These changes aim to improve code organization and enhance the visualization of sampling accuracy in the model's analysis.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a33f756_20250901_204303_plot1.png)  
+![](../plot_archive/a33f756_20250901_204303_plot2.png)  
+
 ## Commit [a0f907b](https://github.com/naszhu/REM_E3_model_fixed/commit/a0f907b) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 12:56:54  
 **Message:**

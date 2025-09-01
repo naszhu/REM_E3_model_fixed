@@ -99,6 +99,14 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 # Check if the sampled item is the same as the probe being tested
                 
                 is_same_item = sampled_item.word.item_code == probes[i].image.word.item_code
+            # Debug print when items don't match
+            # if !is_same_item
+            #     println("Item codes don't match:")
+            #     println("  Sampled item code: ", sampled_item.word.item_code)
+            #     println("  Sampled item type: ", sampled_item.word.type_specific)
+            #     println("  Probe item code: ", probes[i].image.word.item_code)
+            #     println("  Probe item type: ", probes[i].image.word.type_specific)
+            # end
 
 
             else

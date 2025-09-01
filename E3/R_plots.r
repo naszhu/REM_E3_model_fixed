@@ -265,6 +265,7 @@ p_serial
 # Probability of correct sampling when an item is sampled
 sampling_data <- all_results %>%
   filter(is_sampled == "true") %>%  # Only include sampled items
+  filter(is_target=="true")%>%
   mutate(is_same_item = case_when(is_same_item=="true"~1,is_same_item=="false"~0))%>%
   select(simulation_number, test_position, list_number, is_same_item)%>%
   group_by(simulation_number, test_position, list_number) %>%     # Group by list number
