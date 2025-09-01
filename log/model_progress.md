@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [fd057c3](https://github.com/naszhu/REM_E3_model_fixed/commit/fd057c3) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 12:52:47  
+**Message:**
+```
+explore(model-e3): adjust base parameters and drift values for model optimization
+
+- Updated `ku_base` from 0.50 to 0.40 to refine study conditions.
+- Increased `n_driftStudyTest` from 10 to 15 to enhance drift modeling between study and test phases.
+- Adjusted `n_between_listchange` from 18 to 25 to improve simulation accuracy.
+- Incremented `ci` from 0.76 to 0.77 to optimize criterion initialization.
+
+These changes aim to further enhance the model's performance and accuracy through fine-tuning of key parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fd057c3_20250901_125247_plot1.png)  
+![](../plot_archive/fd057c3_20250901_125247_plot2.png)  
+
 ## Commit [2528ac0](https://github.com/naszhu/REM_E3_model_fixed/commit/2528ac0) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 12:33:45  
 **Message:**
