@@ -262,12 +262,51 @@ p_serial
 #         plot.margin = margin(t = 10, b = 40),
 #         text=element_text(size=20) # Increase font size globally
 #     )
+# Probability of correct sampling when an item is sampled
+sampling_data <- all_results %>%
+  filter(is_sampled == "true") %>%  # Only include sampled items
+  mutate(is_same_item = case_when(is_same_item=="true"~1,is_same_item=="false"~0))%>%
+  select(simulation_number, test_position, list_number, is_same_item)%>%
+  group_by(simulation_number, test_position, list_number) %>%     # Group by list number
+  summarize(
+    prob_correct = mean(is_same_item)
+  )%>% group_by(test_position, list_number) %>%     # Group by list number
+  summarize(
+    prob_correct = mean(prob_correct)
+  )%>%group_by(list_number)%>%
+  summarize(prob_correct=mean(prob_correct))
 
-png(filename="plot1.png", width=1300, height=1200)
+# sampling_accuracy_plot <- 
+  sampling_accuracy_plot <- ggplot(data = sampling_data, 
+         aes(x = list_number, y = prob_correct)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  labs(
+    title = "Probability of Correct Sampling When Item is Sampled",
+    subtitle = "Accuracy of memory sampling across lists and test positions",
+    x = "List Number",
+    y = "Probability of Correct Sampling",
+    color = "Test Position"
+  ) +
+#   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
+  scale_color_viridis_d() +  # Use a colorblind-friendly palette
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom",
+    text=element_text(size=30)
+  )
+
+
+png(filename="plot1.png", width=1300, height=1800)
 # grid.arrange(p1,list_rt,p_in_20,testpos_rt,p_serial,p4,ncol = 2,nrow=3)
 # grid.arrange(p1,p_in_20,p_serial,p4,ncol = 2,nrow=2)
-grid.arrange(p1,p4,p_serial,p_in_20, ncol = 2,nrow=2)
-dev.off()
+grid.arrange(p1,p4,p_serial,p_in_20,sampling_accuracy_plot, ncol = 2,nrow=3)
+# grid.arrange(p1,p4,p_serial,p_in_20, ncol = 2,nrow=2)
+# dev.off()
+dev.off() 
 # system("feh plot1.png &", wait = FALSE)      # if `feh` is installed
 # system("feh plot1.png",)      # if `feh` is installed
 # system2("feh", args = "plot1.png", wait = FALSE)
