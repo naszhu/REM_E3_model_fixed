@@ -153,17 +153,17 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ks_base = 0.70
-ku_base = 0.70
-kb_base = 0.70
-kt_base = 0.70
+ku_base = 0.50 # study
+ks_base = 0.50 #SOn (study only)
+kb_base = 0.50 #Tn (study and test)
+kt_base = 0.50 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.5
+fj_asymptote_decrease_val = 0.2
 fj_rate = 5.0
 
 @assert ks_base>fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.7
+hj_asymptote_increase_val = 0.4
 hj_rate = 5.0
 hj_base = 0.1; 
 
@@ -186,7 +186,7 @@ const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star_v = 0.07
+u_star_v = 0.04
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -298,7 +298,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = (1/11)
-ci=0.98 #0.148^power_taken
+ci=0.76 #0.148^power_taken
 
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  

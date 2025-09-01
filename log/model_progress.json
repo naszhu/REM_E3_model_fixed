@@ -1,5 +1,22 @@
 [
   {
+    "commit": "bd4a99e",
+    "branch": "aug-31-new-model-v6",
+    "message": "fix(model-e3): update feature handling to replace OT with Z feature",
+    "timestamp": "2025-09-01 12:25:54",
+    "plot1": "plot_archive/bd4a99e_20250901_122554_plot1.png",
+    "plot2": "plot_archive/bd4a99e_20250901_122554_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "01249a0",
     "branch": "aug-31-new-model-v6",
     "message": "feat(model-e3): replace OT feature with Z feature and update related functions",

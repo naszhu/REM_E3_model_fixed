@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [bd4a99e](https://github.com/naszhu/REM_E3_model_fixed/commit/bd4a99e) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 12:25:54  
+**Message:**
+```
+fix(model-e3): update feature handling to replace OT with Z feature
+
+- Commented out the OT feature parameters and related logic in `constants.jl`, `feature_updates.jl`, and `probe_evaluation.jl` to streamline the codebase.
+- Adjusted conditions in feature update functions to utilize the new Z feature instead of the deprecated OT feature.
+- Enhanced clarity by ensuring that the code reflects the current feature framework.
+
+These changes aim to improve code maintainability and align with the recent transition from the OT feature to the Z feature.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bd4a99e_20250901_122554_plot1.png)  
+![](../plot_archive/bd4a99e_20250901_122554_plot2.png)  
+
 ## Commit [01249a0](https://github.com/naszhu/REM_E3_model_fixed/commit/01249a0) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 01:50:13  
 **Message:**
