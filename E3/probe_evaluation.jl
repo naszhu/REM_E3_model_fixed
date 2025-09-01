@@ -136,10 +136,10 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 #     decision_isold = 0
                 # end
                 @assert !isnothing(sampled_item) "sampled item is nothing"
-                if ilist_probe!=1
-                    if use_ot_feature && !isnothing(sampled_item) && (rand() < h_j[ilist_probe])
+                if ilist_probe !=1
+                    if use_Z_feature && !isnothing(sampled_item) && (rand() < h_j[ilist_probe-1])
                         # Use OT feature from sampled item
-                        
+                        # println("test")
                         Z_value = get_Z_feature_value(sampled_item.word)
                         if Z_value == 1
                             decision_isold = 0  # OT=1 means judged new

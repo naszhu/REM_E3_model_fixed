@@ -220,7 +220,8 @@ function add_feature_during_restore!(target_features::Vector{Int}, probe_feature
 
          # Special handling for OT feature (last feature) - only if enabled
         # skip the OT feature here, this will be specifically handled later
-        if use_ot_feature && i === tested_before_feature_pos && is_content
+        # if use_ot_feature && i === tested_before_feature_pos && is_content
+        if use_Z_feature && (i === tested_before_feature_pos) && is_content
             # OT feature: use κs probability for incorrect test info
              #do nothing for when OT feature here,this will be specifically handled later
 
@@ -258,7 +259,8 @@ function strengthen_features!(target_features::Vector{Int}, source_features::Vec
             current_value = target_features[i]
             source_value = source_features[i]
 
-            if use_ot_feature && i === tested_before_feature_pos && !is_ctx
+            # if use_ot_feature && i === tested_before_feature_pos && !is_ctx
+            if use_Z_feature && (i === tested_before_feature_pos) && !is_ctx
                 # OT feature: use κs probability for incorrect test info during restoration
                 # have tested this does happen               
             else

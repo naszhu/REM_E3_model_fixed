@@ -137,10 +137,10 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 
 ### Give different OT values now with each time of encountering an item.
 ## So OT not full in value anymore, but it will add one whenever encountering.
-ot_value_study = 1; 
-ot_value_between_lists = 0;
-ot_value_test = 1;
-ot_value_threshold=1;
+# ot_value_study = 1; 
+# ot_value_between_lists = 0;
+# ot_value_test = 1;
+# ot_value_threshold=1;
 
 κ_update_between_list = 0.0;
 
@@ -165,7 +165,9 @@ fj_rate = 5.0
 
 hj_asymptote_increase_val = 0.7
 hj_rate = 5.0
+hj_base = 0.1; 
 
+h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
 κu_values = asym_decrease_shift_fj(ku_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1) 
@@ -371,7 +373,7 @@ recall_to_addtrace_threshold = Inf
 TRUE FALSE
 """
 # FIXME: I disabled the OT feature but I didn't. I made this code vulnerable because I did delete the OT part but I kept the true and false in some other features.
-use_ot_feature = false  # flag to enable/disable OT feature
+# use_ot_feature = false  # flag to enable/disable OT feature
 use_Z_feature = true
 
 sampling_method = true

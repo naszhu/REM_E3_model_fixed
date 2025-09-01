@@ -1,5 +1,25 @@
 [
   {
+    "commit": "01249a0",
+    "branch": "aug-31-new-model-v6",
+    "message": "feat(model-e3): replace OT feature with Z feature and update related functions",
+    "timestamp": "2025-09-01 01:50:13",
+    "plot1": "plot_archive/01249a0_20250901_015013_plot1.png",
+    "plot2": "plot_archive/01249a0_20250901_015013_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/simulation.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "60ed225",
     "branch": "aug-31-new-model-v6",
     "message": "merge(model-e3): Merge branch 'aug-30-test'",
