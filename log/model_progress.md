@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [c99e21c](https://github.com/naszhu/REM_E3_model_fixed/commit/c99e21c) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:22:16  
+**Message:**
+```
+explore(model-e3): what if no change f(j)
+
+- Set `fj_asymptote_decrease_val` from 0.85 to 0.0 to refine model dynamics and ensure better alignment with performance expectations.
+- This adjustment aims to enhance the model's responsiveness and overall calibration.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c99e21c_20250901_212216_plot1.png)  
+![](../plot_archive/c99e21c_20250901_212216_plot2.png)  
+
 ## Commit [b71ea43](https://github.com/naszhu/REM_E3_model_fixed/commit/b71ea43) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 21:18:28  
 **Message:**

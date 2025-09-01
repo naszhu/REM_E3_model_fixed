@@ -1,5 +1,19 @@
 [
   {
+    "commit": "c99e21c",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): what if no change f(j)",
+    "timestamp": "2025-09-01 21:22:16",
+    "plot1": "plot_archive/c99e21c_20250901_212216_plot1.png",
+    "plot2": "plot_archive/c99e21c_20250901_212216_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b71ea43",
     "branch": "aug-31-new-model-v6",
     "message": "finetune(model-e3): update base parameters for improved model calibration",

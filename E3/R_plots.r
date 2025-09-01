@@ -266,6 +266,8 @@ p_serial
 sampling_data <- all_results %>%
   filter(is_sampled == "true") %>%  # Only include sampled items
   filter(is_target=="true")%>%
+  filter(decision_isold==1)%>%
+#   filter(type_specific %in% c("T","Tn+1"))%>%
   mutate(is_same_item = case_when(is_same_item=="true"~1,is_same_item=="false"~0))%>%
   select(simulation_number, test_position, list_number, is_same_item)%>%
   group_by(simulation_number, test_position, list_number) %>%     # Group by list number

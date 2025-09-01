@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 200;
+n_simulations = is_finaltest ? 100 : 1000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -158,7 +158,7 @@ ks_base = 0.32 #SOn (study only)
 kb_base = 0.30 #Tn (study and test)
 kt_base = 0.30 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.0
+fj_asymptote_decrease_val = 0.8
 fj_rate = 5.0
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"

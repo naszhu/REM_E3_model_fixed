@@ -425,20 +425,20 @@ end
 
 # --------
 ########### Z feature functions here
-function update_Z_feature_study!(word_features::Vector{Int64}, list_number::Int64)::Nothing
-    if use_Z_feature && length(word_features) >= tested_before_feature_pos
+function update_Z_feature_study!(word::Word, list_number::Int64)::Nothing
+    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κs value (no asymptotic effect yet)
         if list_number === 1
             # κ_value = κu_list_1_value
-            κ_value = 0 # this number doesn't matter because first list won't use Z (is this true?)
+            κ_value = 0 # this number doesn't matter because first list  won't use Z (is this true?)
         else
             κ_index = list_number - 1
             κ_value = κu[κ_index]
         end
         
         # omit if the value=0 part becuase it should always be 0 during study
-        word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change back to 0 and 1 structure rather than accumulation structure
+        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change back to 0 and 1 structure rather than accumulation structure
         
     end
     return nothing

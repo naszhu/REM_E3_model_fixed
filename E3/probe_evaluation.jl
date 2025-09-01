@@ -86,7 +86,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         sampled_item = nothing
         is_same_item = false  # Initialize is_same_item
         is_sampled = false    # Initialize is_sampled
-        if odds > criterion_initial[i_testpos, ilist_probe] && odds > recall_odds_threshold
+        if (odds > criterion_initial[i_testpos, ilist_probe]) && (odds > recall_odds_threshold)
 
             is_sampled = true
             
@@ -145,11 +145,16 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 # end
                 @assert !isnothing(sampled_item) "sampled item is nothing"
                 if ilist_probe !=1
+                    # println("listi",ilist_probe)
                     if use_Z_feature && !isnothing(sampled_item) && (rand() < h_j[ilist_probe-1])
                         # Use OT feature from sampled item
                         # println("test")
                         Z_value = get_Z_feature_value(sampled_item.word)
-                        if Z_value == 1
+                        if Z_value === 1 && sampled_item.word.type_general === :T
+                            # println(ilist_probe,":", Z_value, " sampled_item:", sampled_item.word.type_general)
+                            # println("is_same_item:", sampled_item.word.item_code == probes[i].image.word.item_code)
+                        end
+                        if Z_value === 1
                             decision_isold = 0  # OT=1 means judged new
                         else
                             decision_isold = 1  # OT=0 means judged old
