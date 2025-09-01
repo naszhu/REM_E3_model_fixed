@@ -153,17 +153,17 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.90 # study
-ks_base = 0.92 #SOn (study only)
-kb_base = 0.90 #Tn (study and test)
-kt_base = 0.90 #Fn (test only)
+ku_base = 0.85 # study
+ks_base = 0.32 #SOn (study only)
+kb_base = 0.30 #Tn (study and test)
+kt_base = 0.30 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.9
+fj_asymptote_decrease_val = 0.85
 fj_rate = 5.0
 
-@assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
+# @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.4
+hj_asymptote_increase_val = 0.3
 hj_rate = 5.0
 hj_base = 0.1; 
 
@@ -171,9 +171,9 @@ h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_list
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
 κu_values = asym_decrease_shift_fj(ku_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1) 
-κs_values = 1 .-asym_decrease_shift_fj(ks_base, fj_asymptote_decrease_val, hj_rate, n_lists - 1)
-κb_values = 1 .-asym_decrease_shift_fj(kb_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
-κt_values = 1 .-asym_decrease_shift_fj(kt_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
+κs_values = 1 .-asym_decrease_shift_fj(ks_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
+κb_values = 1 .-asym_decrease_shift_fj(kb_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
+κt_values = 1 .-asym_decrease_shift_fj(kt_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
 
 const κu = κu_values 
 const κs = κs_values  

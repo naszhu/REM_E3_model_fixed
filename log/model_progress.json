@@ -1,5 +1,19 @@
 [
   {
+    "commit": "b87b108",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): update base parameters and asymptote values for improved model performance",
+    "timestamp": "2025-09-01 20:53:28",
+    "plot1": "plot_archive/b87b108_20250901_205328_plot1.png",
+    "plot2": "plot_archive/b87b108_20250901_205328_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "832b9c5",
     "branch": "aug-31-new-model-v6",
     "message": "explore(probe_evaluation): add debug prints for item code mismatches",
