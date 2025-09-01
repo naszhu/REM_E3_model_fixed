@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [46ed82f](https://github.com/naszhu/REM_E3_model_fixed/commit/46ed82f) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:15:46  
+**Message:**
+```
+finetune(model-e3): adjust hj parameters for improved model dynamics
+
+- Increased `hj_asymptote_increase_val` from 0.3 to 0.5, decreased `hj_rate` from 5.0 to 2.0, and reduced `hj_base` from 0.1 to 0.05 to refine model behavior.
+- These adjustments aim to enhance the model's responsiveness and alignment with expected dynamics.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/46ed82f_20250901_211546_plot1.png)  
+![](../plot_archive/46ed82f_20250901_211546_plot2.png)  
+
 ## Commit [24697ba](https://github.com/naszhu/REM_E3_model_fixed/commit/24697ba) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 21:12:19  
 **Message:**
