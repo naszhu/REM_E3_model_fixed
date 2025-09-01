@@ -1,5 +1,19 @@
 [
   {
+    "commit": "b71ea43",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): update base parameters for improved model calibration",
+    "timestamp": "2025-09-01 21:18:28",
+    "plot1": "plot_archive/b71ea43_20250901_211828_plot1.png",
+    "plot2": "plot_archive/b71ea43_20250901_211828_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "46ed82f",
     "branch": "aug-31-new-model-v6",
     "message": "finetune(model-e3): adjust hj parameters for improved model dynamics",

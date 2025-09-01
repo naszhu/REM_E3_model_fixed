@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [b71ea43](https://github.com/naszhu/REM_E3_model_fixed/commit/b71ea43) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:18:28  
+**Message:**
+```
+finetune(model-e3): update base parameters for improved model calibration
+
+- Increased `ku_base` from 0.85 to 0.95 and adjusted `ci` from 0.77 to 0.79 to enhance model dynamics and criterion initialization.
+- These changes aim to refine the model's performance and ensure better alignment with expected outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b71ea43_20250901_211828_plot1.png)  
+![](../plot_archive/b71ea43_20250901_211828_plot2.png)  
+
 ## Commit [46ed82f](https://github.com/naszhu/REM_E3_model_fixed/commit/46ed82f) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 21:15:46  
 **Message:**
