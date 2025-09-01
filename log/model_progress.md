@@ -1,5 +1,68 @@
 # Model Progress
 
+## Commit [72fa36a](https://github.com/naszhu/REM_E3_model_fixed/commit/72fa36a) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:52:07  
+**Message:**
+```
+explore(model-e3): adjust base parameters and comment out feature update calls
+
+- Decreased `kb_base` from 0.80 to 0.20 and adjusted `fj_rate` from 5.0 to 2.0 for improved model dynamics.
+- Increased `hj_rate` from 2.0 to 3.0 to enhance responsiveness.
+- Commented out calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to clarify the feature update process.
+
+These changes aim to optimize the model's performance and ensure clearer feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/72fa36a_20250901_235207_plot1.png)  
+![](../plot_archive/72fa36a_20250901_235207_plot2.png)  
+
+## Commit [72fa36a](https://github.com/naszhu/REM_E3_model_fixed/commit/72fa36a) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:52:07  
+**Message:**
+```
+explore(model-e3): adjust base parameters and comment out feature update calls
+
+- Decreased `kb_base` from 0.80 to 0.20 and adjusted `fj_rate` from 5.0 to 2.0 for improved model dynamics.
+- Increased `hj_rate` from 2.0 to 3.0 to enhance responsiveness.
+- Commented out calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to clarify the feature update process.
+
+These changes aim to optimize the model's performance and ensure clearer feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/72fa36a_20250901_235207_plot1.png)  
+![](../plot_archive/72fa36a_20250901_235207_plot2.png)  
+
+## Commit [fd996e3](https://github.com/naszhu/REM_E3_model_fixed/commit/fd996e3) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:41:31  
+**Message:**
+```
+explore(model-e3): adjust base parameters and feature update calls for improved model dynamics
+
+- Decreased `ku_base` from 0.95 to 0.85 and `fj_asymptote_decrease_val` from 0.9 to 0.8 to refine model calibration.
+- Increased `hj_asymptote_increase_val` from 0.6 to 0.65 for enhanced model responsiveness.
+- Re-enabled calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to ensure proper feature updates during the restoration process.
+
+These changes aim to optimize the model's performance and ensure accurate feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fd996e3_20250901_234131_plot1.png)  
+![](../plot_archive/fd996e3_20250901_234131_plot2.png)  
+
 ## Commit [e03bd68](https://github.com/naszhu/REM_E3_model_fixed/commit/e03bd68) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 23:31:46  
 **Message:**
