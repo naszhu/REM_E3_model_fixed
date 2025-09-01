@@ -32,7 +32,7 @@ using QuadGK
 Threads.nthreads()
 # JULIA_NUM_THREADS=8 julia
 
-include("data_structures.jl")
+
 include("utils.jl")
 include("constants.jl") 
 # recall_odds_threshold = 1e5;
@@ -47,7 +47,7 @@ include("constants.jl")
 a = [1 1 1; 1 1 1]
 
 include("feature_updates.jl")
-
+include("data_structures.jl")
 
 include("feature_generation.jl")
 
@@ -65,8 +65,8 @@ include("simulation.jl")
 all_results, allresf = simulate_rem()
 # all_results 
 DF = @chain all_results begin
-    @by([:list_number, :is_target, :test_position, :simulation_number,:type_general,:type_specific], :meanx = mean(:decision_isold))
-    @by([:list_number, :is_target, :test_position,:type_general,:type_specific], :meanx = mean(:meanx))
+    @by([:list_number, :is_target, :testpos, :simulation_number,:type_general,:type_specific], :meanx = mean(:decision_isold))
+    @by([:list_number, :is_target, :testpos,:type_general,:type_specific], :meanx = mean(:meanx))
 end
 
 if is_finaltest

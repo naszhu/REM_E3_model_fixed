@@ -1,5 +1,438 @@
 # Model Progress
 
+## Commit [72fa36a](https://github.com/naszhu/REM_E3_model_fixed/commit/72fa36a) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:52:07  
+**Message:**
+```
+explore(model-e3): adjust base parameters and comment out feature update calls
+
+- Decreased `kb_base` from 0.80 to 0.20 and adjusted `fj_rate` from 5.0 to 2.0 for improved model dynamics.
+- Increased `hj_rate` from 2.0 to 3.0 to enhance responsiveness.
+- Commented out calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to clarify the feature update process.
+
+These changes aim to optimize the model's performance and ensure clearer feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/72fa36a_20250901_235207_plot1.png)  
+![](../plot_archive/72fa36a_20250901_235207_plot2.png)  
+
+## Commit [72fa36a](https://github.com/naszhu/REM_E3_model_fixed/commit/72fa36a) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:52:07  
+**Message:**
+```
+explore(model-e3): adjust base parameters and comment out feature update calls
+
+- Decreased `kb_base` from 0.80 to 0.20 and adjusted `fj_rate` from 5.0 to 2.0 for improved model dynamics.
+- Increased `hj_rate` from 2.0 to 3.0 to enhance responsiveness.
+- Commented out calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to clarify the feature update process.
+
+These changes aim to optimize the model's performance and ensure clearer feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/72fa36a_20250901_235207_plot1.png)  
+![](../plot_archive/72fa36a_20250901_235207_plot2.png)  
+
+## Commit [fd996e3](https://github.com/naszhu/REM_E3_model_fixed/commit/fd996e3) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:41:31  
+**Message:**
+```
+explore(model-e3): adjust base parameters and feature update calls for improved model dynamics
+
+- Decreased `ku_base` from 0.95 to 0.85 and `fj_asymptote_decrease_val` from 0.9 to 0.8 to refine model calibration.
+- Increased `hj_asymptote_increase_val` from 0.6 to 0.65 for enhanced model responsiveness.
+- Re-enabled calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to ensure proper feature updates during the restoration process.
+
+These changes aim to optimize the model's performance and ensure accurate feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fd996e3_20250901_234131_plot1.png)  
+![](../plot_archive/fd996e3_20250901_234131_plot2.png)  
+
+## Commit [e03bd68](https://github.com/naszhu/REM_E3_model_fixed/commit/e03bd68) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:31:46  
+**Message:**
+```
+finetune(model-e3): update hj_asymptote_increase_val and ci for improved model calibration
+
+- Increased `hj_asymptote_increase_val` from 0.5 to 0.6 to enhance model dynamics.
+- Adjusted `ci` from 0.79 to 0.77 to refine criterion initialization.
+
+These changes aim to optimize the model's performance and ensure better alignment with expected outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e03bd68_20250901_233146_plot1.png)  
+![](../plot_archive/e03bd68_20250901_233146_plot2.png)  
+
+## Commit [ac5e7b4](https://github.com/naszhu/REM_E3_model_fixed/commit/ac5e7b4) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:21:32  
+**Message:**
+```
+fix(model-e3): uncomment the update Z feature of study item
+
+Solves the problem, found T to be working
+- Adjusted `ks_base`, `kb_base`, and `kt_base` values to enhance model calibration and responsiveness.
+- Updated `fj_asymptote_decrease_val` to improve model dynamics.
+- Re-enabled calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` and `memory_storage.jl` to ensure proper feature updates during the restoration process.
+
+These changes aim to optimize the model's performance and ensure accurate feature handling in the code.
+
+Closes #61
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ac5e7b4_20250901_232132_plot1.png)  
+![](../plot_archive/ac5e7b4_20250901_232132_plot2.png)  
+
+## Commit [174a28d](https://github.com/naszhu/REM_E3_model_fixed/commit/174a28d) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:01:57  
+**Message:**
+```
+explore(model-e3): comment out Z feature updates for clarity
+
+- Commented out calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to clarify the strengthening process.
+- Updated filtering logic in `probe_evaluation.jl` to ensure Z values are calculated only for the current list or chunk being tested, enhancing performance and focus of calculations.
+
+These changes aim to improve code clarity and ensure that Z feature calculations are context-specific, thereby refining the model's evaluation process.
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/174a28d_20250901_230157_plot1.png)  
+![](../plot_archive/174a28d_20250901_230157_plot2.png)  
+
+## Commit [2e26a1f](https://github.com/naszhu/REM_E3_model_fixed/commit/2e26a1f) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 22:50:09  
+**Message:**
+```
+explore(model-e3): debug, check what z is doing by plotting it
+
+- Increased `n_simulations` from 1000 to 300 for final tests to improve simulation robustness.
+- Renamed variables in data processing from `test_position` to `testpos` for consistency across files.
+- Added calculations for `Z_sum` and `Z_proportion` in `probe_evaluation.jl` and `simulation.jl` to enhance feature analysis.
+- Introduced new R plots for visualizing Z feature proportions by list number and test position, improving data analysis capabilities.
+
+These changes aim to refine the model's performance and enhance the clarity of feature handling in the code.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/R_plots_Z_analysis.r`  
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2e26a1f_20250901_225009_plot1.png)  
+![](../plot_archive/2e26a1f_20250901_225009_plot2.png)  
+
+## Commit [104a863](https://github.com/naszhu/REM_E3_model_fixed/commit/104a863) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 22:49:34  
+**Message:**
+```
+fix(model-e3): Adjusted the handling of `word_features` to ensure consistent feature updates
+
+- Increased `n_simulations` from 200 to 1000 to enhance the robustness of simulation results.
+- Updated `fj_asymptote_decrease_val` from 0.0 to 0.8 to refine model responsiveness.
+- Modified the `update_Z_feature_study!` function to accept a `Word` object instead of a vector, improving code clarity and structure.
+- Adjusted the handling of `word_features` to ensure consistent feature updates during simulations.
+
+These changes aim to optimize the model's performance and enhance the clarity of feature handling in the code.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/104a863_20250901_224934_plot1.png)  
+![](../plot_archive/104a863_20250901_224934_plot2.png)  
+
+## Commit [c99e21c](https://github.com/naszhu/REM_E3_model_fixed/commit/c99e21c) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:22:16  
+**Message:**
+```
+explore(model-e3): what if no change f(j)
+
+- Set `fj_asymptote_decrease_val` from 0.85 to 0.0 to refine model dynamics and ensure better alignment with performance expectations.
+- This adjustment aims to enhance the model's responsiveness and overall calibration.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c99e21c_20250901_212216_plot1.png)  
+![](../plot_archive/c99e21c_20250901_212216_plot2.png)  
+
+## Commit [b71ea43](https://github.com/naszhu/REM_E3_model_fixed/commit/b71ea43) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:18:28  
+**Message:**
+```
+finetune(model-e3): update base parameters for improved model calibration
+
+- Increased `ku_base` from 0.85 to 0.95 and adjusted `ci` from 0.77 to 0.79 to enhance model dynamics and criterion initialization.
+- These changes aim to refine the model's performance and ensure better alignment with expected outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b71ea43_20250901_211828_plot1.png)  
+![](../plot_archive/b71ea43_20250901_211828_plot2.png)  
+
+## Commit [46ed82f](https://github.com/naszhu/REM_E3_model_fixed/commit/46ed82f) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:15:46  
+**Message:**
+```
+finetune(model-e3): adjust hj parameters for improved model dynamics
+
+- Increased `hj_asymptote_increase_val` from 0.3 to 0.5, decreased `hj_rate` from 5.0 to 2.0, and reduced `hj_base` from 0.1 to 0.05 to refine model behavior.
+- These adjustments aim to enhance the model's responsiveness and alignment with expected dynamics.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/46ed82f_20250901_211546_plot1.png)  
+![](../plot_archive/46ed82f_20250901_211546_plot2.png)  
+
+## Commit [24697ba](https://github.com/naszhu/REM_E3_model_fixed/commit/24697ba) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 21:12:19  
+**Message:**
+```
+finetune(model-e3): adjust base parameters and asymptote values for model refinement
+
+- Decreased `ku_base` from 0.90 to 0.85, `ks_base` from 0.92 to 0.32, `kb_base` from 0.90 to 0.30, and `kt_base` from 0.90 to 0.30 to refine model performance.
+- Updated `fj_asymptote_decrease_val` from 0.9 to 0.85 and `hj_asymptote_increase_val` from 0.4 to 0.3 for better alignment with model dynamics.
+- Adjusted calculations for `κs_values`, `κb_values`, and `κt_values` to reflect the new base parameters.
+
+These changes aim to further optimize the model's performance through precise parameter adjustments.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/24697ba_20250901_211219_plot1.png)  
+![](../plot_archive/24697ba_20250901_211219_plot2.png)  
+
+## Commit [b87b108](https://github.com/naszhu/REM_E3_model_fixed/commit/b87b108) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 20:53:28  
+**Message:**
+```
+finetune(model-e3): update base parameters and asymptote values for improved model performance
+
+- Increased `ks_base` from 0.82 to 0.92, `kb_base` from 0.80 to 0.90, and `kt_base` from 0.50 to 0.90 to enhance study and test conditions.
+- Adjusted `fj_asymptote_decrease_val` from 0.8 to 0.9 for better alignment with model dynamics.
+- Updated assertion to ensure `ks_base` is greater than or equal to `fj_asymptote_decrease_val`.
+
+These changes aim to further optimize the model's performance through refined parameter settings.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b87b108_20250901_205328_plot1.png)  
+![](../plot_archive/b87b108_20250901_205328_plot2.png)  
+
+## Commit [832b9c5](https://github.com/naszhu/REM_E3_model_fixed/commit/832b9c5) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 20:49:48  
+**Message:**
+```
+explore(probe_evaluation): add debug prints for item code mismatches
+
+- Introduced debug print statements in `probe_evaluation.jl` to log details when sampled item codes do not match probe item codes, aiding in troubleshooting.
+- Updated filtering in `R_plots.r` to include only target items in the sampling data, improving the accuracy of visualized results.
+
+These changes aim to facilitate debugging and enhance the clarity of sampling analysis in the model.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/832b9c5_20250901_204948_plot1.png)  
+![](../plot_archive/832b9c5_20250901_204948_plot2.png)  
+
+## Commit [a33f756](https://github.com/naszhu/REM_E3_model_fixed/commit/a33f756) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 20:43:03  
+**Message:**
+```
+fintune(model-e3): working? reorganize file inclusions and enhance R plotting functionality
+
+- Removed and re-added the inclusion of `data_structures.jl` in `main_JL_E3_V0.jl` for better structure.
+- Added a new plot in `R_plots.r` to visualize the probability of correct sampling when an item is sampled, enhancing data analysis capabilities.
+- Updated the layout of the plots to include the new sampling accuracy plot, improving the overall presentation of results.
+
+These changes aim to improve code organization and enhance the visualization of sampling accuracy in the model's analysis.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a33f756_20250901_204303_plot1.png)  
+![](../plot_archive/a33f756_20250901_204303_plot2.png)  
+
+## Commit [a0f907b](https://github.com/naszhu/REM_E3_model_fixed/commit/a0f907b) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 12:56:54  
+**Message:**
+```
+explore(model-e3): revise base parameters and asymptote values for model optimization
+
+- Increased `ku_base` from 0.40 to 0.90, `ks_base` from 0.50 to 0.82, and `kb_base` from 0.50 to 0.80 to enhance study and test conditions.
+- Adjusted `fj_asymptote_decrease_val` from 0.2 to 0.8 to better align with model dynamics.
+
+These changes aim to further optimize the model's performance through refined parameter settings.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a0f907b_20250901_125654_plot1.png)  
+![](../plot_archive/a0f907b_20250901_125654_plot2.png)  
+
+## Commit [fd057c3](https://github.com/naszhu/REM_E3_model_fixed/commit/fd057c3) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 12:52:47  
+**Message:**
+```
+explore(model-e3): adjust base parameters and drift values for model optimization
+
+- Updated `ku_base` from 0.50 to 0.40 to refine study conditions.
+- Increased `n_driftStudyTest` from 10 to 15 to enhance drift modeling between study and test phases.
+- Adjusted `n_between_listchange` from 18 to 25 to improve simulation accuracy.
+- Incremented `ci` from 0.76 to 0.77 to optimize criterion initialization.
+
+These changes aim to further enhance the model's performance and accuracy through fine-tuning of key parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fd057c3_20250901_125247_plot1.png)  
+![](../plot_archive/fd057c3_20250901_125247_plot2.png)  
+
+## Commit [2528ac0](https://github.com/naszhu/REM_E3_model_fixed/commit/2528ac0) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 12:33:45  
+**Message:**
+```
+explore(model-e3): adjust base parameters and criterion values for improved model performance
+
+- Updated base parameters `ks_base`, `ku_base`, `kb_base`, and `kt_base` to 0.50 to reflect new study conditions.
+- Reduced `fj_asymptote_decrease_val` from 0.5 to 0.2 and `hj_asymptote_increase_val` from 0.7 to 0.4 for better alignment with model dynamics.
+- Adjusted `u_star_v` from 0.07 to 0.04 and `ci` from 0.98 to 0.76 to optimize initial criterion values.
+
+These changes aim to enhance the model's accuracy and performance by fine-tuning critical parameters.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2528ac0_20250901_123345_plot1.png)  
+![](../plot_archive/2528ac0_20250901_123345_plot2.png)  
+
+## Commit [bd4a99e](https://github.com/naszhu/REM_E3_model_fixed/commit/bd4a99e) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 12:25:54  
+**Message:**
+```
+fix(model-e3): update feature handling to replace OT with Z feature
+
+- Commented out the OT feature parameters and related logic in `constants.jl`, `feature_updates.jl`, and `probe_evaluation.jl` to streamline the codebase.
+- Adjusted conditions in feature update functions to utilize the new Z feature instead of the deprecated OT feature.
+- Enhanced clarity by ensuring that the code reflects the current feature framework.
+
+These changes aim to improve code maintainability and align with the recent transition from the OT feature to the Z feature.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bd4a99e_20250901_122554_plot1.png)  
+![](../plot_archive/bd4a99e_20250901_122554_plot2.png)  
+
+## Commit [01249a0](https://github.com/naszhu/REM_E3_model_fixed/commit/01249a0) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 01:50:13  
+**Message:**
+```
+feat(model-e3): replace OT feature with Z feature and update related functions
+
+- Removed the OT feature and its associated parameters, replacing them with a new Z feature framework.
+- Updated functions to handle Z feature logic, including study and test conditions for confusing foils.
+- Adjusted feature update mechanisms to ensure compatibility with the new Z feature implementation.
+- Enhanced clarity in the code by renaming functions and parameters related to the Z feature.
+
+These changes aim to streamline the model's feature handling and improve overall functionality.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/memory_storage.jl`  
+- `E3/probe_evaluation.jl`  
+- `E3/simulation.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/01249a0_20250901_015013_plot1.png)  
+![](../plot_archive/01249a0_20250901_015013_plot2.png)  
+
+## Commit [60ed225](https://github.com/naszhu/REM_E3_model_fixed/commit/60ed225) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 00:11:11  
+**Message:**
+```
+merge(model-e3): Merge branch 'aug-30-test'
+
+Refs #58
+```
+![](../plot_archive/60ed225_20250901_001111_plot1.png)  
+![](../plot_archive/60ed225_20250901_001111_plot2.png)  
+
 ## Commit [7741691](https://github.com/naszhu/REM_E3_model_fixed/commit/7741691) (branch: `aug-30-test`)
 **Time:** 2025-08-30 23:52:32  
 **Message:**

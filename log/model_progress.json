@@ -1,5 +1,322 @@
 [
   {
+    "commit": "72fa36a",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): adjust base parameters and comment out feature update calls",
+    "timestamp": "2025-09-01 23:52:07",
+    "plot1": "plot_archive/72fa36a_20250901_235207_plot1.png",
+    "plot2": "plot_archive/72fa36a_20250901_235207_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "72fa36a",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): adjust base parameters and comment out feature update calls",
+    "timestamp": "2025-09-01 23:52:07",
+    "plot1": "plot_archive/72fa36a_20250901_235207_plot1.png",
+    "plot2": "plot_archive/72fa36a_20250901_235207_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "fd996e3",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): adjust base parameters and feature update calls for improved model dynamics",
+    "timestamp": "2025-09-01 23:41:31",
+    "plot1": "plot_archive/fd996e3_20250901_234131_plot1.png",
+    "plot2": "plot_archive/fd996e3_20250901_234131_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e03bd68",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): update hj_asymptote_increase_val and ci for improved model calibration",
+    "timestamp": "2025-09-01 23:31:46",
+    "plot1": "plot_archive/e03bd68_20250901_233146_plot1.png",
+    "plot2": "plot_archive/e03bd68_20250901_233146_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "ac5e7b4",
+    "branch": "aug-31-new-model-v6",
+    "message": "fix(model-e3): uncomment the update Z feature of study item",
+    "timestamp": "2025-09-01 23:21:32",
+    "plot1": "plot_archive/ac5e7b4_20250901_232132_plot1.png",
+    "plot2": "plot_archive/ac5e7b4_20250901_232132_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "174a28d",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): comment out Z feature updates for clarity",
+    "timestamp": "2025-09-01 23:01:57",
+    "plot1": "plot_archive/174a28d_20250901_230157_plot1.png",
+    "plot2": "plot_archive/174a28d_20250901_230157_plot2.png",
+    "changed_files": [
+      "E3/memory_restorage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2e26a1f",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): debug, check what z is doing by plotting it",
+    "timestamp": "2025-09-01 22:50:09",
+    "plot1": "plot_archive/2e26a1f_20250901_225009_plot1.png",
+    "plot2": "plot_archive/2e26a1f_20250901_225009_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/R_plots_Z_analysis.r",
+      "E3/constants.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "104a863",
+    "branch": "aug-31-new-model-v6",
+    "message": "fix(model-e3): Adjusted the handling of `word_features` to ensure consistent feature updates",
+    "timestamp": "2025-09-01 22:49:34",
+    "plot1": "plot_archive/104a863_20250901_224934_plot1.png",
+    "plot2": "plot_archive/104a863_20250901_224934_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "c99e21c",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): what if no change f(j)",
+    "timestamp": "2025-09-01 21:22:16",
+    "plot1": "plot_archive/c99e21c_20250901_212216_plot1.png",
+    "plot2": "plot_archive/c99e21c_20250901_212216_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b71ea43",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): update base parameters for improved model calibration",
+    "timestamp": "2025-09-01 21:18:28",
+    "plot1": "plot_archive/b71ea43_20250901_211828_plot1.png",
+    "plot2": "plot_archive/b71ea43_20250901_211828_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "46ed82f",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): adjust hj parameters for improved model dynamics",
+    "timestamp": "2025-09-01 21:15:46",
+    "plot1": "plot_archive/46ed82f_20250901_211546_plot1.png",
+    "plot2": "plot_archive/46ed82f_20250901_211546_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "24697ba",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): adjust base parameters and asymptote values for model refinement",
+    "timestamp": "2025-09-01 21:12:19",
+    "plot1": "plot_archive/24697ba_20250901_211219_plot1.png",
+    "plot2": "plot_archive/24697ba_20250901_211219_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b87b108",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): update base parameters and asymptote values for improved model performance",
+    "timestamp": "2025-09-01 20:53:28",
+    "plot1": "plot_archive/b87b108_20250901_205328_plot1.png",
+    "plot2": "plot_archive/b87b108_20250901_205328_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "832b9c5",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(probe_evaluation): add debug prints for item code mismatches",
+    "timestamp": "2025-09-01 20:49:48",
+    "plot1": "plot_archive/832b9c5_20250901_204948_plot1.png",
+    "plot2": "plot_archive/832b9c5_20250901_204948_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "a33f756",
+    "branch": "aug-31-new-model-v6",
+    "message": "fintune(model-e3): working? reorganize file inclusions and enhance R plotting functionality",
+    "timestamp": "2025-09-01 20:43:03",
+    "plot1": "plot_archive/a33f756_20250901_204303_plot1.png",
+    "plot2": "plot_archive/a33f756_20250901_204303_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/main_JL_E3_V0.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "a0f907b",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): revise base parameters and asymptote values for model optimization",
+    "timestamp": "2025-09-01 12:56:54",
+    "plot1": "plot_archive/a0f907b_20250901_125654_plot1.png",
+    "plot2": "plot_archive/a0f907b_20250901_125654_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "fd057c3",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): adjust base parameters and drift values for model optimization",
+    "timestamp": "2025-09-01 12:52:47",
+    "plot1": "plot_archive/fd057c3_20250901_125247_plot1.png",
+    "plot2": "plot_archive/fd057c3_20250901_125247_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2528ac0",
+    "branch": "aug-31-new-model-v6",
+    "message": "explore(model-e3): adjust base parameters and criterion values for improved model performance",
+    "timestamp": "2025-09-01 12:33:45",
+    "plot1": "plot_archive/2528ac0_20250901_123345_plot1.png",
+    "plot2": "plot_archive/2528ac0_20250901_123345_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "bd4a99e",
+    "branch": "aug-31-new-model-v6",
+    "message": "fix(model-e3): update feature handling to replace OT with Z feature",
+    "timestamp": "2025-09-01 12:25:54",
+    "plot1": "plot_archive/bd4a99e_20250901_122554_plot1.png",
+    "plot2": "plot_archive/bd4a99e_20250901_122554_plot2.png",
+    "changed_files": [
+      "E3/R_plots.r",
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "01249a0",
+    "branch": "aug-31-new-model-v6",
+    "message": "feat(model-e3): replace OT feature with Z feature and update related functions",
+    "timestamp": "2025-09-01 01:50:13",
+    "plot1": "plot_archive/01249a0_20250901_015013_plot1.png",
+    "plot2": "plot_archive/01249a0_20250901_015013_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/memory_storage.jl",
+      "E3/probe_evaluation.jl",
+      "E3/simulation.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "60ed225",
+    "branch": "aug-31-new-model-v6",
+    "message": "merge(model-e3): Merge branch 'aug-30-test'",
+    "timestamp": "2025-09-01 00:11:11",
+    "plot1": "plot_archive/60ed225_20250901_001111_plot1.png",
+    "plot2": "plot_archive/60ed225_20250901_001111_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "7741691",
     "branch": "aug-30-test",
     "message": "refactor(model-e3): add is_same_item and is_sampled flags to probe evaluation and simulation",

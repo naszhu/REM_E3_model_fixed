@@ -15,11 +15,11 @@ mutate(is_target=type_specific)%>%
 mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
                     is_target %in% c("F","Fn+1")~"F",
                     TRUE~paste("Fb",is_target,sep="-")))%>%
-    group_by(test_position,is_target,simulation_number)%>%
+    group_by(testpos,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
-    group_by(test_position,is_target)%>%
+    group_by(testpos,is_target)%>%
     summarize(meanx=mean(meanx))%>%
-    group_by(test_position_grouped_foralltests = ceiling(test_position / 3), is_target)%>% #break every 3
+    group_by(test_position_grouped_foralltests = ceiling(testpos / 3), is_target)%>% #break every 3
     summarise(meanx = mean(meanx))%>%
     mutate(is_target=as.factor(is_target))%>%
     group_by(test_position_grouped_foralltests)%>%
@@ -38,7 +38,7 @@ p_in_20=ggplot(data=df1,aes(x=test_position_grouped_foralltests,y=meanx,group=is
   scale_color_manual(values=c("blue","green","green","green","purple"))+
 scale_shape_manual(
     values = c(4, 16, 17, 15, 0) # circle, triangle, rectangle, cross, empty rectangle
-)+ scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.1), limits = c(0.47, 0.82))
+)#+ scale_y_continuous(breaks = seq(0.5, 0.8, by = 0.1), limits = c(0.47, 0.82))
 p_in_20
 
 
@@ -200,19 +200,19 @@ df_serial=all_results%>%
                     # is_target %in% c("F","Fn+1")~"F",
                     # TRUE~paste("Fb",is_target,sep="-")))%>%\
 
-    mutate(study_position = ceiling(study_position/3))%>%
+    mutate(studypos = ceiling(studypos/3))%>%
 # filter(list_number%in%c(1))%>%
 mutate(is_target=case_when(is_target %in% c("T","Tn+1")~"T",
                     is_target %in% c("F","Fn+1")~"F",
                     TRUE~paste("Fb",is_target,sep="-")))%>%
 
-    group_by(study_position,is_target,simulation_number)%>%
+    group_by(studypos,is_target,simulation_number)%>%
     summarize(meanx=mean(correct))%>%
-    group_by(study_position,is_target)%>%
+    group_by(studypos,is_target)%>%
     summarize(meanx=mean(meanx))%>%
     mutate(is_target=as.factor(is_target))
 
-p_serial=ggplot(data=df_serial,aes(x=study_position,meanx))+
+p_serial=ggplot(data=df_serial,aes(x=studypos,meanx))+
     geom_line(aes(color=is_target),size=2)+
     geom_point(size=10,aes(color=is_target,shape=is_target))+
     theme(
@@ -262,12 +262,120 @@ p_serial
 #         plot.margin = margin(t = 10, b = 40),
 #         text=element_text(size=20) # Increase font size globally
 #     )
+# Probability of correct sampling when an item is sampled
+sampling_data <- all_results %>%
+  filter(is_sampled == "true") %>%  # Only include sampled items
+  filter(is_target=="true")%>%
+  filter(decision_isold==1)%>%
+#   filter(type_specific %in% c("T","Tn+1"))%>%
+  mutate(is_same_item = case_when(is_same_item=="true"~1,is_same_item=="false"~0))%>%
+      select(simulation_number, testpos, list_number, is_same_item)%>%
+    group_by(simulation_number, testpos, list_number) %>%     # Group by list number
+    summarize(
+      prob_correct = mean(is_same_item)
+    )%>% group_by(testpos, list_number) %>%     # Group by list number
+  summarize(
+    prob_correct = mean(prob_correct)
+  )%>%group_by(list_number)%>%
+  summarize(prob_correct=mean(prob_correct))
 
-png(filename="plot1.png", width=1300, height=1200)
+# sampling_accuracy_plot <- 
+  sampling_accuracy_plot <- ggplot(data = sampling_data, 
+         aes(x = list_number, y = prob_correct)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  labs(
+    title = "Probability of Correct Sampling When Item is Sampled",
+    subtitle = "Accuracy of memory sampling across lists and test positions",
+    x = "List Number",
+    y = "Probability of Correct Sampling",
+    color = "Test Position"
+  ) +
+#   scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
+  scale_color_viridis_d() +  # Use a colorblind-friendly palette
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom",
+    text=element_text(size=30)
+  )
+
+
+
+################ Z plot
+
+
+# Plot 1: Z_proportion by list_number
+z_by_list_plot <- all_results %>%
+  group_by(list_number) %>%
+  summarise(
+    mean_Z_proportion = mean(Z_proportion, na.rm = TRUE),
+    se_Z_proportion = sd(Z_proportion, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ggplot(aes(x = list_number, y = mean_Z_proportion)) +
+  geom_line(color = "#4e79a7", size = 1.2) +
+  geom_point(size = 3, color = "#4e79a7") +
+  geom_errorbar(aes(ymin = mean_Z_proportion - se_Z_proportion, 
+                    ymax = mean_Z_proportion + se_Z_proportion), 
+                width = 0.2, color = "#4e79a7") +
+  labs(
+    title = "Z Feature Proportion by List Number",
+    subtitle = "Average proportion of Z=1 across all targets in memory pool",
+    x = "List Number",
+    y = "Mean Z Proportion",
+    caption = "Error bars represent standard error"
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    text=element_text(size=30)
+  )
+
+# Plot 2: Z_proportion by testpos within lists
+z_by_testpos_plot <- all_results %>%
+  group_by(list_number, testpos) %>%
+  summarise(
+    mean_Z_proportion = mean(Z_proportion, na.rm = TRUE),
+    se_Z_proportion = sd(Z_proportion, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ggplot(aes(x = testpos, y = mean_Z_proportion, color = factor(list_number))) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  geom_errorbar(aes(ymin = mean_Z_proportion - se_Z_proportion, 
+                    ymax = mean_Z_proportion + se_Z_proportion), 
+                width = 0.2) +
+  labs(
+    title = "Z Feature Proportion by Test Position Within Lists",
+    subtitle = "Z proportion changes during testing within each list",
+    x = "Test Position (testpos)",
+    y = "Mean Z Proportion",
+    color = "List Number",
+    caption = "Error bars represent standard error"
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
+  scale_color_viridis_d() +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom",
+    text=element_text(size=30)
+  )
+
+
+png(filename="plot1.png", width=2000, height=1800)
 # grid.arrange(p1,list_rt,p_in_20,testpos_rt,p_serial,p4,ncol = 2,nrow=3)
 # grid.arrange(p1,p_in_20,p_serial,p4,ncol = 2,nrow=2)
-grid.arrange(p1,p4,p_serial,p_in_20, ncol = 2,nrow=2)
-dev.off()
+grid.arrange(p1,p4,p_serial,p_in_20,sampling_accuracy_plot,z_by_testpos_plot,z_by_list_plot, ncol = 3,nrow=3)
+# grid.arrange(p1,p4,p_serial,p_in_20, ncol = 2,nrow=2)
+# dev.off()
+dev.off() 
 # system("feh plot1.png &", wait = FALSE)      # if `feh` is installed
 # system("feh plot1.png",)      # if `feh` is installed
 # system2("feh", args = "plot1.png", wait = FALSE)

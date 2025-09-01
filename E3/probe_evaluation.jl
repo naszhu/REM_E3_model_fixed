@@ -86,7 +86,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
         sampled_item = nothing
         is_same_item = false  # Initialize is_same_item
         is_sampled = false    # Initialize is_sampled
-        if odds > criterion_initial[i_testpos, ilist_probe] && odds > recall_odds_threshold
+        if (odds > criterion_initial[i_testpos, ilist_probe]) && (odds > recall_odds_threshold)
 
             is_sampled = true
             
@@ -99,6 +99,14 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 # Check if the sampled item is the same as the probe being tested
                 
                 is_same_item = sampled_item.word.item_code == probes[i].image.word.item_code
+            # Debug print when items don't match
+            # if !is_same_item
+            #     println("Item codes don't match:")
+            #     println("  Sampled item code: ", sampled_item.word.item_code)
+            #     println("  Sampled item type: ", sampled_item.word.type_specific)
+            #     println("  Probe item code: ", probes[i].image.word.item_code)
+            #     println("  Probe item type: ", probes[i].image.word.type_specific)
+            # end
 
 
             else
@@ -136,19 +144,29 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 #     decision_isold = 0
                 # end
                 @assert !isnothing(sampled_item) "sampled item is nothing"
-                if use_ot_feature && !isnothing(sampled_item) 
-                    # Use OT feature from sampled item
-                    ot_value = get_ot_feature_value(sampled_item.word)
-                    if ot_value >= ot_value_threshold
-                        decision_isold = 0  # OT=1 means judged new
-                    else
-                        decision_isold = 1  # OT=0 means judged old
+                if ilist_probe !=1
+                    # println("listi",ilist_probe)
+                    if use_Z_feature && !isnothing(sampled_item) && (rand() < h_j[ilist_probe-1])
+                        # Use OT feature from sampled item
+                        # println("test")
+                        Z_value = get_Z_feature_value(sampled_item.word)
+                        if Z_value === 1 && sampled_item.word.type_general === :T
+                            # println(ilist_probe,":", Z_value, " sampled_item:", sampled_item.word.type_general)
+                            # println("is_same_item:", sampled_item.word.item_code == probes[i].image.word.item_code)
+                        end
+                        if Z_value === 1
+                            decision_isold = 0  # OT=1 means judged new
+                        else
+                            decision_isold = 1  # OT=0 means judged old
+                        end
+                        
+                        # OT feature disabled or no sampled item - use fallback logic
+                    else #if not OT feature: use familarity and so pass recall threshold is old
+                        decision_isold = 1 #This is the bug issue partially
                     end
-                    # OT feature disabled or no sampled item - use fallback logic
-                else #if not OT feature: use familarity and so pass recall threshold is old
-                    decision_isold = 1 #This is the bug issue partially
+                else
+                    decision_isold = 1 #first list use famialrity only, not considering Z feature #FIXME, is this true?
                 end
-
 
             else
                 decision_isold = 1
@@ -161,6 +179,19 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             nimages = count(image -> image.list_number == j, image_pool_currentlist)
             nimages_activated = count(ii -> (image_pool_currentlist[ii].list_number == j) && (content_LL_ratios_org[ii] != 344523466743), eachindex(image_pool_currentlist))
             
+            # Calculate Z values for current list targets ONLY (not all memory pool)
+            # Only calculate Z for the list being currently tested (j == currentlist)
+            Z_sum = 0
+            Z_proportion = 0.0
+            
+            if j == currentlist  # Only calculate Z for the list being tested
+                current_list_targets = filter(img -> img.list_number == j && (img.word.type_specific === :T || img.word.type_specific === Symbol("Tn+1")), image_pool_currentlist)
+                if !isempty(current_list_targets)
+                    Z_sum = sum(get_Z_feature_value(target.word) for target in current_list_targets)
+                    Z_proportion = Z_sum / length(current_list_targets)
+                end
+            end
+            
             #i is each probe, j is list number
             # testpos=i
             # println(probes[i].ProbeTypeSimple,probes[i].ProbeTypeSimple==:target)
@@ -169,7 +200,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
             type_general=probes[i].image.word.type_general,
             type_specific=probes[i].image.word.type_specific, 
             is_target=probes[i].ProbeTypeSimple==:target,  
-            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff, is_same_item=is_same_item, is_sampled=is_sampled)
+            odds=odds, ilist_image=j, Nratio_imageinlist=nimages_activated / nimages, N_imageinlist=nimages_activated, Nratio_iprobe=nav, testpos=i, studypos=probes[i].image.word.initial_studypos, diff=diff, is_same_item=is_same_item, is_sampled=is_sampled, Z_sum=Z_sum, Z_proportion=Z_proportion)
             # println(nl, " ",nimages_activated)
         end
     
@@ -269,6 +300,16 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
             decision_isold = 0
         end
 
+        # Calculate Z values for targets in current chunk ONLY (not all memory pool)
+        current_chunk_targets = filter(img -> img.list_number == currchunk && (img.word.type_specific === :T || img.word.type_specific === Symbol("Tn+1")), image_pool)
+        Z_sum = 0
+        Z_proportion = 0.0
+        
+        if !isempty(current_chunk_targets)
+            Z_sum = sum(get_Z_feature_value(target.word) for target in current_chunk_targets)
+            Z_proportion = Z_sum / length(current_chunk_targets)
+        end
+
         # println("$(probes[i].image.word.type_specific), $(probes[i].ProbeTypeSimple) , des: $(decision_isold), chunki: $(currchunk), npass: $(length(content_LL_ratios_filtered)), cri $(criterion_final[currchunk]) ,odds: $(odds)")
 
         # pold = pcrr_EZddf(log(odds))
@@ -285,7 +326,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         is_repeat_type=probes[i].image.word.is_repeat_type,
 
         is_target = probes[i].ProbeTypeSimple==:target,
-        odds=odds, list_num=probes[i].image.list_number, is_same_item=is_same_item, is_sampled=is_sampled) #! made changes to results, format different than that in inital
+        odds=odds, list_num=probes[i].image.list_number, is_same_item=is_same_item, is_sampled=is_sampled, Z_sum=Z_sum, Z_proportion=Z_proportion) #! made changes to results, format different than that in inital
         
         imax = argmax([ill==344523466743 ? -Inf : ill for ill in content_LL_ratios_org]);
         # restore_intest(image_pool,probes[i].image, decision_isold, argmax(content_LL_ratios_filtered));

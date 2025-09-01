@@ -33,8 +33,23 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
     #############STORAGE - content
     
     # update OT 
-    if use_ot_feature
-        update_ot_feature_study!(new_image.word.word_features, list_num)
+    # if use_ot_feature
+    #     update_ot_feature_study!(new_image.word.word_features, list_num)
+    # end
+    if use_Z_feature
+        if list_num != 1
+            new_image.word.word_features[tested_before_feature_pos] = rand() < κu[list_num-1] ? 1 : 0 #change back to 0 and 1 structure rather than accumulation structure
+        end
+        update_Z_feature_study!(new_image.word, list_num)
+        # if new_image.word.word_features[tested_before_feature_pos] == 1
+        #     # Track count per list (reset when list changes)
+        #     if current_list_for_count != list_num
+        #         global current_list_for_count = list_num
+        #         global z_feature_count = 0
+        #     end
+        #     global z_feature_count += 1
+        #     println("list ", list_num, " Z feature updated (count: ", z_feature_count, "): ", new_image.word.word_features[tested_before_feature_pos])
+        # end
     end
 
     for _ in 1:n_units_time #content intial adv??? . Maybe not needed but.. 
@@ -52,7 +67,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
         #############STORAGE - context
             # a[length(a)/2]1-3 4-7; 3,3
         
-        update_context_features_during_study!(new_image, context_features, word, list_num)
+        store_context_features_during_study(new_image, context_features, word, list_num)
     end
 
     # if new_image.word.type_general==:F
