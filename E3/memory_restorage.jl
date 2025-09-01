@@ -115,10 +115,10 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
         
         if is_strenghten #Add trace while strengthening is also happening.
             # update_ot_feature_add_trace_strengthen!(iimage_toadd.word, iprobe_img.list_number)
-            # update_Z_feature_Tn_CFs!(iimage_toadd.word, iprobe_img.list_number)
+            update_Z_feature_Tn_CFs!(iimage_toadd.word, iprobe_img.list_number)
         else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, but need to be caution later
             # update_ot_feature_add_trace_only!(iimage_toadd.word, iprobe_img.list_number)
-            # update_Z_feature_Fn_CFs!(iimage_toadd.word, iprobe_img.list_number)
+            update_Z_feature_Fn_CFs!(iimage_toadd.word, iprobe_img.list_number)
         end
         
         

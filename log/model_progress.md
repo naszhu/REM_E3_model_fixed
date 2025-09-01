@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [e03bd68](https://github.com/naszhu/REM_E3_model_fixed/commit/e03bd68) (branch: `aug-31-new-model-v6`)
+**Time:** 2025-09-01 23:31:46  
+**Message:**
+```
+finetune(model-e3): update hj_asymptote_increase_val and ci for improved model calibration
+
+- Increased `hj_asymptote_increase_val` from 0.5 to 0.6 to enhance model dynamics.
+- Adjusted `ci` from 0.79 to 0.77 to refine criterion initialization.
+
+These changes aim to optimize the model's performance and ensure better alignment with expected outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e03bd68_20250901_233146_plot1.png)  
+![](../plot_archive/e03bd68_20250901_233146_plot2.png)  
+
 ## Commit [ac5e7b4](https://github.com/naszhu/REM_E3_model_fixed/commit/ac5e7b4) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 23:21:32  
 **Message:**

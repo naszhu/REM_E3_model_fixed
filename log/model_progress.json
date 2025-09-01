@@ -1,5 +1,20 @@
 [
   {
+    "commit": "e03bd68",
+    "branch": "aug-31-new-model-v6",
+    "message": "finetune(model-e3): update hj_asymptote_increase_val and ci for improved model calibration",
+    "timestamp": "2025-09-01 23:31:46",
+    "plot1": "plot_archive/e03bd68_20250901_233146_plot1.png",
+    "plot2": "plot_archive/e03bd68_20250901_233146_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "ac5e7b4",
     "branch": "aug-31-new-model-v6",
     "message": "fix(model-e3): uncomment the update Z feature of study item",
