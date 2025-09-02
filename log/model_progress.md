@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [f70c0b9](https://github.com/naszhu/REM_E3_model_fixed/commit/f70c0b9) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:41:33  
+**Message:**
+```
+finetune(model-e3): adjust ks_base, kt_base, and fj_asymptote_decrease_val for improved simulation dynamics
+
+- Decreased `ks_base` from 0.45 to 0.4 to raise the starting point of CF.
+- Increased `kt_base` from 0.35 to 0.4 for better alignment with test conditions.
+- Decreased `fj_asymptote_decrease_val` from 0.03 to 0.02 to refine hit rates.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f70c0b9_20250903_004133_plot1.png)  
+![](../plot_archive/f70c0b9_20250903_004133_plot2.png)  
+
 ## Commit [99fbd62](https://github.com/naszhu/REM_E3_model_fixed/commit/99fbd62) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:38:28  
 **Message:**
