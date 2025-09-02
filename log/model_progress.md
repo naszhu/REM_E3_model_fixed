@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [d2bff83](https://github.com/naszhu/REM_E3_model_fixed/commit/d2bff83) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 01:55:30  
+**Message:**
+```
+refactor(model-e3):  change const structure for final test,
+
+put all final test together
+
+- Set `is_finaltest` to true to enable final testing mode.
+- Adjusted `cfinal_start` and `cfinal_end` to incorporate a variable `x` for refined threshold calculations.
+- Restored `final_gap_change` and `p_ListChange_finaltest` values for consistency in final test conditions.
+- Updated `recall_odds_threshold` and `recall_to_addtrace_threshold` for improved model dynamics.
+
+These changes aim to optimize the model's performance during the final testing phase and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d2bff83_20250903_015530_plot1.png)  
+![](../plot_archive/d2bff83_20250903_015530_plot2.png)  
+
 ## Commit [3e007c9](https://github.com/naszhu/REM_E3_model_fixed/commit/3e007c9) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:46:54  
 **Message:**
