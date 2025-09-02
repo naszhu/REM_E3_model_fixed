@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [fb6fd36](https://github.com/naszhu/REM_E3_model_fixed/commit/fb6fd36) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:03:18  
+**Message:**
+```
+finetune(model-e3): update drift parameters for enhanced simulation accuracy
+
+- Increased `n_driftStudyTest` from 7 to 13 to improve drift modeling between study and test.
+- Adjusted `n_between_listchange` from 15 to 20 to refine simulation dynamics.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fb6fd36_20250903_010318_plot1.png)  
+![](../plot_archive/fb6fd36_20250903_010318_plot2.png)  
+
 ## Commit [829ecbc](https://github.com/naszhu/REM_E3_model_fixed/commit/829ecbc) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:01:01  
 **Message:**
