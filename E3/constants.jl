@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
+is_finaltest = true
 n_simulations = is_finaltest ? 100 : 1000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -266,16 +266,10 @@ ratio_changing_to_itself_init = LinRange(1, 1, n_lists) # if use no unchanging
 nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
-ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.5,0.5, n_lists) # if use no unchanging
 
-nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
-nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
 p_recallFeatureStore = 1.0; #this value is currently abandoned, this is to be used in 
 
-final_gap_change = 0.1; #0.21
-p_ListChange_finaltest = ones(10) * 0.8 #0.1 prob list change for final test
 
 
 #the advatage of foil in inital test (to make final T prediciton overlap)
@@ -305,16 +299,24 @@ criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0)
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
 # criterion_final =  LinRange(0.15^power_taken,0.01^power_taken, n_lists)#LinRange(0.18, 0.23, 10)
+recall_to_addtrace_threshold = Inf
 
-cfinal_start=0.08^power_taken;
-cfinal_end=0.004^power_taken;
+recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
+
+"""
+Final test
+"""
+x =0.017
+cfinal_start=(0.08+x)^power_taken;
+cfinal_end=(0.004+x)^power_taken;
 cfinal_rate = 0.25
 
 criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
-recall_to_addtrace_threshold = Inf
 # stop increasing at around list t
+
+final_gap_change = 0.1; #0.21
+p_ListChange_finaltest = ones(10) * 0.8 #0.1 prob list change for final test
 
 
 

@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [3e007c9](https://github.com/naszhu/REM_E3_model_fixed/commit/3e007c9) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:46:54  
+**Message:**
+```
+finetune(model-e3): 1000 simulation
+
+- Increased `n_simulations` from 300 to 1000 to enhance simulation depth for final evaluation.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3e007c9_20250903_014654_plot1.png)  
+![](../plot_archive/3e007c9_20250903_014654_plot2.png)  
+
 ## Commit [4a86016](https://github.com/naszhu/REM_E3_model_fixed/commit/4a86016) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:46:42  
 **Message:**
