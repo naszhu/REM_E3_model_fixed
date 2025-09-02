@@ -1,5 +1,19 @@
 [
   {
+    "commit": "056f910",
+    "branch": "sep-2-test",
+    "message": "finetune(model-e3): adjust fj and hj parameters for improved simulation dynamics",
+    "timestamp": "2025-09-03 00:30:19",
+    "plot1": "plot_archive/056f910_20250903_003019_plot1.png",
+    "plot2": "plot_archive/056f910_20250903_003019_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "faa891a",
     "branch": "sep-2-test",
     "message": "refactor(model-e3): adjust ku_base for improved simulation starting point",
