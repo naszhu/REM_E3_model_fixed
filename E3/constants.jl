@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 300;
+n_simulations = is_finaltest ? 100 : 200;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -206,7 +206,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.8
+nnnow=0.808
 c_adv = 0#0.06
 
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
@@ -235,7 +235,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 5) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 
@@ -247,7 +247,7 @@ base_distortion_prob = 0.6  # Base probability of distortion for the first probe
 
 
 
-n_between_listchange = round.(Int, LinRange(25, 25, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(15, 15, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -296,11 +296,11 @@ Thresholds
 context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 # originally 0.23 works, but now needs to adjust
-# criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-power_taken = 1
-ci=0.065 ^power_taken#0.77 #0.148^power_taken
 
-# Criterion increase, F performance increase, T decrease, CF increase.
+power_taken = 1
+ci=0.0685 ^power_taken#0.77 #0.148^power_taken
+
+#cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 

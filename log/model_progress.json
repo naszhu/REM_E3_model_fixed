@@ -1,5 +1,14 @@
 [
   {
+    "commit": "0b6d345",
+    "branch": "sep-2-test",
+    "message": "merge(model-e3): Merge branch 'sep-2-bottleneck' into sep-2-test",
+    "timestamp": "2025-09-02 23:17:16",
+    "plot1": "plot_archive/0b6d345_20250902_231716_plot1.png",
+    "plot2": "plot_archive/0b6d345_20250902_231716_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "791be3d",
     "branch": "sep-2-bottleneck",
     "message": "refactor(simulation): optimize simulation process and enhance performance",

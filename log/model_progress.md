@@ -1,5 +1,16 @@
 # Model Progress
 
+## Commit [0b6d345](https://github.com/naszhu/REM_E3_model_fixed/commit/0b6d345) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:17:16  
+**Message:**
+```
+merge(model-e3): Merge branch 'sep-2-bottleneck' into sep-2-test
+
+For issue #26 optimization
+```
+![](../plot_archive/0b6d345_20250902_231716_plot1.png)  
+![](../plot_archive/0b6d345_20250902_231716_plot2.png)  
+
 ## Commit [791be3d](https://github.com/naszhu/REM_E3_model_fixed/commit/791be3d) (branch: `sep-2-bottleneck`)
 **Time:** 2025-09-02 23:02:32  
 **Message:**
