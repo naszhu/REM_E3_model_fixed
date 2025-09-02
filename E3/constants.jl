@@ -235,7 +235,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 7) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 13) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 
@@ -247,7 +247,7 @@ base_distortion_prob = 0.37  # Base probability of distortion for the first prob
 
 
 
-n_between_listchange = round.(Int, LinRange(15, 15, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(20, 20, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 

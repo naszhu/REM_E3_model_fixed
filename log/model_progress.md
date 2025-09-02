@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [829ecbc](https://github.com/naszhu/REM_E3_model_fixed/commit/829ecbc) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:01:01  
+**Message:**
+```
+finetune(model-e3): update drift parameters for improved simulation accuracy
+
+- Increased `n_driftStudyTest` from 3 to 7 to enhance drift modeling between study and test.
+- Decreased `base_distortion_prob` from 0.6 to 0.37 for a more accurate representation of probe distortion.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/829ecbc_20250903_010101_plot1.png)  
+![](../plot_archive/829ecbc_20250903_010101_plot2.png)  
+
 ## Commit [d565027](https://github.com/naszhu/REM_E3_model_fixed/commit/d565027) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:58:33  
 **Message:**
