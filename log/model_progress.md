@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [48fd9f9](https://github.com/naszhu/REM_E3_model_fixed/commit/48fd9f9) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:25:06  
+**Message:**
+```
+finetune(model-e3): adjust base parameters and plot limits for improved simulation accuracy
+
+- Decreased `ku_base` from 0.15 to 0.2 to lower the starting point of T.
+- Increased `ks_base` from 0.45 to 0.7 for better starting point of CF.
+- Decreased `kb_base` from 0.45 to 0.23 for refined Tn conditions.
+- Updated `ci` from 0.174 to 0.17 for enhanced model performance.
+- Removed ylim restriction in R plot for better visualization flexibility.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/48fd9f9_20250903_012506_plot1.png)  
+![](../plot_archive/48fd9f9_20250903_012506_plot2.png)  
+
 ## Commit [2348ad4](https://github.com/naszhu/REM_E3_model_fixed/commit/2348ad4) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:18:05  
 **Message:**
