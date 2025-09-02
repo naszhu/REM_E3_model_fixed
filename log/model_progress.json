@@ -1,5 +1,21 @@
 [
   {
+    "commit": "475053d",
+    "branch": "sep-2-test",
+    "message": "explore(model-e3): adjust simulation parameters and feature evaluation logic",
+    "timestamp": "2025-09-02 23:57:52",
+    "plot1": "plot_archive/475053d_20250902_235752_plot1.png",
+    "plot2": "plot_archive/475053d_20250902_235752_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "cb68308",
     "branch": "sep-2-test",
     "message": "finetune(model-e3): increase hj_base for improved simulation starting conditions",

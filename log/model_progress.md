@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [475053d](https://github.com/naszhu/REM_E3_model_fixed/commit/475053d) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:57:52  
+**Message:**
+```
+explore(model-e3): adjust simulation parameters and feature evaluation logic
+
+No change to fj hj, but why there is such a big difference between list 2 and 3
+
+- Reduced `n_simulations` from 200 to 100 for streamlined testing.
+- Updated feature evaluation logic in `update_Z_feature_Fn_CFs!` and `probe_evaluation` functions to improve clarity and debugging.
+
+These changes aim to enhance model performance and facilitate better understanding of feature interactions during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/475053d_20250902_235752_plot1.png)  
+![](../plot_archive/475053d_20250902_235752_plot2.png)  
+
 ## Commit [cb68308](https://github.com/naszhu/REM_E3_model_fixed/commit/cb68308) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:47:19  
 **Message:**

@@ -431,7 +431,7 @@ function update_Z_feature_study!(word::Word, list_number::Int64)::Nothing
         # For list 1, use base κs value (no asymptotic effect yet)
         if list_number === 1
             # κ_value = κu_list_1_value
-            κ_value = 0 # this number doesn't matter because first list  won't use Z (is this true?)
+            κ_value = ku_base # this number doesn't matter because first list  won't use Z (is this true?)
         else
             κ_index = list_number - 1
             κ_value = κu[κ_index]
@@ -452,7 +452,7 @@ function update_Z_feature_SOn_CFs!(word::Word, list_number::Int64)::Nothing
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = 0
+            κ_value = ks_base
         else
             κ_index = list_number - 1
             κ_value = κs[κ_index] #updated by ks
@@ -473,7 +473,7 @@ function update_Z_feature_Tn_CFs!(word::Word, list_number::Int64)::Nothing
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
         if list_number == 1
-            κ_value = 0
+            κ_value = kb_base
         else
             κ_index = list_number - 1
             κ_value = κb[κ_index]
@@ -492,7 +492,7 @@ function update_Z_feature_Fn_CFs!(word::Word, list_number::Int64)::Nothing
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κt value (no asymptotic effect yet)
         if list_number === 1
-            κ_value = 0
+            κ_value = kt_base
         else
             # println("list number: ", list_number)
             κ_index = list_number - 1
