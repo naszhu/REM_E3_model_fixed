@@ -1,5 +1,48 @@
 # Model Progress
 
+## Commit [4a86016](https://github.com/naszhu/REM_E3_model_fixed/commit/4a86016) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:46:42  
+**Message:**
+```
+finetune(model-e3): 1000 simulation
+
+- Increased `n_simulations` from 300 to 1000 to enhance simulation depth for final evaluation.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4a86016_20250903_014642_plot1.png)  
+![](../plot_archive/4a86016_20250903_014642_plot2.png)  
+
+## Commit [0c106d3](https://github.com/naszhu/REM_E3_model_fixed/commit/0c106d3) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:41:24  
+**Message:**
+```
+finetune(model-e3): refine base parameters for enhanced simulation accuracy
+
+- Decreased `ku_base` from 0.2 to 0.15 to lower the starting point of T.
+- Decreased `ks_base` from 0.7 to 0.45 for improved starting point of CF.
+- Increased `kb_base` from 0.23 to 0.45 for better Tn conditions.
+- Adjusted `fj_rate` from 0.3 to 0.26 for a more gradual improvement in T.
+- Increased `hj_asymptote_increase_val` from 0.3 to 0.4 for refined model dynamics.
+- Decreased `nnnow` from 0.712 to 0.70 to enhance context copying parameters.
+- Decreased `base_distortion_prob` from 0.36 to 0.29 for a more accurate representation of probe distortion.
+- Adjusted `n_driftStudyTest` from 13 to 12 to refine drift modeling between study and test.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0c106d3_20250903_014124_plot1.png)  
+![](../plot_archive/0c106d3_20250903_014124_plot2.png)  
+
 ## Commit [48fd9f9](https://github.com/naszhu/REM_E3_model_fixed/commit/48fd9f9) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:25:06  
 **Message:**
