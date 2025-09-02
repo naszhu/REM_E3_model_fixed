@@ -153,7 +153,7 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.65 # study， higher this value, higher the starting point of T
+ku_base = 0.2 # study，higher this value, lower the starting point of T
 ks_base = 0.35 #SOn (study only), lower the value, higher the starting point CF
 kb_base = 0.35 #Tn (study and test)
 kt_base = 0.35 #Fn (test only)

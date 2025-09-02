@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [7579d9c](https://github.com/naszhu/REM_E3_model_fixed/commit/7579d9c) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:22:35  
+**Message:**
+```
+finetune(model-e3): update base constants for enhanced simulation dynamics
+
+- Increased `ku_base` from 0.65 to 0.75 to raise the starting point of T.
+- Adjusted `fj_asymptote_decrease_val` from 0.0 to 0.2 to improve hit rates.
+- Reduced `fj_rate` from 5.0 to 1.0 for a slower adjustment of fj.
+- Updated `hj_asymptote_increase_val` from 0.0 to 0.2 to enhance model responsiveness.
+- Increased `hj_base` from 0.6 to 0.7 for better initial conditions.
+
+These changes aim to refine the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7579d9c_20250903_002235_plot1.png)  
+![](../plot_archive/7579d9c_20250903_002235_plot2.png)  
+
 ## Commit [3c5aaad](https://github.com/naszhu/REM_E3_model_fixed/commit/3c5aaad) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:17:41  
 **Message:**
