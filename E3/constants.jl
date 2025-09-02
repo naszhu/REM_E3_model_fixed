@@ -235,7 +235,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 3) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 7) #7
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 
@@ -243,7 +243,7 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 3) #7
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
 max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.6  # Base probability of distortion for the first probe
+base_distortion_prob = 0.37  # Base probability of distortion for the first probe
 
 
 

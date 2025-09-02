@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [d565027](https://github.com/naszhu/REM_E3_model_fixed/commit/d565027) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:58:33  
+**Message:**
+```
+finetune(model-e3): adjusti criterion for improved simulation accuracy
+
+- Updated `ci` from 0.09 to 0.13 to enhance model performance in simulations.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d565027_20250903_005833_plot1.png)  
+![](../plot_archive/d565027_20250903_005833_plot2.png)  
+
 ## Commit [cccdbd0](https://github.com/naszhu/REM_E3_model_fixed/commit/cccdbd0) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:55:59  
 **Message:**

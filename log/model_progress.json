@@ -1,5 +1,19 @@
 [
   {
+    "commit": "d565027",
+    "branch": "sep-2-test",
+    "message": "finetune(model-e3): adjusti criterion for improved simulation accuracy",
+    "timestamp": "2025-09-03 00:58:33",
+    "plot1": "plot_archive/d565027_20250903_005833_plot1.png",
+    "plot2": "plot_archive/d565027_20250903_005833_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "cccdbd0",
     "branch": "sep-2-test",
     "message": "finetune(model-e3): update ci constant for improved simulation accuracy",
