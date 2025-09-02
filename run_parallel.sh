@@ -6,6 +6,8 @@ echo "Starting multi-process parallel simulation (producing same output as main 
 
 # Clean up any old results that might interfere
 echo "Cleaning up old results..."
+# Kill any existing image viewers that might be showing old plots
+pkill -f "eog.*plot.*\.png" 2>/dev/null || true
 rm -f DF.csv all_results.csv allresf.csv plot1.png plot2.png Rplots.pdf
 rm -rf parallel_temp parallel_results
 
@@ -179,12 +181,15 @@ if [ -f "allresf.csv" ]; then
     echo "plot2.png size: $(stat -f%z plot2.png 2>/dev/null || stat -c%s plot2.png 2>/dev/null || echo 'unknown')"
 fi
 
-# Display plots (same as original)
+# Display plots (same as original) 
+echo "Opening plot images..."
 if command -v eog >/dev/null 2>&1; then
     if [ -f "plot1.png" ]; then
+        echo "Opening plot1.png"
         eog plot1.png & disown
     fi
     if [ -f "plot2.png" ]; then
+        echo "Opening plot2.png" 
         eog plot2.png & disown
     fi
 fi

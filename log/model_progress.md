@@ -1,5 +1,115 @@
 # Model Progress
 
+## Commit [a44c297](https://github.com/naszhu/REM_E3_model_fixed/commit/a44c297) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:35:07  
+**Message:**
+```
+refactor(model-e3): clean up and optimize E3 module
+
+- Updated `x` in `constants.jl` from 0.038 to 0.033 for refined threshold calculations.
+- Removed obsolete files and utilities across multiple directories to streamline the codebase, including optimization utilities, simulation logs, and R plotting scripts.
+- This cleanup aims to enhance maintainability and performance of the E3 module by eliminating unused code and improving clarity.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_temp/process_1/E3/LOG.txt`  
+- `parallel_temp/process_1/E3/R_plots.r`  
+- `parallel_temp/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_1/E3/R_plots_finalt.r`  
+- `parallel_temp/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/calc_cc.jl`  
+- `parallel_temp/process_1/E3/constants.jl`  
+- `parallel_temp/process_1/E3/data_structures.jl`  
+- `parallel_temp/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_1/E3/feature_generation.jl`  
+- `parallel_temp/process_1/E3/feature_updates.jl`  
+- `parallel_temp/process_1/E3/issue_body.txt`  
+- `parallel_temp/process_1/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_1/E3/memory_pool.jl`  
+- `parallel_temp/process_1/E3/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/memory_storage.jl`  
+- `parallel_temp/process_1/E3/probe_evaluation.jl`  
+- `parallel_temp/process_1/E3/probe_generation.jl`  
+- `parallel_temp/process_1/E3/simulation.jl`  
+- `parallel_temp/process_1/E3/utils.jl`  
+- `parallel_temp/process_1/optimization_utils.jl`  
+- `parallel_temp/process_1/simulation_log_1.txt`  
+- `parallel_temp/process_2/E3/LOG.txt`  
+- `parallel_temp/process_2/E3/R_plots.r`  
+- `parallel_temp/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_2/E3/R_plots_finalt.r`  
+- `parallel_temp/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/calc_cc.jl`  
+- `parallel_temp/process_2/E3/constants.jl`  
+- `parallel_temp/process_2/E3/data_structures.jl`  
+- `parallel_temp/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_2/E3/feature_generation.jl`  
+- `parallel_temp/process_2/E3/feature_updates.jl`  
+- `parallel_temp/process_2/E3/issue_body.txt`  
+- `parallel_temp/process_2/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_2/E3/memory_pool.jl`  
+- `parallel_temp/process_2/E3/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/memory_storage.jl`  
+- `parallel_temp/process_2/E3/probe_evaluation.jl`  
+- `parallel_temp/process_2/E3/probe_generation.jl`  
+- `parallel_temp/process_2/E3/simulation.jl`  
+- `parallel_temp/process_2/E3/utils.jl`  
+- `parallel_temp/process_2/optimization_utils.jl`  
+- `parallel_temp/process_2/simulation_log_2.txt`  
+- `parallel_temp/process_3/E3/LOG.txt`  
+- `parallel_temp/process_3/E3/R_plots.r`  
+- `parallel_temp/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_3/E3/R_plots_finalt.r`  
+- `parallel_temp/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/calc_cc.jl`  
+- `parallel_temp/process_3/E3/constants.jl`  
+- `parallel_temp/process_3/E3/data_structures.jl`  
+- `parallel_temp/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_3/E3/feature_generation.jl`  
+- `parallel_temp/process_3/E3/feature_updates.jl`  
+- `parallel_temp/process_3/E3/issue_body.txt`  
+- `parallel_temp/process_3/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_3/E3/memory_pool.jl`  
+- `parallel_temp/process_3/E3/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/memory_storage.jl`  
+- `parallel_temp/process_3/E3/probe_evaluation.jl`  
+- `parallel_temp/process_3/E3/probe_generation.jl`  
+- `parallel_temp/process_3/E3/simulation.jl`  
+- `parallel_temp/process_3/E3/utils.jl`  
+- `parallel_temp/process_3/optimization_utils.jl`  
+- `parallel_temp/process_3/simulation_log_3.txt`  
+- `parallel_temp/process_4/E3/LOG.txt`  
+- `parallel_temp/process_4/E3/R_plots.r`  
+- `parallel_temp/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_4/E3/R_plots_finalt.r`  
+- `parallel_temp/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/calc_cc.jl`  
+- `parallel_temp/process_4/E3/constants.jl`  
+- `parallel_temp/process_4/E3/data_structures.jl`  
+- `parallel_temp/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_4/E3/feature_generation.jl`  
+- `parallel_temp/process_4/E3/feature_updates.jl`  
+- `parallel_temp/process_4/E3/issue_body.txt`  
+- `parallel_temp/process_4/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_4/E3/memory_pool.jl`  
+- `parallel_temp/process_4/E3/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/memory_storage.jl`  
+- `parallel_temp/process_4/E3/probe_evaluation.jl`  
+- `parallel_temp/process_4/E3/probe_generation.jl`  
+- `parallel_temp/process_4/E3/simulation.jl`  
+- `parallel_temp/process_4/E3/utils.jl`  
+- `parallel_temp/process_4/optimization_utils.jl`  
+- `parallel_temp/process_4/simulation_log_4.txt`  
+![](../plot_archive/a44c297_20250903_023507_plot1.png)  
+![](../plot_archive/a44c297_20250903_023507_plot2.png)  
+
 ## Commit [3620fcd](https://github.com/naszhu/REM_E3_model_fixed/commit/3620fcd) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:34:46  
 **Message:**
