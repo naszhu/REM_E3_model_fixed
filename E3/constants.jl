@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 100 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -153,17 +153,17 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.85 # study
+ku_base = 0.65 # study
 ks_base = 0.82 #SOn (study only)
 kb_base = 0.80 #Tn (study and test)
 kt_base = 0.80 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.4
-fj_rate = 0.5
+fj_asymptote_decrease_val = 0.35 #this value bigger, Hits higher
+fj_rate = 4.0
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.65
+hj_asymptote_increase_val = 0.75
 hj_rate = 3.0
 hj_base = 0.05; 
 
@@ -298,8 +298,9 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
 power_taken = 1
-ci=0.0564 ^power_taken#0.77 #0.148^power_taken
+ci=0.065 ^power_taken#0.77 #0.148^power_taken
 
+# Criterion increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 

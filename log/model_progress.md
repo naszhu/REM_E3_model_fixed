@@ -1,5 +1,34 @@
 # Model Progress
 
+## Commit [e26ff98](https://github.com/naszhu/REM_E3_model_fixed/commit/e26ff98) (branch: `sep-2-test`)
+**Time:** 2025-09-02 22:19:49  
+**Message:**
+```
+feat(model-e3): enable final test mode and adjust criterion calculations
+
+I made a "must" decrease to the end asympotope value function, but that function is currently not used. That function gives wierd result.
+
+This difficulty of asymptotic function is related to issue #38
+
+- Set `is_finaltest` to true, reducing `n_simulations` to 100 for final testing.
+- Updated `criterion_final` to use `asym_decrease_shift_fj` for improved value generation.
+- Commented out the inclusion of `data_structures.jl` to streamline the main execution flow.
+- Fixed typos in variable names for consistency and clarity.
+
+These changes aim to enhance the model's performance during final testing and ensure accurate criterion calculations.
+```
+**Changed Files:**
+- `E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e26ff98_20250902_221949_plot1.png)  
+![](../plot_archive/e26ff98_20250902_221949_plot2.png)  
+
 ## Commit [8300a2c](https://github.com/naszhu/REM_E3_model_fixed/commit/8300a2c) (branch: `sep-2-test`)
 **Time:** 2025-09-02 22:19:37  
 **Message:**

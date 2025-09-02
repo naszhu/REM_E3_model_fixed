@@ -1,5 +1,23 @@
 [
   {
+    "commit": "e26ff98",
+    "branch": "sep-2-test",
+    "message": "feat(model-e3): enable final test mode and adjust criterion calculations",
+    "timestamp": "2025-09-02 22:19:49",
+    "plot1": "plot_archive/e26ff98_20250902_221949_plot1.png",
+    "plot2": "plot_archive/e26ff98_20250902_221949_plot2.png",
+    "changed_files": [
+      "E3/attempt_9dd4a2c/memory_restorage.jl",
+      "E3/constants.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_restorage.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "8300a2c",
     "branch": "sep-2-test",
     "message": "feat(model-e3): enable final test mode and adjust criterion calculations",
