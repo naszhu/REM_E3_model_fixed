@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [38e6d39](https://github.com/naszhu/REM_E3_model_fixed/commit/38e6d39) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:10:27  
+**Message:**
+```
+finetune(model-e3): adjust base parameters for improved simulation accuracy
+
+- Increased `ks_base`, `kb_base`, and `kt_base` from 0.4 to 0.45 to lower the starting points for CF, T, and Fn respectively.
+- Decreased `nnnow` from 0.808 to 0.72 to refine context copying parameters.
+- Updated `ci` from 0.13 to 0.167 for enhanced model performance.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/38e6d39_20250903_011027_plot1.png)  
+![](../plot_archive/38e6d39_20250903_011027_plot2.png)  
+
 ## Commit [fb6fd36](https://github.com/naszhu/REM_E3_model_fixed/commit/fb6fd36) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:03:18  
 **Message:**
