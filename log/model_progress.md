@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [cccdbd0](https://github.com/naszhu/REM_E3_model_fixed/commit/cccdbd0) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:55:59  
+**Message:**
+```
+finetune(model-e3): update ci constant for improved simulation accuracy
+
+- Adjusted `ci` from 0.0685 to 0.09 to refine the model's performance in simulations.
+- Updated `context_tau` comment for clarity on foil odds adjustment.
+
+These changes aim to enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cccdbd0_20250903_005559_plot1.png)  
+![](../plot_archive/cccdbd0_20250903_005559_plot2.png)  
+
 ## Commit [0cd25e3](https://github.com/naszhu/REM_E3_model_fixed/commit/0cd25e3) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:52:03  
 **Message:**
