@@ -1,5 +1,20 @@
 [
   {
+    "commit": "b00ab7a",
+    "branch": "sep-2-test",
+    "message": "fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus",
+    "timestamp": "2025-09-03 00:14:52",
+    "plot1": "plot_archive/b00ab7a_20250903_001452_plot1.png",
+    "plot2": "plot_archive/b00ab7a_20250903_001452_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b079b53",
     "branch": "sep-2-test",
     "message": "fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus",

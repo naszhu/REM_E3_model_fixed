@@ -139,7 +139,7 @@ p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
         text=element_text(size=20) # Increase font size globally
-    )+ylim(c(0,1))
+    )+ylim(c(0.4,1))
     # ylim(c(0.41,0.89))
 p1
 

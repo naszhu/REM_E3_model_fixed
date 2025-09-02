@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [b00ab7a](https://github.com/naszhu/REM_E3_model_fixed/commit/b00ab7a) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:14:52  
+**Message:**
+```
+fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus
+
+- Updated `update_Z_feature_SOn_CFs!`, `update_Z_feature_Tn_CFs!`, and `update_Z_feature_Fn_CFs!` functions to set κ values for list 1 as `1 - ks_base`, `1 - kb_base`, and `1 - kt_base` respectively, enhancing the model's parameter handling.
+
+These changes aim to improve the accuracy of feature calculations in simulations.
+
+Closes #65
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b00ab7a_20250903_001452_plot1.png)  
+![](../plot_archive/b00ab7a_20250903_001452_plot2.png)  
+
 ## Commit [b079b53](https://github.com/naszhu/REM_E3_model_fixed/commit/b079b53) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:13:54  
 **Message:**
