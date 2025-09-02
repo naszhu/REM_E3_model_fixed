@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [3fb0c72](https://github.com/naszhu/REM_E3_model_fixed/commit/3fb0c72) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:21:42  
+**Message:**
+```
+fix(model-e3): somehow deleted uc_final during ealier refactor
+
+- Introduced new ratios for unchanging and changing parameters in the final test phase.
+- Adjusted `final_gap_change` to enhance model dynamics.
+- Updated `cfinal_end` calculation to refine threshold settings.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3fb0c72_20250903_022142_plot1.png)  
+![](../plot_archive/3fb0c72_20250903_022142_plot2.png)  
+
 ## Commit [095a6d2](https://github.com/naszhu/REM_E3_model_fixed/commit/095a6d2) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:10:43  
 **Message:**

@@ -4,6 +4,11 @@
 
 echo "Starting multi-process parallel simulation (producing same output as main file)..."
 
+# Clean up any old results that might interfere
+echo "Cleaning up old results..."
+rm -f DF.csv all_results.csv allresf.csv plot1.png plot2.png Rplots.pdf
+rm -rf parallel_temp parallel_results
+
 # Number of processes to run (adjust based on your system)
 NUM_PROCESSES=4
 BASE_SEED=1000
@@ -28,13 +33,76 @@ run_simulation() {
         cp ../../optimization_utils.jl .
     fi
     
-    # Run Julia with unique seed - same as main file but with different seed
+    # Run Julia with unique seed - simulation only, no plotting
     julia -e "
         using Random
         Random.seed!($seed);
         println(\"Process $process_id: Starting with seed $seed\");
-        include(\"E3/main_JL_E3_V0.jl\");
-        println(\"Process $process_id: Completed\")
+        
+        # Include all necessary files but skip plotting commands
+        using Random, Distributions, Statistics, DataFrames, DataFramesMeta
+        using BenchmarkTools, ProfileView, Profile, Base.Threads
+        using QuadGK
+        JULIA_NUM_THREADS=20
+        Threads.nthreads()
+        
+        include(\"E3/data_structures.jl\")
+        include(\"E3/utils.jl\")
+        include(\"E3/constants.jl\")
+        
+        # Override n_simulations to divide total by number of processes
+        # Original n_simulations from constants.jl will be divided by $NUM_PROCESSES
+        original_n_simulations = n_simulations
+        base_simulations = div(original_n_simulations, $NUM_PROCESSES)
+        remainder = mod(original_n_simulations, $NUM_PROCESSES)
+        
+        # Distribute simulations evenly, with remainder distributed to first processes
+        if $process_id <= remainder
+            global n_simulations = base_simulations + 1
+        else
+            global n_simulations = base_simulations
+        end
+        println(\"Process $process_id: Running $n_simulations simulations\");
+        
+        include(\"E3/feature_updates.jl\")
+        include(\"E3/feature_generation.jl\")
+        include(\"E3/likelihood_calculations.jl\")
+        include(\"E3/memory_storage.jl\")
+        include(\"E3/memory_restorage.jl\")
+        include(\"E3/probe_generation.jl\")
+        include(\"E3/probe_evaluation.jl\")
+        include(\"E3/simulation.jl\")
+        
+        # Run simulation
+        all_results, allresf = simulate_rem()
+        
+        # Process results same as main file
+        DF = @chain all_results begin
+            @by([:list_number, :is_target, :testpos, :simulation_number,:type_general,:type_specific], :meanx = mean(:decision_isold))
+            @by([:list_number, :is_target, :testpos,:type_general,:type_specific], :meanx = mean(:meanx))
+        end
+        
+        if is_finaltest
+            DFf = @chain allresf begin
+                @by([:list_number, :is_target, :test_position, :condition, :simulation_number], :meanx = mean(:decision_isold))
+                @by([:list_number, :is_target, :test_position, :condition], :meanx = mean(:meanx))
+                @transform(:condition = string.(:condition))
+            end
+            
+            allresf = @chain allresf begin
+                @transform(:condition = string.(:condition))
+            end
+        end
+        
+        # Save CSV files only - NO PLOTTING
+        using CSV
+        CSV.write(\"DF.csv\", DF)
+        CSV.write(\"all_results.csv\", all_results)
+        if is_finaltest
+            CSV.write(\"allresf.csv\", allresf)
+        end
+        
+        println(\"Process $process_id: Completed with $n_simulations simulations\")
     " > simulation_log_$process_id.txt 2>&1
     
     echo "Process $process_id: Completed"
@@ -85,16 +153,30 @@ fi
 
 cd ..
 
+# Debug: Check what files we actually created
+echo "Debug: Checking created files..."
+echo "DF.csv size: $(wc -l DF.csv 2>/dev/null || echo 'NOT FOUND')"
+echo "all_results.csv size: $(wc -l all_results.csv 2>/dev/null || echo 'NOT FOUND')"
+echo "allresf.csv size: $(wc -l allresf.csv 2>/dev/null || echo 'NOT FOUND')"
+
+# Check a few lines from constants to verify they're current
+echo "Debug: Checking constants used in latest run..."
+grep "final_gap_change" parallel_temp/process_1/E3/constants.jl 2>/dev/null || echo "Could not check constants"
+
 # Generate plots using R (same as original)
 echo "Generating plots..."
 if [ -f "DF.csv" ]; then
+    echo "Running R script for initial test plots..."
     Rscript E3/R_plots.r
     echo "Generated plot1.png"
+    echo "plot1.png size: $(stat -f%z plot1.png 2>/dev/null || stat -c%s plot1.png 2>/dev/null || echo 'unknown')"
 fi
 
 if [ -f "allresf.csv" ]; then
+    echo "Running R script for final test plots..."
     Rscript E3/R_plots_finalt.r
-    echo "Generated plot2.png"
+    echo "Generated plot2.png"  
+    echo "plot2.png size: $(stat -f%z plot2.png 2>/dev/null || stat -c%s plot2.png 2>/dev/null || echo 'unknown')"
 fi
 
 # Display plots (same as original)

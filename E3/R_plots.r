@@ -4,9 +4,19 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 library(gridExtra)
-# getwd()
+# Debug: Check working directory and file info
+cat("R script working directory:", getwd(), "\n")
+cat("all_results.csv exists:", file.exists("all_results.csv"), "\n")
+cat("DF.csv exists:", file.exists("DF.csv"), "\n")
+
 all_results=read.csv("all_results.csv")
 DF=read.csv("DF.csv")
+
+# Debug: Show some basic stats about the data
+cat("Data loaded - all_results rows:", nrow(all_results), "\n")
+cat("Data loaded - DF rows:", nrow(DF), "\n")
+cat("Sample of data (first few values):\n")
+print(head(DF[,1:3]))  # Show first few rows and columns
 
 # all_results$is_target
 df1=all_results%>%mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
