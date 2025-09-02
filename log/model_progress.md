@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [89fd0fe](https://github.com/naszhu/REM_E3_model_fixed/commit/89fd0fe) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:42:35  
+**Message:**
+```
+finetnue(model-e3): refine final test parameters for improved accuracy
+
+- Updated `x` from 0.044 to 0.045 to adjust the starting point for calculations.
+- Modified `cfinal_end` calculation to change the offset from -0.011 to -0.015, enhancing the precision of threshold settings.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/89fd0fe_20250903_024235_plot1.png)  
+![](../plot_archive/89fd0fe_20250903_024235_plot2.png)  
+
 ## Commit [7898176](https://github.com/naszhu/REM_E3_model_fixed/commit/7898176) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:40:44  
 **Message:**

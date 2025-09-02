@@ -310,9 +310,9 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.045
+x =0.048
 cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.015)^power_taken;
+cfinal_end=(0.004+x-0.018)^power_taken;
 cfinal_rate = 0.28
 
 criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)

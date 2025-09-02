@@ -119,10 +119,21 @@ done
 
 echo "All processes started. Waiting for completion..."
 
-# Wait for all background processes to finish
-wait
+# Progress monitoring while waiting
+START_TIME=$(date +%s)
+while [ $(jobs -r | wc -l) -gt 0 ]; do
+    RUNNING_JOBS=$(jobs -r | wc -l)
+    COMPLETED_JOBS=$((NUM_PROCESSES - RUNNING_JOBS))
+    CURRENT_TIME=$(date +%s)
+    ELAPSED=$((CURRENT_TIME - START_TIME))
+    
+    echo "Progress: $COMPLETED_JOBS/$NUM_PROCESSES processes completed (${RUNNING_JOBS} still running) - ${ELAPSED}s elapsed"
+    sleep 3
+done
 
-echo "All simulations completed! Combining results..."
+TOTAL_TIME=$(( $(date +%s) - START_TIME ))
+echo ""
+echo "✓ All simulations completed in ${TOTAL_TIME}s! Combining results..."
 
 # Combine results with proper headers - same format as original
 cd parallel_temp
