@@ -343,7 +343,7 @@ function simulate_rem()
         end
         
         # Copy final results if they exist
-        for i in 1:length(final_res)
+        for i in eachindex(final_res)
             total_final_count += 1
             row = final_res[i]
             df_final[total_final_count, :list_number] = row[1]

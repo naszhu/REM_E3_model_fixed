@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [791be3d](https://github.com/naszhu/REM_E3_model_fixed/commit/791be3d) (branch: `sep-2-bottleneck`)
+**Time:** 2025-09-02 23:02:32  
+**Message:**
+```
+refactor(simulation): optimize simulation process and enhance performance
+
+- Extracted single simulation logic into `run_single_simulation` for better parallelization.
+- Pre-allocated results arrays to minimize resizing during simulations, improving efficiency.
+- Replaced `push!` with direct indexing for collecting results, further optimizing performance.
+- Updated initialization of DataFrames to use generous estimates for row sizes, reducing the need for resizing.
+- Enhanced context handling by reusing pre-allocated arrays to avoid unnecessary deep copies.
+
+These changes aim to streamline the simulation process and improve overall execution speed.
+
+This is to solve issue #26 optimization
+```
+**Changed Files:**
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/791be3d_20250902_230232_plot1.png)  
+![](../plot_archive/791be3d_20250902_230232_plot2.png)  
+
 ## Commit [add49d0](https://github.com/naszhu/REM_E3_model_fixed/commit/add49d0) (branch: `sep-2-bottleneck`)
 **Time:** 2025-09-02 22:48:38  
 **Message:**
