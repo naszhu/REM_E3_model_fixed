@@ -1,5 +1,19 @@
 [
   {
+    "commit": "faa891a",
+    "branch": "sep-2-test",
+    "message": "refactor(model-e3): adjust ku_base for improved simulation starting point",
+    "timestamp": "2025-09-03 00:27:20",
+    "plot1": "plot_archive/faa891a_20250903_002720_plot1.png",
+    "plot2": "plot_archive/faa891a_20250903_002720_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "7579d9c",
     "branch": "sep-2-test",
     "message": "finetune(model-e3): update base constants for enhanced simulation dynamics",

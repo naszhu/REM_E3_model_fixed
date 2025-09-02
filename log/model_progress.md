@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [faa891a](https://github.com/naszhu/REM_E3_model_fixed/commit/faa891a) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:27:20  
+**Message:**
+```
+refactor(model-e3): adjust ku_base for improved simulation starting point
+
+- Decreased `ku_base` from 0.65 to 0.2 to lower the starting point of T, aligning with study findings.
+
+This change aims to refine the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/faa891a_20250903_002720_plot1.png)  
+![](../plot_archive/faa891a_20250903_002720_plot2.png)  
+
 ## Commit [7579d9c](https://github.com/naszhu/REM_E3_model_fixed/commit/7579d9c) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:22:35  
 **Message:**
