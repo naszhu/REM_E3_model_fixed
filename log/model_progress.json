@@ -1,5 +1,34 @@
 [
   {
+    "commit": "791be3d",
+    "branch": "sep-2-bottleneck",
+    "message": "refactor(simulation): optimize simulation process and enhance performance",
+    "timestamp": "2025-09-02 23:02:32",
+    "plot1": "plot_archive/791be3d_20250902_230232_plot1.png",
+    "plot2": "plot_archive/791be3d_20250902_230232_plot2.png",
+    "changed_files": [
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "add49d0",
+    "branch": "sep-2-bottleneck",
+    "message": "fix(model-e3): adjust constants and re-enable feature update calls",
+    "timestamp": "2025-09-02 22:48:38",
+    "plot1": "plot_archive/add49d0_20250902_224838_plot1.png",
+    "plot2": "plot_archive/add49d0_20250902_224838_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "e26ff98",
     "branch": "sep-2-test",
     "message": "feat(model-e3): enable final test mode and adjust criterion calculations",
