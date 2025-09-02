@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [1accfc7](https://github.com/naszhu/REM_E3_model_fixed/commit/1accfc7) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:43:11  
+**Message:**
+```
+finetune(model-e3): adjust base constants and plot limits for improved model calibration
+
+- Decreased `ks_base`, `kb_base`, and `kt_base` to 0.32, 0.30, and 0.30 respectively for better starting points in simulations.
+- Adjusted `fj_rate` from 7.0 to 5.0 to modify the speed of improvement in simulations.
+- Lowered `hj_rate` from 3.0 to 2.0 to refine model responsiveness.
+- Updated plot limits in `R_plots.r` from (0.41, 1) to (0, 1) for better visualization of results.
+
+These changes aim to enhance the model's performance and visualization during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1accfc7_20250902_234311_plot1.png)  
+![](../plot_archive/1accfc7_20250902_234311_plot2.png)  
+
 ## Commit [d19a3b4](https://github.com/naszhu/REM_E3_model_fixed/commit/d19a3b4) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:36:05  
 **Message:**

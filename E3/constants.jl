@@ -163,9 +163,9 @@ fj_rate = 5.0 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.85
-hj_rate = 2.0
-hj_base = 0.05; 
+hj_asymptote_increase_val = 0.5
+hj_rate = 2
+hj_base = 0.4; 
 
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 
