@@ -153,12 +153,12 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.12 # study，higher this value, lower the starting point of T
+ku_base = 0.15 # study，higher this value, lower the starting point of T
 ks_base = 0.45 #SOn (study only), lower the value, higher the starting point CF
 kb_base = 0.45 #Tn (study and test)
 kt_base = 0.45 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.02 #0.35 #this value bigger, Hits higher
+fj_asymptote_decrease_val = 0.01 #0.35 #this value bigger, Hits higher
 fj_rate = 0.3 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
@@ -206,7 +206,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.72
+nnnow=0.712
 c_adv = 0#0.06
 
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
@@ -243,7 +243,7 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 13) #7 adjust this and the distor
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
 max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.37  # Base probability of distortion for the first probe
+base_distortion_prob = 0.36  # Base probability of distortion for the first probe
 
 
 

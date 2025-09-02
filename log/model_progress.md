@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [43816ab](https://github.com/naszhu/REM_E3_model_fixed/commit/43816ab) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:14:22  
+**Message:**
+```
+finetune(model-e3): adjust simulation parameters for improved accuracy
+
+- Increased `n_simulations` from 100 to 300 to enhance simulation robustness.
+- Updated `ci` from 0.167 to 0.174 for improved model performance.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/43816ab_20250903_011422_plot1.png)  
+![](../plot_archive/43816ab_20250903_011422_plot2.png)  
+
 ## Commit [38e6d39](https://github.com/naszhu/REM_E3_model_fixed/commit/38e6d39) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:10:27  
 **Message:**
