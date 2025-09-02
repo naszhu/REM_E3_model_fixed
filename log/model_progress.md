@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [5771386](https://github.com/naszhu/REM_E3_model_fixed/commit/5771386) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:48:15  
+**Message:**
+```
+finetune(run_parallel-e3): enhance user feedback  and finetune
+
+- Updated output messages in `run_parallel.sh` to include emojis for better visual feedback during simulation execution.
+- Improved the clarity of messages indicating the creation of combined CSV files and the generation of plots.
+- Added a new R script `R_plots_fast.r` for optimized plotting, leveraging `data.table` for faster data handling and improved performance in generating visualizations.
+- Adjusted parameters in `constants.jl` to refine calculations for the final test phase, enhancing model accuracy.
+
+These changes aim to improve user experience and performance during simulations, providing clearer feedback and faster plot generation.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/5771386_20250903_024815_plot1.png)  
+![](../plot_archive/5771386_20250903_024815_plot2.png)  
+
 ## Commit [0ce5082](https://github.com/naszhu/REM_E3_model_fixed/commit/0ce5082) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:43:21  
 **Message:**

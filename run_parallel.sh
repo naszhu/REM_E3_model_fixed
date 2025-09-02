@@ -181,13 +181,28 @@ echo ""
 echo "📈 Generating plots..."
 if [ -f "DF.csv" ]; then
     echo "  🔄 Running R script for initial test plots..."
-    Rscript E3/R_plots.r >/dev/null 2>&1
-    echo "  ✓ Generated plot1.png ($(stat -f%z plot1.png 2>/dev/null || stat -c%s plot1.png 2>/dev/null || echo 'unknown') bytes)"
+    timeout 120 Rscript E3/R_plots.r >/dev/null 2>&1 &
+    PLOT1_PID=$!
+    echo "  ⏳ Plot1 generation started (PID: $PLOT1_PID)..."
 fi
 
 if [ -f "allresf.csv" ]; then
-    echo "  🔄 Running R script for final test plots..."
-    Rscript E3/R_plots_finalt.r >/dev/null 2>&1
+    echo "  🔄 Running R script for final test plots..."  
+    timeout 120 Rscript E3/R_plots_finalt.r >/dev/null 2>&1 &
+    PLOT2_PID=$!
+    echo "  ⏳ Plot2 generation started (PID: $PLOT2_PID)..."
+fi
+
+# Wait for both plots to complete
+if [ ! -z "$PLOT1_PID" ]; then
+    echo "  ⌛ Waiting for plot1 to complete..."
+    wait $PLOT1_PID
+    echo "  ✓ Generated plot1.png ($(stat -f%z plot1.png 2>/dev/null || stat -c%s plot1.png 2>/dev/null || echo 'unknown') bytes)"
+fi
+
+if [ ! -z "$PLOT2_PID" ]; then
+    echo "  ⌛ Waiting for plot2 to complete..."
+    wait $PLOT2_PID
     echo "  ✓ Generated plot2.png ($(stat -f%z plot2.png 2>/dev/null || stat -c%s plot2.png 2>/dev/null || echo 'unknown') bytes)"
 fi
 
