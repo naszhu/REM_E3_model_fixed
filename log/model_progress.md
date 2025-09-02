@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [d19a3b4](https://github.com/naszhu/REM_E3_model_fixed/commit/d19a3b4) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:36:05  
+**Message:**
+```
+finetune(model-e3): increase hj_asymptote_increase_val for improved model responsiveness
+
+- Raised `hj_asymptote_increase_val` from 0.75 to 0.85 to enhance model performance during simulations.
+
+This change aims to refine the model's parameters for better responsiveness in simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d19a3b4_20250902_233605_plot1.png)  
+![](../plot_archive/d19a3b4_20250902_233605_plot2.png)  
+
 ## Commit [3c80ac1](https://github.com/naszhu/REM_E3_model_fixed/commit/3c80ac1) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:34:24  
 **Message:**
