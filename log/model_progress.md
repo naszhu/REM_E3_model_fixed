@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [1d1e2c0](https://github.com/naszhu/REM_E3_model_fixed/commit/1d1e2c0) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:29:29  
+**Message:**
+```
+finetune(model-e3): adjust simulation parameters and criterion calculations
+
+- Reduced `n_simulations` from 300 to 200 for testing purposes.
+- Updated `nnnow` from 0.8 to 0.808 for improved context copying.
+- Decreased `n_driftStudyTest` from 15 to 5 to refine drift calculations.
+- Adjusted `n_between_listchange` from 25 to 15 to optimize simulation behavior.
+- Modified `ci` calculation from 0.065 to 0.0685 for better criterion initialization.
+
+These changes aim to enhance the accuracy and performance of the model during simulations.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1d1e2c0_20250902_232929_plot1.png)  
+![](../plot_archive/1d1e2c0_20250902_232929_plot2.png)  
+
 ## Commit [0b6d345](https://github.com/naszhu/REM_E3_model_fixed/commit/0b6d345) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:17:16  
 **Message:**
