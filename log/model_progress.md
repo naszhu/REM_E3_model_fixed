@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [7898176](https://github.com/naszhu/REM_E3_model_fixed/commit/7898176) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:40:44  
+**Message:**
+```
+fix(run_parallel-e3): improve plot handling and cleanup process
+
+- Added a command to kill any existing image viewers displaying old plots before starting a new simulation.
+- Enhanced the output messages to indicate when each plot image is being opened, improving user feedback during execution.
+- Updated the cleanup process to ensure no old results interfere with new simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/7898176_20250903_024044_plot1.png)  
+![](../plot_archive/7898176_20250903_024044_plot2.png)  
+
 ## Commit [a44c297](https://github.com/naszhu/REM_E3_model_fixed/commit/a44c297) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:35:07  
 **Message:**
