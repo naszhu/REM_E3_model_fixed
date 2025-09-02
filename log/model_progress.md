@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [3620fcd](https://github.com/naszhu/REM_E3_model_fixed/commit/3620fcd) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:34:46  
+**Message:**
+```
+docs(model-e3): gitignore
+
+add paralell-temp
+```
+**Changed Files:**
+- `.gitignore`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3620fcd_20250903_023446_plot1.png)  
+![](../plot_archive/3620fcd_20250903_023446_plot2.png)  
+
 ## Commit [7b503c3](https://github.com/naszhu/REM_E3_model_fixed/commit/7b503c3) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:32:39  
 **Message:**

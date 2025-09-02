@@ -310,7 +310,7 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.038
+x =0.033
 cfinal_start=(0.08+x)^power_taken;
 cfinal_end=(0.004+x-0.012)^power_taken;
 cfinal_rate = 0.28
