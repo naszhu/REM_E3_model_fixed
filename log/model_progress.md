@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [3c5aaad](https://github.com/naszhu/REM_E3_model_fixed/commit/3c5aaad) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:17:41  
+**Message:**
+```
+refactor(model-e3): update base constants for improved simulation dynamics
+
+- Adjusted `ku_base` from 0.65 to 0.65 with a clarifying comment on its impact on the starting point of T.
+- Increased `hj_base` from 0.5 to 0.6 to enhance initial conditions for simulations.
+
+These changes aim to refine the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3c5aaad_20250903_001741_plot1.png)  
+![](../plot_archive/3c5aaad_20250903_001741_plot2.png)  
+
 ## Commit [5b2478f](https://github.com/naszhu/REM_E3_model_fixed/commit/5b2478f) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:16:11  
 **Message:**
