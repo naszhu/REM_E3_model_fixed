@@ -1,5 +1,57 @@
 # Model Progress
 
+## Commit [8300a2c](https://github.com/naszhu/REM_E3_model_fixed/commit/8300a2c) (branch: `sep-2-test`)
+**Time:** 2025-09-02 22:19:37  
+**Message:**
+```
+feat(model-e3): enable final test mode and adjust criterion calculations
+
+I made a "must" decrease to the end asympotope value function, but that function is currently not used. That function gives wierd result.
+
+This difficulty of asymptotic function is related to issue #38
+
+- Set `is_finaltest` to true, reducing `n_simulations` to 100 for final testing.
+- Updated `criterion_final` to use `asym_decrease_shift_fj` for improved value generation.
+- Commented out the inclusion of `data_structures.jl` to streamline the main execution flow.
+- Fixed typos in variable names for consistency and clarity.
+
+These changes aim to enhance the model's performance during final testing and ensure accurate criterion calculations.
+```
+**Changed Files:**
+- `E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8300a2c_20250902_221937_plot1.png)  
+![](../plot_archive/8300a2c_20250902_221937_plot2.png)  
+
+## Commit [652723a](https://github.com/naszhu/REM_E3_model_fixed/commit/652723a) (branch: `sep-2-test`)
+**Time:** 2025-09-02 21:39:17  
+**Message:**
+```
+feat(model-e3):  take out 1/11 power sampling, works better now
+
+The sampling accuracy got way higher now
+
+- Increased `kb_base` from 0.20 to 0.80 and adjusted `fj_asymptote_decrease_val` from 0.8 to 0.4 to enhance model calibration.
+- Reduced `fj_rate` from 2.0 to 0.5 for better responsiveness.
+- Updated `power_taken` to 1 and modified `ci` calculation for refined criterion initialization.
+
+These changes aim to optimize the model's performance and ensure better alignment with expected outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/652723a_20250902_213917_plot1.png)  
+![](../plot_archive/652723a_20250902_213917_plot2.png)  
+
 ## Commit [30407a1](https://github.com/naszhu/REM_E3_model_fixed/commit/30407a1) (branch: `sep-2-test`)
 **Time:** 2025-09-01 23:54:54  
 **Message:**

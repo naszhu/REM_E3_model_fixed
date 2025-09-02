@@ -1,5 +1,38 @@
 [
   {
+    "commit": "8300a2c",
+    "branch": "sep-2-test",
+    "message": "feat(model-e3): enable final test mode and adjust criterion calculations",
+    "timestamp": "2025-09-02 22:19:37",
+    "plot1": "plot_archive/8300a2c_20250902_221937_plot1.png",
+    "plot2": "plot_archive/8300a2c_20250902_221937_plot2.png",
+    "changed_files": [
+      "E3/attempt_9dd4a2c/memory_restorage.jl",
+      "E3/constants.jl",
+      "E3/main_JL_E3_V0.jl",
+      "E3/memory_restorage.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "652723a",
+    "branch": "sep-2-test",
+    "message": "feat(model-e3):  take out 1/11 power sampling, works better now",
+    "timestamp": "2025-09-02 21:39:17",
+    "plot1": "plot_archive/652723a_20250902_213917_plot1.png",
+    "plot2": "plot_archive/652723a_20250902_213917_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/main_JL_E3_V0.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "30407a1",
     "branch": "sep-2-test",
     "message": "merge(model-e3): Make model v6 Merge branch 'aug-31-new-model-v6'",

@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
+is_finaltest = true
 n_simulations = is_finaltest ? 100 : 300;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -303,7 +303,13 @@ ci=0.0564 ^power_taken#0.77 #0.148^power_taken
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 7)#LinRange(0.18, 0.23, 10)
+# criterion_final =  LinRange(0.15^power_taken,0.01^power_taken, n_lists)#LinRange(0.18, 0.23, 10)
+
+cfinal_start=0.08^power_taken;
+cfinal_end=0.004^power_taken;
+cfinal_rate = 0.25
+
+criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 context_tau_final = 100 #0.20.2 above if this is 10
 recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
 recall_to_addtrace_threshold = Inf
