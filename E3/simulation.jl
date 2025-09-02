@@ -1,32 +1,25 @@
 
 
 
-function simulate_rem()
-    # 1. Initialization
-
-    df_inital = DataFrame(list_number=Int[], testpos=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_imageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], studypos=Int[], diff=Float64[], is_same_item=Bool[], is_sampled=Bool[], Z_sum=Int[], Z_proportion=Float64[])
-
-    df_final = DataFrame(
-        list_number=Int[], #initial list number, not containing final list num yet 
-    test_position=Int[],
-    initial_studypos=Int[],
-    initial_testpos=Int[],
+function run_single_simulation(sim_num::Int)
+    # Single simulation logic extracted for parallelization
+    image_pool = EpisodicImage[]
     
-    type_specific=String[],
-    type_general=String[],
-    is_target=Bool[],
+    # Pre-allocate results arrays for this simulation (with safety margin)
+    # List 1 has n_inEachChunk[1] tests, others have n_inEachChunk[2] tests
+    expected_initial_rows = n_inEachChunk[1] + (n_lists-1) * n_inEachChunk[2]
+    expected_final_rows = is_finaltest ? n_finalprobs : 0
+    
+    # Use generous size based on observed usage
+    initial_results = Vector{Any}(undef, 2000)  # Generous size to avoid resizing
+    final_results = Vector{Any}(undef, max(1000, round(Int, expected_final_rows * 1.2)))
+    initial_count = 0
+    final_count = 0
 
-    simulation_number=Int[], 
-    condition=String[], 
-    decision_isold=Int[],  odds=Float64[], is_same_item=Bool[], is_sampled=Bool[], Z_sum=Int[], Z_proportion=Float64[])
-
-    for sim_num in 1:n_simulations
-
-        if sim_num % (n_simulations ÷ 10) == 0
-            println("Progress: $(sim_num * 100 ÷ n_simulations)% simulations completed.")
-        end
-        #    sim_num=1
-        image_pool = EpisodicImage[]
+    # Pre-allocate context arrays to avoid deepcopy in loops
+    temp_context = Vector{Int64}(undef, w_allcontext)
+    
+    #    sim_num=1
 
         # studied_pool contains all single appear img in iniital test, and no repeatition  
         ## DEFINE STUDIED POOL
@@ -75,7 +68,10 @@ function simulate_rem()
                 # end
 
                 # position_code_all[j] = position_code_features_study
-                current_context_features = fast_concat([deepcopy(general_context_features), deepcopy(list_change_context_features)]) #dlete position code in this line in concatenation
+                # Optimized: avoid deepcopy by reusing pre-allocated array
+                temp_context[1:length(general_context_features)] = general_context_features
+                temp_context[length(general_context_features)+1:length(general_context_features)+length(list_change_context_features)] = list_change_context_features
+                current_context_features = temp_context
 
 
                 episodic_image = EpisodicImage(word_list[j], current_context_features, list_num, 0)
@@ -187,12 +183,14 @@ function simulate_rem()
 
             # df_inital = DataFrame(list_number=Int[], test_position=Int[], simulation_number=Int[], decision_isold=Int[], is_target=Bool[], type_general=String[], type_specific=String[], odds=Float64[], Nratio_iprobe=Float64[], Nratio_iimageinlist=Float64[], N_imageinlist=Float64[], ilist_image=Int[], study_position=Int[], diff_rt=Float64[])
 
+            # Optimized: collect results instead of push!
             for (ires, res) in enumerate(results) #1D array, length is 20 words
-                # tt = res.is_target == :target ? true : false
-
-                row = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion] # Add Z_sum and Z_proportion columns
-                
-                push!(df_inital, row)
+                initial_count += 1
+                if initial_count > length(initial_results)
+                    println("Warning: initial_count ($initial_count) exceeds array size ($(length(initial_results))). Expanding array.")
+                    resize!(initial_results, initial_count * 2)
+                end
+                initial_results[initial_count] = [list_num, res.testpos, sim_num, res.decision_isold, res.is_target, String(res.type_general), String(res.type_specific), res.odds, res.Nratio_iprobe, res.Nratio_imageinlist, res.N_imageinlist, res.ilist_image, res.studypos, res.diff, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion]
             end
 
             # Update list_change_context_features 
@@ -237,30 +235,144 @@ function simulate_rem()
                 finalprobes = generate_finalt_probes(studied_pool, icondition, general_context_features, list_change_context_features)
                 results_final = probe_evaluation2(image_pool_bc, finalprobes)
 
+                # Optimized: collect final results instead of push!
                 for ii in eachindex(results_final)
-
                     res = results_final[ii]
-
-                    push!(df_final, 
-                    [res.list_num,  
-                    res.test_position,
-                    res.initial_studypos,   
-                    res.initial_testpos,
-
-                    replace(string(res.type_specific, r"n\+1" => "n_p1")),
-                    String(res.type_general),   
-                    res.is_target,
-
-                    sim_num, 
-                    String(icondition), 
-                    res.decision_isold, res.odds, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion])
+                    final_count += 1
+                    if final_count > length(final_results)
+                        println("Warning: final_count ($final_count) exceeds array size ($(length(final_results))). Expanding array.")
+                        resize!(final_results, final_count * 2)
+                    end
+                    final_results[final_count] = [res.list_num, res.test_position, res.initial_studypos, res.initial_testpos, replace(string(res.type_specific), r"n\+1" => "n_p1"), String(res.type_general), res.is_target, sim_num, String(icondition), res.decision_isold, res.odds, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion]
                 end
             end
         end
 
+    # Return collected results from this simulation
+    return initial_results[1:initial_count], final_results[1:final_count]
+end
 
+function simulate_rem()
+    # 1. Initialization - Pre-allocate main DataFrames
+    println("Starting optimized simulation with $(Threads.nthreads()) threads...")
+    
+    # Estimate total result sizes (use generous estimate based on observed usage)
+    total_initial_rows = n_simulations * 2000  # Generous estimate to avoid resizing
+    total_final_rows = is_finaltest ? n_simulations * n_finalprobs : 0
+    
+    df_inital = DataFrame(
+        list_number=Vector{Int}(undef, total_initial_rows),
+        testpos=Vector{Int}(undef, total_initial_rows), 
+        simulation_number=Vector{Int}(undef, total_initial_rows),
+        decision_isold=Vector{Int}(undef, total_initial_rows),
+        is_target=Vector{Bool}(undef, total_initial_rows),
+        type_general=Vector{String}(undef, total_initial_rows),
+        type_specific=Vector{String}(undef, total_initial_rows),
+        odds=Vector{Float64}(undef, total_initial_rows),
+        Nratio_iprobe=Vector{Float64}(undef, total_initial_rows),
+        Nratio_imageinlist=Vector{Float64}(undef, total_initial_rows),
+        N_imageinlist=Vector{Float64}(undef, total_initial_rows),
+        ilist_image=Vector{Int}(undef, total_initial_rows),
+        studypos=Vector{Int}(undef, total_initial_rows),
+        diff=Vector{Float64}(undef, total_initial_rows),
+        is_same_item=Vector{Bool}(undef, total_initial_rows),
+        is_sampled=Vector{Bool}(undef, total_initial_rows),
+        Z_sum=Vector{Int}(undef, total_initial_rows),
+        Z_proportion=Vector{Float64}(undef, total_initial_rows)
+    )
+
+    df_final = DataFrame(
+        list_number=Vector{Int}(undef, total_final_rows),
+        test_position=Vector{Int}(undef, total_final_rows),
+        initial_studypos=Vector{Int}(undef, total_final_rows),
+        initial_testpos=Vector{Int}(undef, total_final_rows),
+        type_specific=Vector{String}(undef, total_final_rows),
+        type_general=Vector{String}(undef, total_final_rows),
+        is_target=Vector{Bool}(undef, total_final_rows),
+        simulation_number=Vector{Int}(undef, total_final_rows),
+        condition=Vector{String}(undef, total_final_rows),
+        decision_isold=Vector{Int}(undef, total_final_rows),
+        odds=Vector{Float64}(undef, total_final_rows),
+        is_same_item=Vector{Bool}(undef, total_final_rows),
+        is_sampled=Vector{Bool}(undef, total_final_rows),
+        Z_sum=Vector{Int}(undef, total_final_rows),
+        Z_proportion=Vector{Float64}(undef, total_final_rows)
+    )
+
+    # Run simulations in parallel
+    println("Running $(n_simulations) simulations in parallel...")
+    results = Vector{Tuple{Vector{Any}, Vector{Any}}}(undef, n_simulations)
+    
+    Threads.@threads for sim_num in 1:n_simulations
+        if sim_num % max(1, n_simulations ÷ 10) == 0
+            println("Progress: $(sim_num * 100 ÷ n_simulations)% simulations completed.")
+        end
+        results[sim_num] = run_single_simulation(sim_num)
     end
-
+    
+    # Combine results from all simulations
+    println("Combining results...")
+    total_initial_count = 0
+    total_final_count = 0
+    
+    for sim_num in 1:n_simulations
+        initial_res, final_res = results[sim_num]
+        
+        # Copy initial results
+        for i in eachindex(initial_res)
+            total_initial_count += 1
+            row = initial_res[i]
+            df_inital[total_initial_count, :list_number] = row[1]
+            df_inital[total_initial_count, :testpos] = row[2]
+            df_inital[total_initial_count, :simulation_number] = row[3]
+            df_inital[total_initial_count, :decision_isold] = row[4]
+            df_inital[total_initial_count, :is_target] = row[5]
+            df_inital[total_initial_count, :type_general] = row[6]
+            df_inital[total_initial_count, :type_specific] = row[7]
+            df_inital[total_initial_count, :odds] = row[8]
+            df_inital[total_initial_count, :Nratio_iprobe] = row[9]
+            df_inital[total_initial_count, :Nratio_imageinlist] = row[10]
+            df_inital[total_initial_count, :N_imageinlist] = row[11]
+            df_inital[total_initial_count, :ilist_image] = row[12]
+            df_inital[total_initial_count, :studypos] = row[13]
+            df_inital[total_initial_count, :diff] = row[14]
+            df_inital[total_initial_count, :is_same_item] = row[15]
+            df_inital[total_initial_count, :is_sampled] = row[16]
+            df_inital[total_initial_count, :Z_sum] = row[17]
+            df_inital[total_initial_count, :Z_proportion] = row[18]
+        end
+        
+        # Copy final results if they exist
+        for i in 1:length(final_res)
+            total_final_count += 1
+            row = final_res[i]
+            df_final[total_final_count, :list_number] = row[1]
+            df_final[total_final_count, :test_position] = row[2]
+            df_final[total_final_count, :initial_studypos] = row[3]
+            df_final[total_final_count, :initial_testpos] = row[4]
+            df_final[total_final_count, :type_specific] = row[5]
+            df_final[total_final_count, :type_general] = row[6]
+            df_final[total_final_count, :is_target] = row[7]
+            df_final[total_final_count, :simulation_number] = row[8]
+            df_final[total_final_count, :condition] = row[9]
+            df_final[total_final_count, :decision_isold] = row[10]
+            df_final[total_final_count, :odds] = row[11]
+            df_final[total_final_count, :is_same_item] = row[12]
+            df_final[total_final_count, :is_sampled] = row[13]
+            df_final[total_final_count, :Z_sum] = row[14]
+            df_final[total_final_count, :Z_proportion] = row[15]
+        end
+    end
+    
+    # Trim DataFrames to actual size
+    df_inital = df_inital[1:total_initial_count, :]
+    if is_finaltest
+        df_final = df_final[1:total_final_count, :]
+    else
+        df_final = df_final[1:0, :] # Empty DataFrame
+    end
+    
+    println("Simulation completed successfully!")
     return df_inital, df_final
 end
 
