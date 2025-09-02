@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [d4635fe](https://github.com/naszhu/REM_E3_model_fixed/commit/d4635fe) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:08:58  
+**Message:**
+```
+explore(model-e3): decrease hj_base for adjusted simulation conditions
+
+Now after using base kappa for list 1 rather than 0
+
+- Reduced `hj_base` from 0.9 to 0.5 to modify the initial conditions for simulations.
+
+This change aims to optimize the model's performance and improve simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d4635fe_20250903_000858_plot1.png)  
+![](../plot_archive/d4635fe_20250903_000858_plot2.png)  
+
 ## Commit [a14d6bf](https://github.com/naszhu/REM_E3_model_fixed/commit/a14d6bf) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:03:42  
 **Message:**
