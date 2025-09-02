@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [5b2478f](https://github.com/naszhu/REM_E3_model_fixed/commit/5b2478f) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:16:11  
+**Message:**
+```
+refactor(model-e3): adjust base constants and plot limits for improved simulation accuracy
+
+- Decreased `ks_base`, `kb_base`, and `kt_base` from 0.42, 0.40, and 0.40 to 0.35 for better starting points in simulations.
+- Updated plot limits in `R_plots.r` from (0, 1) to (0.4, 1) for enhanced visualization of results.
+
+These changes aim to optimize the model's performance and improve the clarity of visual outputs during simulations.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5b2478f_20250903_001611_plot1.png)  
+![](../plot_archive/5b2478f_20250903_001611_plot2.png)  
+
 ## Commit [b00ab7a](https://github.com/naszhu/REM_E3_model_fixed/commit/b00ab7a) (branch: `sep-2-test`)
 **Time:** 2025-09-03 00:14:52  
 **Message:**
