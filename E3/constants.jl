@@ -155,11 +155,11 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 
 ku_base = 0.85 # study
 ks_base = 0.82 #SOn (study only)
-kb_base = 0.20 #Tn (study and test)
+kb_base = 0.80 #Tn (study and test)
 kt_base = 0.80 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.8
-fj_rate = 2.0
+fj_asymptote_decrease_val = 0.4
+fj_rate = 0.5
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
@@ -297,8 +297,8 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 
 # originally 0.23 works, but now needs to adjust
 # criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-power_taken = (1/11)
-ci=0.77 #0.148^power_taken
+power_taken = 1
+ci=0.0564 ^power_taken#0.77 #0.148^power_taken
 
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  

@@ -1,5 +1,16 @@
 # Model Progress
 
+## Commit [30407a1](https://github.com/naszhu/REM_E3_model_fixed/commit/30407a1) (branch: `sep-2-test`)
+**Time:** 2025-09-01 23:54:54  
+**Message:**
+```
+merge(model-e3): Make model v6 Merge branch 'aug-31-new-model-v6'
+
+Closes #62
+```
+![](../plot_archive/30407a1_20250901_235454_plot1.png)  
+![](../plot_archive/30407a1_20250901_235454_plot2.png)  
+
 ## Commit [72fa36a](https://github.com/naszhu/REM_E3_model_fixed/commit/72fa36a) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 23:52:07  
 **Message:**
