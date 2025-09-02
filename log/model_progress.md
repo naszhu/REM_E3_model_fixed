@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [1522b2c](https://github.com/naszhu/REM_E3_model_fixed/commit/1522b2c) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:31:37  
+**Message:**
+```
+explore(model-e3): update fj_rate and clarify fj_asymptote_decrease_val comment
+
+- Increased `fj_rate` from 4.0 to 5.0 for improved simulation responsiveness.
+- Clarified comment for `fj_asymptote_decrease_val` to enhance understanding of its impact on model behavior.
+
+These changes aim to refine the model's performance during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1522b2c_20250902_233137_plot1.png)  
+![](../plot_archive/1522b2c_20250902_233137_plot2.png)  
+
 ## Commit [1d1e2c0](https://github.com/naszhu/REM_E3_model_fixed/commit/1d1e2c0) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:29:29  
 **Message:**
