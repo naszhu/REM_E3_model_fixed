@@ -165,7 +165,7 @@ fj_rate = 5.0 #this value higher, the faster fj makes T to get better
 
 hj_asymptote_increase_val = 0.0
 hj_rate = 2.0
-hj_base = 0.9; 
+hj_base = 0.5; 
 
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 

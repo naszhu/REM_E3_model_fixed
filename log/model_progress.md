@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [a14d6bf](https://github.com/naszhu/REM_E3_model_fixed/commit/a14d6bf) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:03:42  
+**Message:**
+```
+explore(model-e3): update base κ values for feature study calculations
+
+this is working? but why?
+
+- Replaced hardcoded κ values with corresponding base values (`ku_base`, `ks_base`, `kb_base`, `kt_base`) in `update_Z_feature_study!`, `update_Z_feature_SOn_CFs!`, `update_Z_feature_Tn_CFs!`, and `update_Z_feature_Fn_CFs!` functions for improved clarity and accuracy.
+
+These changes aim to enhance the model's performance and ensure correct parameter usage in simulations.
+
+Issue #63, CF starting point
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a14d6bf_20250903_000342_plot1.png)  
+![](../plot_archive/a14d6bf_20250903_000342_plot2.png)  
+
 ## Commit [475053d](https://github.com/naszhu/REM_E3_model_fixed/commit/475053d) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:57:52  
 **Message:**
