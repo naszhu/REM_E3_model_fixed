@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [cb68308](https://github.com/naszhu/REM_E3_model_fixed/commit/cb68308) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:47:19  
+**Message:**
+```
+finetune(model-e3): increase hj_base for improved simulation starting conditions
+
+- Increased `hj_base` from 0.6 to 0.9 to enhance the initial conditions for simulations.
+
+This change aims to optimize the model's performance and improve simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cb68308_20250902_234719_plot1.png)  
+![](../plot_archive/cb68308_20250902_234719_plot2.png)  
+
 ## Commit [53efe91](https://github.com/naszhu/REM_E3_model_fixed/commit/53efe91) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:46:07  
 **Message:**

@@ -494,8 +494,10 @@ function update_Z_feature_Fn_CFs!(word::Word, list_number::Int64)::Nothing
         if list_number === 1
             κ_value = 0
         else
+            # println("list number: ", list_number)
             κ_index = list_number - 1
             κ_value = κt[κ_index]
+            # println("κ_value: ", κ_value)
         end
         
         word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 

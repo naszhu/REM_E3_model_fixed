@@ -1,5 +1,19 @@
 [
   {
+    "commit": "cb68308",
+    "branch": "sep-2-test",
+    "message": "finetune(model-e3): increase hj_base for improved simulation starting conditions",
+    "timestamp": "2025-09-02 23:47:19",
+    "plot1": "plot_archive/cb68308_20250902_234719_plot1.png",
+    "plot2": "plot_archive/cb68308_20250902_234719_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "53efe91",
     "branch": "sep-2-test",
     "message": "explore(model-e3): make all increasing/decreasing rate 0",
