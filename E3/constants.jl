@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 300;
+n_simulations = is_finaltest ? 100 : 100;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -164,7 +164,7 @@ fj_rate = 0.3 #this value higher, the faster fj makes T to get better
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
 hj_asymptote_increase_val = 0.3
-hj_rate = 1.5
+hj_rate = 0.85
 hj_base = 0.7; #higher this value higher CF starting point
 
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
