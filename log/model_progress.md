@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [2294c6d](https://github.com/naszhu/REM_E3_model_fixed/commit/2294c6d) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:43:36  
+**Message:**
+```
+finetune(model-e3): adjust hj parameters and plot limits for improved model calibration
+
+- Decreased `hj_asymptote_increase_val` from 0.85 to 0.5 to refine model responsiveness.
+- Adjusted `hj_base` from 0.05 to 0.4 for better starting conditions in simulations.
+- Updated plot limits in `R_plots.r` from (0.41, 1) to (0, 1) for enhanced visualization of results.
+
+These changes aim to optimize the model's performance and improve the clarity of visual outputs during simulations.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2294c6d_20250902_234336_plot1.png)  
+![](../plot_archive/2294c6d_20250902_234336_plot2.png)  
+
 ## Commit [1accfc7](https://github.com/naszhu/REM_E3_model_fixed/commit/1accfc7) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:43:11  
 **Message:**
