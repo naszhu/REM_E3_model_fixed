@@ -154,11 +154,11 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # h(j) is increasing function
 
 ku_base = 0.08 # study，higher this value, lower the starting point of T
-ks_base = 0.45 #SOn (study only), lower the value, higher the starting point CF
+ks_base = 0.4 #SOn (study only), lower the value, higher the starting point CF
 kb_base = 0.4 #Tn (study and test)
-kt_base = 0.35 #Fn (test only)
+kt_base = 0.4 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.03 #0.35 #this value bigger, Hits higher
+fj_asymptote_decrease_val = 0.02 #0.35 #this value bigger, Hits higher
 fj_rate = 0.3 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
