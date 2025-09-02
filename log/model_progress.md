@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [0ce5082](https://github.com/naszhu/REM_E3_model_fixed/commit/0ce5082) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:43:21  
+**Message:**
+```
+feat(run_parallel-e3): add progress monitoring during simulation execution
+
+- Implemented a progress monitoring feature in `run_parallel.sh` to display the number of completed and running processes, along with elapsed time.
+- Enhanced user feedback by indicating when all simulations are completed and the total time taken for execution.
+
+These changes aim to improve the user experience by providing real-time updates on simulation progress.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/0ce5082_20250903_024321_plot1.png)  
+![](../plot_archive/0ce5082_20250903_024321_plot2.png)  
+
 ## Commit [89fd0fe](https://github.com/naszhu/REM_E3_model_fixed/commit/89fd0fe) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:42:35  
 **Message:**

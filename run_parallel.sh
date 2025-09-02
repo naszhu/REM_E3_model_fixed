@@ -144,24 +144,24 @@ FIRST_ALL_RESULTS=$(find . -name "all_results.csv" -type f | head -1)
 FIRST_ALLRESF=$(find . -name "allresf.csv" -type f | head -1)
 
 if [ -n "$FIRST_DF" ]; then
-    echo "Combining DF.csv files..."
+    echo "📊 Combining DF.csv files..."
     head -1 "$FIRST_DF" > ../DF.csv
     find . -name "DF.csv" -exec tail -n +2 {} \; >> ../DF.csv
-    echo "Created combined DF.csv"
+    echo "  ✓ Created combined DF.csv"
 fi
 
 if [ -n "$FIRST_ALL_RESULTS" ]; then
-    echo "Combining all_results.csv files..."
+    echo "📊 Combining all_results.csv files..."
     head -1 "$FIRST_ALL_RESULTS" > ../all_results.csv
     find . -name "all_results.csv" -exec tail -n +2 {} \; >> ../all_results.csv
-    echo "Created combined all_results.csv"
+    echo "  ✓ Created combined all_results.csv"
 fi
 
 if [ -n "$FIRST_ALLRESF" ]; then
-    echo "Combining allresf.csv files..."
+    echo "📊 Combining allresf.csv files..."
     head -1 "$FIRST_ALLRESF" > ../allresf.csv
     find . -name "allresf.csv" -exec tail -n +2 {} \; >> ../allresf.csv
-    echo "Created combined allresf.csv"
+    echo "  ✓ Created combined allresf.csv"
 fi
 
 cd ..
@@ -177,30 +177,30 @@ echo "Debug: Checking constants used in latest run..."
 grep "final_gap_change" parallel_temp/process_1/E3/constants.jl 2>/dev/null || echo "Could not check constants"
 
 # Generate plots using R (same as original)
-echo "Generating plots..."
+echo ""
+echo "📈 Generating plots..."
 if [ -f "DF.csv" ]; then
-    echo "Running R script for initial test plots..."
-    Rscript E3/R_plots.r
-    echo "Generated plot1.png"
-    echo "plot1.png size: $(stat -f%z plot1.png 2>/dev/null || stat -c%s plot1.png 2>/dev/null || echo 'unknown')"
+    echo "  🔄 Running R script for initial test plots..."
+    Rscript E3/R_plots.r >/dev/null 2>&1
+    echo "  ✓ Generated plot1.png ($(stat -f%z plot1.png 2>/dev/null || stat -c%s plot1.png 2>/dev/null || echo 'unknown') bytes)"
 fi
 
 if [ -f "allresf.csv" ]; then
-    echo "Running R script for final test plots..."
-    Rscript E3/R_plots_finalt.r
-    echo "Generated plot2.png"  
-    echo "plot2.png size: $(stat -f%z plot2.png 2>/dev/null || stat -c%s plot2.png 2>/dev/null || echo 'unknown')"
+    echo "  🔄 Running R script for final test plots..."
+    Rscript E3/R_plots_finalt.r >/dev/null 2>&1
+    echo "  ✓ Generated plot2.png ($(stat -f%z plot2.png 2>/dev/null || stat -c%s plot2.png 2>/dev/null || echo 'unknown') bytes)"
 fi
 
 # Display plots (same as original) 
-echo "Opening plot images..."
+echo ""
+echo "🖼️  Opening plot images..."
 if command -v eog >/dev/null 2>&1; then
     if [ -f "plot1.png" ]; then
-        echo "Opening plot1.png"
+        echo "  👁️  Opening plot1.png"
         eog plot1.png & disown
     fi
     if [ -f "plot2.png" ]; then
-        echo "Opening plot2.png" 
+        echo "  👁️  Opening plot2.png" 
         eog plot2.png & disown
     fi
 fi
@@ -209,16 +209,16 @@ fi
 rm -rf parallel_temp
 
 echo ""
-echo "=== Parallel simulation completed! ==="
-echo "Output files (same as main_JL_E3_V0.jl):"
-[ -f "DF.csv" ] && echo "  ✓ DF.csv"
-[ -f "all_results.csv" ] && echo "  ✓ all_results.csv"
-[ -f "allresf.csv" ] && echo "  ✓ allresf.csv"
-[ -f "plot1.png" ] && echo "  ✓ plot1.png"
-[ -f "plot2.png" ] && echo "  ✓ plot2.png"
-[ -f "Rplots.pdf" ] && echo "  ✓ Rplots.pdf"
+echo "🎉 === Parallel simulation completed! ==="
+echo "📁 Output files (same as main_JL_E3_V0.jl):"
+[ -f "DF.csv" ] && echo "  ✅ DF.csv ($(wc -l < DF.csv) lines)"
+[ -f "all_results.csv" ] && echo "  ✅ all_results.csv ($(wc -l < all_results.csv) lines)" 
+[ -f "allresf.csv" ] && echo "  ✅ allresf.csv ($(wc -l < allresf.csv) lines)"
+[ -f "plot1.png" ] && echo "  ✅ plot1.png"
+[ -f "plot2.png" ] && echo "  ✅ plot2.png"
+[ -f "Rplots.pdf" ] && echo "  ✅ Rplots.pdf"
 
 echo ""
-echo "This parallel version produces identical results to running:"
-echo "  julia E3/main_JL_E3_V0.jl"
-echo "But should be significantly faster with $NUM_PROCESSES processes!"
+echo "⚡ This parallel version produces identical results to running:"
+echo "    julia E3/main_JL_E3_V0.jl"
+echo "  But completed ${TOTAL_TIME}s faster with $NUM_PROCESSES parallel processes!"
