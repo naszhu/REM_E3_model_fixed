@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [2348ad4](https://github.com/naszhu/REM_E3_model_fixed/commit/2348ad4) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:18:05  
+**Message:**
+```
+finetune(model-e3): adjust base parameters for improved simulation accuracy
+
+A good working v
+
+- Increased `ku_base` from 0.12 to 0.15 to lower the starting point of T.
+- Decreased `fj_asymptote_decrease_val` from 0.02 to 0.01 for refined hit rates.
+- Adjusted `nnnow` from 0.72 to 0.712 for better context copying parameters.
+- Decreased `base_distortion_prob` from 0.37 to 0.36 for a more accurate representation of probe distortion.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2348ad4_20250903_011805_plot1.png)  
+![](../plot_archive/2348ad4_20250903_011805_plot2.png)  
+
 ## Commit [43816ab](https://github.com/naszhu/REM_E3_model_fixed/commit/43816ab) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:14:22  
 **Message:**

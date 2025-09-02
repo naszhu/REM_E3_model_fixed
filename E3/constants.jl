@@ -153,9 +153,9 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.15 # study，higher this value, lower the starting point of T
-ks_base = 0.45 #SOn (study only), lower the value, higher the starting point CF
-kb_base = 0.45 #Tn (study and test)
+ku_base = 0.2 # study，higher this value, lower the starting point of T
+ks_base = 0.7 #SOn (study only), lower the value, higher the starting point CF
+kb_base = 0.23 #Tn (study and test)
 kt_base = 0.45 #Fn (test only)
 
 fj_asymptote_decrease_val = 0.01 #0.35 #this value bigger, Hits higher
@@ -298,7 +298,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.174 ^power_taken#0.77 #0.148^power_taken
+ci=0.17 ^power_taken#0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
