@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [53efe91](https://github.com/naszhu/REM_E3_model_fixed/commit/53efe91) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:46:07  
+**Message:**
+```
+explore(model-e3): make all increasing/decreasing rate 0
+
+This is to see what influence starting value of CFs
+
+- Set `hj_asymptote_increase_val` to 0.0 to refine model responsiveness.
+- Increased `hj_base` from 0.4 to 0.6 for better starting conditions in simulations.
+
+These changes aim to optimize the model's performance and enhance simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/53efe91_20250902_234607_plot1.png)  
+![](../plot_archive/53efe91_20250902_234607_plot2.png)  
+
 ## Commit [2294c6d](https://github.com/naszhu/REM_E3_model_fixed/commit/2294c6d) (branch: `sep-2-test`)
 **Time:** 2025-09-02 23:43:36  
 **Message:**
