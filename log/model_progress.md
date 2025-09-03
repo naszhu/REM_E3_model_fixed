@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [bc150df](https://github.com/naszhu/REM_E3_model_fixed/commit/bc150df) (branch: `sep-3-test`)
+**Time:** 2025-09-03 23:18:13  
+**Message:**
+```
+finetune(model-e3): refine final test parameters and feature updates
+
+- Updated `x` from 0.093 to 0.13 to adjust the starting point for the final test.
+- Modified `cfinal_end` calculation by changing the offset from -0.06 to -0.08.
+- Increased `cfinal_rate` from 0.18 to 0.27 to enhance model performance during the final test phase.
+- Adjusted feature update conditions to include list number 0 for better handling of specific cases.
+
+These changes aim to optimize the final test phase and improve the accuracy of feature updates in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bc150df_20250903_231813_plot1.png)  
+![](../plot_archive/bc150df_20250903_231813_plot2.png)  
+
 ## Commit [ecc746c](https://github.com/naszhu/REM_E3_model_fixed/commit/ecc746c) (branch: `sep-3-test`)
 **Time:** 2025-09-03 22:40:32  
 **Message:**
