@@ -90,3 +90,37 @@ return [start_at - how_much * (1 - exp(-how_fast * k)) for k in 0:n-1]
 end
 
 
+"""
+    asymptotic_value(start, asymptote, rate, n)
+
+Generate a vector of `n` values that asymptotically approach a target value.
+- `start`: Initial value
+- `asymptote`: Value to approach asymptotically
+- `rate`: Rate of approach (higher = faster approach)
+- `n`: Number of values to generate
+"""
+function asymptotic_value(start::Float64, asymptote::Float64, rate::Float64, n::Int)::Vector{Float64}
+    @assert n ≥ 1
+    diff = asymptote - start
+    return [start + diff * (1 - exp(-rate * k)) for k in 0:n-1]
+end
+
+"""
+    asymptotic_decrease(start, asymptote, rate, n)
+
+Generate a vector of `n` values that asymptotically decrease to a target value.
+Ensures the final value is within 1% of the asymptote.
+"""
+function asymptotic_decrease(start::Float64, asymptote::Float64, rate::Float64, n::Int)::Vector{Float64}
+    @assert asymptote < start "Asymptote must be less than start value for decrease"
+    values = asymptotic_value(start, asymptote, rate, n)
+    
+    # Ensure we actually reach the asymptote
+    if abs(values[end] - asymptote) > 0.01 * abs(asymptote)
+        # Adjust the rate to ensure we reach the asymptote
+        adjusted_rate = -log(0.01) / (n - 1)  # Ensure within 1% of asymptote
+        return asymptotic_value(start, asymptote, max(rate, adjusted_rate), n)
+    end
+    return values
+end
+

@@ -1,5 +1,1626 @@
 # Model Progress
 
+## Commit [56e57b6](https://github.com/naszhu/REM_E3_model_fixed/commit/56e57b6) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:56:07  
+**Message:**
+```
+feat(predplot-e3): add package installation script and optimize plotting scripts
+
+- Introduced `install_packages.R` to automate the installation of the `data.table` package if not already installed.
+- Enhanced `run_parallel.sh` to run plotting scripts in parallel with timeout management, improving user feedback during plot generation.
+- Added new optimized R scripts `R_plots_fast.r` and `R_plots_finalt_fast.r` for faster data handling and visualization using `data.table`.
+- Updated `constants.jl` to revert to the original logic for `criterion_final`, ensuring consistency in calculations.
+
+These changes aim to streamline the setup process and improve the performance of plotting operations in the simulation framework.
+```
+**Changed Files:**
+- `E3/R_plots_fast.r`  
+- `E3/R_plots_finalt_fast.r`  
+- `E3/constants.jl`  
+- `install_packages.R`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/56e57b6_20250903_025607_plot1.png)  
+![](../plot_archive/56e57b6_20250903_025607_plot2.png)  
+
+## Commit [5771386](https://github.com/naszhu/REM_E3_model_fixed/commit/5771386) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:48:15  
+**Message:**
+```
+finetune(run_parallel-e3): enhance user feedback  and finetune
+
+- Updated output messages in `run_parallel.sh` to include emojis for better visual feedback during simulation execution.
+- Improved the clarity of messages indicating the creation of combined CSV files and the generation of plots.
+- Added a new R script `R_plots_fast.r` for optimized plotting, leveraging `data.table` for faster data handling and improved performance in generating visualizations.
+- Adjusted parameters in `constants.jl` to refine calculations for the final test phase, enhancing model accuracy.
+
+These changes aim to improve user experience and performance during simulations, providing clearer feedback and faster plot generation.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/5771386_20250903_024815_plot1.png)  
+![](../plot_archive/5771386_20250903_024815_plot2.png)  
+
+## Commit [0ce5082](https://github.com/naszhu/REM_E3_model_fixed/commit/0ce5082) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:43:21  
+**Message:**
+```
+feat(run_parallel-e3): add progress monitoring during simulation execution
+
+- Implemented a progress monitoring feature in `run_parallel.sh` to display the number of completed and running processes, along with elapsed time.
+- Enhanced user feedback by indicating when all simulations are completed and the total time taken for execution.
+
+These changes aim to improve the user experience by providing real-time updates on simulation progress.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/0ce5082_20250903_024321_plot1.png)  
+![](../plot_archive/0ce5082_20250903_024321_plot2.png)  
+
+## Commit [89fd0fe](https://github.com/naszhu/REM_E3_model_fixed/commit/89fd0fe) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:42:35  
+**Message:**
+```
+finetnue(model-e3): refine final test parameters for improved accuracy
+
+- Updated `x` from 0.044 to 0.045 to adjust the starting point for calculations.
+- Modified `cfinal_end` calculation to change the offset from -0.011 to -0.015, enhancing the precision of threshold settings.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/89fd0fe_20250903_024235_plot1.png)  
+![](../plot_archive/89fd0fe_20250903_024235_plot2.png)  
+
+## Commit [7898176](https://github.com/naszhu/REM_E3_model_fixed/commit/7898176) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:40:44  
+**Message:**
+```
+fix(run_parallel-e3): improve plot handling and cleanup process
+
+- Added a command to kill any existing image viewers displaying old plots before starting a new simulation.
+- Enhanced the output messages to indicate when each plot image is being opened, improving user feedback during execution.
+- Updated the cleanup process to ensure no old results interfere with new simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/7898176_20250903_024044_plot1.png)  
+![](../plot_archive/7898176_20250903_024044_plot2.png)  
+
+## Commit [a44c297](https://github.com/naszhu/REM_E3_model_fixed/commit/a44c297) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:35:07  
+**Message:**
+```
+refactor(model-e3): clean up and optimize E3 module
+
+- Updated `x` in `constants.jl` from 0.038 to 0.033 for refined threshold calculations.
+- Removed obsolete files and utilities across multiple directories to streamline the codebase, including optimization utilities, simulation logs, and R plotting scripts.
+- This cleanup aims to enhance maintainability and performance of the E3 module by eliminating unused code and improving clarity.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_temp/process_1/E3/LOG.txt`  
+- `parallel_temp/process_1/E3/R_plots.r`  
+- `parallel_temp/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_1/E3/R_plots_finalt.r`  
+- `parallel_temp/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/calc_cc.jl`  
+- `parallel_temp/process_1/E3/constants.jl`  
+- `parallel_temp/process_1/E3/data_structures.jl`  
+- `parallel_temp/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_1/E3/feature_generation.jl`  
+- `parallel_temp/process_1/E3/feature_updates.jl`  
+- `parallel_temp/process_1/E3/issue_body.txt`  
+- `parallel_temp/process_1/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_1/E3/memory_pool.jl`  
+- `parallel_temp/process_1/E3/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/memory_storage.jl`  
+- `parallel_temp/process_1/E3/probe_evaluation.jl`  
+- `parallel_temp/process_1/E3/probe_generation.jl`  
+- `parallel_temp/process_1/E3/simulation.jl`  
+- `parallel_temp/process_1/E3/utils.jl`  
+- `parallel_temp/process_1/optimization_utils.jl`  
+- `parallel_temp/process_1/simulation_log_1.txt`  
+- `parallel_temp/process_2/E3/LOG.txt`  
+- `parallel_temp/process_2/E3/R_plots.r`  
+- `parallel_temp/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_2/E3/R_plots_finalt.r`  
+- `parallel_temp/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/calc_cc.jl`  
+- `parallel_temp/process_2/E3/constants.jl`  
+- `parallel_temp/process_2/E3/data_structures.jl`  
+- `parallel_temp/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_2/E3/feature_generation.jl`  
+- `parallel_temp/process_2/E3/feature_updates.jl`  
+- `parallel_temp/process_2/E3/issue_body.txt`  
+- `parallel_temp/process_2/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_2/E3/memory_pool.jl`  
+- `parallel_temp/process_2/E3/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/memory_storage.jl`  
+- `parallel_temp/process_2/E3/probe_evaluation.jl`  
+- `parallel_temp/process_2/E3/probe_generation.jl`  
+- `parallel_temp/process_2/E3/simulation.jl`  
+- `parallel_temp/process_2/E3/utils.jl`  
+- `parallel_temp/process_2/optimization_utils.jl`  
+- `parallel_temp/process_2/simulation_log_2.txt`  
+- `parallel_temp/process_3/E3/LOG.txt`  
+- `parallel_temp/process_3/E3/R_plots.r`  
+- `parallel_temp/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_3/E3/R_plots_finalt.r`  
+- `parallel_temp/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/calc_cc.jl`  
+- `parallel_temp/process_3/E3/constants.jl`  
+- `parallel_temp/process_3/E3/data_structures.jl`  
+- `parallel_temp/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_3/E3/feature_generation.jl`  
+- `parallel_temp/process_3/E3/feature_updates.jl`  
+- `parallel_temp/process_3/E3/issue_body.txt`  
+- `parallel_temp/process_3/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_3/E3/memory_pool.jl`  
+- `parallel_temp/process_3/E3/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/memory_storage.jl`  
+- `parallel_temp/process_3/E3/probe_evaluation.jl`  
+- `parallel_temp/process_3/E3/probe_generation.jl`  
+- `parallel_temp/process_3/E3/simulation.jl`  
+- `parallel_temp/process_3/E3/utils.jl`  
+- `parallel_temp/process_3/optimization_utils.jl`  
+- `parallel_temp/process_3/simulation_log_3.txt`  
+- `parallel_temp/process_4/E3/LOG.txt`  
+- `parallel_temp/process_4/E3/R_plots.r`  
+- `parallel_temp/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_4/E3/R_plots_finalt.r`  
+- `parallel_temp/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/calc_cc.jl`  
+- `parallel_temp/process_4/E3/constants.jl`  
+- `parallel_temp/process_4/E3/data_structures.jl`  
+- `parallel_temp/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_4/E3/feature_generation.jl`  
+- `parallel_temp/process_4/E3/feature_updates.jl`  
+- `parallel_temp/process_4/E3/issue_body.txt`  
+- `parallel_temp/process_4/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_4/E3/memory_pool.jl`  
+- `parallel_temp/process_4/E3/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/memory_storage.jl`  
+- `parallel_temp/process_4/E3/probe_evaluation.jl`  
+- `parallel_temp/process_4/E3/probe_generation.jl`  
+- `parallel_temp/process_4/E3/simulation.jl`  
+- `parallel_temp/process_4/E3/utils.jl`  
+- `parallel_temp/process_4/optimization_utils.jl`  
+- `parallel_temp/process_4/simulation_log_4.txt`  
+![](../plot_archive/a44c297_20250903_023507_plot1.png)  
+![](../plot_archive/a44c297_20250903_023507_plot2.png)  
+
+## Commit [3620fcd](https://github.com/naszhu/REM_E3_model_fixed/commit/3620fcd) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:34:46  
+**Message:**
+```
+docs(model-e3): gitignore
+
+add paralell-temp
+```
+**Changed Files:**
+- `.gitignore`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3620fcd_20250903_023446_plot1.png)  
+![](../plot_archive/3620fcd_20250903_023446_plot2.png)  
+
+## Commit [7b503c3](https://github.com/naszhu/REM_E3_model_fixed/commit/7b503c3) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:32:39  
+**Message:**
+```
+feat(model-e3): introduce new simulation utilities and logging enhancements
+
+- Added `debug_original.log` to capture detailed error logs during simulations.
+- Updated `run_parallel.sh` to include cleanup of old results and display generated plot sizes.
+- Introduced new utility files for optimization and memory management to enhance simulation performance.
+- Refined `cfinal_end` calculation in `constants.jl` for improved threshold settings.
+- Added comprehensive logging in R scripts for better data tracking and analysis.
+
+These changes aim to improve the robustness and efficiency of the simulation framework, facilitating better debugging and performance monitoring.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `debug_original.log`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_results/process_1/E3/LOG.txt`  
+- `parallel_results/process_1/E3/R_plots.r`  
+- `parallel_results/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_1/E3/R_plots_finalt.r`  
+- `parallel_results/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_1/E3/calc_cc.jl`  
+- `parallel_results/process_1/E3/constants.jl`  
+- `parallel_results/process_1/E3/data_structures.jl`  
+- `parallel_results/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_1/E3/feature_generation.jl`  
+- `parallel_results/process_1/E3/feature_updates.jl`  
+- `parallel_results/process_1/E3/issue_body.txt`  
+- `parallel_results/process_1/E3/likelihood_calculations.jl`  
+- `parallel_results/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_1/E3/memory_pool.jl`  
+- `parallel_results/process_1/E3/memory_restorage.jl`  
+- `parallel_results/process_1/E3/memory_storage.jl`  
+- `parallel_results/process_1/E3/probe_evaluation.jl`  
+- `parallel_results/process_1/E3/probe_generation.jl`  
+- `parallel_results/process_1/E3/simulation.jl`  
+- `parallel_results/process_1/E3/utils.jl`  
+- `parallel_results/process_1/optimization_utils.jl`  
+- `parallel_results/process_1/simulation_log_1.txt`  
+- `parallel_results/process_2/E3/LOG.txt`  
+- `parallel_results/process_2/E3/R_plots.r`  
+- `parallel_results/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_2/E3/R_plots_finalt.r`  
+- `parallel_results/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_2/E3/calc_cc.jl`  
+- `parallel_results/process_2/E3/constants.jl`  
+- `parallel_results/process_2/E3/data_structures.jl`  
+- `parallel_results/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_2/E3/feature_generation.jl`  
+- `parallel_results/process_2/E3/feature_updates.jl`  
+- `parallel_results/process_2/E3/issue_body.txt`  
+- `parallel_results/process_2/E3/likelihood_calculations.jl`  
+- `parallel_results/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_2/E3/memory_pool.jl`  
+- `parallel_results/process_2/E3/memory_restorage.jl`  
+- `parallel_results/process_2/E3/memory_storage.jl`  
+- `parallel_results/process_2/E3/probe_evaluation.jl`  
+- `parallel_results/process_2/E3/probe_generation.jl`  
+- `parallel_results/process_2/E3/simulation.jl`  
+- `parallel_results/process_2/E3/utils.jl`  
+- `parallel_results/process_2/optimization_utils.jl`  
+- `parallel_results/process_2/simulation_log_2.txt`  
+- `parallel_results/process_3/E3/LOG.txt`  
+- `parallel_results/process_3/E3/R_plots.r`  
+- `parallel_results/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_3/E3/R_plots_finalt.r`  
+- `parallel_results/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_3/E3/calc_cc.jl`  
+- `parallel_results/process_3/E3/constants.jl`  
+- `parallel_results/process_3/E3/data_structures.jl`  
+- `parallel_results/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_3/E3/feature_generation.jl`  
+- `parallel_results/process_3/E3/feature_updates.jl`  
+- `parallel_results/process_3/E3/issue_body.txt`  
+- `parallel_results/process_3/E3/likelihood_calculations.jl`  
+- `parallel_results/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_3/E3/memory_pool.jl`  
+- `parallel_results/process_3/E3/memory_restorage.jl`  
+- `parallel_results/process_3/E3/memory_storage.jl`  
+- `parallel_results/process_3/E3/probe_evaluation.jl`  
+- `parallel_results/process_3/E3/probe_generation.jl`  
+- `parallel_results/process_3/E3/simulation.jl`  
+- `parallel_results/process_3/E3/utils.jl`  
+- `parallel_results/process_3/optimization_utils.jl`  
+- `parallel_results/process_3/simulation_log_3.txt`  
+- `parallel_results/process_4/E3/LOG.txt`  
+- `parallel_results/process_4/E3/R_plots.r`  
+- `parallel_results/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_4/E3/R_plots_finalt.r`  
+- `parallel_results/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_4/E3/calc_cc.jl`  
+- `parallel_results/process_4/E3/constants.jl`  
+- `parallel_results/process_4/E3/data_structures.jl`  
+- `parallel_results/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_4/E3/feature_generation.jl`  
+- `parallel_results/process_4/E3/feature_updates.jl`  
+- `parallel_results/process_4/E3/issue_body.txt`  
+- `parallel_results/process_4/E3/likelihood_calculations.jl`  
+- `parallel_results/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_4/E3/memory_pool.jl`  
+- `parallel_results/process_4/E3/memory_restorage.jl`  
+- `parallel_results/process_4/E3/memory_storage.jl`  
+- `parallel_results/process_4/E3/probe_evaluation.jl`  
+- `parallel_results/process_4/E3/probe_generation.jl`  
+- `parallel_results/process_4/E3/simulation.jl`  
+- `parallel_results/process_4/E3/utils.jl`  
+- `parallel_results/process_4/optimization_utils.jl`  
+- `parallel_results/process_4/simulation_log_4.txt`  
+- `parallel_temp/process_1/E3/LOG.txt`  
+- `parallel_temp/process_1/E3/R_plots.r`  
+- `parallel_temp/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_1/E3/R_plots_finalt.r`  
+- `parallel_temp/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/calc_cc.jl`  
+- `parallel_temp/process_1/E3/constants.jl`  
+- `parallel_temp/process_1/E3/data_structures.jl`  
+- `parallel_temp/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_1/E3/feature_generation.jl`  
+- `parallel_temp/process_1/E3/feature_updates.jl`  
+- `parallel_temp/process_1/E3/issue_body.txt`  
+- `parallel_temp/process_1/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_1/E3/memory_pool.jl`  
+- `parallel_temp/process_1/E3/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/memory_storage.jl`  
+- `parallel_temp/process_1/E3/probe_evaluation.jl`  
+- `parallel_temp/process_1/E3/probe_generation.jl`  
+- `parallel_temp/process_1/E3/simulation.jl`  
+- `parallel_temp/process_1/E3/utils.jl`  
+- `parallel_temp/process_1/optimization_utils.jl`  
+- `parallel_temp/process_1/simulation_log_1.txt`  
+- `parallel_temp/process_2/E3/LOG.txt`  
+- `parallel_temp/process_2/E3/R_plots.r`  
+- `parallel_temp/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_2/E3/R_plots_finalt.r`  
+- `parallel_temp/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/calc_cc.jl`  
+- `parallel_temp/process_2/E3/constants.jl`  
+- `parallel_temp/process_2/E3/data_structures.jl`  
+- `parallel_temp/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_2/E3/feature_generation.jl`  
+- `parallel_temp/process_2/E3/feature_updates.jl`  
+- `parallel_temp/process_2/E3/issue_body.txt`  
+- `parallel_temp/process_2/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_2/E3/memory_pool.jl`  
+- `parallel_temp/process_2/E3/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/memory_storage.jl`  
+- `parallel_temp/process_2/E3/probe_evaluation.jl`  
+- `parallel_temp/process_2/E3/probe_generation.jl`  
+- `parallel_temp/process_2/E3/simulation.jl`  
+- `parallel_temp/process_2/E3/utils.jl`  
+- `parallel_temp/process_2/optimization_utils.jl`  
+- `parallel_temp/process_2/simulation_log_2.txt`  
+- `parallel_temp/process_3/E3/LOG.txt`  
+- `parallel_temp/process_3/E3/R_plots.r`  
+- `parallel_temp/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_3/E3/R_plots_finalt.r`  
+- `parallel_temp/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/calc_cc.jl`  
+- `parallel_temp/process_3/E3/constants.jl`  
+- `parallel_temp/process_3/E3/data_structures.jl`  
+- `parallel_temp/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_3/E3/feature_generation.jl`  
+- `parallel_temp/process_3/E3/feature_updates.jl`  
+- `parallel_temp/process_3/E3/issue_body.txt`  
+- `parallel_temp/process_3/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_3/E3/memory_pool.jl`  
+- `parallel_temp/process_3/E3/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/memory_storage.jl`  
+- `parallel_temp/process_3/E3/probe_evaluation.jl`  
+- `parallel_temp/process_3/E3/probe_generation.jl`  
+- `parallel_temp/process_3/E3/simulation.jl`  
+- `parallel_temp/process_3/E3/utils.jl`  
+- `parallel_temp/process_3/optimization_utils.jl`  
+- `parallel_temp/process_3/simulation_log_3.txt`  
+- `parallel_temp/process_4/E3/LOG.txt`  
+- `parallel_temp/process_4/E3/R_plots.r`  
+- `parallel_temp/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_4/E3/R_plots_finalt.r`  
+- `parallel_temp/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/calc_cc.jl`  
+- `parallel_temp/process_4/E3/constants.jl`  
+- `parallel_temp/process_4/E3/data_structures.jl`  
+- `parallel_temp/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_4/E3/feature_generation.jl`  
+- `parallel_temp/process_4/E3/feature_updates.jl`  
+- `parallel_temp/process_4/E3/issue_body.txt`  
+- `parallel_temp/process_4/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_4/E3/memory_pool.jl`  
+- `parallel_temp/process_4/E3/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/memory_storage.jl`  
+- `parallel_temp/process_4/E3/probe_evaluation.jl`  
+- `parallel_temp/process_4/E3/probe_generation.jl`  
+- `parallel_temp/process_4/E3/simulation.jl`  
+- `parallel_temp/process_4/E3/utils.jl`  
+- `parallel_temp/process_4/optimization_utils.jl`  
+- `parallel_temp/process_4/simulation_log_4.txt`  
+- `run_parallel.sh`  
+![](../plot_archive/7b503c3_20250903_023239_plot1.png)  
+![](../plot_archive/7b503c3_20250903_023239_plot2.png)  
+
+## Commit [3fb0c72](https://github.com/naszhu/REM_E3_model_fixed/commit/3fb0c72) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:21:42  
+**Message:**
+```
+fix(model-e3): somehow deleted uc_final during ealier refactor
+
+- Introduced new ratios for unchanging and changing parameters in the final test phase.
+- Adjusted `final_gap_change` to enhance model dynamics.
+- Updated `cfinal_end` calculation to refine threshold settings.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3fb0c72_20250903_022142_plot1.png)  
+![](../plot_archive/3fb0c72_20250903_022142_plot2.png)  
+
+## Commit [095a6d2](https://github.com/naszhu/REM_E3_model_fixed/commit/095a6d2) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:10:43  
+**Message:**
+```
+feat(model-e3): add performance benchmarking and profiling tools
+
+- Introduced `benchmark_performance.jl` for performance benchmarking and profiling of simulations.
+- Added `OPTIMIZATION_GUIDE.md` to provide a comprehensive overview of optimization strategies.
+- Implemented `run_parallel.sh` for multi-process execution to enhance simulation speed.
+- Created `memory_pool.jl` to reduce garbage collection pressure by reusing objects.
+- Updated simulation logic in `simulation.jl` to ensure each thread has its own RNG for better performance.
+
+These additions aim to improve the efficiency and accuracy of the model's simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_pool.jl`  
+- `E3/simulation.jl`  
+- `OPTIMIZATION_GUIDE.md`  
+- `benchmark_performance.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_results/process_1/E3/LOG.txt`  
+- `parallel_results/process_1/E3/R_plots.r`  
+- `parallel_results/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_1/E3/R_plots_finalt.r`  
+- `parallel_results/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_1/E3/calc_cc.jl`  
+- `parallel_results/process_1/E3/constants.jl`  
+- `parallel_results/process_1/E3/data_structures.jl`  
+- `parallel_results/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_1/E3/feature_generation.jl`  
+- `parallel_results/process_1/E3/feature_updates.jl`  
+- `parallel_results/process_1/E3/issue_body.txt`  
+- `parallel_results/process_1/E3/likelihood_calculations.jl`  
+- `parallel_results/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_1/E3/memory_pool.jl`  
+- `parallel_results/process_1/E3/memory_restorage.jl`  
+- `parallel_results/process_1/E3/memory_storage.jl`  
+- `parallel_results/process_1/E3/probe_evaluation.jl`  
+- `parallel_results/process_1/E3/probe_generation.jl`  
+- `parallel_results/process_1/E3/simulation.jl`  
+- `parallel_results/process_1/E3/utils.jl`  
+- `parallel_results/process_1/optimization_utils.jl`  
+- `parallel_results/process_1/simulation_log_1.txt`  
+- `parallel_results/process_2/E3/LOG.txt`  
+- `parallel_results/process_2/E3/R_plots.r`  
+- `parallel_results/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_2/E3/R_plots_finalt.r`  
+- `parallel_results/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_2/E3/calc_cc.jl`  
+- `parallel_results/process_2/E3/constants.jl`  
+- `parallel_results/process_2/E3/data_structures.jl`  
+- `parallel_results/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_2/E3/feature_generation.jl`  
+- `parallel_results/process_2/E3/feature_updates.jl`  
+- `parallel_results/process_2/E3/issue_body.txt`  
+- `parallel_results/process_2/E3/likelihood_calculations.jl`  
+- `parallel_results/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_2/E3/memory_pool.jl`  
+- `parallel_results/process_2/E3/memory_restorage.jl`  
+- `parallel_results/process_2/E3/memory_storage.jl`  
+- `parallel_results/process_2/E3/probe_evaluation.jl`  
+- `parallel_results/process_2/E3/probe_generation.jl`  
+- `parallel_results/process_2/E3/simulation.jl`  
+- `parallel_results/process_2/E3/utils.jl`  
+- `parallel_results/process_2/optimization_utils.jl`  
+- `parallel_results/process_2/simulation_log_2.txt`  
+- `parallel_results/process_3/E3/LOG.txt`  
+- `parallel_results/process_3/E3/R_plots.r`  
+- `parallel_results/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_3/E3/R_plots_finalt.r`  
+- `parallel_results/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_3/E3/calc_cc.jl`  
+- `parallel_results/process_3/E3/constants.jl`  
+- `parallel_results/process_3/E3/data_structures.jl`  
+- `parallel_results/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_3/E3/feature_generation.jl`  
+- `parallel_results/process_3/E3/feature_updates.jl`  
+- `parallel_results/process_3/E3/issue_body.txt`  
+- `parallel_results/process_3/E3/likelihood_calculations.jl`  
+- `parallel_results/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_3/E3/memory_pool.jl`  
+- `parallel_results/process_3/E3/memory_restorage.jl`  
+- `parallel_results/process_3/E3/memory_storage.jl`  
+- `parallel_results/process_3/E3/probe_evaluation.jl`  
+- `parallel_results/process_3/E3/probe_generation.jl`  
+- `parallel_results/process_3/E3/simulation.jl`  
+- `parallel_results/process_3/E3/utils.jl`  
+- `parallel_results/process_3/optimization_utils.jl`  
+- `parallel_results/process_3/simulation_log_3.txt`  
+- `parallel_results/process_4/E3/LOG.txt`  
+- `parallel_results/process_4/E3/R_plots.r`  
+- `parallel_results/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_4/E3/R_plots_finalt.r`  
+- `parallel_results/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_4/E3/calc_cc.jl`  
+- `parallel_results/process_4/E3/constants.jl`  
+- `parallel_results/process_4/E3/data_structures.jl`  
+- `parallel_results/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_4/E3/feature_generation.jl`  
+- `parallel_results/process_4/E3/feature_updates.jl`  
+- `parallel_results/process_4/E3/issue_body.txt`  
+- `parallel_results/process_4/E3/likelihood_calculations.jl`  
+- `parallel_results/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_4/E3/memory_pool.jl`  
+- `parallel_results/process_4/E3/memory_restorage.jl`  
+- `parallel_results/process_4/E3/memory_storage.jl`  
+- `parallel_results/process_4/E3/probe_evaluation.jl`  
+- `parallel_results/process_4/E3/probe_generation.jl`  
+- `parallel_results/process_4/E3/simulation.jl`  
+- `parallel_results/process_4/E3/utils.jl`  
+- `parallel_results/process_4/optimization_utils.jl`  
+- `parallel_results/process_4/simulation_log_4.txt`  
+- `run_parallel.sh`  
+![](../plot_archive/095a6d2_20250903_021043_plot1.png)  
+![](../plot_archive/095a6d2_20250903_021043_plot2.png)  
+
+## Commit [095a6d2](https://github.com/naszhu/REM_E3_model_fixed/commit/095a6d2) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:10:43  
+**Message:**
+```
+feat(model-e3): add performance benchmarking and profiling tools
+
+- Introduced `benchmark_performance.jl` for performance benchmarking and profiling of simulations.
+- Added `OPTIMIZATION_GUIDE.md` to provide a comprehensive overview of optimization strategies.
+- Implemented `run_parallel.sh` for multi-process execution to enhance simulation speed.
+- Created `memory_pool.jl` to reduce garbage collection pressure by reusing objects.
+- Updated simulation logic in `simulation.jl` to ensure each thread has its own RNG for better performance.
+
+These additions aim to improve the efficiency and accuracy of the model's simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_pool.jl`  
+- `E3/simulation.jl`  
+- `OPTIMIZATION_GUIDE.md`  
+- `benchmark_performance.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_results/process_1/E3/LOG.txt`  
+- `parallel_results/process_1/E3/R_plots.r`  
+- `parallel_results/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_1/E3/R_plots_finalt.r`  
+- `parallel_results/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_1/E3/calc_cc.jl`  
+- `parallel_results/process_1/E3/constants.jl`  
+- `parallel_results/process_1/E3/data_structures.jl`  
+- `parallel_results/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_1/E3/feature_generation.jl`  
+- `parallel_results/process_1/E3/feature_updates.jl`  
+- `parallel_results/process_1/E3/issue_body.txt`  
+- `parallel_results/process_1/E3/likelihood_calculations.jl`  
+- `parallel_results/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_1/E3/memory_pool.jl`  
+- `parallel_results/process_1/E3/memory_restorage.jl`  
+- `parallel_results/process_1/E3/memory_storage.jl`  
+- `parallel_results/process_1/E3/probe_evaluation.jl`  
+- `parallel_results/process_1/E3/probe_generation.jl`  
+- `parallel_results/process_1/E3/simulation.jl`  
+- `parallel_results/process_1/E3/utils.jl`  
+- `parallel_results/process_1/optimization_utils.jl`  
+- `parallel_results/process_1/simulation_log_1.txt`  
+- `parallel_results/process_2/E3/LOG.txt`  
+- `parallel_results/process_2/E3/R_plots.r`  
+- `parallel_results/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_2/E3/R_plots_finalt.r`  
+- `parallel_results/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_2/E3/calc_cc.jl`  
+- `parallel_results/process_2/E3/constants.jl`  
+- `parallel_results/process_2/E3/data_structures.jl`  
+- `parallel_results/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_2/E3/feature_generation.jl`  
+- `parallel_results/process_2/E3/feature_updates.jl`  
+- `parallel_results/process_2/E3/issue_body.txt`  
+- `parallel_results/process_2/E3/likelihood_calculations.jl`  
+- `parallel_results/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_2/E3/memory_pool.jl`  
+- `parallel_results/process_2/E3/memory_restorage.jl`  
+- `parallel_results/process_2/E3/memory_storage.jl`  
+- `parallel_results/process_2/E3/probe_evaluation.jl`  
+- `parallel_results/process_2/E3/probe_generation.jl`  
+- `parallel_results/process_2/E3/simulation.jl`  
+- `parallel_results/process_2/E3/utils.jl`  
+- `parallel_results/process_2/optimization_utils.jl`  
+- `parallel_results/process_2/simulation_log_2.txt`  
+- `parallel_results/process_3/E3/LOG.txt`  
+- `parallel_results/process_3/E3/R_plots.r`  
+- `parallel_results/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_3/E3/R_plots_finalt.r`  
+- `parallel_results/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_3/E3/calc_cc.jl`  
+- `parallel_results/process_3/E3/constants.jl`  
+- `parallel_results/process_3/E3/data_structures.jl`  
+- `parallel_results/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_3/E3/feature_generation.jl`  
+- `parallel_results/process_3/E3/feature_updates.jl`  
+- `parallel_results/process_3/E3/issue_body.txt`  
+- `parallel_results/process_3/E3/likelihood_calculations.jl`  
+- `parallel_results/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_3/E3/memory_pool.jl`  
+- `parallel_results/process_3/E3/memory_restorage.jl`  
+- `parallel_results/process_3/E3/memory_storage.jl`  
+- `parallel_results/process_3/E3/probe_evaluation.jl`  
+- `parallel_results/process_3/E3/probe_generation.jl`  
+- `parallel_results/process_3/E3/simulation.jl`  
+- `parallel_results/process_3/E3/utils.jl`  
+- `parallel_results/process_3/optimization_utils.jl`  
+- `parallel_results/process_3/simulation_log_3.txt`  
+- `parallel_results/process_4/E3/LOG.txt`  
+- `parallel_results/process_4/E3/R_plots.r`  
+- `parallel_results/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_4/E3/R_plots_finalt.r`  
+- `parallel_results/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_4/E3/calc_cc.jl`  
+- `parallel_results/process_4/E3/constants.jl`  
+- `parallel_results/process_4/E3/data_structures.jl`  
+- `parallel_results/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_4/E3/feature_generation.jl`  
+- `parallel_results/process_4/E3/feature_updates.jl`  
+- `parallel_results/process_4/E3/issue_body.txt`  
+- `parallel_results/process_4/E3/likelihood_calculations.jl`  
+- `parallel_results/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_4/E3/memory_pool.jl`  
+- `parallel_results/process_4/E3/memory_restorage.jl`  
+- `parallel_results/process_4/E3/memory_storage.jl`  
+- `parallel_results/process_4/E3/probe_evaluation.jl`  
+- `parallel_results/process_4/E3/probe_generation.jl`  
+- `parallel_results/process_4/E3/simulation.jl`  
+- `parallel_results/process_4/E3/utils.jl`  
+- `parallel_results/process_4/optimization_utils.jl`  
+- `parallel_results/process_4/simulation_log_4.txt`  
+- `run_parallel.sh`  
+![](../plot_archive/095a6d2_20250903_021043_plot1.png)  
+![](../plot_archive/095a6d2_20250903_021043_plot2.png)  
+
+## Commit [d2bff83](https://github.com/naszhu/REM_E3_model_fixed/commit/d2bff83) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 01:55:30  
+**Message:**
+```
+refactor(model-e3):  change const structure for final test,
+
+put all final test together
+
+- Set `is_finaltest` to true to enable final testing mode.
+- Adjusted `cfinal_start` and `cfinal_end` to incorporate a variable `x` for refined threshold calculations.
+- Restored `final_gap_change` and `p_ListChange_finaltest` values for consistency in final test conditions.
+- Updated `recall_odds_threshold` and `recall_to_addtrace_threshold` for improved model dynamics.
+
+These changes aim to optimize the model's performance during the final testing phase and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d2bff83_20250903_015530_plot1.png)  
+![](../plot_archive/d2bff83_20250903_015530_plot2.png)  
+
+## Commit [3e007c9](https://github.com/naszhu/REM_E3_model_fixed/commit/3e007c9) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:46:54  
+**Message:**
+```
+finetune(model-e3): 1000 simulation
+
+- Increased `n_simulations` from 300 to 1000 to enhance simulation depth for final evaluation.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3e007c9_20250903_014654_plot1.png)  
+![](../plot_archive/3e007c9_20250903_014654_plot2.png)  
+
+## Commit [4a86016](https://github.com/naszhu/REM_E3_model_fixed/commit/4a86016) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:46:42  
+**Message:**
+```
+finetune(model-e3): 1000 simulation
+
+- Increased `n_simulations` from 300 to 1000 to enhance simulation depth for final evaluation.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4a86016_20250903_014642_plot1.png)  
+![](../plot_archive/4a86016_20250903_014642_plot2.png)  
+
+## Commit [0c106d3](https://github.com/naszhu/REM_E3_model_fixed/commit/0c106d3) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:41:24  
+**Message:**
+```
+finetune(model-e3): refine base parameters for enhanced simulation accuracy
+
+- Decreased `ku_base` from 0.2 to 0.15 to lower the starting point of T.
+- Decreased `ks_base` from 0.7 to 0.45 for improved starting point of CF.
+- Increased `kb_base` from 0.23 to 0.45 for better Tn conditions.
+- Adjusted `fj_rate` from 0.3 to 0.26 for a more gradual improvement in T.
+- Increased `hj_asymptote_increase_val` from 0.3 to 0.4 for refined model dynamics.
+- Decreased `nnnow` from 0.712 to 0.70 to enhance context copying parameters.
+- Decreased `base_distortion_prob` from 0.36 to 0.29 for a more accurate representation of probe distortion.
+- Adjusted `n_driftStudyTest` from 13 to 12 to refine drift modeling between study and test.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0c106d3_20250903_014124_plot1.png)  
+![](../plot_archive/0c106d3_20250903_014124_plot2.png)  
+
+## Commit [48fd9f9](https://github.com/naszhu/REM_E3_model_fixed/commit/48fd9f9) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:25:06  
+**Message:**
+```
+finetune(model-e3): adjust base parameters and plot limits for improved simulation accuracy
+
+- Decreased `ku_base` from 0.15 to 0.2 to lower the starting point of T.
+- Increased `ks_base` from 0.45 to 0.7 for better starting point of CF.
+- Decreased `kb_base` from 0.45 to 0.23 for refined Tn conditions.
+- Updated `ci` from 0.174 to 0.17 for enhanced model performance.
+- Removed ylim restriction in R plot for better visualization flexibility.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/48fd9f9_20250903_012506_plot1.png)  
+![](../plot_archive/48fd9f9_20250903_012506_plot2.png)  
+
+## Commit [2348ad4](https://github.com/naszhu/REM_E3_model_fixed/commit/2348ad4) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:18:05  
+**Message:**
+```
+finetune(model-e3): adjust base parameters for improved simulation accuracy
+
+A good working v
+
+- Increased `ku_base` from 0.12 to 0.15 to lower the starting point of T.
+- Decreased `fj_asymptote_decrease_val` from 0.02 to 0.01 for refined hit rates.
+- Adjusted `nnnow` from 0.72 to 0.712 for better context copying parameters.
+- Decreased `base_distortion_prob` from 0.37 to 0.36 for a more accurate representation of probe distortion.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2348ad4_20250903_011805_plot1.png)  
+![](../plot_archive/2348ad4_20250903_011805_plot2.png)  
+
+## Commit [43816ab](https://github.com/naszhu/REM_E3_model_fixed/commit/43816ab) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:14:22  
+**Message:**
+```
+finetune(model-e3): adjust simulation parameters for improved accuracy
+
+- Increased `n_simulations` from 100 to 300 to enhance simulation robustness.
+- Updated `ci` from 0.167 to 0.174 for improved model performance.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/43816ab_20250903_011422_plot1.png)  
+![](../plot_archive/43816ab_20250903_011422_plot2.png)  
+
+## Commit [38e6d39](https://github.com/naszhu/REM_E3_model_fixed/commit/38e6d39) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:10:27  
+**Message:**
+```
+finetune(model-e3): adjust base parameters for improved simulation accuracy
+
+- Increased `ks_base`, `kb_base`, and `kt_base` from 0.4 to 0.45 to lower the starting points for CF, T, and Fn respectively.
+- Decreased `nnnow` from 0.808 to 0.72 to refine context copying parameters.
+- Updated `ci` from 0.13 to 0.167 for enhanced model performance.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/38e6d39_20250903_011027_plot1.png)  
+![](../plot_archive/38e6d39_20250903_011027_plot2.png)  
+
+## Commit [fb6fd36](https://github.com/naszhu/REM_E3_model_fixed/commit/fb6fd36) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:03:18  
+**Message:**
+```
+finetune(model-e3): update drift parameters for enhanced simulation accuracy
+
+- Increased `n_driftStudyTest` from 7 to 13 to improve drift modeling between study and test.
+- Adjusted `n_between_listchange` from 15 to 20 to refine simulation dynamics.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fb6fd36_20250903_010318_plot1.png)  
+![](../plot_archive/fb6fd36_20250903_010318_plot2.png)  
+
+## Commit [829ecbc](https://github.com/naszhu/REM_E3_model_fixed/commit/829ecbc) (branch: `sep-2-test`)
+**Time:** 2025-09-03 01:01:01  
+**Message:**
+```
+finetune(model-e3): update drift parameters for improved simulation accuracy
+
+- Increased `n_driftStudyTest` from 3 to 7 to enhance drift modeling between study and test.
+- Decreased `base_distortion_prob` from 0.6 to 0.37 for a more accurate representation of probe distortion.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/829ecbc_20250903_010101_plot1.png)  
+![](../plot_archive/829ecbc_20250903_010101_plot2.png)  
+
+## Commit [d565027](https://github.com/naszhu/REM_E3_model_fixed/commit/d565027) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:58:33  
+**Message:**
+```
+finetune(model-e3): adjusti criterion for improved simulation accuracy
+
+- Updated `ci` from 0.09 to 0.13 to enhance model performance in simulations.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d565027_20250903_005833_plot1.png)  
+![](../plot_archive/d565027_20250903_005833_plot2.png)  
+
+## Commit [cccdbd0](https://github.com/naszhu/REM_E3_model_fixed/commit/cccdbd0) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:55:59  
+**Message:**
+```
+finetune(model-e3): update ci constant for improved simulation accuracy
+
+- Adjusted `ci` from 0.0685 to 0.09 to refine the model's performance in simulations.
+- Updated `context_tau` comment for clarity on foil odds adjustment.
+
+These changes aim to enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cccdbd0_20250903_005559_plot1.png)  
+![](../plot_archive/cccdbd0_20250903_005559_plot2.png)  
+
+## Commit [0cd25e3](https://github.com/naszhu/REM_E3_model_fixed/commit/0cd25e3) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:52:03  
+**Message:**
+```
+finetune(model-e3): adjust simulation parameters for improved accuracy
+
+- Decreased `n_simulations` from 300 to 100 to streamline testing conditions.
+- Reduced `hj_rate` from 1.5 to 0.85 for a more gradual adjustment in model responsiveness.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0cd25e3_20250903_005203_plot1.png)  
+![](../plot_archive/0cd25e3_20250903_005203_plot2.png)  
+
+## Commit [7416b26](https://github.com/naszhu/REM_E3_model_fixed/commit/7416b26) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:47:15  
+**Message:**
+```
+finetune(model-e3): a highnumber of  simulation
+
+- Increased `n_simulations` from 100 to 300 to enhance simulation robustness.
+- Updated `ku_base` from 0.08 to 0.12 to lower the starting point of T.
+- Increased `fj_asymptote_decrease_val` from 0.02 to 0.03 for refined hit rates.
+- Decreased `hj_asymptote_increase_val` from 0.4 to 0.3 to improve model responsiveness.
+- Increased `hj_base` from 0.6 to 0.7 for better initial conditions.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7416b26_20250903_004715_plot1.png)  
+![](../plot_archive/7416b26_20250903_004715_plot2.png)  
+
+## Commit [f70c0b9](https://github.com/naszhu/REM_E3_model_fixed/commit/f70c0b9) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:41:33  
+**Message:**
+```
+finetune(model-e3): adjust ks_base, kt_base, and fj_asymptote_decrease_val for improved simulation dynamics
+
+- Decreased `ks_base` from 0.45 to 0.4 to raise the starting point of CF.
+- Increased `kt_base` from 0.35 to 0.4 for better alignment with test conditions.
+- Decreased `fj_asymptote_decrease_val` from 0.03 to 0.02 to refine hit rates.
+
+These changes aim to optimize the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f70c0b9_20250903_004133_plot1.png)  
+![](../plot_archive/f70c0b9_20250903_004133_plot2.png)  
+
+## Commit [99fbd62](https://github.com/naszhu/REM_E3_model_fixed/commit/99fbd62) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:38:28  
+**Message:**
+```
+finetune(model-e3): adjust ks_base, kb_base, and hj parameters for improved simulation dynamics
+
+- Increased `ks_base` from 0.35 to 0.45 to lower the starting point of CF.
+- Updated `kb_base` from 0.35 to 0.4 for better alignment with study findings.
+- Increased `hj_asymptote_increase_val` from 0.3 to 0.4 for enhanced model responsiveness.
+- Decreased `hj_base` from 0.7 to 0.6 to refine the initial conditions for simulations.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/99fbd62_20250903_003828_plot1.png)  
+![](../plot_archive/99fbd62_20250903_003828_plot2.png)  
+
+## Commit [45deb1f](https://github.com/naszhu/REM_E3_model_fixed/commit/45deb1f) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:35:35  
+**Message:**
+```
+finetune(model-e3): adjust fj and hj parameters for improved simulation dynamics
+
+- Decreased `fj_asymptote_decrease_val` from 0.05 to 0.03 for refined hit rates.
+- Increased `fj_rate` from 0.2 to 0.3 for a faster adjustment of fj.
+- Increased `hj_asymptote_increase_val` from 0.22 to 0.3 for enhanced model responsiveness.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/45deb1f_20250903_003535_plot1.png)  
+![](../plot_archive/45deb1f_20250903_003535_plot2.png)  
+
+## Commit [a986d24](https://github.com/naszhu/REM_E3_model_fixed/commit/a986d24) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:32:31  
+**Message:**
+```
+finetune(model-e3): adjust ku_base, fj, and hj parameters for improved simulation dynamics
+
+- Decreased `ku_base` from 0.2 to 0.08 to lower the starting point of T.
+- Reduced `fj_asymptote_decrease_val` from 0.07 to 0.05 for refined hit rates.
+- Decreased `fj_rate` from 0.3 to 0.2 for a slower adjustment of fj.
+- Increased `hj_rate` from 1.0 to 1.5 for enhanced model responsiveness.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a986d24_20250903_003231_plot1.png)  
+![](../plot_archive/a986d24_20250903_003231_plot2.png)  
+
+## Commit [056f910](https://github.com/naszhu/REM_E3_model_fixed/commit/056f910) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:30:19  
+**Message:**
+```
+finetune(model-e3): adjust fj and hj parameters for improved simulation dynamics
+
+- Decreased `fj_asymptote_decrease_val` from 0.2 to 0.05 to refine hit rates.
+- Reduced `fj_rate` from 1.0 to 0.3 for a slower adjustment of fj.
+- Increased `hj_asymptote_increase_val` from 0.2 to 0.22 for enhanced model responsiveness.
+- Updated `hj_rate` from 2.0 to 1.0 and set `hj_base` to 1 for better initial conditions.
+
+These changes aim to optimize the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/056f910_20250903_003019_plot1.png)  
+![](../plot_archive/056f910_20250903_003019_plot2.png)  
+
+## Commit [faa891a](https://github.com/naszhu/REM_E3_model_fixed/commit/faa891a) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:27:20  
+**Message:**
+```
+refactor(model-e3): adjust ku_base for improved simulation starting point
+
+- Decreased `ku_base` from 0.65 to 0.2 to lower the starting point of T, aligning with study findings.
+
+This change aims to refine the model's performance and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/faa891a_20250903_002720_plot1.png)  
+![](../plot_archive/faa891a_20250903_002720_plot2.png)  
+
+## Commit [7579d9c](https://github.com/naszhu/REM_E3_model_fixed/commit/7579d9c) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:22:35  
+**Message:**
+```
+finetune(model-e3): update base constants for enhanced simulation dynamics
+
+- Increased `ku_base` from 0.65 to 0.75 to raise the starting point of T.
+- Adjusted `fj_asymptote_decrease_val` from 0.0 to 0.2 to improve hit rates.
+- Reduced `fj_rate` from 5.0 to 1.0 for a slower adjustment of fj.
+- Updated `hj_asymptote_increase_val` from 0.0 to 0.2 to enhance model responsiveness.
+- Increased `hj_base` from 0.6 to 0.7 for better initial conditions.
+
+These changes aim to refine the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7579d9c_20250903_002235_plot1.png)  
+![](../plot_archive/7579d9c_20250903_002235_plot2.png)  
+
+## Commit [3c5aaad](https://github.com/naszhu/REM_E3_model_fixed/commit/3c5aaad) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:17:41  
+**Message:**
+```
+refactor(model-e3): update base constants for improved simulation dynamics
+
+- Adjusted `ku_base` from 0.65 to 0.65 with a clarifying comment on its impact on the starting point of T.
+- Increased `hj_base` from 0.5 to 0.6 to enhance initial conditions for simulations.
+
+These changes aim to refine the model's performance and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3c5aaad_20250903_001741_plot1.png)  
+![](../plot_archive/3c5aaad_20250903_001741_plot2.png)  
+
+## Commit [5b2478f](https://github.com/naszhu/REM_E3_model_fixed/commit/5b2478f) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:16:11  
+**Message:**
+```
+refactor(model-e3): adjust base constants and plot limits for improved simulation accuracy
+
+- Decreased `ks_base`, `kb_base`, and `kt_base` from 0.42, 0.40, and 0.40 to 0.35 for better starting points in simulations.
+- Updated plot limits in `R_plots.r` from (0, 1) to (0.4, 1) for enhanced visualization of results.
+
+These changes aim to optimize the model's performance and improve the clarity of visual outputs during simulations.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5b2478f_20250903_001611_plot1.png)  
+![](../plot_archive/5b2478f_20250903_001611_plot2.png)  
+
+## Commit [b00ab7a](https://github.com/naszhu/REM_E3_model_fixed/commit/b00ab7a) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:14:52  
+**Message:**
+```
+fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus
+
+- Updated `update_Z_feature_SOn_CFs!`, `update_Z_feature_Tn_CFs!`, and `update_Z_feature_Fn_CFs!` functions to set κ values for list 1 as `1 - ks_base`, `1 - kb_base`, and `1 - kt_base` respectively, enhancing the model's parameter handling.
+
+These changes aim to improve the accuracy of feature calculations in simulations.
+
+Closes #65
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b00ab7a_20250903_001452_plot1.png)  
+![](../plot_archive/b00ab7a_20250903_001452_plot2.png)  
+
+## Commit [b079b53](https://github.com/naszhu/REM_E3_model_fixed/commit/b079b53) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:13:54  
+**Message:**
+```
+fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus
+
+- Updated `update_Z_feature_SOn_CFs!`, `update_Z_feature_Tn_CFs!`, and `update_Z_feature_Fn_CFs!` functions to set κ values for list 1 as `1 - ks_base`, `1 - kb_base`, and `1 - kt_base` respectively, enhancing the model's parameter handling.
+
+These changes aim to improve the accuracy of feature calculations in simulations.
+
+Closes #65
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b079b53_20250903_001354_plot1.png)  
+![](../plot_archive/b079b53_20250903_001354_plot2.png)  
+
+## Commit [ce0b3fc](https://github.com/naszhu/REM_E3_model_fixed/commit/ce0b3fc) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:11:49  
+**Message:**
+```
+explore(model-e3): update base constants for improved simulation conditions
+
+very weird, higher ks, kb, kt, higher CF performance? this is wrong theoretically
+
+- Increased `ks_base`, `kb_base`, and `kt_base` from 0.32, 0.30, and 0.30 to 0.82, 0.80, and 0.80 respectively to enhance starting points in simulations.
+
+These changes aim to optimize the model's performance and improve simulation outcomes.
+
+Weird Issue #65
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ce0b3fc_20250903_001149_plot1.png)  
+![](../plot_archive/ce0b3fc_20250903_001149_plot2.png)  
+
+## Commit [d4635fe](https://github.com/naszhu/REM_E3_model_fixed/commit/d4635fe) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:08:58  
+**Message:**
+```
+explore(model-e3): decrease hj_base for adjusted simulation conditions
+
+Now after using base kappa for list 1 rather than 0
+
+- Reduced `hj_base` from 0.9 to 0.5 to modify the initial conditions for simulations.
+
+This change aims to optimize the model's performance and improve simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d4635fe_20250903_000858_plot1.png)  
+![](../plot_archive/d4635fe_20250903_000858_plot2.png)  
+
+## Commit [a14d6bf](https://github.com/naszhu/REM_E3_model_fixed/commit/a14d6bf) (branch: `sep-2-test`)
+**Time:** 2025-09-03 00:03:42  
+**Message:**
+```
+explore(model-e3): update base κ values for feature study calculations
+
+this is working? but why?
+
+- Replaced hardcoded κ values with corresponding base values (`ku_base`, `ks_base`, `kb_base`, `kt_base`) in `update_Z_feature_study!`, `update_Z_feature_SOn_CFs!`, `update_Z_feature_Tn_CFs!`, and `update_Z_feature_Fn_CFs!` functions for improved clarity and accuracy.
+
+These changes aim to enhance the model's performance and ensure correct parameter usage in simulations.
+
+Issue #63, CF starting point
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/a14d6bf_20250903_000342_plot1.png)  
+![](../plot_archive/a14d6bf_20250903_000342_plot2.png)  
+
+## Commit [475053d](https://github.com/naszhu/REM_E3_model_fixed/commit/475053d) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:57:52  
+**Message:**
+```
+explore(model-e3): adjust simulation parameters and feature evaluation logic
+
+No change to fj hj, but why there is such a big difference between list 2 and 3
+
+- Reduced `n_simulations` from 200 to 100 for streamlined testing.
+- Updated feature evaluation logic in `update_Z_feature_Fn_CFs!` and `probe_evaluation` functions to improve clarity and debugging.
+
+These changes aim to enhance model performance and facilitate better understanding of feature interactions during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/475053d_20250902_235752_plot1.png)  
+![](../plot_archive/475053d_20250902_235752_plot2.png)  
+
+## Commit [cb68308](https://github.com/naszhu/REM_E3_model_fixed/commit/cb68308) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:47:19  
+**Message:**
+```
+finetune(model-e3): increase hj_base for improved simulation starting conditions
+
+- Increased `hj_base` from 0.6 to 0.9 to enhance the initial conditions for simulations.
+
+This change aims to optimize the model's performance and improve simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cb68308_20250902_234719_plot1.png)  
+![](../plot_archive/cb68308_20250902_234719_plot2.png)  
+
+## Commit [53efe91](https://github.com/naszhu/REM_E3_model_fixed/commit/53efe91) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:46:07  
+**Message:**
+```
+explore(model-e3): make all increasing/decreasing rate 0
+
+This is to see what influence starting value of CFs
+
+- Set `hj_asymptote_increase_val` to 0.0 to refine model responsiveness.
+- Increased `hj_base` from 0.4 to 0.6 for better starting conditions in simulations.
+
+These changes aim to optimize the model's performance and enhance simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/53efe91_20250902_234607_plot1.png)  
+![](../plot_archive/53efe91_20250902_234607_plot2.png)  
+
+## Commit [2294c6d](https://github.com/naszhu/REM_E3_model_fixed/commit/2294c6d) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:43:36  
+**Message:**
+```
+finetune(model-e3): adjust hj parameters and plot limits for improved model calibration
+
+- Decreased `hj_asymptote_increase_val` from 0.85 to 0.5 to refine model responsiveness.
+- Adjusted `hj_base` from 0.05 to 0.4 for better starting conditions in simulations.
+- Updated plot limits in `R_plots.r` from (0.41, 1) to (0, 1) for enhanced visualization of results.
+
+These changes aim to optimize the model's performance and improve the clarity of visual outputs during simulations.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2294c6d_20250902_234336_plot1.png)  
+![](../plot_archive/2294c6d_20250902_234336_plot2.png)  
+
+## Commit [1accfc7](https://github.com/naszhu/REM_E3_model_fixed/commit/1accfc7) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:43:11  
+**Message:**
+```
+finetune(model-e3): adjust base constants and plot limits for improved model calibration
+
+- Decreased `ks_base`, `kb_base`, and `kt_base` to 0.32, 0.30, and 0.30 respectively for better starting points in simulations.
+- Adjusted `fj_rate` from 7.0 to 5.0 to modify the speed of improvement in simulations.
+- Lowered `hj_rate` from 3.0 to 2.0 to refine model responsiveness.
+- Updated plot limits in `R_plots.r` from (0.41, 1) to (0, 1) for better visualization of results.
+
+These changes aim to enhance the model's performance and visualization during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1accfc7_20250902_234311_plot1.png)  
+![](../plot_archive/1accfc7_20250902_234311_plot2.png)  
+
+## Commit [d19a3b4](https://github.com/naszhu/REM_E3_model_fixed/commit/d19a3b4) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:36:05  
+**Message:**
+```
+finetune(model-e3): increase hj_asymptote_increase_val for improved model responsiveness
+
+- Raised `hj_asymptote_increase_val` from 0.75 to 0.85 to enhance model performance during simulations.
+
+This change aims to refine the model's parameters for better responsiveness in simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d19a3b4_20250902_233605_plot1.png)  
+![](../plot_archive/d19a3b4_20250902_233605_plot2.png)  
+
+## Commit [3c80ac1](https://github.com/naszhu/REM_E3_model_fixed/commit/3c80ac1) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:34:24  
+**Message:**
+```
+finetune(model-e3): adjust fj_asymptote_decrease_val and fj_rate for improved model performance
+
+- Increased `fj_asymptote_decrease_val` from 0.0 to 0.35 to enhance model calibration.
+- Raised `fj_rate` from 5.0 to 7.0 to improve simulation responsiveness.
+
+These changes aim to refine the model's parameters for better simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3c80ac1_20250902_233424_plot1.png)  
+![](../plot_archive/3c80ac1_20250902_233424_plot2.png)  
+
+## Commit [535d3e0](https://github.com/naszhu/REM_E3_model_fixed/commit/535d3e0) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:33:48  
+**Message:**
+```
+explore(model-e3): reset fj_asymptote_decrease_val to 0.0 and clarify fj_rate comment
+
+- Set `fj_asymptote_decrease_val` to 0.0 to adjust model behavior.
+- Added clarification to the comment for `fj_rate` to explain its impact on simulation speed.
+
+These changes aim to refine the model's parameters for better simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/535d3e0_20250902_233348_plot1.png)  
+![](../plot_archive/535d3e0_20250902_233348_plot2.png)  
+
+## Commit [1522b2c](https://github.com/naszhu/REM_E3_model_fixed/commit/1522b2c) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:31:37  
+**Message:**
+```
+explore(model-e3): update fj_rate and clarify fj_asymptote_decrease_val comment
+
+- Increased `fj_rate` from 4.0 to 5.0 for improved simulation responsiveness.
+- Clarified comment for `fj_asymptote_decrease_val` to enhance understanding of its impact on model behavior.
+
+These changes aim to refine the model's performance during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1522b2c_20250902_233137_plot1.png)  
+![](../plot_archive/1522b2c_20250902_233137_plot2.png)  
+
+## Commit [1d1e2c0](https://github.com/naszhu/REM_E3_model_fixed/commit/1d1e2c0) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:29:29  
+**Message:**
+```
+finetune(model-e3): adjust simulation parameters and criterion calculations
+
+- Reduced `n_simulations` from 300 to 200 for testing purposes.
+- Updated `nnnow` from 0.8 to 0.808 for improved context copying.
+- Decreased `n_driftStudyTest` from 15 to 5 to refine drift calculations.
+- Adjusted `n_between_listchange` from 25 to 15 to optimize simulation behavior.
+- Modified `ci` calculation from 0.065 to 0.0685 for better criterion initialization.
+
+These changes aim to enhance the accuracy and performance of the model during simulations.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1d1e2c0_20250902_232929_plot1.png)  
+![](../plot_archive/1d1e2c0_20250902_232929_plot2.png)  
+
+## Commit [0b6d345](https://github.com/naszhu/REM_E3_model_fixed/commit/0b6d345) (branch: `sep-2-test`)
+**Time:** 2025-09-02 23:17:16  
+**Message:**
+```
+merge(model-e3): Merge branch 'sep-2-bottleneck' into sep-2-test
+
+For issue #26 optimization
+```
+![](../plot_archive/0b6d345_20250902_231716_plot1.png)  
+![](../plot_archive/0b6d345_20250902_231716_plot2.png)  
+
+## Commit [791be3d](https://github.com/naszhu/REM_E3_model_fixed/commit/791be3d) (branch: `sep-2-bottleneck`)
+**Time:** 2025-09-02 23:02:32  
+**Message:**
+```
+refactor(simulation): optimize simulation process and enhance performance
+
+- Extracted single simulation logic into `run_single_simulation` for better parallelization.
+- Pre-allocated results arrays to minimize resizing during simulations, improving efficiency.
+- Replaced `push!` with direct indexing for collecting results, further optimizing performance.
+- Updated initialization of DataFrames to use generous estimates for row sizes, reducing the need for resizing.
+- Enhanced context handling by reusing pre-allocated arrays to avoid unnecessary deep copies.
+
+These changes aim to streamline the simulation process and improve overall execution speed.
+
+This is to solve issue #26 optimization
+```
+**Changed Files:**
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/791be3d_20250902_230232_plot1.png)  
+![](../plot_archive/791be3d_20250902_230232_plot2.png)  
+
+## Commit [add49d0](https://github.com/naszhu/REM_E3_model_fixed/commit/add49d0) (branch: `sep-2-bottleneck`)
+**Time:** 2025-09-02 22:48:38  
+**Message:**
+```
+fix(model-e3): adjust constants and re-enable feature update calls
+
+- Set `is_finaltest` to false, increasing `n_simulations` to 300 for regular testing.
+- Decreased `ku_base` from 0.85 to 0.65 and adjusted `fj_asymptote_decrease_val` from 0.4 to 0.35 for improved model calibration.
+- Increased `hj_asymptote_increase_val` from 0.65 to 0.75 to enhance model responsiveness.
+- Re-enabled calls to `update_Z_feature_Tn_CFs!` and `update_Z_feature_Fn_CFs!` in `memory_restorage.jl` to ensure proper feature updates during the restoration process.
+
+These changes aim to optimize the model's performance and ensure accurate feature handling in the code.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/add49d0_20250902_224838_plot1.png)  
+![](../plot_archive/add49d0_20250902_224838_plot2.png)  
+
+## Commit [e26ff98](https://github.com/naszhu/REM_E3_model_fixed/commit/e26ff98) (branch: `sep-2-test`)
+**Time:** 2025-09-02 22:19:49  
+**Message:**
+```
+feat(model-e3): enable final test mode and adjust criterion calculations
+
+I made a "must" decrease to the end asympotope value function, but that function is currently not used. That function gives wierd result.
+
+This difficulty of asymptotic function is related to issue #38
+
+- Set `is_finaltest` to true, reducing `n_simulations` to 100 for final testing.
+- Updated `criterion_final` to use `asym_decrease_shift_fj` for improved value generation.
+- Commented out the inclusion of `data_structures.jl` to streamline the main execution flow.
+- Fixed typos in variable names for consistency and clarity.
+
+These changes aim to enhance the model's performance during final testing and ensure accurate criterion calculations.
+```
+**Changed Files:**
+- `E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e26ff98_20250902_221949_plot1.png)  
+![](../plot_archive/e26ff98_20250902_221949_plot2.png)  
+
+## Commit [8300a2c](https://github.com/naszhu/REM_E3_model_fixed/commit/8300a2c) (branch: `sep-2-test`)
+**Time:** 2025-09-02 22:19:37  
+**Message:**
+```
+feat(model-e3): enable final test mode and adjust criterion calculations
+
+I made a "must" decrease to the end asympotope value function, but that function is currently not used. That function gives wierd result.
+
+This difficulty of asymptotic function is related to issue #38
+
+- Set `is_finaltest` to true, reducing `n_simulations` to 100 for final testing.
+- Updated `criterion_final` to use `asym_decrease_shift_fj` for improved value generation.
+- Commented out the inclusion of `data_structures.jl` to streamline the main execution flow.
+- Fixed typos in variable names for consistency and clarity.
+
+These changes aim to enhance the model's performance during final testing and ensure accurate criterion calculations.
+```
+**Changed Files:**
+- `E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8300a2c_20250902_221937_plot1.png)  
+![](../plot_archive/8300a2c_20250902_221937_plot2.png)  
+
+## Commit [652723a](https://github.com/naszhu/REM_E3_model_fixed/commit/652723a) (branch: `sep-2-test`)
+**Time:** 2025-09-02 21:39:17  
+**Message:**
+```
+feat(model-e3):  take out 1/11 power sampling, works better now
+
+The sampling accuracy got way higher now
+
+- Increased `kb_base` from 0.20 to 0.80 and adjusted `fj_asymptote_decrease_val` from 0.8 to 0.4 to enhance model calibration.
+- Reduced `fj_rate` from 2.0 to 0.5 for better responsiveness.
+- Updated `power_taken` to 1 and modified `ci` calculation for refined criterion initialization.
+
+These changes aim to optimize the model's performance and ensure better alignment with expected outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/652723a_20250902_213917_plot1.png)  
+![](../plot_archive/652723a_20250902_213917_plot2.png)  
+
+## Commit [30407a1](https://github.com/naszhu/REM_E3_model_fixed/commit/30407a1) (branch: `sep-2-test`)
+**Time:** 2025-09-01 23:54:54  
+**Message:**
+```
+merge(model-e3): Make model v6 Merge branch 'aug-31-new-model-v6'
+
+Closes #62
+```
+![](../plot_archive/30407a1_20250901_235454_plot1.png)  
+![](../plot_archive/30407a1_20250901_235454_plot2.png)  
+
 ## Commit [72fa36a](https://github.com/naszhu/REM_E3_model_fixed/commit/72fa36a) (branch: `aug-31-new-model-v6`)
 **Time:** 2025-09-01 23:52:07  
 **Message:**

@@ -146,9 +146,12 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 @assert !isnothing(sampled_item) "sampled item is nothing"
                 if ilist_probe !=1
                     # println("listi",ilist_probe)
-                    if use_Z_feature && !isnothing(sampled_item) && (rand() < h_j[ilist_probe-1])
+                    ranv = rand() 
+                    if use_Z_feature && !isnothing(sampled_item) && ranv < h_j[ilist_probe-1]
                         # Use OT feature from sampled item
                         # println("test")
+                        # println("listi",ilist_probe)
+                        # println("  ranv ", ranv, " hj: ", h_j[ilist_probe-1])
                         Z_value = get_Z_feature_value(sampled_item.word)
                         if Z_value === 1 && sampled_item.word.type_general === :T
                             # println(ilist_probe,":", Z_value, " sampled_item:", sampled_item.word.type_general)

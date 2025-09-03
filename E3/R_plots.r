@@ -4,9 +4,19 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 library(gridExtra)
-# getwd()
+# Debug: Check working directory and file info
+cat("R script working directory:", getwd(), "\n")
+cat("all_results.csv exists:", file.exists("all_results.csv"), "\n")
+cat("DF.csv exists:", file.exists("DF.csv"), "\n")
+
 all_results=read.csv("all_results.csv")
 DF=read.csv("DF.csv")
+
+# Debug: Show some basic stats about the data
+cat("Data loaded - all_results rows:", nrow(all_results), "\n")
+cat("Data loaded - DF rows:", nrow(DF), "\n")
+cat("Sample of data (first few values):\n")
+print(head(DF[,1:3]))  # Show first few rows and columns
 
 # all_results$is_target
 df1=all_results%>%mutate(is_target=case_when(is_target=="true"~1,TRUE~0),correct=decision_isold==is_target)%>%
@@ -139,7 +149,8 @@ p1=ggplot(data=DF2, aes(x=list_number,y=meanx,group=is_target))+
             plot.caption = element_text(hjust = 0, size = 14, face = "bold"),  # Align the caption to the left and customize its appearance
         plot.margin = margin(t = 10, b = 40),
         text=element_text(size=20) # Increase font size globally
-    )#+ylim(c(0.41,0.89))
+    )#+ylim(c(0.4,1))
+    # ylim(c(0.41,0.89))
 p1
 
 # DF2 = DF %>% mutate(meanx = case_when(is_target=="true"~ meanx, TRUE ~ 1-meanx))%>%

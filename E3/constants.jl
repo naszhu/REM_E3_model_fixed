@@ -6,7 +6,7 @@
 #### start of everything:: and Design
 ##########
 is_finaltest = false
-n_simulations = is_finaltest ? 100 : 300;
+n_simulations = is_finaltest ? 100 : 3000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -153,19 +153,19 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # f(j) is decreasing function
 # h(j) is increasing function
 
-ku_base = 0.85 # study
-ks_base = 0.82 #SOn (study only)
-kb_base = 0.20 #Tn (study and test)
-kt_base = 0.80 #Fn (test only)
+ku_base = 0.15 # study，higher this value, lower the starting point of T
+ks_base = 0.45 #SOn (study only), lower the value, higher the starting point CF
+kb_base = 0.45 #Tn (study and test)
+kt_base = 0.45 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.8
-fj_rate = 2.0
+fj_asymptote_decrease_val = 0.01 #0.35 #this value bigger, Hits higher
+fj_rate = 0.26 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.65
-hj_rate = 3.0
-hj_base = 0.05; 
+hj_asymptote_increase_val = 0.4
+hj_rate = 0.85
+hj_base = 0.6; #higher this value higher CF starting point
 
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 
@@ -206,7 +206,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.8
+nnnow=0.70 #lower this value, the differences between T and F bigger at beggining, smaller later (is this true?, i think so)
 c_adv = 0#0.06
 
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
@@ -235,7 +235,7 @@ p_reinstate_rate = 0.2#0.4 #prob of reinstatement
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
+n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 adjust this and the distortion probabitliy to control space between 1st test position of T and F
 (1-(1-p_driftAndListChange)^n_driftStudyTest[1])
 
 
@@ -243,11 +243,11 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 15) #7
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
 max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.6  # Base probability of distortion for the first probe
+base_distortion_prob = 0.29  # Base probability of distortion for the first probe
 
 
 
-n_between_listchange = round.(Int, LinRange(25, 25, n_lists)); #5;15; #CHANGED, this is used in sim()
+n_between_listchange = round.(Int, LinRange(20, 20, n_lists)); #5;15; #CHANGED, this is used in sim()
 (1- (1-p_driftAndListChange)^n_between_listchange[1])
 
 
@@ -274,8 +274,6 @@ nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
 p_recallFeatureStore = 1.0; #this value is currently abandoned, this is to be used in 
 
-final_gap_change = 0.1; #0.21
-p_ListChange_finaltest = ones(10) * 0.8 #0.1 prob list change for final test
 
 
 #the advatage of foil in inital test (to make final T prediciton overlap)
@@ -296,19 +294,40 @@ Thresholds
 context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower than this  
 
 # originally 0.23 works, but now needs to adjust
-# criterion_initial = generate_asymptotic_values(1.0, 0.34, 0.20, 1.0, 1.0, 5.0) 
-power_taken = (1/11)
-ci=0.77 #0.148^power_taken
 
+power_taken = 1
+ci=0.171 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+
+#cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
 # criterion_initial = LinRange(0.25, 0.1, n_probes);#the bigger the later number, more close hits and CR merges. control merging  
 
-criterion_final =  LinRange(0.2^power_taken,0.18^power_taken, 7)#LinRange(0.18, 0.23, 10)
-context_tau_final = 100 #0.20.2 above if this is 10
-recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
+# criterion_final =  LinRange(0.15^power_taken,0.01^power_taken, n_lists)#LinRange(0.18, 0.23, 10)
 recall_to_addtrace_threshold = Inf
+
+recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than criterion_initial
+
+"""
+Final test
+"""
+x =0.068
+cfinal_start=(0.08+x)^power_taken;
+cfinal_end=(0.004+x-0.035)^power_taken;
+cfinal_rate = 0.34
+
+criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
+# criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
+context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
+final_gap_change = 0.13; #0.21
+p_ListChange_finaltest = ones(10) * 0.5 #0.1 prob list change for final test
+
+ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.5,0.5, n_lists) # if use no unchanging
+
+nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
+nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
 
 
 ##################### Product parm

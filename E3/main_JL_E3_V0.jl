@@ -29,10 +29,12 @@ using Random, Distributions, Statistics, DataFrames, DataFramesMeta
 # using RCall
 using BenchmarkTools, ProfileView, Profile, Base.Threads
 using QuadGK
+# Performance optimization packages
+# using StaticArrays  # For fixed-size arrays with no allocations
+JULIA_NUM_THREADS=20 #julia
 Threads.nthreads()
-# JULIA_NUM_THREADS=8 julia
 
-
+include("data_structures.jl")
 include("utils.jl")
 include("constants.jl") 
 # recall_odds_threshold = 1e5;
@@ -47,7 +49,7 @@ include("constants.jl")
 a = [1 1 1; 1 1 1]
 
 include("feature_updates.jl")
-include("data_structures.jl")
+# include("data_structures.jl")
 
 include("feature_generation.jl")
 
