@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [d4d60ea](https://github.com/naszhu/REM_E3_model_fixed/commit/d4d60ea) (branch: `sep-3-test`)
+**Time:** 2025-09-04 01:01:57  
+**Message:**
+```
+fix(model-e3): somehow called the function and study twice, but didn't influence result much
+
+- Commented out conditional logic related to updating word features based on list number to enhance code readability.
+- This change aims to simplify the function's structure while maintaining the existing functionality for feature updates.
+```
+**Changed Files:**
+- `E3/memory_storage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d4d60ea_20250904_010157_plot1.png)  
+![](../plot_archive/d4d60ea_20250904_010157_plot2.png)  
+
 ## Commit [bc150df](https://github.com/naszhu/REM_E3_model_fixed/commit/bc150df) (branch: `sep-3-test`)
 **Time:** 2025-09-03 23:18:13  
 **Message:**

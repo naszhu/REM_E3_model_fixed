@@ -241,8 +241,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
             update_Z_feature_Tn_CFs!(iimage_toadd.word, iprobe_img.list_number)
         else  
-            update_Z_feature_Fn_CFs!(iimage_toadd.word, iprobe_img.list_number)
-            println("Class of iprobe_img.list_number: ", typeof(iprobe_img.list_number), " : ", iprobe_img.list_number)
+            # this is wrong, if not strenghten, this is the case of a totally new foil, and I don't know what to do with totally new foil. Maybe just keep what it is.
+            # update_Z_feature_Fn_CFs!(iimage_toadd.word, iprobe_img.list_number)
+            # println("Class of iprobe_img.list_number: ", typeof(iprobe_img.list_number), " : ", iprobe_img.list_number)
         end
 
         push!(image_pool, iimage_toadd)
