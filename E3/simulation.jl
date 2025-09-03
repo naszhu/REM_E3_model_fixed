@@ -3,6 +3,8 @@
 
 function run_single_simulation(sim_num::Int)
     # Single simulation logic extracted for parallelization
+    # Fix: Each thread gets its own RNG to avoid contention
+    rng = Random.MersenneTwister(sim_num + 1000)
     image_pool = EpisodicImage[]
     
     # Pre-allocate results arrays for this simulation (with safety margin)

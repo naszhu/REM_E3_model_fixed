@@ -1,5 +1,726 @@
 # Model Progress
 
+## Commit [56e57b6](https://github.com/naszhu/REM_E3_model_fixed/commit/56e57b6) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:56:07  
+**Message:**
+```
+feat(predplot-e3): add package installation script and optimize plotting scripts
+
+- Introduced `install_packages.R` to automate the installation of the `data.table` package if not already installed.
+- Enhanced `run_parallel.sh` to run plotting scripts in parallel with timeout management, improving user feedback during plot generation.
+- Added new optimized R scripts `R_plots_fast.r` and `R_plots_finalt_fast.r` for faster data handling and visualization using `data.table`.
+- Updated `constants.jl` to revert to the original logic for `criterion_final`, ensuring consistency in calculations.
+
+These changes aim to streamline the setup process and improve the performance of plotting operations in the simulation framework.
+```
+**Changed Files:**
+- `E3/R_plots_fast.r`  
+- `E3/R_plots_finalt_fast.r`  
+- `E3/constants.jl`  
+- `install_packages.R`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/56e57b6_20250903_025607_plot1.png)  
+![](../plot_archive/56e57b6_20250903_025607_plot2.png)  
+
+## Commit [5771386](https://github.com/naszhu/REM_E3_model_fixed/commit/5771386) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:48:15  
+**Message:**
+```
+finetune(run_parallel-e3): enhance user feedback  and finetune
+
+- Updated output messages in `run_parallel.sh` to include emojis for better visual feedback during simulation execution.
+- Improved the clarity of messages indicating the creation of combined CSV files and the generation of plots.
+- Added a new R script `R_plots_fast.r` for optimized plotting, leveraging `data.table` for faster data handling and improved performance in generating visualizations.
+- Adjusted parameters in `constants.jl` to refine calculations for the final test phase, enhancing model accuracy.
+
+These changes aim to improve user experience and performance during simulations, providing clearer feedback and faster plot generation.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/5771386_20250903_024815_plot1.png)  
+![](../plot_archive/5771386_20250903_024815_plot2.png)  
+
+## Commit [0ce5082](https://github.com/naszhu/REM_E3_model_fixed/commit/0ce5082) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:43:21  
+**Message:**
+```
+feat(run_parallel-e3): add progress monitoring during simulation execution
+
+- Implemented a progress monitoring feature in `run_parallel.sh` to display the number of completed and running processes, along with elapsed time.
+- Enhanced user feedback by indicating when all simulations are completed and the total time taken for execution.
+
+These changes aim to improve the user experience by providing real-time updates on simulation progress.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/0ce5082_20250903_024321_plot1.png)  
+![](../plot_archive/0ce5082_20250903_024321_plot2.png)  
+
+## Commit [89fd0fe](https://github.com/naszhu/REM_E3_model_fixed/commit/89fd0fe) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:42:35  
+**Message:**
+```
+finetnue(model-e3): refine final test parameters for improved accuracy
+
+- Updated `x` from 0.044 to 0.045 to adjust the starting point for calculations.
+- Modified `cfinal_end` calculation to change the offset from -0.011 to -0.015, enhancing the precision of threshold settings.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/89fd0fe_20250903_024235_plot1.png)  
+![](../plot_archive/89fd0fe_20250903_024235_plot2.png)  
+
+## Commit [7898176](https://github.com/naszhu/REM_E3_model_fixed/commit/7898176) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:40:44  
+**Message:**
+```
+fix(run_parallel-e3): improve plot handling and cleanup process
+
+- Added a command to kill any existing image viewers displaying old plots before starting a new simulation.
+- Enhanced the output messages to indicate when each plot image is being opened, improving user feedback during execution.
+- Updated the cleanup process to ensure no old results interfere with new simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/7898176_20250903_024044_plot1.png)  
+![](../plot_archive/7898176_20250903_024044_plot2.png)  
+
+## Commit [a44c297](https://github.com/naszhu/REM_E3_model_fixed/commit/a44c297) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:35:07  
+**Message:**
+```
+refactor(model-e3): clean up and optimize E3 module
+
+- Updated `x` in `constants.jl` from 0.038 to 0.033 for refined threshold calculations.
+- Removed obsolete files and utilities across multiple directories to streamline the codebase, including optimization utilities, simulation logs, and R plotting scripts.
+- This cleanup aims to enhance maintainability and performance of the E3 module by eliminating unused code and improving clarity.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_temp/process_1/E3/LOG.txt`  
+- `parallel_temp/process_1/E3/R_plots.r`  
+- `parallel_temp/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_1/E3/R_plots_finalt.r`  
+- `parallel_temp/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/calc_cc.jl`  
+- `parallel_temp/process_1/E3/constants.jl`  
+- `parallel_temp/process_1/E3/data_structures.jl`  
+- `parallel_temp/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_1/E3/feature_generation.jl`  
+- `parallel_temp/process_1/E3/feature_updates.jl`  
+- `parallel_temp/process_1/E3/issue_body.txt`  
+- `parallel_temp/process_1/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_1/E3/memory_pool.jl`  
+- `parallel_temp/process_1/E3/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/memory_storage.jl`  
+- `parallel_temp/process_1/E3/probe_evaluation.jl`  
+- `parallel_temp/process_1/E3/probe_generation.jl`  
+- `parallel_temp/process_1/E3/simulation.jl`  
+- `parallel_temp/process_1/E3/utils.jl`  
+- `parallel_temp/process_1/optimization_utils.jl`  
+- `parallel_temp/process_1/simulation_log_1.txt`  
+- `parallel_temp/process_2/E3/LOG.txt`  
+- `parallel_temp/process_2/E3/R_plots.r`  
+- `parallel_temp/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_2/E3/R_plots_finalt.r`  
+- `parallel_temp/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/calc_cc.jl`  
+- `parallel_temp/process_2/E3/constants.jl`  
+- `parallel_temp/process_2/E3/data_structures.jl`  
+- `parallel_temp/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_2/E3/feature_generation.jl`  
+- `parallel_temp/process_2/E3/feature_updates.jl`  
+- `parallel_temp/process_2/E3/issue_body.txt`  
+- `parallel_temp/process_2/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_2/E3/memory_pool.jl`  
+- `parallel_temp/process_2/E3/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/memory_storage.jl`  
+- `parallel_temp/process_2/E3/probe_evaluation.jl`  
+- `parallel_temp/process_2/E3/probe_generation.jl`  
+- `parallel_temp/process_2/E3/simulation.jl`  
+- `parallel_temp/process_2/E3/utils.jl`  
+- `parallel_temp/process_2/optimization_utils.jl`  
+- `parallel_temp/process_2/simulation_log_2.txt`  
+- `parallel_temp/process_3/E3/LOG.txt`  
+- `parallel_temp/process_3/E3/R_plots.r`  
+- `parallel_temp/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_3/E3/R_plots_finalt.r`  
+- `parallel_temp/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/calc_cc.jl`  
+- `parallel_temp/process_3/E3/constants.jl`  
+- `parallel_temp/process_3/E3/data_structures.jl`  
+- `parallel_temp/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_3/E3/feature_generation.jl`  
+- `parallel_temp/process_3/E3/feature_updates.jl`  
+- `parallel_temp/process_3/E3/issue_body.txt`  
+- `parallel_temp/process_3/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_3/E3/memory_pool.jl`  
+- `parallel_temp/process_3/E3/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/memory_storage.jl`  
+- `parallel_temp/process_3/E3/probe_evaluation.jl`  
+- `parallel_temp/process_3/E3/probe_generation.jl`  
+- `parallel_temp/process_3/E3/simulation.jl`  
+- `parallel_temp/process_3/E3/utils.jl`  
+- `parallel_temp/process_3/optimization_utils.jl`  
+- `parallel_temp/process_3/simulation_log_3.txt`  
+- `parallel_temp/process_4/E3/LOG.txt`  
+- `parallel_temp/process_4/E3/R_plots.r`  
+- `parallel_temp/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_4/E3/R_plots_finalt.r`  
+- `parallel_temp/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/calc_cc.jl`  
+- `parallel_temp/process_4/E3/constants.jl`  
+- `parallel_temp/process_4/E3/data_structures.jl`  
+- `parallel_temp/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_4/E3/feature_generation.jl`  
+- `parallel_temp/process_4/E3/feature_updates.jl`  
+- `parallel_temp/process_4/E3/issue_body.txt`  
+- `parallel_temp/process_4/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_4/E3/memory_pool.jl`  
+- `parallel_temp/process_4/E3/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/memory_storage.jl`  
+- `parallel_temp/process_4/E3/probe_evaluation.jl`  
+- `parallel_temp/process_4/E3/probe_generation.jl`  
+- `parallel_temp/process_4/E3/simulation.jl`  
+- `parallel_temp/process_4/E3/utils.jl`  
+- `parallel_temp/process_4/optimization_utils.jl`  
+- `parallel_temp/process_4/simulation_log_4.txt`  
+![](../plot_archive/a44c297_20250903_023507_plot1.png)  
+![](../plot_archive/a44c297_20250903_023507_plot2.png)  
+
+## Commit [3620fcd](https://github.com/naszhu/REM_E3_model_fixed/commit/3620fcd) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:34:46  
+**Message:**
+```
+docs(model-e3): gitignore
+
+add paralell-temp
+```
+**Changed Files:**
+- `.gitignore`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3620fcd_20250903_023446_plot1.png)  
+![](../plot_archive/3620fcd_20250903_023446_plot2.png)  
+
+## Commit [7b503c3](https://github.com/naszhu/REM_E3_model_fixed/commit/7b503c3) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:32:39  
+**Message:**
+```
+feat(model-e3): introduce new simulation utilities and logging enhancements
+
+- Added `debug_original.log` to capture detailed error logs during simulations.
+- Updated `run_parallel.sh` to include cleanup of old results and display generated plot sizes.
+- Introduced new utility files for optimization and memory management to enhance simulation performance.
+- Refined `cfinal_end` calculation in `constants.jl` for improved threshold settings.
+- Added comprehensive logging in R scripts for better data tracking and analysis.
+
+These changes aim to improve the robustness and efficiency of the simulation framework, facilitating better debugging and performance monitoring.
+```
+**Changed Files:**
+- `E3/R_plots.r`  
+- `E3/constants.jl`  
+- `debug_original.log`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_results/process_1/E3/LOG.txt`  
+- `parallel_results/process_1/E3/R_plots.r`  
+- `parallel_results/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_1/E3/R_plots_finalt.r`  
+- `parallel_results/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_1/E3/calc_cc.jl`  
+- `parallel_results/process_1/E3/constants.jl`  
+- `parallel_results/process_1/E3/data_structures.jl`  
+- `parallel_results/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_1/E3/feature_generation.jl`  
+- `parallel_results/process_1/E3/feature_updates.jl`  
+- `parallel_results/process_1/E3/issue_body.txt`  
+- `parallel_results/process_1/E3/likelihood_calculations.jl`  
+- `parallel_results/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_1/E3/memory_pool.jl`  
+- `parallel_results/process_1/E3/memory_restorage.jl`  
+- `parallel_results/process_1/E3/memory_storage.jl`  
+- `parallel_results/process_1/E3/probe_evaluation.jl`  
+- `parallel_results/process_1/E3/probe_generation.jl`  
+- `parallel_results/process_1/E3/simulation.jl`  
+- `parallel_results/process_1/E3/utils.jl`  
+- `parallel_results/process_1/optimization_utils.jl`  
+- `parallel_results/process_1/simulation_log_1.txt`  
+- `parallel_results/process_2/E3/LOG.txt`  
+- `parallel_results/process_2/E3/R_plots.r`  
+- `parallel_results/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_2/E3/R_plots_finalt.r`  
+- `parallel_results/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_2/E3/calc_cc.jl`  
+- `parallel_results/process_2/E3/constants.jl`  
+- `parallel_results/process_2/E3/data_structures.jl`  
+- `parallel_results/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_2/E3/feature_generation.jl`  
+- `parallel_results/process_2/E3/feature_updates.jl`  
+- `parallel_results/process_2/E3/issue_body.txt`  
+- `parallel_results/process_2/E3/likelihood_calculations.jl`  
+- `parallel_results/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_2/E3/memory_pool.jl`  
+- `parallel_results/process_2/E3/memory_restorage.jl`  
+- `parallel_results/process_2/E3/memory_storage.jl`  
+- `parallel_results/process_2/E3/probe_evaluation.jl`  
+- `parallel_results/process_2/E3/probe_generation.jl`  
+- `parallel_results/process_2/E3/simulation.jl`  
+- `parallel_results/process_2/E3/utils.jl`  
+- `parallel_results/process_2/optimization_utils.jl`  
+- `parallel_results/process_2/simulation_log_2.txt`  
+- `parallel_results/process_3/E3/LOG.txt`  
+- `parallel_results/process_3/E3/R_plots.r`  
+- `parallel_results/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_3/E3/R_plots_finalt.r`  
+- `parallel_results/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_3/E3/calc_cc.jl`  
+- `parallel_results/process_3/E3/constants.jl`  
+- `parallel_results/process_3/E3/data_structures.jl`  
+- `parallel_results/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_3/E3/feature_generation.jl`  
+- `parallel_results/process_3/E3/feature_updates.jl`  
+- `parallel_results/process_3/E3/issue_body.txt`  
+- `parallel_results/process_3/E3/likelihood_calculations.jl`  
+- `parallel_results/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_3/E3/memory_pool.jl`  
+- `parallel_results/process_3/E3/memory_restorage.jl`  
+- `parallel_results/process_3/E3/memory_storage.jl`  
+- `parallel_results/process_3/E3/probe_evaluation.jl`  
+- `parallel_results/process_3/E3/probe_generation.jl`  
+- `parallel_results/process_3/E3/simulation.jl`  
+- `parallel_results/process_3/E3/utils.jl`  
+- `parallel_results/process_3/optimization_utils.jl`  
+- `parallel_results/process_3/simulation_log_3.txt`  
+- `parallel_results/process_4/E3/LOG.txt`  
+- `parallel_results/process_4/E3/R_plots.r`  
+- `parallel_results/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_4/E3/R_plots_finalt.r`  
+- `parallel_results/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_4/E3/calc_cc.jl`  
+- `parallel_results/process_4/E3/constants.jl`  
+- `parallel_results/process_4/E3/data_structures.jl`  
+- `parallel_results/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_4/E3/feature_generation.jl`  
+- `parallel_results/process_4/E3/feature_updates.jl`  
+- `parallel_results/process_4/E3/issue_body.txt`  
+- `parallel_results/process_4/E3/likelihood_calculations.jl`  
+- `parallel_results/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_4/E3/memory_pool.jl`  
+- `parallel_results/process_4/E3/memory_restorage.jl`  
+- `parallel_results/process_4/E3/memory_storage.jl`  
+- `parallel_results/process_4/E3/probe_evaluation.jl`  
+- `parallel_results/process_4/E3/probe_generation.jl`  
+- `parallel_results/process_4/E3/simulation.jl`  
+- `parallel_results/process_4/E3/utils.jl`  
+- `parallel_results/process_4/optimization_utils.jl`  
+- `parallel_results/process_4/simulation_log_4.txt`  
+- `parallel_temp/process_1/E3/LOG.txt`  
+- `parallel_temp/process_1/E3/R_plots.r`  
+- `parallel_temp/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_1/E3/R_plots_finalt.r`  
+- `parallel_temp/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/calc_cc.jl`  
+- `parallel_temp/process_1/E3/constants.jl`  
+- `parallel_temp/process_1/E3/data_structures.jl`  
+- `parallel_temp/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_1/E3/feature_generation.jl`  
+- `parallel_temp/process_1/E3/feature_updates.jl`  
+- `parallel_temp/process_1/E3/issue_body.txt`  
+- `parallel_temp/process_1/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_1/E3/memory_pool.jl`  
+- `parallel_temp/process_1/E3/memory_restorage.jl`  
+- `parallel_temp/process_1/E3/memory_storage.jl`  
+- `parallel_temp/process_1/E3/probe_evaluation.jl`  
+- `parallel_temp/process_1/E3/probe_generation.jl`  
+- `parallel_temp/process_1/E3/simulation.jl`  
+- `parallel_temp/process_1/E3/utils.jl`  
+- `parallel_temp/process_1/optimization_utils.jl`  
+- `parallel_temp/process_1/simulation_log_1.txt`  
+- `parallel_temp/process_2/E3/LOG.txt`  
+- `parallel_temp/process_2/E3/R_plots.r`  
+- `parallel_temp/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_2/E3/R_plots_finalt.r`  
+- `parallel_temp/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/calc_cc.jl`  
+- `parallel_temp/process_2/E3/constants.jl`  
+- `parallel_temp/process_2/E3/data_structures.jl`  
+- `parallel_temp/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_2/E3/feature_generation.jl`  
+- `parallel_temp/process_2/E3/feature_updates.jl`  
+- `parallel_temp/process_2/E3/issue_body.txt`  
+- `parallel_temp/process_2/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_2/E3/memory_pool.jl`  
+- `parallel_temp/process_2/E3/memory_restorage.jl`  
+- `parallel_temp/process_2/E3/memory_storage.jl`  
+- `parallel_temp/process_2/E3/probe_evaluation.jl`  
+- `parallel_temp/process_2/E3/probe_generation.jl`  
+- `parallel_temp/process_2/E3/simulation.jl`  
+- `parallel_temp/process_2/E3/utils.jl`  
+- `parallel_temp/process_2/optimization_utils.jl`  
+- `parallel_temp/process_2/simulation_log_2.txt`  
+- `parallel_temp/process_3/E3/LOG.txt`  
+- `parallel_temp/process_3/E3/R_plots.r`  
+- `parallel_temp/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_3/E3/R_plots_finalt.r`  
+- `parallel_temp/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/calc_cc.jl`  
+- `parallel_temp/process_3/E3/constants.jl`  
+- `parallel_temp/process_3/E3/data_structures.jl`  
+- `parallel_temp/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_3/E3/feature_generation.jl`  
+- `parallel_temp/process_3/E3/feature_updates.jl`  
+- `parallel_temp/process_3/E3/issue_body.txt`  
+- `parallel_temp/process_3/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_3/E3/memory_pool.jl`  
+- `parallel_temp/process_3/E3/memory_restorage.jl`  
+- `parallel_temp/process_3/E3/memory_storage.jl`  
+- `parallel_temp/process_3/E3/probe_evaluation.jl`  
+- `parallel_temp/process_3/E3/probe_generation.jl`  
+- `parallel_temp/process_3/E3/simulation.jl`  
+- `parallel_temp/process_3/E3/utils.jl`  
+- `parallel_temp/process_3/optimization_utils.jl`  
+- `parallel_temp/process_3/simulation_log_3.txt`  
+- `parallel_temp/process_4/E3/LOG.txt`  
+- `parallel_temp/process_4/E3/R_plots.r`  
+- `parallel_temp/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_temp/process_4/E3/R_plots_finalt.r`  
+- `parallel_temp/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/calc_cc.jl`  
+- `parallel_temp/process_4/E3/constants.jl`  
+- `parallel_temp/process_4/E3/data_structures.jl`  
+- `parallel_temp/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_temp/process_4/E3/feature_generation.jl`  
+- `parallel_temp/process_4/E3/feature_updates.jl`  
+- `parallel_temp/process_4/E3/issue_body.txt`  
+- `parallel_temp/process_4/E3/likelihood_calculations.jl`  
+- `parallel_temp/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_temp/process_4/E3/memory_pool.jl`  
+- `parallel_temp/process_4/E3/memory_restorage.jl`  
+- `parallel_temp/process_4/E3/memory_storage.jl`  
+- `parallel_temp/process_4/E3/probe_evaluation.jl`  
+- `parallel_temp/process_4/E3/probe_generation.jl`  
+- `parallel_temp/process_4/E3/simulation.jl`  
+- `parallel_temp/process_4/E3/utils.jl`  
+- `parallel_temp/process_4/optimization_utils.jl`  
+- `parallel_temp/process_4/simulation_log_4.txt`  
+- `run_parallel.sh`  
+![](../plot_archive/7b503c3_20250903_023239_plot1.png)  
+![](../plot_archive/7b503c3_20250903_023239_plot2.png)  
+
+## Commit [3fb0c72](https://github.com/naszhu/REM_E3_model_fixed/commit/3fb0c72) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:21:42  
+**Message:**
+```
+fix(model-e3): somehow deleted uc_final during ealier refactor
+
+- Introduced new ratios for unchanging and changing parameters in the final test phase.
+- Adjusted `final_gap_change` to enhance model dynamics.
+- Updated `cfinal_end` calculation to refine threshold settings.
+
+These changes aim to optimize the model's performance during the final testing phase and improve the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3fb0c72_20250903_022142_plot1.png)  
+![](../plot_archive/3fb0c72_20250903_022142_plot2.png)  
+
+## Commit [095a6d2](https://github.com/naszhu/REM_E3_model_fixed/commit/095a6d2) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:10:43  
+**Message:**
+```
+feat(model-e3): add performance benchmarking and profiling tools
+
+- Introduced `benchmark_performance.jl` for performance benchmarking and profiling of simulations.
+- Added `OPTIMIZATION_GUIDE.md` to provide a comprehensive overview of optimization strategies.
+- Implemented `run_parallel.sh` for multi-process execution to enhance simulation speed.
+- Created `memory_pool.jl` to reduce garbage collection pressure by reusing objects.
+- Updated simulation logic in `simulation.jl` to ensure each thread has its own RNG for better performance.
+
+These additions aim to improve the efficiency and accuracy of the model's simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_pool.jl`  
+- `E3/simulation.jl`  
+- `OPTIMIZATION_GUIDE.md`  
+- `benchmark_performance.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_results/process_1/E3/LOG.txt`  
+- `parallel_results/process_1/E3/R_plots.r`  
+- `parallel_results/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_1/E3/R_plots_finalt.r`  
+- `parallel_results/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_1/E3/calc_cc.jl`  
+- `parallel_results/process_1/E3/constants.jl`  
+- `parallel_results/process_1/E3/data_structures.jl`  
+- `parallel_results/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_1/E3/feature_generation.jl`  
+- `parallel_results/process_1/E3/feature_updates.jl`  
+- `parallel_results/process_1/E3/issue_body.txt`  
+- `parallel_results/process_1/E3/likelihood_calculations.jl`  
+- `parallel_results/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_1/E3/memory_pool.jl`  
+- `parallel_results/process_1/E3/memory_restorage.jl`  
+- `parallel_results/process_1/E3/memory_storage.jl`  
+- `parallel_results/process_1/E3/probe_evaluation.jl`  
+- `parallel_results/process_1/E3/probe_generation.jl`  
+- `parallel_results/process_1/E3/simulation.jl`  
+- `parallel_results/process_1/E3/utils.jl`  
+- `parallel_results/process_1/optimization_utils.jl`  
+- `parallel_results/process_1/simulation_log_1.txt`  
+- `parallel_results/process_2/E3/LOG.txt`  
+- `parallel_results/process_2/E3/R_plots.r`  
+- `parallel_results/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_2/E3/R_plots_finalt.r`  
+- `parallel_results/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_2/E3/calc_cc.jl`  
+- `parallel_results/process_2/E3/constants.jl`  
+- `parallel_results/process_2/E3/data_structures.jl`  
+- `parallel_results/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_2/E3/feature_generation.jl`  
+- `parallel_results/process_2/E3/feature_updates.jl`  
+- `parallel_results/process_2/E3/issue_body.txt`  
+- `parallel_results/process_2/E3/likelihood_calculations.jl`  
+- `parallel_results/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_2/E3/memory_pool.jl`  
+- `parallel_results/process_2/E3/memory_restorage.jl`  
+- `parallel_results/process_2/E3/memory_storage.jl`  
+- `parallel_results/process_2/E3/probe_evaluation.jl`  
+- `parallel_results/process_2/E3/probe_generation.jl`  
+- `parallel_results/process_2/E3/simulation.jl`  
+- `parallel_results/process_2/E3/utils.jl`  
+- `parallel_results/process_2/optimization_utils.jl`  
+- `parallel_results/process_2/simulation_log_2.txt`  
+- `parallel_results/process_3/E3/LOG.txt`  
+- `parallel_results/process_3/E3/R_plots.r`  
+- `parallel_results/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_3/E3/R_plots_finalt.r`  
+- `parallel_results/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_3/E3/calc_cc.jl`  
+- `parallel_results/process_3/E3/constants.jl`  
+- `parallel_results/process_3/E3/data_structures.jl`  
+- `parallel_results/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_3/E3/feature_generation.jl`  
+- `parallel_results/process_3/E3/feature_updates.jl`  
+- `parallel_results/process_3/E3/issue_body.txt`  
+- `parallel_results/process_3/E3/likelihood_calculations.jl`  
+- `parallel_results/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_3/E3/memory_pool.jl`  
+- `parallel_results/process_3/E3/memory_restorage.jl`  
+- `parallel_results/process_3/E3/memory_storage.jl`  
+- `parallel_results/process_3/E3/probe_evaluation.jl`  
+- `parallel_results/process_3/E3/probe_generation.jl`  
+- `parallel_results/process_3/E3/simulation.jl`  
+- `parallel_results/process_3/E3/utils.jl`  
+- `parallel_results/process_3/optimization_utils.jl`  
+- `parallel_results/process_3/simulation_log_3.txt`  
+- `parallel_results/process_4/E3/LOG.txt`  
+- `parallel_results/process_4/E3/R_plots.r`  
+- `parallel_results/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_4/E3/R_plots_finalt.r`  
+- `parallel_results/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_4/E3/calc_cc.jl`  
+- `parallel_results/process_4/E3/constants.jl`  
+- `parallel_results/process_4/E3/data_structures.jl`  
+- `parallel_results/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_4/E3/feature_generation.jl`  
+- `parallel_results/process_4/E3/feature_updates.jl`  
+- `parallel_results/process_4/E3/issue_body.txt`  
+- `parallel_results/process_4/E3/likelihood_calculations.jl`  
+- `parallel_results/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_4/E3/memory_pool.jl`  
+- `parallel_results/process_4/E3/memory_restorage.jl`  
+- `parallel_results/process_4/E3/memory_storage.jl`  
+- `parallel_results/process_4/E3/probe_evaluation.jl`  
+- `parallel_results/process_4/E3/probe_generation.jl`  
+- `parallel_results/process_4/E3/simulation.jl`  
+- `parallel_results/process_4/E3/utils.jl`  
+- `parallel_results/process_4/optimization_utils.jl`  
+- `parallel_results/process_4/simulation_log_4.txt`  
+- `run_parallel.sh`  
+![](../plot_archive/095a6d2_20250903_021043_plot1.png)  
+![](../plot_archive/095a6d2_20250903_021043_plot2.png)  
+
+## Commit [095a6d2](https://github.com/naszhu/REM_E3_model_fixed/commit/095a6d2) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:10:43  
+**Message:**
+```
+feat(model-e3): add performance benchmarking and profiling tools
+
+- Introduced `benchmark_performance.jl` for performance benchmarking and profiling of simulations.
+- Added `OPTIMIZATION_GUIDE.md` to provide a comprehensive overview of optimization strategies.
+- Implemented `run_parallel.sh` for multi-process execution to enhance simulation speed.
+- Created `memory_pool.jl` to reduce garbage collection pressure by reusing objects.
+- Updated simulation logic in `simulation.jl` to ensure each thread has its own RNG for better performance.
+
+These additions aim to improve the efficiency and accuracy of the model's simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_pool.jl`  
+- `E3/simulation.jl`  
+- `OPTIMIZATION_GUIDE.md`  
+- `benchmark_performance.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `parallel_results/process_1/E3/LOG.txt`  
+- `parallel_results/process_1/E3/R_plots.r`  
+- `parallel_results/process_1/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_1/E3/R_plots_finalt.r`  
+- `parallel_results/process_1/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_1/E3/calc_cc.jl`  
+- `parallel_results/process_1/E3/constants.jl`  
+- `parallel_results/process_1/E3/data_structures.jl`  
+- `parallel_results/process_1/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_1/E3/feature_generation.jl`  
+- `parallel_results/process_1/E3/feature_updates.jl`  
+- `parallel_results/process_1/E3/issue_body.txt`  
+- `parallel_results/process_1/E3/likelihood_calculations.jl`  
+- `parallel_results/process_1/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_1/E3/memory_pool.jl`  
+- `parallel_results/process_1/E3/memory_restorage.jl`  
+- `parallel_results/process_1/E3/memory_storage.jl`  
+- `parallel_results/process_1/E3/probe_evaluation.jl`  
+- `parallel_results/process_1/E3/probe_generation.jl`  
+- `parallel_results/process_1/E3/simulation.jl`  
+- `parallel_results/process_1/E3/utils.jl`  
+- `parallel_results/process_1/optimization_utils.jl`  
+- `parallel_results/process_1/simulation_log_1.txt`  
+- `parallel_results/process_2/E3/LOG.txt`  
+- `parallel_results/process_2/E3/R_plots.r`  
+- `parallel_results/process_2/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_2/E3/R_plots_finalt.r`  
+- `parallel_results/process_2/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_2/E3/calc_cc.jl`  
+- `parallel_results/process_2/E3/constants.jl`  
+- `parallel_results/process_2/E3/data_structures.jl`  
+- `parallel_results/process_2/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_2/E3/feature_generation.jl`  
+- `parallel_results/process_2/E3/feature_updates.jl`  
+- `parallel_results/process_2/E3/issue_body.txt`  
+- `parallel_results/process_2/E3/likelihood_calculations.jl`  
+- `parallel_results/process_2/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_2/E3/memory_pool.jl`  
+- `parallel_results/process_2/E3/memory_restorage.jl`  
+- `parallel_results/process_2/E3/memory_storage.jl`  
+- `parallel_results/process_2/E3/probe_evaluation.jl`  
+- `parallel_results/process_2/E3/probe_generation.jl`  
+- `parallel_results/process_2/E3/simulation.jl`  
+- `parallel_results/process_2/E3/utils.jl`  
+- `parallel_results/process_2/optimization_utils.jl`  
+- `parallel_results/process_2/simulation_log_2.txt`  
+- `parallel_results/process_3/E3/LOG.txt`  
+- `parallel_results/process_3/E3/R_plots.r`  
+- `parallel_results/process_3/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_3/E3/R_plots_finalt.r`  
+- `parallel_results/process_3/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_3/E3/calc_cc.jl`  
+- `parallel_results/process_3/E3/constants.jl`  
+- `parallel_results/process_3/E3/data_structures.jl`  
+- `parallel_results/process_3/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_3/E3/feature_generation.jl`  
+- `parallel_results/process_3/E3/feature_updates.jl`  
+- `parallel_results/process_3/E3/issue_body.txt`  
+- `parallel_results/process_3/E3/likelihood_calculations.jl`  
+- `parallel_results/process_3/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_3/E3/memory_pool.jl`  
+- `parallel_results/process_3/E3/memory_restorage.jl`  
+- `parallel_results/process_3/E3/memory_storage.jl`  
+- `parallel_results/process_3/E3/probe_evaluation.jl`  
+- `parallel_results/process_3/E3/probe_generation.jl`  
+- `parallel_results/process_3/E3/simulation.jl`  
+- `parallel_results/process_3/E3/utils.jl`  
+- `parallel_results/process_3/optimization_utils.jl`  
+- `parallel_results/process_3/simulation_log_3.txt`  
+- `parallel_results/process_4/E3/LOG.txt`  
+- `parallel_results/process_4/E3/R_plots.r`  
+- `parallel_results/process_4/E3/R_plots_Z_analysis.r`  
+- `parallel_results/process_4/E3/R_plots_finalt.r`  
+- `parallel_results/process_4/E3/attempt_9dd4a2c/memory_restorage.jl`  
+- `parallel_results/process_4/E3/calc_cc.jl`  
+- `parallel_results/process_4/E3/constants.jl`  
+- `parallel_results/process_4/E3/data_structures.jl`  
+- `parallel_results/process_4/E3/degbug_scr/chunk_test.jl`  
+- `parallel_results/process_4/E3/feature_generation.jl`  
+- `parallel_results/process_4/E3/feature_updates.jl`  
+- `parallel_results/process_4/E3/issue_body.txt`  
+- `parallel_results/process_4/E3/likelihood_calculations.jl`  
+- `parallel_results/process_4/E3/main_JL_E3_V0.jl`  
+- `parallel_results/process_4/E3/memory_pool.jl`  
+- `parallel_results/process_4/E3/memory_restorage.jl`  
+- `parallel_results/process_4/E3/memory_storage.jl`  
+- `parallel_results/process_4/E3/probe_evaluation.jl`  
+- `parallel_results/process_4/E3/probe_generation.jl`  
+- `parallel_results/process_4/E3/simulation.jl`  
+- `parallel_results/process_4/E3/utils.jl`  
+- `parallel_results/process_4/optimization_utils.jl`  
+- `parallel_results/process_4/simulation_log_4.txt`  
+- `run_parallel.sh`  
+![](../plot_archive/095a6d2_20250903_021043_plot1.png)  
+![](../plot_archive/095a6d2_20250903_021043_plot2.png)  
+
+## Commit [d2bff83](https://github.com/naszhu/REM_E3_model_fixed/commit/d2bff83) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 01:55:30  
+**Message:**
+```
+refactor(model-e3):  change const structure for final test,
+
+put all final test together
+
+- Set `is_finaltest` to true to enable final testing mode.
+- Adjusted `cfinal_start` and `cfinal_end` to incorporate a variable `x` for refined threshold calculations.
+- Restored `final_gap_change` and `p_ListChange_finaltest` values for consistency in final test conditions.
+- Updated `recall_odds_threshold` and `recall_to_addtrace_threshold` for improved model dynamics.
+
+These changes aim to optimize the model's performance during the final testing phase and enhance the accuracy of simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d2bff83_20250903_015530_plot1.png)  
+![](../plot_archive/d2bff83_20250903_015530_plot2.png)  
+
 ## Commit [3e007c9](https://github.com/naszhu/REM_E3_model_fixed/commit/3e007c9) (branch: `sep-2-test`)
 **Time:** 2025-09-03 01:46:54  
 **Message:**
