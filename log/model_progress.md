@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [56e57b6](https://github.com/naszhu/REM_E3_model_fixed/commit/56e57b6) (branch: `sep-3-optimization`)
+**Time:** 2025-09-03 02:56:07  
+**Message:**
+```
+feat(predplot-e3): add package installation script and optimize plotting scripts
+
+- Introduced `install_packages.R` to automate the installation of the `data.table` package if not already installed.
+- Enhanced `run_parallel.sh` to run plotting scripts in parallel with timeout management, improving user feedback during plot generation.
+- Added new optimized R scripts `R_plots_fast.r` and `R_plots_finalt_fast.r` for faster data handling and visualization using `data.table`.
+- Updated `constants.jl` to revert to the original logic for `criterion_final`, ensuring consistency in calculations.
+
+These changes aim to streamline the setup process and improve the performance of plotting operations in the simulation framework.
+```
+**Changed Files:**
+- `E3/R_plots_fast.r`  
+- `E3/R_plots_finalt_fast.r`  
+- `E3/constants.jl`  
+- `install_packages.R`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/56e57b6_20250903_025607_plot1.png)  
+![](../plot_archive/56e57b6_20250903_025607_plot2.png)  
+
 ## Commit [5771386](https://github.com/naszhu/REM_E3_model_fixed/commit/5771386) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:48:15  
 **Message:**

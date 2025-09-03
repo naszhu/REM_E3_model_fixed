@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
-n_simulations = is_finaltest ? 100 : 1000;
+is_finaltest = false
+n_simulations = is_finaltest ? 100 : 3000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -310,10 +310,10 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.054
+x =0.068
 cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.025)^power_taken;
-cfinal_rate = 0.28
+cfinal_end=(0.004+x-0.035)^power_taken;
+cfinal_rate = 0.34
 
 criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 # criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
@@ -321,7 +321,7 @@ context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
 final_gap_change = 0.13; #0.21
-p_ListChange_finaltest = ones(10) * 0.7 #0.1 prob list change for final test
+p_ListChange_finaltest = ones(10) * 0.5 #0.1 prob list change for final test
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_final = LinRange(0.5,0.5, n_lists) # if use no unchanging
