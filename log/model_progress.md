@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [cb1be60](https://github.com/naszhu/REM_E3_model_fixed/commit/cb1be60) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:12:40  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for enhanced performance
+
+- Updated `cfinal_rate` from 0.23 to 0.28 to improve model accuracy.
+- Reduced `p_ListChange_finaltest` from 0.5 to 0.2 to refine the probability of list changes during the final test.
+
+These adjustments aim to optimize the final test phase in the simulation framework, ensuring better alignment with desired outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cb1be60_20250903_221240_plot1.png)  
+![](../plot_archive/cb1be60_20250903_221240_plot2.png)  
+
 ## Commit [242cdbf](https://github.com/naszhu/REM_E3_model_fixed/commit/242cdbf) (branch: `sep-3-test`)
 **Time:** 2025-09-03 22:00:56  
 **Message:**

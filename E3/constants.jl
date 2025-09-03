@@ -313,7 +313,7 @@ Final test
 x =0.063
 cfinal_start=(0.08+x)^power_taken;
 cfinal_end=(0.004+x-0.05)^power_taken;
-cfinal_rate = 0.23
+cfinal_rate = 0.19
 
 criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 # criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
