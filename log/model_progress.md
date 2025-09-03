@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [242cdbf](https://github.com/naszhu/REM_E3_model_fixed/commit/242cdbf) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:00:56  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+Worked for final test now for a smooth curve
+
+The key is the asympo rate after I tried to draw a plot of teh asympoto function (the curve is convex high to low value
+
+- Set `is_finaltest` to true and updated `n_simulations` to 200 for focused testing.
+- Adjusted `x` from 0.068 to 0.063 and modified `cfinal_end` calculation to refine threshold settings.
+- Updated `cfinal_rate` from 0.34 to 0.23 to enhance model accuracy.
+
+These changes aim to optimize the final test phase in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/242cdbf_20250903_220056_plot1.png)  
+![](../plot_archive/242cdbf_20250903_220056_plot2.png)  
+
 ## Commit [f82342a](https://github.com/naszhu/REM_E3_model_fixed/commit/f82342a) (branch: `sep-3-test`)
 **Time:** 2025-09-03 21:55:06  
 **Message:**
