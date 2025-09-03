@@ -451,7 +451,7 @@ function update_Z_feature_SOn_CFs!(word::Word, list_number::Int64)::Nothing
     if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
-        if list_number === 1
+        if list_number === 1 || list_number === 0
             κ_value = 1-ks_base
         else
             κ_index = list_number - 1
@@ -472,7 +472,7 @@ function update_Z_feature_Tn_CFs!(word::Word, list_number::Int64)::Nothing
     if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κb value (no asymptotic effect yet)
-        if list_number == 1
+        if list_number === 1 || list_number === 0
             κ_value = 1-kb_base
         else
             κ_index = list_number - 1
@@ -491,10 +491,13 @@ function update_Z_feature_Fn_CFs!(word::Word, list_number::Int64)::Nothing
     if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
         # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
         # For list 1, use base κt value (no asymptotic effect yet)
-        if list_number === 1
+        # println(list_number)
+        if list_number === 1 || list_number === 0 #list number of final foil FF is 0, this is a temp fix but essentially maybe this shouldn't be used but i don't know what to
             κ_value = 1-kt_base
+            # println("κ_value: ", κ_value)
         else
             # println("list number: ", list_number)
+            # println("list number next: ", list_number)
             κ_index = list_number - 1
             κ_value = κt[κ_index]
             # println("κ_value: ", κ_value)

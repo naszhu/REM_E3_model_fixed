@@ -310,10 +310,10 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.093
+x =0.13
 cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.06)^power_taken;
-cfinal_rate = 0.18 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
+cfinal_end=(0.004+x-0.08)^power_taken;
+cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
 criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 # criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)

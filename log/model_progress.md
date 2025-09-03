@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [ecc746c](https://github.com/naszhu/REM_E3_model_fixed/commit/ecc746c) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:40:32  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+- Updated `x` from 0.063 to 0.093 to refine the starting point for the final test.
+- Modified `cfinal_end` calculation by adjusting the offset from -0.05 to -0.06.
+- Reduced `cfinal_rate` from 0.19 to 0.18 to enhance model performance during the final test phase.
+
+These changes aim to optimize the final test phase in the simulation framework, ensuring better alignment with desired outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ecc746c_20250903_224032_plot1.png)  
+![](../plot_archive/ecc746c_20250903_224032_plot2.png)  
+
 ## Commit [8008a37](https://github.com/naszhu/REM_E3_model_fixed/commit/8008a37) (branch: `sep-3-test`)
 **Time:** 2025-09-03 22:24:01  
 **Message:**
