@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [8008a37](https://github.com/naszhu/REM_E3_model_fixed/commit/8008a37) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:24:01  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+- Reduced `final_gap_change` from 0.13 to 0.1 to refine the model's response during the final test.
+- Updated `p_ListChange_finaltest` from 0.2 to 0.0 to eliminate the probability of list changes in the final test phase.
+
+These adjustments aim to enhance the accuracy and stability of the simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8008a37_20250903_222401_plot1.png)  
+![](../plot_archive/8008a37_20250903_222401_plot2.png)  
+
 ## Commit [6167584](https://github.com/naszhu/REM_E3_model_fixed/commit/6167584) (branch: `sep-3-test`)
 **Time:** 2025-09-03 22:17:52  
 **Message:**
