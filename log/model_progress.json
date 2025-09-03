@@ -1,5 +1,42 @@
 [
   {
+    "commit": "f82342a",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 21:55:06",
+    "plot1": "plot_archive/f82342a_20250903_215506_plot1.png",
+    "plot2": "plot_archive/f82342a_20250903_215506_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f82342a",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 21:55:06",
+    "plot1": "plot_archive/f82342a_20250903_215506_plot1.png",
+    "plot2": "plot_archive/f82342a_20250903_215506_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "464f3a3",
+    "branch": "sep-3-test",
+    "message": "merge(model-e3): A good test. Merge branch 'sep-2-test'",
+    "timestamp": "2025-09-03 18:51:35",
+    "plot1": "plot_archive/464f3a3_20250903_185135_plot1.png",
+    "plot2": "plot_archive/464f3a3_20250903_185135_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "56e57b6",
     "branch": "sep-3-optimization",
     "message": "feat(predplot-e3): add package installation script and optimize plotting scripts",

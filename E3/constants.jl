@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 100 : 3000;
+is_finaltest = true
+n_simulations = is_finaltest ? 200 : 3000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -310,10 +310,10 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.068
+x =0.063
 cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.035)^power_taken;
-cfinal_rate = 0.34
+cfinal_end=(0.004+x-0.05)^power_taken;
+cfinal_rate = 0.23
 
 criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 # criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
