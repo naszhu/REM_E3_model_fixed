@@ -310,17 +310,17 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.13
+x =0.13-0.04
 cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.08)^power_taken;
+cfinal_end=(0.004+x-0.07)^power_taken;
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
-criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
-# criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
+# criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
+criterion_final = LinRange((0.08+x)^power_taken, (0.004+x+0.05)^power_taken, n_lists)
 context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
-final_gap_change = 0.1; #0.21
+final_gap_change = 0.18; #0.21
 p_ListChange_finaltest = ones(10) * 0.0 #0.1 prob list change for final test
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging

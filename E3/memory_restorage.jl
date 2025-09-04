@@ -178,9 +178,16 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     # if new, or old but didn't pass threshold -- ADD TRACE
     # if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
 
+        # Check if c varies by list and show error if it doesn't
+        @assert length(unique(c_storeintest)) == 1 "c_storeintest does vary by list. This may indicate a configuration issue."
+
+        c_storeintest_ilist = c_storeintest[end];
+        c_context_ilist_cc = c_context_c[end];
+        c_context_ilist_cu = c_context_un[end];
+        
         for _ in 1:n_units_time_restore
 
-            add_feature_during_restore!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word, iprobe_img.list_number) #TODO
+            add_feature_during_restore!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest_ilist[end], g_word, iprobe_img.list_number) #TODO
 
             # if iprobe_img.list_number == 1
 
@@ -192,7 +199,11 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
             # Determine the chunk index for the current probe
             iprobe_chunk = findfirst(x -> finaltest_pos <= x, iprobe_chunk_boundaries)  
 
-            add_feature_during_restore!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word, iprobe_img.list_number) #TODO
+            # add_feature_during_restore!(iimage_toadd.word.word_features, iprobe_img.word.word_features, u_star[end], c_storeintest[end], g_word, iprobe_img.list_number) #TODO
+
+            add_feature_during_restore!(iimage_toadd.context_features, iprobe_img.context_features, u_star_context[end] + u_advFoilInitialT, c_context_ilist_cc, g_context, iprobe_img.list_number; cu = c_context_ilist_cu) 
+        
+
             # else
                 # add_features_from_empty!(iimage.context_features, iprobe_img.context_features, u_star_context[end]+u_advFoilInitialT+0.1, c_context_ilist, g_context)
             

@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [2e5bb6e](https://github.com/naszhu/REM_E3_model_fixed/commit/2e5bb6e) (branch: `sep-3-test`)
+**Time:** 2025-09-04 01:08:26  
+**Message:**
+```
+fix(model-e3):  feature update logic mistake  for clarity
+
+- Commented out the conditional logic for updating word features based on list number to address potential issues with handling new foils.
+- This change aims to improve code readability and maintain the function's intended behavior while clarifying the handling of specific cases.
+
+Refs #65
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2e5bb6e_20250904_010826_plot1.png)  
+![](../plot_archive/2e5bb6e_20250904_010826_plot2.png)  
+
 ## Commit [d4d60ea](https://github.com/naszhu/REM_E3_model_fixed/commit/d4d60ea) (branch: `sep-3-test`)
 **Time:** 2025-09-04 01:01:57  
 **Message:**

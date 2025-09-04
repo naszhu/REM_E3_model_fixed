@@ -1,5 +1,19 @@
 [
   {
+    "commit": "2e5bb6e",
+    "branch": "sep-3-test",
+    "message": "fix(model-e3):  feature update logic mistake  for clarity",
+    "timestamp": "2025-09-04 01:08:26",
+    "plot1": "plot_archive/2e5bb6e_20250904_010826_plot1.png",
+    "plot2": "plot_archive/2e5bb6e_20250904_010826_plot2.png",
+    "changed_files": [
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "d4d60ea",
     "branch": "sep-3-test",
     "message": "fix(model-e3): somehow called the function and study twice, but didn't influence result much",
