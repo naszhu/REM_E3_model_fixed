@@ -96,6 +96,9 @@ function generate_probes(
             target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
             target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
             target_word.type_specific = probetypes[i] #update the type_specific
+            
+            # Set initial Z value based on probe type according to new rules
+            set_initial_Z_value_for_probe!(target_word, probetypes[i])
 
         elseif probetypes[i] in foilnew_symbol_tuple
 
@@ -126,6 +129,9 @@ function generate_probes(
 
                 #the last two assignment could check in const beginnig clarification line on 1, 2 for each line
             ) # Insert studypos 0
+            
+            # Set initial Z value based on probe type according to new rules
+            set_initial_Z_value_for_probe!(target_word, probetypes[i])
         else
             error("probetype not in the list")
         end
@@ -366,21 +372,23 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                     features = generate_features(Geometric(g_word), w_word)
                     push!(features, 0)  # For FF probes, OT feature starts as 0 (not tested before)
 
-                    global img = 
-                    EpisodicImage(
-                        Word(randstring(8),
-                            features,
-                            :FF, 
-                            
-                            :FF, #type_specific; mathces above in final
-                            0, #study pos: 0
-                            0,  #inital test position is 0
+                    word_ff = Word(randstring(8),
+                        features,
+                        :FF, 
+                        
+                        :FF, #type_specific; mathces above in final
+                        0, #study pos: 0
+                        0,  #inital test position is 0
 
-                            false, #is_repeat_type
-                            :none, #type1, doesnt have a first or second appearr
-                            :none
-                            ), 
-                    crrcontext, 0, 0)
+                        false, #is_repeat_type
+                        :none, #type1, doesnt have a first or second appearr
+                        :none
+                        )
+                    
+                    # Set initial Z value for FF probe (foil type, so Z = 0)
+                    set_initial_Z_value_for_probe!(word_ff, :FF)
+                    
+                    global img = EpisodicImage(word_ff, crrcontext, 0, 0)
 
                     # for F, the list_number will always be only [1]
                     push!(probes, 

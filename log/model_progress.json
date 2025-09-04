@@ -1,5 +1,20 @@
 [
   {
+    "commit": "3cc42a1",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(model-e3): the final test restore part function was wrong",
+    "timestamp": "2025-09-04 22:54:03",
+    "plot1": "plot_archive/3cc42a1_20250904_225403_plot1.png",
+    "plot2": "plot_archive/3cc42a1_20250904_225403_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "2e5bb6e",
     "branch": "sep-3-test",
     "message": "fix(model-e3):  feature update logic mistake  for clarity",

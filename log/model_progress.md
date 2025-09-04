@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [3cc42a1](https://github.com/naszhu/REM_E3_model_fixed/commit/3cc42a1) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-04 22:54:03  
+**Message:**
+```
+fix(model-e3): the final test restore part function was wrong
+
+- Adjusted `x` value from 0.13 to 0.09 to modify the starting point for the final test.
+- Updated `cfinal_end` calculation to reflect changes in the offset for improved accuracy.
+- Increased `final_gap_change` from 0.1 to 0.18 to enhance model response during the final test.
+- Added assertions to ensure `c_storeintest` varies by list, improving error handling in the restoration process.
+- Updated feature restoration logic to utilize the correct list-specific values, enhancing the accuracy of feature updates.
+
+These changes aim to optimize the final test phase and improve the robustness of the memory restoration process in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3cc42a1_20250904_225403_plot1.png)  
+![](../plot_archive/3cc42a1_20250904_225403_plot2.png)  
+
 ## Commit [2e5bb6e](https://github.com/naszhu/REM_E3_model_fixed/commit/2e5bb6e) (branch: `sep-3-test`)
 **Time:** 2025-09-04 01:08:26  
 **Message:**
