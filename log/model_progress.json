@@ -1,11 +1,118 @@
 [
   {
-    "commit": "ad1580f",
-    "branch": "issue68-explore",
-    "message": "restore(model-e3): restore back to commit  56771d6, before I did the new method of updating everything during tests",
-    "timestamp": "2025-09-05 20:33:30",
-    "plot1": "plot_archive/ad1580f_20250905_203330_plot1.png",
-    "plot2": "plot_archive/ad1580f_20250905_203330_plot2.png",
+    "commit": "30dc809",
+    "branch": "issue64-strenghtening-rule",
+    "message": "merge(model-e3): Merge branch 'issue68-explore' into issue64-strenghtening-rule",
+    "timestamp": "2025-09-05 20:41:31",
+    "plot1": "plot_archive/30dc809_20250905_204131_plot1.png",
+    "plot2": "plot_archive/30dc809_20250905_204131_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "9318a31",
+    "branch": "issue64-strenghtening-rule",
+    "message": "finetune(model-e3): adjust fj_asymptote_decrease_val and hj_asymptote_increase_val",
+    "timestamp": "2025-09-05 20:04:35",
+    "plot1": "plot_archive/9318a31_20250905_200435_plot1.png",
+    "plot2": "plot_archive/9318a31_20250905_200435_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "3038273",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): relative high fj but low kt (high kt_base)",
+    "timestamp": "2025-09-05 20:00:22",
+    "plot1": "plot_archive/3038273_20250905_200022_plot1.png",
+    "plot2": "plot_archive/3038273_20250905_200022_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e085b88",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): adjust fj low see how foil change:",
+    "timestamp": "2025-09-05 19:58:01",
+    "plot1": "plot_archive/e085b88_20250905_195801_plot1.png",
+    "plot2": "plot_archive/e085b88_20250905_195801_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b4d1a9f",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): what happens if decrease fj?",
+    "timestamp": "2025-09-05 19:51:49",
+    "plot1": "plot_archive/b4d1a9f_20250905_195149_plot1.png",
+    "plot2": "plot_archive/b4d1a9f_20250905_195149_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d9b4bde",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): refine fj_asymptote_decrease_val and hj_asymptote_increase_val",
+    "timestamp": "2025-09-05 19:46:09",
+    "plot1": "plot_archive/d9b4bde_20250905_194609_plot1.png",
+    "plot2": "plot_archive/d9b4bde_20250905_194609_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "fda0424",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): update base values for ks_base, kb_base, kt_base, and fj_asymptote_decrease_val",
+    "timestamp": "2025-09-05 19:44:02",
+    "plot1": "plot_archive/fda0424_20250905_194402_plot1.png",
+    "plot2": "plot_archive/fda0424_20250905_194402_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "1d753c9",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): update base values for kb_base and kt_base",
+    "timestamp": "2025-09-05 19:34:17",
+    "plot1": "plot_archive/1d753c9_20250905_193417_plot1.png",
+    "plot2": "plot_archive/1d753c9_20250905_193417_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "830edd3",
+    "branch": "issue64-strenghtening-rule",
+    "message": "feat(model-e3): differnet way of using kuand ks",
+    "timestamp": "2025-09-05 19:30:04",
+    "plot1": "plot_archive/830edd3_20250905_193004_plot1.png",
+    "plot2": "plot_archive/830edd3_20250905_193004_plot2.png",
     "changed_files": [
       "E3/constants.jl",
       "E3/feature_updates.jl",
@@ -15,17 +122,18 @@
     ]
   },
   {
-    "commit": "09ae7a1",
-    "branch": "issue68-explore",
-    "message": "finetune(model-e3): adjust base values for ks_base, kb_base, kt_base, and hj_base",
-    "timestamp": "2025-09-05 20:27:58",
-    "plot1": "plot_archive/09ae7a1_20250905_202758_plot1.png",
-    "plot2": "plot_archive/09ae7a1_20250905_202758_plot2.png",
+    "commit": "64119bd",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(shell-e3): correct variance loss in initial test results",
+    "timestamp": "2025-09-05 18:45:15",
+    "plot1": "plot_archive/64119bd_20250905_184515_plot1.png",
+    "plot2": "plot_archive/64119bd_20250905_184515_plot2.png",
     "changed_files": [
       "E3/constants.jl",
       "log/model_progress.html",
       "log/model_progress.json",
-      "log/model_progress.md"
+      "log/model_progress.md",
+      "run_parallel.sh"
     ]
   },
   {

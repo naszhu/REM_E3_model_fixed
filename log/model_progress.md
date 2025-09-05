@@ -1,32 +1,26 @@
 # Model Progress
 
-## Commit [ad1580f](https://github.com/naszhu/REM_E3_model_fixed/commit/ad1580f) (branch: `issue68-explore`)
-**Time:** 2025-09-05 20:33:30  
+## Commit [30dc809](https://github.com/naszhu/REM_E3_model_fixed/commit/30dc809) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:41:31  
 **Message:**
 ```
-restore(model-e3): restore back to commit  56771d6, before I did the new method of updating everything during tests
+merge(model-e3): Merge branch 'issue68-explore' into issue64-strenghtening-rule
 
-Refs#68 new approch
+And attempt to do CFs relationship without changing the structure, but doesn't help
 ```
-**Changed Files:**
-- `E3/constants.jl`  
-- `E3/feature_updates.jl`  
-- `log/model_progress.html`  
-- `log/model_progress.json`  
-- `log/model_progress.md`  
-![](../plot_archive/ad1580f_20250905_203330_plot1.png)  
-![](../plot_archive/ad1580f_20250905_203330_plot2.png)  
+![](../plot_archive/30dc809_20250905_204131_plot1.png)  
+![](../plot_archive/30dc809_20250905_204131_plot2.png)  
 
-## Commit [09ae7a1](https://github.com/naszhu/REM_E3_model_fixed/commit/09ae7a1) (branch: `issue68-explore`)
-**Time:** 2025-09-05 20:27:58  
+## Commit [9318a31](https://github.com/naszhu/REM_E3_model_fixed/commit/9318a31) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:04:35  
 **Message:**
 ```
-finetune(model-e3): adjust base values for ks_base, kb_base, kt_base, and hj_base
+finetune(model-e3): adjust fj_asymptote_decrease_val and hj_asymptote_increase_val
 
-found Tn got back the lowest now, maybe the reverse helps
+I don't know how to fix this
 
-- Decreased `ks_base`, `kb_base`, and `kt_base` by 0.1 to refine the starting points for SOn, Tn, and Fn in studies and tests.
-- Adjusted `hj_base` from 0.4 to 0.3 to modify the CF starting point.
+- Decreased `fj_asymptote_decrease_val` from 0.1 to 0.05 to fine-tune model response characteristics.
+- Increased `hj_asymptote_increase_val` from 0.15 to 0.35 to enhance model accuracy.
 
 These changes aim to optimize the model's performance and response behavior in simulations.
 
@@ -37,8 +31,189 @@ Refs #68
 - `log/model_progress.html`  
 - `log/model_progress.json`  
 - `log/model_progress.md`  
-![](../plot_archive/09ae7a1_20250905_202758_plot1.png)  
-![](../plot_archive/09ae7a1_20250905_202758_plot2.png)  
+![](../plot_archive/9318a31_20250905_200435_plot1.png)  
+![](../plot_archive/9318a31_20250905_200435_plot2.png)  
+
+## Commit [3038273](https://github.com/naszhu/REM_E3_model_fixed/commit/3038273) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:00:22  
+**Message:**
+```
+explore(model-e3): relative high fj but low kt (high kt_base)
+
+Doesn't really help
+
+- Increased `kt_base` from 0.75 to 0.95 to enhance the starting point for Fn in tests.
+- Adjusted `fj_asymptote_decrease_val` from 0.01 to 0.1 to fine-tune the model's response characteristics.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3038273_20250905_200022_plot1.png)  
+![](../plot_archive/3038273_20250905_200022_plot2.png)  
+
+## Commit [e085b88](https://github.com/naszhu/REM_E3_model_fixed/commit/e085b88) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:58:01  
+**Message:**
+```
+explore(model-e3): adjust fj low see how foil change:
+
+Foil does show a more flat behaviour now, but CF now also very low
+
+- Decreased `fj_asymptote_decrease_val` from 0.1 to 0.01 to fine-tune the model's response characteristics, aiming for more accurate simulation results.
+
+These changes are intended to enhance the model's performance in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e085b88_20250905_195801_plot1.png)  
+![](../plot_archive/e085b88_20250905_195801_plot2.png)  
+
+## Commit [b4d1a9f](https://github.com/naszhu/REM_E3_model_fixed/commit/b4d1a9f) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:51:49  
+**Message:**
+```
+explore(model-e3): what happens if decrease fj?
+
+CF decrease for sure, F should decrease as well becuase if not use LOR info, then foil won't be judged as NEW (no correct rejection)
+
+and this is sort of confirmed
+
+- Decreased `hj_asymptote_increase_val` from 0.35 to 0.15 to enhance the model's response characteristics.
+
+This change aims to optimize the model's performance in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b4d1a9f_20250905_195149_plot1.png)  
+![](../plot_archive/b4d1a9f_20250905_195149_plot2.png)  
+
+## Commit [d9b4bde](https://github.com/naszhu/REM_E3_model_fixed/commit/d9b4bde) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:46:09  
+**Message:**
+```
+explore(model-e3): refine fj_asymptote_decrease_val and hj_asymptote_increase_val
+
+- Adjusted `fj_asymptote_decrease_val` from 0.09 to 0.1 to fine-tune model response characteristics.
+- Decreased `hj_asymptote_increase_val` from 0.4 to 0.35 to improve model accuracy.
+
+These changes aim to enhance the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d9b4bde_20250905_194609_plot1.png)  
+![](../plot_archive/d9b4bde_20250905_194609_plot2.png)  
+
+## Commit [fda0424](https://github.com/naszhu/REM_E3_model_fixed/commit/fda0424) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:44:02  
+**Message:**
+```
+explore(model-e3): update base values for ks_base, kb_base, kt_base, and fj_asymptote_decrease_val
+
+- Adjusted `ks_base` from 0.65 to 0.47, `kb_base` from 0.45 to 0.55, and `kt_base` from 0.55 to 0.75 to improve model performance in studies and tests.
+- Increased `fj_asymptote_decrease_val` from 0.01 to 0.09 to enhance the model's response characteristics.
+
+These changes aim to optimize the starting points and behavior of the model, contributing to more accurate simulation results.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fda0424_20250905_194402_plot1.png)  
+![](../plot_archive/fda0424_20250905_194402_plot2.png)  
+
+## Commit [1d753c9](https://github.com/naszhu/REM_E3_model_fixed/commit/1d753c9) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:34:17  
+**Message:**
+```
+explore(model-e3): update base values for kb_base and kt_base
+
+- Increased `kb_base` from 0.15 to 0.45 and `kt_base` from 0.35 to 0.55 to enhance model performance in studies and tests.
+- These adjustments aim to improve the starting points for Tn and Fn, contributing to more accurate simulation results.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1d753c9_20250905_193417_plot1.png)  
+![](../plot_archive/1d753c9_20250905_193417_plot2.png)  
+
+## Commit [830edd3](https://github.com/naszhu/REM_E3_model_fixed/commit/830edd3) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:30:04  
+**Message:**
+```
+feat(model-e3): differnet way of using kuand ks
+
+update ks each time for ALL traces in memory (to make study and test better)
+
+- Changed `is_finaltest` to false and adjusted `n_simulations` to 200 for improved testing conditions.
+- Modified base values for `ks_base`, `kb_base`, and `kt_base` to enhance model performance and accuracy.
+- Refactored feature update logic in `update_Z_features_single_appearance_studied_items!` to streamline the handling of studied items and their Z feature updates.
+
+These changes aim to optimize the simulation framework and improve the robustness of feature updates.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/830edd3_20250905_193004_plot1.png)  
+![](../plot_archive/830edd3_20250905_193004_plot2.png)  
+
+## Commit [64119bd](https://github.com/naszhu/REM_E3_model_fixed/commit/64119bd) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:45:15  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+
+Refs #67
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/64119bd_20250905_184515_plot1.png)  
+![](../plot_archive/64119bd_20250905_184515_plot2.png)  
 
 ## Commit [ed05cb2](https://github.com/naszhu/REM_E3_model_fixed/commit/ed05cb2) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 18:44:16  
