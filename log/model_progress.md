@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [830edd3](https://github.com/naszhu/REM_E3_model_fixed/commit/830edd3) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:30:04  
+**Message:**
+```
+feat(model-e3): differnet way of using kuand ks
+
+update ks each time for ALL traces in memory (to make study and test better)
+
+- Changed `is_finaltest` to false and adjusted `n_simulations` to 200 for improved testing conditions.
+- Modified base values for `ks_base`, `kb_base`, and `kt_base` to enhance model performance and accuracy.
+- Refactored feature update logic in `update_Z_features_single_appearance_studied_items!` to streamline the handling of studied items and their Z feature updates.
+
+These changes aim to optimize the simulation framework and improve the robustness of feature updates.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/830edd3_20250905_193004_plot1.png)  
+![](../plot_archive/830edd3_20250905_193004_plot2.png)  
+
 ## Commit [64119bd](https://github.com/naszhu/REM_E3_model_fixed/commit/64119bd) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 18:45:15  
 **Message:**
