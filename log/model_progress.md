@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [e085b88](https://github.com/naszhu/REM_E3_model_fixed/commit/e085b88) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:58:01  
+**Message:**
+```
+explore(model-e3): adjust fj low see how foil change:
+
+Foil does show a more flat behaviour now, but CF now also very low
+
+- Decreased `fj_asymptote_decrease_val` from 0.1 to 0.01 to fine-tune the model's response characteristics, aiming for more accurate simulation results.
+
+These changes are intended to enhance the model's performance in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e085b88_20250905_195801_plot1.png)  
+![](../plot_archive/e085b88_20250905_195801_plot2.png)  
+
 ## Commit [b4d1a9f](https://github.com/naszhu/REM_E3_model_fixed/commit/b4d1a9f) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 19:51:49  
 **Message:**
