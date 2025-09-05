@@ -1,5 +1,19 @@
 [
   {
+    "commit": "3038273",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): relative high fj but low kt (high kt_base)",
+    "timestamp": "2025-09-05 20:00:22",
+    "plot1": "plot_archive/3038273_20250905_200022_plot1.png",
+    "plot2": "plot_archive/3038273_20250905_200022_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "e085b88",
     "branch": "issue64-strenghtening-rule",
     "message": "explore(model-e3): adjust fj low see how foil change:",

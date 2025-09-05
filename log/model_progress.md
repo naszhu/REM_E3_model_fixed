@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [3038273](https://github.com/naszhu/REM_E3_model_fixed/commit/3038273) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:00:22  
+**Message:**
+```
+explore(model-e3): relative high fj but low kt (high kt_base)
+
+Doesn't really help
+
+- Increased `kt_base` from 0.75 to 0.95 to enhance the starting point for Fn in tests.
+- Adjusted `fj_asymptote_decrease_val` from 0.01 to 0.1 to fine-tune the model's response characteristics.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3038273_20250905_200022_plot1.png)  
+![](../plot_archive/3038273_20250905_200022_plot2.png)  
+
 ## Commit [e085b88](https://github.com/naszhu/REM_E3_model_fixed/commit/e085b88) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 19:58:01  
 **Message:**

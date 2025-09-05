@@ -158,12 +158,12 @@ ks_base = 0.47 #SOn (study only), lower the value, higher the starting point CF
 kb_base = 0.55 #Tn (study and test)
 kt_base = 0.95 #Fn (test only)
 
-fj_asymptote_decrease_val = 0.1 #0.35 #this value bigger, Hits higher
+fj_asymptote_decrease_val = 0.05 #0.35 #this value bigger, Hits higher
 fj_rate = 0.26 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.15
+hj_asymptote_increase_val = 0.35
 hj_rate = 0.85
 hj_base = 0.6; #higher this value higher CF starting point
 
