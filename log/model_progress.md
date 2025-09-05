@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [fda0424](https://github.com/naszhu/REM_E3_model_fixed/commit/fda0424) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:44:02  
+**Message:**
+```
+explore(model-e3): update base values for ks_base, kb_base, kt_base, and fj_asymptote_decrease_val
+
+- Adjusted `ks_base` from 0.65 to 0.47, `kb_base` from 0.45 to 0.55, and `kt_base` from 0.55 to 0.75 to improve model performance in studies and tests.
+- Increased `fj_asymptote_decrease_val` from 0.01 to 0.09 to enhance the model's response characteristics.
+
+These changes aim to optimize the starting points and behavior of the model, contributing to more accurate simulation results.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fda0424_20250905_194402_plot1.png)  
+![](../plot_archive/fda0424_20250905_194402_plot2.png)  
+
 ## Commit [1d753c9](https://github.com/naszhu/REM_E3_model_fixed/commit/1d753c9) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 19:34:17  
 **Message:**
