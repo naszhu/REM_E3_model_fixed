@@ -1,5 +1,52 @@
 [
   {
+    "commit": "ed05cb2",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(shell-e3): correct variance loss in initial test results",
+    "timestamp": "2025-09-05 18:44:16",
+    "plot1": "plot_archive/ed05cb2_20250905_184416_plot1.png",
+    "plot2": "plot_archive/ed05cb2_20250905_184416_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "run_parallel.sh"
+    ]
+  },
+  {
+    "commit": "ed05cb2",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(shell-e3): correct variance loss in initial test results",
+    "timestamp": "2025-09-05 18:44:16",
+    "plot1": "plot_archive/ed05cb2_20250905_184416_plot1.png",
+    "plot2": "plot_archive/ed05cb2_20250905_184416_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "run_parallel.sh"
+    ]
+  },
+  {
+    "commit": "56771d6",
+    "branch": "issue64-strenghtening-rule",
+    "message": "feat(model-e3): implement new Z feature update rules for probe generation and memory restoration",
+    "timestamp": "2025-09-05 02:40:19",
+    "plot1": "plot_archive/56771d6_20250905_024019_plot1.png",
+    "plot2": "plot_archive/56771d6_20250905_024019_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "regenerate_missing_plots.sh"
+    ]
+  },
+  {
     "commit": "3cc42a1",
     "branch": "issue64-strenghtening-rule",
     "message": "fix(model-e3): the final test restore part function was wrong",

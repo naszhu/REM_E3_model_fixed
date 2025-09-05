@@ -78,29 +78,13 @@ run_simulation() {
         # Run simulation
         all_results, allresf = simulate_rem()
         
-        # Process results same as main file
-        DF = @chain all_results begin
-            @by([:list_number, :is_target, :testpos, :simulation_number,:type_general,:type_specific], :meanx = mean(:decision_isold))
-            @by([:list_number, :is_target, :testpos,:type_general,:type_specific], :meanx = mean(:meanx))
-        end
-        
+        # Save raw simulation data only - NO AGGREGATION
+        using CSV
+        CSV.write(\"all_results_raw.csv\", all_results)
         if is_finaltest
-            DFf = @chain allresf begin
-                @by([:list_number, :is_target, :test_position, :condition, :simulation_number], :meanx = mean(:decision_isold))
-                @by([:list_number, :is_target, :test_position, :condition], :meanx = mean(:meanx))
-                @transform(:condition = string.(:condition))
-            end
-            
             allresf = @chain allresf begin
                 @transform(:condition = string.(:condition))
             end
-        end
-        
-        # Save CSV files only - NO PLOTTING
-        using CSV
-        CSV.write(\"DF.csv\", DF)
-        CSV.write(\"all_results.csv\", all_results)
-        if is_finaltest
             CSV.write(\"allresf.csv\", allresf)
         end
         
@@ -139,21 +123,13 @@ echo "✓ All simulations completed in ${TOTAL_TIME}s! Combining results..."
 cd parallel_temp
 
 # Find first valid CSV file for header
-FIRST_DF=$(find . -name "DF.csv" -type f | head -1)
-FIRST_ALL_RESULTS=$(find . -name "all_results.csv" -type f | head -1)
+FIRST_ALL_RESULTS_RAW=$(find . -name "all_results_raw.csv" -type f | head -1)
 FIRST_ALLRESF=$(find . -name "allresf.csv" -type f | head -1)
 
-if [ -n "$FIRST_DF" ]; then
-    echo "📊 Combining DF.csv files..."
-    head -1 "$FIRST_DF" > ../DF.csv
-    find . -name "DF.csv" -exec tail -n +2 {} \; >> ../DF.csv
-    echo "  ✓ Created combined DF.csv"
-fi
-
-if [ -n "$FIRST_ALL_RESULTS" ]; then
-    echo "📊 Combining all_results.csv files..."
-    head -1 "$FIRST_ALL_RESULTS" > ../all_results.csv
-    find . -name "all_results.csv" -exec tail -n +2 {} \; >> ../all_results.csv
+if [ -n "$FIRST_ALL_RESULTS_RAW" ]; then
+    echo "📊 Combining raw initial test results..."
+    head -1 "$FIRST_ALL_RESULTS_RAW" > ../all_results.csv
+    find . -name "all_results_raw.csv" -exec tail -n +2 {} \; >> ../all_results.csv
     echo "  ✓ Created combined all_results.csv"
 fi
 
@@ -165,6 +141,27 @@ if [ -n "$FIRST_ALLRESF" ]; then
 fi
 
 cd ..
+
+# Aggregate combined results to create DF.csv (same as main file)
+echo "📊 Aggregating combined results to create DF.csv..."
+julia -e '
+using DataFrames, DataFramesMeta, CSV, Statistics
+
+if isfile("all_results.csv")
+    println("Aggregating initial test results...")
+    all_results = CSV.read("all_results.csv", DataFrame)
+    DF = @chain all_results begin
+        @by([:list_number, :is_target, :testpos, :simulation_number, :type_general, :type_specific], :meanx = mean(:decision_isold))
+        @by([:list_number, :is_target, :testpos, :type_general, :type_specific], :meanx = mean(:meanx))
+    end
+    CSV.write("DF.csv", DF)
+    println("✓ DF.csv created with $(nrow(DF)) rows")
+end
+
+if isfile("allresf.csv")
+    println("Final test results already processed (using raw data for plotting)")
+end
+'
 
 # Debug: Check what files we actually created
 echo "Debug: Checking created files..."

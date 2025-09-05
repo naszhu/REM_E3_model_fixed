@@ -1,5 +1,78 @@
 # Model Progress
 
+## Commit [ed05cb2](https://github.com/naszhu/REM_E3_model_fixed/commit/ed05cb2) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:44:16  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/ed05cb2_20250905_184416_plot1.png)  
+![](../plot_archive/ed05cb2_20250905_184416_plot2.png)  
+
+## Commit [ed05cb2](https://github.com/naszhu/REM_E3_model_fixed/commit/ed05cb2) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:44:16  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/ed05cb2_20250905_184416_plot1.png)  
+![](../plot_archive/ed05cb2_20250905_184416_plot2.png)  
+
+## Commit [56771d6](https://github.com/naszhu/REM_E3_model_fixed/commit/56771d6) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 02:40:19  
+**Message:**
+```
+feat(model-e3): implement new Z feature update rules for probe generation and memory restoration
+
+- Introduced functions to set initial Z values for probes based on their type, with specific rules for confusing, target, and foil probes.
+- Updated Z feature handling in memory restoration functions to reflect new rules for recalled and not recalled cases, enhancing accuracy in feature updates.
+- Adjusted logic in `generate_probes` and `restore_intest` functions to utilize the new Z update mechanisms, ensuring consistent behavior across different decision types.
+
+These changes aim to improve the robustness and accuracy of the memory model's feature updates.
+
+Refs #64
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `regenerate_missing_plots.sh`  
+![](../plot_archive/56771d6_20250905_024019_plot1.png)  
+![](../plot_archive/56771d6_20250905_024019_plot2.png)  
+
 ## Commit [3cc42a1](https://github.com/naszhu/REM_E3_model_fixed/commit/3cc42a1) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-04 22:54:03  
 **Message:**
