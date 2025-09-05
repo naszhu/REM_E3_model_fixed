@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [1d753c9](https://github.com/naszhu/REM_E3_model_fixed/commit/1d753c9) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:34:17  
+**Message:**
+```
+explore(model-e3): update base values for kb_base and kt_base
+
+- Increased `kb_base` from 0.15 to 0.45 and `kt_base` from 0.35 to 0.55 to enhance model performance in studies and tests.
+- These adjustments aim to improve the starting points for Tn and Fn, contributing to more accurate simulation results.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1d753c9_20250905_193417_plot1.png)  
+![](../plot_archive/1d753c9_20250905_193417_plot2.png)  
+
 ## Commit [830edd3](https://github.com/naszhu/REM_E3_model_fixed/commit/830edd3) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 19:30:04  
 **Message:**
