@@ -163,7 +163,7 @@ fj_rate = 0.26 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.35
+hj_asymptote_increase_val = 0.15
 hj_rate = 0.85
 hj_base = 0.6; #higher this value higher CF starting point
 
