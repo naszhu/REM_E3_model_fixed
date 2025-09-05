@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [b4d1a9f](https://github.com/naszhu/REM_E3_model_fixed/commit/b4d1a9f) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:51:49  
+**Message:**
+```
+explore(model-e3): what happens if decrease fj?
+
+CF decrease for sure, F should decrease as well becuase if not use LOR info, then foil won't be judged as NEW (no correct rejection)
+
+and this is sort of confirmed
+
+- Decreased `hj_asymptote_increase_val` from 0.35 to 0.15 to enhance the model's response characteristics.
+
+This change aims to optimize the model's performance in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b4d1a9f_20250905_195149_plot1.png)  
+![](../plot_archive/b4d1a9f_20250905_195149_plot2.png)  
+
 ## Commit [d9b4bde](https://github.com/naszhu/REM_E3_model_fixed/commit/d9b4bde) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 19:46:09  
 **Message:**
