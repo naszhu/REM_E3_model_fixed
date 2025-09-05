@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [ad1580f](https://github.com/naszhu/REM_E3_model_fixed/commit/ad1580f) (branch: `issue68-explore`)
+**Time:** 2025-09-05 20:33:30  
+**Message:**
+```
+restore(model-e3): restore back to commit  56771d6, before I did the new method of updating everything during tests
+
+Refs#68 new approch
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ad1580f_20250905_203330_plot1.png)  
+![](../plot_archive/ad1580f_20250905_203330_plot2.png)  
+
 ## Commit [09ae7a1](https://github.com/naszhu/REM_E3_model_fixed/commit/09ae7a1) (branch: `issue68-explore`)
 **Time:** 2025-09-05 20:27:58  
 **Message:**
