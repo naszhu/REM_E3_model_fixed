@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [9318a31](https://github.com/naszhu/REM_E3_model_fixed/commit/9318a31) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:04:35  
+**Message:**
+```
+finetune(model-e3): adjust fj_asymptote_decrease_val and hj_asymptote_increase_val
+
+I don't know how to fix this
+
+- Decreased `fj_asymptote_decrease_val` from 0.1 to 0.05 to fine-tune model response characteristics.
+- Increased `hj_asymptote_increase_val` from 0.15 to 0.35 to enhance model accuracy.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9318a31_20250905_200435_plot1.png)  
+![](../plot_archive/9318a31_20250905_200435_plot2.png)  
+
 ## Commit [3038273](https://github.com/naszhu/REM_E3_model_fixed/commit/3038273) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 20:00:22  
 **Message:**
