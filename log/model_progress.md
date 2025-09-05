@@ -1,5 +1,31 @@
 # Model Progress
 
+## Commit [64119bd](https://github.com/naszhu/REM_E3_model_fixed/commit/64119bd) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:45:15  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+
+Refs #67
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/64119bd_20250905_184515_plot1.png)  
+![](../plot_archive/64119bd_20250905_184515_plot2.png)  
+
 ## Commit [ed05cb2](https://github.com/naszhu/REM_E3_model_fixed/commit/ed05cb2) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 18:44:16  
 **Message:**
