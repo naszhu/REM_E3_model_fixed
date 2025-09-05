@@ -655,52 +655,38 @@ function update_Z_features_single_appearance_studied_items!(
 )::Nothing
     
     for img in image_pool
-
-        
-        if img.word.word_features[tested_before_feature_pos] == 0
-            
-            if list_num === 1 || list_num === 0
-                κ_value = 1-ks_base
-            else
-                κ_index = list_num - 1
-                κ_value = κs[κ_index] #updated by ks
-            end
-            img.word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-        end
-
         # Check if this image is from the current list (not a foil)
-        # if img.list_number == list_num
-        #     # Check if this is a studied item (not a foil) by looking at its position in studied_pool
-        #     # Studied items are in positions 1:n_studyitem
-        #     is_studied_item = false
-        #     for j in 1:n_studyitem
-        #         if !isnothing(studied_pool[list_num][j]) && 
-        #            studied_pool[list_num][j].word.item_code == img.word.item_code
-        #             is_studied_item = true
-        #             break
-        #         end
-        #     end
+        if img.list_number == list_num
+            # Check if this is a studied item (not a foil) by looking at its position in studied_pool
+            # Studied items are in positions 1:n_studyitem
+            is_studied_item = false
+            for j in 1:n_studyitem
+                if !isnothing(studied_pool[list_num][j]) && 
+                   studied_pool[list_num][j].word.item_code == img.word.item_code
+                    is_studied_item = true
+                    break
+                end
+            end
             
-        #     # If it's a studied item, update its Z feature with KS probability
-        #     if is_studied_item
-        #         appearance_count = 0
-        #         for list_idx in 1:list_num
-        #             if !isnothing(studied_pool[list_idx])
-        #                 for item in studied_pool[list_idx]
-        #                     if !isnothing(item) && item.word.item_code == img.word.item_code
-        #                         appearance_count += 1
-        #                     end
-        #                 end
-        #             end
-        #         end
+            # If it's a studied item, update its Z feature with KS probability
+            if is_studied_item
+                appearance_count = 0
+                for list_idx in 1:list_num
+                    if !isnothing(studied_pool[list_idx])
+                        for item in studied_pool[list_idx]
+                            if !isnothing(item) && item.word.item_code == img.word.item_code
+                                appearance_count += 1
+                            end
+                        end
+                    end
+                end
                 
-        #         # If the item appears only once (not doubling), update its Z feature
-        #         if appearance_count == 1
-        #             update_Z_feature_SOn_CFs!(img.word, list_num)
-        #         end
-        #     end
-        # end
-
+                # If the item appears only once (not doubling), update its Z feature
+                if appearance_count == 1
+                    update_Z_feature_SOn_CFs!(img.word, list_num)
+                end
+            end
+        end
     end
     
     return nothing
