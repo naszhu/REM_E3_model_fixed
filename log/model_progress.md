@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [c534397](https://github.com/naszhu/REM_E3_model_fixed/commit/c534397) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:13:41  
+**Message:**
+```
+finetune(model-e3): adjust kt_base, fj_asymptote_decrease_val, and hj_base
+
+THis might work! low starting value of hj
+
+- Decreased `kt_base` from 0.95 to 0.65 to lower the starting point for Fn in tests.
+- Reduced `fj_asymptote_decrease_val` from 0.05 to 0.01 to fine-tune model response characteristics.
+- Decreased `hj_base` from 0.6 to 0.4 to adjust the CF starting point.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/c534397_20250905_201341_plot1.png)  
+![](../plot_archive/c534397_20250905_201341_plot2.png)  
+
 ## Commit [9318a31](https://github.com/naszhu/REM_E3_model_fixed/commit/9318a31) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 20:04:35  
 **Message:**
