@@ -1,5 +1,19 @@
 # Model Progress
 
+## Commit [0eb24f2](https://github.com/naszhu/REM_E3_model_fixed/commit/0eb24f2) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-06 23:49:35  
+**Message:**
+```
+finetune(model-e3): no change
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0eb24f2_20250906_234935_plot1.png)  
+![](../plot_archive/0eb24f2_20250906_234935_plot2.png)  
+
 ## Commit [f7419aa](https://github.com/naszhu/REM_E3_model_fixed/commit/f7419aa) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 20:45:03  
 **Message:**

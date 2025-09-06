@@ -163,7 +163,7 @@ fj_rate = 0.26 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.35
+hj_asymptote_increase_val = 0.43
 hj_rate = 0.85
 hj_base = 0.4; #higher this value higher CF starting point
 
@@ -230,7 +230,7 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 1 #stop reinstate after how much features
 
-p_reinstate_rate = 0.2#0.4 #prob of reinstatement
+p_reinstate_rate = 0.1#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
@@ -242,8 +242,8 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 adjust this and the distor
 
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
-max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.29  # Base probability of distortion for the first probe
+max_distortion_probes = 12  # Number of probes until distortion probability reaches 0
+base_distortion_prob = 0.25  # Base probability of distortion for the first probe
 
 
 
@@ -296,7 +296,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.171 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.176 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
