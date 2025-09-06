@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [587470c](https://github.com/naszhu/REM_E3_model_fixed/commit/587470c) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-07 00:07:07  
+**Message:**
+```
+finetune(model-e3):  finetune for initial test stops now
+
+- Increased `hj_asymptote_increase_val` from 0.35 to 0.43 to enhance model accuracy.
+- Decreased `p_reinstate_rate` from 0.2 to 0.1 to refine the probability of reinstatement.
+- Increased `max_distortion_probes` from 7 to 12 to allow for more probes before distortion probability reaches 0.
+- Decreased `base_distortion_prob` from 0.29 to 0.25 to adjust the base probability of distortion.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/587470c_20250907_000707_plot1.png)  
+![](../plot_archive/587470c_20250907_000707_plot2.png)  
+
 ## Commit [0eb24f2](https://github.com/naszhu/REM_E3_model_fixed/commit/0eb24f2) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-06 23:49:35  
 **Message:**

@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 200 : 800;
+is_finaltest = true
+n_simulations = is_finaltest ? 800 : 800;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -310,13 +310,13 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.13-0.04
-cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.07)^power_taken;
+x =0.13-0.1
+cfinal_start=(0.08+x-0.02)^power_taken;
+cfinal_end=(0.08+x+0.01)^power_taken;
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
 # criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
-criterion_final = LinRange((0.08+x)^power_taken, (0.004+x+0.05)^power_taken, n_lists)
+criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
 context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
