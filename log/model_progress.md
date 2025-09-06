@@ -1,5 +1,20 @@
 # Model Progress
 
+## Commit [f7419aa](https://github.com/naszhu/REM_E3_model_fixed/commit/f7419aa) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:45:03  
+**Message:**
+```
+restore(model-e3): back to version I had before c534397
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f7419aa_20250905_204503_plot1.png)  
+![](../plot_archive/f7419aa_20250905_204503_plot2.png)  
+
 ## Commit [30dc809](https://github.com/naszhu/REM_E3_model_fixed/commit/30dc809) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-05 20:41:31  
 **Message:**

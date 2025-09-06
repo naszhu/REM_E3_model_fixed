@@ -518,7 +518,7 @@ function get_Z_feature_value(word::Word)::Int64
 end
 
 """
-Set initial Z value for probe generation based on probe type.
+ Set initial Z value for probe generation based on probe type.
 According to new rules:
 - Confusing probes (SON, FN, TN types) → Z = 1
 - Target probes (T, Symbol("TN+1")) → Z = 0  
