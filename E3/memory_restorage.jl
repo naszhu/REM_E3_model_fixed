@@ -96,8 +96,12 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
 
             strengthen_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore, iprobe_img.list_number, is_ctx=true)
 
-            # update_ot_feature_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
-            update_Z_feature_Tn_CFs!(iimage_tostrenghten.word, iprobe_img.list_number)
+            # Use new Z-update rules based on decision type
+            if decision_isold == 0  # Recalled + New (confusing foil)
+                update_Z_feature_recalled_new_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
+            else  # decision_isold == 1, Recalled + Old
+                update_Z_feature_recalled_old!(iimage_tostrenghten.word, iprobe_img.list_number)
+            end
 
         else
             # error("should strenghen here")
@@ -114,11 +118,18 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
     if (odds < criterion) || ((odds > criterion) && (odds < recall_odds_threshold))|| ((odds > criterion) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
         
         if is_strenghten #Add trace while strengthening is also happening.
-            # update_ot_feature_add_trace_strengthen!(iimage_toadd.word, iprobe_img.list_number)
-            update_Z_feature_Tn_CFs!(iimage_toadd.word, iprobe_img.list_number)
-        else #  use the update add trace only including situation decision_isold == 1 but odds<recall_odds_threshold for now, but need to be caution later
-            # update_ot_feature_add_trace_only!(iimage_toadd.word, iprobe_img.list_number)
-            update_Z_feature_Fn_CFs!(iimage_toadd.word, iprobe_img.list_number)
+            # Use new Z-update rules based on decision type
+            if decision_isold == 0  # Recalled + New (confusing foil)
+                update_Z_feature_recalled_new_add_trace!(iimage_toadd.word, iprobe_img.list_number)
+            else  # decision_isold == 1, Recalled + Old
+                update_Z_feature_recalled_old!(iimage_toadd.word, iprobe_img.list_number)
+            end
+        else #  use the update add trace only - not recalled cases
+            if decision_isold == 0  # Not recalled + New (really new foil)
+                update_Z_feature_not_recalled_new!(iimage_toadd.word, iprobe_img.list_number)
+            else  # decision_isold == 1, Not recalled + Old (target with no trace recalled)
+                update_Z_feature_not_recalled_old!(iimage_toadd.word, iprobe_img.list_number)
+            end
         end
         
         
@@ -231,7 +242,12 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
             strengthen_features!(iimage_tostrenghten.context_features, iprobe_img.context_features, p_recallFeatureStore, iprobe_img.list_number, is_ctx=true)
 
-            update_Z_feature_Tn_CFs!(iimage_tostrenghten.word, iprobe_img.list_number)
+            # Use new Z-update rules based on decision type
+            if decision_isold == 0  # Recalled + New (confusing foil)
+                update_Z_feature_recalled_new_strengthen!(iimage_tostrenghten.word, iprobe_img.list_number)
+            else  # decision_isold == 1, Recalled + Old
+                update_Z_feature_recalled_old!(iimage_tostrenghten.word, iprobe_img.list_number)
+            end
 
         else
              # nothing for now
@@ -249,12 +265,19 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
         
    
         if is_strenghten #Add trace while strengthening is also happening.
-
-            update_Z_feature_Tn_CFs!(iimage_toadd.word, iprobe_img.list_number)
+            # Use new Z-update rules based on decision type
+            if decision_isold == 0  # Recalled + New (confusing foil)
+                update_Z_feature_recalled_new_add_trace!(iimage_toadd.word, iprobe_img.list_number)
+            else  # decision_isold == 1, Recalled + Old
+                update_Z_feature_recalled_old!(iimage_toadd.word, iprobe_img.list_number)
+            end
         else  
-            # this is wrong, if not strenghten, this is the case of a totally new foil, and I don't know what to do with totally new foil. Maybe just keep what it is.
-            # update_Z_feature_Fn_CFs!(iimage_toadd.word, iprobe_img.list_number)
-            # println("Class of iprobe_img.list_number: ", typeof(iprobe_img.list_number), " : ", iprobe_img.list_number)
+            # Not recalled cases - add trace only
+            if decision_isold == 0  # Not recalled + New (really new foil)
+                update_Z_feature_not_recalled_new!(iimage_toadd.word, iprobe_img.list_number)
+            else  # decision_isold == 1, Not recalled + Old (target with no trace recalled)
+                update_Z_feature_not_recalled_old!(iimage_toadd.word, iprobe_img.list_number)
+            end
         end
 
         push!(image_pool, iimage_toadd)
