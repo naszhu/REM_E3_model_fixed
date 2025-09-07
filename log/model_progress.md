@@ -1,5 +1,581 @@
 # Model Progress
 
+## Commit [587470c](https://github.com/naszhu/REM_E3_model_fixed/commit/587470c) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-07 00:07:07  
+**Message:**
+```
+finetune(model-e3):  finetune for initial test stops now
+
+- Increased `hj_asymptote_increase_val` from 0.35 to 0.43 to enhance model accuracy.
+- Decreased `p_reinstate_rate` from 0.2 to 0.1 to refine the probability of reinstatement.
+- Increased `max_distortion_probes` from 7 to 12 to allow for more probes before distortion probability reaches 0.
+- Decreased `base_distortion_prob` from 0.29 to 0.25 to adjust the base probability of distortion.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/587470c_20250907_000707_plot1.png)  
+![](../plot_archive/587470c_20250907_000707_plot2.png)  
+
+## Commit [0eb24f2](https://github.com/naszhu/REM_E3_model_fixed/commit/0eb24f2) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-06 23:49:35  
+**Message:**
+```
+finetune(model-e3): no change
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0eb24f2_20250906_234935_plot1.png)  
+![](../plot_archive/0eb24f2_20250906_234935_plot2.png)  
+
+## Commit [f7419aa](https://github.com/naszhu/REM_E3_model_fixed/commit/f7419aa) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:45:03  
+**Message:**
+```
+restore(model-e3): back to version I had before c534397
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f7419aa_20250905_204503_plot1.png)  
+![](../plot_archive/f7419aa_20250905_204503_plot2.png)  
+
+## Commit [30dc809](https://github.com/naszhu/REM_E3_model_fixed/commit/30dc809) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:41:31  
+**Message:**
+```
+merge(model-e3): Merge branch 'issue68-explore' into issue64-strenghtening-rule
+
+And attempt to do CFs relationship without changing the structure, but doesn't help
+```
+![](../plot_archive/30dc809_20250905_204131_plot1.png)  
+![](../plot_archive/30dc809_20250905_204131_plot2.png)  
+
+## Commit [9318a31](https://github.com/naszhu/REM_E3_model_fixed/commit/9318a31) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:04:35  
+**Message:**
+```
+finetune(model-e3): adjust fj_asymptote_decrease_val and hj_asymptote_increase_val
+
+I don't know how to fix this
+
+- Decreased `fj_asymptote_decrease_val` from 0.1 to 0.05 to fine-tune model response characteristics.
+- Increased `hj_asymptote_increase_val` from 0.15 to 0.35 to enhance model accuracy.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/9318a31_20250905_200435_plot1.png)  
+![](../plot_archive/9318a31_20250905_200435_plot2.png)  
+
+## Commit [3038273](https://github.com/naszhu/REM_E3_model_fixed/commit/3038273) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 20:00:22  
+**Message:**
+```
+explore(model-e3): relative high fj but low kt (high kt_base)
+
+Doesn't really help
+
+- Increased `kt_base` from 0.75 to 0.95 to enhance the starting point for Fn in tests.
+- Adjusted `fj_asymptote_decrease_val` from 0.01 to 0.1 to fine-tune the model's response characteristics.
+
+These changes aim to optimize the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3038273_20250905_200022_plot1.png)  
+![](../plot_archive/3038273_20250905_200022_plot2.png)  
+
+## Commit [e085b88](https://github.com/naszhu/REM_E3_model_fixed/commit/e085b88) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:58:01  
+**Message:**
+```
+explore(model-e3): adjust fj low see how foil change:
+
+Foil does show a more flat behaviour now, but CF now also very low
+
+- Decreased `fj_asymptote_decrease_val` from 0.1 to 0.01 to fine-tune the model's response characteristics, aiming for more accurate simulation results.
+
+These changes are intended to enhance the model's performance in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e085b88_20250905_195801_plot1.png)  
+![](../plot_archive/e085b88_20250905_195801_plot2.png)  
+
+## Commit [b4d1a9f](https://github.com/naszhu/REM_E3_model_fixed/commit/b4d1a9f) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:51:49  
+**Message:**
+```
+explore(model-e3): what happens if decrease fj?
+
+CF decrease for sure, F should decrease as well becuase if not use LOR info, then foil won't be judged as NEW (no correct rejection)
+
+and this is sort of confirmed
+
+- Decreased `hj_asymptote_increase_val` from 0.35 to 0.15 to enhance the model's response characteristics.
+
+This change aims to optimize the model's performance in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b4d1a9f_20250905_195149_plot1.png)  
+![](../plot_archive/b4d1a9f_20250905_195149_plot2.png)  
+
+## Commit [d9b4bde](https://github.com/naszhu/REM_E3_model_fixed/commit/d9b4bde) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:46:09  
+**Message:**
+```
+explore(model-e3): refine fj_asymptote_decrease_val and hj_asymptote_increase_val
+
+- Adjusted `fj_asymptote_decrease_val` from 0.09 to 0.1 to fine-tune model response characteristics.
+- Decreased `hj_asymptote_increase_val` from 0.4 to 0.35 to improve model accuracy.
+
+These changes aim to enhance the model's performance and response behavior in simulations.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d9b4bde_20250905_194609_plot1.png)  
+![](../plot_archive/d9b4bde_20250905_194609_plot2.png)  
+
+## Commit [fda0424](https://github.com/naszhu/REM_E3_model_fixed/commit/fda0424) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:44:02  
+**Message:**
+```
+explore(model-e3): update base values for ks_base, kb_base, kt_base, and fj_asymptote_decrease_val
+
+- Adjusted `ks_base` from 0.65 to 0.47, `kb_base` from 0.45 to 0.55, and `kt_base` from 0.55 to 0.75 to improve model performance in studies and tests.
+- Increased `fj_asymptote_decrease_val` from 0.01 to 0.09 to enhance the model's response characteristics.
+
+These changes aim to optimize the starting points and behavior of the model, contributing to more accurate simulation results.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/fda0424_20250905_194402_plot1.png)  
+![](../plot_archive/fda0424_20250905_194402_plot2.png)  
+
+## Commit [1d753c9](https://github.com/naszhu/REM_E3_model_fixed/commit/1d753c9) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:34:17  
+**Message:**
+```
+explore(model-e3): update base values for kb_base and kt_base
+
+- Increased `kb_base` from 0.15 to 0.45 and `kt_base` from 0.35 to 0.55 to enhance model performance in studies and tests.
+- These adjustments aim to improve the starting points for Tn and Fn, contributing to more accurate simulation results.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/1d753c9_20250905_193417_plot1.png)  
+![](../plot_archive/1d753c9_20250905_193417_plot2.png)  
+
+## Commit [830edd3](https://github.com/naszhu/REM_E3_model_fixed/commit/830edd3) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 19:30:04  
+**Message:**
+```
+feat(model-e3): differnet way of using kuand ks
+
+update ks each time for ALL traces in memory (to make study and test better)
+
+- Changed `is_finaltest` to false and adjusted `n_simulations` to 200 for improved testing conditions.
+- Modified base values for `ks_base`, `kb_base`, and `kt_base` to enhance model performance and accuracy.
+- Refactored feature update logic in `update_Z_features_single_appearance_studied_items!` to streamline the handling of studied items and their Z feature updates.
+
+These changes aim to optimize the simulation framework and improve the robustness of feature updates.
+
+Refs #68
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/830edd3_20250905_193004_plot1.png)  
+![](../plot_archive/830edd3_20250905_193004_plot2.png)  
+
+## Commit [64119bd](https://github.com/naszhu/REM_E3_model_fixed/commit/64119bd) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:45:15  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+
+Refs #67
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/64119bd_20250905_184515_plot1.png)  
+![](../plot_archive/64119bd_20250905_184515_plot2.png)  
+
+## Commit [ed05cb2](https://github.com/naszhu/REM_E3_model_fixed/commit/ed05cb2) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:44:16  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/ed05cb2_20250905_184416_plot1.png)  
+![](../plot_archive/ed05cb2_20250905_184416_plot2.png)  
+
+## Commit [ed05cb2](https://github.com/naszhu/REM_E3_model_fixed/commit/ed05cb2) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 18:44:16  
+**Message:**
+```
+fix(shell-e3): correct variance loss in initial test results
+
+- Remove premature aggregation in parallel processes that was averaging
+  simulation results before combining, causing loss of variance
+- Save raw simulation data (all_results_raw.csv) from each process
+- Combine raw data first, then aggregate once on complete dataset
+- Add missing Statistics package import for mean() function
+- Maintain proper statistical behavior matching main file output
+- Fixes issue where initial test plots showed artificially smooth results
+  despite low simulation count (n_simulations=20)
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/ed05cb2_20250905_184416_plot1.png)  
+![](../plot_archive/ed05cb2_20250905_184416_plot2.png)  
+
+## Commit [56771d6](https://github.com/naszhu/REM_E3_model_fixed/commit/56771d6) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-05 02:40:19  
+**Message:**
+```
+feat(model-e3): implement new Z feature update rules for probe generation and memory restoration
+
+- Introduced functions to set initial Z values for probes based on their type, with specific rules for confusing, target, and foil probes.
+- Updated Z feature handling in memory restoration functions to reflect new rules for recalled and not recalled cases, enhancing accuracy in feature updates.
+- Adjusted logic in `generate_probes` and `restore_intest` functions to utilize the new Z update mechanisms, ensuring consistent behavior across different decision types.
+
+These changes aim to improve the robustness and accuracy of the memory model's feature updates.
+
+Refs #64
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `regenerate_missing_plots.sh`  
+![](../plot_archive/56771d6_20250905_024019_plot1.png)  
+![](../plot_archive/56771d6_20250905_024019_plot2.png)  
+
+## Commit [3cc42a1](https://github.com/naszhu/REM_E3_model_fixed/commit/3cc42a1) (branch: `issue64-strenghtening-rule`)
+**Time:** 2025-09-04 22:54:03  
+**Message:**
+```
+fix(model-e3): the final test restore part function was wrong
+
+- Adjusted `x` value from 0.13 to 0.09 to modify the starting point for the final test.
+- Updated `cfinal_end` calculation to reflect changes in the offset for improved accuracy.
+- Increased `final_gap_change` from 0.1 to 0.18 to enhance model response during the final test.
+- Added assertions to ensure `c_storeintest` varies by list, improving error handling in the restoration process.
+- Updated feature restoration logic to utilize the correct list-specific values, enhancing the accuracy of feature updates.
+
+These changes aim to optimize the final test phase and improve the robustness of the memory restoration process in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3cc42a1_20250904_225403_plot1.png)  
+![](../plot_archive/3cc42a1_20250904_225403_plot2.png)  
+
+## Commit [2e5bb6e](https://github.com/naszhu/REM_E3_model_fixed/commit/2e5bb6e) (branch: `sep-3-test`)
+**Time:** 2025-09-04 01:08:26  
+**Message:**
+```
+fix(model-e3):  feature update logic mistake  for clarity
+
+- Commented out the conditional logic for updating word features based on list number to address potential issues with handling new foils.
+- This change aims to improve code readability and maintain the function's intended behavior while clarifying the handling of specific cases.
+
+Refs #65
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2e5bb6e_20250904_010826_plot1.png)  
+![](../plot_archive/2e5bb6e_20250904_010826_plot2.png)  
+
+## Commit [d4d60ea](https://github.com/naszhu/REM_E3_model_fixed/commit/d4d60ea) (branch: `sep-3-test`)
+**Time:** 2025-09-04 01:01:57  
+**Message:**
+```
+fix(model-e3): somehow called the function and study twice, but didn't influence result much
+
+- Commented out conditional logic related to updating word features based on list number to enhance code readability.
+- This change aims to simplify the function's structure while maintaining the existing functionality for feature updates.
+```
+**Changed Files:**
+- `E3/memory_storage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d4d60ea_20250904_010157_plot1.png)  
+![](../plot_archive/d4d60ea_20250904_010157_plot2.png)  
+
+## Commit [bc150df](https://github.com/naszhu/REM_E3_model_fixed/commit/bc150df) (branch: `sep-3-test`)
+**Time:** 2025-09-03 23:18:13  
+**Message:**
+```
+finetune(model-e3): refine final test parameters and feature updates
+
+- Updated `x` from 0.093 to 0.13 to adjust the starting point for the final test.
+- Modified `cfinal_end` calculation by changing the offset from -0.06 to -0.08.
+- Increased `cfinal_rate` from 0.18 to 0.27 to enhance model performance during the final test phase.
+- Adjusted feature update conditions to include list number 0 for better handling of specific cases.
+
+These changes aim to optimize the final test phase and improve the accuracy of feature updates in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bc150df_20250903_231813_plot1.png)  
+![](../plot_archive/bc150df_20250903_231813_plot2.png)  
+
+## Commit [ecc746c](https://github.com/naszhu/REM_E3_model_fixed/commit/ecc746c) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:40:32  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+- Updated `x` from 0.063 to 0.093 to refine the starting point for the final test.
+- Modified `cfinal_end` calculation by adjusting the offset from -0.05 to -0.06.
+- Reduced `cfinal_rate` from 0.19 to 0.18 to enhance model performance during the final test phase.
+
+These changes aim to optimize the final test phase in the simulation framework, ensuring better alignment with desired outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ecc746c_20250903_224032_plot1.png)  
+![](../plot_archive/ecc746c_20250903_224032_plot2.png)  
+
+## Commit [8008a37](https://github.com/naszhu/REM_E3_model_fixed/commit/8008a37) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:24:01  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+- Reduced `final_gap_change` from 0.13 to 0.1 to refine the model's response during the final test.
+- Updated `p_ListChange_finaltest` from 0.2 to 0.0 to eliminate the probability of list changes in the final test phase.
+
+These adjustments aim to enhance the accuracy and stability of the simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8008a37_20250903_222401_plot1.png)  
+![](../plot_archive/8008a37_20250903_222401_plot2.png)  
+
+## Commit [6167584](https://github.com/naszhu/REM_E3_model_fixed/commit/6167584) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:17:52  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+- Updated `cfinal_rate` from 0.23 to 0.19 to enhance model performance during the final test phase.
+- These changes aim to refine the accuracy of the simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6167584_20250903_221752_plot1.png)  
+![](../plot_archive/6167584_20250903_221752_plot2.png)  
+
+## Commit [cb1be60](https://github.com/naszhu/REM_E3_model_fixed/commit/cb1be60) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:12:40  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for enhanced performance
+
+- Updated `cfinal_rate` from 0.23 to 0.28 to improve model accuracy.
+- Reduced `p_ListChange_finaltest` from 0.5 to 0.2 to refine the probability of list changes during the final test.
+
+These adjustments aim to optimize the final test phase in the simulation framework, ensuring better alignment with desired outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cb1be60_20250903_221240_plot1.png)  
+![](../plot_archive/cb1be60_20250903_221240_plot2.png)  
+
+## Commit [242cdbf](https://github.com/naszhu/REM_E3_model_fixed/commit/242cdbf) (branch: `sep-3-test`)
+**Time:** 2025-09-03 22:00:56  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+Worked for final test now for a smooth curve
+
+The key is the asympo rate after I tried to draw a plot of teh asympoto function (the curve is convex high to low value
+
+- Set `is_finaltest` to true and updated `n_simulations` to 200 for focused testing.
+- Adjusted `x` from 0.068 to 0.063 and modified `cfinal_end` calculation to refine threshold settings.
+- Updated `cfinal_rate` from 0.34 to 0.23 to enhance model accuracy.
+
+These changes aim to optimize the final test phase in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/242cdbf_20250903_220056_plot1.png)  
+![](../plot_archive/242cdbf_20250903_220056_plot2.png)  
+
+## Commit [f82342a](https://github.com/naszhu/REM_E3_model_fixed/commit/f82342a) (branch: `sep-3-test`)
+**Time:** 2025-09-03 21:55:06  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+Worked for final test now for a smooth curve
+
+The key is the asympo rate after I tried to draw a plot of teh asympoto function (the curve is convex high to low value
+
+- Set `is_finaltest` to true and updated `n_simulations` to 200 for focused testing.
+- Adjusted `x` from 0.068 to 0.063 and modified `cfinal_end` calculation to refine threshold settings.
+- Updated `cfinal_rate` from 0.34 to 0.23 to enhance model accuracy.
+
+These changes aim to optimize the final test phase in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f82342a_20250903_215506_plot1.png)  
+![](../plot_archive/f82342a_20250903_215506_plot2.png)  
+
+## Commit [f82342a](https://github.com/naszhu/REM_E3_model_fixed/commit/f82342a) (branch: `sep-3-test`)
+**Time:** 2025-09-03 21:55:06  
+**Message:**
+```
+finetune(model-e3): adjust final test parameters for improved accuracy
+
+Worked for final test now for a smooth curve
+
+The key is the asympo rate after I tried to draw a plot of teh asympoto function (the curve is convex high to low value
+
+- Set `is_finaltest` to true and updated `n_simulations` to 200 for focused testing.
+- Adjusted `x` from 0.068 to 0.063 and modified `cfinal_end` calculation to refine threshold settings.
+- Updated `cfinal_rate` from 0.34 to 0.23 to enhance model accuracy.
+
+These changes aim to optimize the final test phase in the simulation framework.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f82342a_20250903_215506_plot1.png)  
+![](../plot_archive/f82342a_20250903_215506_plot2.png)  
+
+## Commit [464f3a3](https://github.com/naszhu/REM_E3_model_fixed/commit/464f3a3) (branch: `sep-3-test`)
+**Time:** 2025-09-03 18:51:35  
+**Message:**
+```
+merge(model-e3): A good test. Merge branch 'sep-2-test'
+```
+![](../plot_archive/464f3a3_20250903_185135_plot1.png)  
+![](../plot_archive/464f3a3_20250903_185135_plot2.png)  
+
 ## Commit [56e57b6](https://github.com/naszhu/REM_E3_model_fixed/commit/56e57b6) (branch: `sep-3-optimization`)
 **Time:** 2025-09-03 02:56:07  
 **Message:**

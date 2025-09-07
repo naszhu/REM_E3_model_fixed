@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 100 : 3000;
+is_finaltest = true
+n_simulations = is_finaltest ? 800 : 800;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -154,18 +154,18 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # h(j) is increasing function
 
 ku_base = 0.15 # study，higher this value, lower the starting point of T
-ks_base = 0.45 #SOn (study only), lower the value, higher the starting point CF
-kb_base = 0.45 #Tn (study and test)
-kt_base = 0.45 #Fn (test only)
+ks_base = 0.47 #SOn (study only), lower the value, higher the starting point CF
+kb_base = 0.55 #Tn (study and test)
+kt_base = 0.65 #Fn (test only)
 
 fj_asymptote_decrease_val = 0.01 #0.35 #this value bigger, Hits higher
 fj_rate = 0.26 #this value higher, the faster fj makes T to get better
 
 # @assert ks_base>=fj_asymptote_decrease_val "ks_base must be greater than fj_asymptote_decrease_val"
 
-hj_asymptote_increase_val = 0.4
+hj_asymptote_increase_val = 0.43
 hj_rate = 0.85
-hj_base = 0.6; #higher this value higher CF starting point
+hj_base = 0.4; #higher this value higher CF starting point
 
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 
@@ -174,7 +174,7 @@ h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_list
 κs_values = 1 .-asym_decrease_shift_fj(ks_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
 κb_values = 1 .-asym_decrease_shift_fj(kb_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
 κt_values = 1 .-asym_decrease_shift_fj(kt_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
-
+                                                                                                                                                                                                                                                                                                     
 const κu = κu_values 
 const κs = κs_values  
 const κb = κb_values  
@@ -230,7 +230,7 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 1 #stop reinstate after how much features
 
-p_reinstate_rate = 0.2#0.4 #prob of reinstatement
+p_reinstate_rate = 0.1#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
@@ -242,8 +242,8 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 adjust this and the distor
 
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
-max_distortion_probes = 7  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.29  # Base probability of distortion for the first probe
+max_distortion_probes = 12  # Number of probes until distortion probability reaches 0
+base_distortion_prob = 0.25  # Base probability of distortion for the first probe
 
 
 
@@ -296,7 +296,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.171 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.176 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
@@ -310,21 +310,21 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 """
 Final test
 """
-x =0.068
-cfinal_start=(0.08+x)^power_taken;
-cfinal_end=(0.004+x-0.035)^power_taken;
-cfinal_rate = 0.34
+x =0.13-0.1
+cfinal_start=(0.08+x-0.02)^power_taken;
+cfinal_end=(0.08+x+0.01)^power_taken;
+cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
-criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
-# criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
+# criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
+criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
 context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
-final_gap_change = 0.13; #0.21
-p_ListChange_finaltest = ones(10) * 0.5 #0.1 prob list change for final test
+final_gap_change = 0.18; #0.21
+p_ListChange_finaltest = ones(10) * 0.0 #0.1 prob list change for final test
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.5,0.5, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)

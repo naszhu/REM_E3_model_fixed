@@ -1,5 +1,398 @@
 [
   {
+    "commit": "587470c",
+    "branch": "issue64-strenghtening-rule",
+    "message": "finetune(model-e3):  finetune for initial test stops now",
+    "timestamp": "2025-09-07 00:07:07",
+    "plot1": "plot_archive/587470c_20250907_000707_plot1.png",
+    "plot2": "plot_archive/587470c_20250907_000707_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "0eb24f2",
+    "branch": "issue64-strenghtening-rule",
+    "message": "finetune(model-e3): no change",
+    "timestamp": "2025-09-06 23:49:35",
+    "plot1": "plot_archive/0eb24f2_20250906_234935_plot1.png",
+    "plot2": "plot_archive/0eb24f2_20250906_234935_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f7419aa",
+    "branch": "issue64-strenghtening-rule",
+    "message": "restore(model-e3): back to version I had before c534397",
+    "timestamp": "2025-09-05 20:45:03",
+    "plot1": "plot_archive/f7419aa_20250905_204503_plot1.png",
+    "plot2": "plot_archive/f7419aa_20250905_204503_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "30dc809",
+    "branch": "issue64-strenghtening-rule",
+    "message": "merge(model-e3): Merge branch 'issue68-explore' into issue64-strenghtening-rule",
+    "timestamp": "2025-09-05 20:41:31",
+    "plot1": "plot_archive/30dc809_20250905_204131_plot1.png",
+    "plot2": "plot_archive/30dc809_20250905_204131_plot2.png",
+    "changed_files": []
+  },
+  {
+    "commit": "9318a31",
+    "branch": "issue64-strenghtening-rule",
+    "message": "finetune(model-e3): adjust fj_asymptote_decrease_val and hj_asymptote_increase_val",
+    "timestamp": "2025-09-05 20:04:35",
+    "plot1": "plot_archive/9318a31_20250905_200435_plot1.png",
+    "plot2": "plot_archive/9318a31_20250905_200435_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "3038273",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): relative high fj but low kt (high kt_base)",
+    "timestamp": "2025-09-05 20:00:22",
+    "plot1": "plot_archive/3038273_20250905_200022_plot1.png",
+    "plot2": "plot_archive/3038273_20250905_200022_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e085b88",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): adjust fj low see how foil change:",
+    "timestamp": "2025-09-05 19:58:01",
+    "plot1": "plot_archive/e085b88_20250905_195801_plot1.png",
+    "plot2": "plot_archive/e085b88_20250905_195801_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b4d1a9f",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): what happens if decrease fj?",
+    "timestamp": "2025-09-05 19:51:49",
+    "plot1": "plot_archive/b4d1a9f_20250905_195149_plot1.png",
+    "plot2": "plot_archive/b4d1a9f_20250905_195149_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d9b4bde",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): refine fj_asymptote_decrease_val and hj_asymptote_increase_val",
+    "timestamp": "2025-09-05 19:46:09",
+    "plot1": "plot_archive/d9b4bde_20250905_194609_plot1.png",
+    "plot2": "plot_archive/d9b4bde_20250905_194609_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "fda0424",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): update base values for ks_base, kb_base, kt_base, and fj_asymptote_decrease_val",
+    "timestamp": "2025-09-05 19:44:02",
+    "plot1": "plot_archive/fda0424_20250905_194402_plot1.png",
+    "plot2": "plot_archive/fda0424_20250905_194402_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "1d753c9",
+    "branch": "issue64-strenghtening-rule",
+    "message": "explore(model-e3): update base values for kb_base and kt_base",
+    "timestamp": "2025-09-05 19:34:17",
+    "plot1": "plot_archive/1d753c9_20250905_193417_plot1.png",
+    "plot2": "plot_archive/1d753c9_20250905_193417_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "830edd3",
+    "branch": "issue64-strenghtening-rule",
+    "message": "feat(model-e3): differnet way of using kuand ks",
+    "timestamp": "2025-09-05 19:30:04",
+    "plot1": "plot_archive/830edd3_20250905_193004_plot1.png",
+    "plot2": "plot_archive/830edd3_20250905_193004_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "64119bd",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(shell-e3): correct variance loss in initial test results",
+    "timestamp": "2025-09-05 18:45:15",
+    "plot1": "plot_archive/64119bd_20250905_184515_plot1.png",
+    "plot2": "plot_archive/64119bd_20250905_184515_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "run_parallel.sh"
+    ]
+  },
+  {
+    "commit": "ed05cb2",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(shell-e3): correct variance loss in initial test results",
+    "timestamp": "2025-09-05 18:44:16",
+    "plot1": "plot_archive/ed05cb2_20250905_184416_plot1.png",
+    "plot2": "plot_archive/ed05cb2_20250905_184416_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "run_parallel.sh"
+    ]
+  },
+  {
+    "commit": "ed05cb2",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(shell-e3): correct variance loss in initial test results",
+    "timestamp": "2025-09-05 18:44:16",
+    "plot1": "plot_archive/ed05cb2_20250905_184416_plot1.png",
+    "plot2": "plot_archive/ed05cb2_20250905_184416_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "run_parallel.sh"
+    ]
+  },
+  {
+    "commit": "56771d6",
+    "branch": "issue64-strenghtening-rule",
+    "message": "feat(model-e3): implement new Z feature update rules for probe generation and memory restoration",
+    "timestamp": "2025-09-05 02:40:19",
+    "plot1": "plot_archive/56771d6_20250905_024019_plot1.png",
+    "plot2": "plot_archive/56771d6_20250905_024019_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "regenerate_missing_plots.sh"
+    ]
+  },
+  {
+    "commit": "3cc42a1",
+    "branch": "issue64-strenghtening-rule",
+    "message": "fix(model-e3): the final test restore part function was wrong",
+    "timestamp": "2025-09-04 22:54:03",
+    "plot1": "plot_archive/3cc42a1_20250904_225403_plot1.png",
+    "plot2": "plot_archive/3cc42a1_20250904_225403_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2e5bb6e",
+    "branch": "sep-3-test",
+    "message": "fix(model-e3):  feature update logic mistake  for clarity",
+    "timestamp": "2025-09-04 01:08:26",
+    "plot1": "plot_archive/2e5bb6e_20250904_010826_plot1.png",
+    "plot2": "plot_archive/2e5bb6e_20250904_010826_plot2.png",
+    "changed_files": [
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d4d60ea",
+    "branch": "sep-3-test",
+    "message": "fix(model-e3): somehow called the function and study twice, but didn't influence result much",
+    "timestamp": "2025-09-04 01:01:57",
+    "plot1": "plot_archive/d4d60ea_20250904_010157_plot1.png",
+    "plot2": "plot_archive/d4d60ea_20250904_010157_plot2.png",
+    "changed_files": [
+      "E3/memory_storage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "bc150df",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): refine final test parameters and feature updates",
+    "timestamp": "2025-09-03 23:18:13",
+    "plot1": "plot_archive/bc150df_20250903_231813_plot1.png",
+    "plot2": "plot_archive/bc150df_20250903_231813_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "ecc746c",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 22:40:32",
+    "plot1": "plot_archive/ecc746c_20250903_224032_plot1.png",
+    "plot2": "plot_archive/ecc746c_20250903_224032_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "8008a37",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 22:24:01",
+    "plot1": "plot_archive/8008a37_20250903_222401_plot1.png",
+    "plot2": "plot_archive/8008a37_20250903_222401_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "6167584",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 22:17:52",
+    "plot1": "plot_archive/6167584_20250903_221752_plot1.png",
+    "plot2": "plot_archive/6167584_20250903_221752_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "cb1be60",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for enhanced performance",
+    "timestamp": "2025-09-03 22:12:40",
+    "plot1": "plot_archive/cb1be60_20250903_221240_plot1.png",
+    "plot2": "plot_archive/cb1be60_20250903_221240_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "242cdbf",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 22:00:56",
+    "plot1": "plot_archive/242cdbf_20250903_220056_plot1.png",
+    "plot2": "plot_archive/242cdbf_20250903_220056_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f82342a",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 21:55:06",
+    "plot1": "plot_archive/f82342a_20250903_215506_plot1.png",
+    "plot2": "plot_archive/f82342a_20250903_215506_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f82342a",
+    "branch": "sep-3-test",
+    "message": "finetune(model-e3): adjust final test parameters for improved accuracy",
+    "timestamp": "2025-09-03 21:55:06",
+    "plot1": "plot_archive/f82342a_20250903_215506_plot1.png",
+    "plot2": "plot_archive/f82342a_20250903_215506_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "464f3a3",
+    "branch": "sep-3-test",
+    "message": "merge(model-e3): A good test. Merge branch 'sep-2-test'",
+    "timestamp": "2025-09-03 18:51:35",
+    "plot1": "plot_archive/464f3a3_20250903_185135_plot1.png",
+    "plot2": "plot_archive/464f3a3_20250903_185135_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "56e57b6",
     "branch": "sep-3-optimization",
     "message": "feat(predplot-e3): add package installation script and optimize plotting scripts",
