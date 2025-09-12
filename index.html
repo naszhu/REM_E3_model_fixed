@@ -11,7 +11,12 @@
       --card-bg: #ffffff;
       --text: #333333;
       --accent: #e76f51;
+      --github-dark: #24292e;
+      --github-light: #f6f8fa;
+      --success: #28a745;
+      --warning: #ffc107;
     }
+    
     body {
       background: var(--background);
       color: var(--text);
@@ -19,73 +24,344 @@
       margin: 0;
       padding: 0;
     }
+    
     header {
       background: var(--secondary);
       color: #ffffff;
       padding: 2rem 1rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0-20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    header .content {
+      position: relative;
+      z-index: 1;
+    }
+    
     header h1 {
       margin: 0;
       font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
+    
     header p {
       margin: 0.5rem 0 0;
       font-size: 1.2rem;
+      opacity: 0.9;
     }
+
+    /* SUPER PROMINENT GITHUB LINK */
+    .github-hero {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+    
+    .github-mega-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--github-dark) 0%, #4a5568 100%);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 25px rgba(36, 41, 46, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 3px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .github-mega-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .github-mega-button:hover::before {
+      left: 100%;
+    }
+    
+    .github-mega-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(36, 41, 46, 0.6);
+      border-color: var(--success);
+    }
+    
+    .github-icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Secondary GitHub link in header */
+    .header-github {
+      margin-top: 1.5rem;
+      display: inline-block;
+    }
+    
+    .github-header-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .github-header-button:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+    
     main {
       max-width: 900px;
       margin: -1rem auto 2rem;
       padding: 0 1rem;
+      padding-top: 80px; /* Account for fixed button */
     }
+    
     section {
       background: var(--card-bg);
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       margin: 1.5rem 0;
       padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
     h2 {
       color: var(--primary);
       margin-top: 0;
+      position: relative;
+      padding-bottom: 0.5rem;
     }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    
     a {
       color: var(--accent);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
+    
     a:hover {
+      color: var(--primary);
       text-decoration: underline;
     }
+    
     code {
       background: #eef1f3;
       padding: 0.2rem 0.4rem;
       border-radius: 4px;
-      font-family: monospace;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+      font-size: 0.9em;
     }
+    
     pre {
       background: #eef1f3;
       padding: 1rem;
       border-radius: 6px;
       overflow-x: auto;
+      border-left: 4px solid var(--primary);
     }
+    
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 0 0.25rem;
+    }
+    
+    .important-links {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px solid var(--primary);
+      position: relative;
+    }
+    
+    .important-links::before {
+      content: '🔗 REPOSITORY LINKS';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 20px;
+    }
+    
+    .important-links ul {
+      margin-top: 1rem;
+    }
+    
+    .important-links li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(42, 157, 143, 0.2);
+    }
+    
+    .important-links li:last-child {
+      border-bottom: none;
+    }
+    
+    .repo-link {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--github-dark) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
     .footer {
       text-align: center;
-      padding: 1rem 0;
+      padding: 2rem 0;
       font-size: 0.9rem;
       color: #777;
+      background: var(--card-bg);
+      margin-top: 2rem;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    @media (max-width: 768px) {
+      .github-hero {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 1rem 0;
+        text-align: center;
+      }
+      
+      main {
+        padding-top: 1rem;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .github-mega-button {
+        font-size: 1rem;
+        padding: 14px 20px;
+      }
+    }
+    
+    /* Glowing effect for the main GitHub link */
+    .github-mega-button {
+      box-shadow: 
+        0 8px 25px rgba(36, 41, 46, 0.4),
+        0 0 0 0 rgba(40, 167, 69, 0.5);
+      animation: github-glow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes github-glow {
+      from {
+        box-shadow: 
+          0 8px 25px rgba(36, 41, 46, 0.4),
+          0 0 5px rgba(40, 167, 69, 0.3);
+      }
+      to {
+        box-shadow: 
+          0 8px 25px rgba(36, 41, 46, 0.4),
+          0 0 20px rgba(40, 167, 69, 0.6);
+      }
     }
   </style>
 </head>
 <body>
+  <!-- SUPER PROMINENT FIXED GITHUB LINK -->
+  <div class="github-hero">
+    <a href="https://github.com/naszhu/REM_E3_model_fixed" class="github-mega-button" target="_blank" rel="noopener">
+      <svg class="github-icon" viewBox="0 0 24 24">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      VIEW ON GITHUB
+    </a>
+  </div>
+
   <header>
-    <h1>REM E3 Model Fixed</h1>
-    <p>Shuchun Lai (Lea Lai) — Ph.D. Candidate & Researcher</p>
+    <div class="content">
+      <h1>REM E3 Model Fixed</h1>
+      <p>Shuchun Lai (Lea Lai) — Ph.D. Candidate & Researcher</p>
+      
+      <div class="header-github">
+        <a href="https://github.com/naszhu/REM_E3_model_fixed" class="github-header-button" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub Repository
+        </a>
+      </div>
+    </div>
   </header>
+
   <main>
     <section>
       <h2>Overview</h2>
       <p>This repository contains the core implementation, simulation, and analysis code for <strong>Experiment 3 (E3)</strong> within the <em>project-context</em> research. It focuses on the fixed E3 model structure and provides all scripts necessary to reproduce the results.</p>
     </section>
+
     <section>
       <h2>🎓 Dissertation Project</h2>
       <p>My Ph.D. dissertation explores long-term context memory using the REM (Retrieving Effectively from Memory) model. Key themes include:</p>
@@ -96,15 +372,25 @@
       </ul>
       <p>Experiment 3 (E3) extends these concepts to multi-list learning, examining how context change by list and word influences recognition performance over time.</p>
     </section>
-    <section>
+
+    <section class="important-links">
       <h2>🔗 Important Links</h2>
       <ul>
-        <li><a href="https://github.com/naszhu/REM_E3_model_fixed">This Repository</a></li>
+        <li style="background: var(--repo-bg); padding: 1rem; border-radius: 12px; border: 2px solid var(--repo-border);">
+          <a href="https://github.com/naszhu/REM_E3_model_fixed" class="repo-link" target="_blank" rel="noopener" style="color: var(--repo-highlight) !important; font-size: 1.2rem; font-weight: 800;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--repo-highlight)">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            This Repository — MAIN PROJECT
+          </a>
+          <span class="badge">PRIMARY</span>
+        </li>
         <li><a href="https://github.com/naszhu/project-context">Parent project-context Repo</a></li>
         <li><a href="https://github.com/naszhu/REM_E3_model_fixed/issues">Issues & Templates</a></li>
         <li><a href="https://github.com/naszhu/REM_E3_model_fixed/releases">Releases & Tags</a></li>
       </ul>
     </section>
+
     <section>
       <h2>📂 Repository Structure</h2>
       <ul>
@@ -117,6 +403,7 @@
         <li><code>LOG.txt</code> — Simulation log file</li>
       </ul>
     </section>
+
     <section>
       <h2>🚀 Getting Started</h2>
       <p><strong>Prerequisites:</strong> Julia v1.10+, R v4.0+, and required packages in <code>Project.toml</code> & <code>Manifest.toml</code>.</p>
@@ -126,10 +413,12 @@ julia main_JL_E3_V0.jl</code></pre>
       <p><strong>Run Analysis:</strong></p>
       <pre><code>Rscript R_plots.r</code></pre>
     </section>
+
     <section>
       <h2>📈 Usage & Examples</h2>
       <p>Example outputs: <code>plot1.png</code>, <code>plot2.png</code>. Regenerate these via the R scripts to explore parameter effects.</p>
     </section>
+
     <section>
       <h2>🔧 Development & Contribution</h2>
       <p>Follow conventional commits:</p>
@@ -140,14 +429,20 @@ julia main_JL_E3_V0.jl</code></pre>
       </ul>
       <p>Fork, issue, and PR welcome!</p>
     </section>
+
     <section>
       <h2>🏷️ Versioning</h2>
       <p>Tags under <code>v0.x</code>. See <a href="https://github.com/naszhu/REM_E3_model_fixed/tags">tags page</a>.</p>
     </section>
   </main>
+
   <footer class="footer">
     <p>© 2025 Shuchun Lai (Lea Lai)</p>
-    <p><a href="https://naszhu.github.io/REM_E3_model_fixed/">Live Site</a></p>
+    <p><a href="https://naszhu.github.io/REM_E3_model_fixed/">Live Site</a> | 
+       <a href="https://github.com/naszhu/REM_E3_model_fixed" target="_blank" rel="noopener">GitHub Repository</a></p>
+    <p style="margin-top: 1rem; font-size: 0.8rem; color: #999; font-style: italic;">
+      HTML page design and enhancements created with Claude AI by Anthropic
+    </p>
   </footer>
 </body>
 </html>
