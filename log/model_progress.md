@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [01edbe5](https://github.com/naszhu/REM_E3_model_fixed/commit/01edbe5) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 13:34:38  
+**Message:**
+```
+feat(predplot-e3): add initial test prediction plots for between and within lists
+
+- Introduced two new R scripts for generating prediction plots: `initial_test_between_list_E3_PRED.r` and `initial_test_within_list_E3_PRED.r`.
+- The scripts utilize `ggplot2` for visualization and include data processing steps to calculate correct response rates based on simulation results.
+- Plots are saved as PNG files for further analysis and presentation.
+
+These additions enhance the model's ability to visualize prediction outcomes across different test scenarios.
+```
+**Changed Files:**
+- `E3/pred_plot_combi/initial_test_between_list_E3_PRED.r`  
+- `E3/pred_plot_combi/initial_test_within_list_E3_PRED.r`  
+- `git_reflog.txt`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/01edbe5_20250925_133438_plot1.png)  
+![](../plot_archive/01edbe5_20250925_133438_plot2.png)  
+
 ## Commit [5bd70bd](https://github.com/naszhu/REM_E3_model_fixed/commit/5bd70bd) (branch: `sep-25-plot`)
 **Time:** 2025-09-25 13:22:21  
 **Message:**
