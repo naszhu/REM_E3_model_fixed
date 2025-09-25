@@ -1,5 +1,21 @@
 # Model Progress
 
+## Commit [5bd70bd](https://github.com/naszhu/REM_E3_model_fixed/commit/5bd70bd) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 13:22:21  
+**Message:**
+```
+update(.gitignore): add rule to ignore all PNG files
+
+- Added a rule to ignore all PNG files (*.png) to streamline version control and reduce clutter in the repository.
+```
+**Changed Files:**
+- `.gitignore`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5bd70bd_20250925_132221_plot1.png)  
+![](../plot_archive/5bd70bd_20250925_132221_plot2.png)  
+
 ## Commit [96c71b6](https://github.com/naszhu/REM_E3_model_fixed/commit/96c71b6) (branch: `sep-25-plot`)
 **Time:** 2025-09-07 13:32:31  
 **Message:**
