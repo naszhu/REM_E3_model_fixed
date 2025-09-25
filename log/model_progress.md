@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [56b7f07](https://github.com/naszhu/REM_E3_model_fixed/commit/56b7f07) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 13:43:49  
+**Message:**
+```
+feat(predplot-e3): add final test prediction plot for within list
+
+- Introduced a new R script `final_test_within_list_E3_PRED.r` for generating prediction plots specific to the final test within lists.
+- The script processes data to calculate correct response rates and visualizes the results using `ggplot2`.
+- The final plot is saved as a PNG file for analysis and presentation.
+
+This addition enhances the model's capability to visualize prediction outcomes in the context of final tests.
+```
+**Changed Files:**
+- `E3/pred_plot_combi/final_test_within_list_E3_PRED.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/56b7f07_20250925_134349_plot1.png)  
+![](../plot_archive/56b7f07_20250925_134349_plot2.png)  
+
 ## Commit [01edbe5](https://github.com/naszhu/REM_E3_model_fixed/commit/01edbe5) (branch: `sep-25-plot`)
 **Time:** 2025-09-25 13:34:38  
 **Message:**

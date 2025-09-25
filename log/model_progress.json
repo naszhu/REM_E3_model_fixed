@@ -1,5 +1,19 @@
 [
   {
+    "commit": "56b7f07",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add final test prediction plot for within list",
+    "timestamp": "2025-09-25 13:43:49",
+    "plot1": "plot_archive/56b7f07_20250925_134349_plot1.png",
+    "plot2": "plot_archive/56b7f07_20250925_134349_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "01edbe5",
     "branch": "sep-25-plot",
     "message": "feat(predplot-e3): add initial test prediction plots for between and within lists",
