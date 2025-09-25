@@ -1,5 +1,14 @@
 [
   {
+    "commit": "96c71b6",
+    "branch": "sep-25-plot",
+    "message": "merge(model-e3):Merge branch 'sep-3-test'",
+    "timestamp": "2025-09-07 13:32:31",
+    "plot1": "plot_archive/96c71b6_20250907_133231_plot1.png",
+    "plot2": "plot_archive/96c71b6_20250907_133231_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "587470c",
     "branch": "issue64-strenghtening-rule",
     "message": "finetune(model-e3):  finetune for initial test stops now",

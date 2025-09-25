@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [96c71b6](https://github.com/naszhu/REM_E3_model_fixed/commit/96c71b6) (branch: `sep-25-plot`)
+**Time:** 2025-09-07 13:32:31  
+**Message:**
+```
+merge(model-e3):Merge branch 'sep-3-test'
+```
+![](../plot_archive/96c71b6_20250907_133231_plot1.png)  
+![](../plot_archive/96c71b6_20250907_133231_plot2.png)  
+
 ## Commit [587470c](https://github.com/naszhu/REM_E3_model_fixed/commit/587470c) (branch: `issue64-strenghtening-rule`)
 **Time:** 2025-09-07 00:07:07  
 **Message:**
