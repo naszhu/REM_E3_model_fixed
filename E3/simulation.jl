@@ -210,6 +210,21 @@ function run_single_simulation(sim_num::Int)
             # The Z drift between list (is applied for studied only items):
             # Update Z features for single-appearance studied items between lists
             update_Z_features_single_appearance_studied_items!(image_pool, studied_pool, list_num, n_studyitem)
+            
+            # Update studied_pool items with their initial_testpos from the initial test
+            for (i, probe) in enumerate(probes)
+                # if probe.ProbeTypeSimple == :target && (probe.ProbeTypeGeneral == :T || probe.ProbeTypeGeneral == :Tn)
+                    # Find the corresponding item in studied_pool and update its initial_testpos
+                    for j in 1:n_studyitem
+                        if !isnothing(studied_pool[list_num][j]) && 
+                           (studied_pool[list_num][j].word.type_general == :T || studied_pool[list_num][j].word.type_general == :Tn) &&
+                           studied_pool[list_num][j].word.item_code == probe.image.word.item_code
+                            studied_pool[list_num][j].word.initial_testpos = i
+                            break
+                        end
+                    end
+                # end
+            end
 
 
         end

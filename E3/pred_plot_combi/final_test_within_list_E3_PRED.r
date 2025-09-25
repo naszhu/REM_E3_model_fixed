@@ -85,13 +85,13 @@ pf4 = ggplot(data=df1_combined, aes(x=position, y=meanx, group=is_target)) +
               "Tn_p1" = "#2166AC")         # blue for previous target confusing foil
   ) +
   scale_shape_manual(
-    values = c("F" = 2,                    # open triangle
+    values = c("F" = 17,                    # solid triangle
               "FF" = 8,                    # star
               "Fn_p1" = 2,                 # open triangle
-              "SO" = 1,                    # open circle
+              "SO" = 16,                   # solid circle
               "SOn_p1" = 1,                # open circle
               "T" = 0,                     # open square
-              "Tn_p1" = 0)                 # open square
+              "Tn_p1" = 15)                # solid square
   ) +
   scale_linetype_manual(
     values = c("F" = "dashed",

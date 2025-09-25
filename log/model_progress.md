@@ -1,5 +1,46 @@
 # Model Progress
 
+## Commit [da4526d](https://github.com/naszhu/REM_E3_model_fixed/commit/da4526d) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 14:34:12  
+**Message:**
+```
+feat(simulation): update studied pool items with initial test positions
+
+- Enhanced the `run_single_simulation` function to update items in the studied pool with their initial test positions based on probe enumeration.
+- This change ensures that the initial test positions are accurately reflected for target items, improving the simulation's fidelity.
+
+These modifications contribute to a more precise representation of item positions during simulations.
+```
+**Changed Files:**
+- `E3/pred_plot_combi/final_test_within_list_E3_PRED.r`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/da4526d_20250925_143412_plot1.png)  
+![](../plot_archive/da4526d_20250925_143412_plot2.png)  
+
+## Commit [3d666fa](https://github.com/naszhu/REM_E3_model_fixed/commit/3d666fa) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 14:09:36  
+**Message:**
+```
+refactor(predplot-e3): enhance final test prediction plot with improved data processing and visualization
+
+- Updated the `final_test_within_list_E3_PRED.r` script to streamline data processing for prediction plots, separating logic for test and study positions.
+- Introduced constants for plot formatting to improve readability and maintainability.
+- Enhanced the visualization by combining datasets and refining plot aesthetics, including line types and colors for better distinction.
+- The final plot is saved as a PNG file for analysis and presentation.
+
+These changes improve the clarity and effectiveness of the prediction plot, facilitating better analysis of final test outcomes.
+```
+**Changed Files:**
+- `E3/pred_plot_combi/final_test_within_list_E3_PRED.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3d666fa_20250925_140936_plot1.png)  
+![](../plot_archive/3d666fa_20250925_140936_plot2.png)  
+
 ## Commit [aaa1f3f](https://github.com/naszhu/REM_E3_model_fixed/commit/aaa1f3f) (branch: `sep-25-plot`)
 **Time:** 2025-09-25 14:06:49  
 **Message:**
