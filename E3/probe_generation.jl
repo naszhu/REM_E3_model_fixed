@@ -21,7 +21,8 @@ function generate_probes(
     unchange_features_ref::Vector{Int64}, # Unchange_ctx reference
     unchange_features_dynamic::Vector{Int64}, #Unchange ctx to be changed
     list_num::Int64,
-    studied_pool_currList::Vector{Word} #Pass word kinds in! Do not need IMG part
+    studied_pool_currList::Vector{Word}, #Pass word kinds in! Do not need IMG part
+    studied_pool_ref::Vector{Vector{EpisodicImage}} # Reference to original studied_pool
     
     ; #following are defult vars
     # the next be an optional input, because list 1 dones't have lastlist_studeidpool...
@@ -96,6 +97,17 @@ function generate_probes(
             target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
             target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
             target_word.type_specific = probetypes[i] #update the type_specific
+            
+            # Update the original item in studied_pool with the initial_testpos
+            if probetypes[i] in [:T, Symbol("Tn+1")]
+                for j in 1:length(studied_pool_ref[list_num])
+                    if !isnothing(studied_pool_ref[list_num][j]) && 
+                       studied_pool_ref[list_num][j].word.item_code == target_word.item_code
+                        studied_pool_ref[list_num][j].word.initial_testpos = i
+                        break
+                    end
+                end
+            end
             
             # Set initial Z value based on probe type according to new rules
             set_initial_Z_value_for_probe!(target_word, probetypes[i])

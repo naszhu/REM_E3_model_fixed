@@ -1,5 +1,35 @@
 [
   {
+    "commit": "0be43b6",
+    "branch": "sep-25-plot",
+    "message": "feat(probe_generation): add reference to original studied pool in probe generation",
+    "timestamp": "2025-09-25 14:46:16",
+    "plot1": "plot_archive/0be43b6_20250925_144616_plot1.png",
+    "plot2": "plot_archive/0be43b6_20250925_144616_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "58a6660",
+    "branch": "sep-25-plot",
+    "message": "feat(simulation): update studied pool items with initial test positions",
+    "timestamp": "2025-09-25 14:45:40",
+    "plot1": "plot_archive/58a6660_20250925_144540_plot1.png",
+    "plot2": "plot_archive/58a6660_20250925_144540_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "da4526d",
     "branch": "sep-25-plot",
     "message": "feat(simulation): update studied pool items with initial test positions",

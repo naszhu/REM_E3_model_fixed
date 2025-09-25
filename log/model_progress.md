@@ -1,5 +1,49 @@
 # Model Progress
 
+## Commit [0be43b6](https://github.com/naszhu/REM_E3_model_fixed/commit/0be43b6) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 14:46:16  
+**Message:**
+```
+feat(probe_generation): add reference to original studied pool in probe generation
+
+- Updated the `generate_probes` function to include a reference to the original studied pool, allowing for the accurate updating of initial test positions for target items.
+- Enhanced the logic to ensure that the original studied pool is modified correctly based on the probe type, improving the fidelity of the simulation process.
+
+These changes contribute to a more precise tracking of item positions during simulations, aligning with the overall goal of enhancing simulation accuracy.
+
+Closes #41
+```
+**Changed Files:**
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0be43b6_20250925_144616_plot1.png)  
+![](../plot_archive/0be43b6_20250925_144616_plot2.png)  
+
+## Commit [58a6660](https://github.com/naszhu/REM_E3_model_fixed/commit/58a6660) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 14:45:40  
+**Message:**
+```
+feat(simulation): update studied pool items with initial test positions
+
+- Enhanced the `run_single_simulation` function to update items in the studied pool with their initial test positions based on probe enumeration.
+- This change ensures that the initial test positions are accurately reflected for target items, improving the simulation's fidelity.
+
+These modifications contribute to a more precise representation of item positions during simulations.
+
+Refs #41
+```
+**Changed Files:**
+- `E3/pred_plot_combi/final_test_within_list_E3_PRED.r`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/58a6660_20250925_144540_plot1.png)  
+![](../plot_archive/58a6660_20250925_144540_plot2.png)  
+
 ## Commit [da4526d](https://github.com/naszhu/REM_E3_model_fixed/commit/da4526d) (branch: `sep-25-plot`)
 **Time:** 2025-09-25 14:34:12  
 **Message:**
