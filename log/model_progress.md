@@ -1,5 +1,67 @@
 # Model Progress
 
+## Commit [8c08447](https://github.com/naszhu/REM_E3_model_fixed/commit/8c08447) (branch: `sep-25-plot`)
+**Time:** 2025-09-26 18:59:51  
+**Message:**
+```
+feat(predplot-e3): add final test prediction plot for between lists
+
+- Introduced a new R script `final_test_between_list_E3_PRED.r` for generating prediction plots specific to the final test between lists.
+- The script processes data to calculate correct response rates and visualizes the results using `ggplot2`, incorporating improved aesthetics and organization.
+- The final plot is saved as a PNG file for analysis and presentation.
+
+This addition enhances the model's capability to visualize prediction outcomes in the context of final tests between lists.
+```
+**Changed Files:**
+- `E3/pred_plot_combi/final_test_between_list_E3_PRED.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8c08447_20250926_185951_plot1.png)  
+![](../plot_archive/8c08447_20250926_185951_plot2.png)  
+
+## Commit [78c8f94](https://github.com/naszhu/REM_E3_model_fixed/commit/78c8f94) (branch: `sep-25-plot`)
+**Time:** 2025-09-27 18:59:51  
+**Message:**
+```
+feat(predplot-e3): add final test prediction plot for between lists
+
+- Introduced a new R script `final_test_between_list_E3_PRED.r` for generating prediction plots specific to the final test between lists.
+- The script processes data to calculate correct response rates and visualizes the results using `ggplot2`, incorporating improved aesthetics and organization.
+- The final plot is saved as a PNG file for analysis and presentation.
+
+This addition enhances the model's capability to visualize prediction outcomes in the context of final tests between lists.
+```
+**Changed Files:**
+- `E3/pred_plot_combi/final_test_between_list_E3_PRED.r`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/78c8f94_20250927_185951_plot1.png)  
+![](../plot_archive/78c8f94_20250927_185951_plot2.png)  
+
+## Commit [74dad8b](https://github.com/naszhu/REM_E3_model_fixed/commit/74dad8b) (branch: `sep-25-plot`)
+**Time:** 2025-09-25 14:46:43  
+**Message:**
+```
+feat(model-e3): add reference to original studied pool in probe generation
+
+- Updated the `generate_probes` function to include a reference to the original studied pool, allowing for the accurate updating of initial test positions for target items.
+- Enhanced the logic to ensure that the original studied pool is modified correctly based on the probe type, improving the fidelity of the simulation process.
+
+These changes contribute to a more precise tracking of item positions during simulations, aligning with the overall goal of enhancing simulation accuracy.
+
+Closes #41
+```
+**Changed Files:**
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/74dad8b_20250925_144643_plot1.png)  
+![](../plot_archive/74dad8b_20250925_144643_plot2.png)  
+
 ## Commit [0be43b6](https://github.com/naszhu/REM_E3_model_fixed/commit/0be43b6) (branch: `sep-25-plot`)
 **Time:** 2025-09-25 14:46:16  
 **Message:**

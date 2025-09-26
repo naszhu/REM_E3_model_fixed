@@ -1,5 +1,48 @@
 [
   {
+    "commit": "8c08447",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add final test prediction plot for between lists",
+    "timestamp": "2025-09-26 18:59:51",
+    "plot1": "plot_archive/8c08447_20250926_185951_plot1.png",
+    "plot2": "plot_archive/8c08447_20250926_185951_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_between_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "78c8f94",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add final test prediction plot for between lists",
+    "timestamp": "2025-09-27 18:59:51",
+    "plot1": "plot_archive/78c8f94_20250927_185951_plot1.png",
+    "plot2": "plot_archive/78c8f94_20250927_185951_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_between_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "74dad8b",
+    "branch": "sep-25-plot",
+    "message": "feat(model-e3): add reference to original studied pool in probe generation",
+    "timestamp": "2025-09-25 14:46:43",
+    "plot1": "plot_archive/74dad8b_20250925_144643_plot1.png",
+    "plot2": "plot_archive/74dad8b_20250925_144643_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "0be43b6",
     "branch": "sep-25-plot",
     "message": "feat(probe_generation): add reference to original studied pool in probe generation",
