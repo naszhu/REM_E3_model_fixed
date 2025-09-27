@@ -1,0 +1,1705 @@
+96c71b6 HEAD@{0}: checkout: moving from sep-8-undone-issue68 to main
+1cc2f38 HEAD@{1}: commit (cherry-pick): fix(model-e3): probe evaluation only for non-z features; get p for change between list
+e300ba5 HEAD@{2}: checkout: moving from 8e0883f84a6c304cff0c90a6a1c6fa5d6bacc649 to sep-8-undone-issue68
+8e0883f HEAD@{3}: commit (amend): fix(model-e3): probe evaluation only for non-z features; get p for change between list
+4636d6f HEAD@{4}: commit: fix(model-e3): probe evaluation only for non-z features; get p for change between list
+96c71b6 HEAD@{5}: checkout: moving from sep-8-undone-issue68 to 96c71b6c59a4e2a7a8372b105000450e394d83c6
+e300ba5 HEAD@{6}: commit: finetune(model-e3): comment out unused odds check and image selection logic
+e0147b2 HEAD@{7}: commit: restore(model-e3): back to Rich v6 version
+96c71b6 HEAD@{8}: checkout: moving from main to sep-8-undone-issue68
+96c71b6 HEAD@{9}: checkout: moving from sep-3-test to main
+ce00489 HEAD@{10}: checkout: moving from main to sep-3-test
+96c71b6 HEAD@{11}: merge sep-3-test: Merge made by the 'ort' strategy.
+464f3a3 HEAD@{12}: checkout: moving from issue64-strenghtening-rule to main
+1cd4990 HEAD@{13}: checkout: moving from sep-3-test to issue64-strenghtening-rule
+ce00489 HEAD@{14}: merge issue64-strenghtening-rule: Merge made by the 'ort' strategy.
+3cc42a1 HEAD@{15}: checkout: moving from issue64-strenghtening-rule to sep-3-test
+1cd4990 HEAD@{16}: commit: finetune(model-e3): update simulation parameters for final testing
+587470c HEAD@{17}: commit: finetune(model-e3): finetune for initial test stops now
+0eb24f2 HEAD@{18}: commit: finetune(model-e3): no change
+f7419aa HEAD@{19}: commit: restore(model-e3): back to version I had before c534397
+30dc809 HEAD@{20}: merge issue68-explore: Merge made by the 'ort' strategy.
+09ae7a1 HEAD@{21}: checkout: moving from issue68-explore to issue64-strenghtening-rule
+ec89fa5 HEAD@{22}: commit: explore(model-e3): adjust n_simulations and hj_asymptote_increase_val
+ad1580f HEAD@{23}: commit: restore(model-e3): restore back to commit 56771d6, before I did the new method of updating everything during tests
+09ae7a1 HEAD@{24}: checkout: moving from issue64-strenghtening-rule to issue68-explore
+09ae7a1 HEAD@{25}: commit: finetune(model-e3): adjust base values for ks_base, kb_base, kt_base, and hj_base
+c534397 HEAD@{26}: commit: finetune(model-e3): adjust kt_base, fj_asymptote_decrease_val, and hj_base
+9318a31 HEAD@{27}: commit: finetune(model-e3): adjust fj_asymptote_decrease_val and hj_asymptote_increase_val
+3038273 HEAD@{28}: commit: explore(model-e3): relative high fj but low kt (high kt_base)
+e085b88 HEAD@{29}: commit: explore(model-e3): adjust fj low see how foil change:
+b4d1a9f HEAD@{30}: commit: explore(model-e3): what happens if decrease fj?
+d9b4bde HEAD@{31}: commit: explore(model-e3): refine fj_asymptote_decrease_val and hj_asymptote_increase_val
+fda0424 HEAD@{32}: commit: explore(model-e3): update base values for ks_base, kb_base, kt_base, and fj_asymptote_decrease_val
+1d753c9 HEAD@{33}: commit: explore(model-e3): update base values for kb_base and kt_base
+830edd3 HEAD@{34}: commit: feat(model-e3): differnet way of using kuand ks
+64119bd HEAD@{35}: commit (amend): fix(shell-e3): correct variance loss in initial test results
+ed05cb2 HEAD@{36}: commit: fix(shell-e3): correct variance loss in initial test results
+56771d6 HEAD@{37}: checkout: moving from sep-3-test to issue64-strenghtening-rule
+3cc42a1 HEAD@{38}: checkout: moving from issue64-strenghtening-rule to sep-3-test
+56771d6 HEAD@{39}: commit: feat(model-e3): implement new Z feature update rules for probe generation and memory restoration
+3cc42a1 HEAD@{40}: checkout: moving from sep-3-test to issue64-strenghtening-rule
+3cc42a1 HEAD@{41}: commit: fix(model-e3): the final test restore part function was wrong
+2e5bb6e HEAD@{42}: commit: fix(model-e3): feature update logic mistake for clarity
+d4d60ea HEAD@{43}: commit: fix(model-e3): somehow called the function and study twice, but didn't influence result much
+bc150df HEAD@{44}: commit: finetune(model-e3): refine final test parameters and feature updates
+ecc746c HEAD@{45}: commit: finetune(model-e3): adjust final test parameters for improved accuracy
+8008a37 HEAD@{46}: commit: finetune(model-e3): adjust final test parameters for improved accuracy
+6167584 HEAD@{47}: commit: finetune(model-e3): adjust final test parameters for improved accuracy
+cb1be60 HEAD@{48}: commit: finetune(model-e3): adjust final test parameters for enhanced performance
+242cdbf HEAD@{49}: reset: moving to HEAD@{1}
+464f3a3 HEAD@{50}: reset: moving to HEAD~1
+242cdbf HEAD@{51}: reset: moving to HEAD~1
+29639cc HEAD@{52}: commit: ss
+242cdbf HEAD@{53}: commit (amend): finetune(model-e3): adjust final test parameters for improved accuracy
+f82342a HEAD@{54}: commit: finetune(model-e3): adjust final test parameters for improved accuracy
+464f3a3 HEAD@{55}: checkout: moving from main to sep-3-test
+464f3a3 HEAD@{56}: checkout: moving from sep-2-test to main
+cbad78d HEAD@{57}: checkout: moving from main to sep-2-test
+464f3a3 HEAD@{58}: merge sep-2-test: Merge made by the 'ort' strategy.
+30407a1 HEAD@{59}: checkout: moving from sep-2-test to main
+cbad78d HEAD@{60}: merge sep-3-optimization: Merge made by the 'ort' strategy.
+d2bff83 HEAD@{61}: checkout: moving from sep-3-optimization to sep-2-test
+8f34a68 HEAD@{62}: commit: finetune(model-e3): fine-tune final test
+56e57b6 HEAD@{63}: commit: feat(predplot-e3): add package installation script and optimize plotting scripts
+5771386 HEAD@{64}: commit: finetune(run_parallel-e3): enhance user feedback and finetune
+0ce5082 HEAD@{65}: commit: feat(run_parallel-e3): add progress monitoring during simulation execution
+89fd0fe HEAD@{66}: commit: finetnue(model-e3): refine final test parameters for improved accuracy
+7898176 HEAD@{67}: commit: fix(run_parallel-e3): improve plot handling and cleanup process
+a44c297 HEAD@{68}: commit: refactor(model-e3): clean up and optimize E3 module
+3620fcd HEAD@{69}: commit: docs(model-e3): gitignore
+7b503c3 HEAD@{70}: commit: feat(model-e3): introduce new simulation utilities and logging enhancements
+3fb0c72 HEAD@{71}: commit: fix(model-e3): somehow deleted uc_final during ealier refactor
+095a6d2 HEAD@{72}: commit: feat(model-e3): add performance benchmarking and profiling tools
+d2bff83 HEAD@{73}: checkout: moving from sep-2-test to sep-3-optimization
+d2bff83 HEAD@{74}: commit: refactor(model-e3): change const structure for final test,
+3e007c9 HEAD@{75}: commit (amend): finetune(model-e3): 1000 simulation
+4a86016 HEAD@{76}: commit: finetune(model-e3): 1000 simulation
+0c106d3 HEAD@{77}: commit: finetune(model-e3): refine base parameters for enhanced simulation accuracy
+48fd9f9 HEAD@{78}: commit: finetune(model-e3): adjust base parameters and plot limits for improved simulation accuracy
+2348ad4 HEAD@{79}: commit: finetune(model-e3): adjust base parameters for improved simulation accuracy
+43816ab HEAD@{80}: commit: finetune(model-e3): adjust simulation parameters for improved accuracy
+38e6d39 HEAD@{81}: commit: finetune(model-e3): adjust base parameters for improved simulation accuracy
+fb6fd36 HEAD@{82}: commit: finetune(model-e3): update drift parameters for enhanced simulation accuracy
+829ecbc HEAD@{83}: commit: finetune(model-e3): update drift parameters for improved simulation accuracy
+d565027 HEAD@{84}: commit: finetune(model-e3): adjusti criterion for improved simulation accuracy
+cccdbd0 HEAD@{85}: commit: finetune(model-e3): update ci constant for improved simulation accuracy
+0cd25e3 HEAD@{86}: commit: finetune(model-e3): adjust simulation parameters for improved accuracy
+7416b26 HEAD@{87}: commit: finetune(model-e3): a highnumber of simulation
+f70c0b9 HEAD@{88}: commit: finetune(model-e3): adjust ks_base, kt_base, and fj_asymptote_decrease_val for improved simulation dynamics
+99fbd62 HEAD@{89}: commit: finetune(model-e3): adjust ks_base, kb_base, and hj parameters for improved simulation dynamics
+45deb1f HEAD@{90}: commit: finetune(model-e3): adjust fj and hj parameters for improved simulation dynamics
+a986d24 HEAD@{91}: commit: finetune(model-e3): adjust ku_base, fj, and hj parameters for improved simulation dynamics
+056f910 HEAD@{92}: commit: finetune(model-e3): adjust fj and hj parameters for improved simulation dynamics
+faa891a HEAD@{93}: commit: refactor(model-e3): adjust ku_base for improved simulation starting point
+7579d9c HEAD@{94}: commit: finetune(model-e3): update base constants for enhanced simulation dynamics
+3c5aaad HEAD@{95}: commit: refactor(model-e3): update base constants for improved simulation dynamics
+5b2478f HEAD@{96}: commit: refactor(model-e3): adjust base constants and plot limits for improved simulation accuracy
+b00ab7a HEAD@{97}: commit (amend): fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus
+b079b53 HEAD@{98}: commit: fix(model-e3): the kappa base value for CFs was wrong , should be 1 minus
+ce0b3fc HEAD@{99}: commit: explore(model-e3): update base constants for improved simulation conditions
+d4635fe HEAD@{100}: commit: explore(model-e3): decrease hj_base for adjusted simulation conditions
+a14d6bf HEAD@{101}: commit: explore(model-e3): update base κ values for feature study calculations
+475053d HEAD@{102}: commit: explore(model-e3): adjust simulation parameters and feature evaluation logic
+cb68308 HEAD@{103}: commit: finetune(model-e3): increase hj_base for improved simulation starting conditions
+53efe91 HEAD@{104}: commit: explore(model-e3): make all increasing/decreasing rate 0
+2294c6d HEAD@{105}: commit: finetune(model-e3): adjust hj parameters and plot limits for improved model calibration
+1accfc7 HEAD@{106}: commit: finetune(model-e3): adjust base constants and plot limits for improved model calibration
+d19a3b4 HEAD@{107}: commit: finetune(model-e3): increase hj_asymptote_increase_val for improved model responsiveness
+3c80ac1 HEAD@{108}: commit: finetune(model-e3): adjust fj_asymptote_decrease_val and fj_rate for improved model performance
+535d3e0 HEAD@{109}: commit: explore(model-e3): reset fj_asymptote_decrease_val to 0.0 and clarify fj_rate comment
+1522b2c HEAD@{110}: commit: explore(model-e3): update fj_rate and clarify fj_asymptote_decrease_val comment
+1d1e2c0 HEAD@{111}: commit: finetune(model-e3): adjust simulation parameters and criterion calculations
+0b6d345 HEAD@{112}: merge sep-2-bottleneck: Merge made by the 'ort' strategy.
+add49d0 HEAD@{113}: checkout: moving from sep-2-bottleneck to sep-2-test
+8579551 HEAD@{114}: commit: feat(optimization): add utilities for memory-efficient operations
+791be3d HEAD@{115}: commit: refactor(simulation): optimize simulation process and enhance performance
+add49d0 HEAD@{116}: checkout: moving from sep-2-test to sep-2-bottleneck
+add49d0 HEAD@{117}: reset: moving to HEAD~1
+ae131f8 HEAD@{118}: commit: refactor(simulation): optimize simulation process and enhance performance
+add49d0 HEAD@{119}: commit: fix(model-e3): adjust constants and re-enable feature update calls
+e26ff98 HEAD@{120}: commit (amend): feat(model-e3): enable final test mode and adjust criterion calculations
+8300a2c HEAD@{121}: commit: feat(model-e3): enable final test mode and adjust criterion calculations
+652723a HEAD@{122}: commit: feat(model-e3): take out 1/11 power sampling, works better now
+30407a1 HEAD@{123}: checkout: moving from main to sep-2-test
+30407a1 HEAD@{124}: merge aug-31-new-model-v6: Merge made by the 'ort' strategy.
+60ed225 HEAD@{125}: checkout: moving from aug-31-new-model-v6 to main
+cd1276d HEAD@{126}: commit (amend): explore(model-e3): adjust base parameters and comment out feature update calls
+72fa36a HEAD@{127}: commit: explore(model-e3): adjust base parameters and comment out feature update calls
+fd996e3 HEAD@{128}: commit: explore(model-e3): adjust base parameters and feature update calls for improved model dynamics
+e03bd68 HEAD@{129}: commit: finetune(model-e3): update hj_asymptote_increase_val and ci for improved model calibration
+ac5e7b4 HEAD@{130}: commit: fix(model-e3): uncomment the update Z feature of study item
+174a28d HEAD@{131}: commit: explore(model-e3): comment out Z feature updates for clarity
+2e26a1f HEAD@{132}: commit: explore(model-e3): debug, check what z is doing by plotting it
+104a863 HEAD@{133}: commit: fix(model-e3): Adjusted the handling of `word_features` to ensure consistent feature updates
+c99e21c HEAD@{134}: commit: explore(model-e3): what if no change f(j)
+b71ea43 HEAD@{135}: commit: finetune(model-e3): update base parameters for improved model calibration
+46ed82f HEAD@{136}: commit: finetune(model-e3): adjust hj parameters for improved model dynamics
+24697ba HEAD@{137}: commit: finetune(model-e3): adjust base parameters and asymptote values for model refinement
+b87b108 HEAD@{138}: commit: finetune(model-e3): update base parameters and asymptote values for improved model performance
+832b9c5 HEAD@{139}: commit: explore(probe_evaluation): add debug prints for item code mismatches
+a33f756 HEAD@{140}: commit: fintune(model-e3): working? reorganize file inclusions and enhance R plotting functionality
+a0f907b HEAD@{141}: commit: explore(model-e3): revise base parameters and asymptote values for model optimization
+fd057c3 HEAD@{142}: commit: explore(model-e3): adjust base parameters and drift values for model optimization
+2528ac0 HEAD@{143}: commit: explore(model-e3): adjust base parameters and criterion values for improved model performance
+bd4a99e HEAD@{144}: commit: fix(model-e3): update feature handling to replace OT with Z feature
+01249a0 HEAD@{145}: checkout: moving from main to aug-31-new-model-v6
+60ed225 HEAD@{146}: checkout: moving from aug-31-new-model-v6 to main
+01249a0 HEAD@{147}: commit: feat(model-e3): replace OT feature with Z feature and update related functions
+60ed225 HEAD@{148}: checkout: moving from main to aug-31-new-model-v6
+60ed225 HEAD@{149}: merge aug-30-test: Merge made by the 'ort' strategy.
+82a4029 HEAD@{150}: checkout: moving from aug-30-test to main
+06b1db1 HEAD@{151}: commit: finetune(model-e3): adjust OT feature parameters for improved model behavior
+7741691 HEAD@{152}: commit: refactor(model-e3): add is_same_item and is_sampled flags to probe evaluation and simulation
+82a4029 HEAD@{153}: checkout: moving from main to aug-30-test
+82a4029 HEAD@{154}: merge aug-29-test: Merge made by the 'ort' strategy.
+c035450 HEAD@{155}: checkout: moving from aug-29-test to main
+df0d5d4 HEAD@{156}: commit (amend): finetune(model-e3): update κb and κt parameters for clarity and consistency
+17e334a HEAD@{157}: commit: finetune(model-e3): update κb and κt parameters for clarity and consistency
+8874844 HEAD@{158}: commit: fix(model-e3): update OT feature strengthening functions for clarity and consistency
+e16f69c HEAD@{159}: commit: finetune(model-e3): adjust criterion initial values for improved model accuracy
+4c8c5d6 HEAD@{160}: commit: finetune(model-e3): adjust criterion initial values for improved model accuracy
+9f88ac1 HEAD@{161}: commit: finetune(model-e3): adjust kappa parameters for improved model dynamics
+793ec6b HEAD@{162}: commit: finetune(model-e3): update kappa parameters and criterion initial values for improved model performance
+4ab69bb HEAD@{163}: commit: finetune(model-e3): update kappa parameters and feature constants for improved model dynamics
+aa9b958 HEAD@{164}: commit: refactor(model-e3): moving feature distortion function to feature_updates module
+63beedd HEAD@{165}: commit: fix(model-e3): change sequance of modules includion in main script
+c035450 HEAD@{166}: checkout: moving from main to aug-29-test
+c035450 HEAD@{167}: checkout: moving from aug-26-within-list-fix to main
+5d5a716 HEAD@{168}: checkout: moving from main to aug-26-within-list-fix
+c035450 HEAD@{169}: merge aug-26-within-list-fix: Merge made by the 'ort' strategy.
+2be1bd0 HEAD@{170}: checkout: moving from aug-26-within-list-fix to main
+5d5a716 HEAD@{171}: commit: feat(model-e3): OT feature update evaluation logic change
+07a86d3 HEAD@{172}: commit: fix(model-e3): refine feature strengthening logic and enhance probe evaluation assertions
+007c234 HEAD@{173}: commit: finetune(model-e3): update kappa parameters and distortion probabilities for improved model dynamics
+e048c24 HEAD@{174}: commit: feat(model-e3): integrate OT feature updates and enhance memory management
+1f65eaa HEAD@{175}: commit: feat(model-e3): content drift: probe distortion mechanism and update constants
+864c339 HEAD@{176}: commit (amend): restore(model-e3): restore back to commit before last whole branch merge
+b3a1c46 HEAD@{177}: commit (amend): restore(model-e3): restore back to commit before last whole branch merge
+b6333e5 HEAD@{178}: commit: restore(model-e3): restore back to commit before last whole branch merge
+d1322de HEAD@{179}: checkout: moving from main to aug-26-within-list-fix
+2be1bd0 HEAD@{180}: checkout: moving from f2e29b7eb92158c48f310872d3f50ee08af725c3 to main
+f2e29b7 HEAD@{181}: checkout: moving from main to f2e29b7eb92158c48f310872d3f50ee08af725c3
+2be1bd0 HEAD@{182}: checkout: moving from 778073961c864fde39c6f800836c15f886c28ab4 to main
+7780739 HEAD@{183}: checkout: moving from main to 778073961c864fde39c6f800836c15f886c28ab4
+2be1bd0 HEAD@{184}: checkout: moving from ac2edbcccfacd76360088a78595454c88ee8bfd3 to main
+ac2edbc HEAD@{185}: checkout: moving from aug-26-within-list-fix to ac2edbcccfacd76360088a78595454c88ee8bfd3
+d1322de HEAD@{186}: checkout: moving from main to aug-26-within-list-fix
+2be1bd0 HEAD@{187}: checkout: moving from 778073961c864fde39c6f800836c15f886c28ab4 to main
+7780739 HEAD@{188}: checkout: moving from aug-26-within-list-fix to 778073961c864fde39c6f800836c15f886c28ab4
+d1322de HEAD@{189}: reset: moving to d1322de
+7780739 HEAD@{190}: reset: moving to 778073961c864fde39c6f800836c15f886c28ab4
+d1322de HEAD@{191}: checkout: moving from main to aug-26-within-list-fix
+2be1bd0 HEAD@{192}: checkout: moving from 2be1bd01705c8e9c730147862981aa275a206d32 to main
+2be1bd0 HEAD@{193}: checkout: moving from aug-26-within-list-fix to 2be1bd01705c8e9c730147862981aa275a206d32
+d1322de HEAD@{194}: commit: debug(model-e3): not exactly sure what is going on
+9dd4a2c HEAD@{195}: commit: feat(model-e3): probe distortion at beginning between study and test
+2be1bd0 HEAD@{196}: checkout: moving from main to aug-26-within-list-fix
+2be1bd0 HEAD@{197}: checkout: moving from aug-23-new-test to main
+c209918 HEAD@{198}: checkout: moving from main to aug-23-new-test
+2be1bd0 HEAD@{199}: commit (amend): merge(model-e3): Merge branch 'aug-23-new-test'
+713a4dc HEAD@{200}: commit (merge): merge(model-e3): Merge branch 'aug-23-new-test'
+7780739 HEAD@{201}: checkout: moving from aug-23-new-test to main
+c209918 HEAD@{202}: commit: finetune(model-e3): adjust initial criterion values for improved model performance
+d0412c2 HEAD@{203}: commit: finetune(model-e3): adjust kappa parameters for improved model dynamics
+0ec8103 HEAD@{204}: commit: finetune(model-e3): ks_base=0.15, doensn't help much
+c5603af HEAD@{205}: commit: fix(model-e3): wrong on ks use again, bug caused by cursor
+2a2c900 HEAD@{206}: commit (amend): fix(model-e3): previous use of ks is wrong
+5c90a04 HEAD@{207}: commit (amend): fix(model-e3): previous use of ks is wrong
+21fe52e HEAD@{208}: commit: enhance(model-e3): integrate OT feature handling in memory updates and evaluations
+caf263c HEAD@{209}: commit: explore(model-e3): c to 0.8, ks, kb change lower
+b34c8a6 HEAD@{210}: reset: moving to HEAD~1
+c7d8334 HEAD@{211}: checkout: moving from main to aug-23-new-test
+7780739 HEAD@{212}: checkout: moving from b34c8a6e981f867129780e5560e01d3fcff810a8 to main
+b34c8a6 HEAD@{213}: reset: moving to HEAD~1
+c7d8334 HEAD@{214}: checkout: moving from b34c8a6e981f867129780e5560e01d3fcff810a8 to c7d8334e9dbd12a9b1577d3a0108e19d5be3a2b2
+b34c8a6 HEAD@{215}: checkout: moving from c7d8334e9dbd12a9b1577d3a0108e19d5be3a2b2 to HEAD~1
+c7d8334 HEAD@{216}: checkout: moving from aug-23-new-test to c7d8334e9dbd12a9b1577d3a0108e19d5be3a2b2
+c7d8334 HEAD@{217}: commit: explore(model-e3): kappa 0.4, kb_base 0.5
+b34c8a6 HEAD@{218}: commit: explore(model-e3): adjust u_star_v parameter for improved model dynamics
+4661491 HEAD@{219}: commit: fix(model-e3): kb and ks used mistakenly ealier
+eab207e HEAD@{220}: reset: moving to HEAD~1
+3311816 HEAD@{221}: checkout: moving from c8106760ce22e099ffa530da95b23f4810bc61a3 to aug-23-new-test
+c810676 HEAD@{222}: checkout: moving from f0af48f923ff3204aaa094bef016f4fd0bc0fb56 to c8106760ce22e099ffa530da95b23f4810bc61a3
+f0af48f HEAD@{223}: checkout: moving from aug-23-new-test to f0af48f923ff3204aaa094bef016f4fd0bc0fb56
+3311816 HEAD@{224}: commit: refactor(model-e3): enhance OT feature updates with asymptotic parameters
+eab207e HEAD@{225}: commit: refactor(model-e3): update simulation parameters and enhance feature restoration logic
+f2e29b7 HEAD@{226}: commit: feat(model-e3): introduce OT feature for enhanced decision-making and memory updates
+7780739 HEAD@{227}: checkout: moving from main to aug-23-new-test
+7780739 HEAD@{228}: checkout: moving from aug-20-newfeat to main
+ac2edbc HEAD@{229}: checkout: moving from main to aug-20-newfeat
+7780739 HEAD@{230}: checkout: moving from aug-20-newfeat to main
+ac2edbc HEAD@{231}: checkout: moving from main to aug-20-newfeat
+7780739 HEAD@{232}: checkout: moving from aug-20-newfeat to main
+ac2edbc HEAD@{233}: checkout: moving from main to aug-20-newfeat
+7780739 HEAD@{234}: checkout: moving from main to main
+7780739 HEAD@{235}: checkout: moving from aug-20-newfeat to main
+ac2edbc HEAD@{236}: checkout: moving from main to aug-20-newfeat
+7780739 HEAD@{237}: merge aug-20-newfeat: Merge made by the 'ort' strategy.
+f0af48f HEAD@{238}: checkout: moving from aug-20-newfeat to main
+ac2edbc HEAD@{239}: commit: explore(model-e3): try different n drift btween study and test
+654fc84 HEAD@{240}: commit: explore(model-e3): 1000 simuation
+08d428d HEAD@{241}: commit: feat(model-e3): content drift replace UC drift
+f0af48f HEAD@{242}: checkout: moving from main to aug-20-newfeat
+f0af48f HEAD@{243}: commit (merge): merge(model-e3): refine decision logic and enhance context management
+c810676 HEAD@{244}: checkout: moving from aug-14-test to main
+bdc0870 HEAD@{245}: commit: feat(docs): add comprehensive commit history analysis document
+8d4dcbb HEAD@{246}: commit: fix(model-e3): z value mistaken on type Tn+1
+7ab7cb0 HEAD@{247}: commit: chore(model-e3): Have tested on use_sample_for_decison = false, seems to be good
+80e50df HEAD@{248}: commit (amend): fix(model-e3): restructure decision logic and fix bounds errors
+4464576 HEAD@{249}: commit: fix(model-e3): restructure decision logic and fix bounds errors
+893d5ae HEAD@{250}: rebase (continue) (finish): returning to refs/heads/aug-14-test
+893d5ae HEAD@{251}: rebase (continue) (pick): finetune(model-e3): Change UC change in final - give a good OI after bug fixed
+7109b1a HEAD@{252}: rebase (reword): fix(model-e3): fix broken chunk boundary detection causing excessive context drift
+9de83ab HEAD@{253}: rebase (reword): ix(model-e3): fix broken chunk boundary detection causing excessive context drift
+875de2d HEAD@{254}: rebase (pick): finetune(model-e3): final test tunning, but doesn't work well so far
+4dbf9ad HEAD@{255}: rebase (start): checkout HEAD~3
+87ca699 HEAD@{256}: rebase (continue) (finish): returning to refs/heads/aug-14-test
+87ca699 HEAD@{257}: rebase (continue): finetune(model-e3): Change UC change in final - give a good OI after bug fixed
+9de83ab HEAD@{258}: rebase (continue): ix(model-e3): fix broken chunk boundary detection causing excessive context drift
+875de2d HEAD@{259}: rebase (continue): finetune(model-e3): final test tunning, but doesn't work well so far
+4dbf9ad HEAD@{260}: rebase (reword): fix(model-e3): refine simulation parameters and add context drift function
+50efaea HEAD@{261}: rebase (reword): fix(model-e3): refine simulation parameters and add context drift function
+c810676 HEAD@{262}: rebase (start): checkout HEAD~4
+988ac66 HEAD@{263}: reset: moving to HEAD
+988ac66 HEAD@{264}: commit: finetune(model-e3): Change UC change in final - give a good OI after bug fixed
+070e8cc HEAD@{265}: commit: ix(model-e3): fix broken chunk boundary detection causing excessive context drift
+8e907f1 HEAD@{266}: reset: moving to HEAD@{8}
+3d60b20 HEAD@{267}: reset: moving to HEAD@{1}
+8e907f1 HEAD@{268}: reset: moving to HEAD@{1}
+3d60b20 HEAD@{269}: reset: moving to HEAD@{1}
+8e907f1 HEAD@{270}: reset: moving to HEAD~1
+3d60b20 HEAD@{271}: checkout: moving from main to aug-14-test
+c810676 HEAD@{272}: checkout: moving from c8106760ce22e099ffa530da95b23f4810bc61a3 to main
+c810676 HEAD@{273}: checkout: moving from aug-14-test to c8106760ce22e099ffa530da95b23f4810bc61a3
+3d60b20 HEAD@{274}: commit: tempsave(will be deleted alter)
+8e907f1 HEAD@{275}: commit: finetune(model-e3): final test tunning, but doesn't work well so far
+50efaea HEAD@{276}: reset: moving to HEAD~1
+6839362 HEAD@{277}: commit: chore(vscode): color setting of E3
+50efaea HEAD@{278}: commit: fix(model-e3): refine simulation parameters and add context drift function
+c810676 HEAD@{279}: checkout: moving from main to aug-14-test
+c810676 HEAD@{280}: merge aug-11: Merge made by the 'ort' strategy.
+4da5858 HEAD@{281}: checkout: moving from aug-11 to main
+dc88612 HEAD@{282}: commit: finetune(model-e3): adjust simulation parameters for final tests
+e169187 HEAD@{283}: checkout: moving from branch-out-check-OI-issue to aug-11
+e169187 HEAD@{284}: checkout: moving from aug-11 to branch-out-check-OI-issue
+e169187 HEAD@{285}: commit: add(vscode): create settings file for Visual Studio Code with custom theme
+b467152 HEAD@{286}: commit (amend): fix(model-e3): strengthen context restoration logic on parameters
+505d5f5 HEAD@{287}: commit: update(model-e3): strengthen context restoration logic on parameter is_strengthen_contextandcontent
+9b8cf1b HEAD@{288}: checkout: moving from main to aug-11
+4da5858 HEAD@{289}: checkout: moving from 1520aa8b9e609d0df46f5d5226cd57aa54af62df to main
+1520aa8 HEAD@{290}: checkout: moving from aug-11 to v1.3
+9b8cf1b HEAD@{291}: checkout: moving from c5ecefd3b91447d1445b28650096def781cf26d1 to aug-11
+c5ecefd HEAD@{292}: checkout: moving from aug-11 to c5ecefd
+9b8cf1b HEAD@{293}: reset: moving to HEAD
+9b8cf1b HEAD@{294}: commit (amend): add(docs): create new documents for research parameters and dataplot
+7c13755 HEAD@{295}: commit: add(docs): create new documents for research parameters and dataplot
+b21648e HEAD@{296}: commit: explore(model-e3): final test, a relative good v, but problems remain
+9b09fa0 HEAD@{297}: commit: finetune(model-e3): A 2000 simulation, good for initial test
+4da5858 HEAD@{298}: checkout: moving from main to aug-11
+4da5858 HEAD@{299}: commit (merge): merge(model-e3): Merge branch 'Aug-5-test'
+798fca7 HEAD@{300}: checkout: moving from Aug-5-test to main
+10fe938 HEAD@{301}: commit (amend): explore(model-d3): puting threshold_recall = 0,
+ea16e48 HEAD@{302}: commit: explore(model-d3): puting threshold_recall = 0,
+e215ede HEAD@{303}: commit: fix(model-e3): Final test odds forgot to take 1/11
+e7e0a7d HEAD@{304}: commit: finetune(model-e3): A good version?
+0520676 HEAD@{305}: commit: explore(model-e3): making rising rate for target to go fast than others.
+798fca7 HEAD@{306}: checkout: moving from main to Aug-5-test
+798fca7 HEAD@{307}: commit (merge): merge(model-e3) Merge branch 'Aug-3-sideway-temp-try'
+7ed5eb5 HEAD@{308}: commit: restore(model-e3): restoring back to jul-17 branch becuase the elimination doesn't work
+a1827d5 HEAD@{309}: commit (merge): merge(model-e3): Merge branch 'Aug-2-test'
+53c0b61 HEAD@{310}: checkout: moving from Aug-3-sideway-temp-try to main
+667cff6 HEAD@{311}: reset: moving to HEAD
+667cff6 HEAD@{312}: checkout: moving from main to Aug-3-sideway-temp-try
+53c0b61 HEAD@{313}: checkout: moving from Aug-2-test to main
+9745dd6 HEAD@{314}: reset: moving to 9745dd6
+ca238ac HEAD@{315}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+667cff6 HEAD@{316}: reset: moving to 667cff6
+53c0b61 HEAD@{317}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+ca238ac HEAD@{318}: checkout: moving from main to Aug-2-test
+53c0b61 HEAD@{319}: checkout: moving from Aug-3-sideway-temp-try to main
+53c0b61 HEAD@{320}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+ca238ac HEAD@{321}: checkout: moving from main to Aug-2-test
+53c0b61 HEAD@{322}: reset: moving to HEAD@{9}
+bb74a9e HEAD@{323}: checkout: moving from Aug-3-sideway-temp-try to main
+53c0b61 HEAD@{324}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+ca238ac HEAD@{325}: checkout: moving from main to Aug-2-test
+bb74a9e HEAD@{326}: checkout: moving from Aug-3-sideway-temp-try to main
+53c0b61 HEAD@{327}: reset: moving to HEAD@{4}
+667cff6 HEAD@{328}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+ca238ac HEAD@{329}: checkout: moving from aug-5-explore to Aug-2-test
+bcc62c2 HEAD@{330}: checkout: moving from main to aug-5-explore
+bb74a9e HEAD@{331}: merge Aug-3-sideway-temp-try: Merge made by the 'ours' strategy.
+53c0b61 HEAD@{332}: reset: moving to HEAD@{18}
+b2c4442 HEAD@{333}: checkout: moving from Aug-2-test to main
+ca238ac HEAD@{334}: reset: moving to HEAD@{14}
+9745dd6 HEAD@{335}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+667cff6 HEAD@{336}: checkout: moving from main to Aug-3-sideway-temp-try
+b2c4442 HEAD@{337}: checkout: moving from Aug-3-sideway-temp-try to main
+bcc62c2 HEAD@{338}: reset: moving to HEAD@{7}
+bf52d22 HEAD@{339}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+77925a7 HEAD@{340}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+bf52d22 HEAD@{341}: checkout: moving from main to Aug-3-sideway-temp-try
+b2c4442 HEAD@{342}: checkout: moving from Aug-3-sideway-temp-try to main
+53c0b61 HEAD@{343}: checkout: moving from Aug-3-sideway-temp-try to Aug-3-sideway-temp-try
+53c0b61 HEAD@{344}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+77925a7 HEAD@{345}: checkout: moving from aug-5-explore to Aug-2-test
+bcc62c2 HEAD@{346}: commit: docs(model-e3): A retry but temp save
+b2c4442 HEAD@{347}: checkout: moving from main to aug-5-explore
+b2c4442 HEAD@{348}: commit (merge): Merge branch 'Aug-3-sideway-temp-try'
+ca238ac HEAD@{349}: reset: moving to HEAD
+ca238ac HEAD@{350}: merge Aug-2-test: Merge made by the 'ort' strategy.
+53c0b61 HEAD@{351}: checkout: moving from Aug-3-sideway-temp-try to main
+667cff6 HEAD@{352}: commit (amend): fintune(model-e3): another test, raise recall_odds
+7f43080 HEAD@{353}: commit: fintune(model-e3): another test, raise recall_odds
+aa5cf49 HEAD@{354}: commit: finetune(model-e3): this may work even better
+b687aab HEAD@{355}: commit: finetune(model-e3): This seems to work well for now
+52972ed HEAD@{356}: commit: explore(model-e3): increased proportion of unchanging contex t, seems to work well?
+7a4bb1a HEAD@{357}: commit (amend): explore(model-e3): trying making all 1/11 power, This shouldn't influence for now
+148c7f9 HEAD@{358}: commit: explore(model-e3): trying making all 1/11 power, seems to work, maybe, needs fine=tuneing though to see better
+a2c4b41 HEAD@{359}: commit: explore(model-e3): problem appears when making criterion_initial all the same
+6440748 HEAD@{360}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+9745dd6 HEAD@{361}: commit: explore(model-e3): doesn't work very well adding recall_to_addtrace_treshold
+77925a7 HEAD@{362}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+6440748 HEAD@{363}: commit: explore(model-e3): ok, so the problem is recall_to_addtrace_treshold parameter?
+bf52d22 HEAD@{364}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+77925a7 HEAD@{365}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+bf52d22 HEAD@{366}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+77925a7 HEAD@{367}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+bf52d22 HEAD@{368}: checkout: moving from Aug-2-test to Aug-3-sideway-temp-try
+77925a7 HEAD@{369}: commit: explore(model-e3): OK, turn down w_word doens't really work here, don't know why
+a951863 HEAD@{370}: reset: moving to HEAD~1
+ac3777c HEAD@{371}: checkout: moving from Aug-3-sideway-temp-try to Aug-2-test
+bf52d22 HEAD@{372}: commit: explore(model-e3): OK found it would work when turn down the w_word value, go back to previous v and try
+c1abc04 HEAD@{373}: checkout: moving from c1abc04911ec0e329ade33be3a62ef97264d2ff2 to Aug-3-sideway-temp-try
+c1abc04 HEAD@{374}: checkout: moving from Aug-2-test to c1abc04911ec0e329ade33be3a62ef97264d2ff2
+ac3777c HEAD@{375}: commit: explore(model-e3): back to merge version jul-27
+a951863 HEAD@{376}: commit: feat(model-e3): Adding back 1/11 power
+53c0b61 HEAD@{377}: checkout: moving from main to Aug-2-test
+53c0b61 HEAD@{378}: merge Aug-1-meeting-log-change: Merge made by the 'ort' strategy.
+c1abc04 HEAD@{379}: checkout: moving from Aug-1-meeting-log-change to main
+296c174 HEAD@{380}: commit: explore(model-e3): An attempt of finding through the trade off values, it doens't work well though
+63b6f1e HEAD@{381}: commit: finetune(model-e3): 1000 simulation that without product_f commented
+00904ab HEAD@{382}: commit: finetune(model-e3): 1000 simulation for above (version with product _F commented)
+666cbc4 HEAD@{383}: commit (amend): finetune(model-e3): tried eliminating product prameter for F, while Go back HEAD~1 commit,
+5d404a5 HEAD@{384}: commit: finetune(model-e3): tried eliminating product prameter for F, while Go back HEAD~1 commit,
+35ae1e8 HEAD@{385}: commit: finetune(model-e3): trade-off among criterions, get 1s test position good for Fb?
+d406a7f HEAD@{386}: commit: feat(model-e3): Eliminating one of the g parameter, and eliminate recall threshold
+7db7757 HEAD@{387}: commit: feat(model-e3): The recall threshold parameter
+fe1e5f3 HEAD@{388}: commit (amend): feat(model-e3): don't 1/11 power for sampling
+d3a2d15 HEAD@{389}: commit: feat(model-e3): don't 1/11 power for sampling
+c1abc04 HEAD@{390}: checkout: moving from main to Aug-1-meeting-log-change
+c1abc04 HEAD@{391}: checkout: moving from merge-OI-copy-criterion to main
+554aa58 HEAD@{392}: checkout: moving from main to merge-OI-copy-criterion
+c1abc04 HEAD@{393}: checkout: moving from temp-d to main
+ee5a15a HEAD@{394}: checkout: moving from main to temp-d
+c1abc04 HEAD@{395}: checkout: moving from even-more-align-with-criss-etal to main
+db4424e HEAD@{396}: checkout: moving from main to even-more-align-with-criss-etal
+c1abc04 HEAD@{397}: merge jul-27-test: Merge made by the 'ort' strategy.
+304c223 HEAD@{398}: checkout: moving from jul-27-test to main
+9898bd6 HEAD@{399}: commit: finetune(model-e3): 1final test finetune, a good results
+11f50cd HEAD@{400}: commit: finetune(model-e3): 1000 simulations
+dec9122 HEAD@{401}: commit: finetune(model-e3): gosh have fine tuned to get the best one yet
+58c9594 HEAD@{402}: commit: fix(model-e3): fixed a bug on context was reinstated even for first item (shouldn't be the case)
+36071b6 HEAD@{403}: commit: finetnue(model-e3): tunning up, doesn't work exactly well, (with only context drift)
+5c74721 HEAD@{404}: commit: feat(model-e3): within-list prediction, only use context drift between study and test, no criterion change
+9b16540 HEAD@{405}: commit: finetune(model-e3): tuning for initial test
+304c223 HEAD@{406}: checkout: moving from main to jul-27-test
+304c223 HEAD@{407}: commit (merge): merge(model-e3): Merge branch 'jul-23-checkout-increase-strengthening' fine tunning strenghten
+16cfa3f HEAD@{408}: checkout: moving from jul-23-checkout-increase-strengthening to main
+044d769 HEAD@{409}: commit: finetune(model-e3): more fintuning in making a really good final test, a quite good version
+3dccf67 HEAD@{410}: commit: finetune(model-e3): taking away the strenghten, finetuneing
+720d452 HEAD@{411}: commit (amend): fix(logscr-e3): .sh correct again on the json contents and so on
+57cedfe HEAD@{412}: commit: fix(logscr-e3): .sh correct again on the json contents and so on
+068a042 HEAD@{413}: commit: fix(logscr-e3): .sh reflect LAST commit LAST plot rather than Last commit current plot
+97ebbe3 HEAD@{414}: reset: moving to HEAD~1
+2aed7b3 HEAD@{415}: commit: chore(all): temp store of all
+97ebbe3 HEAD@{416}: commit: explore(model-e3): Decrease Strenghten after fixed bug version
+4b1eed4 HEAD@{417}: commit: explore(model-e3): A high number simulation 500 test
+1de03ab HEAD@{418}: commit: fix(predplot-e3): Final Plot of SOn, Fn, Tn mistakenly put making linnig mistaken
+158dc43 HEAD@{419}: commit: fix(model-e3): A bug in feature restorage (strenghtening) function
+890124b HEAD@{420}: commit: explore(model-e3): better strenghtening for 3 factors?
+3fcfc4c HEAD@{421}: commit: explore(model-e3): strenghten MORE? (higher c (1) for strenghtening
+16cfa3f HEAD@{422}: checkout: moving from main to jul-23-checkout-increase-strengthening
+16cfa3f HEAD@{423}: commit (merge): merge(model-e3): Merge branch 'jul-21-checkout'
+9e42d3b HEAD@{424}: commit (merge): merge(model-e3): Merge branch 'jul-17-add-finalT'
+1520aa8 HEAD@{425}: checkout: moving from jul-21-checkout to main
+ef8f6d5 HEAD@{426}: commit: feat(model-e3): making the strenghten trehshold version for final test
+fd00120 HEAD@{427}: commit: fintune(model-e3): initial test works
+b05e0c3 HEAD@{428}: commit: explore(model-e3): same work v, but commented uneed in restore_intest
+022904f HEAD@{429}: commit: fix(model-e3): fixed that inital_crition didn't change by testposition, & commented other conditions in restore function
+542cf51 HEAD@{430}: checkout: moving from 542cf517f19607d01ec025918a9cf75347db8bed to jul-21-checkout
+542cf51 HEAD@{431}: checkout: moving from jul-17-add-finalT to HEAD~1
+2570849 HEAD@{432}: checkout: moving from da048c76092bc18d369fd57ae735734326a89320 to jul-17-add-finalT
+da048c7 HEAD@{433}: checkout: moving from afeed74cd39e89e3275af6dcda89a8d35b9bc130 to da048c76092bc18d369fd57ae735734326a89320
+afeed74 HEAD@{434}: checkout: moving from da048c76092bc18d369fd57ae735734326a89320 to HEAD~1
+da048c7 HEAD@{435}: checkout: moving from jul-17-add-finalT to da048c76092bc18d369fd57ae735734326a89320
+2570849 HEAD@{436}: checkout: moving from jul-14-explore to jul-17-add-finalT
+b78bc30 HEAD@{437}: checkout: moving from da048c76092bc18d369fd57ae735734326a89320 to jul-14-explore
+da048c7 HEAD@{438}: checkout: moving from 542cf517f19607d01ec025918a9cf75347db8bed to HEAD~1
+542cf51 HEAD@{439}: checkout: moving from jul-17-add-finalT to HEAD~1
+2570849 HEAD@{440}: checkout: moving from 542cf517f19607d01ec025918a9cf75347db8bed to jul-17-add-finalT
+542cf51 HEAD@{441}: checkout: moving from jul-17-add-finalT to HEAD~1
+2570849 HEAD@{442}: commit: explore(model-e3): comment all other only save when adding trace
+542cf51 HEAD@{443}: checkout: moving from jul-21-check to jul-17-add-finalT
+b57c27d HEAD@{444}: commit: explore(model-e3): Delete >odds but <REcall
+be189be HEAD@{445}: commit (amend): explore(model-e3): Add a condition (store when in middle) only not store - weird
+c430bba HEAD@{446}: commit (amend): explore(model-e3): Add a condition (store when in middle) only not store - weird
+df67ff3 HEAD@{447}: commit: explore(model-e3): Add a condition (store when in middle) only not store - weird
+46131eb HEAD@{448}: commit: fix(model-e3): previous test had code mistaken on the conditions
+606daac HEAD@{449}: commit (amend): feat(model-e3):TEST-BUG worked for adding the adding treshold but =1
+ea2455b HEAD@{450}: reset: moving to HEAD@{4}
+ea2455b HEAD@{451}: reset: moving to HEAD@{1}
+b873feb HEAD@{452}: reset: moving to HEAD@{1}
+ea2455b HEAD@{453}: reset: moving to HEAD@{1}
+b873feb HEAD@{454}: commit (amend): feat(model-e3):TEST-BUG? somehow the program showed differernet to prior -m test
+ea2455b HEAD@{455}: commit: feat(model-e3):TEST-BUG? somehow the program showed differernet to prior
+e8e6701 HEAD@{456}: commit: feat(model-e3): what happens for high recall threshold but don't add trace when pass recall
+9748462 HEAD@{457}: commit: explore(model-e3): test what happens by adding traces not when during
+1520aa8 HEAD@{458}: checkout: moving from main to jul-21-check
+1520aa8 HEAD@{459}: commit (merge): merge(model-e3): feature strenghtening trace. Merge branch 'jul-17-add-finalT'
+72825e6 HEAD@{460}: checkout: moving from jul-17-add-finalT to main
+542cf51 HEAD@{461}: reset: moving to HEAD~1
+65ffea8 HEAD@{462}: checkout: moving from main to jul-17-add-finalT
+72825e6 HEAD@{463}: reset: moving to HEAD
+72825e6 HEAD@{464}: checkout: moving from jul-17-add-finalT to main
+65ffea8 HEAD@{465}: checkout: moving from main to jul-17-add-finalT
+72825e6 HEAD@{466}: checkout: moving from c8ed467e583b4101360832a249d1a7f94254e95d to main
+c8ed467 HEAD@{467}: commit: feat(model-e3): what happens for high recall threshold but don't add trace when pass recall
+542cf51 HEAD@{468}: checkout: moving from jul-17-add-finalT to HEAD~1
+65ffea8 HEAD@{469}: commit: explore(model-e3): test what happens by adding traces not when during
+542cf51 HEAD@{470}: commit: refactor(predplot-e3): make the final test within-list plot good
+da048c7 HEAD@{471}: checkout: moving from save-uncleaned-messy-main to jul-17-add-finalT
+44d2611 HEAD@{472}: checkout: moving from jul-17-add-finalT to save-uncleaned-messy-main
+da048c7 HEAD@{473}: checkout: moving from main to jul-17-add-finalT
+72825e6 HEAD@{474}: commit (amend): merge(model-e3): A working V: Merge branch 'jul-14-explore' into main
+bb9023f HEAD@{475}: checkout: moving from save-uncleaned-messy-main to main
+44d2611 HEAD@{476}: checkout: moving from jul-14-explore to save-uncleaned-messy-main
+b78bc30 HEAD@{477}: checkout: moving from even-more-align-with-criss-etal to jul-14-explore
+db4424e HEAD@{478}: checkout: moving from main to even-more-align-with-criss-etal
+bb9023f HEAD@{479}: checkout: moving from even-more-align-with-criss-etal to main
+db4424e HEAD@{480}: checkout: moving from save-uncleaned-messy-main to even-more-align-with-criss-etal
+44d2611 HEAD@{481}: checkout: moving from even-more-align-with-criss-etal to save-uncleaned-messy-main
+db4424e HEAD@{482}: checkout: moving from jul-17-add-finalT to even-more-align-with-criss-etal
+da048c7 HEAD@{483}: commit: feat(model-e3): fine tune initial test within-list test position
+afeed74 HEAD@{484}: rebase (continue) (finish): returning to refs/heads/jul-17-add-finalT
+afeed74 HEAD@{485}: rebase (continue): feat(model-e3): Final test add trace when strengthen
+2772697 HEAD@{486}: rebase (reword): finetune(model-e3): fine tunning initial test alone with final test
+aa64353 HEAD@{487}: rebase (reword): finettune(model-e3): fine tunning initial test alone with final test
+c5ecefd HEAD@{488}: rebase (start): checkout HEAD~2
+2c025a3 HEAD@{489}: reset: moving to HEAD@{11}
+1a89510 HEAD@{490}: rebase (continue) (finish): returning to refs/heads/jul-17-add-finalT
+1a89510 HEAD@{491}: commit (amend): finetune(model-e3): fine tunning initial test alone with final test
+bbb70e3 HEAD@{492}: rebase (reword): finetune(model-e3): fine tunning initial test alone with final test
+aa64353 HEAD@{493}: rebase: fast-forward
+c5ecefd HEAD@{494}: rebase (start): checkout HEAD~2
+2c025a3 HEAD@{495}: rebase (continue) (finish): returning to refs/heads/jul-17-add-finalT
+2c025a3 HEAD@{496}: rebase: fast-forward
+aa64353 HEAD@{497}: rebase: fast-forward
+c5ecefd HEAD@{498}: rebase (start): checkout HEAD~2
+2c025a3 HEAD@{499}: rebase (abort): updating HEAD
+2c025a3 HEAD@{500}: rebase (abort): updating HEAD
+2c025a3 HEAD@{501}: commit: feat(model-e3): Final test add trace when strengthen
+aa64353 HEAD@{502}: commit: finettune(model-e3): fine tunning initial test alone with final test
+c5ecefd HEAD@{503}: commit: feat(model-e3): It actually work? add new trace when strenghten
+fee2e67 HEAD@{504}: commit: explore(model-e3): take out context drift between study-test? doens't change final test prediction
+4bff7f9 HEAD@{505}: commit: refactor(predplot-e3): refined the ylim a bit even better
+22eabe2 HEAD@{506}: commit: finetune(model-e3): asypmotoptic on criterion_initial
+6eb32d6 HEAD@{507}: commit: refactor(predplot-e3): make predplot within-list y limit the same with the data plot
+05dc0ef HEAD@{508}: commit: finetune(model-e3): initial test within-list tuning - a relative good v but some problems to solve
+5b91d47 HEAD@{509}: commit: refactor(predplot-e3): make the plot within-list, and color, point shape consistent
+0b7ce2b HEAD@{510}: checkout: moving from main to jul-17-add-finalT
+bb9023f HEAD@{511}: checkout: moving from jul-14-explore to main
+b78bc30 HEAD@{512}: checkout: moving from save-uncleaned-messy-main to jul-14-explore
+44d2611 HEAD@{513}: checkout: moving from jul-17-add-finalT to save-uncleaned-messy-main
+0b7ce2b HEAD@{514}: checkout: moving from jul-17-add-finalT to jul-17-add-finalT
+0b7ce2b HEAD@{515}: commit: explore(model-e3): final test work well
+5c3398d HEAD@{516}: commit (amend): feat(model-e3): add back finat_test first v, not sure if works
+26697e2 HEAD@{517}: commit: feat(model-e3): add back finat_test first v, not sure if works
+1a54d3e HEAD@{518}: commit (amend): feat(model-e3): add sampling_method choice
+56135a1 HEAD@{519}: commit (amend): feat(model-e3): add sampling_method choice
+d0c4657 HEAD@{520}: commit (amend): feat(model-e3): add sampling_method choice
+1c5d950 HEAD@{521}: commit: feat(model-e3): add sampling_method choice
+b18039d HEAD@{522}: commit: refactor(model-e3): likelihood calcualtion for initial test save more time (move some variable assign before for loop)
+bb9023f HEAD@{523}: checkout: moving from main to jul-17-add-finalT
+bb9023f HEAD@{524}: commit: merge(model-e3): A working V: Merge branch 'jul-14-explore' into save-uncleaned-messy-main
+e713c5f HEAD@{525}: checkout: moving from jul-14-explore to main
+b78bc30 HEAD@{526}: checkout: moving from main to jul-14-explore
+e713c5f HEAD@{527}: checkout: moving from save-uncleaned-messy-main to main
+44d2611 HEAD@{528}: checkout: moving from main to save-uncleaned-messy-main
+e713c5f HEAD@{529}: checkout: moving from jul-14-explore to main
+b78bc30 HEAD@{530}: checkout: moving from save-uncleaned-messy-main to jul-14-explore
+44d2611 HEAD@{531}: commit (merge): explore(model-e3): A good V: Merge branch 'jul-14-explore' into save-uncleaned-messy-main
+a12187b HEAD@{532}: checkout: moving from jul-14-explore to save-uncleaned-messy-main
+b78bc30 HEAD@{533}: commit: finetune(model-e3): even better , wth :F modified to fix the F drop prob
+b2d6103 HEAD@{534}: commit: finetune(model-e3): even better for others but bad for new foil
+5898072 HEAD@{535}: commit (amend): finetune(model-e3): so far the best parm values
+b60bde6 HEAD@{536}: commit (amend): finetune(model-e3): so far the best parm values
+2b61c39 HEAD@{537}: commit: finetune(model-e3): so far the best parm values
+f0ade9f HEAD@{538}: commit: fix(model-e3): ok, there is a mistake: forgot to assign Tn+1, which is current target as well
+82ed94d HEAD@{539}: commit: explore(model-e3): A working v relatively
+5fa0487 HEAD@{540}: commit (amend): explore(model-e3): ok, there actually are the rate difference and speed difference
+763ddea HEAD@{541}: commit: explore(model-e3): ok, there actually are the rate difference and speed difference
+a7cf6b0 HEAD@{542}: checkout: moving from 5f5904ae0a298d74bb82088fb343b3bcf5554fb0 to jul-14-explore
+5f5904a HEAD@{543}: commit: explore(model-e3): A working v relatively
+3bb22b4 HEAD@{544}: commit: explore(model-e3): ok, there actually are the rate difference and speed difference
+dd92537 HEAD@{545}: checkout: moving from jul-14-explore to HEAD~1
+a7cf6b0 HEAD@{546}: commit: explore(model-e3): ok, maybe it works but
+dd92537 HEAD@{547}: commit: explore(model-e3): get asumpotic increase, this works but i want to addd beta
+bc6c7ab HEAD@{548}: commit: explore(model-e3):werid the generate functions why?
+f8b3b23 HEAD@{549}: commit: explore(model-e3): make z and w into product
+fa6d486 HEAD@{550}: commit (amend): explore(model-e3): make to see only list 1 and 2, add n_simulation
+560590c HEAD@{551}: checkout: moving from main to jul-14-explore
+e713c5f HEAD@{552}: checkout: moving from 211a440a6c60ca9f6ad5c53787676206f61c27b8 to main
+211a440 HEAD@{553}: checkout: moving from jul-14-explore to 211a440a6c60ca9f6ad5c53787676206f61c27b8
+560590c HEAD@{554}: commit (amend): explore(model-e3): make to see only list 1 and 2, add n_simulation
+a267390 HEAD@{555}: commit (amend): explore(model-e3): make to see only list 1 and 2, add n_simulation
+1900109 HEAD@{556}: commit (amend): explore(model-e3): make to see only list 1 and 2, add n_simulation
+2ad28e0 HEAD@{557}: commit: explore(model-e3): make to see only list 1 and 2, add n_simulation
+b85c5ad HEAD@{558}: commit: explore(model-e3): p-switch remake, and p_switch not vary by list for now to see reults
+5d12d4d HEAD@{559}: commit (amend): explore(model-e3): replacing missing only during strenghtren last version not exactly correct, now the true amend
+d5a0f20 HEAD@{560}: checkout: moving from even-more-align-with-criss-etal to jul-14-explore
+db4424e HEAD@{561}: checkout: moving from jul-14-explore to even-more-align-with-criss-etal
+d5a0f20 HEAD@{562}: commit: explore(model-e3): replacing missing only during strenghtren
+b6de0fc HEAD@{563}: commit (amend): fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3 -recall-odds = 0.3
+73bfb75 HEAD@{564}: commit (amend): fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later -recall-odds = 0.3
+a12187b HEAD@{565}: checkout: moving from jul14-back-to-model to jul-14-explore
+2f448bf HEAD@{566}: checkout: moving from db8d960dc3d260e9462df1ba0da1d158e0794622 to jul14-back-to-model
+db8d960 HEAD@{567}: commit (amend): feat(logscr-e3): make the script to include body message and the html file to look pretty
+4c30c12 HEAD@{568}: checkout: moving from jul-14-explore to HEAD~1
+a12187b HEAD@{569}: checkout: moving from save-uncleaned-messy-main to jul-14-explore
+a12187b HEAD@{570}: commit: fix(logscr-e3): somehow last v doesn't work well, restore to head~1 and will do that later
+4c30c12 HEAD@{571}: reset: moving to HEAD@{2}
+7400759 HEAD@{572}: commit (amend): explore(model-e3, logscr-e3): Merge branch 'even-more-align-with-criss-etal' into save-uncleaned-messy-main
+e727f7a HEAD@{573}: reset: moving to HEAD~1
+4c30c12 HEAD@{574}: commit: feat(logscr-e3): make the script to include body message and the html file to look pretty
+e727f7a HEAD@{575}: merge even-more-align-with-criss-etal: Merge made by the 'ours' strategy.
+282928f HEAD@{576}: checkout: moving from save-uncleaned-messy-main to save-uncleaned-messy-main
+282928f HEAD@{577}: reset: moving to HEAD@{1}
+9712c53 HEAD@{578}: merge even-more-align-with-criss-etal: Merge made by the 'ours' strategy.
+282928f HEAD@{579}: checkout: moving from even-more-align-with-criss-etal to save-uncleaned-messy-main
+db4424e HEAD@{580}: checkout: moving from da246dd89a9c2adba3dc79b7006ba43c7452f0c8 to even-more-align-with-criss-etal
+da246dd HEAD@{581}: checkout: moving from e713c5f14561325327d08d0de664b97736e9773c to HEAD@{73}
+e713c5f HEAD@{582}: checkout: moving from db4424e2d603eb912c5dd562fab96a616229621d to HEAD@{44}
+db4424e HEAD@{583}: checkout: moving from e713c5f14561325327d08d0de664b97736e9773c to HEAD@{42}
+e713c5f HEAD@{584}: checkout: moving from save-uncleaned-messy-main to HEAD@{43}
+282928f HEAD@{585}: checkout: moving from e713c5f14561325327d08d0de664b97736e9773c to save-uncleaned-messy-main
+e713c5f HEAD@{586}: checkout: moving from da246dd89a9c2adba3dc79b7006ba43c7452f0c8 to HEAD@{42}
+da246dd HEAD@{587}: checkout: moving from 8a5c5ae7f174b5b4bca38f927917a6012e7419fe to HEAD@{67}
+8a5c5ae HEAD@{588}: checkout: moving from save-uncleaned-messy-main to v1.0-l
+282928f HEAD@{589}: checkout: moving from 8a5c5ae7f174b5b4bca38f927917a6012e7419fe to save-uncleaned-messy-main
+8a5c5ae HEAD@{590}: checkout: moving from save-uncleaned-messy-main to v1.0-l
+282928f HEAD@{591}: commit: refactor(predplot-e3): remake ylim pq 0.3-0.9
+ef14fac HEAD@{592}: commit: fix(logscr-e3): add commit message body on top of the head
+a77fcd7 HEAD@{593}: commit (amend): fix(logscr-e3): re-fix the file address of the pictures missded "../"
+ebba4b0 HEAD@{594}: commit (amend): fix(logscr-e3): re-fix the file address of the pictures missded "../"
+4e0e83e HEAD@{595}: commit (amend): fix(logscr-e3): re-fix the file address of the pictures missded "../"
+bf2fab8 HEAD@{596}: commit (amend): fix(logscr-e3): re-fix the file address of the pictures missded "../"
+a5a9228 HEAD@{597}: commit (amend): fix(logscr-e3): re-fix the file address of the pictures missded "../"
+af2c4f0 HEAD@{598}: commit: fix(logscr-e3): re-fix the file address of the pictures missded "../"
+570bd9b HEAD@{599}: commit (amend): fix(predplot-e3): make the predplot within-list back to that for all lists
+d17d5f2 HEAD@{600}: commit (amend): fix(predplot-e3): make the predplot within-list back to that for all lists
+096f799 HEAD@{601}: commit (amend): fix(predplot-e3): make the predplot within-list back to that for all lists
+638959c HEAD@{602}: commit: fix(predplot-e3): make the predplot within-list back to that for all lists
+ac499fb HEAD@{603}: commit: fix(logscr-e3): the file address of the pictures missded "../"
+480fea3 HEAD@{604}: checkout: moving from jul14-back-to-model to save-uncleaned-messy-main
+2f448bf HEAD@{605}: reset: moving to HEAD~1
+a8951b6 HEAD@{606}: reset: moving to HEAD~1
+8a5c5ae HEAD@{607}: commit: feat(logscr-e3): Add log scripts to this version
+a8951b6 HEAD@{608}: reset: moving to HEAD
+a8951b6 HEAD@{609}: checkout: moving from a8951b6099a4b3a75084f776bb7c369fc89bf07a to jul14-back-to-model
+a8951b6 HEAD@{610}: checkout: moving from main to v1.0
+e713c5f HEAD@{611}: checkout: moving from save-uncleaned-messy-main to main
+480fea3 HEAD@{612}: checkout: moving from main to save-uncleaned-messy-main
+e713c5f HEAD@{613}: checkout: moving from c1c8f88eb0cb1067e46e2e214368dc5112cdf015 to main
+c1c8f88 HEAD@{614}: checkout: moving from main to HEAD@{52}
+e713c5f HEAD@{615}: checkout: moving from da246dd89a9c2adba3dc79b7006ba43c7452f0c8 to main
+da246dd HEAD@{616}: checkout: moving from 480fea3ca955256dce52759239f13432d51f861d to HEAD@{38}
+480fea3 HEAD@{617}: checkout: moving from save-uncleaned-messy-main to 480fea3
+480fea3 HEAD@{618}: checkout: moving from main to save-uncleaned-messy-main
+e713c5f HEAD@{619}: checkout: moving from jul14-back-to-model to main
+a8951b6 HEAD@{620}: checkout: moving from a8951b6099a4b3a75084f776bb7c369fc89bf07a to jul14-back-to-model
+a8951b6 HEAD@{621}: checkout: moving from main to a8951b6099a4b3a75084f776bb7c369fc89bf07a
+e713c5f HEAD@{622}: checkout: moving from main to main
+e713c5f HEAD@{623}: checkout: moving from make-alignment-with-prior-model to main
+6af2e68 HEAD@{624}: checkout: moving from save-uncleaned-messy-main to make-alignment-with-prior-model
+480fea3 HEAD@{625}: checkout: moving from even-more-align-with-criss-etal to save-uncleaned-messy-main
+db4424e HEAD@{626}: checkout: moving from main to even-more-align-with-criss-etal
+e713c5f HEAD@{627}: checkout: moving from main to main
+e713c5f HEAD@{628}: rebase (abort): updating HEAD
+e713c5f HEAD@{629}: rebase (abort): updating HEAD
+e713c5f HEAD@{630}: commit: feat(logscr-e3): modiefied py and md to add log
+b69c0dd HEAD@{631}: checkout: moving from temp to main
+211a440 HEAD@{632}: commit (amend): chore(page): add the .index html
+1c111d3 HEAD@{633}: checkout: moving from even-more-align-with-criss-etal to temp
+db4424e HEAD@{634}: checkout: moving from main to even-more-align-with-criss-etal
+b69c0dd HEAD@{635}: checkout: moving from temp to main
+1c111d3 HEAD@{636}: commit (amend): chore(page): add the .index html
+b69c0dd HEAD@{637}: checkout: moving from main to temp
+b69c0dd HEAD@{638}: reset: moving to HEAD@{5}
+480fea3 HEAD@{639}: checkout: moving from save-uncleaned-messy-main to main
+480fea3 HEAD@{640}: checkout: moving from main to save-uncleaned-messy-main
+480fea3 HEAD@{641}: rebase (continue) (finish): returning to refs/heads/main
+480fea3 HEAD@{642}: reset: moving to HEAD@{8}
+4bb55e5 HEAD@{643}: reset: moving to HEAD@{1}
+b69c0dd HEAD@{644}: rebase (continue) (pick): chore(page): add the .index html
+4bb55e5 HEAD@{645}: rebase (continue): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+e97a8c1 HEAD@{646}: commit (amend): explore(model-e3): CHECKING pure contribution of first-stage
+19a3242 HEAD@{647}: rebase (pick): explore(model-e3): CHECKING pure contribution of first-stage
+a8951b6 HEAD@{648}: rebase (pick): fintune(model-e3): how to make SO the worst CR? adjust p_old val
+2f448bf HEAD@{649}: rebase (pick): refactor(model-e3): raise sampling LL ratio 1/11 power
+33dd06a HEAD@{650}: rebase (start): checkout 33dd06ad82ff9fe01d65e65954c576cdb140a7c1
+480fea3 HEAD@{651}: checkout: moving from even-more-align-with-criss-etal to main
+db4424e HEAD@{652}: commit (amend): fix(script): the two py was wrong on the path of the json file
+0a7e2b0 HEAD@{653}: commit: fix(script): the two py was wrong
+6046777 HEAD@{654}: commit: epxlore(model-e3): make criterion 1
+da246dd HEAD@{655}: commit: feat(all): add the log trace scripts
+b85e63e HEAD@{656}: checkout: moving from main to even-more-align-with-criss-etal
+480fea3 HEAD@{657}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+0064b1a HEAD@{658}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+8d3f94a HEAD@{659}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+7def5d7 HEAD@{660}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+2e971d9 HEAD@{661}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+b3d924e HEAD@{662}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+cc74f9b HEAD@{663}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+f27ef7e HEAD@{664}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+2a2101e HEAD@{665}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+14959b4 HEAD@{666}: commit (amend): feat(all): add log .md and html automatic tracking for each time of predplots in commits
+c1c8f88 HEAD@{667}: commit: feat(all): add log .md and html automatic tracking for each time of predplots in commits
+a133a05 HEAD@{668}: checkout: moving from even-more-align-with-criss-etal to main
+b85e63e HEAD@{669}: commit (merge): feat(model-e3): redo 1 by only add lists and change n pictures
+01fde05 HEAD@{670}: checkout: moving from 2f8859c657b12330265a5ce4a434aacebdfd26b9 to even-more-align-with-criss-etal
+2f8859c HEAD@{671}: commit: feat(model-e3): redo 1 by only add lists and change n pictures
+46417e7 HEAD@{672}: checkout: moving from even-more-align-with-criss-etal to HEAD~1
+01fde05 HEAD@{673}: commit: feat(model-e3): redo 1 but check for that for Criss et al
+46417e7 HEAD@{674}: checkout: moving from 46417e73634de58b218a2945e77945d0ace1324e to even-more-align-with-criss-etal
+46417e7 HEAD@{675}: checkout: moving from redo-OI-with-current-First-stage-filter-low to HEAD~4
+c2d0850 HEAD@{676}: checkout: moving from d17f50069995b8986a692d663432134bfdb4f2ed to redo-OI-with-current-First-stage-filter-low
+d17f500 HEAD@{677}: rebase (abort): updating HEAD
+191ef3f HEAD@{678}: commit (amend): finetune(model-e3): redo 1 but check for that for Criss et al
+588018b HEAD@{679}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{680}: rebase (start): checkout HEAD~2
+d17f500 HEAD@{681}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+46417e7 HEAD@{682}: rebase (start): checkout HEAD~
+d17f500 HEAD@{683}: checkout: moving from c2ac8aaffd9465d20bc7407ea254d49e94f0fbe7 to HEAD~2
+c2ac8aa HEAD@{684}: checkout: moving from c426c1c507f580e944017c35c5a64d933d692f4d to c2ac8aaffd9465d20bc7407ea254d49e94f0fbe7
+c426c1c HEAD@{685}: checkout: moving from c2ac8aaffd9465d20bc7407ea254d49e94f0fbe7 to c426c1c507f580e944017c35c5a64d933d692f4d
+c2ac8aa HEAD@{686}: checkout: moving from c426c1c507f580e944017c35c5a64d933d692f4d to c2ac8aaffd9465d20bc7407ea254d49e94f0fbe7
+c426c1c HEAD@{687}: checkout: moving from c2ac8aaffd9465d20bc7407ea254d49e94f0fbe7 to HEAD~1
+c2ac8aa HEAD@{688}: checkout: moving from redo-OI-with-current-First-stage-filter-low to HEAD~1
+c2d0850 HEAD@{689}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current-First-stage-filter-low
+c2d0850 HEAD@{690}: rebase (continue) (pick): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+c2ac8aa HEAD@{691}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+c426c1c HEAD@{692}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+d17f500 HEAD@{693}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+46417e7 HEAD@{694}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+d00c2db HEAD@{695}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+958f829 HEAD@{696}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{697}: rebase (start): checkout HEAD~5
+067deed HEAD@{698}: checkout: moving from make-alignment-with-prior-model to redo-OI-with-current-First-stage-filter-low
+6af2e68 HEAD@{699}: reset: moving to HEAD@{1}
+9a72a38 HEAD@{700}: merge redo-OI-with-current-First-stage-filter-low: Merge made by the 'ours' strategy.
+6af2e68 HEAD@{701}: checkout: moving from main to make-alignment-with-prior-model
+a133a05 HEAD@{702}: commit (amend): chore(page): add the .index html
+1c0d97f HEAD@{703}: commit: docs(web): add the .index html
+e71be5e HEAD@{704}: checkout: moving from make-alignment-with-prior-model to main
+6af2e68 HEAD@{705}: reset: moving to HEAD@{1}
+e741f6e HEAD@{706}: commit (merge): explore(model-e3): Merge branch 'redo-OI-with-current-First-stage-filter-low' into make-alignment-with-prior-model
+6af2e68 HEAD@{707}: checkout: moving from redo-OI-with-current-First-stage-filter-low to make-alignment-with-prior-model
+067deed HEAD@{708}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current-First-stage-filter-low
+067deed HEAD@{709}: commit (amend): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+cd5b801 HEAD@{710}: rebase (continue) (edit): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+9cf79d9 HEAD@{711}: commit (amend): finetune(model-e3): 4. strenghten whatever OLD or NEW
+8ab58a4 HEAD@{712}: rebase (continue) (edit): finetune(model-e3): 4. strenghten whatever OLD or NEW
+9ef35f7 HEAD@{713}: commit (amend): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+0621cc2 HEAD@{714}: rebase (continue) (edit): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+1dd5708 HEAD@{715}: commit (amend): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+d2d320f HEAD@{716}: rebase (continue) (edit): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+089bf2b HEAD@{717}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+f4e66d3 HEAD@{718}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+9ec1ba4 HEAD@{719}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+1f677f7 HEAD@{720}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+0613510 HEAD@{721}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{722}: rebase (pick): feat-delete(model-e3): Take out p_switch for pure check
+8996364 HEAD@{723}: rebase (start): checkout HEAD~6
+8b97878 HEAD@{724}: checkout: moving from f241ffd9c48fc602ff0ec1fbf54f9792c02767d6 to redo-OI-with-current-First-stage-filter-low
+f241ffd HEAD@{725}: checkout: moving from redo-OI-with-current-First-stage-filter-low to HEAD~3
+8b97878 HEAD@{726}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current-First-stage-filter-low
+8b97878 HEAD@{727}: rebase (continue) (pick): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+f84914c HEAD@{728}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+4d3f3b9 HEAD@{729}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+f241ffd HEAD@{730}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+382a1d6 HEAD@{731}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+0318894 HEAD@{732}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{733}: rebase (start): checkout HEAD~5
+4bc22e7 HEAD@{734}: rebase (finish): returning to refs/heads/redo-OI-with-current-First-stage-filter-low
+4bc22e7 HEAD@{735}: rebase (pick): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+3824479 HEAD@{736}: rebase (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+db60c03 HEAD@{737}: rebase (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+aa4c240 HEAD@{738}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+ff2a31b HEAD@{739}: rebase (start): checkout HEAD~4
+4bc22e7 HEAD@{740}: checkout: moving from aa4c2401403687a345f0c2d879021a31ecc3fbfc to redo-OI-with-current-First-stage-filter-low
+aa4c240 HEAD@{741}: checkout: moving from redo-OI-with-current-First-stage-filter-low to HEAD~3
+4bc22e7 HEAD@{742}: checkout: moving from ff2a31b810d0ebed37afbf2e3eb59dc1a1fb23f7 to redo-OI-with-current-First-stage-filter-low
+ff2a31b HEAD@{743}: checkout: moving from redo-OI-with-current-First-stage-filter-low to HEAD~4
+4bc22e7 HEAD@{744}: Branch: renamed refs/heads/redo-OI-with-current to refs/heads/redo-OI-with-current-First-stage-filter-low
+4bc22e7 HEAD@{746}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current
+4bc22e7 HEAD@{747}: rebase (continue) (pick): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+3824479 HEAD@{748}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+db60c03 HEAD@{749}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+aa4c240 HEAD@{750}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+ff2a31b HEAD@{751}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+6a1d121 HEAD@{752}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{753}: rebase (pick): feat-delete(model-e3): Take out p_switch for pure check
+8996364 HEAD@{754}: rebase (start): checkout HEAD~6
+92c95a3 HEAD@{755}: checkout: moving from make-alignment-with-prior-model to redo-OI-with-current
+6af2e68 HEAD@{756}: merge redo-OI-with-current: Merge made by the 'ours' strategy.
+37a7bd3 HEAD@{757}: checkout: moving from redo-OI-with-current to make-alignment-with-prior-model
+92c95a3 HEAD@{758}: checkout: moving from redo-OI-with-current to redo-OI-with-current
+92c95a3 HEAD@{759}: commit (cherry-pick): finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+f786ac6 HEAD@{760}: checkout: moving from d49f303a96509fc1aa20e5697422af529e303e76 to redo-OI-with-current
+d49f303 HEAD@{761}: commit: finetune(model-e3): 5.DO NOTHING - add no trace at all nor strenghten anything
+7e35301 HEAD@{762}: checkout: moving from a4737125009f5cc7e99a3dc0f7d4ba99177c1df5 to HEAD~1
+a473712 HEAD@{763}: checkout: moving from redo-OI-with-current to HEAD~2
+f786ac6 HEAD@{764}: checkout: moving from 9fa81949ee30859e6e257ce6b98fdbda7ddf41c8 to redo-OI-with-current
+9fa8194 HEAD@{765}: checkout: moving from redo-OI-with-current to HEAD~1
+f786ac6 HEAD@{766}: commit (amend): finetune(model-e3): 4. strenghten whatever OLD or NEW
+56ddf11 HEAD@{767}: commit (amend): finetune(model-e3): 4. strenghten whatever OLD or NEW
+fe2bd29 HEAD@{768}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current
+fe2bd29 HEAD@{769}: rebase (continue): finetune(model-e3): 4. strenghten whatever OLD or NEW
+9fa8194 HEAD@{770}: commit (amend): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+cb4dc13 HEAD@{771}: commit (amend): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+4b34ac5 HEAD@{772}: rebase (edit): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+a473712 HEAD@{773}: rebase (start): checkout HEAD~2
+dc99de8 HEAD@{774}: rebase (abort): updating HEAD
+4b34ac5 HEAD@{775}: rebase (edit): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+a473712 HEAD@{776}: rebase (start): checkout HEAD~2
+dc99de8 HEAD@{777}: rebase (abort): updating HEAD
+36d5818 HEAD@{778}: rebase (edit): finetune(model-e3): 4. strenghten whatever OLD or NEW
+4b34ac5 HEAD@{779}: rebase (start): checkout HEAD~1
+dc99de8 HEAD@{780}: commit (amend): finetune(model-e3): 4. strenghten whatever OLD or NEW
+f526b57 HEAD@{781}: commit (amend): finetune(model-e3): 4. strenghten whatever OLD or NEW
+18e2e18 HEAD@{782}: commit: finetune(model-e3): 4. strenghten whatever OLD or NEW
+4b34ac5 HEAD@{783}: checkout: moving from a4737125009f5cc7e99a3dc0f7d4ba99177c1df5 to redo-OI-with-current
+a473712 HEAD@{784}: checkout: moving from redo-OI-with-current to HEAD~1
+4b34ac5 HEAD@{785}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current
+4b34ac5 HEAD@{786}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+a473712 HEAD@{787}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+7e35301 HEAD@{788}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+1a9997c HEAD@{789}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+88760ff HEAD@{790}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{791}: rebase (start): checkout 37a7bd333d200539c9d0ed176f25be72e9c6dabd
+8731f13 HEAD@{792}: commit (amend): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+7a39bb0 HEAD@{793}: commit: finetune(model-e3): 3. every NEW response produce new, OLD strenghten from max LL(not sampling)
+bc62b58 HEAD@{794}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current
+bc62b58 HEAD@{795}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+a58ef95 HEAD@{796}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+ffcb4e3 HEAD@{797}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{798}: rebase (start): checkout HEAD~2
+5f6def9 HEAD@{799}: rebase (abort): updating HEAD
+0e61bb4 HEAD@{800}: commit (amend): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+f677d62 HEAD@{801}: rebase (edit): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+7655d48 HEAD@{802}: rebase (start): checkout HEAD~1
+5f6def9 HEAD@{803}: rebase (abort): updating HEAD
+049b146 HEAD@{804}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+7655d48 HEAD@{805}: rebase (start): checkout HEAD~1
+5f6def9 HEAD@{806}: commit (amend): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+0d8bf8a HEAD@{807}: commit (amend): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+caac957 HEAD@{808}: commit (amend): 9fb5dcbc9ef861f9c1896a7adfda8a9e3f61090a
+50b3ea2 HEAD@{809}: rebase (continue) (finish): returning to refs/heads/redo-OI-with-current
+50b3ea2 HEAD@{810}: rebase (continue): fix([predplot-e3): change R pred plot method, and add c(0,1) limit
+7655d48 HEAD@{811}: reset: moving to HEAD~1
+fd2cb6c HEAD@{812}: commit (rebase): fix([predplot-e3): change R pred plot method, and add c(0,1) limit
+7655d48 HEAD@{813}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+e1813b8 HEAD@{814}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{815}: rebase (start): checkout 37a7bd333d200539c9d0ed176f25be72e9c6dabd
+b6c7cdb HEAD@{816}: commit: fix([predplot-e3): change R pred plot method, and add c(0,1) limit
+7271b2f HEAD@{817}: checkout: moving from main to redo-OI-with-current
+e71be5e HEAD@{818}: reset: moving to HEAD~1
+f9f280e HEAD@{819}: checkout: moving from redo-OI-with-current to main
+7271b2f HEAD@{820}: checkout: moving from main to redo-OI-with-current
+f9f280e HEAD@{821}: checkout: moving from redo-OI-with-current to main
+7271b2f HEAD@{822}: checkout: moving from main to redo-OI-with-current
+f9f280e HEAD@{823}: commit: fix([predplot-e3): change R pred plot method, and add c(0,1) limit
+e71be5e HEAD@{824}: commit (amend): explore(model-e3): (no-change-merge) SAME with 1-4 in prior commits but fix-pred-plot: Merge branch 'fix-predplot'
+d8ce9d5 HEAD@{825}: commit (amend): (explore): (no-change-merge) SAME with 1-4 in prior commits but fix-pred-plot: Merge branch 'fix-predplot'
+f51f78b HEAD@{826}: commit (amend): (explore): SAME with 1-4 in prior commits but fix-pred-plot: Merge branch 'fix-predplot'
+dc577c1 HEAD@{827}: merge fix-predplot: Merge made by the 'ours' strategy.
+be248c0 HEAD@{828}: checkout: moving from fix-predplot to main
+3f65b82 HEAD@{829}: checkout: moving from Rich-check-out-meeting-log-07-10 to fix-predplot
+ceff225 HEAD@{830}: checkout: moving from make-alignment-with-prior-model to Rich-check-out-meeting-log-07-10
+37a7bd3 HEAD@{831}: checkout: moving from redo-OI-with-current to make-alignment-with-prior-model
+7271b2f HEAD@{832}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+48b20f4 HEAD@{833}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+a7b13f4 HEAD@{834}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+1d7768e HEAD@{835}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+685dcde HEAD@{836}: commit: finetune(model-e3): 1. every test produce a new trace
+37a7bd3 HEAD@{837}: checkout: moving from make-alignment-with-prior-model to redo-OI-with-current
+37a7bd3 HEAD@{838}: commit: feat-delete(model-e3): Take out p_switch for pure check
+8996364 HEAD@{839}: checkout: moving from main to make-alignment-with-prior-model
+be248c0 HEAD@{840}: checkout: moving from make-alignment-with-prior-model to main
+8996364 HEAD@{841}: commit: feat(model-e3): restore with error
+1bdccd9 HEAD@{842}: commit: feat-delete(model-e3): Do not replace mismatchings
+876b7e2 HEAD@{843}: commit: feat-delete(model-e3): strenghten when OLD give, take out recall part
+0055d10 HEAD@{844}: commit: feat-delete(model-e3): Max likelihood back, Sample feat delete on picking which to strenghten
+05b3193 HEAD@{845}: commit: feat-delete(model-e3): use raw odds everywhere
+be248c0 HEAD@{846}: checkout: moving from main to make-alignment-with-prior-model
+be248c0 HEAD@{847}: commit (amend): explore(model-e3): Merge branch 'Rich-check-out-meeting-log-07-10'
+9419542 HEAD@{848}: merge Rich-check-out-meeting-log-07-10: Merge made by the 'ours' strategy.
+a8951b6 HEAD@{849}: checkout: moving from Rich-check-out-meeting-log-07-10 to main
+ceff225 HEAD@{850}: commit (amend): explore(model-e3): CHECKING pure contribution of first-stage
+4ac5b26 HEAD@{851}: commit: explore(model-e3): HECKING pure contribution of first-stage
+2f448bf HEAD@{852}: checkout: moving from 2f448bfc7591630845f76f42b984b6f135d22a70 to Rich-check-out-meeting-log-07-10
+2f448bf HEAD@{853}: checkout: moving from main to HEAD~1
+a8951b6 HEAD@{854}: checkout: moving from b7e421c5cfb45e9024e4446dc378c55b9f196d3d to main
+b7e421c HEAD@{855}: checkout: moving from fix-predplot to HEAD~1
+3f65b82 HEAD@{856}: checkout: moving from fdc861db72cedeb2c11b4c4ac32f254f14e384bc to fix-predplot
+fdc861d HEAD@{857}: checkout: moving from 956bee3ea747b499e853fb7c930394153e5dc960 to HEAD~1
+956bee3 HEAD@{858}: checkout: moving from 69329516f2daf4f9619e262afc2214597e84bd3f to HEAD~1
+6932951 HEAD@{859}: checkout: moving from b7e421c5cfb45e9024e4446dc378c55b9f196d3d to HEAD~1
+b7e421c HEAD@{860}: checkout: moving from fix-predplot to HEAD~1
+3f65b82 HEAD@{861}: checkout: moving from c5e376d7a20cd244e4267df869258afb14853ae6 to fix-predplot
+c5e376d HEAD@{862}: checkout: moving from fdc861db72cedeb2c11b4c4ac32f254f14e384bc to HEAD~1
+fdc861d HEAD@{863}: checkout: moving from 956bee3ea747b499e853fb7c930394153e5dc960 to HEAD~1
+956bee3 HEAD@{864}: checkout: moving from 69329516f2daf4f9619e262afc2214597e84bd3f to HEAD~1
+6932951 HEAD@{865}: checkout: moving from fix-predplot to 69329516f2daf4f9619e262afc2214597e84bd3f
+3f65b82 HEAD@{866}: checkout: moving from 17777ae8bb5057fdaa85cfff746543a8fb7be783 to fix-predplot
+17777ae HEAD@{867}: checkout: moving from main to 17777ae8bb5057fdaa85cfff746543a8fb7be783
+a8951b6 HEAD@{868}: checkout: moving from b7e421c5cfb45e9024e4446dc378c55b9f196d3d to main
+b7e421c HEAD@{869}: checkout: moving from fix-predplot to HEAD~1
+3f65b82 HEAD@{870}: checkout: moving from fdc861db72cedeb2c11b4c4ac32f254f14e384bc to fix-predplot
+fdc861d HEAD@{871}: checkout: moving from 956bee3ea747b499e853fb7c930394153e5dc960 to HEAD~1
+956bee3 HEAD@{872}: checkout: moving from 69329516f2daf4f9619e262afc2214597e84bd3f to HEAD~1
+6932951 HEAD@{873}: checkout: moving from fix-predplot to 69329516f2daf4f9619e262afc2214597e84bd3f
+3f65b82 HEAD@{874}: rebase (continue) (finish): returning to refs/heads/fix-predplot
+3f65b82 HEAD@{875}: rebase (continue) (pick): refactor(model-e3): raise sampling LL ratio 1/11 power
+b7e421c HEAD@{876}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+6932951 HEAD@{877}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+956bee3 HEAD@{878}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+fdc861d HEAD@{879}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+c5e376d HEAD@{880}: commit (amend): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+d477080 HEAD@{881}: rebase (edit): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+4ba5c0a HEAD@{882}: rebase (start): checkout 4ba5c0ae779d117de5f21e566765cba33cdfe40e
+897afc1 HEAD@{883}: rebase (continue) (finish): returning to refs/heads/fix-predplot
+897afc1 HEAD@{884}: rebase (continue) (pick): fintune(model-e3): how to make SO the worst CR? adjust p_old val
+de72cce HEAD@{885}: rebase (continue) (pick): refactor(model-e3): raise sampling LL ratio 1/11 power
+7114a0e HEAD@{886}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+a12c576 HEAD@{887}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+23fc8e0 HEAD@{888}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+165f004 HEAD@{889}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+0c1c074 HEAD@{890}: commit (amend): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+b9122fe HEAD@{891}: rebase (edit): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+4ba5c0a HEAD@{892}: rebase (start): checkout 4ba5c0ae779d117de5f21e566765cba33cdfe40e
+0645aa5 HEAD@{893}: checkout: moving from 17777ae8bb5057fdaa85cfff746543a8fb7be783 to fix-predplot
+17777ae HEAD@{894}: checkout: moving from main to 17777ae8bb5057fdaa85cfff746543a8fb7be783
+a8951b6 HEAD@{895}: checkout: moving from ec9c8e85ef0df1616163d651747feed062dd33ce to main
+ec9c8e8 HEAD@{896}: checkout: moving from fix-predplot to ec9c8e85ef0df1616163d651747feed062dd33ce
+0645aa5 HEAD@{897}: rebase (continue) (finish): returning to refs/heads/fix-predplot
+0645aa5 HEAD@{898}: rebase (continue): fintune(model-e3): how to make SO the worst CR? adjust p_old val
+dfcc347 HEAD@{899}: rebase (continue): refactor(model-e3): raise sampling LL ratio 1/11 power
+ec9c8e8 HEAD@{900}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+717c7d9 HEAD@{901}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+be5df5b HEAD@{902}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+403f556 HEAD@{903}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+041465a HEAD@{904}: commit (amend): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+0067fe1 HEAD@{905}: commit (amend): finetune(model-e3):fix predplot make 200 probes of 2 lists, make R plotting ylim to p1
+57f4ff1 HEAD@{906}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+4ba5c0a HEAD@{907}: rebase (pick): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+b79a859 HEAD@{908}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+a8951b6 HEAD@{909}: checkout: moving from main to fix-predplot
+a8951b6 HEAD@{910}: checkout: moving from b79a859cfa55a58201b11ed986a73cb2a62d27a6 to main
+b79a859 HEAD@{911}: checkout: moving from main to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+a8951b6 HEAD@{912}: checkout: moving from fix-predplot to main
+1baf22f HEAD@{913}: rebase (continue) (finish): returning to refs/heads/fix-predplot
+1baf22f HEAD@{914}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+6d9a777 HEAD@{915}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+64edd3a HEAD@{916}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+8c6e660 HEAD@{917}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+de32047 HEAD@{918}: commit (amend): finetune(model-e3): fix-predplot-only list 1, make 200 probes of 2 lists, make R plotting ylim to p1
+57f4ff1 HEAD@{919}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+4ba5c0a HEAD@{920}: rebase (pick): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+b79a859 HEAD@{921}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+33dd06a HEAD@{922}: rebase (abort): updating HEAD
+57f4ff1 HEAD@{923}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+4ba5c0a HEAD@{924}: rebase (pick): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+b79a859 HEAD@{925}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+33dd06a HEAD@{926}: checkout: moving from 33dd06ad82ff9fe01d65e65954c576cdb140a7c1 to fix-predplot
+33dd06a HEAD@{927}: checkout: moving from main to 33dd06ad82ff9fe01d65e65954c576cdb140a7c1
+a8951b6 HEAD@{928}: checkout: moving from fix-predplot to main
+47155b1 HEAD@{929}: rebase (continue) (finish): returning to refs/heads/fix-predplot
+47155b1 HEAD@{930}: commit (amend): finetune(model-e3): pred-plot fixed - 4. strenghten whatever OLD or NEW
+5fbdf6c HEAD@{931}: commit (amend): finetune(model-e3): pred-plot fixed - 4. strenghten whatever OLD or NEW
+3199dfe HEAD@{932}: rebase (edit): finetune(model-e3): 4. strenghten whatever OLD or NEW
+e9dcd59 HEAD@{933}: rebase (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+aa73a78 HEAD@{934}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+86085ec HEAD@{935}: rebase (pick): finetune(model-e3): 1. every test produce a new trace
+fcb219b HEAD@{936}: rebase (pick): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+9c4b2aa HEAD@{937}: rebase (start): checkout 9c4b2aade5c0d48e03d93379ea1d3704d0d955c2
+33dd06a HEAD@{938}: checkout: moving from 33dd06ad82ff9fe01d65e65954c576cdb140a7c1 to fix-predplot
+33dd06a HEAD@{939}: checkout: moving from main to 33dd06ad82ff9fe01d65e65954c576cdb140a7c1
+a8951b6 HEAD@{940}: checkout: moving from fix-predplot to main
+b79a859 HEAD@{941}: checkout: moving from b79a859cfa55a58201b11ed986a73cb2a62d27a6 to fix-predplot
+b79a859 HEAD@{942}: checkout: moving from main to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+a8951b6 HEAD@{943}: checkout: moving from fix-predplot-OI-check-detail to main
+0507027 HEAD@{944}: checkout: moving from main to fix-predplot-OI-check-detail
+a8951b6 HEAD@{945}: checkout: moving from 679782f905354fbc8ab5c33a7046cb6709f2decf to main
+679782f HEAD@{946}: checkout: moving from fix-predplot-OI-check-detail to 679782f905354fbc8ab5c33a7046cb6709f2decf
+0507027 HEAD@{947}: checkout: moving from main to fix-predplot-OI-check-detail
+a8951b6 HEAD@{948}: checkout: moving from fix-predplot-OI-check-detail to main
+0507027 HEAD@{949}: checkout: moving from main to fix-predplot-OI-check-detail
+a8951b6 HEAD@{950}: checkout: moving from fix-predplot-OI-check-detail to main
+0507027 HEAD@{951}: reset: moving to 0507027c266dc5923959ef09b6664a1089121fbb
+37369ae HEAD@{952}: rebase (continue) (finish): returning to refs/heads/fix-predplot-OI-check-detail
+37369ae HEAD@{953}: rebase (continue): fintune(model-e3): how to make SO the worst CR? adjust p_old val
+0507027 HEAD@{954}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+679782f HEAD@{955}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+1aa00e1 HEAD@{956}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+7f6dc2c HEAD@{957}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+35188c7 HEAD@{958}: commit (amend): refactor(model-e3): pred-plot limit in list 1, make 200 probes of 2 lists, make R plotting ylim to p1
+047f2ef HEAD@{959}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+57f4ff1 HEAD@{960}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+4ba5c0a HEAD@{961}: rebase (pick): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+b79a859 HEAD@{962}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+a8951b6 HEAD@{963}: rebase (abort): updating HEAD
+3199dfe HEAD@{964}: rebase (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+e9dcd59 HEAD@{965}: rebase (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+aa73a78 HEAD@{966}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+86085ec HEAD@{967}: rebase (pick): finetune(model-e3): 1. every test produce a new trace
+fcb219b HEAD@{968}: rebase (pick): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+9c4b2aa HEAD@{969}: rebase (start): checkout 9c4b2aade5c0d48e03d93379ea1d3704d0d955c2
+a8951b6 HEAD@{970}: checkout: moving from main to fix-predplot-OI-check-detail
+a8951b6 HEAD@{971}: checkout: moving from 0ac7699a3d67d5460f0b3020df4d758b53b75073 to main
+0ac7699 HEAD@{972}: commit: predplot(model-e3): TEMP SAVE
+2f448bf HEAD@{973}: checkout: moving from main to HEAD~1
+a8951b6 HEAD@{974}: checkout: moving from continue-pO-pSwitch-explore to main
+723451b HEAD@{975}: checkout: moving from main to continue-pO-pSwitch-explore
+a8951b6 HEAD@{976}: checkout: moving from more-pO-explore to main
+b79a859 HEAD@{977}: checkout: moving from main to more-pO-explore
+a8951b6 HEAD@{978}: commit: fintune(model-e3): how to make SO the worst CR? adjust p_old val
+2f448bf HEAD@{979}: commit: refactor(model-e3): raise sampling LL ratio 1/11 power
+33dd06a HEAD@{980}: checkout: moving from add-final-parts to main
+33dd06a HEAD@{981}: checkout: moving from main to add-final-parts
+33dd06a HEAD@{982}: merge OI-check-in-detail: Merge made by the 'ours' strategy.
+6cd43de HEAD@{983}: commit (amend): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+aa484ec HEAD@{984}: reset: moving to HEAD@{54}
+0e5bffb HEAD@{985}: reset: moving to HEAD@{50}
+e09d42d HEAD@{986}: commit (amend): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+1ef097f HEAD@{987}: commit (amend): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+86b396d HEAD@{988}: reset: moving to HEAD@{7}
+aa484ec HEAD@{989}: reset: moving to HEAD@{49}
+d7e61ad HEAD@{990}: reset: moving to HEAD@{4}
+46f8f2e HEAD@{991}: reset: moving to HEAD@{1}
+0e5bffb HEAD@{992}: reset: moving to HEAD@{43}
+46f8f2e HEAD@{993}: rebase (continue) (finish): returning to refs/heads/main
+46f8f2e HEAD@{994}: rebase (continue) (pick): test-final
+d7e61ad HEAD@{995}: commit (amend): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+86b396d HEAD@{996}: commit (amend): finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+285b4ba HEAD@{997}: rebase: fast-forward
+684fa31 HEAD@{998}: rebase (start): checkout HEAD~2
+99c8bc3 HEAD@{999}: rebase (finish): returning to refs/heads/main
+99c8bc3 HEAD@{1000}: rebase (start): checkout HEAD~1
+99c8bc3 HEAD@{1001}: rebase (abort): updating HEAD
+99c8bc3 HEAD@{1002}: rebase (edit): test-final
+285b4ba HEAD@{1003}: rebase (start): checkout HEAD~1
+99c8bc3 HEAD@{1004}: commit: test-final
+285b4ba HEAD@{1005}: commit: finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+684fa31 HEAD@{1006}: commit: predplot/refactor(model-e3): Picked change From 'OI-check-in-detail', Keeps Changes to pred-plot and 1/11 power of sampling LL calculation
+7726c02 HEAD@{1007}: merge OI-check-in-detail: Merge made by the 'ours' strategy.
+b79a859 HEAD@{1008}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a
+4200d82 HEAD@{1009}: merge OI-check-in-detail: Merge made by the 'ours' strategy.
+b79a859 HEAD@{1010}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a
+43a5b5e HEAD@{1011}: merge OI-check-in-detail: Merge made by the 'ort' strategy.
+b79a859 HEAD@{1012}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+b2959a5 HEAD@{1013}: merge OI-check-in-detail: Merge made by the 'ort' strategy.
+b79a859 HEAD@{1014}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+d5699d7 HEAD@{1015}: commit (amend): feat(model-e3): V WORKs? tech-debt workaround add of details assignments of p_old
+a463059 HEAD@{1016}: commit: finetune(model-e3): V WORKs? tech-debt workaround check of detail assignments of p_old
+b20051c HEAD@{1017}: merge OI-check-in-detail: Merge made by the 'ort' strategy.
+b79a859 HEAD@{1018}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+3334cb9 HEAD@{1019}: checkout: moving from more-pO-explore to main
+b79a859 HEAD@{1020}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+9e82e93 HEAD@{1021}: merge OI-check-in-detail: Merge made by the 'ort' strategy.
+b79a859 HEAD@{1022}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+3334cb9 HEAD@{1023}: checkout: moving from main to more-pO-explore
+3334cb9 HEAD@{1024}: commit (amend): explore(model-e3): Merge branch 'OI-check-in-detail' from Rich idea of 4 checks
+851de81 HEAD@{1025}: merge OI-check-in-detail: Merge made by the 'ort' strategy.
+b79a859 HEAD@{1026}: reset: moving to b79a859cfa55a58201b11ed986a73cb2a62d27a6
+4f27207 HEAD@{1027}: rebase (finish): returning to refs/heads/main
+4f27207 HEAD@{1028}: rebase (pick): temp save
+2dbc1f3 HEAD@{1029}: rebase (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+b3cafde HEAD@{1030}: rebase (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+4709df5 HEAD@{1031}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+4eb33bc HEAD@{1032}: rebase (pick): finetune(model-e3): 1. every test produce a new trace
+2807b2c HEAD@{1033}: rebase (pick): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1034}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62
+0e5bffb HEAD@{1035}: rebase (finish): returning to refs/heads/main
+0e5bffb HEAD@{1036}: rebase (pick): temp save
+17777ae HEAD@{1037}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+a0fc9d0 HEAD@{1038}: merge OI-check-in-detail: Merge made by the 'ort' strategy.
+aa484ec HEAD@{1039}: commit: temp save
+b79a859 HEAD@{1040}: checkout: moving from b11ee7c1332799c4d3844feddd34de0355beda0e to main
+b11ee7c HEAD@{1041}: checkout: moving from 9fb5dcbc9ef861f9c1896a7adfda8a9e3f61090a to HEAD~1
+9fb5dcb HEAD@{1042}: checkout: moving from 89e265cc72a76ab90458709ad47d83397bf1df33 to HEAD~1
+89e265c HEAD@{1043}: checkout: moving from OI-check-in-detail to HEAD~1
+17777ae HEAD@{1044}: rebase (continue) (finish): returning to refs/heads/OI-check-in-detail
+17777ae HEAD@{1045}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+89e265c HEAD@{1046}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+9fb5dcb HEAD@{1047}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+b11ee7c HEAD@{1048}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+9c4b2aa HEAD@{1049}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b561e8e HEAD@{1050}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1051}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+f68ce5d HEAD@{1052}: checkout: moving from side-merge-criterion-1 to OI-check-in-detail
+ca624b1 HEAD@{1053}: checkout: moving from main to side-merge-criterion-1
+b79a859 HEAD@{1054}: checkout: moving from side-merge-criterion-1 to main
+ca624b1 HEAD@{1055}: commit (merge): explore(model-e3): Merge branch 'OI-copybranch-criterion-1' into side-merge-criterion-1, criterion=1
+b79a859 HEAD@{1056}: checkout: moving from main to side-merge-criterion-1
+b79a859 HEAD@{1057}: checkout: moving from side-merge-criterion-1 to main
+733e840 HEAD@{1058}: checkout: moving from side-merge-criterion-0.11 to side-merge-criterion-1
+733e840 HEAD@{1059}: Branch: renamed refs/heads/side-merge-different-criterion to refs/heads/side-merge-criterion-0.11
+733e840 HEAD@{1061}: commit (merge): explore(model-e3): Merge branch 'OI-check-in-detail' into side-merge-different-criterion, explore 4 options prompted by Rich
+b79a859 HEAD@{1062}: checkout: moving from OI-check-in-detail to side-merge-different-criterion
+f68ce5d HEAD@{1063}: checkout: moving from main to OI-check-in-detail
+b79a859 HEAD@{1064}: checkout: moving from OI-check-in-detail to main
+f68ce5d HEAD@{1065}: checkout: moving from main to OI-check-in-detail
+b79a859 HEAD@{1066}: checkout: moving from OI-copybranch-criterion-1 to main
+44e760c HEAD@{1067}: checkout: moving from OI-check-in-detail to OI-copybranch-criterion-1
+f68ce5d HEAD@{1068}: checkout: moving from OI-copybranch-criterion-1 to OI-check-in-detail
+44e760c HEAD@{1069}: rebase (continue) (finish): returning to refs/heads/OI-copybranch-criterion-1
+44e760c HEAD@{1070}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+75584e1 HEAD@{1071}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+890ebe1 HEAD@{1072}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+0fa63f2 HEAD@{1073}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+8481f47 HEAD@{1074}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to 0-1 for p1, criterion 1
+56d863f HEAD@{1075}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to 0-1 for p1, criterion 1
+b561e8e HEAD@{1076}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1077}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+f68ce5d HEAD@{1078}: checkout: moving from OI-check-in-detail to OI-copybranch-criterion-1
+f68ce5d HEAD@{1079}: rebase (continue) (finish): returning to refs/heads/OI-check-in-detail
+f68ce5d HEAD@{1080}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+70eaab5 HEAD@{1081}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+610c399 HEAD@{1082}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+87e4dcc HEAD@{1083}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+29e521e HEAD@{1084}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+6165ae0 HEAD@{1085}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1086}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+cd3d681 HEAD@{1087}: checkout: moving from OI-copybranch-criterion-1 to OI-check-in-detail
+cd3d681 HEAD@{1088}: rebase (abort): updating HEAD
+6165ae0 HEAD@{1089}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1090}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+cd3d681 HEAD@{1091}: checkout: moving from OI-check-in-detail to OI-copybranch-criterion-1
+cd3d681 HEAD@{1092}: checkout: moving from OI-copybranch-criterion-1 to OI-check-in-detail
+f92e467 HEAD@{1093}: rebase (finish): returning to refs/heads/OI-copybranch-criterion-1
+f92e467 HEAD@{1094}: rebase (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+a1be80b HEAD@{1095}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+e501cff HEAD@{1096}: rebase (pick): finetune(model-e3): 1. every test produce a new trace
+072ca84 HEAD@{1097}: rebase (start): checkout 072ca84214a2152e71336cfe9cc639032fc28794
+f92e467 HEAD@{1098}: checkout: moving from f92e467821bbe86e165264c884a36e6cc564eb0e to OI-copybranch-criterion-1
+f92e467 HEAD@{1099}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+a1be80b HEAD@{1100}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+e501cff HEAD@{1101}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+072ca84 HEAD@{1102}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim 0 to 1 to p1
+5e263c1 HEAD@{1103}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim 0 to 1 to p1
+6165ae0 HEAD@{1104}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1105}: rebase (start): checkout b79a859cfa55a58201b11ed986a73cb2a62d27a6
+53173d2 HEAD@{1106}: rebase (abort): updating HEAD
+283c37b HEAD@{1107}: rebase (edit): finetune(model-e3): 1. every test produce a new trace
+19d7773 HEAD@{1108}: rebase (start): checkout 19d77735fa8dedd3cb49746c9222d7879b2242e2
+53173d2 HEAD@{1109}: rebase (abort): updating HEAD
+a3a08ad HEAD@{1110}: commit (amend): fix(model-e3): (fix previous) YES strengthen NO store new
+84975ad HEAD@{1111}: rebase (pick): fix(model-e3): (fix previous) YES strengthen NO store new
+54b4e28 HEAD@{1112}: rebase (pick): finetune(model-e3): double-check NO restore (NO strenghtn NO add new)
+12ebf4f HEAD@{1113}: rebase (pick): fix(model-e3): fix- previous marking wrong! now, NO Strenghten NO add new trace
+1b6a1a0 HEAD@{1114}: rebase (pick): finetune(predplot-e3): fix-make x axis range fixed so able to compare
+af28382 HEAD@{1115}: rebase (pick): finetune(model-e3): fix- previous Yes and NO parttern was wrong - TEST NO strengthen, NO new trace
+86567b7 HEAD@{1116}: rebase (pick): finetune(model-e3): TEST NO strengthen, YES ADD trace, NO p_switch change by list
+62a1bd7 HEAD@{1117}: rebase (start): checkout HEAD~5
+53173d2 HEAD@{1118}: rebase (abort): updating HEAD
+c66cdbf HEAD@{1119}: commit (amend): fix(model-e3): (fix previous) YES strengthen NO store new
+84975ad HEAD@{1120}: rebase (pick): fix(model-e3): (fix previous) YES strengthen NO store new
+54b4e28 HEAD@{1121}: rebase (pick): finetune(model-e3): double-check NO restore (NO strenghtn NO add new)
+12ebf4f HEAD@{1122}: rebase (pick): fix(model-e3): fix- previous marking wrong! now, NO Strenghten NO add new trace
+1b6a1a0 HEAD@{1123}: rebase (pick): finetune(predplot-e3): fix-make x axis range fixed so able to compare
+af28382 HEAD@{1124}: rebase (pick): finetune(model-e3): fix- previous Yes and NO parttern was wrong - TEST NO strengthen, NO new trace
+86567b7 HEAD@{1125}: rebase (pick): finetune(model-e3): TEST NO strengthen, YES ADD trace, NO p_switch change by list
+62a1bd7 HEAD@{1126}: rebase (start): checkout HEAD~5
+53173d2 HEAD@{1127}: checkout: moving from OI-check-in-detail to HEAD~1
+cd3d681 HEAD@{1128}: checkout: moving from 283c37b26604f13c6cf78c69c57382749fd4a835 to OI-check-in-detail
+283c37b HEAD@{1129}: checkout: moving from OI-check-in-detail to 283c37b26604f13c6cf78c69c57382749fd4a835
+cd3d681 HEAD@{1130}: checkout: moving from 19d77735fa8dedd3cb49746c9222d7879b2242e2 to OI-check-in-detail
+19d7773 HEAD@{1131}: checkout: moving from OI-check-in-detail to 19d77735fa8dedd3cb49746c9222d7879b2242e2
+cd3d681 HEAD@{1132}: rebase (continue) (finish): returning to refs/heads/OI-check-in-detail
+cd3d681 HEAD@{1133}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+53173d2 HEAD@{1134}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+30660a0 HEAD@{1135}: rebase (continue) (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+283c37b HEAD@{1136}: rebase (continue) (pick): finetune(model-e3): 1. every test produce a new trace
+19d7773 HEAD@{1137}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+21e4944 HEAD@{1138}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+b79a859 HEAD@{1139}: rebase (start): checkout HEAD~5
+9e520d1 HEAD@{1140}: rebase (finish): returning to refs/heads/OI-check-in-detail
+9e520d1 HEAD@{1141}: rebase (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+d6b3efc HEAD@{1142}: rebase (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+9e9ce63 HEAD@{1143}: rebase (pick): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+cd8e29a HEAD@{1144}: rebase (pick): finetune(model-e3): 1. every test produce a new trace
+c8acaf8 HEAD@{1145}: rebase (start): checkout HEAD~4
+0b25acb HEAD@{1146}: rebase (continue) (finish): returning to refs/heads/OI-check-in-detail
+0b25acb HEAD@{1147}: rebase (continue) (pick): finetune(model-e3): 4. strenghten whatever OLD or NEW
+bb2932a HEAD@{1148}: rebase (continue) (pick): finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+4ed0c2d HEAD@{1149}: commit (amend): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+e1ea00a HEAD@{1150}: rebase (edit): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+cd8e29a HEAD@{1151}: rebase (start): checkout HEAD~3
+b49c9ae HEAD@{1152}: checkout: moving from main to OI-check-in-detail
+b79a859 HEAD@{1153}: checkout: moving from OI-check-in-detail to main
+b49c9ae HEAD@{1154}: commit: finetune(model-e3): 4. strenghten whatever OLD or NEW
+1f027fe HEAD@{1155}: checkout: moving from e1ea00a6aa405038bfc122b1e3f8bc74b8b853a0 to OI-check-in-detail
+e1ea00a HEAD@{1156}: checkout: moving from OI-check-in-detail to HEAD~1
+1f027fe HEAD@{1157}: checkout: moving from cd8e29a9eb29aabf8d913ee5406102bc7a4a3e0b to OI-check-in-detail
+cd8e29a HEAD@{1158}: checkout: moving from e1ea00a6aa405038bfc122b1e3f8bc74b8b853a0 to HEAD~1
+e1ea00a HEAD@{1159}: checkout: moving from OI-check-in-detail to HEAD~1
+1f027fe HEAD@{1160}: checkout: moving from c8acaf8c90317c32db264cddbafc71bb7e7533d4 to OI-check-in-detail
+c8acaf8 HEAD@{1161}: checkout: moving from cd8e29a9eb29aabf8d913ee5406102bc7a4a3e0b to HEAD~1
+cd8e29a HEAD@{1162}: checkout: moving from e1ea00a6aa405038bfc122b1e3f8bc74b8b853a0 to HEAD~1
+e1ea00a HEAD@{1163}: checkout: moving from OI-check-in-detail to HEAD~1
+1f027fe HEAD@{1164}: commit: finetune(model-e3): 3. every NEW response produce new, OLD strenghten from sampling, CAUTION sampling LL raise 1/11 power
+e1ea00a HEAD@{1165}: checkout: moving from cd8e29a9eb29aabf8d913ee5406102bc7a4a3e0b to OI-check-in-detail
+cd8e29a HEAD@{1166}: checkout: moving from OI-check-in-detail to HEAD~1
+e1ea00a HEAD@{1167}: checkout: moving from c8acaf8c90317c32db264cddbafc71bb7e7533d4 to OI-check-in-detail
+c8acaf8 HEAD@{1168}: checkout: moving from OI-check-in-detail to HEAD~2
+e1ea00a HEAD@{1169}: rebase (continue) (finish): returning to refs/heads/OI-check-in-detail
+e1ea00a HEAD@{1170}: rebase (continue) (edit): finetune(model-e3): 2. every NEW response produce new, OLD nothing
+cd8e29a HEAD@{1171}: rebase (continue) (edit): finetune(model-e3): 1. every test produce a new trace
+c8acaf8 HEAD@{1172}: commit (amend): finetune(model-e3): make 200 probes of 2 lists, make R plotting ylim to p1
+aacb65d HEAD@{1173}: rebase (edit): finetune(model-e3): make 200 probes of 2 lists
+b79a859 HEAD@{1174}: rebase (start): checkout HEAD~3
+e83e719 HEAD@{1175}: checkout: moving from main to OI-check-in-detail
+b79a859 HEAD@{1176}: checkout: moving from OI-check-in-detail to main
+e83e719 HEAD@{1177}: rebase (abort): updating HEAD
+dd5b424 HEAD@{1178}: rebase (pick): finetune(model-e3): make 200 probes of 2 lists
+84975ad HEAD@{1179}: rebase (pick): fix(model-e3): (fix previous) YES strengthen NO store new
+54b4e28 HEAD@{1180}: rebase (pick): finetune(model-e3): double-check NO restore (NO strenghtn NO add new)
+12ebf4f HEAD@{1181}: rebase (pick): fix(model-e3): fix- previous marking wrong! now, NO Strenghten NO add new trace
+1b6a1a0 HEAD@{1182}: rebase (pick): finetune(predplot-e3): fix-make x axis range fixed so able to compare
+af28382 HEAD@{1183}: rebase (pick): finetune(model-e3): fix- previous Yes and NO parttern was wrong - TEST NO strengthen, NO new trace
+86567b7 HEAD@{1184}: rebase (pick): finetune(model-e3): TEST NO strengthen, YES ADD trace, NO p_switch change by list
+62a1bd7 HEAD@{1185}: rebase (start): checkout HEAD~4
+e83e719 HEAD@{1186}: commit: finetune(model-e3): 2. every NEW response produce new, OLD nothing
+4c75fdd HEAD@{1187}: commit (amend): finetune(model-e3): 1. every test produce a new trace
+b153540 HEAD@{1188}: checkout: moving from main to OI-check-in-detail
+b79a859 HEAD@{1189}: checkout: moving from OI-check-in-detail to main
+b153540 HEAD@{1190}: commit: finetune(model-e3): every test produce a new trace
+0abb217 HEAD@{1191}: commit (amend): finetune(model-e3): make 200 probes of 2 lists
+c903a77 HEAD@{1192}: commit (amend): finetune(model-e3): make 200 probes of 2 lists
+465ea0d HEAD@{1193}: commit: finetune(model-e3): make 200 probes of 2 lists
+b79a859 HEAD@{1194}: checkout: moving from main to OI-check-in-detail
+b79a859 HEAD@{1195}: merge explore-OI-effect-by-restore: Merge made by the 'ours' strategy.
+62a1bd7 HEAD@{1196}: checkout: moving from explore-OI-effect-by-restore to main
+84975ad HEAD@{1197}: checkout: moving from main to explore-OI-effect-by-restore
+62a1bd7 HEAD@{1198}: reset: moving to HEAD
+62a1bd7 HEAD@{1199}: reset: moving to HEAD~1
+2133252 HEAD@{1200}: checkout: moving from explore-OI-effect-by-restore to main
+84975ad HEAD@{1201}: checkout: moving from 54b4e2802666648e1eec2f92e5335ad8dd1dcfd7 to explore-OI-effect-by-restore
+54b4e28 HEAD@{1202}: checkout: moving from explore-OI-effect-by-restore to HEAD~1
+84975ad HEAD@{1203}: checkout: moving from 54b4e2802666648e1eec2f92e5335ad8dd1dcfd7 to explore-OI-effect-by-restore
+54b4e28 HEAD@{1204}: checkout: moving from explore-OI-effect-by-restore to HEAD~1
+84975ad HEAD@{1205}: commit: fix(model-e3): (fix previous) YES strengthen NO store new
+54b4e28 HEAD@{1206}: commit: finetune(model-e3): double-check NO restore (NO strenghtn NO add new)
+12ebf4f HEAD@{1207}: commit: fix(model-e3): fix- previous marking wrong! now, NO Strenghten NO add new trace
+1b6a1a0 HEAD@{1208}: rebase (abort): updating HEAD
+86567b7 HEAD@{1209}: rebase (start): checkout HEAD~2
+1b6a1a0 HEAD@{1210}: commit: finetune(predplot-e3): fix-make x axis range fixed so able to compare
+af28382 HEAD@{1211}: commit: finetune(model-e3): fix- previous Yes and NO parttern was wrong - TEST NO strengthen, NO new trace
+86567b7 HEAD@{1212}: commit: finetune(model-e3): TEST NO strengthen, YES ADD trace, NO p_switch change by list
+62a1bd7 HEAD@{1213}: checkout: moving from main to explore-OI-effect-by-restore
+2133252 HEAD@{1214}: checkout: moving from explore-OI-effect-by-restore to main
+62a1bd7 HEAD@{1215}: checkout: moving from 62a1bd71ad0c970a528cae1204ef639f81e36910 to explore-OI-effect-by-restore
+62a1bd7 HEAD@{1216}: checkout: moving from main to 62a1bd71ad0c970a528cae1204ef639f81e36910
+2133252 HEAD@{1217}: commit: tempstore
+62a1bd7 HEAD@{1218}: merge debug-first-stage-disappear-issue35: Merge made by the 'ort' strategy.
+26484c1 HEAD@{1219}: checkout: moving from debug-first-stage-disappear-issue35 to main
+723451b HEAD@{1220}: commit (amend): fix(model-e3): #35 first stage threshold forgot to set to a bigger value
+0b174e6 HEAD@{1221}: Branch: renamed refs/heads/{new_branch_name} to refs/heads/debug-first-stage-disappear-issue35
+0b174e6 HEAD@{1223}: Branch: renamed refs/heads/continue-pO-pSwitch-explore to refs/heads/{new_branch_name}
+0b174e6 HEAD@{1225}: commit: fix(model-e3): #35 first stage threshold forgot to set to a bigger value
+b5448e2 HEAD@{1226}: checkout: moving from c078d5406025f9a92ace081b9ea8a855ee06d42a to continue-pO-pSwitch-explore
+c078d54 HEAD@{1227}: checkout: moving from continue-pO-pSwitch-explore to c078d5406025f9a92ace081b9ea8a855ee06d42a
+b5448e2 HEAD@{1228}: checkout: moving from b5448e23c02c884d05543c4fb677bb37e808f9ab to continue-pO-pSwitch-explore
+b5448e2 HEAD@{1229}: checkout: moving from continue-pO-pSwitch-explore to b5448e23c02c884d05543c4fb677bb37e808f9ab
+b5448e2 HEAD@{1230}: checkout: moving from main to continue-pO-pSwitch-explore
+26484c1 HEAD@{1231}: checkout: moving from continue-pO-pSwitch-explore to main
+b5448e2 HEAD@{1232}: checkout: moving from 353822c7264f53e064ef933c46e0435a3dc81614 to continue-pO-pSwitch-explore
+353822c HEAD@{1233}: checkout: moving from a3cbec3bea8ebc4ba38ed10981f91276f67c5d19 to 353822c7264f53e064ef933c46e0435a3dc81614
+a3cbec3 HEAD@{1234}: checkout: moving from 1d7e5c9ba958825c056ddd4d6b6756e7154a748a to a3cbec3bea8ebc4ba38ed10981f91276f67c5d19
+1d7e5c9 HEAD@{1235}: checkout: moving from 0136897d35145b263b1aa01190314f3334456c45 to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+0136897 HEAD@{1236}: checkout: moving from 1d7e5c9ba958825c056ddd4d6b6756e7154a748a to 0136897d35145b263b1aa01190314f3334456c45
+1d7e5c9 HEAD@{1237}: checkout: moving from continue-pO-pSwitch-explore to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+b5448e2 HEAD@{1238}: commit: finetune(model-e3): p_switch = 0 and first stage = true
+26484c1 HEAD@{1239}: checkout: moving from main to continue-pO-pSwitch-explore
+26484c1 HEAD@{1240}: checkout: moving from simple-v-after-recall-explore to main
+c078d54 HEAD@{1241}: checkout: moving from main to simple-v-after-recall-explore
+26484c1 HEAD@{1242}: commit (amend): feat(model-e3):(first stage doens't work?) Merge feature simple-v-after-recall-explore into main, pO and pSwitch add, not finished yet though
+ff8cf82 HEAD@{1243}: checkout: moving from continue-pO-pswitch-explore to main
+4f60d5c HEAD@{1244}: commit (amend): finetune(model-e3): fine tune of p_old and a bit structureal change of o_old
+87ac5c3 HEAD@{1245}: commit (amend): finetune(model-e3): fine tune of p_old and a bit structureal change of o_old
+176ea0c HEAD@{1246}: checkout: moving from ff8cf82dfc13ac9a936e395d0a302a6710c8879e to continue-pO-pswitch-explore
+ff8cf82 HEAD@{1247}: checkout: moving from continue-pO-pswitch-explore to HEAD~1
+176ea0c HEAD@{1248}: commit: finetune(model-e3): fine tune of p_old and a bit structureal change of o_old
+ff8cf82 HEAD@{1249}: checkout: moving from main to continue-pO-pswitch-explore
+ff8cf82 HEAD@{1250}: merge simple-v-after-recall-explore: Merge made by the 'ort' strategy.
+1d7e5c9 HEAD@{1251}: reset: moving to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+c078d54 HEAD@{1252}: merge simple-v-after-recall-explore: Fast-forward
+1d7e5c9 HEAD@{1253}: checkout: moving from recall-pick-list-strenghten-by-sampling to main
+ba319f5 HEAD@{1254}: checkout: moving from main to recall-pick-list-strenghten-by-sampling
+1d7e5c9 HEAD@{1255}: reset: moving to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+ed37f31 HEAD@{1256}: commit (merge): feat(model-3e): Merge branch 'simple-v-after-recall-explore' this is for pO and pswitch adding
+1d7e5c9 HEAD@{1257}: checkout: moving from simple-v-after-recall-explore to main
+c078d54 HEAD@{1258}: checkout: moving from main to simple-v-after-recall-explore
+1d7e5c9 HEAD@{1259}: reset: moving to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+c078d54 HEAD@{1260}: checkout: moving from simple-v-after-recall-explore to main
+c078d54 HEAD@{1261}: rebase (finish): returning to refs/heads/simple-v-after-recall-explore
+c078d54 HEAD@{1262}: rebase (start): checkout origin/main
+c078d54 HEAD@{1263}: rebase (finish): returning to refs/heads/simple-v-after-recall-explore
+c078d54 HEAD@{1264}: rebase (start): checkout origin/main
+0197339 HEAD@{1265}: checkout: moving from main to simple-v-after-recall-explore
+c078d54 HEAD@{1266}: rebase (continue) (finish): returning to refs/heads/main
+c078d54 HEAD@{1267}: rebase (continue) (pick): finetune(model-e3): Totally take out first-stage. No influence????
+46cf842 HEAD@{1268}: rebase (continue) (pick): finetune(model-e3): Explore why 2nd List Tn worse
+2b0dece HEAD@{1269}: rebase (continue) (pick): finetune(model-e3): specific rules of where use 3 pO
+d63dc1e HEAD@{1270}: rebase (continue) (pick): feat(model-e3) Add P(O)++, now have 3 pO for 3 confusing foils
+621d127 HEAD@{1271}: commit (amend): chore(model-e3): Remove csv, png, pdf in commits future, gitignore
+4ca0ec6 HEAD@{1272}: rebase: fast-forward
+a5d8441 HEAD@{1273}: rebase (start): checkout HEAD~5
+30ebf04 HEAD@{1274}: rebase (continue) (finish): returning to refs/heads/main
+30ebf04 HEAD@{1275}: rebase (continue) (pick): finetune(model-e3): Totally take out first-stage. No influence????
+73c9337 HEAD@{1276}: rebase (continue) (pick): finetune(model-e3): Explore why 2nd List Tn worse
+8aaf3ac HEAD@{1277}: rebase (continue) (pick): finetune(model-e3): specific rules of where use 3 pO
+9ec7916 HEAD@{1278}: rebase (continue) (pick): feat(model-e3) Add P(O)++, now have 3 pO for 3 confusing foils
+4ca0ec6 HEAD@{1279}: rebase (edit): chore(model-e3): Remove csv, png, pdf in commits future, gitignore
+a5d8441 HEAD@{1280}: rebase (start): checkout HEAD~5
+0197339 HEAD@{1281}: rebase (finish): returning to refs/heads/main
+0197339 HEAD@{1282}: rebase (start): checkout HEAD~5
+0197339 HEAD@{1283}: rebase (finish): returning to refs/heads/main
+0197339 HEAD@{1284}: rebase (start): checkout 4ca0ec69f9e6f4e466697f03a7066c5c6fb60222
+d4fc7e0 HEAD@{1285}: merge simple-v-after-recall-explore: Merge made by the 'ort' strategy.
+1d7e5c9 HEAD@{1286}: reset: moving to HEAD~1
+d9ffef0 HEAD@{1287}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1288}: checkout: moving from main to simple-v-after-recall-explore
+d9ffef0 HEAD@{1289}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1290}: checkout: moving from main to simple-v-after-recall-explore
+d9ffef0 HEAD@{1291}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1292}: rebase: checkout simple-v-after-recall-explore
+1d7e5c9 HEAD@{1293}: checkout: moving from simple-v-after-recall-explore to add-switch-pO-parm
+0197339 HEAD@{1294}: checkout: moving from main to simple-v-after-recall-explore
+d9ffef0 HEAD@{1295}: commit: chore(all): Divergence marker: keep parallel history
+1d7e5c9 HEAD@{1296}: reset: moving to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+0197339 HEAD@{1297}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1298}: checkout: moving from main to simple-v-after-recall-explore
+0197339 HEAD@{1299}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1300}: checkout: moving from main to simple-v-after-recall-explore
+0197339 HEAD@{1301}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1302}: checkout: moving from main to simple-v-after-recall-explore
+0197339 HEAD@{1303}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1304}: checkout: moving from main to simple-v-after-recall-explore
+0197339 HEAD@{1305}: merge simple-v-after-recall-explore: Fast-forward
+1d7e5c9 HEAD@{1306}: checkout: moving from simple-v-after-recall-explore to main
+0197339 HEAD@{1307}: commit (amend): finetune(model-e3): Totally take out first-stage. No influence????
+5c619ad HEAD@{1308}: commit: finetune(model-e3): Totally take out first-stage. No influence????
+73c9337 HEAD@{1309}: commit: finetune(model-e3): Explore why 2nd List Tn worse
+8aaf3ac HEAD@{1310}: commit: finetune(model-e3): specific rules of where use 3 pO
+9ec7916 HEAD@{1311}: commit: feat(model-e3) Add P(O)++, now have 3 pO for 3 confusing foils
+4ca0ec6 HEAD@{1312}: commit: chore(model-e3): Remove csv, png, pdf in commits future, gitignore
+a5d8441 HEAD@{1313}: commit (amend): feat(model-e3): Try Add one more p(old) (P(O+)) for SO,
+838986f HEAD@{1314}: checkout: moving from main to simple-v-after-recall-explore
+1d7e5c9 HEAD@{1315}: checkout: moving from 838986fc26768380772d594658103c89afbb1cf3 to main
+838986f HEAD@{1316}: rebase (start): checkout origin/simple-v-after-recall-explore
+838986f HEAD@{1317}: commit (amend): feat(model-e3): Try Add one more p(old) (P(O+)) for SO,
+05ef505 HEAD@{1318}: commit (amend): feat(model-e3): Try Add one more p(old) (P(O+)) for SO,
+7756472 HEAD@{1319}: rebase (finish): returning to refs/heads/simple-v-after-recall-explore
+7756472 HEAD@{1320}: rebase (pick): feat(model-e3): Try Add one more p(old) for SO,
+8d9b36d HEAD@{1321}: rebase (pick): refactor(model-e3): p(match) calculation
+b8842b6 HEAD@{1322}: rebase (pick): refactor(model-e3): add asympotopy for p_switch, but didn't use
+c58da76 HEAD@{1323}: rebase (pick): finetune(model-e3): Get a good working v.
+1bf31ca HEAD@{1324}: rebase (pick): feat(model-e3): add linear increase and stopping rule for p_switch
+5059fb1 HEAD@{1325}: rebase (pick): finetune(model-e3): This is so hard, but getting a bit better
+5cdc37e HEAD@{1326}: rebase (pick): finetune(model-e3): ITS WORKING better but middle-place version, not tunned well
+4c714fd HEAD@{1327}: rebase (pick): fix(model-e3):A working V of LOR + low criterion : fix that forgot to change back n_between_listchange to none-zero value
+5400e3d HEAD@{1328}: rebase (pick): finetune(model-e3): WHY? n_activation plot went awry.
+2810691 HEAD@{1329}: rebase (reword): refactor(model-e3): DELETE feat: Remove listnum_image == listnum_prob judge
+feb01df HEAD@{1330}: rebase (reword): refactor(model-e3): remove feature of getting LOR
+7742e9e HEAD@{1331}: rebase (start): checkout HEAD~10
+2a20fbf HEAD@{1332}: commit: feat(model-e3): Try Add one more p(old) for SO,
+1e3f89b HEAD@{1333}: commit: refactor(model-e3): p(match) calculation
+a5246cf HEAD@{1334}: commit: refactor(model-e3): add asympotopy for p_switch, but didn't use
+52d8f8e HEAD@{1335}: commit: finetune(model-e3): Get a good working v.
+7b8a37f HEAD@{1336}: commit: feat(model-e3): add linear increase and stopping rule for p_switch
+835d799 HEAD@{1337}: commit: finetune(model-e3): This is so hard, but getting a bit better
+c881ec2 HEAD@{1338}: commit: finetune(model-e3): ITS WORKING better but middle-place version, not tunned well
+1e4f874 HEAD@{1339}: reset: moving to 1e4f874
+fcf2347 HEAD@{1340}: reset: moving to ORIG_HEAD
+1e4f874 HEAD@{1341}: commit (amend): fix(model-e3):A working V of LOR + low criterion : fix that forgot to change back n_between_listchange to none-zero value
+7efee4a HEAD@{1342}: commit (amend): fix(model-e3): forgot to change back n_between_listchange to none-zero value
+8d04eb1 HEAD@{1343}: commit: fix(model-e3): forgot to change back n_between_listchange
+af92d7b HEAD@{1344}: checkout: moving from main to simple-v-after-recall-explore
+1d7e5c9 HEAD@{1345}: checkout: moving from 05f5afe5dde6bf3d1fde11f2c2fa8f83c2d693d2 to main
+05f5afe HEAD@{1346}: checkout: moving from 353822c7264f53e064ef933c46e0435a3dc81614 to 05f5afe5dde6bf3d1fde11f2c2fa8f83c2d693d2
+353822c HEAD@{1347}: checkout: moving from e8b243d2044633f1aa6769de0e0932032260b917 to 353822c7264f53e064ef933c46e0435a3dc81614
+e8b243d HEAD@{1348}: checkout: moving from simple-v-after-recall-explore to e8b243d2044633f1aa6769de0e0932032260b917
+af92d7b HEAD@{1349}: checkout: moving from recall-pick-list-strenghten-by-sampling to simple-v-after-recall-explore
+ba319f5 HEAD@{1350}: checkout: moving from main to recall-pick-list-strenghten-by-sampling
+1d7e5c9 HEAD@{1351}: checkout: moving from simple-v-after-recall-explore to main
+af92d7b HEAD@{1352}: commit: finetune(model-e3): WHY? n_activation plot went awry.
+feb01df HEAD@{1353}: commit: refactor(model-e3): remove feature of getting LOR
+7742e9e HEAD@{1354}: checkout: moving from simple-v-after-recall-explore to simple-v-after-recall-explore
+7742e9e HEAD@{1355}: commit (amend): feat(model-e3): add p_switch_listOrigin
+124705e HEAD@{1356}: checkout: moving from main to simple-v-after-recall-explore
+1d7e5c9 HEAD@{1357}: checkout: moving from simple-v-after-recall-explore to main
+124705e HEAD@{1358}: commit (amend): feat(model-e3): add p_switch_listOrigin
+ad0e500 HEAD@{1359}: commit (amend): feat(model-e3): add p_switch_listOrigin
+8d725d2 HEAD@{1360}: commit (amend): feat(model-e3): add p_switch_listOrigin
+2eecab4 HEAD@{1361}: checkout: moving from recall-pick-list-strenghten-by-sampling to simple-v-after-recall-explore
+ba319f5 HEAD@{1362}: checkout: moving from simple-v-after-recall-explore to recall-pick-list-strenghten-by-sampling
+2eecab4 HEAD@{1363}: checkout: moving from 442d073532225a147bd9c2b73d81ea073cfaf4c7 to simple-v-after-recall-explore
+442d073 HEAD@{1364}: checkout: moving from simple-v-after-recall-explore to 442d073532225a147bd9c2b73d81ea073cfaf4c7
+2eecab4 HEAD@{1365}: checkout: moving from 10bd68f9cd06b80c8b84d139b73150087c1f7e9b to simple-v-after-recall-explore
+10bd68f HEAD@{1366}: checkout: moving from simple-v-after-recall-explore to 10bd68f9cd06b80c8b84d139b73150087c1f7e9b
+2eecab4 HEAD@{1367}: rebase (continue) (finish): returning to refs/heads/simple-v-after-recall-explore
+2eecab4 HEAD@{1368}: rebase (continue): feat(model-e3): add p_switch_listOrigin
+10bd68f HEAD@{1369}: rebase (pick): refactor(model-e3): Delete p1/2(old) after filter and those version preparing for the next explore
+1d7e5c9 HEAD@{1370}: rebase (start): checkout OIexplore
+fcf2347 HEAD@{1371}: checkout: moving from main to simple-v-after-recall-explore
+1d7e5c9 HEAD@{1372}: checkout: moving from OI-explore to main
+ac2904a HEAD@{1373}: checkout: moving from OIexplore to OI-explore
+1d7e5c9 HEAD@{1374}: reset: moving to 1d7e5c9ba958825c056ddd4d6b6756e7154a748a
+1d7e5c9 HEAD@{1375}: checkout: moving from main to OIexplore
+1d7e5c9 HEAD@{1376}: checkout: moving from OI-explore to main
+ac2904a HEAD@{1377}: checkout: moving from main to OI-explore
+1d7e5c9 HEAD@{1378}: checkout: moving from OI-explore to main
+ac2904a HEAD@{1379}: checkout: moving from main to OI-explore
+1d7e5c9 HEAD@{1380}: merge recall-pick-list-strenghten-by-sampling: Merge made by the 'ort' strategy.
+a3cbec3 HEAD@{1381}: checkout: moving from recall-pick-list-strenghten-by-sampling to main
+ba319f5 HEAD@{1382}: commit (amend): feat(model-e3): Recall and Strengthen: sampling by prob but not pick max
+8eb5fd1 HEAD@{1383}: commit: feat(model-e3): Recall and Strengthen: sampling by prob but not pick max
+e8b243d HEAD@{1384}: commit: fix(model-e3): Fixed a bug about original img Max function
+a3cbec3 HEAD@{1385}: checkout: moving from main to recall-pick-list-strenghten-by-sampling
+a3cbec3 HEAD@{1386}: checkout: moving from simple-v-after-recall-explore to main
+fcf2347 HEAD@{1387}: checkout: moving from main to simple-v-after-recall-explore
+a3cbec3 HEAD@{1388}: checkout: moving from simple-v-after-recall-explore to main
+fcf2347 HEAD@{1389}: checkout: moving from main to simple-v-after-recall-explore
+a3cbec3 HEAD@{1390}: checkout: moving from simple-v-after-recall-explore to main
+fcf2347 HEAD@{1391}: commit (amend): feat(model-e3): add p_switch_listOrigin
+517638f HEAD@{1392}: commit (amend): feat(model-e3): add p_switch_listOrigin
+626d68d HEAD@{1393}: rebase (continue) (finish): returning to refs/heads/simple-v-after-recall-explore
+626d68d HEAD@{1394}: rebase (continue): feat(model-e3): add p_switch_listOrigin
+4dabf18 HEAD@{1395}: rebase (continue): refactor(model-e3): Delete p1/2(old) after filter and those version preparing for the next explore
+ca6f5e6 HEAD@{1396}: rebase: fast-forward
+a3cbec3 HEAD@{1397}: rebase (start): checkout HEAD~2
+6a3aaa1 HEAD@{1398}: rebase (abort): updating HEAD
+a3cbec3 HEAD@{1399}: rebase (start): checkout HEAD~2
+6a3aaa1 HEAD@{1400}: commit: feat(model-e3): add p_switch_listOrigin
+ca6f5e6 HEAD@{1401}: commit: refactor(model-e3): Delete p1/2(old) after filter and those version preparing for the next explore
+a3cbec3 HEAD@{1402}: checkout: moving from main to simple-v-after-recall-explore
+a3cbec3 HEAD@{1403}: commit: feat(model-e3): Modify initial_criterion generate function
+353822c HEAD@{1404}: checkout: moving from OI-explore to main
+ac2904a HEAD@{1405}: checkout: moving from simple-v-after-recall-explore to OI-explore
+353822c HEAD@{1406}: checkout: moving from main to simple-v-after-recall-explore
+353822c HEAD@{1407}: checkout: moving from simple-v-after-recall-explore to main
+353822c HEAD@{1408}: checkout: moving from main to simple-v-after-recall-explore
+353822c HEAD@{1409}: checkout: moving from OI-explore to main
+ac2904a HEAD@{1410}: checkout: moving from main to OI-explore
+353822c HEAD@{1411}: reset: moving to HEAD@{4}
+0bac92a HEAD@{1412}: reset: moving to HEAD@{2}
+0bac92a HEAD@{1413}: reset: moving to HEAD@{1}
+3bcda91 HEAD@{1414}: commit (amend): refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+0bac92a HEAD@{1415}: commit (amend): refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+353822c HEAD@{1416}: checkout: moving from OI-explore to main
+ac2904a HEAD@{1417}: checkout: moving from main to OI-explore
+353822c HEAD@{1418}: reset: moving to HEAD~1
+ac2904a HEAD@{1419}: commit (amend): finetune(model-e3): take out all factors and see OI
+764aeed HEAD@{1420}: commit (amend): finetune(model-e3): take out all factors and see OI
+a864e85 HEAD@{1421}: commit: finetune(model-e3): take out all factors and see OI
+353822c HEAD@{1422}: commit (amend): refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+f5effdc HEAD@{1423}: commit (amend): refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+5e2328f HEAD@{1424}: commit (amend): refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+8b86dce HEAD@{1425}: commit (amend): refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+3418f20 HEAD@{1426}: commit: refactor(model-e3): Make intial test n_probes truely the change-to-go parm
+442d073 HEAD@{1427}: commit: feat(model-e3): simulation files add progress checking each 10%
+05f5afe HEAD@{1428}: commit: finetnue(model-e3): A clean V: what happens if no criterion change, no CC change, how OI is like?
+0136897 HEAD@{1429}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+2978f76 HEAD@{1430}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+f8b6c38 HEAD@{1431}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+18e926f HEAD@{1432}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+fc56bb0 HEAD@{1433}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+c8c07eb HEAD@{1434}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+ab61fd1 HEAD@{1435}: commit (amend): feat(model-e3) #2: initial_criterion to be 2D vec
+354c988 HEAD@{1436}: commit: feat(model-e3) #2: initial_criterion to be 2D vec
+d6fa167 HEAD@{1437}: checkout: moving from main to main
+d6fa167 HEAD@{1438}: commit (amend): feat(model-e3): ADD 2nd filter and Criterion change by list
+87cad84 HEAD@{1439}: commit (amend): feat(model-e3): ADD 2nd filter and Criterion change by list
+139a552 HEAD@{1440}: commit (cherry-pick): feat(model-e3): ADD 2nd filter and Criterion change by list
+862c1f3 HEAD@{1441}: checkout: moving from 6a0d4b0a7a8bbed6a02c4dce9bb73438e02d836f to main
+6a0d4b0 HEAD@{1442}: commit: feat(model-e3): ADD 2nd filter and Criterion change by list
+43352de HEAD@{1443}: checkout: moving from main to 43352de81ea8c2e6a996a8c6ece704b35da0305b
+862c1f3 HEAD@{1444}: commit: finetune(model-e3) #31: Try adjust Tn, This is so messed up
+f67784d HEAD@{1445}: commit (amend): chore(all): git add .gitattributes
+c1b2874 HEAD@{1446}: commit: chore(all): git add .gitattributes
+43352de HEAD@{1447}: commit (amend): finetune(model-3): An Anchor V: if nothing change
+d953c84 HEAD@{1448}: commit (amend): finetune(model-3): An Anchor V: if nothing change
+fe08558 HEAD@{1449}: rebase (finish): returning to refs/heads/main
+fe08558 HEAD@{1450}: rebase (pick): finetune(model-3): An Anchor V: if nothing change
+f3eea3d HEAD@{1451}: rebase (pick): chore(all): delete the redundent folder
+89108e7 HEAD@{1452}: rebase (pick): docs(all): README creation
+59c365a HEAD@{1453}: rebase (reword): finetune(model-e3) #2: A saver commit; add Atention Parm LLpower
+d081af6 HEAD@{1454}: rebase (reword): chore(all): just a saver commit, no use
+4af6119 HEAD@{1455}: rebase (start): checkout HEAD~4
+359b36c HEAD@{1456}: commit: finetune(model-3): An Anchor V: if nothing change
+ef79639 HEAD@{1457}: pull --rebase origin main (finish): returning to refs/heads/main
+ef79639 HEAD@{1458}: pull --rebase origin main (pick): chore(all): delete the redundent folder
+4ea8f86 HEAD@{1459}: pull --rebase origin main (start): checkout 4ea8f86add0fdc5ca0b734cd1c9d690a6212807c
+1134cad HEAD@{1460}: commit: chore(all): delete the redundent folder
+d081af6 HEAD@{1461}: checkout: moving from main to main
+d081af6 HEAD@{1462}: commit: chore(all): just a saver commit, no use
+4af6119 HEAD@{1463}: commit (amend): refactor(model-d3): add content c change as well
+9727154 HEAD@{1464}: commit (amend): refactor(model-d3): add content c change as well
+10e9106 HEAD@{1465}: merge origin/master: Fast-forward
+1a19c52 HEAD@{1466}: checkout: moving from main to main
+1a19c52 HEAD@{1467}: commit: feat(model-e3): Linear Change of c; u
+c08032a HEAD@{1468}: commit: style(predplot-e3): Further modify legend point shape etc
+e0ae363 HEAD@{1469}: commit: finetune(model-e3) #2: a working V; sent to Rich;
+65c6cfa HEAD@{1470}: reset: moving to HEAD~1
+fb40038 HEAD@{1471}: commit: finetune(model-e3) #2: a working V; sent to Rich;
+65c6cfa HEAD@{1472}: commit: fix(predplot-e3): fine, one more bug in final plot
+a0eb49e HEAD@{1473}: reset: moving to HEAD~1
+56f6b9b HEAD@{1474}: commit (amend): fix(predplot-e3): fine, one more bug in final plot
+b7fa169 HEAD@{1475}: commit: fix(predplot-e3): fine, one more bug in final plot
+a0eb49e HEAD@{1476}: rebase (finish): returning to refs/heads/main
+a0eb49e HEAD@{1477}: rebase (pick): finetune(model-e3): Finetune CC/UC, chang CC, UC,
+96b3dd2 HEAD@{1478}: rebase (pick): style(predplot-e3): adjust legend, color, and line-shape settings
+f7175d2 HEAD@{1479}: rebase (pick): feat(model-e3): Different Content Ratio Use feat Added; (Rich's idea)
+d4058a7 HEAD@{1480}: rebase (pick): feat(model-e3) #2: My idea: Apply gamma to likelihood? -Added parm
+2896fe1 HEAD@{1481}: rebase (pick): feat(model-m3): Between-list change modify from const to vec
+a42a51f HEAD@{1482}: rebase (pick): test(model-m3): !!A VERY INTERESTING BUT OF JULIA
+524ffb6 HEAD@{1483}: rebase (reword): fix(predplot-e3): (FIRST FULL RUN V-nobug?) a running v: fixed R_final predplot;
+845ecb5 HEAD@{1484}: rebase (reword): fix(predplot-e3): (FIRST FULL RUN V-nobug?) a running v: fixed R_final predplot;
+8a62b74 HEAD@{1485}: rebase (pick): fix(model-e3): fix uC_f in final test running
+b610def HEAD@{1486}: rebase (pick): fix(model-e3): BIG FIX nU_f etc, add nU_in
+b801244 HEAD@{1487}: rebase (pick): finetune(model-e3) #2: Only tau change, no nU/nC ratio change
+76f896d HEAD@{1488}: rebase (start): checkout HEAD~10
+255c4e3 HEAD@{1489}: rebase (finish): returning to refs/heads/main
+255c4e3 HEAD@{1490}: rebase (pick): finetune(model-e3): Finetune CC/UC, chang CC, UC,
+1a5c4ba HEAD@{1491}: rebase (pick): style(predplot-e3): adjust legend, color, and line-shape settings
+a01639e HEAD@{1492}: rebase (pick): feat(model-e3): Different Content Ratio Use feat Added; (Rich's idea)
+dd4adbf HEAD@{1493}: rebase (pick): feat(model-e3) #2: My idea: Apply gamma to likelihood? -Added parm
+3e19fea HEAD@{1494}: rebase (pick): feat(model-m3): Between-list change modify from const to vec
+b21b95e HEAD@{1495}: rebase (pick): test(model-m3): !!A VERY INTERESTING BUT OF JULIA
+845ecb5 HEAD@{1496}: rebase (reword): fix(predplot-e3): (FIRST FULL RUN V-nobug?) a running v: fixed R_final predplot;
+7b1cc93 HEAD@{1497}: rebase (reword): fix(predplot-e3): (FIRST FULL RUN V-nobug?) a running v: fixed R_final predplot;
+8a62b74 HEAD@{1498}: rebase (pick): fix(model-e3): fix uC_f in final test running
+b610def HEAD@{1499}: rebase (pick): fix(model-e3): BIG FIX nU_f etc, add nU_in
+b801244 HEAD@{1500}: rebase (pick): finetune(model-e3) #2: Only tau change, no nU/nC ratio change
+76f896d HEAD@{1501}: rebase (start): checkout HEAD~10
+bdf4980 HEAD@{1502}: commit: finetune(model-e3): Finetune CC/UC, chang CC, UC,
+c9b348d HEAD@{1503}: commit: style(predplot-e3): adjust legend, color, and line-shape settings
+ee5a15a HEAD@{1504}: reset: moving to origin/main
+9725c8e HEAD@{1505}: checkout: moving from temp-d to main
+ee5a15a HEAD@{1506}: rebase (continue) (finish): returning to refs/heads/temp-d
+ee5a15a HEAD@{1507}: rebase (continue): feat(model-e3): Different Content Ratio Use feat Added; (Rich's idea)
+9725c8e HEAD@{1508}: rebase (start): checkout origin/main
+c10ee82 HEAD@{1509}: checkout: moving from c10ee82e0de2d28f1a29c092af275fb4c573019f to temp-d
+c10ee82 HEAD@{1510}: checkout: moving from main to c10ee82
+9725c8e HEAD@{1511}: checkout: moving from c10ee82e0de2d28f1a29c092af275fb4c573019f to main
+c10ee82 HEAD@{1512}: commit: feat(model-e3): Different Content Ratio Use feat Added; (Rich's idea)
+6fe96ef HEAD@{1513}: checkout: moving from main to 6fe96ef8a2daad5e448a9ccb3aceff0e1e18ab27
+9725c8e HEAD@{1514}: commit (amend): feat(model-e3) #2: My idea: Apply gamma to likelihood? -Added parm
+9d1f5c2 HEAD@{1515}: commit (amend): {new_commit_message}
+5f55da8 HEAD@{1516}: commit: feature(model-e3) #2: My idea: Apply gamma to likelihood? -Added parm
+6fe96ef HEAD@{1517}: rebase (finish): returning to refs/heads/main
+6fe96ef HEAD@{1518}: rebase (pick): feat(model-m3): Between-list change modify from const to vec
+1d94dfb HEAD@{1519}: rebase (pick): test(model-m3): !!A VERY INTERESTING BUT OF JULIA
+f80c710 HEAD@{1520}: rebase (reword): fix(predplot-e3): (FIRST FULL RUN V-nobug?) a running v: fixed R_final predplot;
+080b915 HEAD@{1521}: rebase: fast-forward
+8a62b74 HEAD@{1522}: rebase (start): checkout HEAD~4
+cf8cd03 HEAD@{1523}: commit: feat(model-m3): Between-list change modify from const to vec
+a6e402e HEAD@{1524}: commit: test(model-m3): !!A VERY INTERESTING BUT OF JULIA
+080b915 HEAD@{1525}: commit: fix(predplot-e3): (FIRST FULL RUN V-nobug?) a running v: fixed R_final predplot;
+8a62b74 HEAD@{1526}: commit: fix(model-e3): fix uC_f in final test running
+b610def HEAD@{1527}: commit: fix(model-e3): BIG FIX nU_f etc, add nU_in
+b801244 HEAD@{1528}: rebase (finish): returning to refs/heads/main
+b801244 HEAD@{1529}: rebase (pick): finetune(model-e3) #2: Only tau change, no nU/nC ratio change
+76f896d HEAD@{1530}: rebase (reword): finetune(model-e3) #20: question explore for why Tn worse
+ea268d2 HEAD@{1531}: rebase (reword): finetune(model-e3) #2: question explore for why Tn worse
+6316012 HEAD@{1532}: rebase (reword): finetune(model-e3) #20: Found n_step has to be so high to make actual pi high
+5e92d7f HEAD@{1533}: rebase (reword): chore(model-e3): Foundt n_step has to be so high to make actual pi high
+228337c HEAD@{1534}: rebase (start): checkout HEAD~3
+249dbd6 HEAD@{1535}: rebase (finish): returning to refs/heads/main
+249dbd6 HEAD@{1536}: rebase (pick): finetune(model-e3) #2: Only tau change, no nU/nC ratio change
+dffea62 HEAD@{1537}: rebase (reword): finetune(model-e3) #2: question explore for why Tn worse
+7824c89 HEAD@{1538}: rebase (reword): chore(model-e3): question explore for why Tn worse
+5e92d7f HEAD@{1539}: rebase (start): checkout HEAD~2
+f01f86d HEAD@{1540}: commit: finetune(model-e3) #2: Only tau change, no nU/nC ratio change
+7824c89 HEAD@{1541}: checkout: moving from 4a3247d3ba9c4cd6780573d9a7b29d8edbdb0908 to main
+4a3247d HEAD@{1542}: checkout: moving from main to 4a3247d3ba9c4cd6780573d9a7b29d8edbdb0908
+7824c89 HEAD@{1543}: checkout: moving from 6c07f4d0675ad8ee595c1fd1dd4023e3c30a6fe1 to main
+6c07f4d HEAD@{1544}: checkout: moving from main to 6c07f4d0675ad8ee595c1fd1dd4023e3c30a6fe1
+7824c89 HEAD@{1545}: checkout: moving from c85a087c19b14f2727047bed788dcd58d5c3cf79 to main
+c85a087 HEAD@{1546}: checkout: moving from main to c85a087c19b14f2727047bed788dcd58d5c3cf79
+7824c89 HEAD@{1547}: commit: chore(model-e3): question explore for why Tn worse
+5e92d7f HEAD@{1548}: commit: chore(model-e3): Foundt n_step has to be so high to make actual pi high
+228337c HEAD@{1549}: reset: moving to origin/main
+f1748b3 HEAD@{1550}: reset: moving to HEAD@{1}
+f1748b3 HEAD@{1551}: rebase (finish): returning to refs/heads/main
+f1748b3 HEAD@{1552}: rebase (pick): fix(model-e3): Why Fn so bad all of a sudden? Some theoretical reason
+e5fdbc6 HEAD@{1553}: rebase (pick): style(model-d3): changed sys plot call method
+b743f10 HEAD@{1554}: rebase (pick): refactor(model-e3): made final list drift between list a function
+4691031 HEAD@{1555}: rebase (pick): fix(model-e3): Some 'Small' Bugs fixed
+fe4987f HEAD@{1556}: rebase (pick): fix(predplot-e3): Actualy working, final plot now 'should' be correct
+b82c011 HEAD@{1557}: rebase (pick): fix(model-e3): A small bug on init_testpos assign for final probe
+57834b8 HEAD@{1558}: rebase (pick): feat(predplot-e3): final test R file actually working, but bug remain
+a16823f HEAD@{1559}: rebase (reword): feat(model-e3): add tau by list number, did bring target down
+bc0248a HEAD@{1560}: rebase: fast-forward
+4a3247d HEAD@{1561}: rebase (start): checkout HEAD~9
+228337c HEAD@{1562}: commit: fix(model-e3): Why Fn so bad all of a sudden? Some theoretical reason
+a58e1ca HEAD@{1563}: checkout: moving from 084c068212b4d0e5d0fdb51493c1a246c15a5eab to main
+084c068 HEAD@{1564}: checkout: moving from 7ae0c937a2e6cdf371a4f5a87747efdc8c26e3bb to HEAD~1
+7ae0c93 HEAD@{1565}: checkout: moving from fa67a998efb49444ed1190118cf39175dcfed980 to HEAD~1
+fa67a99 HEAD@{1566}: checkout: moving from main to HEAD~1
+a58e1ca HEAD@{1567}: checkout: moving from 084c068212b4d0e5d0fdb51493c1a246c15a5eab to main
+084c068 HEAD@{1568}: checkout: moving from fa67a998efb49444ed1190118cf39175dcfed980 to HEAD~2
+fa67a99 HEAD@{1569}: checkout: moving from main to HEAD~1
+a58e1ca HEAD@{1570}: commit: style(model-d3): changed sys plot call method
+fa67a99 HEAD@{1571}: commit: refactor(model-e3): made final list drift between list a function
+7ae0c93 HEAD@{1572}: commit: fix(model-e3): Some 'Small' Bugs fixed
+084c068 HEAD@{1573}: commit: fix(predplot-e3): Actualy working, final plot now 'should' be correct
+e70e175 HEAD@{1574}: reset: moving to HEAD~2
+f083b3c HEAD@{1575}: commit: fix(predplot-e3): Actualy working, final plot now 'should' be correct
+2020b48 HEAD@{1576}: reset: moving to HEAD~1
+f8e55d5 HEAD@{1577}: commit: fix(predplot-e3): truely fix FF testpos in final plot
+2020b48 HEAD@{1578}: commit: fix(predplot-e3): Actualy working, final plot now 'should' be correct
+e70e175 HEAD@{1579}: commit: fix(model-e3): A small bug on init_testpos assign for final probe
+597df13 HEAD@{1580}: commit: feat(predplot-e3): final test R file actually working, but bug remain
+bc0248a HEAD@{1581}: reset: moving to HEAD~1
+1de9028 HEAD@{1582}: commit: feat(predplot-e3): final test R file actually working, but bug remain
+bc0248a HEAD@{1583}: commit: feat(model-e3): add tau by list number, did bring target down
+4a3247d HEAD@{1584}: commit (amend): feat(model-e3): a working v, Final Test Sim work as well
+2da29ba HEAD@{1585}: commit: feat(model-e3): a working v, Final Test Sim work as well
+66f459c HEAD@{1586}: reset: moving to HEAD~1
+87af858 HEAD@{1587}: commit: feat(model-e3): Final Test Sim work as well
+66f459c HEAD@{1588}: commit: feat(predplot-e3): Add FiNAL TEST prediction plot R file
+ef864fa HEAD@{1589}: reset: moving to HEAD
+ef864fa HEAD@{1590}: rebase (finish): returning to refs/heads/main
+ef864fa HEAD@{1591}: rebase (pick): chore(all): remove large csv file from version control
+a969499 HEAD@{1592}: rebase (pick): chore(model) Ignore large CSV files
+dd8217f HEAD@{1593}: rebase (reword): refactor(model): Small shift, parameter prints - updated with rich
+b1f317c HEAD@{1594}: rebase (reword): feat(model): same working v - updated with rich
+77e7ed0 HEAD@{1595}: rebase (pick): style(model): well working target below foil
+4b52845 HEAD@{1596}: rebase (pick): fix(model): A well working v (only need lack foil degree)
+70f3bea HEAD@{1597}: rebase (pick): feat(model): A working v - context unchange Ratio decrease
+ee99808 HEAD@{1598}: rebase (pick): feat(model): A working version - with data saving (initial)
+6c07f4d HEAD@{1599}: rebase (pick): chore(model): SAVE A working version - (no data saving) - but inital test works
+dfc6f38 HEAD@{1600}: rebase (pick): feat(model): Almost working - a saved version
+62bb5e7 HEAD@{1601}: rebase (pick): feat(model): Sorting sim_rem()
+57c6361 HEAD@{1602}: rebase (start): checkout HEAD~10
+a0b2ba2 HEAD@{1603}: filter-branch: rewrite
+25b4a85 HEAD@{1604}: rebase (finish): returning to refs/heads/main
+25b4a85 HEAD@{1605}: rebase (pick): chore(all): remove large csv file from version control
+c717baa HEAD@{1606}: rebase (pick): chore(model) Ignore large CSV files
+82a6795 HEAD@{1607}: rebase (pick): feat(model): same working v - updated with rich
+4c189f2 HEAD@{1608}: rebase (pick): style(model): well working target below foil
+d17e4d2 HEAD@{1609}: rebase (pick): fix(model): A well working v (only need lack foil degree)
+08da8bf HEAD@{1610}: rebase (pick): feat(model): A working v - context unchange Ratio decrease
+a7cc37f HEAD@{1611}: rebase (reword): feat(model): A working version - with data saving (initial)
+c482d9f HEAD@{1612}: rebase (reword): feat(model): A working version - with data saving (initial)
+8c22325 HEAD@{1613}: rebase (reword): chore(model): SAVE A working version - (no data saving) - but inital test works
+731d731 HEAD@{1614}: rebase (reword): chore(model): SAVE A working version - (no data saving) - but inital test works
+de0f7fc HEAD@{1615}: rebase (reword): feat(model): Almost working - a saved version
+6282f78 HEAD@{1616}: rebase (reword): feat(model): Almost working - a saved version
+16472ae HEAD@{1617}: rebase (reword): feat(model): Sorting sim_rem()
+a0a8499 HEAD@{1618}: rebase (reword): feat(model): Sorting sim_rem()
+cf0f52a HEAD@{1619}: rebase (reword): feat(model): Big progress, done on generate_initial_probes
+b8ae5e1 HEAD@{1620}: rebase (reword): feat(model): Big progress, done on generate_initial_probes
+5ec6b97 HEAD@{1621}: rebase (reword): feat(model): LOTS THINKING & BIG CHANGE to structures
+083f1a7 HEAD@{1622}: rebase: fast-forward
+280db86 HEAD@{1623}: rebase: fast-forward
+0f38eb8 HEAD@{1624}: rebase: fast-forward
+c33f09c HEAD@{1625}: rebase: fast-forward
+7000371 HEAD@{1626}: rebase: fast-forward
+102212d HEAD@{1627}: rebase: fast-forward
+228bd52 HEAD@{1628}: rebase: fast-forward
+f69d06b HEAD@{1629}: rebase (start): checkout f69d06b5ecb7a96c276ad32471afd0351db0f8ae
+4b9b2cb HEAD@{1630}: rebase (finish): returning to refs/heads/main
+4b9b2cb HEAD@{1631}: rebase (pick): chore(all): remove large csv file from version control
+b7b41d0 HEAD@{1632}: rebase (pick): chore(model) Ignore large CSV files
+32b1a13 HEAD@{1633}: rebase (pick): feat(model): same working v - updated with rich
+3571562 HEAD@{1634}: rebase (pick): style(model): well working target below foil
+ec9e9c3 HEAD@{1635}: rebase (pick): fix(model): A well working v (only need lack foil degree)
+462f18b HEAD@{1636}: rebase (pick): feat(model): A working v - context unchange Ratio decrease
+71c1662 HEAD@{1637}: rebase (pick): feat(model): A working version - with data saving (initial)
+15f5af1 HEAD@{1638}: rebase (pick): chore(model): SAVE A working version - (no data saving) - but inital test works
+45e0b97 HEAD@{1639}: rebase (pick): feat(model): Almost working - a saved version
+ef978c4 HEAD@{1640}: rebase (pick): feat(model): Sorting sim_rem()
+73e5a86 HEAD@{1641}: rebase (pick): feat(model): Big progress, done on generate_initial_probes
+083f1a7 HEAD@{1642}: rebase (pick): feat(model): LOTS THINKING & BIG CHANGE to structures
+280db86 HEAD@{1643}: rebase (reword): feat(model): more restorage refine + liklihood ratio func refine
+0f38eb8 HEAD@{1644}: rebase (reword): feat(model): modify memory_storage, add log mes from prior M
+c33f09c HEAD@{1645}: rebase (reword): refactor(model): modified memory_storage.jl
+7000371 HEAD@{1646}: rebase (reword): style(model): A nonworking v, with restore redundent info cut
+102212d HEAD@{1647}: rebase (reword): feat(all): Initial commit for REM context on E3
+228bd52 HEAD@{1648}: rebase (reword): Test May 11 contribution
+cf51b83 HEAD@{1649}: rebase: fast-forward
+5b595e1 HEAD@{1650}: rebase (start): checkout 5b595e11f48b0b6b7d08601f06a62e602add1aad
+c33ed23 HEAD@{1651}: filter-branch: rewrite
+7b69e1f HEAD@{1652}: rebase (continue) (finish): returning to refs/heads/main
+7b69e1f HEAD@{1653}: rebase (continue) (reword): chore(all): remove large csv file from version control
+535c228 HEAD@{1654}: rebase (continue) (reword): chore(model) Ignore large CSV files
+07855cb HEAD@{1655}: rebase (continue) (reword): Ignore large CSV files
+b1587ff HEAD@{1656}: rebase (continue) (reword): feat(model): same working v - updated with rich
+f520486 HEAD@{1657}: rebase (continue) (reword): same working v - updated with rich
+38134e0 HEAD@{1658}: rebase (continue) (reword): style(model): well working target below foil
+26e863e HEAD@{1659}: rebase (continue) (reword): well working target below foil
+99dd1b8 HEAD@{1660}: rebase (continue) (reword): fix(model): A well working v (only need lack foil degree)
+7b5b409 HEAD@{1661}: rebase (continue) (reword): A well working v (only need lack foil degree)
+a6d03b0 HEAD@{1662}: rebase (continue) (reword): feat(model): A working v - context unchange Ratio decrease
+9f493fb HEAD@{1663}: rebase (continue) (reword): A working v - context unchange Ratio decrease
+0555bbd HEAD@{1664}: rebase (continue) (reword): feat(model): A working version - with data saving (initial)
+5e40d2b HEAD@{1665}: rebase (continue) (reword): A working version - with data saving (initial)
+58f7d1e HEAD@{1666}: rebase (continue) (reword): chore(model): SAVE A working version - (no data saving) - but inital test works
+5a50552 HEAD@{1667}: rebase (continue) (reword): A working version - (no data saving) - but inital test works
+24e6a0f HEAD@{1668}: rebase (continue) (reword): feat(model): Almost working - a saved version
+38d30c0 HEAD@{1669}: rebase (continue) (reword): Almost working - a saved version
+2e06193 HEAD@{1670}: rebase (continue) (reword): feat(model): Sorting sim_rem()
+42ed37a HEAD@{1671}: rebase (continue) (reword): Sorting sim_rem()
+cc033d6 HEAD@{1672}: rebase (continue) (reword): feat(model): Big progress, done on generate_initial_probes
+200d130 HEAD@{1673}: rebase (continue) (reword): Big progress, done on generate_initial_probes
+c8c16ec HEAD@{1674}: rebase (continue) (reword): feat(model): LOTS THINKING & BIG CHANGE to structures
+5a05801 HEAD@{1675}: rebase (continue) (reword): LOTS THINKING & BIG CHANGE to structures
+7027895 HEAD@{1676}: rebase (continue) (reword): feat(model): more restorage refine + liklihood ratio func refine
+85c1a5a HEAD@{1677}: rebase: fast-forward
+483200b HEAD@{1678}: rebase: fast-forward
+b5ca333 HEAD@{1679}: rebase: fast-forward
+c39d3c7 HEAD@{1680}: rebase: fast-forward
+636d245 HEAD@{1681}: rebase: fast-forward
+cf51b83 HEAD@{1682}: rebase: fast-forward
+5b8d47a HEAD@{1683}: rebase (start): checkout 5b8d47aa7dc545a0ea502ee7338635d200d22c83
+7964cd4 HEAD@{1684}: commit: chore(all): remove large csv file from version control
+8a74c89 HEAD@{1685}: rebase (continue) (finish): returning to refs/heads/main
+8a74c89 HEAD@{1686}: rebase (continue) (pick): Ignore large CSV files
+2e140ec HEAD@{1687}: rebase (continue) (pick): same working v - updated with rich
+4e825f9 HEAD@{1688}: rebase (continue) (pick): well working target below foil
+0f04903 HEAD@{1689}: rebase (continue) (pick): A well working v (only need lack foil degree)
+1671c4d HEAD@{1690}: rebase (continue) (pick): A working v - context unchange Ratio decrease
+22e3638 HEAD@{1691}: rebase (continue) (pick): A working version - with data saving (initial)
+4c001d1 HEAD@{1692}: rebase (continue) (pick): A working version - (no data saving) - but inital test works
+88d3846 HEAD@{1693}: rebase (continue) (pick): Almost working - a saved version
+13c1c40 HEAD@{1694}: rebase (continue) (pick): Sorting sim_rem()
+f0e2c70 HEAD@{1695}: rebase (continue) (pick): Big progress, done on generate_initial_probes
+545e98f HEAD@{1696}: rebase (continue) (pick): LOTS THINKING & BIG CHANGE to structures
+85c1a5a HEAD@{1697}: rebase (continue) (pick): more restorage refine + liklihood ratio func refine
+483200b HEAD@{1698}: rebase (continue) (reword): feat(model): modify memory_storage, add log mes from prior M
+fe443d4 HEAD@{1699}: rebase (continue) (reword): modify memory_storage, add log mes from prior M
+b5ca333 HEAD@{1700}: rebase (continue) (reword): refactor(model): modified memory_storage.jl
+948abdd HEAD@{1701}: rebase (continue) (reword): modified memory_storage.jl
+c39d3c7 HEAD@{1702}: rebase (continue) (reword): style(model): A nonworking v, with restore redundent info cut
+762e93b HEAD@{1703}: rebase (continue) (reword): (E3) Initial commit - a nonworking v, with restore redundent info cut
+636d245 HEAD@{1704}: rebase (continue) (reword): feat(all): Initial commit for REM context on E3
+e12b8ab HEAD@{1705}: rebase (continue) (reword): Initial commit for REM context on E3
+cf51b83 HEAD@{1706}: rebase: fast-forward
+17a64ff HEAD@{1707}: rebase (start): checkout 17a64ffb12b1d27897fe41083cee320a907e99a5
+35f4c8f HEAD@{1708}: clone: from https://github.com/naszhu/REM_E3_model_fixed.git

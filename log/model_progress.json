@@ -1,5 +1,174 @@
 [
   {
+    "commit": "8c08447",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add final test prediction plot for between lists",
+    "timestamp": "2025-09-26 18:59:51",
+    "plot1": "plot_archive/8c08447_20250926_185951_plot1.png",
+    "plot2": "plot_archive/8c08447_20250926_185951_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_between_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "78c8f94",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add final test prediction plot for between lists",
+    "timestamp": "2025-09-27 18:59:51",
+    "plot1": "plot_archive/78c8f94_20250927_185951_plot1.png",
+    "plot2": "plot_archive/78c8f94_20250927_185951_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_between_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "74dad8b",
+    "branch": "sep-25-plot",
+    "message": "feat(model-e3): add reference to original studied pool in probe generation",
+    "timestamp": "2025-09-25 14:46:43",
+    "plot1": "plot_archive/74dad8b_20250925_144643_plot1.png",
+    "plot2": "plot_archive/74dad8b_20250925_144643_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "0be43b6",
+    "branch": "sep-25-plot",
+    "message": "feat(probe_generation): add reference to original studied pool in probe generation",
+    "timestamp": "2025-09-25 14:46:16",
+    "plot1": "plot_archive/0be43b6_20250925_144616_plot1.png",
+    "plot2": "plot_archive/0be43b6_20250925_144616_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "58a6660",
+    "branch": "sep-25-plot",
+    "message": "feat(simulation): update studied pool items with initial test positions",
+    "timestamp": "2025-09-25 14:45:40",
+    "plot1": "plot_archive/58a6660_20250925_144540_plot1.png",
+    "plot2": "plot_archive/58a6660_20250925_144540_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "da4526d",
+    "branch": "sep-25-plot",
+    "message": "feat(simulation): update studied pool items with initial test positions",
+    "timestamp": "2025-09-25 14:34:12",
+    "plot1": "plot_archive/da4526d_20250925_143412_plot1.png",
+    "plot2": "plot_archive/da4526d_20250925_143412_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "3d666fa",
+    "branch": "sep-25-plot",
+    "message": "refactor(predplot-e3): enhance final test prediction plot with improved data processing and visualization",
+    "timestamp": "2025-09-25 14:09:36",
+    "plot1": "plot_archive/3d666fa_20250925_140936_plot1.png",
+    "plot2": "plot_archive/3d666fa_20250925_140936_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "aaa1f3f",
+    "branch": "sep-25-plot",
+    "message": "refactor(predplot-e3): streamline final test prediction plot generation",
+    "timestamp": "2025-09-25 14:06:49",
+    "plot1": "plot_archive/aaa1f3f_20250925_140649_plot1.png",
+    "plot2": "plot_archive/aaa1f3f_20250925_140649_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "56b7f07",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add final test prediction plot for within list",
+    "timestamp": "2025-09-25 13:43:49",
+    "plot1": "plot_archive/56b7f07_20250925_134349_plot1.png",
+    "plot2": "plot_archive/56b7f07_20250925_134349_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/final_test_within_list_E3_PRED.r",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "01edbe5",
+    "branch": "sep-25-plot",
+    "message": "feat(predplot-e3): add initial test prediction plots for between and within lists",
+    "timestamp": "2025-09-25 13:34:38",
+    "plot1": "plot_archive/01edbe5_20250925_133438_plot1.png",
+    "plot2": "plot_archive/01edbe5_20250925_133438_plot2.png",
+    "changed_files": [
+      "E3/pred_plot_combi/initial_test_between_list_E3_PRED.r",
+      "E3/pred_plot_combi/initial_test_within_list_E3_PRED.r",
+      "git_reflog.txt",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "5bd70bd",
+    "branch": "sep-25-plot",
+    "message": "update(.gitignore): add rule to ignore all PNG files",
+    "timestamp": "2025-09-25 13:22:21",
+    "plot1": "plot_archive/5bd70bd_20250925_132221_plot1.png",
+    "plot2": "plot_archive/5bd70bd_20250925_132221_plot2.png",
+    "changed_files": [
+      ".gitignore",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "96c71b6",
+    "branch": "sep-25-plot",
+    "message": "merge(model-e3):Merge branch 'sep-3-test'",
+    "timestamp": "2025-09-07 13:32:31",
+    "plot1": "plot_archive/96c71b6_20250907_133231_plot1.png",
+    "plot2": "plot_archive/96c71b6_20250907_133231_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "587470c",
     "branch": "issue64-strenghtening-rule",
     "message": "finetune(model-e3):  finetune for initial test stops now",
