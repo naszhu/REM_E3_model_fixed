@@ -1,5 +1,14 @@
 [
   {
+    "commit": "4d8769a",
+    "branch": "sep-27-delete-ns",
+    "message": "merge(predplot-e3): Merge branch 'sep-25-plot'",
+    "timestamp": "2025-09-27 19:04:53",
+    "plot1": "plot_archive/4d8769a_20250927_190453_plot1.png",
+    "plot2": "plot_archive/4d8769a_20250927_190453_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "8c08447",
     "branch": "sep-25-plot",
     "message": "feat(predplot-e3): add final test prediction plot for between lists",

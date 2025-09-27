@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [4d8769a](https://github.com/naszhu/REM_E3_model_fixed/commit/4d8769a) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-27 19:04:53  
+**Message:**
+```
+merge(predplot-e3): Merge branch 'sep-25-plot'
+```
+![](../plot_archive/4d8769a_20250927_190453_plot1.png)  
+![](../plot_archive/4d8769a_20250927_190453_plot2.png)  
+
 ## Commit [8c08447](https://github.com/naszhu/REM_E3_model_fixed/commit/8c08447) (branch: `sep-25-plot`)
 **Time:** 2025-09-26 18:59:51  
 **Message:**
