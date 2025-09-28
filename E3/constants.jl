@@ -95,7 +95,7 @@ const n_finalprobs = 492; #246*2; (120+120+30*4+9)/3*2*2
 const n_inEachChunk = [60, 48];
 #final test list 1 60 tests, and the rest list 48 tests
 
-const n_units_time = 13#number of steps 
+const n_units_time = 1#number of steps - reduced to single-step storage 
 
 
 n_units_time_restore = n_units_time #only applies for adding traces now. 
@@ -186,13 +186,17 @@ const g_word = 0.3; #geometric base rate
 const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 
 #!! adv for content? NO
-u_star_v = 0.04
+# Convert from multi-step to single-step storage probability
+# Original: u_star_v = 0.04, n_units_time = 13
+# Effective probability was: 1-(1-0.04)^13 ≈ 0.415
+u_star_v = 1-(1-0.04)^13  # ≈ 0.415 - equivalent single-step probability
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
 
 u_star_adv = 0# 0.06
-1-(1-(u_star_v + u_star_adv))^n_units_time
+# Single-step probability (no longer needs n_units_time calculation)
+u_star_v + u_star_adv
 
 #: nospecialty for first list right now
 #the following show adv for ONLY CHANGE context (second part of context)

@@ -1,5 +1,47 @@
 [
   {
+    "commit": "bd5fc50",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(constants-e3): simplify storage probability calculations",
+    "timestamp": "2025-09-28 08:31:44",
+    "plot1": "plot_archive/bd5fc50_20250928_083144_plot1.png",
+    "plot2": "plot_archive/bd5fc50_20250928_083144_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "8d8242d",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(constants.jl): simplify storage probability calculations",
+    "timestamp": "2025-09-28 08:31:22",
+    "plot1": "plot_archive/8d8242d_20250928_083122_plot1.png",
+    "plot2": "plot_archive/8d8242d_20250928_083122_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e7783c2",
+    "branch": "sep-27-delete-ns",
+    "message": "feat(index.html): enhance layout and styling with new GitHub links and improved design",
+    "timestamp": "2025-09-27 20:36:56",
+    "plot1": "plot_archive/e7783c2_20250927_203656_plot1.png",
+    "plot2": "plot_archive/e7783c2_20250927_203656_plot2.png",
+    "changed_files": [
+      "index.html",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "4d8769a",
     "branch": "sep-27-delete-ns",
     "message": "merge(predplot-e3): Merge branch 'sep-25-plot'",

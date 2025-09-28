@@ -1,5 +1,62 @@
 # Model Progress
 
+## Commit [bd5fc50](https://github.com/naszhu/REM_E3_model_fixed/commit/bd5fc50) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-28 08:31:44  
+**Message:**
+```
+refactor(constants-e3): simplify storage probability calculations
+
+- Reduced `n_units_time` from 13 to 1, transitioning to single-step storage.
+- Updated `u_star_v` calculation to reflect the equivalent single-step probability.
+- Removed unnecessary calculations related to multi-step storage, streamlining the code for clarity and efficiency.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bd5fc50_20250928_083144_plot1.png)  
+![](../plot_archive/bd5fc50_20250928_083144_plot2.png)  
+
+## Commit [8d8242d](https://github.com/naszhu/REM_E3_model_fixed/commit/8d8242d) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-28 08:31:22  
+**Message:**
+```
+refactor(constants.jl): simplify storage probability calculations
+
+- Reduced `n_units_time` from 13 to 1, transitioning to single-step storage.
+- Updated `u_star_v` calculation to reflect the equivalent single-step probability.
+- Removed unnecessary calculations related to multi-step storage, streamlining the code for clarity and efficiency.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8d8242d_20250928_083122_plot1.png)  
+![](../plot_archive/8d8242d_20250928_083122_plot2.png)  
+
+## Commit [e7783c2](https://github.com/naszhu/REM_E3_model_fixed/commit/e7783c2) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-27 20:36:56  
+**Message:**
+```
+feat(index.html): enhance layout and styling with new GitHub links and improved design
+
+- Added a prominent fixed GitHub link button for easy access to the repository.
+- Introduced a secondary GitHub link in the header for better visibility.
+- Enhanced header styling with background effects and text shadows for improved aesthetics.
+- Updated section styles for better user experience, including hover effects and transitions.
+- Improved overall layout responsiveness for mobile devices.
+- Added new CSS variables for better theme management and consistency.
+```
+**Changed Files:**
+- `index.html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e7783c2_20250927_203656_plot1.png)  
+![](../plot_archive/e7783c2_20250927_203656_plot2.png)  
+
 ## Commit [4d8769a](https://github.com/naszhu/REM_E3_model_fixed/commit/4d8769a) (branch: `sep-27-delete-ns`)
 **Time:** 2025-09-27 19:04:53  
 **Message:**
