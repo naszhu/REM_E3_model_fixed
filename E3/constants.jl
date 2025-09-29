@@ -237,10 +237,15 @@ p_reinstate_context = 1 #stop reinstate after how much features
 p_reinstate_rate = 0.1#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
-const p_driftAndListChange = 0.03; # used for both of two n below, for drifts between study and test and for drift between list 
+# Separate probability parameters to maintain equivalent overall probabilities
+#const p_driftAndListChange = 0.03; # ORIGINAL: single parameter for both # used for both of two n below, for drifts between study and test and for drift between list
+const p_driftStudyTest = 0.307; # Equivalent to (1-(1-0.03)^12) for study-test drift
+const p_driftBetweenList = 0.456; # Equivalent to (1-(1-0.03)^20) for between-list change
 
-n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 adjust this and the distortion probabitliy to control space between 1st test position of T and F
-(1-(1-p_driftAndListChange)^n_driftStudyTest[1])
+#n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 # ORIGINAL: was 12 steps
+n_driftStudyTest = round.(Int, ones(n_lists) * 1) # Changed from 12 to 1
+#(1-(1-p_driftAndListChange)^n_driftStudyTest[1]) # ORIGINAL calculation
+(1-(1-p_driftStudyTest)^n_driftStudyTest[1]) # Updated calculation
 
 
 
@@ -251,8 +256,10 @@ base_distortion_prob = 0.25  # Base probability of distortion for the first prob
 
 
 
-n_between_listchange = round.(Int, LinRange(20, 20, n_lists)); #5;15; #CHANGED, this is used in sim()
-(1- (1-p_driftAndListChange)^n_between_listchange[1])
+#n_between_listchange = round.(Int, LinRange(20, 20, n_lists)); #5;15; # ORIGINAL: was 20 steps
+n_between_listchange = round.(Int, LinRange(1, 1, n_lists)); # Changed from 20 to 1
+#(1- (1-p_driftAndListChange)^n_between_listchange[1]) # ORIGINAL calculation
+(1- (1-p_driftBetweenList)^n_between_listchange[1]) # Updated calculation
 
 
 #first half unchange context, second half change context
@@ -442,19 +449,24 @@ Brt = 250#base time of RT
 Pi = 30#RT scaling
 # const w_context =60; #first half normal context, second half change context, third half word-change context
 
-println("prob of each feature change between list $(1-(1-p_driftAndListChange)^n_between_listchange[1])")
-println("prob of each feature drift between study and test $(1-(1-p_driftAndListChange)^n_driftStudyTest[1])")
-aa = (1 - (1 - p_driftAndListChange)^n_between_listchange[1]);
+# Updated to use separate probability parameters
+println("prob of each feature change between list $(1-(1-p_driftBetweenList)^n_between_listchange[1])")
+println("prob of each feature drift between study and test $(1-(1-p_driftStudyTest)^n_driftStudyTest[1])")
+aa = (1 - (1 - p_driftBetweenList)^n_between_listchange[1]);
 println("prob of feature change after 4 lists $(1-(1-aa)^8)")
 println("prob of each all features had reinstate after 3 $(1-(1-p_reinstate_rate)^3)")
+# Note: With n=1, the probability formulas simplify to just the p values themselves
 
-#for easiness of understanding 
+#for easiness of understanding
 p_reinstate_context = (1-(1-p_reinstate_rate)^3);
 
-p_driftStudyTest = (1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1]))
-# p_driftStudyTest = a
-p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[1])
-p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[end])
+# Updated to use new separate parameters
+#p_driftStudyTest = (1-(1-p_driftAndListChange)^ Float64(n_driftStudyTest[1])) # ORIGINAL
+p_driftStudyTest_calc = (1-(1-p_driftStudyTest)^ Float64(n_driftStudyTest[1])) # Updated calculation
+#p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[1]) # ORIGINAL
+#p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[end]) # ORIGINAL
+p_ChangeBetweenList = (1-(1-p_driftBetweenList)^n_between_listchange[1]) # Updated calculation
+p_ChangeBetweenList = (1-(1-p_driftBetweenList)^n_between_listchange[end]) # Updated calculation
 
 
 

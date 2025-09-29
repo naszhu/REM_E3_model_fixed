@@ -1,5 +1,19 @@
 [
   {
+    "commit": "f966956",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(constants-e3): simplify storage probability calculations",
+    "timestamp": "2025-09-29 13:10:29",
+    "plot1": "plot_archive/f966956_20250929_131029_plot1.png",
+    "plot2": "plot_archive/f966956_20250929_131029_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "bd5fc50",
     "branch": "sep-27-delete-ns",
     "message": "refactor(constants-e3): simplify storage probability calculations",

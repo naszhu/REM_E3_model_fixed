@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [f966956](https://github.com/naszhu/REM_E3_model_fixed/commit/f966956) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-29 13:10:29  
+**Message:**
+```
+refactor(constants-e3): simplify storage probability calculations
+
+- Reduced `n_units_time` from 13 to 1, transitioning to single-step storage.
+- Updated `u_star_v` calculation to reflect the equivalent single-step probability.
+- Removed unnecessary calculations related to multi-step storage, streamlining the code for clarity and efficiency.
+
+Refs #14
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f966956_20250929_131029_plot1.png)  
+![](../plot_archive/f966956_20250929_131029_plot2.png)  
+
 ## Commit [bd5fc50](https://github.com/naszhu/REM_E3_model_fixed/commit/bd5fc50) (branch: `sep-27-delete-ns`)
 **Time:** 2025-09-28 08:31:44  
 **Message:**
