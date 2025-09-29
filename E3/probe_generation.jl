@@ -267,8 +267,10 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
         icount += 1
         #update the list_change_context_features for each list as they go in final test, but this doens't apply to random condi
-        if (icount !=1) && (condition != :true_random)
+        if (icount !=1) && (condition != :true_random) 
+            error("there is no other condition than true_random")
             drift_context_during_final_test!(listcg, p_ListChange_finaltest[icount])
+            drift_context_during_final_test!(unchangecg, p_ListChange_finaltest[icount])
         end
 
 
@@ -313,9 +315,9 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
             
             if condition == :true_random
 
-                # Only make changes at the start of every list (excluding the start of the first list)
-                # Calculate the chunk boundaries dynamically
-                iprobe_chunk_boundaries = cumsum([total_probe_L1 * nItemPerUnit_final * 2; fill(total_probe_Ln * nItemPerUnit_final * 2, 9)])
+                # Only make changes at the start of every chunk (excluding the start of the first chunk)
+                # Calculate the chunk boundaries dynamically - matching data analysis: 8 chunks of 49, then 2 chunks of 50
+                iprobe_chunk_boundaries = [49, 98, 147, 196, 245, 294, 343, 392, 442, 492]
                 iprobe_chunk = findfirst(x -> iprobe <= x, iprobe_chunk_boundaries)   
             
                 
@@ -335,7 +337,7 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                     #issue 14, inconsistent prob use
                     drift_between_lists_final!(listcg, p_ListChange_finaltest[iprobe_chunk])
-                    drift_between_lists_final!(unchangecg, 0.02)
+                    drift_between_lists_final!(unchangecg, p_ListChange_finaltest[iprobe_chunk])
 
                 end   
                 previous_chunk = iprobe_chunk

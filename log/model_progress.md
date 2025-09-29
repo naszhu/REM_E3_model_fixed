@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [7ed2f50](https://github.com/naszhu/REM_E3_model_fixed/commit/7ed2f50) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-29 14:41:21  
+**Message:**
+```
+refactor(model-e3): separate drift probability parameters for clarity
+
+- Introduced distinct parameters for study-test drift (`p_driftStudyTest`) and between-list change (`p_driftBetweenList`) to enhance clarity and maintain equivalent overall probabilities.
+- Updated calculations in `constants.jl` and `simulation.jl` to utilize the new parameters, simplifying the probability formulas and improving code readability.
+- Adjusted `n_driftStudyTest` and `n_between_listchange` values from 12 and 20 to 1, respectively, to reflect a single-step approach in the drift calculations.
+
+These changes streamline the probability calculations and improve the maintainability of the codebase.
+
+Fixes #14
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7ed2f50_20250929_144121_plot1.png)  
+![](../plot_archive/7ed2f50_20250929_144121_plot2.png)  
+
 ## Commit [f966956](https://github.com/naszhu/REM_E3_model_fixed/commit/f966956) (branch: `sep-27-delete-ns`)
 **Time:** 2025-09-29 13:10:29  
 **Message:**

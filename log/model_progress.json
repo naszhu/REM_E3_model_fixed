@@ -1,5 +1,20 @@
 [
   {
+    "commit": "7ed2f50",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(model-e3): separate drift probability parameters for clarity",
+    "timestamp": "2025-09-29 14:41:21",
+    "plot1": "plot_archive/7ed2f50_20250929_144121_plot1.png",
+    "plot2": "plot_archive/7ed2f50_20250929_144121_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "f966956",
     "branch": "sep-27-delete-ns",
     "message": "refactor(constants-e3): simplify storage probability calculations",

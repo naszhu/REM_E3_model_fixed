@@ -332,7 +332,7 @@ context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
 final_gap_change = 0.18; #0.21
-p_ListChange_finaltest = ones(10) * 0.0 #0.1 prob list change for final test
+p_ListChange_finaltest = ones(10) * 0.00 #0.1 prob list change for final test
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging
