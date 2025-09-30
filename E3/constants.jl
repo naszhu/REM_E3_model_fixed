@@ -292,6 +292,9 @@ u_advFoilInitialT = 0;
 
 
 p_word_feature_use = LinRange(1, 1, n_lists) #0.5 #ratio of word features used in the first stage
+
+iprobe_chunk_boundaries = [i for i in 42:42:600] # just make this a huge chunk the exceeded number doesn't matter
+
 # -----------------------------------------
 # =============================================================================
 
@@ -323,7 +326,7 @@ Final test
 """
 x =0.13-0.1
 cfinal_start=(0.08+x-0.02)^power_taken;
-cfinal_end=(0.08+x+0.01)^power_taken;
+cfinal_end=(0.08+x)^power_taken;
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
 # criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
@@ -332,7 +335,7 @@ context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
 final_gap_change = 0.18; #0.21
-p_ListChange_finaltest = ones(10) * 0.02 #0.1 prob list change for final test
+p_ListChange_finaltest =  0.02 #make this a const value rather than a vector
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging

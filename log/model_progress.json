@@ -1,5 +1,19 @@
 [
   {
+    "commit": "14847d3",
+    "branch": "sep-27-delete-ns",
+    "message": "finetune(model-e3): adjust reinstatement and change probabilities for model consistency",
+    "timestamp": "2025-09-30 10:11:41",
+    "plot1": "plot_archive/14847d3_20250930_101141_plot1.png",
+    "plot2": "plot_archive/14847d3_20250930_101141_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "df4c9ca",
     "branch": "sep-27-delete-ns",
     "message": "fix(model-e3): correct final chunking method for single-condition experiments",

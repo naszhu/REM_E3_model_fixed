@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [14847d3](https://github.com/naszhu/REM_E3_model_fixed/commit/14847d3) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-30 10:11:41  
+**Message:**
+```
+finetune(model-e3): adjust reinstatement and change probabilities for model consistency
+
+- Modified `p_reinstate_rate` from 0.1 to 0.3 to reflect a higher probability of reinstatement.
+- Updated `ratio_changing_to_itself_final` from 0.5 to 0.3 to align with the new reinstatement rate.
+- Increased `p_ListChange_finaltest` from 0.00 to 0.02 to enhance the probability of list changes during final tests.
+
+These adjustments improve the model's probability parameters for better alignment with experimental expectations.
+
+Refs naszhu/project-context#43
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/14847d3_20250930_101141_plot1.png)  
+![](../plot_archive/14847d3_20250930_101141_plot2.png)  
+
 ## Commit [df4c9ca](https://github.com/naszhu/REM_E3_model_fixed/commit/df4c9ca) (branch: `sep-27-delete-ns`)
 **Time:** 2025-09-29 15:26:42  
 **Message:**

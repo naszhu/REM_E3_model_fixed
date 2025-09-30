@@ -317,9 +317,9 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
 
                 # Only make changes at the start of every chunk (excluding the start of the first chunk)
                 # Calculate the chunk boundaries dynamically - matching data analysis: 8 chunks of 49, then 2 chunks of 50
-                iprobe_chunk_boundaries = [49, 98, 147, 196, 245, 294, 343, 392, 442, 492]
+                # iprobe_chunk_boundaries = [49, 98, 147, 196, 245, 294, 343, 392, 442, 492]
                 iprobe_chunk = findfirst(x -> iprobe <= x, iprobe_chunk_boundaries)   
-            
+            # println(iprobe_chunk, " iprobe: ", iprobe)
                 
                 # println(i)
                 # println("iprobe: ", iprobe)
@@ -336,8 +336,8 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                     # have checked iprobe_chunk here is correctly asigned
 
                     #issue 14, inconsistent prob use
-                    drift_between_lists_final!(listcg, p_ListChange_finaltest[iprobe_chunk])
-                    drift_between_lists_final!(unchangecg, p_ListChange_finaltest[iprobe_chunk])
+                    drift_between_lists_final!(listcg, p_ListChange_finaltest)
+                    drift_between_lists_final!(unchangecg, p_ListChange_finaltest)
 
                 end   
                 previous_chunk = iprobe_chunk
