@@ -234,7 +234,7 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 1 #stop reinstate after how much features
 
-p_reinstate_rate = 0.1#0.4 #prob of reinstatement
+p_reinstate_rate = 0.3#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 # Separate probability parameters to maintain equivalent overall probabilities
@@ -278,7 +278,7 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.5,0.5, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
@@ -332,7 +332,7 @@ context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
 final_gap_change = 0.18; #0.21
-p_ListChange_finaltest = ones(10) * 0.00 #0.1 prob list change for final test
+p_ListChange_finaltest = ones(10) * 0.02 #0.1 prob list change for final test
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging

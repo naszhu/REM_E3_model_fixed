@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [df4c9ca](https://github.com/naszhu/REM_E3_model_fixed/commit/df4c9ca) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-29 15:26:42  
+**Message:**
+```
+fix(model-e3): correct final chunking method for single-condition experiments
+
+  - Change from forcing first chunk to 60 items to equal distribution
+  - Applies to both prediction plotting and modeling code
+  - Ensures proper data structure for experiments with only random condition
+  - Maintains backward compatibility for multi-condition experiments
+
+And also made final test UC change as well
+
+ Closes #69
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/df4c9ca_20250929_152642_plot1.png)  
+![](../plot_archive/df4c9ca_20250929_152642_plot2.png)  
+
 ## Commit [7ed2f50](https://github.com/naszhu/REM_E3_model_fixed/commit/7ed2f50) (branch: `sep-27-delete-ns`)
 **Time:** 2025-09-29 14:41:21  
 **Message:**
