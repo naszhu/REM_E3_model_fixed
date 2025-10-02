@@ -1,5 +1,35 @@
 [
   {
+    "commit": "5089cc2",
+    "branch": "sep-27-delete-ns",
+    "message": "fix(model-e3): clarify probe type definitions and comment out unused code",
+    "timestamp": "2025-10-03 08:10:53",
+    "plot1": "plot_archive/5089cc2_20251003_081053_plot1.png",
+    "plot2": "plot_archive/5089cc2_20251003_081053_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b2b399a",
+    "branch": "sep-27-delete-ns",
+    "message": "finetune(model-e3):  final test chunk align (criterion moidfied a bit)",
+    "timestamp": "2025-09-30 11:56:22",
+    "plot1": "plot_archive/b2b399a_20250930_115622_plot1.png",
+    "plot2": "plot_archive/b2b399a_20250930_115622_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "14847d3",
     "branch": "sep-27-delete-ns",
     "message": "finetune(model-e3): adjust reinstatement and change probabilities for model consistency",

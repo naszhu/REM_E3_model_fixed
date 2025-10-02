@@ -94,7 +94,7 @@ function generate_probes(
         if haskey(combined_studied_pool_by_type, probetypes[i]) # Check if probetype matches a key in the combined dictionary
             
             target_word = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
-            target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
+            # target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
             target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
             target_word.type_specific = probetypes[i] #update the type_specific
             

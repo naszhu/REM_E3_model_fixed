@@ -1,5 +1,50 @@
 # Model Progress
 
+## Commit [5089cc2](https://github.com/naszhu/REM_E3_model_fixed/commit/5089cc2) (branch: `sep-27-delete-ns`)
+**Time:** 2025-10-03 08:10:53  
+**Message:**
+```
+fix(model-e3): clarify probe type definitions and comment out unused code
+
+- Added a comment to clarify the purpose of certain probe types in `constants.jl`, improving code readability.
+- Commented out a line in `generate_probes` function to prevent confusion regarding the initial study position logic, enhancing maintainability.
+
+These changes aim to improve the clarity and organization of the codebase, aligning with ongoing efforts to enhance simulation accuracy.
+
+Refs #44
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5089cc2_20251003_081053_plot1.png)  
+![](../plot_archive/5089cc2_20251003_081053_plot2.png)  
+
+## Commit [b2b399a](https://github.com/naszhu/REM_E3_model_fixed/commit/b2b399a) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-30 11:56:22  
+**Message:**
+```
+finetune(model-e3):  final test chunk align (criterion moidfied a bit)
+
+- Introduced a new constant `iprobe_chunk_boundaries` for dynamic chunking, simplifying the chunk boundary management.
+- Updated `p_ListChange_finaltest` to a constant value instead of a vector, enhancing clarity in final test probability usage.
+- Adjusted the drift function calls in `generate_finalt_probes` to utilize the updated constant for list change probabilities.
+
+These changes improve the maintainability and readability of the code, aligning with the overall goal of enhancing simulation accuracy.
+
+Refs naszhu/project-context#43
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b2b399a_20250930_115622_plot1.png)  
+![](../plot_archive/b2b399a_20250930_115622_plot2.png)  
+
 ## Commit [14847d3](https://github.com/naszhu/REM_E3_model_fixed/commit/14847d3) (branch: `sep-27-delete-ns`)
 **Time:** 2025-09-30 10:11:41  
 **Message:**

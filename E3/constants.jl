@@ -47,6 +47,7 @@ probeTypeDesign_testProbe_Ln = Dict(
     :F => 1,       # Fn
     Symbol("Fn+1") => 1, # Fnn+1
     
+    # below are 3 confusing foils
     :Tn => 1,      # Dn
     :Fn => 1,       # Fnn
     :SOn => 1     # Cn
