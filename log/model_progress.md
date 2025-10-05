@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [4710e54](https://github.com/naszhu/REM_E3_model_fixed/commit/4710e54) (branch: `oct-5-test`)
+**Time:** 2025-10-05 18:14:07  
+**Message:**
+```
+finetune(model-e3): adjust model parameters for accuracy
+
+- Changed `is_finaltest` from `true` to `false` to reflect the current testing state.
+- Updated base parameters (`ks_base`, `kb_base`, `kt_base`, `hj_base`) to improve model accuracy and align with experimental expectations.
+- Modified decision logic in `probe_evaluation` to enhance the handling of specific probe types.
+
+These adjustments aim to refine the model's behavior and ensure consistency in simulation outcomes.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/4710e54_20251005_181407_plot1.png)  
+![](../plot_archive/4710e54_20251005_181407_plot2.png)  
+
 ## Commit [7e6dd08](https://github.com/naszhu/REM_E3_model_fixed/commit/7e6dd08) (branch: `oct-5-test`)
 **Time:** 2025-10-05 17:51:55  
 **Message:**
