@@ -171,6 +171,7 @@ hj_base = 0.4; #higher this value higher CF starting point
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
+# below is prob of answer new
 κu_values = asym_decrease_shift_fj(ku_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1) 
 κs_values = 1 .-asym_decrease_shift_fj(ks_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
 κb_values = 1 .-asym_decrease_shift_fj(kb_base, fj_asymptote_decrease_val, fj_rate, n_lists - 1)
@@ -211,7 +212,7 @@ u_star_context=vcat(u_star_v, ones(n_lists-1)*u_star_v)#CHANGED
 # # c_context_c = LinRange(0.5,0.75, n_lists) #0.75->0.6
 # c_context_c = LinRange(0.75,0.75, n_lists) #0.75->0.6
 # c_context_un = LinRange(0.75,0.75, n_lists)
-nnnow=0.70 #lower this value, the differences between T and F bigger at beggining, smaller later (is this true?, i think so)
+nnnow=0.7 #lower this value, the differences between T and F bigger at beggining, smaller later (is this true?, i think so)
 c_adv = 0#0.06
 
 c = LinRange(nnnow, nnnow,n_lists)  #copying parameter - 0.8 for context copying 
@@ -311,7 +312,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.176 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.18 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
@@ -408,7 +409,8 @@ TRUE FALSE
 """
 # FIXME: I disabled the OT feature but I didn't. I made this code vulnerable because I did delete the OT part but I kept the true and false in some other features.
 # use_ot_feature = false  # flag to enable/disable OT feature
-use_Z_feature = true
+use_Z_feature = false
+use_Z_decision_approximation = true
 
 sampling_method = true
 

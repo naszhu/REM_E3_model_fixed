@@ -144,7 +144,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                 #     decision_isold = 0
                 # end
                 @assert !isnothing(sampled_item) "sampled item is nothing"
-                if ilist_probe !=1
+                if ilist_probe !=1 #if not in first list
                     # println("listi",ilist_probe)
                     ranv = rand() 
                     if use_Z_feature && !isnothing(sampled_item) && ranv < h_j[ilist_probe-1]
@@ -166,6 +166,27 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                         # OT feature disabled or no sampled item - use fallback logic
                     else #if not OT feature: use familarity and so pass recall threshold is old
                         decision_isold = 1 #This is the bug issue partially
+                    end
+
+
+                    probe_type_specific = probes[i].image.word.type_specific
+                    if use_Z_decision_approximation && !use_Z_feature
+                        
+                        if probe_type_specific in (:T, Symbol("Tn+1"))
+                            
+                            decision_isold = rand() < κu[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+                        elseif probe_type_specific == Symbol("SOn")
+                            decision_isold = rand() < κs[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+                        elseif probe_type_specific == Symbol("Tn")
+                            decision_isold = rand() < κb[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+                        elseif probe_type_specific == Symbol("Fn")
+                            decision_isold = rand() < κt[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+                        elseif probe_type_specific in (:F, Symbol("Fn+1")) # when F, Fn+1, 
+                            # error("probe type specific not found")
+                            decision_isold = 0
+                        else #SO, SOn+1, FF shouldn't appear here
+                            error("probe type specific not found")
+                        end
                     end
                 else
                     decision_isold = 1 #first list use famialrity only, not considering Z feature #FIXME, is this true?

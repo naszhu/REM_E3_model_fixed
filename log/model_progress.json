@@ -1,5 +1,14 @@
 [
   {
+    "commit": "8ec1da1",
+    "branch": "oct-5-test",
+    "message": "merge(model-e3): Merge branch 'sep-27-delete-ns'",
+    "timestamp": "2025-10-05 15:03:37",
+    "plot1": "plot_archive/8ec1da1_20251005_150337_plot1.png",
+    "plot2": "plot_archive/8ec1da1_20251005_150337_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "5089cc2",
     "branch": "sep-27-delete-ns",
     "message": "fix(model-e3): clarify probe type definitions and comment out unused code",

@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [8ec1da1](https://github.com/naszhu/REM_E3_model_fixed/commit/8ec1da1) (branch: `oct-5-test`)
+**Time:** 2025-10-05 15:03:37  
+**Message:**
+```
+merge(model-e3): Merge branch 'sep-27-delete-ns'
+```
+![](../plot_archive/8ec1da1_20251005_150337_plot1.png)  
+![](../plot_archive/8ec1da1_20251005_150337_plot2.png)  
+
 ## Commit [5089cc2](https://github.com/naszhu/REM_E3_model_fixed/commit/5089cc2) (branch: `sep-27-delete-ns`)
 **Time:** 2025-10-03 08:10:53  
 **Message:**
