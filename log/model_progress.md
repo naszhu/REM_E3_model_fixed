@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [d707b21](https://github.com/naszhu/REM_E3_model_fixed/commit/d707b21) (branch: `oct-5-test`)
+**Time:** 2025-10-05 18:47:39  
+**Message:**
+```
+finetune(model-e3): refine base parameters for enhanced model performance
+
+- Adjusted `kb_base` and `kt_base` values to improve model accuracy and align with experimental data.
+- Updated `ci` for better sensitivity in calculations, ensuring more precise model behavior.
+
+These changes aim to further optimize the model's parameters and enhance overall performance consistency.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d707b21_20251005_184739_plot1.png)  
+![](../plot_archive/d707b21_20251005_184739_plot2.png)  
+
 ## Commit [36de389](https://github.com/naszhu/REM_E3_model_fixed/commit/36de389) (branch: `oct-5-test`)
 **Time:** 2025-10-05 18:33:35  
 **Message:**
