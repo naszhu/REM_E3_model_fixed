@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 800 : 800;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -155,9 +155,9 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # h(j) is increasing function
 
 ku_base = 0.15 # study，higher this value, lower the starting point of T
-ks_base = 0.47 #SOn (study only), lower the value, higher the starting point CF
-kb_base = 0.55 #Tn (study and test)
-kt_base = 0.65 #Fn (test only)
+ks_base = 0.4 #SOn (study only), lower the value, higher the starting point CF
+kb_base = 0.5 #Tn (study and test)
+kt_base = 0.6 #Fn (test only)
 
 fj_asymptote_decrease_val = 0.01 #0.35 #this value bigger, Hits higher
 fj_rate = 0.26 #this value higher, the faster fj makes T to get better
@@ -166,7 +166,7 @@ fj_rate = 0.26 #this value higher, the faster fj makes T to get better
 
 hj_asymptote_increase_val = 0.43
 hj_rate = 0.85
-hj_base = 0.4; #higher this value higher CF starting point
+hj_base = 0.6; #higher this value higher CF starting point
 
 h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
 # the following equals to ks*f(j), 

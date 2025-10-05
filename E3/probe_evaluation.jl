@@ -183,7 +183,7 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                             decision_isold = rand() < κt[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
                         elseif probe_type_specific in (:F, Symbol("Fn+1")) # when F, Fn+1, 
                             # error("probe type specific not found")
-                            decision_isold = 0
+                            decision_isold = rand() < h_j[ilist_probe-1] ? 0 : 1
                         else #SO, SOn+1, FF shouldn't appear here
                             error("probe type specific not found")
                         end

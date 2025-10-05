@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [7e6dd08](https://github.com/naszhu/REM_E3_model_fixed/commit/7e6dd08) (branch: `oct-5-test`)
+**Time:** 2025-10-05 17:51:55  
+**Message:**
+```
+feat(model-e3): new way of using Z feature oct 5
+
+- Added a new constant `use_Z_decision_approximation` to control decision-making logic based on probe types in `probe_evaluation.jl`.
+- Adjusted the `nnnow` value for consistency and clarity in the model's parameters.
+- Updated the `ci` constant for sensitivity in calculations.
+- Disabled the `use_Z_feature` flag while ensuring the new decision approximation logic is integrated.
+
+These changes enhance the model's decision-making framework and improve the clarity of the codebase.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7e6dd08_20251005_175155_plot1.png)  
+![](../plot_archive/7e6dd08_20251005_175155_plot2.png)  
+
 ## Commit [8ec1da1](https://github.com/naszhu/REM_E3_model_fixed/commit/8ec1da1) (branch: `oct-5-test`)
 **Time:** 2025-10-05 15:03:37  
 **Message:**
