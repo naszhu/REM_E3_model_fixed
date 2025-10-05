@@ -1,5 +1,205 @@
 # Model Progress
 
+## Commit [5089cc2](https://github.com/naszhu/REM_E3_model_fixed/commit/5089cc2) (branch: `sep-27-delete-ns`)
+**Time:** 2025-10-03 08:10:53  
+**Message:**
+```
+fix(model-e3): clarify probe type definitions and comment out unused code
+
+- Added a comment to clarify the purpose of certain probe types in `constants.jl`, improving code readability.
+- Commented out a line in `generate_probes` function to prevent confusion regarding the initial study position logic, enhancing maintainability.
+
+These changes aim to improve the clarity and organization of the codebase, aligning with ongoing efforts to enhance simulation accuracy.
+
+Refs #44
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5089cc2_20251003_081053_plot1.png)  
+![](../plot_archive/5089cc2_20251003_081053_plot2.png)  
+
+## Commit [b2b399a](https://github.com/naszhu/REM_E3_model_fixed/commit/b2b399a) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-30 11:56:22  
+**Message:**
+```
+finetune(model-e3):  final test chunk align (criterion moidfied a bit)
+
+- Introduced a new constant `iprobe_chunk_boundaries` for dynamic chunking, simplifying the chunk boundary management.
+- Updated `p_ListChange_finaltest` to a constant value instead of a vector, enhancing clarity in final test probability usage.
+- Adjusted the drift function calls in `generate_finalt_probes` to utilize the updated constant for list change probabilities.
+
+These changes improve the maintainability and readability of the code, aligning with the overall goal of enhancing simulation accuracy.
+
+Refs naszhu/project-context#43
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b2b399a_20250930_115622_plot1.png)  
+![](../plot_archive/b2b399a_20250930_115622_plot2.png)  
+
+## Commit [14847d3](https://github.com/naszhu/REM_E3_model_fixed/commit/14847d3) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-30 10:11:41  
+**Message:**
+```
+finetune(model-e3): adjust reinstatement and change probabilities for model consistency
+
+- Modified `p_reinstate_rate` from 0.1 to 0.3 to reflect a higher probability of reinstatement.
+- Updated `ratio_changing_to_itself_final` from 0.5 to 0.3 to align with the new reinstatement rate.
+- Increased `p_ListChange_finaltest` from 0.00 to 0.02 to enhance the probability of list changes during final tests.
+
+These adjustments improve the model's probability parameters for better alignment with experimental expectations.
+
+Refs naszhu/project-context#43
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/14847d3_20250930_101141_plot1.png)  
+![](../plot_archive/14847d3_20250930_101141_plot2.png)  
+
+## Commit [df4c9ca](https://github.com/naszhu/REM_E3_model_fixed/commit/df4c9ca) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-29 15:26:42  
+**Message:**
+```
+fix(model-e3): correct final chunking method for single-condition experiments
+
+  - Change from forcing first chunk to 60 items to equal distribution
+  - Applies to both prediction plotting and modeling code
+  - Ensures proper data structure for experiments with only random condition
+  - Maintains backward compatibility for multi-condition experiments
+
+And also made final test UC change as well
+
+ Closes #69
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/df4c9ca_20250929_152642_plot1.png)  
+![](../plot_archive/df4c9ca_20250929_152642_plot2.png)  
+
+## Commit [7ed2f50](https://github.com/naszhu/REM_E3_model_fixed/commit/7ed2f50) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-29 14:41:21  
+**Message:**
+```
+refactor(model-e3): separate drift probability parameters for clarity
+
+- Introduced distinct parameters for study-test drift (`p_driftStudyTest`) and between-list change (`p_driftBetweenList`) to enhance clarity and maintain equivalent overall probabilities.
+- Updated calculations in `constants.jl` and `simulation.jl` to utilize the new parameters, simplifying the probability formulas and improving code readability.
+- Adjusted `n_driftStudyTest` and `n_between_listchange` values from 12 and 20 to 1, respectively, to reflect a single-step approach in the drift calculations.
+
+These changes streamline the probability calculations and improve the maintainability of the codebase.
+
+Fixes #14
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/7ed2f50_20250929_144121_plot1.png)  
+![](../plot_archive/7ed2f50_20250929_144121_plot2.png)  
+
+## Commit [f966956](https://github.com/naszhu/REM_E3_model_fixed/commit/f966956) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-29 13:10:29  
+**Message:**
+```
+refactor(constants-e3): simplify storage probability calculations
+
+- Reduced `n_units_time` from 13 to 1, transitioning to single-step storage.
+- Updated `u_star_v` calculation to reflect the equivalent single-step probability.
+- Removed unnecessary calculations related to multi-step storage, streamlining the code for clarity and efficiency.
+
+Refs #14
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f966956_20250929_131029_plot1.png)  
+![](../plot_archive/f966956_20250929_131029_plot2.png)  
+
+## Commit [bd5fc50](https://github.com/naszhu/REM_E3_model_fixed/commit/bd5fc50) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-28 08:31:44  
+**Message:**
+```
+refactor(constants-e3): simplify storage probability calculations
+
+- Reduced `n_units_time` from 13 to 1, transitioning to single-step storage.
+- Updated `u_star_v` calculation to reflect the equivalent single-step probability.
+- Removed unnecessary calculations related to multi-step storage, streamlining the code for clarity and efficiency.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/bd5fc50_20250928_083144_plot1.png)  
+![](../plot_archive/bd5fc50_20250928_083144_plot2.png)  
+
+## Commit [8d8242d](https://github.com/naszhu/REM_E3_model_fixed/commit/8d8242d) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-28 08:31:22  
+**Message:**
+```
+refactor(constants.jl): simplify storage probability calculations
+
+- Reduced `n_units_time` from 13 to 1, transitioning to single-step storage.
+- Updated `u_star_v` calculation to reflect the equivalent single-step probability.
+- Removed unnecessary calculations related to multi-step storage, streamlining the code for clarity and efficiency.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8d8242d_20250928_083122_plot1.png)  
+![](../plot_archive/8d8242d_20250928_083122_plot2.png)  
+
+## Commit [e7783c2](https://github.com/naszhu/REM_E3_model_fixed/commit/e7783c2) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-27 20:36:56  
+**Message:**
+```
+feat(index.html): enhance layout and styling with new GitHub links and improved design
+
+- Added a prominent fixed GitHub link button for easy access to the repository.
+- Introduced a secondary GitHub link in the header for better visibility.
+- Enhanced header styling with background effects and text shadows for improved aesthetics.
+- Updated section styles for better user experience, including hover effects and transitions.
+- Improved overall layout responsiveness for mobile devices.
+- Added new CSS variables for better theme management and consistency.
+```
+**Changed Files:**
+- `index.html`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e7783c2_20250927_203656_plot1.png)  
+![](../plot_archive/e7783c2_20250927_203656_plot2.png)  
+
+## Commit [4d8769a](https://github.com/naszhu/REM_E3_model_fixed/commit/4d8769a) (branch: `sep-27-delete-ns`)
+**Time:** 2025-09-27 19:04:53  
+**Message:**
+```
+merge(predplot-e3): Merge branch 'sep-25-plot'
+```
+![](../plot_archive/4d8769a_20250927_190453_plot1.png)  
+![](../plot_archive/4d8769a_20250927_190453_plot2.png)  
+
 ## Commit [8c08447](https://github.com/naszhu/REM_E3_model_fixed/commit/8c08447) (branch: `sep-25-plot`)
 **Time:** 2025-09-26 18:59:51  
 **Message:**

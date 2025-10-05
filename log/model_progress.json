@@ -1,5 +1,144 @@
 [
   {
+    "commit": "5089cc2",
+    "branch": "sep-27-delete-ns",
+    "message": "fix(model-e3): clarify probe type definitions and comment out unused code",
+    "timestamp": "2025-10-03 08:10:53",
+    "plot1": "plot_archive/5089cc2_20251003_081053_plot1.png",
+    "plot2": "plot_archive/5089cc2_20251003_081053_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b2b399a",
+    "branch": "sep-27-delete-ns",
+    "message": "finetune(model-e3):  final test chunk align (criterion moidfied a bit)",
+    "timestamp": "2025-09-30 11:56:22",
+    "plot1": "plot_archive/b2b399a_20250930_115622_plot1.png",
+    "plot2": "plot_archive/b2b399a_20250930_115622_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "14847d3",
+    "branch": "sep-27-delete-ns",
+    "message": "finetune(model-e3): adjust reinstatement and change probabilities for model consistency",
+    "timestamp": "2025-09-30 10:11:41",
+    "plot1": "plot_archive/14847d3_20250930_101141_plot1.png",
+    "plot2": "plot_archive/14847d3_20250930_101141_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "df4c9ca",
+    "branch": "sep-27-delete-ns",
+    "message": "fix(model-e3): correct final chunking method for single-condition experiments",
+    "timestamp": "2025-09-29 15:26:42",
+    "plot1": "plot_archive/df4c9ca_20250929_152642_plot1.png",
+    "plot2": "plot_archive/df4c9ca_20250929_152642_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "7ed2f50",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(model-e3): separate drift probability parameters for clarity",
+    "timestamp": "2025-09-29 14:41:21",
+    "plot1": "plot_archive/7ed2f50_20250929_144121_plot1.png",
+    "plot2": "plot_archive/7ed2f50_20250929_144121_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f966956",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(constants-e3): simplify storage probability calculations",
+    "timestamp": "2025-09-29 13:10:29",
+    "plot1": "plot_archive/f966956_20250929_131029_plot1.png",
+    "plot2": "plot_archive/f966956_20250929_131029_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "bd5fc50",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(constants-e3): simplify storage probability calculations",
+    "timestamp": "2025-09-28 08:31:44",
+    "plot1": "plot_archive/bd5fc50_20250928_083144_plot1.png",
+    "plot2": "plot_archive/bd5fc50_20250928_083144_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "8d8242d",
+    "branch": "sep-27-delete-ns",
+    "message": "refactor(constants.jl): simplify storage probability calculations",
+    "timestamp": "2025-09-28 08:31:22",
+    "plot1": "plot_archive/8d8242d_20250928_083122_plot1.png",
+    "plot2": "plot_archive/8d8242d_20250928_083122_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e7783c2",
+    "branch": "sep-27-delete-ns",
+    "message": "feat(index.html): enhance layout and styling with new GitHub links and improved design",
+    "timestamp": "2025-09-27 20:36:56",
+    "plot1": "plot_archive/e7783c2_20250927_203656_plot1.png",
+    "plot2": "plot_archive/e7783c2_20250927_203656_plot2.png",
+    "changed_files": [
+      "index.html",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "4d8769a",
+    "branch": "sep-27-delete-ns",
+    "message": "merge(predplot-e3): Merge branch 'sep-25-plot'",
+    "timestamp": "2025-09-27 19:04:53",
+    "plot1": "plot_archive/4d8769a_20250927_190453_plot1.png",
+    "plot2": "plot_archive/4d8769a_20250927_190453_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "8c08447",
     "branch": "sep-25-plot",
     "message": "feat(predplot-e3): add final test prediction plot for between lists",

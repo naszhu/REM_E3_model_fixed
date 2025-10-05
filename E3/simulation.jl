@@ -133,10 +133,10 @@ function run_single_simulation(sim_num::Int)
             ##DRIFT between study and test
             # this essentially could be moved to drfit_between_list function, but I'll leave that for now....
             for _ in 1:n_driftStudyTest[list_num]
-                drift_ctx_betweenStudyAndTest!(test_list_context_change, p_driftAndListChange, Geometric(g_context))
+                drift_ctx_betweenStudyAndTest!(test_list_context_change, p_driftStudyTest, Geometric(g_context))
 
                 if is_UnchangeCtxDriftAndReinstate #false
-                    drift_ctx_betweenStudyAndTest!(test_list_context_unchange, p_driftAndListChange, Geometric(g_context))
+                    drift_ctx_betweenStudyAndTest!(test_list_context_unchange, p_driftStudyTest, Geometric(g_context))
                 end
 
                 # if is_content_drift_between_study_and_test #true
@@ -198,7 +198,7 @@ function run_single_simulation(sim_num::Int)
 
             # Update list_change_context_features 
 
-            drift_between_lists!(list_change_context_features, n_between_listchange[list_num], p_driftAndListChange)   # println([i.value for i in list_change_context_features])
+            drift_between_lists!(list_change_context_features, n_between_listchange[list_num], p_driftBetweenList)   # println([i.value for i in list_change_context_features])
 
             # list_change_context_features .= ifelse.(rand(length(list_change_context_features)) .<  p_driAndndListChange,rand(Geometric(g_context),length(list_change_context_features)) .+ 1,list_change_context_features)
             # println([i.value for i in list_change_context_features])
