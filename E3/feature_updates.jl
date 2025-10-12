@@ -95,17 +95,24 @@ function distort_probe_context_range_with_linear_decay(
                 end
             end
 
+            # Add debug marker to word.item_code if context was distorted
             if distorted_count > 0
                 original_word = distorted_probes[i].image.word
-                context_distortion_info = "$(context_type_name)_DISTORTED_pos$(i)_prob$(round(current_prob, digits=3))_n$(distorted_count)"
+                distortion_level = current_prob
+                context_distortion_info = "$(context_type_name)_DISTORTED_pos$(i)_prob$(round(distortion_level, digits=3))_n$(distorted_count)"
 
-                new_item = contains(original_word.item, "DISTORTED") ?
-                    "$(original_word.item)_$(context_distortion_info)" :
-                    "$(original_word.item)_[$(context_distortion_info)]"
+                # Check if word.item_code already has distortion marker
+                if contains(original_word.item_code, "DISTORTED")
+                    # Append context distortion info
+                    new_item_code = "$(original_word.item_code)_$(context_distortion_info)"
+                else
+                    # Add context distortion marker
+                    new_item_code = "$(original_word.item_code)_[$(context_distortion_info)]"
+                end
 
-                distorted_probes[i].image.word = Word(
-                    original_word.item_code,
-                    new_item,
+                # Create new Word instance with modified item_code (E3's Word has 9 fields, not 4 like E1)
+                new_word = Word(
+                    new_item_code,
                     original_word.word_features,
                     original_word.type_general,
                     original_word.type_specific,
@@ -115,6 +122,9 @@ function distort_probe_context_range_with_linear_decay(
                     original_word.type1,
                     original_word.type2
                 )
+
+                # Replace the word in the EpisodicImage (which is mutable)
+                distorted_probes[i].image.word = new_word
             end
         end
     end

@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [05859e2](https://github.com/naszhu/REM_E3_model_fixed/commit/05859e2) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:09:03  
+**Message:**
+```
+fix(model-e3): fix probe distortion control and update distortion logic
+
+- Introduced a new flag `is_distort_probes` in `constants.jl` to control probe distortion behavior, enhancing model flexibility.
+- Updated the `distort_probes_with_linear_decay` function in `feature_updates.jl` to apply distortion based on the new flag, improving the simulation of probe features.
+- Adjusted the logic for applying distortion to ensure clarity and maintainability.
+
+These changes aim to enhance the model's ability to simulate probe distortions effectively.
+
+Refs naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/05859e2_20251012_200903_plot1.png)  
+![](../plot_archive/05859e2_20251012_200903_plot2.png)  
+
 ## Commit [afbb7f1](https://github.com/naszhu/REM_E3_model_fixed/commit/afbb7f1) (branch: `oct-12-debugout`)
 **Time:** 2025-10-12 17:22:38  
 **Message:**
