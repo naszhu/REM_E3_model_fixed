@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [afbb7f1](https://github.com/naszhu/REM_E3_model_fixed/commit/afbb7f1) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 17:22:38  
+**Message:**
+```
+feat(model-e3): implement context distortion features for UC and CC
+
+- Introduced functions for context distortion with linear decay, enhancing the model's ability to simulate unchanging (UC) and changing (CC) context features.
+- Updated `constants.jl` to include new distortion probability parameters and flags for enabling context distortions.
+- Modified `probe_generation.jl` to apply context distortions based on the new parameters, improving the model's fidelity in simulating context effects.
+
+These changes aim to enhance the model's capabilities in handling context variations, aligning with ongoing improvements
+
+Closes #50.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_generation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/afbb7f1_20251012_172238_plot1.png)  
+![](../plot_archive/afbb7f1_20251012_172238_plot2.png)  
+
 ## Commit [bb696cf](https://github.com/naszhu/REM_E3_model_fixed/commit/bb696cf) (branch: `oct-5-test`)
 **Time:** 2025-10-12 15:54:21  
 **Message:**

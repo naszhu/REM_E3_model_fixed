@@ -16,27 +16,27 @@ Returns:
     Tuple of (distorted_probes, original_probes) where original_probes are deep copies for reference
 """
 function distort_probes_with_linear_decay(
-    probes::Vector{Probe}, 
-    max_distortion_probes::Int; 
+    probes::Vector{Probe},
+    max_distortion_probes::Int;
     base_distortion_prob::Float64 = 0.8,
     g_word::Float64 = 0.3
 )::Tuple{Vector{Probe}, Vector{Probe}}
-    
+
     # Create deep copies of original probes for reference
     original_probes = deepcopy(probes)
     distorted_probes = deepcopy(probes)
-    
-    # Calculate linear decrease in distortion probability
-    for i in eachindex(probes)
-        if i <= max_distortion_probes
-            # Linear decrease from base_distortion_prob to 0
-            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
-            
-            # Apply distortion to each feature of the probe's word
-            if rand() < current_prob
+
+    if is_distort_probes
+        # Calculate linear decrease in distortion probability
+        for i in eachindex(probes)
+            if i <= max_distortion_probes
+                # Linear decrease from base_distortion_prob to 0
+                current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+
+                # Apply distortion to each feature of the probe's word
                 # Distort each feature with the current probability
                 for j in eachindex(distorted_probes[i].image.word.word_features)
-                    if i <= w_word #only distort normal content features
+                    if j <= w_word #only distort normal content features
                         if rand() < current_prob
                             # Generate new feature value using Geometric distribution
                             distorted_probes[i].image.word.word_features[j] = rand(Geometric(g_word)) + 1
@@ -44,10 +44,10 @@ function distort_probes_with_linear_decay(
                     end
                 end
             end
+            # For probes beyond max_distortion_probes, no distortion (probability = 0)
         end
-        # For probes beyond max_distortion_probes, no distortion (probability = 0)
     end
-    
+
     return distorted_probes, original_probes
 end
 
