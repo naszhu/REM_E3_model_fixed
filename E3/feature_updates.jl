@@ -51,6 +51,77 @@ function distort_probes_with_linear_decay(
     return distorted_probes, original_probes
 end
 
+# =============================================================================
+# CONTEXT DISTORTION FUNCTIONS (Issue #50)
+# =============================================================================
+
+"""
+Distort a range of probe context features with linear decrease in distortion probability.
+
+Args:
+    probes: Vector of probes to potentially distort context
+    start_idx: Starting index of context features to distort (1-based)
+    end_idx: Ending index of context features to distort (inclusive)
+    context_type_name: Name for debug messages ("UC", "CC", etc.)
+    max_distortion_probes: Number of probes until distortion probability reaches 0
+    base_distortion_prob: Base probability of distortion for the first probe
+    g_context: Geometric distribution parameter for generating new feature values
+
+Returns:
+    Tuple of (distorted_probes, original_probes) where original_probes are deep copies for reference
+"""
+function distort_probe_context_range_with_linear_decay(
+    probes::Vector{Probe},
+    start_idx::Int64,
+    end_idx::Int64,
+    context_type_name::String,
+    max_distortion_probes::Int;
+    base_distortion_prob::Float64 = 0.12,
+    g_context::Float64 = 0.3
+)::Tuple{Vector{Probe}, Vector{Probe}}
+
+    original_probes = deepcopy(probes)
+    distorted_probes = deepcopy(probes)
+
+    for i in eachindex(probes)
+        if i <= max_distortion_probes
+            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+
+            distorted_count = 0
+            for j in start_idx:end_idx
+                if rand() < current_prob
+                    distorted_probes[i].image.context_features[j] = rand(Geometric(g_context)) + 1
+                    distorted_count += 1
+                end
+            end
+
+            if distorted_count > 0
+                original_word = distorted_probes[i].image.word
+                context_distortion_info = "$(context_type_name)_DISTORTED_pos$(i)_prob$(round(current_prob, digits=3))_n$(distorted_count)"
+
+                new_item = contains(original_word.item, "DISTORTED") ?
+                    "$(original_word.item)_$(context_distortion_info)" :
+                    "$(original_word.item)_[$(context_distortion_info)]"
+
+                distorted_probes[i].image.word = Word(
+                    original_word.item_code,
+                    new_item,
+                    original_word.word_features,
+                    original_word.type_general,
+                    original_word.type_specific,
+                    original_word.initial_studypos,
+                    original_word.initial_testpos,
+                    original_word.is_repeat_type,
+                    original_word.type1,
+                    original_word.type2
+                )
+            end
+        end
+    end
+
+    return distorted_probes, original_probes
+end
+
 # Combine the two loops into one function to avoid redundancy
 # the following is used within function probe_generation
 function reinstate_context_duringTest!(context_array::Vector{Int64}, reference_array::Vector{Int64},

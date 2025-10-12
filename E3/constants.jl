@@ -236,7 +236,8 @@ LLpower = 1 #power of likelihood for changing context,
 # p_poscode_change = 0.1 #this is no need; deleted feature
 p_reinstate_context = 1 #stop reinstate after how much features
 
-p_reinstate_rate = 0.3#0.4 #prob of reinstatement
+# CAUTION: keep consistent with Issue #50 updates across designs
+p_reinstate_rate = 0.12#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 # Separate probability parameters to maintain equivalent overall probabilities
@@ -254,7 +255,11 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 1) # Changed from 12 to 1
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
 max_distortion_probes = 12  # Number of probes until distortion probability reaches 0
-base_distortion_prob = 0.25  # Base probability of distortion for the first probe
+
+# Distortion probability parameters (Issue #50)
+base_distortion_prob = 0.25  # Base distortion probability for content
+base_distortion_prob_UC = 0.25  # Distortion probability for UC context features
+base_distortion_prob_CC = 0.25  # Distortion probability for CC context features
 
 
 
@@ -441,6 +446,8 @@ is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = false
 is_content_drift_between_study_and_test = true; # use content drift between study and test
+is_UC_drift_between_study_and_test = true  # Enable UC context distortion (Issue #50)
+is_CC_drift_between_study_and_test = true  # Enable CC context distortion (Issue #50)
 
 is_onlyaddtrace_final = false
 

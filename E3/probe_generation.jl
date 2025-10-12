@@ -222,6 +222,36 @@ function generate_probes(
         # before distortion was applied, so it remains clean
     end
 
+    # Apply UC (unchanging context) distortion if enabled (Issue #50)
+    if is_UC_drift_between_study_and_test
+        distorted_probes_uc, original_probes_uc = distort_probe_context_range_with_linear_decay(
+            probes,
+            1,  # Start at first UC feature
+            nU,  # End at last UC feature
+            "UC",  # Context type name for debug
+            max_distortion_probes;
+            base_distortion_prob = base_distortion_prob_UC,
+            g_context = g_context
+        )
+
+        probes = distorted_probes_uc
+    end
+
+    # Apply CC (changing context) distortion if enabled (Issue #50)
+    if is_CC_drift_between_study_and_test
+        distorted_probes_cc, original_probes_cc = distort_probe_context_range_with_linear_decay(
+            probes,
+            nU + 1,  # Start after UC features
+            nU + nC,  # End at last CC feature
+            "CC",  # Context type name for debug
+            max_distortion_probes;
+            base_distortion_prob = base_distortion_prob_CC,
+            g_context = g_context
+        )
+
+        probes = distorted_probes_cc
+    end
+
     return probes, foils_collection
 end
 

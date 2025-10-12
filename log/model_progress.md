@@ -1,5 +1,32 @@
 # Model Progress
 
+## Commit [bb696cf](https://github.com/naszhu/REM_E3_model_fixed/commit/bb696cf) (branch: `oct-5-test`)
+**Time:** 2025-10-12 15:54:21  
+**Message:**
+```
+feat(model-e3): integrate Z feature functions into feature_origin.jl
+
+- Added `feature_origin.jl` to encapsulate Z feature functions, enhancing modularity and organization of the codebase.
+- Updated `run_parallel.sh` to include the new `feature_origin.jl` file for simulation runs.
+- Adjusted `constants.jl` to reflect changes in simulation parameters, including setting `is_finaltest` to true and modifying `n_simulations`.
+- Removed Z feature functions from `feature_updates.jl` to streamline the code and improve maintainability.
+
+These changes aim to improve the structure of the codebase and facilitate better management of feature functions.
+
+Closes naszhu/project-context#52
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_origin.jl`  
+- `E3/feature_updates.jl`  
+- `E3/main_JL_E3_V0.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+- `run_parallel.sh`  
+![](../plot_archive/bb696cf_20251012_155421_plot1.png)  
+![](../plot_archive/bb696cf_20251012_155421_plot2.png)  
+
 ## Commit [f010814](https://github.com/naszhu/REM_E3_model_fixed/commit/f010814) (branch: `oct-5-test`)
 **Time:** 2025-10-05 19:27:10  
 **Message:**
