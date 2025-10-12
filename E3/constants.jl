@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 800 : 800;
+is_finaltest = true
+n_simulations = is_finaltest ? 300 : 800;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -191,7 +191,7 @@ const g_context = 0.3; #0.3 originallly geometric base rate of context, or 0.2
 # Convert from multi-step to single-step storage probability
 # Original: u_star_v = 0.04, n_units_time = 13
 # Effective probability was: 1-(1-0.04)^13 ≈ 0.415
-u_star_v = 1-(1-0.04)^13  # ≈ 0.415 - equivalent single-step probability
+u_star_v = 0.4 #1-(1-0.04)^13  # ≈ 0.415 - equivalent single-step probability
 u_star = vcat(u_star_v, ones(n_lists-1) * u_star_v)
 
 u_star_storeintest = u_star #for word # ratio of this and the next is key for T_nt > T_t, when that for storage and test is seperatly added, also influence
@@ -327,8 +327,8 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 Final test
 """
 x =0.13-0.1
-cfinal_start=(0.08+x-0.02)^power_taken;
-cfinal_end=(0.08+x)^power_taken;
+cfinal_start=(0.08+x-0.00)^power_taken;
+cfinal_end=(0.08+x+0.05)^power_taken;
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
 # criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
@@ -337,7 +337,7 @@ context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
 final_gap_change = 0.18; #0.21
-p_ListChange_finaltest =  0.02 #make this a const value rather than a vector
+p_ListChange_finaltest =  0.013 #make this a const value rather than a vector
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging

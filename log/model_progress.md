@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [f010814](https://github.com/naszhu/REM_E3_model_fixed/commit/f010814) (branch: `oct-5-test`)
+**Time:** 2025-10-05 19:27:10  
+**Message:**
+```
+feat(model-e3): Anchor with first point for criterion - readjust the whole shapes
+
+- Increased `ku_base` and decreased `ks_base`, `kb_base`, and `kt_base` values to optimize model accuracy and align with experimental data.
+- Adjusted `fj_asymptote_decrease_val` and `hj_asymptote_increase_val` for improved model behavior.
+- Updated `ci` for better sensitivity in calculations, ensuring more precise outcomes.
+
+These changes aim to enhance the model's parameters and improve overall performance consistency.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f010814_20251005_192710_plot1.png)  
+![](../plot_archive/f010814_20251005_192710_plot2.png)  
+
 ## Commit [d707b21](https://github.com/naszhu/REM_E3_model_fixed/commit/d707b21) (branch: `oct-5-test`)
 **Time:** 2025-10-05 18:47:39  
 **Message:**

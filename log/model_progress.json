@@ -1,5 +1,19 @@
 [
   {
+    "commit": "f010814",
+    "branch": "oct-5-test",
+    "message": "feat(model-e3): Anchor with first point for criterion - readjust the whole shapes",
+    "timestamp": "2025-10-05 19:27:10",
+    "plot1": "plot_archive/f010814_20251005_192710_plot1.png",
+    "plot2": "plot_archive/f010814_20251005_192710_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "d707b21",
     "branch": "oct-5-test",
     "message": "finetune(model-e3): refine base parameters for enhanced model performance",

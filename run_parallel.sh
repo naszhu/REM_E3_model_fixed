@@ -67,6 +67,7 @@ run_simulation() {
         println(\"Process $process_id: Running $n_simulations simulations\");
         
         include(\"E3/feature_updates.jl\")
+        include(\"E3/feature_origin.jl\")
         include(\"E3/feature_generation.jl\")
         include(\"E3/likelihood_calculations.jl\")
         include(\"E3/memory_storage.jl\")
