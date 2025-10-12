@@ -1,5 +1,21 @@
 [
   {
+    "commit": "afbb7f1",
+    "branch": "oct-5-test",
+    "message": "feat(model-e3): implement context distortion features for UC and CC",
+    "timestamp": "2025-10-12 17:22:38",
+    "plot1": "plot_archive/afbb7f1_20251012_172238_plot1.png",
+    "plot2": "plot_archive/afbb7f1_20251012_172238_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "bb696cf",
     "branch": "oct-5-test",
     "message": "feat(model-e3): integrate Z feature functions into feature_origin.jl",
