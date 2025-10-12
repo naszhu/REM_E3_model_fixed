@@ -1,5 +1,19 @@
 [
   {
+    "commit": "528efb2",
+    "branch": "oct-5-test",
+    "message": "chore(model-e3): clarify type_specific property in Word struct",
+    "timestamp": "2025-10-12 19:49:18",
+    "plot1": "plot_archive/528efb2_20251012_194918_plot1.png",
+    "plot2": "plot_archive/528efb2_20251012_194918_plot2.png",
+    "changed_files": [
+      "E3/data_structures.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "afbb7f1",
     "branch": "oct-5-test",
     "message": "feat(model-e3): implement context distortion features for UC and CC",
