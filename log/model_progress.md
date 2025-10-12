@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [32e2702](https://github.com/naszhu/REM_E3_model_fixed/commit/32e2702) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:26:30  
+**Message:**
+```
+chore(model-e3): clarify type_specific property in Word struct
+
+- Updated the comment for the `type_specific` field in the `Word` struct to provide a clearer description of the expected symbols, enhancing code readability and understanding.
+- Made a minor adjustment to the `initial_studypos` comment for consistency.
+
+These changes aim to improve the documentation within the data structures, facilitating better comprehension for future development.
+```
+**Changed Files:**
+- `E3/data_structures.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/32e2702_20251012_202630_plot1.png)  
+![](../plot_archive/32e2702_20251012_202630_plot2.png)  
+
 ## Commit [8f83971](https://github.com/naszhu/REM_E3_model_fixed/commit/8f83971) (branch: `oct-12-debugout`)
 **Time:** 2025-10-12 20:24:33  
 **Message:**
