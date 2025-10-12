@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [8f83971](https://github.com/naszhu/REM_E3_model_fixed/commit/8f83971) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:24:33  
+**Message:**
+```
+fix(model-e3): make CC UC distortion actulaly working
+
+- Added logic to append or add a distortion marker to the `item_code` of words when context is distorted, improving traceability of distortion effects.
+- Created a new `Word` instance with the updated `item_code` to ensure the integrity of the original word features.
+- Updated the mutable `EpisodicImage` to reflect the changes in the distorted probes.
+
+These changes aim to improve the clarity and functionality of context distortion within the model.
+
+Fixes naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8f83971_20251012_202433_plot1.png)  
+![](../plot_archive/8f83971_20251012_202433_plot2.png)  
+
 ## Commit [05859e2](https://github.com/naszhu/REM_E3_model_fixed/commit/05859e2) (branch: `oct-12-debugout`)
 **Time:** 2025-10-12 20:09:03  
 **Message:**
