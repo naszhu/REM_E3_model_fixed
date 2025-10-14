@@ -168,7 +168,11 @@ hj_asymptote_increase_val = 0.23
 hj_rate = 0.85
 hj_base = 0.35; #higher this value higher CF starting point
 
-h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
+hj_initial_increment = 0.1  # initial increment for linear diminishing function
+hj_decrement_per_step = 0.029  # amount increment decreases each step (calculated to match old exponential behavior)
+
+# h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
+h_j = asym_increase_diminishing_hj(hj_base, hj_initial_increment, hj_decrement_per_step, n_lists - 1)
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
 # below is prob of answer new

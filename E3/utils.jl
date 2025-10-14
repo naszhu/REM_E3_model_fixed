@@ -82,6 +82,29 @@ end
 
 
 ###############################################################
+# 4b. asym_increase_diminishing_hj  (h_j parameter with diminishing increments)
+# Creates a nonlinear increase where the increment amount itself decreases linearly
+# Each step increases by less than the previous step, with the decrease being constant
+###############################################################
+function asym_increase_diminishing_hj(start_at::Float64,
+                                      initial_increment::Float64,
+                                      decrement_per_step::Float64,
+                                      n::Int)::Vector{Float64}
+    @assert n ≥ 1
+    result = Vector{Float64}(undef, n)
+    result[1] = start_at
+    
+    for k in 2:n
+        # Increment decreases linearly: initial_increment - decrement_per_step * (k-2)
+        current_increment = max(0.0, initial_increment - decrement_per_step * (k - 2))
+        result[k] = result[k-1] + current_increment
+    end
+    
+    return result
+end
+
+
+###############################################################
 # 5. asym_decrease  (between two arbitrary values)
 ###############################################################
 function asym_decrease(start_val::Float64,

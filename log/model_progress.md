@@ -1,5 +1,31 @@
 # Model Progress
 
+## Commit [ece5290](https://github.com/naszhu/REM_E3_model_fixed/commit/ece5290) (branch: `oct-12-debugout`)
+**Time:** 2025-10-14 09:00:54  
+**Message:**
+```
+feat(model-e3): add asymptotic functions documentation and update related parameters
+
+- Introduced a new documentation file detailing the asymptotic function applications in the REM E3 model, including mathematical formulas and parameter descriptions.
+- Updated `constants.jl` to adjust the distortion probability for changing context features from `0.25` to `0.3`.
+- Enhanced the `feature_updates.jl` to utilize the new asymptotic functions for context distortion.
+- Refactored `utils.jl` to streamline the asymptotic function implementations, improving clarity and maintainability.
+
+These changes aim to improve the understanding and functionality of asymptotic behaviors in the model.
+
+naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/asymptotic_functions_documentation.md`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ece5290_20251014_090054_plot1.png)  
+![](../plot_archive/ece5290_20251014_090054_plot2.png)  
+
 ## Commit [19a8f4b](https://github.com/naszhu/REM_E3_model_fixed/commit/19a8f4b) (branch: `oct-12-debugout`)
 **Time:** 2025-10-12 20:49:44  
 **Message:**
