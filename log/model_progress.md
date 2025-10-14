@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [19a8f4b](https://github.com/naszhu/REM_E3_model_fixed/commit/19a8f4b) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:49:44  
+**Message:**
+```
+finetune(model-e3): update constants for final testing and distortion parameters
+
+- Changed `is_finaltest` from `true` to `false` to reflect the current testing state.
+- Set `p_reinstate_rate` and distortion probabilities (`base_distortion_prob`, `base_distortion_prob_UC`) to `0.0` to disable reinstatement and distortion effects.
+- Adjusted `p_driftStudyTest` to `0.15` and increased `max_distortion_probes` to `30` for better simulation control.
+
+These changes aim to refine the model's testing configuration and improve the accuracy of distortion parameters.
+
+naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/19a8f4b_20251012_204944_plot1.png)  
+![](../plot_archive/19a8f4b_20251012_204944_plot2.png)  
+
 ## Commit [32e2702](https://github.com/naszhu/REM_E3_model_fixed/commit/32e2702) (branch: `oct-12-debugout`)
 **Time:** 2025-10-12 20:26:30  
 **Message:**

@@ -83,9 +83,12 @@ function distort_probe_context_range_with_linear_decay(
     original_probes = deepcopy(probes)
     distorted_probes = deepcopy(probes)
 
+    distortion_probs = asym_decrease(base_distortion_prob, 0.0, 5.0, max_distortion_probes)
+
     for i in eachindex(probes)
         if i <= max_distortion_probes
-            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+
+            current_prob = distortion_probs[i]
 
             distorted_count = 0
             for j in start_idx:end_idx

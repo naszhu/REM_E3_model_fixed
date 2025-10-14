@@ -259,7 +259,7 @@ max_distortion_probes = 30  # Number of probes until distortion probability reac
 # Distortion probability parameters (Issue #50)
 base_distortion_prob = 0.0  # Base distortion probability for content
 base_distortion_prob_UC = 0.0  # Distortion probability for UC context features
-base_distortion_prob_CC = 0.25  # Distortion probability for CC context features
+base_distortion_prob_CC = 0.3  # Distortion probability for CC context features
 
 
 
@@ -317,7 +317,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.15 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.16 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 

@@ -1,5 +1,19 @@
 [
   {
+    "commit": "19a8f4b",
+    "branch": "oct-12-debugout",
+    "message": "finetune(model-e3): update constants for final testing and distortion parameters",
+    "timestamp": "2025-10-12 20:49:44",
+    "plot1": "plot_archive/19a8f4b_20251012_204944_plot1.png",
+    "plot2": "plot_archive/19a8f4b_20251012_204944_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "32e2702",
     "branch": "oct-12-debugout",
     "message": "chore(model-e3): clarify type_specific property in Word struct",
