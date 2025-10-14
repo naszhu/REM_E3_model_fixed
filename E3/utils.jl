@@ -20,107 +20,137 @@ notch_transform(x; α=10.0, μ=0.5, σ=0.2) = x / (1 + α * exp(-((x - μ)^2) / 
 # multiplicative-notch version
 valley_transform(x; α=0.8, μ=0.5, σ=0.2) = x * (1 - α * exp(-((x - μ)^2) / (2*σ^2)))
 
-"""
-   For criterion change across lists: generate a power function that asymptotically increases and flattens out near position 4, here's a simplified version of the code:
+###############################################################
+# E3 Unified Asymptotic Functions
+###############################################################
 
-   p: # Power exponent for the asymptotic increase; p = 2.0 , roughly stop increasing at 4th position
-
-   currently, this function only have argument inputs p, and though should include arguments of how dimn1 change as well 
-"""
-function generate_asymptotic_values(p::Float64, within_list_start::Float64, within_list_end::Float64,  between_list_start::Float64,  between_list_end::Float64,b_rate::Float64 )::Matrix{Float64}
-    # Generate linearly decreasing dim1 from 6 to 4
-    dim1 = asym_decrease(within_list_start, within_list_end,b_rate, n_probes)
-    
-    t = LinRange(between_list_start, between_list_end, n_lists)   # Normalized range for column positions (0 to 1)
-    dim2 = t .^ p  # Apply the power-law to create the asymptotic increase
-    
-    # 3) Create the 2D matrix by outer-product of dim1 and dim2
-    M = dim1 .* transpose(dim2)     # M is of size (n_probes, n_lists)
-    
-    return M
+# Core exponential asymptotic function
+# Used internally by all increase/decrease variants.
+function _asym_core(start::Float64, asymptote::Float64, rate::Float64, n::Int)
+    @assert n ≥ 1
+    Δ = asymptote - start
+    return [start + Δ * (1 - exp(-rate * k)) for k in 0:n-1]
 end
 
 
-# asym_range(start_val, end_val, beta, n)
-# beta 越大越快趋近 end_val
-"""
-This is for calculating help for criterion_initial
-"""
+###############################################################
+# 1. asymptotic_value
+# Generic asymptotic approach to a target value
+###############################################################
+function asymptotic_value(start::Float64, asymptote::Float64, rate::Float64, n::Int)::Vector{Float64}
+    return _asym_core(start, asymptote, rate, n)
+end
+
+
+###############################################################
+# 2. asymptotic_decrease
+# Same as above but ensures we actually reach asymptote (≤1% diff)
+###############################################################
+function asymptotic_decrease(start::Float64, asymptote::Float64, rate::Float64, n::Int)::Vector{Float64}
+    @assert asymptote < start "Asymptote must be less than start value for decrease"
+    values = _asym_core(start, asymptote, rate, n)
+    if abs(values[end] - asymptote) > 0.01 * abs(asymptote)
+        adjusted_rate = -log(0.01) / (n - 1)
+        return _asym_core(start, asymptote, max(rate, adjusted_rate), n)
+    end
+    return values
+end
+
+
+###############################################################
+# 3. asym_increase_shift_hj  (h_j parameter increase)
+###############################################################
+function asym_increase_shift_hj(start_at::Float64,
+                                how_much::Float64,
+                                how_fast::Float64,
+                                n::Int)::Vector{Float64}
+    asymptote = start_at + how_much
+    return _asym_core(start_at, asymptote, how_fast, n)
+end
+
+
+###############################################################
+# 4. asym_decrease_shift_fj  (κ_u parameter decrease)
+###############################################################
+function asym_decrease_shift_fj(start_at::Float64,
+                                how_much::Float64,
+                                how_fast::Float64,
+                                n::Int)::Vector{Float64}
+    asymptote = start_at - how_much
+    return _asym_core(start_at, asymptote, how_fast, n)
+end
+
+
+###############################################################
+# 4b. asym_increase_diminishing_hj  (h_j parameter with diminishing increments)
+# Creates a nonlinear increase where the increment amount itself decreases linearly
+# Each step increases by less than the previous step, with the decrease being constant
+###############################################################
+function asym_increase_diminishing_hj(start_at::Float64,
+                                      initial_increment::Float64,
+                                      decrement_per_step::Float64,
+                                      n::Int)::Vector{Float64}
+    @assert n ≥ 1
+    result = Vector{Float64}(undef, n)
+    result[1] = start_at
+    
+    for k in 2:n
+        # Increment decreases linearly: initial_increment - decrement_per_step * (k-2)
+        current_increment = max(0.0, initial_increment - decrement_per_step * (k - 2))
+        result[k] = result[k-1] + current_increment
+    end
+    
+    return result
+end
+
+
+###############################################################
+# 5. asym_decrease  (between two arbitrary values)
+###############################################################
 function asym_decrease(start_val::Float64,
                        end_val::Float64,
                        beta::Float64,
                        n::Int)::Vector{Float64}
     @assert n ≥ 1
-    [end_val + (start_val - end_val) * exp(-beta * (i - 1) / (n - 1))
-     for i in 1:n]
+    return [end_val + (start_val - end_val) * exp(-beta * (i - 1) / (n - 1))
+            for i in 1:n]
 end
 
 
-
-"""
-the fixed start asympotopically changes vector: gradually decrease the level of increase  
-This is currently being used for p_switch*pOld
-"""
-function generate_asymptotic_increase_fixed_start(start_at::Float64, rate::Float64, num_values::Int64)::Vector{Float64}
-    values = zeros(num_values)
-    for i in 1:num_values
-        values[i] = start_at + (1 - exp(-rate * (i - 1))) * (1 - start_at)
-    end
-    return values
+###############################################################
+# 6. generate_asymptotic_increase_fixed_start
+# (Used for p_switch * pOld; increase toward 1)
+###############################################################
+function generate_asymptotic_increase_fixed_start(start_at::Float64,
+                                                  rate::Float64,
+                                                  num_values::Int64)::Vector{Float64}
+    return _asym_core(start_at, 1.0, rate, num_values)
 end
 
 
-function asym_increase_shift_hj(start_at::Float64,
-                              how_much::Float64,
-                              how_fast::Float64,
-                              n::Int)::Vector{Float64}
-    @assert n ≥ 1
-    return [start_at + how_much * (1 - exp(-how_fast * (k))) for k in 0:n-1]
+###############################################################
+# 7. generate_asymptotic_values
+# (Criterion change across lists)
+#
+# Generates a 2D matrix combining within-list asymptotic decrease
+# and between-list power-law increase that flattens by ~4th position.
+###############################################################
+function generate_asymptotic_values(p::Float64,
+                                    within_list_start::Float64,
+                                    within_list_end::Float64,
+                                    between_list_start::Float64,
+                                    between_list_end::Float64,
+                                    b_rate::Float64)::Matrix{Float64}
+    @assert @isdefined(n_probes) "n_probes must be defined globally before calling this function."
+    @assert @isdefined(n_lists) "n_lists must be defined globally before calling this function."
+
+    # 1. Within-list (row dimension): asymptotic *decrease*
+    dim1 = asym_decrease(within_list_start, within_list_end, b_rate, n_probes)
+
+    # 2. Between-list (column dimension): asymptotic *increase* with power law
+    between_curve = _asym_core(between_list_start, between_list_end, 5.0, n_lists)
+    dim2 = between_curve .^ p  # asymptotic + power flattening near list 4
+
+    # 3. Outer product: M[row, col] = dim1[row] * dim2[col]
+    return dim1 .* transpose(dim2)
 end
-
-"""
-This and the above function is just simple increase and decrease function, but they are named for fj and hj just for the simplification of visualization.
-"""
-function asym_decrease_shift_fj(start_at::Float64,
-    how_much::Float64,
-    how_fast::Float64,
-    n::Int)::Vector{Float64}
-@assert n ≥ 1
-return [start_at - how_much * (1 - exp(-how_fast * k)) for k in 0:n-1]
-end
-
-
-"""
-    asymptotic_value(start, asymptote, rate, n)
-
-Generate a vector of `n` values that asymptotically approach a target value.
-- `start`: Initial value
-- `asymptote`: Value to approach asymptotically
-- `rate`: Rate of approach (higher = faster approach)
-- `n`: Number of values to generate
-"""
-function asymptotic_value(start::Float64, asymptote::Float64, rate::Float64, n::Int)::Vector{Float64}
-    @assert n ≥ 1
-    diff = asymptote - start
-    return [start + diff * (1 - exp(-rate * k)) for k in 0:n-1]
-end
-
-"""
-    asymptotic_decrease(start, asymptote, rate, n)
-
-Generate a vector of `n` values that asymptotically decrease to a target value.
-Ensures the final value is within 1% of the asymptote.
-"""
-function asymptotic_decrease(start::Float64, asymptote::Float64, rate::Float64, n::Int)::Vector{Float64}
-    @assert asymptote < start "Asymptote must be less than start value for decrease"
-    values = asymptotic_value(start, asymptote, rate, n)
-    
-    # Ensure we actually reach the asymptote
-    if abs(values[end] - asymptote) > 0.01 * abs(asymptote)
-        # Adjust the rate to ensure we reach the asymptote
-        adjusted_rate = -log(0.01) / (n - 1)  # Ensure within 1% of asymptote
-        return asymptotic_value(start, asymptote, max(rate, adjusted_rate), n)
-    end
-    return values
-end
-

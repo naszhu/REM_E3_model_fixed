@@ -1,5 +1,194 @@
 [
   {
+    "commit": "ece5290",
+    "branch": "oct-12-debugout",
+    "message": "feat(model-e3): add asymptotic functions documentation and update related parameters",
+    "timestamp": "2025-10-14 09:00:54",
+    "plot1": "plot_archive/ece5290_20251014_090054_plot1.png",
+    "plot2": "plot_archive/ece5290_20251014_090054_plot2.png",
+    "changed_files": [
+      "E3/asymptotic_functions_documentation.md",
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "19a8f4b",
+    "branch": "oct-12-debugout",
+    "message": "finetune(model-e3): update constants for final testing and distortion parameters",
+    "timestamp": "2025-10-12 20:49:44",
+    "plot1": "plot_archive/19a8f4b_20251012_204944_plot1.png",
+    "plot2": "plot_archive/19a8f4b_20251012_204944_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "32e2702",
+    "branch": "oct-12-debugout",
+    "message": "chore(model-e3): clarify type_specific property in Word struct",
+    "timestamp": "2025-10-12 20:26:30",
+    "plot1": "plot_archive/32e2702_20251012_202630_plot1.png",
+    "plot2": "plot_archive/32e2702_20251012_202630_plot2.png",
+    "changed_files": [
+      "E3/data_structures.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "8f83971",
+    "branch": "oct-12-debugout",
+    "message": "fix(model-e3): make CC UC distortion actulaly working",
+    "timestamp": "2025-10-12 20:24:33",
+    "plot1": "plot_archive/8f83971_20251012_202433_plot1.png",
+    "plot2": "plot_archive/8f83971_20251012_202433_plot2.png",
+    "changed_files": [
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "05859e2",
+    "branch": "oct-12-debugout",
+    "message": "fix(model-e3): fix probe distortion control and update distortion logic",
+    "timestamp": "2025-10-12 20:09:03",
+    "plot1": "plot_archive/05859e2_20251012_200903_plot1.png",
+    "plot2": "plot_archive/05859e2_20251012_200903_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "afbb7f1",
+    "branch": "oct-12-debugout",
+    "message": "feat(model-e3): implement context distortion features for UC and CC",
+    "timestamp": "2025-10-12 17:22:38",
+    "plot1": "plot_archive/afbb7f1_20251012_172238_plot1.png",
+    "plot2": "plot_archive/afbb7f1_20251012_172238_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_generation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "bb696cf",
+    "branch": "oct-5-test",
+    "message": "feat(model-e3): integrate Z feature functions into feature_origin.jl",
+    "timestamp": "2025-10-12 15:54:21",
+    "plot1": "plot_archive/bb696cf_20251012_155421_plot1.png",
+    "plot2": "plot_archive/bb696cf_20251012_155421_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_origin.jl",
+      "E3/feature_updates.jl",
+      "E3/main_JL_E3_V0.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md",
+      "run_parallel.sh"
+    ]
+  },
+  {
+    "commit": "f010814",
+    "branch": "oct-5-test",
+    "message": "feat(model-e3): Anchor with first point for criterion - readjust the whole shapes",
+    "timestamp": "2025-10-05 19:27:10",
+    "plot1": "plot_archive/f010814_20251005_192710_plot1.png",
+    "plot2": "plot_archive/f010814_20251005_192710_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d707b21",
+    "branch": "oct-5-test",
+    "message": "finetune(model-e3): refine base parameters for enhanced model performance",
+    "timestamp": "2025-10-05 18:47:39",
+    "plot1": "plot_archive/d707b21_20251005_184739_plot1.png",
+    "plot2": "plot_archive/d707b21_20251005_184739_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "36de389",
+    "branch": "oct-5-test",
+    "message": "finetune(model-e3): adjust base parameters for improved model performance",
+    "timestamp": "2025-10-05 18:33:35",
+    "plot1": "plot_archive/36de389_20251005_183335_plot1.png",
+    "plot2": "plot_archive/36de389_20251005_183335_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "4710e54",
+    "branch": "oct-5-test",
+    "message": "finetune(model-e3): adjust model parameters for accuracy",
+    "timestamp": "2025-10-05 18:14:07",
+    "plot1": "plot_archive/4710e54_20251005_181407_plot1.png",
+    "plot2": "plot_archive/4710e54_20251005_181407_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "7e6dd08",
+    "branch": "oct-5-test",
+    "message": "feat(model-e3): new way of using Z feature oct 5",
+    "timestamp": "2025-10-05 17:51:55",
+    "plot1": "plot_archive/7e6dd08_20251005_175155_plot1.png",
+    "plot2": "plot_archive/7e6dd08_20251005_175155_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "8ec1da1",
+    "branch": "oct-5-test",
+    "message": "merge(model-e3): Merge branch 'sep-27-delete-ns'",
+    "timestamp": "2025-10-05 15:03:37",
+    "plot1": "plot_archive/8ec1da1_20251005_150337_plot1.png",
+    "plot2": "plot_archive/8ec1da1_20251005_150337_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "5089cc2",
     "branch": "sep-27-delete-ns",
     "message": "fix(model-e3): clarify probe type definitions and comment out unused code",

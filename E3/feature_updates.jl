@@ -16,27 +16,27 @@ Returns:
     Tuple of (distorted_probes, original_probes) where original_probes are deep copies for reference
 """
 function distort_probes_with_linear_decay(
-    probes::Vector{Probe}, 
-    max_distortion_probes::Int; 
+    probes::Vector{Probe},
+    max_distortion_probes::Int;
     base_distortion_prob::Float64 = 0.8,
     g_word::Float64 = 0.3
 )::Tuple{Vector{Probe}, Vector{Probe}}
-    
+
     # Create deep copies of original probes for reference
     original_probes = deepcopy(probes)
     distorted_probes = deepcopy(probes)
-    
-    # Calculate linear decrease in distortion probability
-    for i in eachindex(probes)
-        if i <= max_distortion_probes
-            # Linear decrease from base_distortion_prob to 0
-            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
-            
-            # Apply distortion to each feature of the probe's word
-            if rand() < current_prob
+
+    if is_distort_probes
+        # Calculate linear decrease in distortion probability
+        for i in eachindex(probes)
+            if i <= max_distortion_probes
+                # Linear decrease from base_distortion_prob to 0
+                current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+
+                # Apply distortion to each feature of the probe's word
                 # Distort each feature with the current probability
                 for j in eachindex(distorted_probes[i].image.word.word_features)
-                    if i <= w_word #only distort normal content features
+                    if j <= w_word #only distort normal content features
                         if rand() < current_prob
                             # Generate new feature value using Geometric distribution
                             distorted_probes[i].image.word.word_features[j] = rand(Geometric(g_word)) + 1
@@ -44,10 +44,94 @@ function distort_probes_with_linear_decay(
                     end
                 end
             end
+            # For probes beyond max_distortion_probes, no distortion (probability = 0)
         end
-        # For probes beyond max_distortion_probes, no distortion (probability = 0)
     end
-    
+
+    return distorted_probes, original_probes
+end
+
+# =============================================================================
+# CONTEXT DISTORTION FUNCTIONS (Issue #50)
+# =============================================================================
+
+"""
+Distort a range of probe context features with linear decrease in distortion probability.
+
+Args:
+    probes: Vector of probes to potentially distort context
+    start_idx: Starting index of context features to distort (1-based)
+    end_idx: Ending index of context features to distort (inclusive)
+    context_type_name: Name for debug messages ("UC", "CC", etc.)
+    max_distortion_probes: Number of probes until distortion probability reaches 0
+    base_distortion_prob: Base probability of distortion for the first probe
+    g_context: Geometric distribution parameter for generating new feature values
+
+Returns:
+    Tuple of (distorted_probes, original_probes) where original_probes are deep copies for reference
+"""
+function distort_probe_context_range_with_linear_decay(
+    probes::Vector{Probe},
+    start_idx::Int64,
+    end_idx::Int64,
+    context_type_name::String,
+    max_distortion_probes::Int;
+    base_distortion_prob::Float64 = 0.12,
+    g_context::Float64 = 0.3
+)::Tuple{Vector{Probe}, Vector{Probe}}
+
+    original_probes = deepcopy(probes)
+    distorted_probes = deepcopy(probes)
+
+    distortion_probs = asym_decrease(base_distortion_prob, 0.0, 5.0, max_distortion_probes)
+
+    for i in eachindex(probes)
+        if i <= max_distortion_probes
+
+            current_prob = distortion_probs[i]
+
+            distorted_count = 0
+            for j in start_idx:end_idx
+                if rand() < current_prob
+                    distorted_probes[i].image.context_features[j] = rand(Geometric(g_context)) + 1
+                    distorted_count += 1
+                end
+            end
+
+            # Add debug marker to word.item_code if context was distorted
+            if distorted_count > 0
+                original_word = distorted_probes[i].image.word
+                distortion_level = current_prob
+                context_distortion_info = "$(context_type_name)_DISTORTED_pos$(i)_prob$(round(distortion_level, digits=3))_n$(distorted_count)"
+
+                # Check if word.item_code already has distortion marker
+                if contains(original_word.item_code, "DISTORTED")
+                    # Append context distortion info
+                    new_item_code = "$(original_word.item_code)_$(context_distortion_info)"
+                else
+                    # Add context distortion marker
+                    new_item_code = "$(original_word.item_code)_[$(context_distortion_info)]"
+                end
+
+                # Create new Word instance with modified item_code (E3's Word has 9 fields, not 4 like E1)
+                new_word = Word(
+                    new_item_code,
+                    original_word.word_features,
+                    original_word.type_general,
+                    original_word.type_specific,
+                    original_word.initial_studypos,
+                    original_word.initial_testpos,
+                    original_word.is_repeat_type,
+                    original_word.type1,
+                    original_word.type2
+                )
+
+                # Replace the word in the EpisodicImage (which is mutable)
+                distorted_probes[i].image.word = new_word
+            end
+        end
+    end
+
     return distorted_probes, original_probes
 end
 
@@ -424,303 +508,4 @@ end
 
 
 # --------
-########### Z feature functions here
-function update_Z_feature_study!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
-        # For list 1, use base κs value (no asymptotic effect yet)
-        if list_number === 1
-            # κ_value = κu_list_1_value
-            κ_value = ku_base # this number doesn't matter because first list  won't use Z (is this true?)
-        else
-            κ_index = list_number - 1
-            κ_value = κu[κ_index]
-        end
-        
-        # omit if the value=0 part becuase it should always be 0 during study
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change back to 0 and 1 structure rather than accumulation structure
-        
-    end
-    return nothing
-end
-
-"""
-This is for studied only confusing foils.
-"""
-function update_Z_feature_SOn_CFs!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
-        # For list 1, use base κb value (no asymptotic effect yet)
-        if list_number === 1 || list_number === 0
-            κ_value = 1-ks_base
-        else
-            κ_index = list_number - 1
-            κ_value = κs[κ_index] #updated by ks
-        end
-        
-        # if word.word_features[tested_before_feature_pos] === 0 && rand() < κ_value
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 
-    end
-    return nothing
-end
-
-
-"""
-This is for previous target confusing foil
-"""
-function update_Z_feature_Tn_CFs!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
-        # For list 1, use base κb value (no asymptotic effect yet)
-        if list_number === 1 || list_number === 0
-            κ_value = 1-kb_base
-        else
-            κ_index = list_number - 1
-            κ_value = κb[κ_index]
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 
-    end
-    return nothing
-end
-
-"""
-This is for previous foil, confusing foil.
-"""
-function update_Z_feature_Fn_CFs!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters start from list 2, so κ[1] = list 2, κ[2] = list 3, etc.
-        # For list 1, use base κt value (no asymptotic effect yet)
-        # println(list_number)
-        if list_number === 1 || list_number === 0 #list number of final foil FF is 0, this is a temp fix but essentially maybe this shouldn't be used but i don't know what to
-            κ_value = 1-kt_base
-            # println("κ_value: ", κ_value)
-        else
-            # println("list number: ", list_number)
-            # println("list number next: ", list_number)
-            κ_index = list_number - 1
-            κ_value = κt[κ_index]
-            # println("κ_value: ", κ_value)
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0 #change 
-    end
-    return nothing
-end
-
-
-function get_Z_feature_value(word::Word)::Int64
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        return word.word_features[tested_before_feature_pos]
-    else
-        return 0
-    end
-end
-
-"""
- Set initial Z value for probe generation based on probe type.
-According to new rules:
-- Confusing probes (SON, FN, TN types) → Z = 1
-- Target probes (T, Symbol("TN+1")) → Z = 0  
-- Foil probes (F, Symbol("FN+1")) → Z = 0
-"""
-function set_initial_Z_value_for_probe!(word::Word, probe_type::Symbol)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # Define confusing probe types that should have Z = 1
-        confusing_types = (:SOn, :Fn, :Tn)
-        
-        if probe_type in confusing_types
-            word.word_features[tested_before_feature_pos] = 1  # Truth value for confusing probes
-        else
-            # Target probes (:T, Symbol("Tn+1")) and Foil probes (:F, Symbol("Fn+1")) get Z = 0
-            word.word_features[tested_before_feature_pos] = 0  # Truth value for targets and foils
-        end
-    end
-    return nothing
-end
-
-"""
-Update Z feature for recalled+new case (confusing foil - list version used).
-For strengthened trace: Replace Z=0 with KB, keep Z=1 as is
-"""
-function update_Z_feature_recalled_new_strengthen!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        current_z = word.word_features[tested_before_feature_pos]
-        
-        # If Z = 0 (incorrect/missing) → Replace with KB
-        if current_z == 0
-            # κ parameters: for list 1 use base, else use array
-            if list_number === 1 || list_number === 0
-                κ_value = kb_base
-            else
-                κ_index = list_number - 1
-                κ_value = κb[κ_index]
-            end
-            
-            # Only replace if original value is 0, keep 1 if it was already 1
-            if word.word_features[tested_before_feature_pos] == 0
-                word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-            end
-        end
-        # If Z = 1 → Keep as 1 (no change needed)
-    end
-    return nothing
-end
-
-"""
-Update Z feature for recalled+new case when adding new trace.
-Store Z = 1 with probability KB
-"""
-function update_Z_feature_recalled_new_add_trace!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters: for list 1 use base, else use array
-        if list_number === 1 || list_number === 0
-            κ_value = kb_base
-        else
-            κ_index = list_number - 1
-            κ_value = κb[κ_index]
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-    end
-    return nothing
-end
-
-"""
-Update Z feature for recalled+old case.
-Store Z = 1 with probability KB (both strengthening and adding trace)
-"""
-function update_Z_feature_recalled_old!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters: for list 1 use base, else use array
-        if list_number === 1 || list_number === 0
-            κ_value = kb_base
-        else
-            κ_index = list_number - 1
-            κ_value = κb[κ_index]
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-    end
-    return nothing
-end
-
-"""
-Update Z feature for not recalled+new case (really new foil).
-Add new trace with Z = 1 with probability KT
-"""
-function update_Z_feature_not_recalled_new!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters: for list 1 use base, else use array
-        if list_number === 1 || list_number === 0
-            κ_value = kt_base
-        else
-            κ_index = list_number - 1
-            κ_value = κt[κ_index]
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-    end
-    return nothing
-end
-
-"""
-Update Z feature for not recalled+old case (target with no trace recalled).
-Add trace with Z = 1 with probability KB
-"""
-function update_Z_feature_not_recalled_old!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # κ parameters: for list 1 use base, else use array
-        if list_number === 1 || list_number === 0
-            κ_value = kb_base
-        else
-            κ_index = list_number - 1
-            κ_value = κb[κ_index]
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-    end
-    return nothing
-end
-
-"""
-Update Z features for all studied-only items between lists.
-According to new rules: all studied-only features get updated with Z=1 with probability KS.
-"""
-function update_Z_features_single_appearance_studied_items!(
-    image_pool::Vector{EpisodicImage}, 
-    studied_pool::Vector{Vector{EpisodicImage}}, 
-    list_num::Int64, 
-    n_studyitem::Int64
-)::Nothing
-    
-    for img in image_pool
-
-        
-        if img.word.word_features[tested_before_feature_pos] == 0
-            
-            if list_num === 1 || list_num === 0
-                κ_value = 1-ks_base
-            else
-                κ_index = list_num - 1
-                κ_value = κs[κ_index] #updated by ks
-            end
-            img.word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-        end
-
-        # Check if this image is from the current list (not a foil)
-        # if img.list_number == list_num
-        #     # Check if this is a studied item (not a foil) by looking at its position in studied_pool
-        #     # Studied items are in positions 1:n_studyitem
-        #     is_studied_item = false
-        #     for j in 1:n_studyitem
-        #         if !isnothing(studied_pool[list_num][j]) && 
-        #            studied_pool[list_num][j].word.item_code == img.word.item_code
-        #             is_studied_item = true
-        #             break
-        #         end
-        #     end
-            
-        #     # If it's a studied item, update its Z feature with KS probability
-        #     if is_studied_item
-        #         appearance_count = 0
-        #         for list_idx in 1:list_num
-        #             if !isnothing(studied_pool[list_idx])
-        #                 for item in studied_pool[list_idx]
-        #                     if !isnothing(item) && item.word.item_code == img.word.item_code
-        #                         appearance_count += 1
-        #                     end
-        #                 end
-        #             end
-        #         end
-                
-        #         # If the item appears only once (not doubling), update its Z feature
-        #         if appearance_count == 1
-        #             update_Z_feature_SOn_CFs!(img.word, list_num)
-        #         end
-        #     end
-        # end
-
-    end
-    
-    return nothing
-end
-
-"""
-Update Z features for studied-only items between lists.
-All studied-only features are updated with Z=1 with probability KS.
-"""
-function update_Z_feature_between_lists_studied_only!(word::Word, list_number::Int64)::Nothing
-    if use_Z_feature && length(word.word_features) >= tested_before_feature_pos
-        # Use KS parameter for studied-only items between lists
-        if list_number === 1 || list_number === 0
-            κ_value = ks_base
-        else
-            κ_index = list_number - 1
-            κ_value = κs[κ_index]
-        end
-        
-        word.word_features[tested_before_feature_pos] = rand() < κ_value ? 1 : 0
-    end
-    return nothing
-end
+########### Z feature functions moved to feature_origin.jl

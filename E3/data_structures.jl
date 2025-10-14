@@ -26,7 +26,7 @@ mutable struct Word
     type_general::Symbol #modified from name: general
     
     # 3 current test specific properties
-    type_specific::Symbol # specific current type; 
+    type_specific::Symbol # specific current type; :T, :Tn, :Tn+1, :SO, :SOn, :SOn+1, :F, :Fn, :Fn+1, :FF 
     initial_studypos::Int64 #change this to make it consistent 
     initial_testpos::Int64 #CURRENT! TESTPOS (don't have prior study/test pos right now)
     
