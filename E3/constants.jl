@@ -449,9 +449,9 @@ is_restore_initial = true # flag check
 is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = false
-is_distort_probes = true  # Control probe distortion (aligned with E1)
-is_content_drift_between_study_and_test = true; # use content drift between study and test
-is_UC_drift_between_study_and_test = true  # Enable UC context distortion (Issue #50)
+is_distort_probes = false  # Control probe distortion (aligned with E1)
+is_content_drift_between_study_and_test = false; # use content drift between study and test
+is_UC_drift_between_study_and_test = false  # Enable UC context distortion (Issue #50)
 is_CC_drift_between_study_and_test = true  # Enable CC context distortion (Issue #50)
 
 is_onlyaddtrace_final = false

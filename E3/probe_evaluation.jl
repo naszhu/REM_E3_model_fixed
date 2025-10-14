@@ -173,14 +173,18 @@ function probe_evaluation(image_pool::Vector{EpisodicImage}, probes::Vector{Prob
                     if use_Z_decision_approximation && !use_Z_feature
                         
                         if probe_type_specific in (:T, Symbol("Tn+1"))
-                            
                             decision_isold = rand() < κu[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+
                         elseif probe_type_specific == Symbol("SOn")
+
                             decision_isold = rand() < κs[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+
                         elseif probe_type_specific == Symbol("Tn")
                             decision_isold = rand() < κb[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+
                         elseif probe_type_specific == Symbol("Fn")
                             decision_isold = rand() < κt[ilist_probe-1]*h_j[ilist_probe-1] ? 0 : 1
+
                         elseif probe_type_specific in (:F, Symbol("Fn+1")) # when F, Fn+1, 
                             # error("probe type specific not found")
                             decision_isold = rand() < h_j[ilist_probe-1] ? 0 : 1

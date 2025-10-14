@@ -1,5 +1,14 @@
 [
   {
+    "commit": "a2d7b22",
+    "branch": "main",
+    "message": "merge(model-e3, oct5): Merge branch 'oct-5-test'",
+    "timestamp": "2025-10-14 09:33:20",
+    "plot1": "plot_archive/a2d7b22_20251014_093320_plot1.png",
+    "plot2": "plot_archive/a2d7b22_20251014_093320_plot2.png",
+    "changed_files": []
+  },
+  {
     "commit": "ece5290",
     "branch": "oct-12-debugout",
     "message": "feat(model-e3): add asymptotic functions documentation and update related parameters",

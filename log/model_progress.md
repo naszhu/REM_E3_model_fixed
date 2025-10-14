@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [a2d7b22](https://github.com/naszhu/REM_E3_model_fixed/commit/a2d7b22) (branch: `main`)
+**Time:** 2025-10-14 09:33:20  
+**Message:**
+```
+merge(model-e3, oct5): Merge branch 'oct-5-test'
+```
+![](../plot_archive/a2d7b22_20251014_093320_plot1.png)  
+![](../plot_archive/a2d7b22_20251014_093320_plot2.png)  
+
 ## Commit [ece5290](https://github.com/naszhu/REM_E3_model_fixed/commit/ece5290) (branch: `oct-12-debugout`)
 **Time:** 2025-10-14 09:00:54  
 **Message:**
