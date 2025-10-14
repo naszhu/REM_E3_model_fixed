@@ -16,27 +16,27 @@ Returns:
     Tuple of (distorted_probes, original_probes) where original_probes are deep copies for reference
 """
 function distort_probes_with_linear_decay(
-    probes::Vector{Probe}, 
-    max_distortion_probes::Int; 
+    probes::Vector{Probe},
+    max_distortion_probes::Int;
     base_distortion_prob::Float64 = 0.8,
     g_word::Float64 = 0.3
 )::Tuple{Vector{Probe}, Vector{Probe}}
-    
+
     # Create deep copies of original probes for reference
     original_probes = deepcopy(probes)
     distorted_probes = deepcopy(probes)
-    
-    # Calculate linear decrease in distortion probability
-    for i in eachindex(probes)
-        if i <= max_distortion_probes
-            # Linear decrease from base_distortion_prob to 0
-            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
-            
-            # Apply distortion to each feature of the probe's word
-            if rand() < current_prob
+
+    if is_distort_probes
+        # Calculate linear decrease in distortion probability
+        for i in eachindex(probes)
+            if i <= max_distortion_probes
+                # Linear decrease from base_distortion_prob to 0
+                current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+
+                # Apply distortion to each feature of the probe's word
                 # Distort each feature with the current probability
                 for j in eachindex(distorted_probes[i].image.word.word_features)
-                    if i <= w_word #only distort normal content features
+                    if j <= w_word #only distort normal content features
                         if rand() < current_prob
                             # Generate new feature value using Geometric distribution
                             distorted_probes[i].image.word.word_features[j] = rand(Geometric(g_word)) + 1
@@ -44,10 +44,10 @@ function distort_probes_with_linear_decay(
                     end
                 end
             end
+            # For probes beyond max_distortion_probes, no distortion (probability = 0)
         end
-        # For probes beyond max_distortion_probes, no distortion (probability = 0)
     end
-    
+
     return distorted_probes, original_probes
 end
 
@@ -83,9 +83,12 @@ function distort_probe_context_range_with_linear_decay(
     original_probes = deepcopy(probes)
     distorted_probes = deepcopy(probes)
 
+    distortion_probs = asym_decrease(base_distortion_prob, 0.0, 5.0, max_distortion_probes)
+
     for i in eachindex(probes)
         if i <= max_distortion_probes
-            current_prob = base_distortion_prob * (1 - (i - 1) / max_distortion_probes)
+
+            current_prob = distortion_probs[i]
 
             distorted_count = 0
             for j in start_idx:end_idx
@@ -95,17 +98,24 @@ function distort_probe_context_range_with_linear_decay(
                 end
             end
 
+            # Add debug marker to word.item_code if context was distorted
             if distorted_count > 0
                 original_word = distorted_probes[i].image.word
-                context_distortion_info = "$(context_type_name)_DISTORTED_pos$(i)_prob$(round(current_prob, digits=3))_n$(distorted_count)"
+                distortion_level = current_prob
+                context_distortion_info = "$(context_type_name)_DISTORTED_pos$(i)_prob$(round(distortion_level, digits=3))_n$(distorted_count)"
 
-                new_item = contains(original_word.item, "DISTORTED") ?
-                    "$(original_word.item)_$(context_distortion_info)" :
-                    "$(original_word.item)_[$(context_distortion_info)]"
+                # Check if word.item_code already has distortion marker
+                if contains(original_word.item_code, "DISTORTED")
+                    # Append context distortion info
+                    new_item_code = "$(original_word.item_code)_$(context_distortion_info)"
+                else
+                    # Add context distortion marker
+                    new_item_code = "$(original_word.item_code)_[$(context_distortion_info)]"
+                end
 
-                distorted_probes[i].image.word = Word(
-                    original_word.item_code,
-                    new_item,
+                # Create new Word instance with modified item_code (E3's Word has 9 fields, not 4 like E1)
+                new_word = Word(
+                    new_item_code,
                     original_word.word_features,
                     original_word.type_general,
                     original_word.type_specific,
@@ -115,6 +125,9 @@ function distort_probe_context_range_with_linear_decay(
                     original_word.type1,
                     original_word.type2
                 )
+
+                # Replace the word in the EpisodicImage (which is mutable)
+                distorted_probes[i].image.word = new_word
             end
         end
     end

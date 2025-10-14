@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 300 : 800;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -168,7 +168,11 @@ hj_asymptote_increase_val = 0.23
 hj_rate = 0.85
 hj_base = 0.35; #higher this value higher CF starting point
 
-h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
+hj_initial_increment = 0.1  # initial increment for linear diminishing function
+hj_decrement_per_step = 0.029  # amount increment decreases each step (calculated to match old exponential behavior)
+
+# h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
+h_j = asym_increase_diminishing_hj(hj_base, hj_initial_increment, hj_decrement_per_step, n_lists - 1)
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
 # below is prob of answer new
@@ -237,12 +241,12 @@ LLpower = 1 #power of likelihood for changing context,
 p_reinstate_context = 1 #stop reinstate after how much features
 
 # CAUTION: keep consistent with Issue #50 updates across designs
-p_reinstate_rate = 0.12#0.4 #prob of reinstatement
+p_reinstate_rate = 0.0#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 # Separate probability parameters to maintain equivalent overall probabilities
 #const p_driftAndListChange = 0.03; # ORIGINAL: single parameter for both # used for both of two n below, for drifts between study and test and for drift between list
-const p_driftStudyTest = 0.307; # Equivalent to (1-(1-0.03)^12) for study-test drift
+const p_driftStudyTest = 0.15; # Equivalent to (1-(1-0.03)^12) for study-test drift
 const p_driftBetweenList = 0.456; # Equivalent to (1-(1-0.03)^20) for between-list change
 
 #n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 # ORIGINAL: was 12 steps
@@ -254,12 +258,12 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 1) # Changed from 12 to 1
 
 # Distortion between study and test on contents, seperate from the above probability for now
 # Probe distortion parameters for content drift between study and test
-max_distortion_probes = 12  # Number of probes until distortion probability reaches 0
+max_distortion_probes = 30  # Number of probes until distortion probability reaches 0
 
 # Distortion probability parameters (Issue #50)
-base_distortion_prob = 0.25  # Base distortion probability for content
-base_distortion_prob_UC = 0.25  # Distortion probability for UC context features
-base_distortion_prob_CC = 0.25  # Distortion probability for CC context features
+base_distortion_prob = 0.0  # Base distortion probability for content
+base_distortion_prob_UC = 0.0  # Distortion probability for UC context features
+base_distortion_prob_CC = 0.3  # Distortion probability for CC context features
 
 
 
@@ -317,7 +321,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.18 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.16 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
@@ -445,6 +449,7 @@ is_restore_initial = true # flag check
 is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = false
+is_distort_probes = true  # Control probe distortion (aligned with E1)
 is_content_drift_between_study_and_test = true; # use content drift between study and test
 is_UC_drift_between_study_and_test = true  # Enable UC context distortion (Issue #50)
 is_CC_drift_between_study_and_test = true  # Enable CC context distortion (Issue #50)

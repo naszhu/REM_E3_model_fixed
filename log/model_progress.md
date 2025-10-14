@@ -1,25 +1,118 @@
 # Model Progress
 
-## Commit [528efb2](https://github.com/naszhu/REM_E3_model_fixed/commit/528efb2) (branch: `oct-5-test`)
-**Time:** 2025-10-12 19:49:18  
+## Commit [ece5290](https://github.com/naszhu/REM_E3_model_fixed/commit/ece5290) (branch: `oct-12-debugout`)
+**Time:** 2025-10-14 09:00:54  
+**Message:**
+```
+feat(model-e3): add asymptotic functions documentation and update related parameters
+
+- Introduced a new documentation file detailing the asymptotic function applications in the REM E3 model, including mathematical formulas and parameter descriptions.
+- Updated `constants.jl` to adjust the distortion probability for changing context features from `0.25` to `0.3`.
+- Enhanced the `feature_updates.jl` to utilize the new asymptotic functions for context distortion.
+- Refactored `utils.jl` to streamline the asymptotic function implementations, improving clarity and maintainability.
+
+These changes aim to improve the understanding and functionality of asymptotic behaviors in the model.
+
+naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/asymptotic_functions_documentation.md`  
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/ece5290_20251014_090054_plot1.png)  
+![](../plot_archive/ece5290_20251014_090054_plot2.png)  
+
+## Commit [19a8f4b](https://github.com/naszhu/REM_E3_model_fixed/commit/19a8f4b) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:49:44  
+**Message:**
+```
+finetune(model-e3): update constants for final testing and distortion parameters
+
+- Changed `is_finaltest` from `true` to `false` to reflect the current testing state.
+- Set `p_reinstate_rate` and distortion probabilities (`base_distortion_prob`, `base_distortion_prob_UC`) to `0.0` to disable reinstatement and distortion effects.
+- Adjusted `p_driftStudyTest` to `0.15` and increased `max_distortion_probes` to `30` for better simulation control.
+
+These changes aim to refine the model's testing configuration and improve the accuracy of distortion parameters.
+
+naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/19a8f4b_20251012_204944_plot1.png)  
+![](../plot_archive/19a8f4b_20251012_204944_plot2.png)  
+
+## Commit [32e2702](https://github.com/naszhu/REM_E3_model_fixed/commit/32e2702) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:26:30  
 **Message:**
 ```
 chore(model-e3): clarify type_specific property in Word struct
 
-- Updated the comment for `type_specific` in the `Word` struct to provide a clearer description of the expected values, enhancing code readability and understanding.
-- Made minor adjustments to ensure consistency in the documentation of properties within the struct.
+- Updated the comment for the `type_specific` field in the `Word` struct to provide a clearer description of the expected symbols, enhancing code readability and understanding.
+- Made a minor adjustment to the `initial_studypos` comment for consistency.
 
-These changes aim to improve the clarity and maintainability of the data structures used in the model.
+These changes aim to improve the documentation within the data structures, facilitating better comprehension for future development.
 ```
 **Changed Files:**
 - `E3/data_structures.jl`  
 - `log/model_progress.html`  
 - `log/model_progress.json`  
 - `log/model_progress.md`  
-![](../plot_archive/528efb2_20251012_194918_plot1.png)  
-![](../plot_archive/528efb2_20251012_194918_plot2.png)  
+![](../plot_archive/32e2702_20251012_202630_plot1.png)  
+![](../plot_archive/32e2702_20251012_202630_plot2.png)  
 
-## Commit [afbb7f1](https://github.com/naszhu/REM_E3_model_fixed/commit/afbb7f1) (branch: `oct-5-test`)
+## Commit [8f83971](https://github.com/naszhu/REM_E3_model_fixed/commit/8f83971) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:24:33  
+**Message:**
+```
+fix(model-e3): make CC UC distortion actulaly working
+
+- Added logic to append or add a distortion marker to the `item_code` of words when context is distorted, improving traceability of distortion effects.
+- Created a new `Word` instance with the updated `item_code` to ensure the integrity of the original word features.
+- Updated the mutable `EpisodicImage` to reflect the changes in the distorted probes.
+
+These changes aim to improve the clarity and functionality of context distortion within the model.
+
+Fixes naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/8f83971_20251012_202433_plot1.png)  
+![](../plot_archive/8f83971_20251012_202433_plot2.png)  
+
+## Commit [05859e2](https://github.com/naszhu/REM_E3_model_fixed/commit/05859e2) (branch: `oct-12-debugout`)
+**Time:** 2025-10-12 20:09:03  
+**Message:**
+```
+fix(model-e3): fix probe distortion control and update distortion logic
+
+- Introduced a new flag `is_distort_probes` in `constants.jl` to control probe distortion behavior, enhancing model flexibility.
+- Updated the `distort_probes_with_linear_decay` function in `feature_updates.jl` to apply distortion based on the new flag, improving the simulation of probe features.
+- Adjusted the logic for applying distortion to ensure clarity and maintainability.
+
+These changes aim to enhance the model's ability to simulate probe distortions effectively.
+
+Refs naszhu/project-context#50
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/05859e2_20251012_200903_plot1.png)  
+![](../plot_archive/05859e2_20251012_200903_plot2.png)  
+
+## Commit [afbb7f1](https://github.com/naszhu/REM_E3_model_fixed/commit/afbb7f1) (branch: `oct-12-debugout`)
 **Time:** 2025-10-12 17:22:38  
 **Message:**
 ```
