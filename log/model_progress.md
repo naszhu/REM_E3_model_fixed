@@ -1,5 +1,25 @@
 # Model Progress
 
+## Commit [0d1eb90](https://github.com/naszhu/REM_E3_model_fixed/commit/0d1eb90) (branch: `oct-14`)
+**Time:** 2025-10-14 21:04:10  
+**Message:**
+```
+explore(model-e3): update probe distortion and context drift parameters
+
+- Changed `is_distort_probes`, `is_content_drift_between_study_and_test`, and `is_UC_drift_between_study_and_test` flags in `constants.jl` from `true` to `false` to disable probe distortion and context drift effects.
+- Adjusted logic in `probe_evaluation.jl` to ensure proper decision-making based on probe types, enhancing the evaluation process.
+
+These changes aim to refine the model's behavior regarding probe distortion and context drift, improving simulation accuracy.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0d1eb90_20251014_210410_plot1.png)  
+![](../plot_archive/0d1eb90_20251014_210410_plot2.png)  
+
 ## Commit [a2d7b22](https://github.com/naszhu/REM_E3_model_fixed/commit/a2d7b22) (branch: `main`)
 **Time:** 2025-10-14 09:33:20  
 **Message:**

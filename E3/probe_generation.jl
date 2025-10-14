@@ -2,26 +2,29 @@
 
 
 """generate probe for inital test for a given list,
-input: studied word list; context features (word_change will modifed from the current list last word's context features)
-Return: probe
+input: studied word list; context features; content features
+Return: probe, foil_collection
 
-list_change_features_ref: This is to be stored as a correction of the list-change context features
-list feature, same as studied one
-list_change_features_dynamic: changed RI after study, continuous reinstate in test
+Parameters:
+- content_before_distort: word list with drifted content (REINSTATEMENT TARGET for content)
+- content_after_distort: word list with drifted+distorted content (CURRENT for content)
+- CC_before_distort: drifted CC context (REINSTATEMENT TARGET for CC)
+- CC_after_distort: drifted+distorted CC context (CURRENT for CC)
+- UC_before_distort: drifted UC context (REINSTATEMENT TARGET for UC)
+- UC_after_distort: drifted+distorted UC context (CURRENT for UC)
+- list_num: current list number
+- studied_pool_ref: reference to original studied_pool
 
-add probe type now.. 
-
-Delete : position_code_all::Vector{Vector{Int64}}
-
-* probe generation use context of current (flowed) context, so will be the same for any probe types
+Reinstatement: probes after the first one will partially reinstate toward "before_distort" versions
 """
 function generate_probes(
-    list_change_features_ref::Vector{Int64}, # Change_ctx reference
-    list_change_features_dynamic::Vector{Int64},   #Change ctx to be changed
-    unchange_features_ref::Vector{Int64}, # Unchange_ctx reference
-    unchange_features_dynamic::Vector{Int64}, #Unchange ctx to be changed
+    content_before_distort::Vector{Word}, 
+    content_after_distort::Vector{Word},
+    CC_before_distort::Vector{Int64}, 
+    CC_after_distort::Vector{Int64},
+    UC_before_distort::Vector{Int64}, 
+    UC_after_distort::Vector{Int64},
     list_num::Int64,
-    studied_pool_currList::Vector{Word}, #Pass word kinds in! Do not need IMG part
     studied_pool_ref::Vector{Vector{EpisodicImage}} # Reference to original studied_pool
     
     ; #following are defult vars
@@ -45,15 +48,15 @@ function generate_probes(
 
     probes = Vector{Probe}(undef, length(probetypes))
 
-    # Group studied_pool_currList images by their type_general into a dictionary
+    # Group content_after_distort (current list words) by their type_general into a dictionary
     ####Type general:
     # T; Tn; SO; SOn; F; Fn
 
     #only 2 kinds need to be drawn from current studypool; those of type target  
     # Keep in mind to check later: needs a deepcopy???
     studied_pool_currlist_by_type = Dict(
-        :T => filter(iword -> iword.type_general == :T, studied_pool_currList)|> shuffle!,
-        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), studied_pool_currList)|> shuffle!,
+        :T => filter(iword -> iword.type_general == :T, content_after_distort)|> shuffle!,
+        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), content_after_distort)|> shuffle!,
     )
 
     # 3 types, last target, last foil, last studyonly
@@ -148,22 +151,38 @@ function generate_probes(
             error("probetype not in the list")
         end
 
-        ############ Context reinstate below
-        # Combine the two loops into one function to avoid redundancy
-        # Reinstate changing context for each test position
+        ############ Context and content reinstatement below
+        # Reinstate changing context, unchanging context, and content for each test position
         if i>1   
-                reinstate_context_duringTest!(list_change_features_dynamic, list_change_features_ref, p_reinstate_context, p_reinstate_rate)
+            # REINSTATE CC (changing context): reinstate from after_distort toward before_distort
+            reinstate_context_duringTest!(CC_after_distort, CC_before_distort, p_reinstate_context, p_reinstate_rate)
 
-            # Reinstate unchanging context if applicable
-            if is_UnchangeCtxDriftAndReinstate #true
-                reinstate_context_duringTest!(unchange_features_dynamic, unchange_features_ref, p_reinstate_context, p_reinstate_rate)
-            end   # println("$(list_change_features_dynamic)")
+            # REINSTATE UC (unchanging context): reinstate from after_distort toward before_distort
+            if is_UC_distort_between_study_and_test
+                reinstate_context_duringTest!(UC_after_distort, UC_before_distort, p_reinstate_context, p_reinstate_rate)
+            end
+
+            # REINSTATE CONTENT: reinstate word features from after_distort toward before_distort
+            if is_content_distort_between_study_and_test
+                for iword in eachindex(content_after_distort)
+                    if content_after_distort[iword].type_general in [:T, Symbol("Tn")] # Only reinstate target words
+                        for ifeature in eachindex(content_after_distort[iword].word_features)
+                            if ifeature <= w_word # Only reinstate normal content features (not Z feature)
+                                if (content_after_distort[iword].word_features[ifeature] != content_before_distort[iword].word_features[ifeature]) & (rand() < p_reinstate_rate)
+                                    content_after_distort[iword].word_features[ifeature] = content_before_distort[iword].word_features[ifeature]
+                                end
+                            end
+                        end
+                    end
+                end
+            end
         end 
         #Target word is unique deep copied, so shouldn't overlap. get only current studypos, not a prior one
         current_studypos = target_word.initial_studypos;
         current_testpos = i; 
 
-        current_context_features = fast_concat([deepcopy(unchange_features_dynamic), deepcopy(list_change_features_dynamic)]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
+        # Build context from UC_after_distort and CC_after_distort (which may have been reinstated)
+        current_context_features = fast_concat([deepcopy(UC_after_distort), deepcopy(CC_after_distort)]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
         
 
         probes[i] = Probe( #create prob from current created target word i
@@ -198,7 +217,7 @@ function generate_probes(
     end
 
 
-    if is_content_drift_between_study_and_test
+    if is_content_distort_between_study_and_test
         # Apply distortion to probes with linear decay in probability
         # The distortion probability starts high for the first probe and linearly decreases to 0
         # after max_distortion_probes (default: 8). This creates a strong distortion effect
@@ -223,7 +242,7 @@ function generate_probes(
     end
 
     # Apply UC (unchanging context) distortion if enabled (Issue #50)
-    if is_UC_drift_between_study_and_test
+    if is_UC_distort_between_study_and_test
         distorted_probes_uc, original_probes_uc = distort_probe_context_range_with_linear_decay(
             probes,
             1,  # Start at first UC feature
@@ -238,7 +257,7 @@ function generate_probes(
     end
 
     # Apply CC (changing context) distortion if enabled (Issue #50)
-    if is_CC_drift_between_study_and_test
+    if is_CC_distort_between_study_and_test
         distorted_probes_cc, original_probes_cc = distort_probe_context_range_with_linear_decay(
             probes,
             nU + 1,  # Start after UC features

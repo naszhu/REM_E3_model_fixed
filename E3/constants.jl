@@ -450,9 +450,12 @@ is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = false
 is_distort_probes = false  # Control probe distortion (aligned with E1)
-is_content_drift_between_study_and_test = false; # use content drift between study and test
-is_UC_drift_between_study_and_test = false  # Enable UC context distortion (Issue #50)
-is_CC_drift_between_study_and_test = true  # Enable CC context distortion (Issue #50)
+
+# DISTORTION FLAGS (applied after drift, before initial test)
+# These control whether features are distorted between study and test
+is_content_distort_between_study_and_test = false  # Enable content distortion
+is_UC_distort_between_study_and_test = false  # Enable UC (unchanging context) distortion (Issue #50)
+is_CC_distort_between_study_and_test = true  # Enable CC (changing context) distortion (Issue #50)
 
 is_onlyaddtrace_final = false
 
