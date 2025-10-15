@@ -238,7 +238,7 @@ Ratios of stuff of featuresl; etc
 LLpower = 1 #power of likelihood for changing context, 
 
 # p_poscode_change = 0.1 #this is no need; deleted feature
-p_reinstate_context = 1 #stop reinstate after how much features
+p_reinstate_context = 1.0 #stop reinstate after how much features
 
 # CAUTION: keep consistent with Issue #50 updates across designs
 p_reinstate_rate = 0.0#0.4 #prob of reinstatement

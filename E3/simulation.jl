@@ -146,36 +146,19 @@ function run_single_simulation(sim_num::Int)
             CC_before_distort = deepcopy(test_list_context_change)  # Save drifted context as reinstatement target
             CC_after_distort = deepcopy(test_list_context_change)   # Will be distorted if enabled
             if is_CC_distort_between_study_and_test
-                for cf in eachindex(CC_after_distort)
-                    if rand() < base_distortion_prob_CC
-                        CC_after_distort[cf] = rand(Geometric(g_context)) + 1
-                    end
-                end
+                distort_context_range!(CC_after_distort, 1, nC, base_distortion_prob_CC, g_context)
             end
 
             UC_before_distort = deepcopy(test_list_context_unchange) 
             UC_after_distort = deepcopy(test_list_context_unchange)
             if is_UC_distort_between_study_and_test
-                for cf in eachindex(UC_after_distort)
-                    if rand() < base_distortion_prob_UC
-                        UC_after_distort[cf] = rand(Geometric(g_context)) + 1
-                    end
-                end
+                distort_context_range!(UC_after_distort, 1, nU, base_distortion_prob_UC, g_context)
             end
 
+            # Note: Content distortion is now handled INSIDE probe_generation.jl
+            # after both targets and foils are created, so all probe words are distorted together
             content_before_distort = deepcopy(current_list_words)
-            content_after_distort = deepcopy(current_list_words)
-            if is_content_distort_between_study_and_test
-                for iword in eachindex(content_after_distort)
-                    for cf in eachindex(content_after_distort[iword].word_features)
-                        if cf <= w_word  # Only distort normal content features
-                            if rand() < base_distortion_prob
-                                content_after_distort[iword].word_features[cf] = rand(Geometric(g_word)) + 1
-                            end
-                        end
-                    end
-                end
-            end
+            content_after_distort = deepcopy(current_list_words)  # Passed in but distortion happens in probe_generation
 
             # println("list $(list_num), ")
             # @assert length(filter(prb -> prb.classification == :foil, probes)) == Int(n_probes / 2) "wrong number!"

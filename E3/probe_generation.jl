@@ -48,19 +48,19 @@ function generate_probes(
 
     probes = Vector{Probe}(undef, length(probetypes))
 
-    # Group content_after_distort (current list words) by their type_general into a dictionary
+    # STEP 1: Create all probe words BEFORE distortion
+    # Group content_before_distort (NOT distorted yet) by their type_general into a dictionary
     ####Type general:
     # T; Tn; SO; SOn; F; Fn
 
     #only 2 kinds need to be drawn from current studypool; those of type target  
-    # Keep in mind to check later: needs a deepcopy???
     studied_pool_currlist_by_type = Dict(
-        :T => filter(iword -> iword.type_general == :T, content_after_distort)|> shuffle!,
-        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), content_after_distort)|> shuffle!,
+        :T => filter(iword -> iword.type_general == :T, content_before_distort)|> shuffle!,
+        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), content_before_distort)|> shuffle!,
     )
 
     # 3 types, last target, last foil, last studyonly
-    # only when list > 1, assign a prior list Dict, and then do the append in combinging the two Dict, 
+    # only when list > 1, assign a prior list Dict, and then do the append in combining the two Dict, 
     # else, don't do anything just combine 
     if list_num>1
         #make dict
@@ -87,7 +87,9 @@ function generate_probes(
     # would equal study_poolcurrlist no matter list 1 or >list1
     combined_studied_pool_by_type = studied_pool_currlist_by_type
 
-
+    # Create array to hold all probe words (will be distorted together)
+    probe_words = Vector{Word}(undef, length(probetypes))
+    
     foils_collection = Vector{EpisodicImage}()
     for i in eachindex(probetypes) #should be 1-30
         # println("probe$(i)")
@@ -96,16 +98,16 @@ function generate_probes(
         # println(probetypes[i])
         if haskey(combined_studied_pool_by_type, probetypes[i]) # Check if probetype matches a key in the combined dictionary
             
-            target_word = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
-            # target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
-            target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
-            target_word.type_specific = probetypes[i] #update the type_specific
+            probe_words[i] = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
+            # probe_words[i].initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : probe_words[i].initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
+            probe_words[i].initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
+            probe_words[i].type_specific = probetypes[i] #update the type_specific
             
             # Update the original item in studied_pool with the initial_testpos
             if probetypes[i] in [:T, Symbol("Tn+1")]
                 for j in 1:length(studied_pool_ref[list_num])
                     if !isnothing(studied_pool_ref[list_num][j]) && 
-                       studied_pool_ref[list_num][j].word.item_code == target_word.item_code
+                       studied_pool_ref[list_num][j].word.item_code == probe_words[i].item_code
                         studied_pool_ref[list_num][j].word.initial_testpos = i
                         break
                     end
@@ -113,12 +115,12 @@ function generate_probes(
             end
             
             # Set initial Z value based on probe type according to new rules
-            set_initial_Z_value_for_probe!(target_word, probetypes[i])
+            set_initial_Z_value_for_probe!(probe_words[i], probetypes[i])
 
         elseif probetypes[i] in foilnew_symbol_tuple
 
             # println("Foil")
-            #if combined_studiedpool dones't have it, (don't have the type in prior list, don't have it in current list, that means the type is either Fn or Fn)
+            #if combined_studiedpool doesn't have it, (don't have the type in prior list, don't have it in current list, that means the type is either F or Fn+1)
                     
         # out of T; Tn; SO; SOn; F; Fn
             pt_general = probetypes[i] == :F ? :F : Symbol("Fn")
@@ -128,7 +130,7 @@ function generate_probes(
             # Add OT feature (always added)
             push!(features, 0)  # For new probes, OT feature starts as 0 (not tested before)
 
-            target_word = 
+            probe_words[i] = 
             Word(
                 randstring(8), #item_code
                 features, 
@@ -142,14 +144,27 @@ function generate_probes(
                 :F, #type1, will be :F whatsoever
                 probetypes[i]== :F ? :none : :Fb #type2, general type, 
 
-                #the last two assignment could check in const beginnig clarification line on 1, 2 for each line
+                #the last two assignment could check in const beginning clarification line on 1, 2 for each line
             ) # Insert studypos 0
             
             # Set initial Z value based on probe type according to new rules
-            set_initial_Z_value_for_probe!(target_word, probetypes[i])
+            set_initial_Z_value_for_probe!(probe_words[i], probetypes[i])
         else
             error("probetype not in the list")
         end
+    end
+    
+    # STEP 2: Apply CONTENT DISTORTION to all probe words at once (all probe types)
+    probe_words_before_distort = deepcopy(probe_words)  # Save for reinstatement
+    probe_words_after_distort = deepcopy(probe_words)   # Will be distorted
+    
+    if is_content_distort_between_study_and_test
+        distort_probe_words_content!(probe_words_after_distort, base_distortion_prob, g_word, w_word)
+    end
+    
+    # STEP 3: Now iterate through probes, applying reinstatement and creating probes
+    for i in eachindex(probetypes)
+        target_word = probe_words_after_distort[i]  # Get the (possibly distorted) word
 
         ############ Context and content reinstatement below
         # Reinstate changing context, unchanging context, and content for each test position
@@ -162,19 +177,9 @@ function generate_probes(
                 reinstate_context_duringTest!(UC_after_distort, UC_before_distort, p_reinstate_context, p_reinstate_rate)
             end
 
-            # REINSTATE CONTENT: reinstate word features from after_distort toward before_distort
+            # REINSTATE CONTENT: reinstate THIS probe's word features from after_distort toward before_distort
             if is_content_distort_between_study_and_test
-                for iword in eachindex(content_after_distort)
-                    if content_after_distort[iword].type_general in [:T, Symbol("Tn")] # Only reinstate target words
-                        for ifeature in eachindex(content_after_distort[iword].word_features)
-                            if ifeature <= w_word # Only reinstate normal content features (not Z feature)
-                                if (content_after_distort[iword].word_features[ifeature] != content_before_distort[iword].word_features[ifeature]) & (rand() < p_reinstate_rate)
-                                    content_after_distort[iword].word_features[ifeature] = content_before_distort[iword].word_features[ifeature]
-                                end
-                            end
-                        end
-                    end
-                end
+                reinstate_word_content_duringTest!(target_word, probe_words_before_distort[i], p_reinstate_rate, w_word)
             end
         end 
         #Target word is unique deep copied, so shouldn't overlap. get only current studypos, not a prior one
