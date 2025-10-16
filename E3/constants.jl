@@ -155,9 +155,9 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # h(j) is increasing function
 
 ku_base = 0.25 # study，higher this value, lower the starting point of T
-ks_base = 0.2 #SOn (study only), lower the value, higher the starting point CF
-kb_base = 0.01 #Tn (study and test)
-kt_base = 0.01 #Fn (test only)
+ks_base = 0.4 #SOn (study only), lower the value, higher the starting point CF
+kb_base = 0.2 #Tn (study and test)
+kt_base = 0.2 #Fn (test only)
 
 fj_asymptote_decrease_val = 0.00 #0.35 #this value bigger, Hits higher
 fj_rate = 0.26 #this value higher, the faster fj makes T to get better
@@ -168,7 +168,7 @@ hj_asymptote_increase_val = 0.23
 hj_rate = 0.85
 hj_base = 0.35; #higher this value higher CF starting point
 
-hj_initial_increment = 0.1  # initial increment for linear diminishing function
+hj_initial_increment = 0.12  # initial increment for linear diminishing function
 hj_decrement_per_step = 0.029  # amount increment decreases each step (calculated to match old exponential behavior)
 
 # h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
@@ -241,7 +241,7 @@ LLpower = 1 #power of likelihood for changing context,
 p_reinstate_context = 1.0 #stop reinstate after how much features
 
 # CAUTION: keep consistent with Issue #50 updates across designs
-p_reinstate_rate = 0.0#0.4 #prob of reinstatement
+p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 # Separate probability parameters to maintain equivalent overall probabilities
@@ -260,10 +260,16 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 1) # Changed from 12 to 1
 # Probe distortion parameters for content drift between study and test
 max_distortion_probes = 30  # Number of probes until distortion probability reaches 0
 
+# DISTORTION FLAGS (applied after drift, before initial test)
+# These control whether features are distorted between study and test
+is_content_distort_between_study_and_test = false  # Enable content distortion
+is_UC_distort_between_study_and_test = true  # Enable UC (unchanging context) distortion (Issue #50)
+is_CC_distort_between_study_and_test = true  # Enable CC (changing context) distortion (Issue #50)
+
 # Distortion probability parameters (Issue #50)
 base_distortion_prob = 0.0  # Base distortion probability for content
-base_distortion_prob_UC = 0.0  # Distortion probability for UC context features
-base_distortion_prob_CC = 0.3  # Distortion probability for CC context features
+base_distortion_prob_UC = 0.1  # Distortion probability for UC context features
+base_distortion_prob_CC = 0.1  # Distortion probability for CC context features
 
 
 
@@ -451,11 +457,7 @@ is_restore_final = true#followed by the next
 is_UnchangeCtxDriftAndReinstate = false
 is_distort_probes = false  # Control probe distortion (aligned with E1)
 
-# DISTORTION FLAGS (applied after drift, before initial test)
-# These control whether features are distorted between study and test
-is_content_distort_between_study_and_test = false  # Enable content distortion
-is_UC_distort_between_study_and_test = false  # Enable UC (unchanging context) distortion (Issue #50)
-is_CC_distort_between_study_and_test = true  # Enable CC (changing context) distortion (Issue #50)
+
 
 is_onlyaddtrace_final = false
 

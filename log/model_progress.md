@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [2d11c73](https://github.com/naszhu/REM_E3_model_fixed/commit/2d11c73) (branch: `oct-14`)
+**Time:** 2025-10-16 11:27:18  
+**Message:**
+```
+fix(model-e3): foil store non-diostorted for final test
+
+- Updated the `generate_probes` function to store non-distorted foils for final testing, ensuring accurate representation of probe features.
+- Refined the distortion logic to clarify the application of additional linear decay distortion, maintaining the integrity of the foils collection.
+- Added debug statements in `simulation.jl` to verify that non-distorted foils are correctly stored in the studied pool during simulations.
+
+These changes aim to enhance the accuracy and reliability of probe generation and evaluation processes.
+```
+**Changed Files:**
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2d11c73_20251016_112718_plot1.png)  
+![](../plot_archive/2d11c73_20251016_112718_plot2.png)  
+
 ## Commit [b7ab70e](https://github.com/naszhu/REM_E3_model_fixed/commit/b7ab70e) (branch: `oct-14`)
 **Time:** 2025-10-15 19:03:17  
 **Message:**

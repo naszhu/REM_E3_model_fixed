@@ -1,5 +1,20 @@
 [
   {
+    "commit": "2d11c73",
+    "branch": "oct-14",
+    "message": "fix(model-e3): foil store non-diostorted for final test",
+    "timestamp": "2025-10-16 11:27:18",
+    "plot1": "plot_archive/2d11c73_20251016_112718_plot1.png",
+    "plot2": "plot_archive/2d11c73_20251016_112718_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b7ab70e",
     "branch": "oct-14",
     "message": "refactor(model-e3): make into function. update reinstatement and distortion functions",
