@@ -186,9 +186,25 @@ function run_single_simulation(sim_num::Int)
             # Fill the rest of the studied pool with the foils
             # studied_pool[list_num][n_studyitem+1:end] = filter(x -> !isnothing(x), [foil.image for foil in foils])
 
-            @assert length(filter(isnothing, studied_pool[list_num][1:n_studyitem])) == 0 "There are still undefined items in studied_pool[:, list_num]"   # the place to start in each list is the same, becuase there are same number of new study item in each list 
+            @assert length(filter(isnothing, studied_pool[list_num][1:n_studyitem])) == 0 "There are still undefined items in studied_pool[:, list_num]"   # the place to start in each list is the same, becuase there are same number of new study item in each list
             # println(list_num)
             studied_pool[list_num][n_studyitem+1:end] = foils
+
+            # DEBUG: Verify foils in studied_pool are non-distorted (only for list 1, sim 1)
+            if is_content_distort_between_study_and_test && list_num == 1 && sim_num == 1
+                # Get first foil from studied_pool and first foil probe
+                first_foil_studied = studied_pool[list_num][n_studyitem+1]
+                foil_probes = filter(p -> p.ProbeTypeSimple == :foil, probes)
+                if !isempty(foil_probes)
+                    first_foil_probe = foil_probes[1]
+                    num_diff = sum(first_foil_studied.word.word_features[j] != first_foil_probe.image.word.word_features[j] for j in 1:min(w_word, length(first_foil_studied.word.word_features)))
+                    if num_diff > 0
+                        println("[E3-OK] List $list_num: studied_pool foil differs from probe foil in $num_diff features (non-distorted storage working)")
+                    else
+                        println("[E3-WARNING] List $list_num: studied_pool foil IDENTICAL to probe foil! May be storing distorted version!")
+                    end
+                end
+            end
 
             results = probe_evaluation(image_pool, probes, list_change_context_features, general_context_features, sim_num)
             # println(results)

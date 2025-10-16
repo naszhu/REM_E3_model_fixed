@@ -1,5 +1,30 @@
 # Model Progress
 
+## Commit [b7ab70e](https://github.com/naszhu/REM_E3_model_fixed/commit/b7ab70e) (branch: `oct-14`)
+**Time:** 2025-10-15 19:03:17  
+**Message:**
+```
+refactor(model-e3): make into function. update reinstatement and distortion functions
+
+- Changed the `p_reinstate_context` value in `constants.jl` from `1` to `1.0` for consistency in type.
+- Added detailed documentation for new functions in `feature_updates.jl` that handle context and content reinstatement during tests, improving clarity on their usage and parameters.
+- Enhanced the `generate_probes` function in `probe_generation.jl` to streamline the process of applying content distortion and reinstatement for probe words, ensuring better management of distorted features.
+
+These changes aim to improve the functionality and clarity of the reinstatement and distortion processes within the model.
+
+Refs #70
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b7ab70e_20251015_190317_plot1.png)  
+![](../plot_archive/b7ab70e_20251015_190317_plot2.png)  
+
 ## Commit [5c0bd6b](https://github.com/naszhu/REM_E3_model_fixed/commit/5c0bd6b) (branch: `oct-14`)
 **Time:** 2025-10-14 21:32:00  
 **Message:**

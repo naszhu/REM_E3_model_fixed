@@ -193,14 +193,20 @@ function generate_probes(
         probes[i] = Probe( #create prob from current created target word i
             # appearnum: if old kind, second time appear
             EpisodicImage(target_word, current_context_features, list_num, probetypes[i] in Fb_symbol_tuple ? 2 : 1),
-            
+
             probetypes[i] in T_target_tuple ? :target : :foil, #target or foil
             probetypes[i] in  T_target_tuple ? :T : probetypes[i] in Fb_symbol_tuple ? :Fb : :F #general type of probe, F, Fb or T
         )
 
         if probetypes[i] in foilnew_symbol_tuple
-            # println("foil")
-            push!(foils_collection, deepcopy(probes[i].image)) # Append a deep copy of the foil to the collection
+            # Store NON-DISTORTED foil for final test (uses probe_words_before_distort)
+            non_distorted_foil = EpisodicImage(
+                probe_words_before_distort[i],  # NON-DISTORTED word content
+                current_context_features,        # Context (doesn't matter for final test)
+                list_num,
+                probetypes[i] in Fb_symbol_tuple ? 2 : 1
+            )
+            push!(foils_collection, deepcopy(non_distorted_foil))
         end   # Commented the following lines because studied_pool is not carried in current function right now, but study_pool did have its images to be stored during study, meaning they won't have a test position assigned, 
         # BUT this is currently IGNORED (unassigned testpos for studied_pool), because the current testpos will not be used for prediction yet in final test, as a start 
         # Later, modify the testpos (of either appear 1 or appear 2 if we need, but now, ignore)  
@@ -223,27 +229,23 @@ function generate_probes(
 
 
     if is_content_distort_between_study_and_test
-        # Apply distortion to probes with linear decay in probability
-        # The distortion probability starts high for the first probe and linearly decreases to 0
-        # after max_distortion_probes (default: 8). This creates a strong distortion effect
-        # for early probes that gradually diminishes for later probes.
-        # 
-        # Keep original probes for foils collection, but distort probes for testing
-        # The foils_collection already contains deep copies of the original probes
-        # before distortion was applied, so it remains clean and unaffected.
+        # NOTE: This section applies ADDITIONAL linear decay distortion on top of the
+        # constant distortion already applied at line 162. This appears to be legacy code
+        # from an older distortion scheme.
+        #
+        # The foils_collection was properly populated at line 209 with non-distorted content
+        # from probe_words_before_distort, so it remains unaffected by this additional distortion.
         distorted_probes, original_probes = distort_probes_with_linear_decay(
-            probes, 
+            probes,
             max_distortion_probes;  # Use constant from constants.jl
             base_distortion_prob = base_distortion_prob,  # Use constant from constants.jl
             g_word = g_word  # Use the constant defined in constants.jl
         )
-        
+
         # Replace probes with distorted versions for testing
         probes = distorted_probes
-        
+
         # Note: original_probes are kept for reference but not returned
-        # The foils_collection already contains deep copies of the original probes
-        # before distortion was applied, so it remains clean
     end
 
     # Apply UC (unchanging context) distortion if enabled (Issue #50)

@@ -1,5 +1,22 @@
 [
   {
+    "commit": "b7ab70e",
+    "branch": "oct-14",
+    "message": "refactor(model-e3): make into function. update reinstatement and distortion functions",
+    "timestamp": "2025-10-15 19:03:17",
+    "plot1": "plot_archive/b7ab70e_20251015_190317_plot1.png",
+    "plot2": "plot_archive/b7ab70e_20251015_190317_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "5c0bd6b",
     "branch": "oct-14",
     "message": "refactor(model-e3): change names from drift to distortion",
