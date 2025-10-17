@@ -22,6 +22,7 @@ function distort_probes_with_linear_decay(
     g_word::Float64 = 0.3
 )::Tuple{Vector{Probe}, Vector{Probe}}
 
+error("should not be used")
     # Create deep copies of original probes for reference
     original_probes = deepcopy(probes)
     distorted_probes = deepcopy(probes)
