@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [d0e45fc](https://github.com/naszhu/REM_E3_model_fixed/commit/d0e45fc) (branch: `debug-oct-18`)
+**Time:** 2025-10-16 12:08:10  
+**Message:**
+```
+finetune(model-e3): good initial test prediction!
+
+- Increased `ks_base`, `kb_base`, and `kt_base` values to enhance starting points for respective features.
+- Modified `hj_initial_increment` for a more gradual linear diminishing function.
+- Updated `p_reinstate_rate` to `0.15` to reflect a new probability of reinstatement.
+- Adjusted distortion probabilities for UC and CC context features to `0.1`, enabling better control over distortion effects.
+
+These changes aim to refine the model's parameter settings and improve the accuracy of feature behavior during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d0e45fc_20251016_120810_plot1.png)  
+![](../plot_archive/d0e45fc_20251016_120810_plot2.png)  
+
 ## Commit [2d11c73](https://github.com/naszhu/REM_E3_model_fixed/commit/2d11c73) (branch: `oct-14`)
 **Time:** 2025-10-16 11:27:18  
 **Message:**
