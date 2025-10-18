@@ -105,6 +105,30 @@ end
 
 
 ###############################################################
+# 4c. asym_increase_formula_hj  (h_j parameter with Z(j) = 1 - [1-Z] R^(j-2) formula)
+# Creates an asymptotic increase using the formula Z(j) = 1 - [1-Z] R^(j-2)
+# where Z is the base value and R controls the rate of approach to 1
+###############################################################
+function asym_increase_formula_hj(z_base::Float64,
+                                 r_rate::Float64,
+                                 n::Int)::Vector{Float64}
+    @assert n ≥ 1
+    @assert 0.0 ≤ z_base ≤ 1.0 "z_base must be between 0 and 1"
+    @assert r_rate > 0.0 "r_rate must be positive"
+    
+    result = Vector{Float64}(undef, n)
+    result[1] = z_base
+    
+    for j in 2:n
+        # Z(j) = 1 - [1-Z] R^(j-2)
+        result[j] = 1.0 - (1.0 - z_base) * (r_rate^(j-2))
+    end
+    
+    return result
+end
+
+
+###############################################################
 # 5. asym_decrease  (between two arbitrary values)
 ###############################################################
 function asym_decrease(start_val::Float64,

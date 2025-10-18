@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 300 : 800;
+is_finaltest = true
+n_simulations = is_finaltest ? 300 : 2000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -171,8 +171,13 @@ hj_base = 0.35; #higher this value higher CF starting point
 hj_initial_increment = 0.12  # initial increment for linear diminishing function
 hj_decrement_per_step = 0.029  # amount increment decreases each step (calculated to match old exponential behavior)
 
+# Parameters for the new formula-based asymptotic function Z(j) = 1 - [1-Z] R^(j-2)
+hj_formula_r_rate = 0.9  # R parameter controlling asymptotic approach to 1 (0 < R < 1)
+
 # h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
-h_j = asym_increase_diminishing_hj(hj_base, hj_initial_increment, hj_decrement_per_step, n_lists - 1)
+# h_j = asym_increase_diminishing_hj(hj_base, hj_initial_increment, hj_decrement_per_step, n_lists - 1)
+# Alternative formula-based asymptotic increase: 
+h_j = asym_increase_formula_hj(hj_base, hj_formula_r_rate, n_lists - 1)
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
 # below is prob of answer new
@@ -241,6 +246,7 @@ LLpower = 1 #power of likelihood for changing context,
 p_reinstate_context = 1.0 #stop reinstate after how much features
 
 # CAUTION: keep consistent with Issue #50 updates across designs
+#recover prob
 p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
@@ -295,7 +301,7 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.15,0.15, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
@@ -327,7 +333,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.16 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.16  ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
@@ -342,7 +348,7 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 Final test
 """
 x =0.13-0.1
-cfinal_start=(0.09+x-0.012)^power_taken;
+cfinal_start=(0.09+x-0.010)^power_taken;
 cfinal_end=(0.08+x+0.06)^power_taken;
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
@@ -455,7 +461,7 @@ is_restore_initial = true # flag check
 is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = false
-is_distort_probes = false  # Control probe distortion (aligned with E1)
+# is_distort_probes = false  # Control probe distortion (aligned with E1)
 
 
 

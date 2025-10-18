@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [081b7dc](https://github.com/naszhu/REM_E3_model_fixed/commit/081b7dc) (branch: `oct-14`)
+**Time:** 2025-10-17 20:03:58  
+**Message:**
+```
+feat(model-e3): finetune
+
+- Introduced a new parameter `hj_formula_r_rate` to control the asymptotic approach in the calculation of `h_j`.
+- Replaced the previous diminishing function with `asym_increase_formula_hj` for a more accurate representation of the desired behavior.
+- Adjusted `cfinal_start` and `cfinal_end` values for final testing to improve simulation accuracy.
+- Updated `final_gap_change` to refine the model's response characteristics.
+
+These changes aim to enhance the modeling of asymptotic behavior and improve the overall accuracy of the simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/081b7dc_20251017_200358_plot1.png)  
+![](../plot_archive/081b7dc_20251017_200358_plot2.png)  
+
 ## Commit [d0e45fc](https://github.com/naszhu/REM_E3_model_fixed/commit/d0e45fc) (branch: `oct-14`)
 **Time:** 2025-10-16 12:08:10  
 **Message:**
