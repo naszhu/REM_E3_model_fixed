@@ -1,5 +1,19 @@
 [
   {
+    "commit": "e2b9979",
+    "branch": "debug-oct-18",
+    "message": "debug(model-e3): set is_finaltest to true for final testing phase",
+    "timestamp": "2025-10-18 18:49:32",
+    "plot1": "plot_archive/e2b9979_20251018_184932_plot1.png",
+    "plot2": "plot_archive/e2b9979_20251018_184932_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "d0e45fc",
     "branch": "debug-oct-18",
     "message": "finetune(model-e3): good initial test prediction!",

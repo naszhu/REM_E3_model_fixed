@@ -1,5 +1,23 @@
 # Model Progress
 
+## Commit [e2b9979](https://github.com/naszhu/REM_E3_model_fixed/commit/e2b9979) (branch: `debug-oct-18`)
+**Time:** 2025-10-18 18:49:32  
+**Message:**
+```
+debug(model-e3): set is_finaltest to true for final testing phase
+
+- Changed the `is_finaltest` flag from `false` to `true`, adjusting the number of simulations to 300 for the final testing phase.
+
+This change aims to facilitate the final testing process by ensuring the correct simulation parameters are applied.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e2b9979_20251018_184932_plot1.png)  
+![](../plot_archive/e2b9979_20251018_184932_plot2.png)  
+
 ## Commit [d0e45fc](https://github.com/naszhu/REM_E3_model_fixed/commit/d0e45fc) (branch: `debug-oct-18`)
 **Time:** 2025-10-16 12:08:10  
 **Message:**
