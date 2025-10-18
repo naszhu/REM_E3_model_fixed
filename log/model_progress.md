@@ -1,5 +1,27 @@
 # Model Progress
 
+## Commit [397034d](https://github.com/naszhu/REM_E3_model_fixed/commit/397034d) (branch: `oct-14`)
+**Time:** 2025-10-18 18:15:30  
+**Message:**
+```
+docs(e3): Add constants comparison report for E1 vs E3
+
+- Introduced a new markdown file detailing the comparison of constants between E1 and E3 designs.
+- Highlighted differences in TRUE/FALSE values, numeric values, and constants unique to each design.
+- Included notes on distortion strategies, reinstatement rates, and probe design discrepancies.
+- Summarized major differences to enhance understanding of the two models' configurations.
+
+This report aims to provide a comprehensive overview of the variations in constants, aiding in model evaluation and development.
+```
+**Changed Files:**
+- `.vscode/settings.json`  
+- `constants_comparison_E1_vs_E3.md`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/397034d_20251018_181530_plot1.png)  
+![](../plot_archive/397034d_20251018_181530_plot2.png)  
+
 ## Commit [abd1340](https://github.com/naszhu/REM_E3_model_fixed/commit/abd1340) (branch: `oct-14`)
 **Time:** 2025-10-18 18:14:05  
 **Message:**
