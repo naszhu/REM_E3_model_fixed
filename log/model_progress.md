@@ -1,5 +1,28 @@
 # Model Progress
 
+## Commit [abd1340](https://github.com/naszhu/REM_E3_model_fixed/commit/abd1340) (branch: `oct-14`)
+**Time:** 2025-10-18 18:14:05  
+**Message:**
+```
+feat(model-e3): Use new asympoto function
+
+- Set `is_finaltest` to `true` and adjusted `n_simulations` to `2000` for final testing.
+- Introduced `hj_formula_r_rate` to control the asymptotic approach in the calculation of `h_j`.
+- Replaced the diminishing function with `asym_increase_formula_hj` for improved accuracy.
+- Updated `ratio_changing_to_itself_final` to `0.15` for better simulation dynamics.
+- Made minor adjustments to `cfinal_start` for enhanced final testing accuracy.
+
+These changes aim to refine the model's asymptotic behavior and improve simulation fidelity.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/abd1340_20251018_181405_plot1.png)  
+![](../plot_archive/abd1340_20251018_181405_plot2.png)  
+
 ## Commit [081b7dc](https://github.com/naszhu/REM_E3_model_fixed/commit/081b7dc) (branch: `oct-14`)
 **Time:** 2025-10-17 20:03:58  
 **Message:**

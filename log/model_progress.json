@@ -1,5 +1,20 @@
 [
   {
+    "commit": "abd1340",
+    "branch": "oct-14",
+    "message": "feat(model-e3): Use new asympoto function",
+    "timestamp": "2025-10-18 18:14:05",
+    "plot1": "plot_archive/abd1340_20251018_181405_plot1.png",
+    "plot2": "plot_archive/abd1340_20251018_181405_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "081b7dc",
     "branch": "oct-14",
     "message": "feat(model-e3): finetune",
