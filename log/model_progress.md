@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [f6e203e](https://github.com/naszhu/REM_E3_model_fixed/commit/f6e203e) (branch: `oct-14`)
+**Time:** 2025-10-18 19:31:34  
+**Message:**
+```
+explore(model-e3):  what looks like without final criterion change
+
+- Modified the `cfinal_start` calculation in `constants.jl` to improve the precision of final test simulations.
+- Ensured consistency in the range of values used for `cfinal_start` and `cfinal_end` to enhance model performance.
+
+These changes aim to refine the accuracy of the final testing phase in the model.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f6e203e_20251018_193134_plot1.png)  
+![](../plot_archive/f6e203e_20251018_193134_plot2.png)  
+
 ## Commit [397034d](https://github.com/naszhu/REM_E3_model_fixed/commit/397034d) (branch: `oct-14`)
 **Time:** 2025-10-18 18:15:30  
 **Message:**
