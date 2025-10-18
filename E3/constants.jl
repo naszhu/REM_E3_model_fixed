@@ -354,12 +354,12 @@ cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and elimi
 
 # criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 # criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
-criterion_final = LinRange(cfinal_start, cfinal_start, n_lists)
+criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
 context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
 final_gap_change = 0.16; #0.21
-p_ListChange_finaltest =  0.00 #make this a const value rather than a vector
+p_ListChange_finaltest =  0.013 #make this a const value rather than a vector
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
 ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging

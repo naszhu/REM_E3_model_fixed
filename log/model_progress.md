@@ -1,5 +1,26 @@
 # Model Progress
 
+## Commit [3bf99f5](https://github.com/naszhu/REM_E3_model_fixed/commit/3bf99f5) (branch: `oct-14`)
+**Time:** 2025-10-18 19:32:09  
+**Message:**
+```
+fix(model-e3): random seeds problem update RNG initialization for parallel simulations
+
+- Added a comment to clarify the use of a unique RNG for each simulation thread to prevent contention.
+- Ensured that the random number generator is properly initialized with a seed based on the simulation number.
+
+These changes aim to enhance the reliability of parallel simulations by improving random number generation.
+
+Fixs #57
+```
+**Changed Files:**
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3bf99f5_20251018_193209_plot1.png)  
+![](../plot_archive/3bf99f5_20251018_193209_plot2.png)  
+
 ## Commit [f6e203e](https://github.com/naszhu/REM_E3_model_fixed/commit/f6e203e) (branch: `oct-14`)
 **Time:** 2025-10-18 19:31:34  
 **Message:**
