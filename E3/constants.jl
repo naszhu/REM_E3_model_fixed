@@ -348,7 +348,7 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 Final test
 """
 x =0.13-0.1
-cfinal_start=(0.09+x-0.000)^power_taken;
+cfinal_start=(0.09+x-0.010)^power_taken;
 cfinal_end=(0.08+x+0.06)^power_taken;
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 

@@ -1,5 +1,19 @@
 [
   {
+    "commit": "b589bb6",
+    "branch": "oct-14",
+    "message": "chore(model-e3): comment out dead code",
+    "timestamp": "2025-10-19 14:42:45",
+    "plot1": "plot_archive/b589bb6_20251019_144245_plot1.png",
+    "plot2": "plot_archive/b589bb6_20251019_144245_plot2.png",
+    "changed_files": [
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "e2959b9",
     "branch": "oct-14",
     "message": "restore(model-e3): restore version with final cirterion change",

@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [b589bb6](https://github.com/naszhu/REM_E3_model_fixed/commit/b589bb6) (branch: `oct-14`)
+**Time:** 2025-10-19 14:42:45  
+**Message:**
+```
+chore(model-e3): comment out dead code
+
+- Commented out the `iprobe_chunk_boundaries` and `iprobe_chunk` calculations in the `restore_intest_final` function to prevent ambiguity in probe list indexing.
+- This change aims to clarify the code and avoid potential issues related to incorrect list number usage during restoration.
+
+These modifications enhance code readability and maintainability.
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b589bb6_20251019_144245_plot1.png)  
+![](../plot_archive/b589bb6_20251019_144245_plot2.png)  
+
 ## Commit [e2959b9](https://github.com/naszhu/REM_E3_model_fixed/commit/e2959b9) (branch: `oct-14`)
 **Time:** 2025-10-18 19:33:02  
 **Message:**
