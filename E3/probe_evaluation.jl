@@ -278,8 +278,18 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         # println(content_LL_ratios_filtered)
         odds = (1 / length(content_LL_ratios_filtered) * sum(content_LL_ratios_filtered))^power_taken
         
-        
-        criterion_final_i = criterion_final[currchunk] #this need to be changed if 
+        # Choose criterion based on flag
+        if use_fixed_test_chunking_for_criterion
+            # New method: chunk by fixed number of tests (every 42 tests)
+            # Calculate which 42-test chunk this test belongs to
+            test_chunk = div(i - 1, 42) + 1
+            # Ensure we don't exceed the array bounds
+            test_chunk = min(test_chunk, length(criterion_final_fixed_chunks))
+            criterion_final_i = criterion_final_fixed_chunks[test_chunk]
+        else
+            # Original method: chunk by final test number (using currchunk calculation)
+            criterion_final_i = criterion_final[currchunk]
+        end 
         
         ############### Add new sampling LL preparing lines
         filtered_content_LL_ratios_inOriginalLength = content_LL_ratios_org |> x -> map(e -> e == 344523466743 ? 0 : e, x)

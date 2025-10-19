@@ -1,5 +1,22 @@
 # Model Progress
 
+## Commit [6cbec23](https://github.com/naszhu/REM_E3_model_fixed/commit/6cbec23) (branch: `oct-14`)
+**Time:** 2025-10-19 14:43:08  
+**Message:**
+```
+restore(model-e1): restore criterion final value
+
+- Modified the calculation of `cfinal_start` in `constants.jl` to use a new value, enhancing the precision of final test simulations.
+- This change aims to ensure better alignment with the expected outcomes in the model's final testing phase.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6cbec23_20251019_144308_plot1.png)  
+![](../plot_archive/6cbec23_20251019_144308_plot2.png)  
+
 ## Commit [b589bb6](https://github.com/naszhu/REM_E3_model_fixed/commit/b589bb6) (branch: `oct-14`)
 **Time:** 2025-10-19 14:42:45  
 **Message:**

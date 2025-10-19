@@ -348,13 +348,29 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 Final test
 """
 x =0.13-0.1
-cfinal_start=(0.09+x-0.010)^power_taken;
-cfinal_end=(0.08+x+0.06)^power_taken;
+cfinal_start=(0.09+x-0.010)^power_taken; #0.11
+cfinal_end=(0.08+x+0.06)^power_taken; #0.17
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
 # criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
 # criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
 criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
+
+# Flag to control criterion change method
+# true = chunk by fixed number of tests (every 42 tests, like CC/UC drift)
+# false = chunk by final test number (current method using currchunk calculation)
+use_fixed_test_chunking_for_criterion = true
+
+# New criterion_final array for fixed test chunking method
+# Calculate how many 42-test chunks we need for the total number of final tests
+n_final_tests = n_finalprobs  # 492 tests total
+n_chunks_42 = div(n_final_tests, 42) + (n_final_tests % 42 > 0 ? 1 : 0)  # Number of 42-test chunks =12
+step_size = (cfinal_start - cfinal_end) / (n_chunks_42 - 1) # = -0.0055
+
+# Create criterion_final array that diminishes by a fixed amount each 42 tests
+# Start with cfinal_start and decrease by step_size each chunk
+criterion_final_fixed_chunks = (cfinal_start .- (0:(n_chunks_42-1)) .* step_size) |> collect
+
 context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 

@@ -1,5 +1,19 @@
 [
   {
+    "commit": "6cbec23",
+    "branch": "oct-14",
+    "message": "restore(model-e1): restore criterion final value",
+    "timestamp": "2025-10-19 14:43:08",
+    "plot1": "plot_archive/6cbec23_20251019_144308_plot1.png",
+    "plot2": "plot_archive/6cbec23_20251019_144308_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "b589bb6",
     "branch": "oct-14",
     "message": "chore(model-e3): comment out dead code",
