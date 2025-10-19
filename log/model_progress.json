@@ -1,5 +1,19 @@
 [
   {
+    "commit": "e2959b9",
+    "branch": "oct-18-no-criterion-change",
+    "message": "restore(model-e3): restore version with final cirterion change",
+    "timestamp": "2025-10-18 19:33:02",
+    "plot1": "plot_archive/e2959b9_20251018_193302_plot1.png",
+    "plot2": "plot_archive/e2959b9_20251018_193302_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "3bf99f5",
     "branch": "oct-14",
     "message": "fix(model-e3): random seeds problem update RNG initialization for parallel simulations",

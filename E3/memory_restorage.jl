@@ -171,7 +171,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
         )
 
     # end
-    if ((odds > criterion) && (odds > recall_odds_threshold) )
+    if ((odds > criterion) && (odds > recall_odds_threshold_final) )
 
         if !isnothing(sampled_item)
             # Use the pre-sampled item
@@ -187,7 +187,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     
     ############# ADD TRACE ######################
     # if new, or old but didn't pass threshold -- ADD TRACE
-    # if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold))| ((decision_isold==1) & (odds > recall_odds_threshold)) 
+    # if (decision_isold == 0)| ((decision_isold == 1) & (odds < recall_odds_threshold_final))| ((decision_isold==1) & (odds > recall_odds_threshold_final)) 
 
         # Check if c varies by list and show error if it doesn't
         @assert length(unique(c_storeintest)) == 1 "c_storeintest does vary by list. This may indicate a configuration issue."
@@ -226,7 +226,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
 
     ###### STRENGHTEN TRACE ######################
     # RESTORE CONTEXT & CONTENT
-    if ((odds > criterion) & (odds > recall_odds_threshold) )
+    if ((odds > criterion) & (odds > recall_odds_threshold_final) )
 
         # pass: strenghten
         #single parameter for missing or replacing
@@ -259,9 +259,9 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
     end
 
     # if (decision_isold == 0)
-    is_strenghten = (odds > criterion) && (odds > recall_odds_threshold) 
+    is_strenghten = (odds > criterion) && (odds > recall_odds_threshold_final) 
 
-    if (odds <= criterion) || ((odds > criterion) && (odds < recall_odds_threshold))|| ((odds > criterion) && (odds > recall_odds_threshold) && (odds<recall_to_addtrace_threshold)) 
+    if (odds <= criterion) || ((odds > criterion) && (odds < recall_odds_threshold_final))|| ((odds > criterion) && (odds > recall_odds_threshold_final) && (odds<recall_to_addtrace_threshold)) 
         
    
         if is_strenghten #Add trace while strengthening is also happening.

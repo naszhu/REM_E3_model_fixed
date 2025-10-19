@@ -299,7 +299,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
         sampled_item = nothing
         is_same_item = false  # Initialize is_same_item
         is_sampled = false    # Initialize is_sampled
-        if odds > criterion_final_i && odds > recall_odds_threshold
+        if odds > criterion_final_i && odds > recall_odds_threshold_final
             is_sampled = true  # Item was sampled
             if sampling_method
                 # Use sampling probabilities

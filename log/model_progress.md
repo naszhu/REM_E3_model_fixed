@@ -1,5 +1,24 @@
 # Model Progress
 
+## Commit [e2959b9](https://github.com/naszhu/REM_E3_model_fixed/commit/e2959b9) (branch: `oct-18-no-criterion-change`)
+**Time:** 2025-10-18 19:33:02  
+**Message:**
+```
+restore(model-e3): restore version with final cirterion change
+
+- Adjusted `criterion_final` to use the correct range between `cfinal_start` and `cfinal_end` for improved accuracy in simulations.
+- Updated `p_ListChange_finaltest` from `0.00` to `0.013` to reflect a more appropriate constant value.
+
+These changes aim to enhance the precision of the final testing phase in the model.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e2959b9_20251018_193302_plot1.png)  
+![](../plot_archive/e2959b9_20251018_193302_plot2.png)  
+
 ## Commit [3bf99f5](https://github.com/naszhu/REM_E3_model_fixed/commit/3bf99f5) (branch: `oct-14`)
 **Time:** 2025-10-18 19:32:09  
 **Message:**
