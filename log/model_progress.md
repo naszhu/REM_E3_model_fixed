@@ -1,5 +1,29 @@
 # Model Progress
 
+## Commit [cce6074](https://github.com/naszhu/REM_E3_model_fixed/commit/cce6074) (branch: `oct-14`)
+**Time:** 2025-10-19 14:55:54  
+**Message:**
+```
+feat(model-e3): implement fixed test chunking for criterion finalization
+
+- Introduced a new flag `use_fixed_test_chunking_for_criterion` to control the method of chunking final tests.
+- Added logic to calculate `criterion_final_fixed_chunks` based on fixed 42-test increments, enhancing the precision of final test evaluations.
+- Updated the `probe_evaluation2` function to select the appropriate criterion based on the new chunking method.
+
+These changes aim to improve the accuracy and consistency of final test criteria in the model's evaluation process.
+
+Closes #71
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cce6074_20251019_145554_plot1.png)  
+![](../plot_archive/cce6074_20251019_145554_plot2.png)  
+
 ## Commit [6cbec23](https://github.com/naszhu/REM_E3_model_fixed/commit/6cbec23) (branch: `oct-14`)
 **Time:** 2025-10-19 14:43:08  
 **Message:**
