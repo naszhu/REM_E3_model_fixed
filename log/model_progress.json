@@ -1,5 +1,213 @@
 [
   {
+    "commit": "cce6074",
+    "branch": "oct-14",
+    "message": "feat(model-e3): implement fixed test chunking for criterion finalization",
+    "timestamp": "2025-10-19 14:55:54",
+    "plot1": "plot_archive/cce6074_20251019_145554_plot1.png",
+    "plot2": "plot_archive/cce6074_20251019_145554_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/likelihood_calculations.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "6cbec23",
+    "branch": "oct-14",
+    "message": "restore(model-e1): restore criterion final value",
+    "timestamp": "2025-10-19 14:43:08",
+    "plot1": "plot_archive/6cbec23_20251019_144308_plot1.png",
+    "plot2": "plot_archive/6cbec23_20251019_144308_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b589bb6",
+    "branch": "oct-14",
+    "message": "chore(model-e3): comment out dead code",
+    "timestamp": "2025-10-19 14:42:45",
+    "plot1": "plot_archive/b589bb6_20251019_144245_plot1.png",
+    "plot2": "plot_archive/b589bb6_20251019_144245_plot2.png",
+    "changed_files": [
+      "E3/memory_restorage.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "e2959b9",
+    "branch": "oct-14",
+    "message": "restore(model-e3): restore version with final cirterion change",
+    "timestamp": "2025-10-18 19:33:02",
+    "plot1": "plot_archive/e2959b9_20251018_193302_plot1.png",
+    "plot2": "plot_archive/e2959b9_20251018_193302_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "3bf99f5",
+    "branch": "oct-14",
+    "message": "fix(model-e3): random seeds problem update RNG initialization for parallel simulations",
+    "timestamp": "2025-10-18 19:32:09",
+    "plot1": "plot_archive/3bf99f5_20251018_193209_plot1.png",
+    "plot2": "plot_archive/3bf99f5_20251018_193209_plot2.png",
+    "changed_files": [
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "f6e203e",
+    "branch": "oct-14",
+    "message": "explore(model-e3):  what looks like without final criterion change",
+    "timestamp": "2025-10-18 19:31:34",
+    "plot1": "plot_archive/f6e203e_20251018_193134_plot1.png",
+    "plot2": "plot_archive/f6e203e_20251018_193134_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "397034d",
+    "branch": "oct-14",
+    "message": "docs(e3): Add constants comparison report for E1 vs E3",
+    "timestamp": "2025-10-18 18:15:30",
+    "plot1": "plot_archive/397034d_20251018_181530_plot1.png",
+    "plot2": "plot_archive/397034d_20251018_181530_plot2.png",
+    "changed_files": [
+      ".vscode/settings.json",
+      "constants_comparison_E1_vs_E3.md",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "abd1340",
+    "branch": "oct-14",
+    "message": "feat(model-e3): Use new asympoto function",
+    "timestamp": "2025-10-18 18:14:05",
+    "plot1": "plot_archive/abd1340_20251018_181405_plot1.png",
+    "plot2": "plot_archive/abd1340_20251018_181405_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/utils.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "081b7dc",
+    "branch": "oct-14",
+    "message": "feat(model-e3): finetune",
+    "timestamp": "2025-10-17 20:03:58",
+    "plot1": "plot_archive/081b7dc_20251017_200358_plot1.png",
+    "plot2": "plot_archive/081b7dc_20251017_200358_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "d0e45fc",
+    "branch": "oct-14",
+    "message": "finetune(model-e3): good initial test prediction!",
+    "timestamp": "2025-10-16 12:08:10",
+    "plot1": "plot_archive/d0e45fc_20251016_120810_plot1.png",
+    "plot2": "plot_archive/d0e45fc_20251016_120810_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "2d11c73",
+    "branch": "oct-14",
+    "message": "fix(model-e3): foil store non-diostorted for final test",
+    "timestamp": "2025-10-16 11:27:18",
+    "plot1": "plot_archive/2d11c73_20251016_112718_plot1.png",
+    "plot2": "plot_archive/2d11c73_20251016_112718_plot2.png",
+    "changed_files": [
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "b7ab70e",
+    "branch": "oct-14",
+    "message": "refactor(model-e3): make into function. update reinstatement and distortion functions",
+    "timestamp": "2025-10-15 19:03:17",
+    "plot1": "plot_archive/b7ab70e_20251015_190317_plot1.png",
+    "plot2": "plot_archive/b7ab70e_20251015_190317_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/feature_updates.jl",
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "5c0bd6b",
+    "branch": "oct-14",
+    "message": "refactor(model-e3): change names from drift to distortion",
+    "timestamp": "2025-10-14 21:32:00",
+    "plot1": "plot_archive/5c0bd6b_20251014_213200_plot1.png",
+    "plot2": "plot_archive/5c0bd6b_20251014_213200_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_generation.jl",
+      "E3/simulation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
+    "commit": "0d1eb90",
+    "branch": "oct-14",
+    "message": "explore(model-e3): update probe distortion and context drift parameters",
+    "timestamp": "2025-10-14 21:04:10",
+    "plot1": "plot_archive/0d1eb90_20251014_210410_plot1.png",
+    "plot2": "plot_archive/0d1eb90_20251014_210410_plot2.png",
+    "changed_files": [
+      "E3/constants.jl",
+      "E3/probe_evaluation.jl",
+      "log/model_progress.html",
+      "log/model_progress.json",
+      "log/model_progress.md"
+    ]
+  },
+  {
     "commit": "a2d7b22",
     "branch": "main",
     "message": "merge(model-e3, oct5): Merge branch 'oct-5-test'",

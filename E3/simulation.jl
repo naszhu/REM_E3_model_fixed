@@ -5,6 +5,7 @@ function run_single_simulation(sim_num::Int)
     # Single simulation logic extracted for parallelization
     # Fix: Each thread gets its own RNG to avoid contention
     rng = Random.MersenneTwister(sim_num + 1000)
+    # Random.seed!(sim_num + 1000)
     image_pool = EpisodicImage[]
     
     # Pre-allocate results arrays for this simulation (with safety margin)
@@ -138,17 +139,27 @@ function run_single_simulation(sim_num::Int)
                 if is_UnchangeCtxDriftAndReinstate #false
                     drift_ctx_betweenStudyAndTest!(test_list_context_unchange, p_driftStudyTest, Geometric(g_context))
                 end
-
-                # if is_content_drift_between_study_and_test #true
-
-                #     for iword in eachindex(word_list_content_whole_list)
-
-                #         drift_ctx_betweenStudyAndTest!(word_list_content_whole_list[iword], p_driftAndListChange, Geometric(g_word))
-                #     end
-                # end
             end   #studied_pool[:, list_num]
-            # studied_pool[j, list_num]
 
+            ## context and content DISTORTION between study and test (after drift)
+            # CC_before_distort: drifted context (reinstate toward this)
+            # CC_after_distort: drifted + distorted context (start probes with this if distortion enabled)
+            CC_before_distort = deepcopy(test_list_context_change)  # Save drifted context as reinstatement target
+            CC_after_distort = deepcopy(test_list_context_change)   # Will be distorted if enabled
+            if is_CC_distort_between_study_and_test
+                distort_context_range!(CC_after_distort, 1, nC, base_distortion_prob_CC, g_context)
+            end
+
+            UC_before_distort = deepcopy(test_list_context_unchange) 
+            UC_after_distort = deepcopy(test_list_context_unchange)
+            if is_UC_distort_between_study_and_test
+                distort_context_range!(UC_after_distort, 1, nU, base_distortion_prob_UC, g_context)
+            end
+
+            # Note: Content distortion is now handled INSIDE probe_generation.jl
+            # after both targets and foils are created, so all probe words are distorted together
+            content_before_distort = deepcopy(current_list_words)
+            content_after_distort = deepcopy(current_list_words)  # Passed in but distortion happens in probe_generation
 
             # println("list $(list_num), ")
             # @assert length(filter(prb -> prb.classification == :foil, probes)) == Int(n_probes / 2) "wrong number!"
@@ -160,13 +171,13 @@ function run_single_simulation(sim_num::Int)
             #         println(i.word.initial_testpos)
             #     end
             # end
+            # Pass before_distort as reinstatement targets (drifted, not study context)
+            # Pass after_distort as current test contexts (distorted if enabled, otherwise same as before_distort)
             probes, foils = generate_probes(
-                list_change_context_features,
-                test_list_context_change,
-                general_context_features,
-                test_list_context_unchange,
+                content_before_distort, content_after_distort,
+                CC_before_distort, CC_after_distort,
+                UC_before_distort, UC_after_distort,
                 list_num,
-                deepcopy(current_list_words),
                 studied_pool;
                 studied_pool_lastList=last_lw
             )
@@ -176,9 +187,25 @@ function run_single_simulation(sim_num::Int)
             # Fill the rest of the studied pool with the foils
             # studied_pool[list_num][n_studyitem+1:end] = filter(x -> !isnothing(x), [foil.image for foil in foils])
 
-            @assert length(filter(isnothing, studied_pool[list_num][1:n_studyitem])) == 0 "There are still undefined items in studied_pool[:, list_num]"   # the place to start in each list is the same, becuase there are same number of new study item in each list 
+            @assert length(filter(isnothing, studied_pool[list_num][1:n_studyitem])) == 0 "There are still undefined items in studied_pool[:, list_num]"   # the place to start in each list is the same, becuase there are same number of new study item in each list
             # println(list_num)
             studied_pool[list_num][n_studyitem+1:end] = foils
+
+            # DEBUG: Verify foils in studied_pool are non-distorted (only for list 1, sim 1)
+            if is_content_distort_between_study_and_test && list_num == 1 && sim_num == 1
+                # Get first foil from studied_pool and first foil probe
+                first_foil_studied = studied_pool[list_num][n_studyitem+1]
+                foil_probes = filter(p -> p.ProbeTypeSimple == :foil, probes)
+                if !isempty(foil_probes)
+                    first_foil_probe = foil_probes[1]
+                    num_diff = sum(first_foil_studied.word.word_features[j] != first_foil_probe.image.word.word_features[j] for j in 1:min(w_word, length(first_foil_studied.word.word_features)))
+                    if num_diff > 0
+                        println("[E3-OK] List $list_num: studied_pool foil differs from probe foil in $num_diff features (non-distorted storage working)")
+                    else
+                        println("[E3-WARNING] List $list_num: studied_pool foil IDENTICAL to probe foil! May be storing distorted version!")
+                    end
+                end
+            end
 
             results = probe_evaluation(image_pool, probes, list_change_context_features, general_context_features, sim_num)
             # println(results)

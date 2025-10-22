@@ -147,6 +147,9 @@ end
 
 
 function calculate_two_step_likelihoods2(probe_img::EpisodicImage, image_pool::Vector{EpisodicImage}, p::Float64, currchunk::Int64)::Tuple{Vector{Float64},Vector{Float64}}
+    
+    @assert nU_f[1] == nU_f[end] "nU_f is not the same for all lists"
+    @assert nC_f[1] == nC_f[end] "nC_f is not the same for all lists"
 
     context_likelihood_imgi_ratios = Vector{Float64}(undef, length(image_pool))
     word_likelihood_imgi_ratios = Vector{Float64}(undef, length(image_pool))

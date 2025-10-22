@@ -5,8 +5,8 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = false
-n_simulations = is_finaltest ? 300 : 800;
+is_finaltest = true
+n_simulations = is_finaltest ? 300 : 2000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
 
@@ -155,9 +155,9 @@ const tested_before_feature_pos = w_word + n_ot_features  # position of OT featu
 # h(j) is increasing function
 
 ku_base = 0.25 # study，higher this value, lower the starting point of T
-ks_base = 0.2 #SOn (study only), lower the value, higher the starting point CF
-kb_base = 0.01 #Tn (study and test)
-kt_base = 0.01 #Fn (test only)
+ks_base = 0.4 #SOn (study only), lower the value, higher the starting point CF
+kb_base = 0.2 #Tn (study and test)
+kt_base = 0.2 #Fn (test only)
 
 fj_asymptote_decrease_val = 0.00 #0.35 #this value bigger, Hits higher
 fj_rate = 0.26 #this value higher, the faster fj makes T to get better
@@ -168,11 +168,16 @@ hj_asymptote_increase_val = 0.23
 hj_rate = 0.85
 hj_base = 0.35; #higher this value higher CF starting point
 
-hj_initial_increment = 0.1  # initial increment for linear diminishing function
+hj_initial_increment = 0.12  # initial increment for linear diminishing function
 hj_decrement_per_step = 0.029  # amount increment decreases each step (calculated to match old exponential behavior)
 
+# Parameters for the new formula-based asymptotic function Z(j) = 1 - [1-Z] R^(j-2)
+hj_formula_r_rate = 0.9  # R parameter controlling asymptotic approach to 1 (0 < R < 1)
+
 # h_j = asym_increase_shift_hj(hj_base, hj_asymptote_increase_val, hj_rate, n_lists - 1)
-h_j = asym_increase_diminishing_hj(hj_base, hj_initial_increment, hj_decrement_per_step, n_lists - 1)
+# h_j = asym_increase_diminishing_hj(hj_base, hj_initial_increment, hj_decrement_per_step, n_lists - 1)
+# Alternative formula-based asymptotic increase: 
+h_j = asym_increase_formula_hj(hj_base, hj_formula_r_rate, n_lists - 1)
 # the following equals to ks*f(j), 
 # κ are used instead of k for a simplification for now for easier modificatino of the code
 # below is prob of answer new
@@ -238,10 +243,11 @@ Ratios of stuff of featuresl; etc
 LLpower = 1 #power of likelihood for changing context, 
 
 # p_poscode_change = 0.1 #this is no need; deleted feature
-p_reinstate_context = 1 #stop reinstate after how much features
+p_reinstate_context = 1.0 #stop reinstate after how much features
 
 # CAUTION: keep consistent with Issue #50 updates across designs
-p_reinstate_rate = 0.0#0.4 #prob of reinstatement
+#recover prob
+p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 (1-(1-p_reinstate_rate)^5) #each feature reinstate after 1
 
 # Separate probability parameters to maintain equivalent overall probabilities
@@ -260,10 +266,16 @@ n_driftStudyTest = round.(Int, ones(n_lists) * 1) # Changed from 12 to 1
 # Probe distortion parameters for content drift between study and test
 max_distortion_probes = 30  # Number of probes until distortion probability reaches 0
 
+# DISTORTION FLAGS (applied after drift, before initial test)
+# These control whether features are distorted between study and test
+is_content_distort_between_study_and_test = false  # Enable content distortion
+is_UC_distort_between_study_and_test = true  # Enable UC (unchanging context) distortion (Issue #50)
+is_CC_distort_between_study_and_test = true  # Enable CC (changing context) distortion (Issue #50)
+
 # Distortion probability parameters (Issue #50)
 base_distortion_prob = 0.0  # Base distortion probability for content
-base_distortion_prob_UC = 0.0  # Distortion probability for UC context features
-base_distortion_prob_CC = 0.3  # Distortion probability for CC context features
+base_distortion_prob_UC = 0.1  # Distortion probability for UC context features
+base_distortion_prob_CC = 0.1  # Distortion probability for CC context features
 
 
 
@@ -289,7 +301,7 @@ nU_in = round.(Int, nU .* ratio_unchanging_to_itself_init)
 nC_in = round.(Int, nC .* ratio_changing_to_itself_init)
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
-ratio_changing_to_itself_final = LinRange(0.3,0.3, n_lists) # if use no unchanging
+ratio_changing_to_itself_final = LinRange(0.15,0.15, n_lists) # if use no unchanging
 
 nU_f = round.(Int, nU .* ratio_unchanging_to_itself_final)
 nC_f = round.(Int, nC .* ratio_changing_to_itself_final)
@@ -321,7 +333,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.16 ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.16  ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
@@ -336,16 +348,33 @@ recall_odds_threshold = 0.3^power_taken #this value should be bigger a bit than 
 Final test
 """
 x =0.13-0.1
-cfinal_start=(0.08+x-0.00)^power_taken;
-cfinal_end=(0.08+x+0.05)^power_taken;
+cfinal_start=(0.09+x-0.010)^power_taken; #0.11
+cfinal_end=(0.08+x+0.06)^power_taken; #0.17
 cfinal_rate = 0.27 #this value lower will make the tail of the F drop (and eliminate the final curvy bump)
 
 # criterion_final = asym_decrease_shift_fj(cfinal_start, cfinal_start-cfinal_end, cfinal_rate, n_lists)
+# criterion_final = LinRange(cfinal_star t, cfinal_end, n_lists)
 criterion_final = LinRange(cfinal_start, cfinal_end, n_lists)
+
+# Flag to control criterion change method
+# true = chunk by fixed number of tests (every 42 tests, like CC/UC drift)
+# false = chunk by final test number (current method using currchunk calculation)
+use_fixed_test_chunking_for_criterion = true
+
+# New criterion_final array for fixed test chunking method
+# Calculate how many 42-test chunks we need for the total number of final tests
+n_final_tests = n_finalprobs  # 492 tests total
+n_chunks_42 = div(n_final_tests, 42) + (n_final_tests % 42 > 0 ? 1 : 0)  # Number of 42-test chunks =12
+step_size = -0.0064#(cfinal_start - cfinal_end) / (n_chunks_42 - 1) # = -0.0055
+
+# Create criterion_final array that diminishes by a fixed amount each 42 tests
+# Start with cfinal_start and decrease by step_size each chunk
+criterion_final_fixed_chunks = (cfinal_start .- (0:(n_chunks_42-1)) .* step_size) |> collect
+
 context_tau_final = 100 #0.20.2 above if this is 10
 # stop increasing at around list t
 
-final_gap_change = 0.18; #0.21
+final_gap_change = 0.16; #0.21
 p_ListChange_finaltest =  0.013 #make this a const value rather than a vector
 
 ratio_unchanging_to_itself_final = LinRange(1, 1, n_lists) # if use no unchanging
@@ -449,10 +478,9 @@ is_restore_initial = true # flag check
 is_restore_final = true#followed by the next
 
 is_UnchangeCtxDriftAndReinstate = false
-is_distort_probes = false  # Control probe distortion (aligned with E1)
-is_content_drift_between_study_and_test = false; # use content drift between study and test
-is_UC_drift_between_study_and_test = false  # Enable UC context distortion (Issue #50)
-is_CC_drift_between_study_and_test = true  # Enable CC context distortion (Issue #50)
+# is_distort_probes = false  # Control probe distortion (aligned with E1)
+
+
 
 is_onlyaddtrace_final = false
 

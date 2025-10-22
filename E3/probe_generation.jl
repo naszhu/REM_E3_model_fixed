@@ -2,26 +2,29 @@
 
 
 """generate probe for inital test for a given list,
-input: studied word list; context features (word_change will modifed from the current list last word's context features)
-Return: probe
+input: studied word list; context features; content features
+Return: probe, foil_collection
 
-list_change_features_ref: This is to be stored as a correction of the list-change context features
-list feature, same as studied one
-list_change_features_dynamic: changed RI after study, continuous reinstate in test
+Parameters:
+- content_before_distort: word list with drifted content (REINSTATEMENT TARGET for content)
+- content_after_distort: word list with drifted+distorted content (CURRENT for content)
+- CC_before_distort: drifted CC context (REINSTATEMENT TARGET for CC)
+- CC_after_distort: drifted+distorted CC context (CURRENT for CC)
+- UC_before_distort: drifted UC context (REINSTATEMENT TARGET for UC)
+- UC_after_distort: drifted+distorted UC context (CURRENT for UC)
+- list_num: current list number
+- studied_pool_ref: reference to original studied_pool
 
-add probe type now.. 
-
-Delete : position_code_all::Vector{Vector{Int64}}
-
-* probe generation use context of current (flowed) context, so will be the same for any probe types
+Reinstatement: probes after the first one will partially reinstate toward "before_distort" versions
 """
 function generate_probes(
-    list_change_features_ref::Vector{Int64}, # Change_ctx reference
-    list_change_features_dynamic::Vector{Int64},   #Change ctx to be changed
-    unchange_features_ref::Vector{Int64}, # Unchange_ctx reference
-    unchange_features_dynamic::Vector{Int64}, #Unchange ctx to be changed
+    content_before_distort::Vector{Word}, 
+    content_after_distort::Vector{Word},
+    CC_before_distort::Vector{Int64}, 
+    CC_after_distort::Vector{Int64},
+    UC_before_distort::Vector{Int64}, 
+    UC_after_distort::Vector{Int64},
     list_num::Int64,
-    studied_pool_currList::Vector{Word}, #Pass word kinds in! Do not need IMG part
     studied_pool_ref::Vector{Vector{EpisodicImage}} # Reference to original studied_pool
     
     ; #following are defult vars
@@ -45,19 +48,19 @@ function generate_probes(
 
     probes = Vector{Probe}(undef, length(probetypes))
 
-    # Group studied_pool_currList images by their type_general into a dictionary
+    # STEP 1: Create all probe words BEFORE distortion
+    # Group content_before_distort (NOT distorted yet) by their type_general into a dictionary
     ####Type general:
     # T; Tn; SO; SOn; F; Fn
 
     #only 2 kinds need to be drawn from current studypool; those of type target  
-    # Keep in mind to check later: needs a deepcopy???
     studied_pool_currlist_by_type = Dict(
-        :T => filter(iword -> iword.type_general == :T, studied_pool_currList)|> shuffle!,
-        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), studied_pool_currList)|> shuffle!,
+        :T => filter(iword -> iword.type_general == :T, content_before_distort)|> shuffle!,
+        Symbol("Tn+1") => filter(iword -> iword.type_general == Symbol("Tn"), content_before_distort)|> shuffle!,
     )
 
     # 3 types, last target, last foil, last studyonly
-    # only when list > 1, assign a prior list Dict, and then do the append in combinging the two Dict, 
+    # only when list > 1, assign a prior list Dict, and then do the append in combining the two Dict, 
     # else, don't do anything just combine 
     if list_num>1
         #make dict
@@ -84,7 +87,9 @@ function generate_probes(
     # would equal study_poolcurrlist no matter list 1 or >list1
     combined_studied_pool_by_type = studied_pool_currlist_by_type
 
-
+    # Create array to hold all probe words (will be distorted together)
+    probe_words = Vector{Word}(undef, length(probetypes))
+    
     foils_collection = Vector{EpisodicImage}()
     for i in eachindex(probetypes) #should be 1-30
         # println("probe$(i)")
@@ -93,16 +98,16 @@ function generate_probes(
         # println(probetypes[i])
         if haskey(combined_studied_pool_by_type, probetypes[i]) # Check if probetype matches a key in the combined dictionary
             
-            target_word = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
-            # target_word.initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : target_word.initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
-            target_word.initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
-            target_word.type_specific = probetypes[i] #update the type_specific
+            probe_words[i] = pop!(combined_studied_pool_by_type[probetypes[i]]) # Pop an item from the corresponding array
+            # probe_words[i].initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : probe_words[i].initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
+            probe_words[i].initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
+            probe_words[i].type_specific = probetypes[i] #update the type_specific
             
             # Update the original item in studied_pool with the initial_testpos
             if probetypes[i] in [:T, Symbol("Tn+1")]
                 for j in 1:length(studied_pool_ref[list_num])
                     if !isnothing(studied_pool_ref[list_num][j]) && 
-                       studied_pool_ref[list_num][j].word.item_code == target_word.item_code
+                       studied_pool_ref[list_num][j].word.item_code == probe_words[i].item_code
                         studied_pool_ref[list_num][j].word.initial_testpos = i
                         break
                     end
@@ -110,12 +115,12 @@ function generate_probes(
             end
             
             # Set initial Z value based on probe type according to new rules
-            set_initial_Z_value_for_probe!(target_word, probetypes[i])
+            set_initial_Z_value_for_probe!(probe_words[i], probetypes[i])
 
         elseif probetypes[i] in foilnew_symbol_tuple
 
             # println("Foil")
-            #if combined_studiedpool dones't have it, (don't have the type in prior list, don't have it in current list, that means the type is either Fn or Fn)
+            #if combined_studiedpool doesn't have it, (don't have the type in prior list, don't have it in current list, that means the type is either F or Fn+1)
                     
         # out of T; Tn; SO; SOn; F; Fn
             pt_general = probetypes[i] == :F ? :F : Symbol("Fn")
@@ -125,7 +130,7 @@ function generate_probes(
             # Add OT feature (always added)
             push!(features, 0)  # For new probes, OT feature starts as 0 (not tested before)
 
-            target_word = 
+            probe_words[i] = 
             Word(
                 randstring(8), #item_code
                 features, 
@@ -139,44 +144,69 @@ function generate_probes(
                 :F, #type1, will be :F whatsoever
                 probetypes[i]== :F ? :none : :Fb #type2, general type, 
 
-                #the last two assignment could check in const beginnig clarification line on 1, 2 for each line
+                #the last two assignment could check in const beginning clarification line on 1, 2 for each line
             ) # Insert studypos 0
             
             # Set initial Z value based on probe type according to new rules
-            set_initial_Z_value_for_probe!(target_word, probetypes[i])
+            set_initial_Z_value_for_probe!(probe_words[i], probetypes[i])
         else
             error("probetype not in the list")
         end
+    end
+    
+    # STEP 2: Apply CONTENT DISTORTION to all probe words at once (all probe types)
+    probe_words_before_distort = deepcopy(probe_words)  # Save for reinstatement
+    probe_words_after_distort = deepcopy(probe_words)   # Will be distorted
+    
+    if is_content_distort_between_study_and_test
+        distort_probe_words_content!(probe_words_after_distort, base_distortion_prob, g_word, w_word)
+    end
+    
+    # STEP 3: Now iterate through probes, applying reinstatement and creating probes
+    for i in eachindex(probetypes)
+        target_word = probe_words_after_distort[i]  # Get the (possibly distorted) word
 
-        ############ Context reinstate below
-        # Combine the two loops into one function to avoid redundancy
-        # Reinstate changing context for each test position
+        ############ Context and content reinstatement below
+        # Reinstate changing context, unchanging context, and content for each test position
         if i>1   
-                reinstate_context_duringTest!(list_change_features_dynamic, list_change_features_ref, p_reinstate_context, p_reinstate_rate)
+            # REINSTATE CC (changing context): reinstate from after_distort toward before_distort
+            reinstate_context_duringTest!(CC_after_distort, CC_before_distort, p_reinstate_context, p_reinstate_rate)
 
-            # Reinstate unchanging context if applicable
-            if is_UnchangeCtxDriftAndReinstate #true
-                reinstate_context_duringTest!(unchange_features_dynamic, unchange_features_ref, p_reinstate_context, p_reinstate_rate)
-            end   # println("$(list_change_features_dynamic)")
+            # REINSTATE UC (unchanging context): reinstate from after_distort toward before_distort
+            if is_UC_distort_between_study_and_test
+                reinstate_context_duringTest!(UC_after_distort, UC_before_distort, p_reinstate_context, p_reinstate_rate)
+            end
+
+            # REINSTATE CONTENT: reinstate THIS probe's word features from after_distort toward before_distort
+            if is_content_distort_between_study_and_test
+                reinstate_word_content_duringTest!(target_word, probe_words_before_distort[i], p_reinstate_rate, w_word)
+            end
         end 
         #Target word is unique deep copied, so shouldn't overlap. get only current studypos, not a prior one
         current_studypos = target_word.initial_studypos;
         current_testpos = i; 
 
-        current_context_features = fast_concat([deepcopy(unchange_features_dynamic), deepcopy(list_change_features_dynamic)]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
+        # Build context from UC_after_distort and CC_after_distort (which may have been reinstated)
+        current_context_features = fast_concat([deepcopy(UC_after_distort), deepcopy(CC_after_distort)]) #here needs a deepcopy, otherwise the front remembered context change with later ones  
         
 
         probes[i] = Probe( #create prob from current created target word i
             # appearnum: if old kind, second time appear
             EpisodicImage(target_word, current_context_features, list_num, probetypes[i] in Fb_symbol_tuple ? 2 : 1),
-            
+
             probetypes[i] in T_target_tuple ? :target : :foil, #target or foil
             probetypes[i] in  T_target_tuple ? :T : probetypes[i] in Fb_symbol_tuple ? :Fb : :F #general type of probe, F, Fb or T
         )
 
         if probetypes[i] in foilnew_symbol_tuple
-            # println("foil")
-            push!(foils_collection, deepcopy(probes[i].image)) # Append a deep copy of the foil to the collection
+            # Store NON-DISTORTED foil for final test (uses probe_words_before_distort)
+            non_distorted_foil = EpisodicImage(
+                probe_words_before_distort[i],  # NON-DISTORTED word content
+                current_context_features,        # Context (doesn't matter for final test)
+                list_num,
+                probetypes[i] in Fb_symbol_tuple ? 2 : 1
+            )
+            push!(foils_collection, deepcopy(non_distorted_foil))
         end   # Commented the following lines because studied_pool is not carried in current function right now, but study_pool did have its images to be stored during study, meaning they won't have a test position assigned, 
         # BUT this is currently IGNORED (unassigned testpos for studied_pool), because the current testpos will not be used for prediction yet in final test, as a start 
         # Later, modify the testpos (of either appear 1 or appear 2 if we need, but now, ignore)  
@@ -198,32 +228,28 @@ function generate_probes(
     end
 
 
-    if is_content_drift_between_study_and_test
-        # Apply distortion to probes with linear decay in probability
-        # The distortion probability starts high for the first probe and linearly decreases to 0
-        # after max_distortion_probes (default: 8). This creates a strong distortion effect
-        # for early probes that gradually diminishes for later probes.
-        # 
-        # Keep original probes for foils collection, but distort probes for testing
-        # The foils_collection already contains deep copies of the original probes
-        # before distortion was applied, so it remains clean and unaffected.
+    if is_content_distort_between_study_and_test
+        # NOTE: This section applies ADDITIONAL linear decay distortion on top of the
+        # constant distortion already applied at line 162. This appears to be legacy code
+        # from an older distortion scheme.
+        #
+        # The foils_collection was properly populated at line 209 with non-distorted content
+        # from probe_words_before_distort, so it remains unaffected by this additional distortion.
         distorted_probes, original_probes = distort_probes_with_linear_decay(
-            probes, 
+            probes,
             max_distortion_probes;  # Use constant from constants.jl
             base_distortion_prob = base_distortion_prob,  # Use constant from constants.jl
             g_word = g_word  # Use the constant defined in constants.jl
         )
-        
+
         # Replace probes with distorted versions for testing
         probes = distorted_probes
-        
+
         # Note: original_probes are kept for reference but not returned
-        # The foils_collection already contains deep copies of the original probes
-        # before distortion was applied, so it remains clean
     end
 
     # Apply UC (unchanging context) distortion if enabled (Issue #50)
-    if is_UC_drift_between_study_and_test
+    if is_UC_distort_between_study_and_test
         distorted_probes_uc, original_probes_uc = distort_probe_context_range_with_linear_decay(
             probes,
             1,  # Start at first UC feature
@@ -238,7 +264,7 @@ function generate_probes(
     end
 
     # Apply CC (changing context) distortion if enabled (Issue #50)
-    if is_CC_drift_between_study_and_test
+    if is_CC_distort_between_study_and_test
         distorted_probes_cc, original_probes_cc = distort_probe_context_range_with_linear_decay(
             probes,
             nU + 1,  # Start after UC features

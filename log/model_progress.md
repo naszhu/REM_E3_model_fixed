@@ -1,5 +1,302 @@
 # Model Progress
 
+## Commit [cce6074](https://github.com/naszhu/REM_E3_model_fixed/commit/cce6074) (branch: `oct-14`)
+**Time:** 2025-10-19 14:55:54  
+**Message:**
+```
+feat(model-e3): implement fixed test chunking for criterion finalization
+
+- Introduced a new flag `use_fixed_test_chunking_for_criterion` to control the method of chunking final tests.
+- Added logic to calculate `criterion_final_fixed_chunks` based on fixed 42-test increments, enhancing the precision of final test evaluations.
+- Updated the `probe_evaluation2` function to select the appropriate criterion based on the new chunking method.
+
+These changes aim to improve the accuracy and consistency of final test criteria in the model's evaluation process.
+
+Closes #71
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/likelihood_calculations.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/cce6074_20251019_145554_plot1.png)  
+![](../plot_archive/cce6074_20251019_145554_plot2.png)  
+
+## Commit [6cbec23](https://github.com/naszhu/REM_E3_model_fixed/commit/6cbec23) (branch: `oct-14`)
+**Time:** 2025-10-19 14:43:08  
+**Message:**
+```
+restore(model-e1): restore criterion final value
+
+- Modified the calculation of `cfinal_start` in `constants.jl` to use a new value, enhancing the precision of final test simulations.
+- This change aims to ensure better alignment with the expected outcomes in the model's final testing phase.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/6cbec23_20251019_144308_plot1.png)  
+![](../plot_archive/6cbec23_20251019_144308_plot2.png)  
+
+## Commit [b589bb6](https://github.com/naszhu/REM_E3_model_fixed/commit/b589bb6) (branch: `oct-14`)
+**Time:** 2025-10-19 14:42:45  
+**Message:**
+```
+chore(model-e3): comment out dead code
+
+- Commented out the `iprobe_chunk_boundaries` and `iprobe_chunk` calculations in the `restore_intest_final` function to prevent ambiguity in probe list indexing.
+- This change aims to clarify the code and avoid potential issues related to incorrect list number usage during restoration.
+
+These modifications enhance code readability and maintainability.
+```
+**Changed Files:**
+- `E3/memory_restorage.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b589bb6_20251019_144245_plot1.png)  
+![](../plot_archive/b589bb6_20251019_144245_plot2.png)  
+
+## Commit [e2959b9](https://github.com/naszhu/REM_E3_model_fixed/commit/e2959b9) (branch: `oct-14`)
+**Time:** 2025-10-18 19:33:02  
+**Message:**
+```
+restore(model-e3): restore version with final cirterion change
+
+- Adjusted `criterion_final` to use the correct range between `cfinal_start` and `cfinal_end` for improved accuracy in simulations.
+- Updated `p_ListChange_finaltest` from `0.00` to `0.013` to reflect a more appropriate constant value.
+
+These changes aim to enhance the precision of the final testing phase in the model.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/e2959b9_20251018_193302_plot1.png)  
+![](../plot_archive/e2959b9_20251018_193302_plot2.png)  
+
+## Commit [3bf99f5](https://github.com/naszhu/REM_E3_model_fixed/commit/3bf99f5) (branch: `oct-14`)
+**Time:** 2025-10-18 19:32:09  
+**Message:**
+```
+fix(model-e3): random seeds problem update RNG initialization for parallel simulations
+
+- Added a comment to clarify the use of a unique RNG for each simulation thread to prevent contention.
+- Ensured that the random number generator is properly initialized with a seed based on the simulation number.
+
+These changes aim to enhance the reliability of parallel simulations by improving random number generation.
+
+Fixs #57
+```
+**Changed Files:**
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/3bf99f5_20251018_193209_plot1.png)  
+![](../plot_archive/3bf99f5_20251018_193209_plot2.png)  
+
+## Commit [f6e203e](https://github.com/naszhu/REM_E3_model_fixed/commit/f6e203e) (branch: `oct-14`)
+**Time:** 2025-10-18 19:31:34  
+**Message:**
+```
+explore(model-e3):  what looks like without final criterion change
+
+- Modified the `cfinal_start` calculation in `constants.jl` to improve the precision of final test simulations.
+- Ensured consistency in the range of values used for `cfinal_start` and `cfinal_end` to enhance model performance.
+
+These changes aim to refine the accuracy of the final testing phase in the model.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/f6e203e_20251018_193134_plot1.png)  
+![](../plot_archive/f6e203e_20251018_193134_plot2.png)  
+
+## Commit [397034d](https://github.com/naszhu/REM_E3_model_fixed/commit/397034d) (branch: `oct-14`)
+**Time:** 2025-10-18 18:15:30  
+**Message:**
+```
+docs(e3): Add constants comparison report for E1 vs E3
+
+- Introduced a new markdown file detailing the comparison of constants between E1 and E3 designs.
+- Highlighted differences in TRUE/FALSE values, numeric values, and constants unique to each design.
+- Included notes on distortion strategies, reinstatement rates, and probe design discrepancies.
+- Summarized major differences to enhance understanding of the two models' configurations.
+
+This report aims to provide a comprehensive overview of the variations in constants, aiding in model evaluation and development.
+```
+**Changed Files:**
+- `.vscode/settings.json`  
+- `constants_comparison_E1_vs_E3.md`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/397034d_20251018_181530_plot1.png)  
+![](../plot_archive/397034d_20251018_181530_plot2.png)  
+
+## Commit [abd1340](https://github.com/naszhu/REM_E3_model_fixed/commit/abd1340) (branch: `oct-14`)
+**Time:** 2025-10-18 18:14:05  
+**Message:**
+```
+feat(model-e3): Use new asympoto function
+
+- Set `is_finaltest` to `true` and adjusted `n_simulations` to `2000` for final testing.
+- Introduced `hj_formula_r_rate` to control the asymptotic approach in the calculation of `h_j`.
+- Replaced the diminishing function with `asym_increase_formula_hj` for improved accuracy.
+- Updated `ratio_changing_to_itself_final` to `0.15` for better simulation dynamics.
+- Made minor adjustments to `cfinal_start` for enhanced final testing accuracy.
+
+These changes aim to refine the model's asymptotic behavior and improve simulation fidelity.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/utils.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/abd1340_20251018_181405_plot1.png)  
+![](../plot_archive/abd1340_20251018_181405_plot2.png)  
+
+## Commit [081b7dc](https://github.com/naszhu/REM_E3_model_fixed/commit/081b7dc) (branch: `oct-14`)
+**Time:** 2025-10-17 20:03:58  
+**Message:**
+```
+feat(model-e3): finetune
+
+- Introduced a new parameter `hj_formula_r_rate` to control the asymptotic approach in the calculation of `h_j`.
+- Replaced the previous diminishing function with `asym_increase_formula_hj` for a more accurate representation of the desired behavior.
+- Adjusted `cfinal_start` and `cfinal_end` values for final testing to improve simulation accuracy.
+- Updated `final_gap_change` to refine the model's response characteristics.
+
+These changes aim to enhance the modeling of asymptotic behavior and improve the overall accuracy of the simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/081b7dc_20251017_200358_plot1.png)  
+![](../plot_archive/081b7dc_20251017_200358_plot2.png)  
+
+## Commit [d0e45fc](https://github.com/naszhu/REM_E3_model_fixed/commit/d0e45fc) (branch: `oct-14`)
+**Time:** 2025-10-16 12:08:10  
+**Message:**
+```
+finetune(model-e3): good initial test prediction!
+
+- Increased `ks_base`, `kb_base`, and `kt_base` values to enhance starting points for respective features.
+- Modified `hj_initial_increment` for a more gradual linear diminishing function.
+- Updated `p_reinstate_rate` to `0.15` to reflect a new probability of reinstatement.
+- Adjusted distortion probabilities for UC and CC context features to `0.1`, enabling better control over distortion effects.
+
+These changes aim to refine the model's parameter settings and improve the accuracy of feature behavior during simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/d0e45fc_20251016_120810_plot1.png)  
+![](../plot_archive/d0e45fc_20251016_120810_plot2.png)  
+
+## Commit [2d11c73](https://github.com/naszhu/REM_E3_model_fixed/commit/2d11c73) (branch: `oct-14`)
+**Time:** 2025-10-16 11:27:18  
+**Message:**
+```
+fix(model-e3): foil store non-diostorted for final test
+
+- Updated the `generate_probes` function to store non-distorted foils for final testing, ensuring accurate representation of probe features.
+- Refined the distortion logic to clarify the application of additional linear decay distortion, maintaining the integrity of the foils collection.
+- Added debug statements in `simulation.jl` to verify that non-distorted foils are correctly stored in the studied pool during simulations.
+
+These changes aim to enhance the accuracy and reliability of probe generation and evaluation processes.
+```
+**Changed Files:**
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/2d11c73_20251016_112718_plot1.png)  
+![](../plot_archive/2d11c73_20251016_112718_plot2.png)  
+
+## Commit [b7ab70e](https://github.com/naszhu/REM_E3_model_fixed/commit/b7ab70e) (branch: `oct-14`)
+**Time:** 2025-10-15 19:03:17  
+**Message:**
+```
+refactor(model-e3): make into function. update reinstatement and distortion functions
+
+- Changed the `p_reinstate_context` value in `constants.jl` from `1` to `1.0` for consistency in type.
+- Added detailed documentation for new functions in `feature_updates.jl` that handle context and content reinstatement during tests, improving clarity on their usage and parameters.
+- Enhanced the `generate_probes` function in `probe_generation.jl` to streamline the process of applying content distortion and reinstatement for probe words, ensuring better management of distorted features.
+
+These changes aim to improve the functionality and clarity of the reinstatement and distortion processes within the model.
+
+Refs #70
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/feature_updates.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/b7ab70e_20251015_190317_plot1.png)  
+![](../plot_archive/b7ab70e_20251015_190317_plot2.png)  
+
+## Commit [5c0bd6b](https://github.com/naszhu/REM_E3_model_fixed/commit/5c0bd6b) (branch: `oct-14`)
+**Time:** 2025-10-14 21:32:00  
+**Message:**
+```
+refactor(model-e3): change names from drift to distortion
+
+happened for commit 381182f6cb36584fcf81c2c67d53c0a5b8d5a5a7 for e1
+
+- Renamed distortion flags in `constants.jl` for clarity, changing `is_content_drift_between_study_and_test`, `is_UC_drift_between_study_and_test`, and `is_CC_drift_between_study_and_test` to `is_content_distort_between_study_and_test`, `is_UC_distort_between_study_and_test`, and `is_CC_distort_between_study_and_test` respectively.
+- Enhanced the `generate_probes` function in `probe_generation.jl` to incorporate new parameters for handling content and context distortion during probe generation.
+- Updated the simulation logic in `simulation.jl` to reflect the new distortion handling, ensuring proper reinstatement and distortion of context and content features.
+
+These changes aim to improve the model's handling of distortion effects, enhancing the accuracy and flexibility of simulations.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_generation.jl`  
+- `E3/simulation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/5c0bd6b_20251014_213200_plot1.png)  
+![](../plot_archive/5c0bd6b_20251014_213200_plot2.png)  
+
+## Commit [0d1eb90](https://github.com/naszhu/REM_E3_model_fixed/commit/0d1eb90) (branch: `oct-14`)
+**Time:** 2025-10-14 21:04:10  
+**Message:**
+```
+explore(model-e3): update probe distortion and context drift parameters
+
+- Changed `is_distort_probes`, `is_content_drift_between_study_and_test`, and `is_UC_drift_between_study_and_test` flags in `constants.jl` from `true` to `false` to disable probe distortion and context drift effects.
+- Adjusted logic in `probe_evaluation.jl` to ensure proper decision-making based on probe types, enhancing the evaluation process.
+
+These changes aim to refine the model's behavior regarding probe distortion and context drift, improving simulation accuracy.
+```
+**Changed Files:**
+- `E3/constants.jl`  
+- `E3/probe_evaluation.jl`  
+- `log/model_progress.html`  
+- `log/model_progress.json`  
+- `log/model_progress.md`  
+![](../plot_archive/0d1eb90_20251014_210410_plot1.png)  
+![](../plot_archive/0d1eb90_20251014_210410_plot2.png)  
+
 ## Commit [a2d7b22](https://github.com/naszhu/REM_E3_model_fixed/commit/a2d7b22) (branch: `main`)
 **Time:** 2025-10-14 09:33:20  
 **Message:**
