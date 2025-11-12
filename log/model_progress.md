@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [3d3c101](https://github.com/naszhu/REM_E3_model_fixed/commit/3d3c101) (branch: `nov-9-imdying`)
+**Time:** 2025-10-22 15:01:19  
+**Message:**
+```
+merge(debug): Merge branch 'debug-oct-18' into oct-14
+```
+![](../plot_archive/3d3c101_20251022_150119_plot1.png)  
+![](../plot_archive/3d3c101_20251022_150119_plot2.png)  
+
 ## Commit [cce6074](https://github.com/naszhu/REM_E3_model_fixed/commit/cce6074) (branch: `oct-14`)
 **Time:** 2025-10-19 14:55:54  
 **Message:**

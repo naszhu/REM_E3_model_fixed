@@ -16,6 +16,7 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
             word.type_specific,
             word.initial_studypos,
             word.initial_testpos,
+            word.confusing_testpos,
             word.is_repeat_type,
             word.type1,
             word.type2            

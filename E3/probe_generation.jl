@@ -1,10 +1,28 @@
 
 
 
+function update_confusing_testpos!(
+    studied_pool_ref::Vector{Vector{EpisodicImage}},
+    item_code::String,
+    testpos::Int
+)::Bool
+    for list_pool in studied_pool_ref
+        for idx in eachindex(list_pool)
+            if isassigned(list_pool, idx)
+                img = list_pool[idx]
+                if img !== nothing && img.word.item_code == item_code
+                    img.word.confusing_testpos = testpos
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
 """generate probe for inital test for a given list,
 input: studied word list; context features; content features
 Return: probe, foil_collection
-
 Parameters:
 - content_before_distort: word list with drifted content (REINSTATEMENT TARGET for content)
 - content_after_distort: word list with drifted+distorted content (CURRENT for content)
@@ -102,6 +120,12 @@ function generate_probes(
             # probe_words[i].initial_studypos = probetypes[i] in Fb_symbol_tuple ? 0 : probe_words[i].initial_studypos; # if from last list, studypos=0, else if current list (:T ,:Tn+1 ) or (:F, :Fn+1), studypos=keep current word studypos
             probe_words[i].initial_testpos = i # if from last list, studypos=0, if current list, studypos=current test num
             probe_words[i].type_specific = probetypes[i] #update the type_specific
+            if probetypes[i] in Fb_symbol_tuple
+                probe_words[i].confusing_testpos = i
+                update_confusing_testpos!(studied_pool_ref, probe_words[i].item_code, i)
+            else
+                probe_words[i].confusing_testpos = 0
+            end
             
             # Update the original item in studied_pool with the initial_testpos
             if probetypes[i] in [:T, Symbol("Tn+1")]
@@ -139,6 +163,7 @@ function generate_probes(
                 probetypes[i], #type_specific
                 0, #study pos: 0
                 i, #test position 
+                0, # confusing_testpos default to 0 for new foils
 
                 probetypes[i] == :F ? false : true, #is_repeat_type
                 :F, #type1, will be :F whatsoever
@@ -449,6 +474,7 @@ function generate_finalt_probes(studied_pool::Vector{EpisodicImage}, condition::
                         :FF, #type_specific; mathces above in final
                         0, #study pos: 0
                         0,  #inital test position is 0
+                        0, # confusing_testpos default to 0 for FF
 
                         false, #is_repeat_type
                         :none, #type1, doesnt have a first or second appearr

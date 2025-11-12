@@ -29,6 +29,7 @@ mutable struct Word
     type_specific::Symbol # specific current type; :T, :Tn, :Tn+1, :SO, :SOn, :SOn+1, :F, :Fn, :Fn+1, :FF 
     initial_studypos::Int64 #change this to make it consistent 
     initial_testpos::Int64 #CURRENT! TESTPOS (don't have prior study/test pos right now)
+    confusing_testpos::Int64 # test position when serving as confusing foil (0 if not applicable)
     
     is_repeat_type::Bool #True if this word is a repeatiive one, False if not
     type1:: Symbol #general type; of first appear, of type T, F, SO, Fb or none

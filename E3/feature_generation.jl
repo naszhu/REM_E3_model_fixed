@@ -38,6 +38,7 @@ function generate_study_list(list_num::Int, g_word::Float64,w_word::Int64 )::Vec
             types[i], # type_specific
             i,# initial_studypos
             0, # initial_testpos' initialize as 0
+            0, # confusing_testpos defaults to 0 (not yet a confusing foil)
             type_general[i] in (:Tn, :SOn) ? true : false, # is_repeat_type
             type_general[i] in (:Tn, :T) ? :T : :SO, # type1
             type_general[i] in (:SOn, :Tn) ? :Fb : :none, # type2

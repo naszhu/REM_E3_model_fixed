@@ -358,6 +358,7 @@ function probe_evaluation2(image_pool::Vector{EpisodicImage}, probes::Vector{Pro
 
         test_position = i, #final test pos 
         initial_testpos = probes[i].image.word.initial_testpos, 
+        confusing_testpos = probes[i].image.word.confusing_testpos,
         initial_studypos=probes[i].image.word.initial_studypos,
         type_specific =probes[i].image.word.type_specific,
         type_general=probes[i].image.word.type_general,

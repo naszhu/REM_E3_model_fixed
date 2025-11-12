@@ -122,6 +122,7 @@ function distort_probe_context_range_with_linear_decay(
                     original_word.type_specific,
                     original_word.initial_studypos,
                     original_word.initial_testpos,
+                    original_word.confusing_testpos,
                     original_word.is_repeat_type,
                     original_word.type1,
                     original_word.type2
