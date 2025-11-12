@@ -31,6 +31,7 @@ function restore_intest(image_pool::Vector{EpisodicImage}, iprobe_img::EpisodicI
                 iprobe_img.word.type_specific, #type_specific
                 iprobe_img.word.initial_studypos, #initial_studypos
                 iprobe_img.word.initial_testpos, #initial_studypos
+                iprobe_img.word.confusing_testpos, #confusing foil test position
                 iprobe_img.word.is_repeat_type, #is_repeat_type
                 iprobe_img.word.type1, #type1
                 iprobe_img.word.type2 #type2
@@ -161,6 +162,7 @@ function restore_intest_final(image_pool::Vector{EpisodicImage}, iprobe_img::Epi
                 iprobe_img.word.type_specific, #type_specific
                 iprobe_img.word.initial_studypos, #initial_studypos
                 iprobe_img.word.initial_testpos, #initial_studypos
+                iprobe_img.word.confusing_testpos, #confusing foil test position
                 iprobe_img.word.is_repeat_type, #is_repeat_type
                 iprobe_img.word.type1, #type1
                 iprobe_img.word.type2 #type2

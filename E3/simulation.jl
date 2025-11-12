@@ -288,7 +288,7 @@ function run_single_simulation(sim_num::Int)
                         println("Warning: final_count ($final_count) exceeds array size ($(length(final_results))). Expanding array.")
                         resize!(final_results, final_count * 2)
                     end
-                    final_results[final_count] = [res.list_num, res.test_position, res.initial_studypos, res.initial_testpos, replace(string(res.type_specific), r"n\+1" => "n_p1"), String(res.type_general), res.is_target, sim_num, String(icondition), res.decision_isold, res.odds, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion]
+                    final_results[final_count] = [res.list_num, res.test_position, res.initial_studypos, res.initial_testpos, res.confusing_testpos, replace(string(res.type_specific), r"n\+1" => "n_p1"), String(res.type_general), res.is_target, sim_num, String(icondition), res.decision_isold, res.odds, res.is_same_item, res.is_sampled, res.Z_sum, res.Z_proportion]
                 end
             end
         end
@@ -331,6 +331,7 @@ function simulate_rem()
         test_position=Vector{Int}(undef, total_final_rows),
         initial_studypos=Vector{Int}(undef, total_final_rows),
         initial_testpos=Vector{Int}(undef, total_final_rows),
+        confusing_testpos=Vector{Int}(undef, total_final_rows),
         type_specific=Vector{String}(undef, total_final_rows),
         type_general=Vector{String}(undef, total_final_rows),
         is_target=Vector{Bool}(undef, total_final_rows),
@@ -395,17 +396,18 @@ function simulate_rem()
             df_final[total_final_count, :test_position] = row[2]
             df_final[total_final_count, :initial_studypos] = row[3]
             df_final[total_final_count, :initial_testpos] = row[4]
-            df_final[total_final_count, :type_specific] = row[5]
-            df_final[total_final_count, :type_general] = row[6]
-            df_final[total_final_count, :is_target] = row[7]
-            df_final[total_final_count, :simulation_number] = row[8]
-            df_final[total_final_count, :condition] = row[9]
-            df_final[total_final_count, :decision_isold] = row[10]
-            df_final[total_final_count, :odds] = row[11]
-            df_final[total_final_count, :is_same_item] = row[12]
-            df_final[total_final_count, :is_sampled] = row[13]
-            df_final[total_final_count, :Z_sum] = row[14]
-            df_final[total_final_count, :Z_proportion] = row[15]
+            df_final[total_final_count, :confusing_testpos] = row[5]
+            df_final[total_final_count, :type_specific] = row[6]
+            df_final[total_final_count, :type_general] = row[7]
+            df_final[total_final_count, :is_target] = row[8]
+            df_final[total_final_count, :simulation_number] = row[9]
+            df_final[total_final_count, :condition] = row[10]
+            df_final[total_final_count, :decision_isold] = row[11]
+            df_final[total_final_count, :odds] = row[12]
+            df_final[total_final_count, :is_same_item] = row[13]
+            df_final[total_final_count, :is_sampled] = row[14]
+            df_final[total_final_count, :Z_sum] = row[15]
+            df_final[total_final_count, :Z_proportion] = row[16]
         end
     end
     

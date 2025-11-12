@@ -12,7 +12,7 @@ function EpisodicImagePool(initial_size::Int = 1000)
     available = Vector{EpisodicImage}()
     for i in 1:initial_size
         # Create dummy EpisodicImage with proper structure
-        dummy_word = Word("dummy", zeros(Int64, w_word + 1), :F, :F, 0, 0, false, 1, 2)
+        dummy_word = Word("dummy", zeros(Int64, w_word + 1), :F, :F, 0, 0, 0, false, 1, 2)
         dummy_context = zeros(Int64, w_allcontext)
         push!(available, EpisodicImage(dummy_word, dummy_context, 1, 1))
     end
@@ -23,7 +23,7 @@ end
 function get_image!(pool::EpisodicImagePool, word::Word, context_features::Vector{Int64}, list_num::Int64, type_current::Int64)
     if isempty(pool.available)
         # Create new if pool exhausted
-        dummy_word = Word("dummy", zeros(Int64, w_word + 1), :F, :F, 0, 0, false, 1, 2)
+        dummy_word = Word("dummy", zeros(Int64, w_word + 1), :F, :F, 0, 0, 0, false, 1, 2)
         dummy_context = zeros(Int64, w_allcontext)
         img = EpisodicImage(dummy_word, dummy_context, 1, 1)
     else
