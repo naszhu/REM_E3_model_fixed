@@ -100,6 +100,13 @@ function run_single_simulation(sim_num::Int)
 
                 # target and nontarget stored into studied pool 
                 studied_pool[list_num][j] = episodic_image
+
+                # Drift changing context between consecutive studied items
+                if j < length(word_list)
+                    for _ in 1:n_drift_between_study_items
+                        drift_ctx_betweenStudyAndTest!(list_change_context_features, p_drift_between_study_items, Geometric(g_context))
+                    end
+                end
                 
                 # if episodic_image.word.type_general == :T
                 #     println(episodic_image.word.initial_testpos)
@@ -422,5 +429,4 @@ function simulate_rem()
     println("Simulation completed successfully!")
     return df_inital, df_final
 end
-
 

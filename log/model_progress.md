@@ -1,5 +1,14 @@
 # Model Progress
 
+## Commit [0bd800f](https://github.com/naszhu/REM_E3_model_fixed/commit/0bd800f) (branch: `main`)
+**Time:** 2025-11-12 20:54:02  
+**Message:**
+```
+merge(nov-9-imdying, add testpos):  Merge branch 'nov-9-imdying'
+```
+![](../plot_archive/0bd800f_20251112_205402_plot1.png)  
+![](../plot_archive/0bd800f_20251112_205402_plot2.png)  
+
 ## Commit [3d3c101](https://github.com/naszhu/REM_E3_model_fixed/commit/3d3c101) (branch: `nov-9-imdying`)
 **Time:** 2025-10-22 15:01:19  
 **Message:**

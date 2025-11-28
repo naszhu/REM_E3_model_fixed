@@ -56,10 +56,10 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
     for _ in 1:n_units_time #content intial adv??? . Maybe not needed but.. 
 
        # In your storage function:
-        store_word_features!(
+       store_word_features!(
             new_image.word.word_features, 
             word.word_features,
-            u_star[list_num],
+            u_star_store_content_by_pos[min(word.initial_studypos, length(u_star_store_content_by_pos))],
             c[1], #caution here
             g_word,
             tested_before_feature_pos
@@ -81,4 +81,3 @@ function store_episodic_image(image_pool::Vector{EpisodicImage}, word::Word, con
 
     # return image_pool
 end
-

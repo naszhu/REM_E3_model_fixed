@@ -5,7 +5,7 @@
 
 #### start of everything:: and Design
 ##########
-is_finaltest = true
+is_finaltest = false
 n_simulations = is_finaltest ? 300 : 2000;
 ####Type general:
 # T; Tn; SO; SOn; F; Fn
@@ -209,6 +209,14 @@ u_star_adv = 0# 0.06
 # Single-step probability (no longer needs n_units_time calculation)
 u_star_v + u_star_adv
 
+# Study-position-specific storage probabilities (content/UC/CC) using asymptotic drop toward base
+u_star_store_asymptote = u_star_v        # target/base
+u_star_store_start = u_star_v + 0.6      # start slightly higher
+u_star_store_r = 0.5                     # r bigger, drop slower
+u_star_store_content_by_pos = fill(u_star_v, n_studyitem)
+u_star_store_UC_by_pos = fill(u_star_v, n_studyitem)
+u_star_store_CC_by_pos =  asym_decrease_to_L(u_star_store_start, u_star_store_asymptote, u_star_store_r, n_studyitem)
+
 #: nospecialty for first list right now
 #the following show adv for ONLY CHANGE context (second part of context)
 # u_star_context=vcat(0.05, ones(n_lists-1)*0.05)#CHANGED
@@ -254,10 +262,12 @@ p_reinstate_rate = 0.15#0.4 #prob of reinstatement
 #const p_driftAndListChange = 0.03; # ORIGINAL: single parameter for both # used for both of two n below, for drifts between study and test and for drift between list
 const p_driftStudyTest = 0.15; # Equivalent to (1-(1-0.03)^12) for study-test drift
 const p_driftBetweenList = 0.456; # Equivalent to (1-(1-0.03)^20) for between-list change
+const p_drift_between_study_items = 0.008;  # reuse study-test drift rate within study
 
 #n_driftStudyTest = round.(Int, ones(n_lists) * 12) #7 # ORIGINAL: was 12 steps
 n_driftStudyTest = round.(Int, ones(n_lists) * 1) # Changed from 12 to 1
 #(1-(1-p_driftAndListChange)^n_driftStudyTest[1]) # ORIGINAL calculation
+const n_drift_between_study_items = 1  # CC drift steps between studied items within a list
 (1-(1-p_driftStudyTest)^n_driftStudyTest[1]) # Updated calculation
 
 
@@ -333,7 +343,7 @@ context_tau = LinRange(100, 100, n_lists) ##CHANGED 1000#foil odds should lower 
 # originally 0.23 works, but now needs to adjust
 
 power_taken = 1
-ci=0.16  ^power_taken#this is very sensitive 0.77 #0.148^power_taken
+ci=0.14  ^power_taken#this is very sensitive 0.77 #0.148^power_taken
 
 #cr increase, F performance increase, T decrease, CF increase.
 criterion_initial = generate_asymptotic_values(1.0,ci, ci, 1.0, 1.0, 3.0) 
@@ -513,7 +523,5 @@ p_driftStudyTest_calc = (1-(1-p_driftStudyTest)^ Float64(n_driftStudyTest[1])) #
 #p_ChangeBetweenList = (1-(1-p_driftAndListChange)^n_between_listchange[end]) # ORIGINAL
 p_ChangeBetweenList = (1-(1-p_driftBetweenList)^n_between_listchange[1]) # Updated calculation
 p_ChangeBetweenList = (1-(1-p_driftBetweenList)^n_between_listchange[end]) # Updated calculation
-
-
 
 

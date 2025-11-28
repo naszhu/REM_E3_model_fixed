@@ -128,6 +128,18 @@ function asym_increase_formula_hj(z_base::Float64,
 end
 
 
+# Exponential decrease toward asymptote using Z(j) = L + (zbase - L) * r^(j-1)
+function asym_decrease_to_L(z_start::Float64, L::Float64, r::Float64, n::Int)::Vector{Float64}
+    @assert n ≥ 1
+    @assert r > 0.0 "r must be positive"
+    result = Vector{Float64}(undef, n)
+    for j in 1:n
+        result[j] = L + (z_start - L) * r^(j - 1)
+    end
+    return result
+end
+
+
 ###############################################################
 # 5. asym_decrease  (between two arbitrary values)
 ###############################################################

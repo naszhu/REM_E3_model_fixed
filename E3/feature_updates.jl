@@ -281,12 +281,14 @@ function store_context_features_during_study(image::EpisodicImage, context_featu
         j = image.context_features[ic]
 
         if j == 0 # if nothing is stored
-            # Apply initial advantage only to changing context features at first position
-            if ((ic > nU) && (word.initial_studypos == 1))
-                stored_val = (rand() < u_star_context[list_num] + u_adv_firstpos ? 1 : 0) * context_features[ic]
+            pos_idx = min(word.initial_studypos, length(u_star_store_CC_by_pos))
+            if ic > nU
+                p_store_ctx = u_star_store_CC_by_pos[pos_idx]
+                p_store_ctx = clamp(p_store_ctx + (word.initial_studypos == 1 ? u_adv_firstpos : 0.0), 0.0, 1.0)
             else
-                stored_val = (rand() < u_star_context[list_num] ? 1 : 0) * context_features[ic]
+                p_store_ctx = u_star_store_UC_by_pos[pos_idx]
             end
+            stored_val = (rand() < p_store_ctx ? 1 : 0) * context_features[ic]
 
             # Determine which context parameter to use
             which_ctx_use = ic > nU ? c_context_c[list_num] : c_context_un[list_num]
